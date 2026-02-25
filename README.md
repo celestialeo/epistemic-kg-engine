@@ -24,7 +24,7 @@ This project starts from already-chunked JSON files in `outputs/` with this stru
 ```json
 { "chunks": [ { "chunk_id": "...", "text": "..." }, ... ] }
 
----
+
 ```
 
 ## Folder Overview
