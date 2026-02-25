@@ -27,7 +27,10 @@ def main():
 
     chunks_path = Path(args.chunks)
     if not chunks_path.exists():
-        raise FileNotFoundError(f"Missing {chunks_path}. Build chunks first (e.g., extract_text.py/tag_layers.py).")
+        raise FileNotFoundError(
+    f"Missing {chunks_path}. Provide a chunks JSON with key 'chunks' "
+    f"(e.g., outputs/testpack_v1_chunks.json)."
+)
 
     data = load_json(chunks_path)
     chunks: List[Dict[str, Any]] = data.get("chunks", [])

@@ -118,7 +118,7 @@ docker run -d --name neo4j \
 
   # Set env vars- 
   ```
-  export NEO4J_URI="bolt://localhost:7687"
+export NEO4J_URI="bolt://localhost:7687"
 export NEO4J_USER="neo4j"
 export NEO4J_PASSWORD="test12345"
 ```
