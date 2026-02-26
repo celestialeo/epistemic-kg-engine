@@ -10,6 +10,7 @@ from neo4j import GraphDatabase
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -39,7 +40,7 @@ def main():
         raise ValueError(f"No chunks found in {chunks_path} under key 'chunks'.")
 
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
-    with driver.session() as session:
+    with driver.session(database=NEO4J_DB) as session:
         # Shared uniqueness constraint for all nodes with :Entity label
         session.run("""
         CREATE CONSTRAINT node_id_unique IF NOT EXISTS

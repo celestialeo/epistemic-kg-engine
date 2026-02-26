@@ -141,6 +141,8 @@ docker run -d --name neo4j \
 export NEO4J_URI="bolt://localhost:7687"
 export NEO4J_USER="neo4j"
 export NEO4J_PASSWORD="test12345"
+export NEO4J_DB="neo4j"
+setx NEO4J_DB "neo4j"
 ```
 
 # Windows (PowerShell):
@@ -182,7 +184,7 @@ python -u src/load_mentions_to_neo4j.py \
 
 ### Counts:
 ```cypher
-MATCH (ch:Chunk) RETURN count(ch) AS chunks;
+MMATCH (ch:Chunk) RETURN count(ch) AS chunks;
 MATCH (c:Concept) RETURN count(c) AS concepts;
 MATCH (:Chunk)-[:MENTIONS]->(:Concept) RETURN count(*) AS mention_edges;
 MATCH ()-[r:NEXT]->() RETURN count(r) AS next_edges;
@@ -197,5 +199,31 @@ LIMIT 50;
 
 ### Relationship audit:
 ```cypher
-MATCH ()-[r]->() RETURN type(r) AS rel, count(*) AS n ORDER BY n DESC;
+MATCH ()-[r]->() 
+RETURN type(r) AS rel, count(*) AS n 
+ORDER BY n DESC;
+```
+
+## “Debugging / sanity checks” section
+# 1. If you want to check if you’re in the right DB + see relationships (run in terminal):
+```bash
+python - <<'PY'
+import os
+from neo4j import GraphDatabase
+driver=GraphDatabase.driver(os.getenv("NEO4J_URI"), auth=(os.getenv("NEO4J_USER"), os.getenv("NEO4J_PASSWORD")))
+db=os.getenv("NEO4J_DB","neo4j")
+with driver.session(database=db) as s:
+    rels=s.run("CALL db.relationshipTypes() YIELD relationshipType RETURN relationshipType").data()
+print("DB:", db)
+print("REL TYPES:", [r["relationshipType"] for r in rels])
+PY
+```
+
+# 2. If retrieval returns nothing, list concept IDs (Neo4j Browser):
+```cypher
+MATCH (c:Concept) RETURN c.id LIMIT 20;
+```
+## Retrieval demo (no Cypher needed)
+```bash
+python -u src/retrieve_core_by_concept.py --concept neuron --limit 5
 ```
