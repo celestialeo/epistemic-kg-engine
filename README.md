@@ -1,14 +1,14 @@
 # Offline Knowledge Graph Demo (LangChain + Ollama + Neo4j)
 
-This repo demonstrates an end-to-end **offline** pipeline:
+This repo demonstrates an end-to-end offline pipeline:
 
 `chunked text -> LLM extraction -> graph artifacts -> Neo4j load -> retrieval`
 
-The main goal is to convert chunked text into a **concept-linked graph** that supports concept-centric retrieval.
+Goal: convert raw chunked text into a concept-linked graph for concept-centric navigation and retrieval.
 
-## What This Builds in Neo4j
+## What Gets Built in Neo4j
 
-Core mode creates:
+Core mode builds:
 - `(:Chunk)` nodes
 - `(:Concept)` nodes
 - `(:Chunk)-[:MENTIONS]->(:Concept)` edges
@@ -18,15 +18,9 @@ Optional extensions can also add:
 - `(:KnowledgeUnit)` nodes
 - `[:DEFINES]`, `[:PART_OF]`, `[:CAUSES]` edges
 
-## Project Layout
+## Repository Entry Point
 
-- `src/`: extraction, artifact-build, Neo4j load, retrieval scripts
-- `outputs/`: sample datasets and generated artifacts
-- `schema/`: schema reference (`graph_schema.yaml`)
-
-## Input Contract
-
-The pipeline starts from chunked JSON in `outputs/` with this format:
+Pipeline input is chunked JSON in `outputs/` with this structure:
 
 ```json
 {
@@ -36,16 +30,66 @@ The pipeline starts from chunked JSON in `outputs/` with this format:
 }
 ```
 
+## Folder Overview
+
+- `src/`: extraction scripts, graph artifact builders, Neo4j loaders, retrieval scripts
+- `outputs/`: sample datasets and generated artifacts
+- `schema/`: schema reference (`graph_schema.yaml`)
+
 ## Prerequisites
 
 1. Python 3.10+
-2. Ollama installed locally with a model available
+2. Ollama installed and running locally
 3. Docker (for local Neo4j)
 
-Quick Ollama check:
+## Install Ollama
+
+Official installer: `https://ollama.com/download`
+
+macOS:
+
+```bash
+brew install ollama
+brew services start ollama
+```
+
+Linux:
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
+```
+
+Windows:
+- Install from `https://ollama.com/download`
+- Open Ollama once to start the local service
+
+Pull a local model:
+
+```bash
+ollama pull llama3.2:3b
+```
+
+Verify:
 
 ```bash
 ollama run llama3.2:3b "Say hi"
+```
+
+Optional Ollama environment variable:
+
+```bash
+export OLLAMA_HOST="http://127.0.0.1:11434"
+```
+
+Example `.env` values:
+
+```env
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=test12345
+NEO4J_DB=neo4j
+OLLAMA_HOST=http://127.0.0.1:11434
 ```
 
 ## Setup
@@ -77,9 +121,9 @@ python -m pip install -U pip
 pip install -r requirements.txt
 ```
 
-## Core Pipeline (Recommended)
+## Demo Run (testpack)
 
-### 1) Extract structured knowledge units
+### Step 1: Generate structured extractions (LangChain + Ollama)
 
 Input:
 - `outputs/testpack_v1_chunks.json`
@@ -96,7 +140,7 @@ python -u src/langchain_extract_knowledgeunits.py \
   --model llama3.2:3b
 ```
 
-Optional limit:
+Optional chunk limit:
 
 ```bash
 python -u src/langchain_extract_knowledgeunits.py \
@@ -112,9 +156,9 @@ Verify:
 python -c "import json; d=json.load(open('outputs/testpack_v1_extractions.json')); print('rows', len(d['extractions']), 'errors', sum('error' in r for r in d['extractions']))"
 ```
 
-### 2) Build concept + mention artifacts
+### Step 2: Build graph artifacts (deduplicated concepts + mention edges)
 
-Inputs:
+Input:
 - `outputs/testpack_v1_extractions.json`
 
 Outputs:
@@ -136,7 +180,7 @@ Verify:
 python -c "import json; m=json.load(open('outputs/testpack_v1_mentions.json'))['mentions']; c=json.load(open('outputs/testpack_v1_concepts_dedup.json'))['concepts']; print('concepts', len(c), 'edges', len(m)); print('sample_edge', m[:2])"
 ```
 
-### 3) Start Neo4j (Docker)
+### Step 3: Start Neo4j (Docker)
 
 ```bash
 docker rm -f neo4j 2>/dev/null || true
@@ -148,9 +192,9 @@ docker run -d --name neo4j \
 
 Neo4j Browser:
 - `http://localhost:7474`
-- user/password: `neo4j` / `test12345`
+- username/password: `neo4j` / `test12345`
 
-### 4) Set Neo4j environment variables
+### Step 4: Set Neo4j environment variables
 
 macOS/Linux:
 
@@ -179,9 +223,9 @@ export NEO4J_PASSWORD="test12345"
 export NEO4J_DB="neo4j"
 ```
 
-### 5) Load graph artifacts into Neo4j
+### Step 5: Load graph into Neo4j
 
-Load chunks + NEXT edges:
+Load `Chunk` nodes + `NEXT` edges:
 
 ```bash
 python -u src/load_chunks_to_neo4j.py \
@@ -189,7 +233,7 @@ python -u src/load_chunks_to_neo4j.py \
   --source-type testpack
 ```
 
-Load concepts:
+Load `Concept` nodes:
 
 ```bash
 python -u src/load_concepts_to_neo4j.py \
@@ -197,7 +241,7 @@ python -u src/load_concepts_to_neo4j.py \
   --source-type testpack
 ```
 
-Load mentions:
+Load `MENTIONS` edges:
 
 ```bash
 python -u src/load_mentions_to_neo4j.py \
@@ -206,6 +250,8 @@ python -u src/load_mentions_to_neo4j.py \
 
 ## Validate in Neo4j (Cypher)
 
+Counts:
+
 ```cypher
 MATCH (ch:Chunk) RETURN count(ch) AS chunks;
 MATCH (c:Concept) RETURN count(c) AS concepts;
@@ -213,7 +259,7 @@ MATCH (:Chunk)-[:MENTIONS]->(:Concept) RETURN count(*) AS mention_edges;
 MATCH ()-[r:NEXT]->() RETURN count(r) AS next_edges;
 ```
 
-Graph sample:
+Graph view:
 
 ```cypher
 MATCH (ch:Chunk)-[:MENTIONS]->(c:Concept)
@@ -229,7 +275,7 @@ RETURN type(r) AS rel, count(*) AS n
 ORDER BY n DESC;
 ```
 
-## Retrieval Demo (Core)
+## Retrieval Demo (No Cypher Needed)
 
 ```bash
 python -u src/retrieve_core_by_concept.py --concept neuron --limit 5
@@ -237,9 +283,7 @@ python -u src/retrieve_core_by_concept.py --concept neuron --limit 5
 
 ## Optional: Epistemic Relations Extension
 
-This adds relation extraction for `DEFINES`, `PART_OF`, and `CAUSES`.
-
-1) Extract relations from extractions:
+Extract `DEFINES`, `PART_OF`, and `CAUSES`:
 
 ```bash
 python -u src/extract_epistemic_relations.py \
@@ -248,7 +292,7 @@ python -u src/extract_epistemic_relations.py \
   --model llama3.2:3b
 ```
 
-2) Load relation edges:
+Load those relations:
 
 ```bash
 python -u src/load_epistemic_relations_to_neo4j.py \
@@ -256,9 +300,7 @@ python -u src/load_epistemic_relations_to_neo4j.py \
   --source-type testpack
 ```
 
-## Optional: KnowledgeUnit Nodes
-
-If you want explicit `KnowledgeUnit` nodes linked from chunks:
+Optional: load explicit `KnowledgeUnit` nodes:
 
 ```bash
 python -u src/load_kus_to_neo4j.py \
@@ -268,7 +310,7 @@ python -u src/load_kus_to_neo4j.py \
 
 ## Troubleshooting
 
-1. Confirm relationship types in the active DB:
+1. Check active DB and relationship types:
 
 ```bash
 python - <<'PY'
