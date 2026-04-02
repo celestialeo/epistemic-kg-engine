@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Set
 from neo4j import GraphDatabase
 
 
-NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_URI = os.getenv("NEO4J_URI", "bolt://127.0.0.1:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
@@ -152,7 +152,11 @@ def main():
 
     concept = args.concept.strip().lower()
 
-    driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+    driver = GraphDatabase.driver(
+        NEO4J_URI,
+        auth=(NEO4J_USER, NEO4J_PASSWORD),
+        encrypted=False,
+    )
     with driver.session(database=NEO4J_DB) as session:
         defs = session.run(Q_DEFINITIONS, concept=concept, limit=args.limit_def).data()
 

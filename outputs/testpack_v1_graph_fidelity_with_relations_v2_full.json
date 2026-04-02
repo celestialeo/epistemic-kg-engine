@@ -1,0 +1,690 @@
+{
+  "summary": {
+    "rows": 20,
+    "ok": 20,
+    "errors": 0,
+    "pass": 8,
+    "fail": 12,
+    "avg_embedding_cosine": 0.6829678027547814,
+    "avg_lexical_combined": 0.21889580004206705,
+    "embedding_model": "llama3.2:3b",
+    "include_relations": true
+  },
+  "results": [
+    {
+      "chunk_id": "tp_0000",
+      "unit_kind": "definition",
+      "concepts": [
+        "chemical signals",
+        "electrical signals",
+        "information",
+        "excitable cell",
+        "neuron"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "neuron"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define neuron"
+      ],
+      "original": "Definition: A neuron is an excitable cell that processes and transmits information using electrical and chemical signals.",
+      "regenerated": "A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It uses both electrical signals, such as action potentials, and chemical signals, like neurotransmitters, to communicate with other neurons.",
+      "scores": {
+        "jaccard": 0.45161290322580644,
+        "bow_cosine": 0.7388664511337207,
+        "lexical_combined": 0.5952396771797636,
+        "embedding_cosine": 0.8992564562933382,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0001",
+      "unit_kind": "claim",
+      "concepts": [
+        "voltage-gated sodium channels",
+        "threshold",
+        "depolarization",
+        "axon"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "voltage-gated sodium channel",
+          "threshold",
+          "depolarization",
+          "axon"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define voltage-gated sodium channel",
+        "the chunk helps define threshold",
+        "the chunk helps define depolarization",
+        "the chunk helps define axon"
+      ],
+      "original": "Claim: Action potentials propagate along an axon when depolarization crosses a threshold and voltage-gated sodium channels open.",
+      "regenerated": "Voltage-gated sodium channels are responsible for initiating depolarization in neurons by allowing positively charged ions to flow into the cell. The threshold potential, typically around -55 millivolts, must be reached before the rapid influx of sodium ions triggers an action potential.",
+      "scores": {
+        "jaccard": 0.1702127659574468,
+        "bow_cosine": 0.2886751345948129,
+        "lexical_combined": 0.22944395027612985,
+        "embedding_cosine": 0.7981510844708279,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0002",
+      "unit_kind": "example",
+      "concepts": [
+        "ltp",
+        "potentiation",
+        "synapse"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "synapse",
+          "potentiation"
+        ],
+        "part_of": [
+          {
+            "parent": "ltp",
+            "child": "potentiation"
+          },
+          {
+            "parent": "neuron",
+            "child": "synapse"
+          }
+        ],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define synapse",
+        "the chunk helps define potentiation",
+        "potentiation is part of ltp",
+        "synapse is part of neuron"
+      ],
+      "original": "Example: If repeated stimulation strengthens a synapse over time, this is often described as long-term potentiation (LTP).",
+      "regenerated": "A synapse is the small gap between two neurons where chemical signals are transmitted. Potentiation refers to the strengthening of synaptic connections, allowing neurons to communicate more effectively.",
+      "scores": {
+        "jaccard": 0.10256410256410256,
+        "bow_cosine": 0.16169041669088866,
+        "lexical_combined": 0.1321272596274956,
+        "embedding_cosine": 0.6964851732678755,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0003",
+      "unit_kind": "support",
+      "concepts": [
+        "saltatory conduction",
+        "conduction speed",
+        "nodes of ranvier",
+        "myelination"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "saltatory conduction",
+          "myelination"
+        ],
+        "part_of": [
+          {
+            "parent": "myelination",
+            "child": "saltatory conduction"
+          }
+        ],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define saltatory conduction",
+        "the chunk helps define myelination",
+        "saltatory conduction is part of myelination"
+      ],
+      "original": "Support: Myelination increases conduction speed through saltatory conduction between nodes of Ranvier.",
+      "regenerated": "Saltatory conduction refers to the rapid transmission of electrical impulses along a neuron's axon, facilitated by the presence of nodes of Ranvier. Myelination is the process by which nerve fibers are covered in a fatty insulating substance called myelin, allowing for faster conduction speeds.",
+      "scores": {
+        "jaccard": 0.13953488372093023,
+        "bow_cosine": 0.3703892663358106,
+        "lexical_combined": 0.2549620750283704,
+        "embedding_cosine": 0.8681077524168263,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0004",
+      "unit_kind": "navigation",
+      "concepts": [
+        "electrical synapses",
+        "gap junctions",
+        "chemical synapses"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [],
+      "original": "Navigation: In the next section, we compare chemical synapses with electrical synapses (gap junctions).",
+      "regenerated": "Electrical synapses are specialized connections between neurons that allow for direct, rapid transmission of electrical signals. Chemical synapses, on the other hand, rely on neurotransmitters to transmit signals between neurons.",
+      "scores": {
+        "jaccard": 0.12121212121212122,
+        "bow_cosine": 0.3086066999241838,
+        "lexical_combined": 0.21490941056815252,
+        "embedding_cosine": 0.7018127190655401,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0005",
+      "unit_kind": "metadata",
+      "concepts": [
+        "version",
+        "lab notes",
+        "practicum testpack"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [],
+      "original": "Metadata: Lab notes, version 0.1. Updated 2026-02-06. Source: practicum testpack.",
+      "regenerated": "To manage different versions of your work, use version control systems like Git.",
+      "scores": {
+        "jaccard": 0.04,
+        "bow_cosine": 0.07692307692307693,
+        "lexical_combined": 0.05846153846153847,
+        "embedding_cosine": 0.5357544327967975,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0006",
+      "unit_kind": "other",
+      "concepts": [
+        "episodic memory",
+        "hippocampus",
+        "spatial navigation"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "hippocampus"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define hippocampus"
+      ],
+      "original": "The hippocampus is involved in episodic memory formation and spatial navigation.",
+      "regenerated": "Hippocampus: A structure in the brain involved in forming, organizing, and storing episodic memories. It plays a key role in spatial navigation and helps encode experiences into long-term memory.",
+      "scores": {
+        "jaccard": 0.32142857142857145,
+        "bow_cosine": 0.5720775535473553,
+        "lexical_combined": 0.4467530624879634,
+        "embedding_cosine": 0.8365597120328739,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0007",
+      "unit_kind": "other",
+      "concepts": [
+        "glutamate",
+        "gaba",
+        "central nervous system"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [
+          {
+            "parent": "neurotransmitter",
+            "child": "gaba"
+          }
+        ],
+        "causes": [
+          {
+            "effect": "neuronal activity",
+            "cause": "excitation"
+          }
+        ]
+      },
+      "relation_lines": [
+        "gaba is part of neurotransmitter",
+        "excitation can cause neuronal activity"
+      ],
+      "original": "GABA is typically inhibitory and glutamate is typically excitatory in the central nervous system.",
+      "regenerated": "Excitatory neurotransmitters, such as glutamate, stimulate neuronal activity in the central nervous system. Inhibitory neurotransmitters, like GABA, reduce or block this activity.",
+      "scores": {
+        "jaccard": 0.391304347826087,
+        "bow_cosine": 0.41602514716892186,
+        "lexical_combined": 0.4036647474975044,
+        "embedding_cosine": 0.8609399537021297,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0008",
+      "unit_kind": "other",
+      "concepts": [
+        "synaptic plasticity",
+        "receptor dynamics",
+        "activity patterns"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "synaptic plasticity",
+          "receptor dynamics",
+          "activity patterns"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define synaptic plasticity",
+        "the chunk helps define receptor dynamics",
+        "the chunk helps define activity patterns"
+      ],
+      "original": "LTP and LTD are forms of synaptic plasticity; both depend on activity patterns and receptor dynamics.",
+      "regenerated": "Synaptic plasticity refers to the ability of synapses to strengthen or weaken over time in response to changes in activity patterns. This process involves receptor dynamics, where receptors on the surface of neurons adjust their sensitivity and affinity for neurotransmitters in response to repeated stimulation.",
+      "scores": {
+        "jaccard": 0.20930232558139536,
+        "bow_cosine": 0.31212739461154115,
+        "lexical_combined": 0.26071486009646827,
+        "embedding_cosine": 0.786694392808671,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0009",
+      "unit_kind": "other",
+      "concepts": [
+        "neuron",
+        "synapse",
+        "learning"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "synapse",
+          "neuron"
+        ],
+        "part_of": [
+          {
+            "parent": "neuron",
+            "child": "synapse"
+          }
+        ],
+        "causes": [
+          {
+            "effect": "strengthening",
+            "cause": "firing"
+          }
+        ]
+      },
+      "relation_lines": [
+        "the chunk helps define synapse",
+        "the chunk helps define neuron",
+        "synapse is part of neuron",
+        "firing can cause strengthening"
+      ],
+      "original": "Bullet notes: - neuron fires - synapse strengthens - learning improves (rough summary).",
+      "regenerated": "A synapse is the small gap between two neurons where chemical signals are transmitted. When a neuron fires, it can strengthen its connections with other neurons through this process.",
+      "scores": {
+        "jaccard": 0.08823529411764706,
+        "bow_cosine": 0.1651445647689541,
+        "lexical_combined": 0.12668992944330057,
+        "embedding_cosine": 0.6084036359934532,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0010",
+      "unit_kind": "other",
+      "concepts": [
+        "figure 2",
+        "table 1"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [],
+      "original": "See Figure 2 and Table 1 for the full protocol; details are omitted here.",
+      "regenerated": "A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It receives inputs from other neurons, integrates the signals, and then sends the output to other neurons or to effectors such as muscles or glands.",
+      "scores": {
+        "jaccard": 0.044444444444444446,
+        "bow_cosine": 0.17397225015980528,
+        "lexical_combined": 0.10920834730212486,
+        "embedding_cosine": 0.5750551763868175,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0011",
+      "unit_kind": "example",
+      "concepts": [
+        "synapse",
+        "section",
+        "ltp"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [],
+      "original": "Ambiguous: This paragraph mixes a definition of synapse, an example of LTP, and a navigation hint for the next section.",
+      "regenerated": "A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It consists of a dendrite, cell body, and axon, with synapses connecting the sections to transmit signals.",
+      "scores": {
+        "jaccard": 0.12195121951219512,
+        "bow_cosine": 0.3347193406976015,
+        "lexical_combined": 0.2283352801048983,
+        "embedding_cosine": 0.536934099763976,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0012",
+      "unit_kind": "other",
+      "concepts": [
+        "memory issues",
+        "hippocampal atrophy"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "memory",
+          "hippocampal atrophy"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define memory",
+        "the chunk helps define hippocampal atrophy"
+      ],
+      "original": "Clinical note excerpt: Patient reports memory issues; hippocampal atrophy suspected. (Do not treat as medical advice.)",
+      "regenerated": "Memory refers to the ability to store, retain, and recall information over time. Memory issues can result from various factors, including hippocampal atrophy, a condition characterized by the shrinkage or degeneration of the hippocampus, a region critical for forming new memories.",
+      "scores": {
+        "jaccard": 0.08333333333333333,
+        "bow_cosine": 0.1717007049358613,
+        "lexical_combined": 0.12751701913459731,
+        "embedding_cosine": 0.5338062842235449,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0013",
+      "unit_kind": "other",
+      "concepts": [
+        "concept",
+        "graph idea",
+        "chunk"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "concept",
+          "chunk"
+        ],
+        "part_of": [
+          {
+            "parent": "concept",
+            "child": "chunk"
+          }
+        ],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define concept",
+        "the chunk helps define chunk",
+        "chunk is part of concept"
+      ],
+      "original": "Graph idea: Create (Chunk)-[:ABOUT]->(Concept) edges and chain chunks with (:Chunk)-[:NEXT]->(:Chunk) for reading order.",
+      "regenerated": "A concept is a mental model or idea that represents a relationship between objects, events, or concepts. A chunk is a self-contained unit of meaning within a concept.",
+      "scores": {
+        "jaccard": 0.09090909090909091,
+        "bow_cosine": 0.15517818003356154,
+        "lexical_combined": 0.12304363547132623,
+        "embedding_cosine": 0.6419204633365564,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0014",
+      "unit_kind": "other",
+      "concepts": [
+        "citations",
+        "chunk",
+        "answer",
+        "rag",
+        "top-k"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [],
+      "original": "RAG note: Retrieve top-k chunks, then generate an answer with citations to chunk_id and evidence spans.",
+      "regenerated": "A citation is a reference or credit given to a source of information, such as a book or article.",
+      "scores": {
+        "jaccard": 0.03125,
+        "bow_cosine": 0.04103049699311091,
+        "lexical_combined": 0.036140248496555456,
+        "embedding_cosine": 0.464302638990867,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0015",
+      "unit_kind": "noise",
+      "concepts": [
+        "content",
+        "noise"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "noise"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define noise"
+      ],
+      "original": "Noise: The the the and and of of \u2014 minimal useful content.",
+      "regenerated": "Noise refers to unwanted or random sounds, often occurring in audio recordings. Examples of noise include background hiss, hums, and other unwanted auditory distractions.",
+      "scores": {
+        "jaccard": 0.11538461538461539,
+        "bow_cosine": 0.24743582965269675,
+        "lexical_combined": 0.18141022251865607,
+        "embedding_cosine": 0.5836113218564456,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0016",
+      "unit_kind": "other",
+      "concepts": [
+        "ca2+ influx",
+        "plasticity",
+        "nmda receptors"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [],
+        "part_of": [
+          {
+            "parent": "nmda receptors",
+            "child": "plasticity"
+          }
+        ],
+        "causes": [
+          {
+            "effect": "downstream signaling",
+            "cause": "ca2+ influx"
+          }
+        ]
+      },
+      "relation_lines": [
+        "plasticity is part of nmda receptors",
+        "ca2+ influx can cause downstream signaling"
+      ],
+      "original": "Abbrev-heavy: NMDA receptors contribute to plasticity; Ca2+ influx can trigger downstream signaling.",
+      "regenerated": "Ca2+ influx causes downstream signaling. Plasticity is part of NMDA receptors.",
+      "scores": {
+        "jaccard": 0.4117647058823529,
+        "bow_cosine": 0.5853694070049636,
+        "lexical_combined": 0.4985670564436583,
+        "embedding_cosine": 0.8485509708470842,
+        "threshold": 0.7,
+        "pass": true
+      }
+    },
+    {
+      "chunk_id": "tp_0017",
+      "unit_kind": "definition",
+      "concepts": [
+        "concept",
+        "chunk"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "concept"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define concept"
+      ],
+      "original": "Definition: A concept is a short noun phrase used to link related chunks in a knowledge graph.",
+      "regenerated": "A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It receives inputs from other neurons, integrates the signals, and then sends output signals to other neurons or to muscles or glands.",
+      "scores": {
+        "jaccard": 0.07142857142857142,
+        "bow_cosine": 0.16427570345801806,
+        "lexical_combined": 0.11785213744329474,
+        "embedding_cosine": 0.6357467351652818,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0018",
+      "unit_kind": "example",
+      "concepts": [
+        "openai",
+        "ollama",
+        "langchain",
+        "llm",
+        "pydantic"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "pydantic",
+          "llm",
+          "langchain"
+        ],
+        "part_of": [
+          {
+            "parent": "ollama/openai",
+            "child": "llm"
+          }
+        ],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define pydantic",
+        "the chunk helps define llm",
+        "the chunk helps define langchain",
+        "llm is part of ollama/openai"
+      ],
+      "original": "Example: LangChain calls an LLM (Ollama/OpenAI) to output structured JSON that we validate with Pydantic.",
+      "regenerated": "An LLM (Large Language Model) is a type of AI model trained on vast amounts of text data, enabling it to generate human-like language outputs.",
+      "scores": {
+        "jaccard": 0.08333333333333333,
+        "bow_cosine": 0.13258252147247765,
+        "lexical_combined": 0.1079579274029055,
+        "embedding_cosine": 0.5807502514671526,
+        "threshold": 0.7,
+        "pass": false
+      }
+    },
+    {
+      "chunk_id": "tp_0019",
+      "unit_kind": "navigation",
+      "concepts": [
+        "discussion",
+        "results",
+        "navigation",
+        "summary",
+        "methods"
+      ],
+      "used_relations": true,
+      "relations": {
+        "defines": [
+          "summary",
+          "results",
+          "methods",
+          "discussion"
+        ],
+        "part_of": [],
+        "causes": []
+      },
+      "relation_lines": [
+        "the chunk helps define summary",
+        "the chunk helps define results",
+        "the chunk helps define methods",
+        "the chunk helps define discussion"
+      ],
+      "original": "Navigation: Summary \u2192 Methods \u2192 Results \u2192 Discussion. Start with the Summary section before reading details.",
+      "regenerated": "To summarize: A summary is a concise overview of the main points discussed in a discussion. It typically includes key findings, results, or conclusions. To define results: Results refer to the outcomes or consequences of a method or process, often presented as data or statistics. Methods are procedures or techniques used to achieve specific goals or objectives, such as experimental designs or research protocols. A discussion is an exchange of ideas, opinions, or perspectives on a particular topic, often involving debate, analysis, or critique.",
+      "scores": {
+        "jaccard": 0.07575757575757576,
+        "bow_cosine": 0.17407765595569785,
+        "lexical_combined": 0.1249176158566368,
+        "embedding_cosine": 0.666512800209571,
+        "threshold": 0.7,
+        "pass": false
+      }
+    }
+  ]
+}

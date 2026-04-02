@@ -6,7 +6,7 @@ from typing import Any, Dict, List
 
 from neo4j import GraphDatabase
 
-NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_URI = os.getenv("NEO4J_URI", "bolt://127.0.0.1:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
@@ -33,7 +33,11 @@ def main():
     if not rows:
         raise ValueError(f"No relations found in {rel_path} under key 'relations'.")
 
-    driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+    driver = GraphDatabase.driver(
+        NEO4J_URI,
+        auth=(NEO4J_USER, NEO4J_PASSWORD),
+        encrypted=False,
+    )
 
     defines_n = partof_n = causes_n = 0
 

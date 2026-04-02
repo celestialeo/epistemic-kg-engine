@@ -1,20 +1,20 @@
 # Offline Knowledge Graph Demo (LangChain + Ollama + Neo4j)
 
-This project turns raw chunked text into a structured knowledge graph that we can explore and retrieve from locally, without relying on external APIs. In practice, it uses an offline LLM pipeline to extract concepts and relations, loads them into Neo4j, and then tests whether the extracted representation is actually good enough to preserve meaning for retrieval and navigation.
+This project turns raw chunked instructional text into a structured epistemic knowledge graph that we can explore and retrieve from locally, without relying on external APIs. In practice, it uses an offline LLM pipeline to extract concepts, chunk roles, and relations, loads them into Neo4j, and then tests whether that graph-facing representation preserves enough meaning to support retrieval and regeneration.
 
-At a high level, the repo is about more than “building a graph.” It is also about evaluating whether the graph-friendly representation is useful for information retrieval, semantic organization, and explainable exploration of text.
+At a high level, the repo is about more than “building a graph.” It treats the knowledge graph as a semantic compression layer: if information regenerated from the graph representation still aligns with the original chunks, then the graph is doing useful work for information retrieval, semantic organization, and explainable exploration.
 
 This repo demonstrates an end-to-end offline pipeline:
 
 `chunked text -> LLM extraction -> graph artifacts -> Neo4j load -> retrieval`
 
-Goal: convert raw chunked text into a concept-linked graph for concept-centric navigation and retrieval.
+Goal: convert raw chunked text into a graph-based intermediate representation that supports concept-centric retrieval, epistemic structure, and evaluation of meaning preservation.
 
 ## Why I Built This
 
-I built this project to explore how unstructured text can be transformed into a more queryable and explainable knowledge representation. Instead of relying only on keyword search, the goal is to organize chunks around concepts, semantic links, and epistemic roles so retrieval can become easier to interpret and more useful for downstream analysis.
+I built this project to explore how unstructured instructional text can be transformed into a more queryable and explainable knowledge representation. Instead of relying only on keyword search, the goal is to organize chunks around concepts, semantic links, and epistemic roles so retrieval becomes easier to interpret and more useful for downstream analysis.
 
-This also supports a core information science question: when we compress text into extracted concepts and relations, are we preserving enough meaning for later retrieval? The reconstruction-validation step in this repo is my way of testing that directly rather than assuming that a plausible-looking graph is automatically a good representation.
+This also supports a core information science question: when we compress text into graph-facing concepts and relations, are we preserving enough meaning for later retrieval and regeneration? The reconstruction-validation step in this repo is my way of testing that directly rather than assuming that a plausible-looking graph is automatically a faithful representation.
 
 ## Architecture Overview
 
@@ -47,8 +47,8 @@ Neo4j graph
     v
 reconstruction validation
     |
-    +--> reconstruct chunk from extracted knowledge
-    +--> compare original vs reconstructed meaning
+    +--> regenerate chunk-level information from graph-facing knowledge
+    +--> compare original vs regenerated meaning
 ```
 
 ## What Gets Built in Neo4j
@@ -373,12 +373,12 @@ python -u src/load_kus_to_neo4j.py \
 
 ## Reconstruction Validation Demo
 
-This is an evaluation step for the extraction pipeline, not a graph-loading step.
+This is an evaluation step for the graph-building pipeline, not a graph-loading step.
 
 Purpose:
-- test whether compressed knowledge is sufficient to recover the meaning of the original chunk
+- test whether the graph-facing representation is sufficient to recover the meaning of the original chunk
 - compare `concepts only` against `concepts + relations`
-- use semantic similarity as a validation signal for extraction quality
+- use semantic similarity as a validation signal for graph fidelity and retrieval usefulness
 
 Current validator:
 - `src/compresses_knowlege_reconstruction.py`
@@ -435,19 +435,95 @@ python -u src/compare_reconstruction_runs.py \
 
 ### How to interpret the outputs
 
-- `embedding_cosine`: the main semantic score; higher means the reconstruction is closer in meaning to the original
+- `embedding_cosine`: the main semantic score; higher means the regenerated output is closer in meaning to the original
 - `lexical_combined`: a secondary diagnostic based on word overlap
 - `pass`: whether `embedding_cosine >= threshold`
 
 Recommended demo framing:
 1. Extract concepts from chunk text.
 2. Optionally extract relations.
-3. Reconstruct the chunk from the compressed representation.
-4. Compare reconstruction to the original chunk.
-5. Show whether relations help preserve meaning.
+3. Regenerate the chunk from the graph-facing representation.
+4. Compare regenerated output to the original chunk.
+5. Show whether relations help preserve meaning and retrieval fidelity.
 
 Recommended speaking point:
-- this evaluation loop helps distinguish "the extraction looks plausible" from "the extraction preserves enough meaning to be useful downstream"
+- this evaluation loop helps distinguish "the graph looks plausible" from "the graph preserves enough meaning to be useful downstream"
+
+## Neo4j-Backed Graph Fidelity Evaluation
+
+This is the stronger version of the validation step: instead of regenerating from extraction JSON alone, it queries the stored Neo4j graph directly and tests whether the graph acts as a faithful intermediate representation of the original chunks.
+
+Current graph-fidelity evaluator:
+- `src/evaluate_graph_fidelity.py`
+- queries Neo4j for `Chunk` text and connected `Concept` nodes
+- optionally enriches prompts with epistemic relations via `ku::<chunk_id>`
+- regenerates chunk text and compares it back to the original
+
+### Run graph-only baseline
+
+```bash
+python -u src/evaluate_graph_fidelity.py \
+  --out outputs/testpack_v1_graph_fidelity_full.json \
+  --model llama3.2:3b \
+  --limit 20
+```
+
+### Run defines-only relation mode
+
+```bash
+python -u src/evaluate_graph_fidelity.py \
+  --out outputs/testpack_v1_graph_fidelity_defines_only_full.json \
+  --model llama3.2:3b \
+  --limit 20 \
+  --include-relations \
+  --relation-types defines \
+  --max-relations 3
+```
+
+### Run cleaned relation-aware mode
+
+```bash
+python -u src/evaluate_graph_fidelity.py \
+  --out outputs/testpack_v1_graph_fidelity_with_relations_v2_full.json \
+  --model llama3.2:3b \
+  --limit 20 \
+  --include-relations
+```
+
+### Run chunk-type-aware auto mode
+
+This is the current best working strategy:
+- default to graph-only concepts
+- only inject a small number of relation hints where they appear helpful
+
+```bash
+python -u src/evaluate_graph_fidelity.py \
+  --out outputs/testpack_v1_graph_fidelity_auto_full.json \
+  --model llama3.2:3b \
+  --limit 20 \
+  --include-relations \
+  --relation-policy auto
+```
+
+### Compare multiple graph-fidelity runs
+
+```bash
+python -u src/compare_fidelity_runs.py \
+  --run graph_only=outputs/testpack_v1_graph_fidelity_full.json \
+  --run defines_only=outputs/testpack_v1_graph_fidelity_defines_only_full.json \
+  --run relations_v2=outputs/testpack_v1_graph_fidelity_with_relations_v2_full.json \
+  --run auto=outputs/testpack_v1_graph_fidelity_auto_full.json \
+  --threshold 0.70 \
+  --by-unit-kind
+```
+
+### Current takeaway
+
+- `graph_only` is the strongest simple baseline
+- raw relation prompting underperformed
+- cleaner relation formatting improved results
+- `auto` currently gives the best balanced behavior by using relations selectively rather than globally
+- chunk type matters: some chunk types benefit from relation hints, while others are better served by graph-only concepts
 
 ## Suggested Demo Order
 
@@ -480,6 +556,21 @@ python -u src/compare_reconstruction_runs.py \
   --baseline outputs/testpack_v1_reconstruction.json \
   --candidate outputs/testpack_v1_reconstruction_with_relations.json \
   --threshold 0.70
+
+python -u src/evaluate_graph_fidelity.py \
+  --out outputs/testpack_v1_graph_fidelity_auto_full.json \
+  --model llama3.2:3b \
+  --limit 20 \
+  --include-relations \
+  --relation-policy auto
+
+python -u src/compare_fidelity_runs.py \
+  --run graph_only=outputs/testpack_v1_graph_fidelity_full.json \
+  --run defines_only=outputs/testpack_v1_graph_fidelity_defines_only_full.json \
+  --run relations_v2=outputs/testpack_v1_graph_fidelity_with_relations_v2_full.json \
+  --run auto=outputs/testpack_v1_graph_fidelity_auto_full.json \
+  --threshold 0.70 \
+  --by-unit-kind
 ```
 
 Notes:

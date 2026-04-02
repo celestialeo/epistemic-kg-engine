@@ -6,7 +6,7 @@ from typing import Any, Dict, List
 
 from neo4j import GraphDatabase
 
-NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_URI = os.getenv("NEO4J_URI", "bolt://127.0.0.1:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
@@ -24,6 +24,11 @@ def main():
         action="store_true",
         help="If set, create Concept nodes that are missing (id=concept string).",
     )
+    parser.add_argument(
+        "--replace-existing",
+        action="store_true",
+        help="If set, delete existing Chunk->Concept MENTIONS edges for the chunks in this file before reloading.",
+    )
     args = parser.parse_args()
 
     if not NEO4J_PASSWORD:
@@ -37,8 +42,23 @@ def main():
     if not mentions:
         raise ValueError(f"No mentions found in {mentions_path} under key 'mentions'.")
 
-    driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+    driver = GraphDatabase.driver(
+        NEO4J_URI,
+        auth=(NEO4J_USER, NEO4J_PASSWORD),
+        encrypted=False,
+    )
     with driver.session(database=NEO4J_DB) as session:
+        if args.replace_existing:
+            chunk_ids = sorted({row["from_chunk_id"] for row in mentions})
+            session.run(
+                """
+                UNWIND $chunk_ids AS chunk_id
+                MATCH (ch:Chunk:Entity {id: chunk_id})-[r:MENTIONS]->(:Concept:Entity)
+                DELETE r
+                """,
+                chunk_ids=chunk_ids,
+            )
+
         # Optional: ensure concept nodes exist (safer for end-to-end runs)
         if args.create_missing_concepts:
             session.run("""

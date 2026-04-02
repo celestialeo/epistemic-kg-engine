@@ -74,11 +74,11 @@ def build_prompt(
     concepts: List[str],
     relations: Optional[Dict[str, Any]] = None,
 ) -> str:
-    # High-level instruction: reconstruct meaning, not exact wording.
+    # Regenerate likely chunk-level content from a graph-facing semantic representation.
     base = (
-        "You are reconstructing the likely original text of a short chunk from its compressed knowledge representation.\n"
+        "You are regenerating the likely original text of a short chunk from a graph-facing semantic representation.\n"
         "Write only the likely chunk content itself, not commentary about the task.\n"
-        "Do not say things like 'the compressed representation', 'the original chunk', 'this suggests', or 'based on the information provided'.\n"
+        "Do not say things like 'the graph representation', 'the original chunk', 'this suggests', or 'based on the information provided'.\n"
         "Do not mention missing context or uncertainty unless the provided information is genuinely fragmentary.\n"
         "Preserve the chunk's likely function when possible, such as definition, example, navigation note, metadata, or scaffolding.\n"
         "Use only the information provided. Do not invent facts. Keep it 1-2 sentences.\n\n"
@@ -88,7 +88,7 @@ def build_prompt(
     )
 
     if relations is not None:
-        # relations schema from outputs/*_relations.json created by extract_epistemic_relations.py
+        # Optional epistemic relations enrich the graph-facing representation.
         defines = relations.get("defines", [])
         part_of = relations.get("part_of", [])
         causes = relations.get("causes", [])
@@ -99,19 +99,21 @@ def build_prompt(
         base += f"- causes: {causes if causes else []}\n"
 
     base += (
-        "\nReturn ONLY the reconstructed text as plain prose."
-        "\nBad style example: 'The compressed representation describes a concept related to neuroscience.'"
+        "\nReturn ONLY the regenerated text as plain prose."
+        "\nBad style example: 'The graph representation describes a concept related to neuroscience.'"
         "\nGood style example: 'The hippocampus supports episodic memory formation and spatial navigation.'"
     )
     return base
 
 
 def main():
-    p = argparse.ArgumentParser(description="Compressed Knowledge Reconstruction validator (offline).")
+    p = argparse.ArgumentParser(
+        description="Graph fidelity validator using chunk reconstruction/regeneration (offline)."
+    )
     p.add_argument("--extractions", required=True, help="Path to extractions JSON (key: 'extractions').")
     p.add_argument("--relations", default="", help="Optional relations JSON (key: 'relations').")
-    p.add_argument("--out", required=True, help="Output JSON with reconstructions + similarity scores.")
-    p.add_argument("--model", default="llama3.2:3b", help="Ollama chat model for reconstruction.")
+    p.add_argument("--out", required=True, help="Output JSON with regenerated chunks + similarity scores.")
+    p.add_argument("--model", default="llama3.2:3b", help="Ollama chat model for regeneration.")
     p.add_argument(
         "--embedding-model",
         default="",
@@ -134,7 +136,7 @@ def main():
     if args.limit and args.limit > 0:
         rows = rows[: args.limit]
 
-    # Optional relations lookup by chunk_id
+    # Optional relations lookup by chunk_id so graph-only and graph+relations runs can be compared.
     rel_map: Dict[str, Dict[str, Any]] = {}
     if args.relations:
         rpath = Path(args.relations)
@@ -177,11 +179,11 @@ def main():
             resp = llm.invoke(prompt)
             reconstructed = norm_ws(getattr(resp, "content", str(resp)))
 
-            # Lexical diagnostics
+            # Lexical overlap is kept as a secondary diagnostic.
             jac = jaccard(original, reconstructed)
             bow_cos = cosine_bow(original, reconstructed)
 
-            # Semantic validation signal
+            # Embedding cosine is the main graph-fidelity signal.
             original_vec = embeddings.embed_query(original)
             reconstructed_vec = embeddings.embed_query(reconstructed)
             emb_cos = cosine_dense(original_vec, reconstructed_vec)

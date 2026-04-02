@@ -3,8 +3,41 @@ import json
 from pathlib import Path
 from collections import Counter
 
+
+ALIAS_MAP = {
+    "ltp": "long-term potentiation",
+    "ltd": "long-term depression",
+    "voltage-gated sodium channel": "voltage-gated sodium channels",
+    "gap junction": "gap junctions",
+}
+
+
+BLOCKLIST = {
+    "answer",
+    "chunk",
+    "concept",
+    "figure 2",
+    "graph idea",
+    "information",
+    "section",
+    "table 1",
+}
+
 def norm_concept(s: str) -> str:
-    return " ".join(s.strip().lower().split())
+    s = " ".join(str(s).strip().lower().split())
+    return ALIAS_MAP.get(s, s)
+
+
+def keep_concept(s: str) -> bool:
+    if not s:
+        return False
+    if s in BLOCKLIST:
+        return False
+    if len(s) <= 2:
+        return False
+    if s.replace(".", "", 1).isdigit():
+        return False
+    return True
 
 def main():
     parser = argparse.ArgumentParser(description="Build dedup concept list + mentions edges from extraction output.")
@@ -30,11 +63,12 @@ def main():
 
         chunk_id = row["chunk_id"]
         llm = row["llm"]
+        confidence = llm.get("confidence", 0.5)
         concepts = llm.get("concepts", [])
 
         for c in concepts:
             c_norm = norm_concept(c)
-            if not c_norm:
+            if not keep_concept(c_norm):
                 continue
 
             concept_counts[c_norm] += 1
@@ -47,7 +81,7 @@ def main():
             mentions.append({
                 "from_chunk_id": chunk_id,
                 "to_concept": c_norm,
-                "confidence": llm.get("confidence", 0.5),
+                "confidence": confidence,
                 "unit_kind": llm.get("unit_kind", "other"),
                 "layer": llm.get("layer", "support"),
             })

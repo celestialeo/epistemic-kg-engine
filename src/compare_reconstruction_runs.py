@@ -4,6 +4,10 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
+def get_generated_text(row: Dict[str, Any]) -> str:
+    return row.get("reconstructed") or row.get("regenerated") or ""
+
+
 def load_rows(path: Path) -> List[Dict[str, Any]]:
     data = json.loads(path.read_text(encoding="utf-8"))
     return [row for row in data.get("results", []) if "scores" in row]
@@ -40,6 +44,7 @@ def print_side_by_side(
     right_rows: List[Dict[str, Any]],
     threshold: float,
 ) -> None:
+    # Compare two graph-facing representations by the fidelity of their regenerated chunks.
     left = summarize(left_rows, threshold)
     right = summarize(right_rows, threshold)
 
@@ -87,6 +92,7 @@ def print_demo_cases(
     right_rows: List[Dict[str, Any]],
     threshold: float,
 ) -> None:
+    # Surface a few interpretable cases for manual inspection of graph fidelity.
     left_by_id = {row["chunk_id"]: row for row in left_rows}
     right_by_id = {row["chunk_id"]: row for row in right_rows}
     shared_ids = [chunk_id for chunk_id in right_by_id if chunk_id in left_by_id]
@@ -119,8 +125,8 @@ def print_demo_cases(
             f"candidate={right['scores']['embedding_cosine']:.3f} delta={delta:+.3f}"
         )
         print(f"original: {right['original']}")
-        print(f"baseline reconstruction: {left['reconstructed']}")
-        print(f"with relations reconstruction: {right['reconstructed']}")
+        print(f"baseline output: {get_generated_text(left)}")
+        print(f"with relations output: {get_generated_text(right)}")
 
     if borderline:
         _, chunk_id, left, right = sorted(borderline)[0]
@@ -130,8 +136,8 @@ def print_demo_cases(
             f"candidate={right['scores']['embedding_cosine']:.3f}"
         )
         print(f"original: {right['original']}")
-        print(f"baseline reconstruction: {left['reconstructed']}")
-        print(f"with relations reconstruction: {right['reconstructed']}")
+        print(f"baseline output: {get_generated_text(left)}")
+        print(f"with relations output: {get_generated_text(right)}")
 
     if suspicious_passes:
         _, chunk_id, right = sorted(suspicious_passes)[0]
@@ -141,13 +147,15 @@ def print_demo_cases(
             f"lexical={right['scores']['lexical_combined']:.3f}"
         )
         print(f"original: {right['original']}")
-        print(f"with relations reconstruction: {right['reconstructed']}")
+        print(f"with relations output: {get_generated_text(right)}")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Compare two reconstruction result files.")
-    parser.add_argument("--baseline", required=True, help="Path to baseline reconstruction JSON.")
-    parser.add_argument("--candidate", required=True, help="Path to candidate reconstruction JSON.")
+    parser = argparse.ArgumentParser(
+        description="Compare two graph-fidelity runs based on regenerated chunk outputs."
+    )
+    parser.add_argument("--baseline", required=True, help="Path to baseline reconstruction/regeneration JSON.")
+    parser.add_argument("--candidate", required=True, help="Path to candidate reconstruction/regeneration JSON.")
     parser.add_argument("--threshold", type=float, default=0.70, help="Embedding pass threshold.")
     args = parser.parse_args()
 
