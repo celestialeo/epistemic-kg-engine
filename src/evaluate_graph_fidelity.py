@@ -93,6 +93,7 @@ def build_prompt(
     unit_kind: str,
     concepts: List[str],
     relation_lines: Optional[List[str]] = None,
+    background_lines: Optional[List[str]] = None,
 ) -> str:
     base = (
         "You are regenerating the likely original text of a short instructional chunk from a graph-facing semantic representation.\n"
@@ -107,6 +108,11 @@ def build_prompt(
     if relation_lines:
         base += "\nhelpful relation hints:\n"
         for line in relation_lines:
+            base += f"- {line}\n"
+
+    if background_lines:
+        base += "\nhelpful background knowledge:\n"
+        for line in background_lines:
             base += f"- {line}\n"
 
     base += (
@@ -179,6 +185,53 @@ def fetch_relations(session, chunk_id: str) -> Dict[str, Any]:
         "part_of": part_of["part_of"] if part_of else [],
         "causes": causes["causes"] if causes else [],
     }
+
+
+def fetch_background_rows(session, concepts: List[str], limit_per_concept: int) -> List[Dict[str, Any]]:
+    if not concepts:
+        return []
+
+    query = """
+    UNWIND $concepts AS concept_id
+    MATCH (c:Concept:Entity {id: concept_id})-[r:IS_A|HAS_PART|REQUIRES_UNDERSTANDING_OF]->(bg:Concept:Entity)
+    WITH concept_id, c, r, bg
+    ORDER BY concept_id ASC, r.confidence DESC, bg.id ASC
+    WITH concept_id, collect({
+        source_concept: c.id,
+        relation_type: type(r),
+        target_concept: bg.id,
+        justification: coalesce(r.justification, ""),
+        confidence: coalesce(r.confidence, 0.0)
+    })[..$limit_per_concept] AS rows
+    UNWIND rows AS row
+    RETURN row
+    """
+    raw = session.run(query, concepts=concepts, limit_per_concept=limit_per_concept).data()
+    dedup: Dict[tuple[str, str, str], Dict[str, Any]] = {}
+    for wrapper in raw:
+        row = wrapper["row"]
+        key = (row["source_concept"], row["relation_type"], row["target_concept"])
+        prev = dedup.get(key)
+        if prev is None or row["confidence"] > prev["confidence"]:
+            dedup[key] = row
+    rows = list(dedup.values())
+    rows.sort(key=lambda r: (-float(r.get("confidence", 0.0)), r["source_concept"], r["target_concept"]))
+    return rows
+
+
+def format_background_lines(rows: List[Dict[str, Any]], max_background: int) -> List[str]:
+    lines: List[str] = []
+    for row in rows[:max_background]:
+        source = row.get("source_concept", "")
+        rel = row.get("relation_type", "")
+        target = row.get("target_concept", "")
+        justification = norm_ws(row.get("justification", ""))
+        confidence = row.get("confidence")
+        if justification:
+            lines.append(f"{source} {rel} {target} (confidence={confidence:.2f}): {justification}")
+        else:
+            lines.append(f"{source} {rel} {target} (confidence={confidence:.2f})")
+    return lines
 
 
 def select_relations(
@@ -294,6 +347,23 @@ def main() -> None:
         default="global",
         help="Use one global relation setting for all chunks, or a conservative chunk-type-aware policy.",
     )
+    p.add_argument(
+        "--include-background",
+        action="store_true",
+        help="If set, enrich graph-side prompts with background knowledge from IS_A/HAS_PART/REQUIRES_UNDERSTANDING_OF edges.",
+    )
+    p.add_argument(
+        "--background-limit-per-concept",
+        type=int,
+        default=3,
+        help="Maximum background edges to retrieve per concept when --include-background is set.",
+    )
+    p.add_argument(
+        "--max-background",
+        type=int,
+        default=8,
+        help="Maximum number of background hints to pass into the prompt.",
+    )
     args = p.parse_args()
 
     if not NEO4J_PASSWORD:
@@ -344,7 +414,22 @@ def main() -> None:
                 else None
             )
             relation_lines = format_relation_lines(selected_relations) if selected_relations is not None else None
-            prompt = build_prompt(unit_kind=unit_kind, concepts=concepts, relation_lines=relation_lines)
+            background_rows = (
+                fetch_background_rows(session, concepts, args.background_limit_per_concept)
+                if args.include_background
+                else None
+            )
+            background_lines = (
+                format_background_lines(background_rows, args.max_background)
+                if background_rows is not None
+                else None
+            )
+            prompt = build_prompt(
+                unit_kind=unit_kind,
+                concepts=concepts,
+                relation_lines=relation_lines,
+                background_lines=background_lines,
+            )
 
             try:
                 resp = llm.invoke(prompt)
@@ -365,9 +450,12 @@ def main() -> None:
                         "unit_kind": unit_kind,
                         "concepts": concepts,
                         "used_relations": bool(strategy["use_relations"]),
+                        "used_background": bool(args.include_background),
                         "relation_policy": strategy["policy"],
                         "relations": selected_relations if args.include_relations else None,
                         "relation_lines": relation_lines if args.include_relations else None,
+                        "background_rows": background_rows if args.include_background else None,
+                        "background_lines": background_lines if args.include_background else None,
                         "original": original,
                         "regenerated": regenerated,
                         "scores": {
@@ -406,6 +494,7 @@ def main() -> None:
         "embedding_model": embedding_model,
         "include_relations": bool(args.include_relations),
         "relation_policy": args.relation_policy,
+        "include_background": bool(args.include_background),
     }
 
     out_path = Path(args.out)
