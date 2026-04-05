@@ -50,27 +50,23 @@
       "ku_id": "ku::tp_0002",
       "relations": {
         "defines": [
-          "potentiation",
+          "long-term potentiation",
           "synapse"
         ],
         "part_of": [
           {
             "child": "synapse",
             "parent": "neuron"
-          },
-          {
-            "child": "potentiation",
-            "parent": "ltp"
           }
         ],
         "causes": [
           {
-            "cause": "stimulation",
-            "effect": "potentiation"
+            "cause": "repeated stimulation",
+            "effect": "long-term potentiation"
           }
         ]
       },
-      "confidence": 0.8
+      "confidence": 1.0
     },
     {
       "chunk_id": "tp_0003",
@@ -126,25 +122,14 @@
       "chunk_id": "tp_0007",
       "ku_id": "ku::tp_0007",
       "relations": {
-        "defines": [],
-        "part_of": [
-          {
-            "child": "glutamate",
-            "parent": "neurotransmitter"
-          },
-          {
-            "child": "gaba",
-            "parent": "neurotransmitter"
-          }
+        "defines": [
+          "excitatory",
+          "inhibitory"
         ],
-        "causes": [
-          {
-            "cause": "excitation",
-            "effect": "neuronal activity"
-          }
-        ]
+        "part_of": [],
+        "causes": []
       },
-      "confidence": 0.5
+      "confidence": 1.0
     },
     {
       "chunk_id": "tp_0008",
@@ -165,13 +150,14 @@
       "ku_id": "ku::tp_0009",
       "relations": {
         "defines": [
+          "learning",
           "neuron",
           "synapse"
         ],
         "part_of": [
           {
-            "child": "learning",
-            "parent": "neuron"
+            "child": "neuron",
+            "parent": "brain"
           },
           {
             "child": "synapse",
@@ -180,12 +166,20 @@
         ],
         "causes": [
           {
-            "cause": "firing",
-            "effect": "strengthening"
+            "cause": "stimulus",
+            "effect": "neuron fires"
+          },
+          {
+            "cause": "practice",
+            "effect": "learning improves"
+          },
+          {
+            "cause": "synapse strengthening",
+            "effect": "synapse strengthens"
           }
         ]
       },
-      "confidence": 0.5
+      "confidence": 0.8
     },
     {
       "chunk_id": "tp_0010",
@@ -211,14 +205,25 @@
       "chunk_id": "tp_0012",
       "ku_id": "ku::tp_0012",
       "relations": {
-        "defines": [
-          "hippocampal atrophy",
-          "memory"
+        "defines": [],
+        "part_of": [
+          {
+            "child": "hippocampus",
+            "parent": "brain"
+          }
         ],
-        "part_of": [],
-        "causes": []
+        "causes": [
+          {
+            "cause": "stress",
+            "effect": "memory issues"
+          },
+          {
+            "cause": "age",
+            "effect": "hippocampal atrophy"
+          }
+        ]
       },
-      "confidence": 0.0
+      "confidence": 0.5
     },
     {
       "chunk_id": "tp_0013",
@@ -228,12 +233,7 @@
           "chunk",
           "concept"
         ],
-        "part_of": [
-          {
-            "child": "chunk",
-            "parent": "concept"
-          }
-        ],
+        "part_of": [],
         "causes": []
       },
       "confidence": 0.5

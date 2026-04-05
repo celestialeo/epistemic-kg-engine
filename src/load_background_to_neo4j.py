@@ -61,7 +61,7 @@ MATCH (t:Concept:Entity {id: row.target_concept})
 MERGE (s)-[r:IS_A]->(t)
 SET r.source = "co_scientist_background",
     r.justification = row.justification,
-    r.confidence = row.final_score,
+    r.confidence = row.loaded_score,
     r.status = row.status,
     r.last_updated = datetime()
 """
@@ -73,7 +73,7 @@ MATCH (t:Concept:Entity {id: row.target_concept})
 MERGE (s)-[r:HAS_PART]->(t)
 SET r.source = "co_scientist_background",
     r.justification = row.justification,
-    r.confidence = row.final_score,
+    r.confidence = row.loaded_score,
     r.status = row.status,
     r.last_updated = datetime()
 """
@@ -85,7 +85,7 @@ MATCH (t:Concept:Entity {id: row.target_concept})
 MERGE (s)-[r:REQUIRES_UNDERSTANDING_OF]->(t)
 SET r.source = "co_scientist_background",
     r.justification = row.justification,
-    r.confidence = row.final_score,
+    r.confidence = row.loaded_score,
     r.status = row.status,
     r.last_updated = datetime()
 """
@@ -95,7 +95,7 @@ UNWIND $rows AS row
 MERGE (f:BackgroundFact:Entity {id: row.fact_id})
 SET f.text = row.justification,
     f.relation_type = row.relation_type,
-    f.confidence = row.final_score,
+    f.confidence = row.loaded_score,
     f.status = row.status,
     f.source = "co_scientist_background",
     f.last_updated = datetime()
@@ -111,6 +111,16 @@ MERGE (s)-[:SUPPORTED_BY]->(f)
 
 def make_fact_id(row: Dict[str, Any]) -> str:
     return f"bgf::{row['source_concept']}::{row['relation_type']}::{row['target_concept']}"
+
+
+def resolve_score(row: Dict[str, Any]) -> float:
+    if row.get("eigenvalue_weighted_score") is not None:
+        return float(row["eigenvalue_weighted_score"])
+    if row.get("final_score") is not None:
+        return float(row["final_score"])
+    if row.get("proposer_confidence") is not None:
+        return float(row["proposer_confidence"])
+    return 0.0
 
 
 def main():
@@ -131,6 +141,7 @@ def main():
 
     for row in rows:
         row["fact_id"] = make_fact_id(row)
+        row["loaded_score"] = resolve_score(row)
 
     is_a_rows = [r for r in rows if r["relation_type"] == "is_a"]
     has_part_rows = [r for r in rows if r["relation_type"] == "has_part"]
