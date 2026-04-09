@@ -16,6 +16,31 @@ NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
 
+GENERIC_BACKGROUND_CONCEPTS = {
+    "answer",
+    "chunk",
+    "comment",
+    "concept",
+    "data",
+    "discussion",
+    "fragment",
+    "information",
+    "introduction",
+    "metadata",
+    "methodology",
+    "methods",
+    "navigation",
+    "note",
+    "part",
+    "piece",
+    "practice test",
+    "question",
+    "response",
+    "results",
+    "summary",
+    "test pack",
+}
+
 
 def norm_ws(s: str) -> str:
     return " ".join((s or "").split())
@@ -219,6 +244,41 @@ def fetch_background_rows(session, concepts: List[str], limit_per_concept: int) 
     return rows
 
 
+def use_background_for_unit_kind(unit_kind: str) -> bool:
+    return unit_kind not in {"metadata", "noise"}
+
+
+def filter_background_rows(
+    rows: List[Dict[str, Any]],
+    *,
+    unit_kind: str,
+) -> List[Dict[str, Any]]:
+    filtered: List[Dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+
+    for row in rows:
+        source = norm_ws(row.get("source_concept", "")).lower()
+        target = norm_ws(row.get("target_concept", "")).lower()
+        relation_type = norm_ws(row.get("relation_type", "")).upper()
+
+        if target in GENERIC_BACKGROUND_CONCEPTS:
+            continue
+
+        if unit_kind == "navigation" and source in {"navigation", "summary", "methods", "results", "discussion"}:
+            continue
+
+        if relation_type == "IS_A" and source == target:
+            continue
+
+        key = (source, relation_type, target)
+        if key in seen:
+            continue
+        seen.add(key)
+        filtered.append(row)
+
+    return filtered
+
+
 def format_background_lines(rows: List[Dict[str, Any]], max_background: int) -> List[str]:
     lines: List[str] = []
     for row in rows[:max_background]:
@@ -414,11 +474,11 @@ def main() -> None:
                 else None
             )
             relation_lines = format_relation_lines(selected_relations) if selected_relations is not None else None
-            background_rows = (
-                fetch_background_rows(session, concepts, args.background_limit_per_concept)
-                if args.include_background
-                else None
-            )
+            if args.include_background and use_background_for_unit_kind(unit_kind):
+                raw_background_rows = fetch_background_rows(session, concepts, args.background_limit_per_concept)
+                background_rows = filter_background_rows(raw_background_rows, unit_kind=unit_kind)
+            else:
+                background_rows = None
             background_lines = (
                 format_background_lines(background_rows, args.max_background)
                 if background_rows is not None
@@ -450,7 +510,7 @@ def main() -> None:
                         "unit_kind": unit_kind,
                         "concepts": concepts,
                         "used_relations": bool(strategy["use_relations"]),
-                        "used_background": bool(args.include_background),
+                        "used_background": bool(background_lines),
                         "relation_policy": strategy["policy"],
                         "relations": selected_relations if args.include_relations else None,
                         "relation_lines": relation_lines if args.include_relations else None,
