@@ -126,12 +126,73 @@ The plan I want to suggest is:
   - document graph + background knowledge
 - evaluate whether the combined graph improves support for regeneration or concept-centered retrieval
 
-## What Success Would Look Like By Friday
+## Integration Plan
 
-By Friday, success would mean:
-- both sides of the pipeline are connected
-- one small combined experiment runs end to end
-- We can show whether background knowledge helps, hurts, or is neutral
-- We have one clear next engineering question based on the result
+### 1. Keep the document graph as the base layer
+
+We can keep the document graph as the primary representation because it captures what the source text explicitly says. That means:
+- chunked text
+- extracted concepts
+- chunk-to-concept mentions
+- optional epistemic relations
+
+This should remain the main semantic anchor.
+
+### 2. Use cleaned document concepts as the handoff point
+
+Then the background workflow to begin from the cleaned document concept graph, not from older noisy seeds.
+
+So the shared boundary should be:
+
+**cleaned document concepts -> seed selection -> background expansion**
+
+### 3. Treat background knowledge as a support layer
+
+We should not blindly merge document and background information. 
+
+Instead, what we can do is to have the background graph to function as a support layer that adds:
+- prerequisite concepts
+- explanatory context
+- semantic support around the main document concepts
+
+The document graph remains primary, and the background graph remains secondary.
+
+### 4. Use background knowledge selectively during regeneration
+
+When we test regeneration, we have to:
+- start from the chunk's document concepts
+- optionally include document relations
+- then include only a small number of high-confidence background edges
+
+That means background knowledge should be used as:
+- selective prompt enrichment
+- not the main truth source
+
+### 5. Evaluate whether the combined graph actually helps
+
+The first combined evaluation should compare:
+- document graph only
+- document graph + background support
+
+The main question should be:
+
+**Does background knowledge improve regeneration fidelity without causing semantic drift?**
+
+## What as per me Needs To Be Patched Later
+
+I do not think that we need to build a large new subsystem immediately. I think we mostly need a few integration patches:
+
+- `select_seed_concepts.py`
+  - so seed concepts come from the cleaned graph and avoid noisy concepts
+
+- `load_background_to_neo4j.py`
+  - so Neo4j loading matches the stable local connection setup used elsewhere
+
+- `evaluate_graph_fidelity.py`
+  - so it can optionally fetch a few approved background neighbors for the chunk concepts
+  - and compare document-only vs document+background runs
+
+If the workflow later becomes too manual, then we can add one small helper script such as:
+- `src/evaluate_background_impact.py`
 
 
