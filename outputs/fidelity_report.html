@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Graph Fidelity Report</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f4f5f7; color: #1a1a2e; font-size: 14px; }
+
+header {
+  background: #1a1a2e; color: #fff;
+  padding: 20px 32px; border-bottom: 3px solid #3b6fd4;
+}
+header h1 { font-size: 20px; font-weight: 700; }
+header p  { font-size: 13px; color: #aab; margin-top: 4px; }
+
+.summary-bar {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  padding: 16px 32px; background: #fff;
+  border-bottom: 1px solid #dde; font-size: 13px;
+}
+.stat { display: flex; flex-direction: column; align-items: center; min-width: 90px; }
+.stat .val { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+.stat .lbl { color: #888; font-size: 11px; margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
+.stat.pass .val { color: #2a9d5c; }
+.stat.fail .val { color: #c0392b; }
+
+.controls {
+  padding: 12px 32px; background: #fff; border-bottom: 1px solid #dde;
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.controls label { font-size: 12px; color: #555; font-weight: 600; }
+select, input[type=range] { font-size: 12px; border: 1px solid #ccc; border-radius: 4px; padding: 3px 6px; }
+#threshold-display { font-weight: 700; color: #3b6fd4; min-width: 30px; display: inline-block; }
+
+main { padding: 24px 32px; display: flex; flex-direction: column; gap: 16px; }
+
+.card {
+  background: #fff; border-radius: 8px;
+  border-left: 5px solid #ccc;
+  box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  overflow: hidden;
+  transition: box-shadow .15s;
+}
+.card:hover { box-shadow: 0 3px 12px rgba(0,0,0,.12); }
+.card.pass { border-left-color: #2a9d5c; }
+.card.fail { border-left-color: #c0392b; }
+
+.card-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; background: #fafbfc;
+  border-bottom: 1px solid #eee; cursor: pointer;
+  user-select: none;
+}
+.card-header:hover { background: #f0f2f5; }
+.chunk-id { font-weight: 700; font-size: 13px; color: #1a1a2e; min-width: 80px; }
+.badge {
+  font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px;
+  color: #fff; text-transform: capitalize;
+}
+.score-group { display: flex; gap: 10px; margin-left: auto; align-items: center; flex-wrap: wrap; }
+.score-pill {
+  font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 10px;
+  background: #eef; color: #334;
+}
+.score-pill.primary { background: #1a1a2e; color: #fff; font-size: 13px; }
+.score-pill.pass  { background: #d4edda; color: #155724; }
+.score-pill.fail  { background: #f8d7da; color: #721c24; }
+.toggle-icon { font-size: 16px; color: #888; transition: transform .2s; }
+.card.open .toggle-icon { transform: rotate(90deg); }
+
+.card-body { display: none; padding: 16px; }
+.card.open .card-body { display: block; }
+
+.text-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;
+}
+.text-block { border-radius: 6px; padding: 12px 14px; font-size: 13px; line-height: 1.6; }
+.text-block.original { background: #f0f4ff; border: 1px solid #c8d8f8; }
+.text-block.regenerated { background: #f5f5f5; border: 1px solid #ddd; }
+.text-block h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-bottom: 6px; }
+
+.metrics-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.metric { font-size: 12px; color: #555; }
+.metric span { font-weight: 700; color: #1a1a2e; }
+
+.section-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: #888; margin-bottom: 6px;
+}
+
+.concepts-list { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.concept-tag {
+  font-size: 11px; background: #eef; color: #334;
+  padding: 2px 8px; border-radius: 10px; border: 1px solid #d0d8f0;
+}
+
+.bg-lines { font-size: 12px; color: #444; }
+.bg-line { padding: 3px 0; border-bottom: 1px solid #f0f0f0; }
+.bg-line:last-child { border-bottom: none; }
+.rel-type { font-weight: 700; color: #3b6fd4; }
+
+.no-bg { font-size: 12px; color: #aaa; font-style: italic; }
+
+@media (max-width: 700px) {
+  .text-grid { grid-template-columns: 1fr; }
+  main { padding: 12px 10px; }
+  .summary-bar { padding: 12px 10px; }
+  .controls { padding: 10px 10px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Graph Fidelity Report</h1>
+  <p>Source: outputs/testpack_v1_graph_fidelity_with_background.json &nbsp;|&nbsp; Model: llama3.2:3b &nbsp;|&nbsp;
+     Background: on &nbsp;|&nbsp;
+     Relations: off</p>
+</header>
+
+<div class="summary-bar">
+  <div class="stat"><span class="val">20</span><span class="lbl">Total chunks</span></div>
+  <div class="stat pass"><span class="val">10</span><span class="lbl">Passing</span></div>
+  <div class="stat fail"><span class="val">10</span><span class="lbl">Failing</span></div>
+  <div class="stat"><span class="val">0.700</span><span class="lbl">Avg embedding</span></div>
+  <div class="stat"><span class="val">0.238</span><span class="lbl">Avg lexical</span></div>
+  <div class="stat"><span class="val">50%</span><span class="lbl">Pass rate</span></div>
+</div>
+
+<div class="controls">
+  <label>Unit kind</label>
+  <select id="filter-kind"><option value="all">All unit kinds</option><option value="definition">Definition</option><option value="example">Example</option><option value="metadata">Metadata</option><option value="navigation">Navigation</option></select>
+  <label>Result</label>
+  <select id="filter-result">
+    <option value="all">All</option>
+    <option value="fail">Failing only</option>
+    <option value="pass">Passing only</option>
+  </select>
+  <label>Threshold <span id="threshold-display">0.70</span></label>
+  <input type="range" id="threshold-slider" min="0" max="1" step="0.01" value="0.7">
+  <span id="visible-count" style="font-size:12px;color:#888;margin-left:auto;"></span>
+</div>
+
+<main>
+
+<div class="card pass" data-kind="definition" data-emb="0.9527">
+  <div class="card-header">
+    <span class="chunk-id">tp_0000</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.953</span>
+      <span class="score-pill">lex 0.871</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:57.2px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Definition: A neuron is an excitable cell that processes and transmits information using electrical and chemical signals.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.9527</span></span>
+      <span class="metric">Jaccard: <span>0.8235</span></span>
+      <span class="metric">BOW cosine: <span>0.9193</span></span>
+      <span class="metric">Lexical combined: <span>0.8714</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">chemical signals</span><span class="concept-tag">excitable cell</span><span class="concept-tag">neuron</span><span class="concept-tag">electrical signals</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">excitable cell <span class='rel-type'>IS_A</span> nerve cell (confidence=0.76): A neuron is a type of nerve cell.</div><div class="bg-line">excitable cell <span class='rel-type'>HAS_PART</span> neuron membrane (confidence=0.76): The neuron has a specialized membrane that regulates its activity.</div><div class="bg-line">neuron <span class='rel-type'>HAS_PART</span> chemical signal (confidence=0.75): Neurons also use chemical signals to transmit information.</div><div class="bg-line">neuron <span class='rel-type'>HAS_PART</span> electrical signal (confidence=0.75): Neurons use electrical signals to transmit information.</div><div class="bg-line">neuron <span class='rel-type'>IS_A</span> excitable cell (confidence=0.75): A neuron is a type of excitable cell.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.7278">
+  <div class="card-header">
+    <span class="chunk-id">tp_0001</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.728</span>
+      <span class="score-pill">lex 0.157</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:43.7px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Claim: Action potentials propagate along an axon when depolarization crosses a threshold and voltage-gated sodium channels open.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A threshold is the level of depolarization at which a cell becomes excited, or capable of generating an action potential. This level can be thought of as the point at which the electrical potential of a cell becomes less negative.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.7278</span></span>
+      <span class="metric">Jaccard: <span>0.1250</span></span>
+      <span class="metric">BOW cosine: <span>0.1893</span></span>
+      <span class="metric">Lexical combined: <span>0.1571</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">threshold</span><span class="concept-tag">voltage-gated sodium channels</span><span class="concept-tag">depolarization</span><span class="concept-tag">axon</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">axon <span class='rel-type'>IS_A</span> nerve cell (confidence=0.76): An axon is a part of a nerve cell.</div><div class="bg-line">axon <span class='rel-type'>HAS_PART</span> neuron (confidence=0.76): A neuron has multiple axons.</div><div class="bg-line">axon <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> synapse (confidence=0.76): Understanding how synapses work is necessary to understand axon function.</div><div class="bg-line">depolarization <span class='rel-type'>IS_A</span> action potential (confidence=0.76): Action potentials are a result of depolarization.</div><div class="bg-line">depolarization <span class='rel-type'>HAS_PART</span> axon (confidence=0.76): Axons transmit action potentials.</div><div class="bg-line">depolarization <span class='rel-type'>IS_A</span> excitation (confidence=0.76): Both depolarization and excitation refer to the process of moving towards a threshold.</div><div class="bg-line">threshold <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> depolarization (confidence=0.76): Depolarization refers to the process by which the electrical potential of a cell becomes less negative.</div><div class="bg-line">threshold <span class='rel-type'>HAS_PART</span> excitability (confidence=0.76): Excitability refers to the ability of a cell to generate an action potential.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="example" data-emb="0.7637">
+  <div class="card-header">
+    <span class="chunk-id">tp_0002</span>
+    <span class="badge" style="background:#7b4fb5">example</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.764</span>
+      <span class="score-pill">lex 0.262</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:45.8px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Example: If repeated stimulation strengthens a synapse over time, this is often described as long-term potentiation (LTP).
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Long-term potentiation is a form of synaptic plasticity involving changes in synaptic strength. Potentiation is a type of synaptic potentiation.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.7637</span></span>
+      <span class="metric">Jaccard: <span>0.1852</span></span>
+      <span class="metric">BOW cosine: <span>0.3397</span></span>
+      <span class="metric">Lexical combined: <span>0.2624</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">long-term potentiation</span><span class="concept-tag">potentiation</span><span class="concept-tag">synapse</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">long-term potentiation <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neural adaptation (confidence=0.76): LTP is a key mechanism for neural adaptation.</div><div class="bg-line">long-term potentiation <span class='rel-type'>IS_A</span> neurotransmission (confidence=0.76): LTP is a form of synaptic potentiation.</div><div class="bg-line">long-term potentiation <span class='rel-type'>HAS_PART</span> synaptic plasticity (confidence=0.76): LTP involves changes in synaptic strength.</div><div class="bg-line">potentiation <span class='rel-type'>HAS_PART</span> long-term (confidence=0.76): Long-term potentiation is a type of synaptic potentiation.</div><div class="bg-line">potentiation <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neuron (confidence=0.76): Understanding how neurons work is necessary to understand potentiation.</div><div class="bg-line">synapse <span class='rel-type'>HAS_PART</span> connection (confidence=0.76): A synapse consists of a connection between two neurons.</div><div class="bg-line">synapse <span class='rel-type'>IS_A</span> neuron (confidence=0.76): A synapse is a connection between two neurons.</div><div class="bg-line">potentiation <span class='rel-type'>IS_A</span> excitability (confidence=0.75): Potentiation and excitability are related concepts in neuroscience.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.8730">
+  <div class="card-header">
+    <span class="chunk-id">tp_0003</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.873</span>
+      <span class="score-pill">lex 0.270</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:52.4px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Support: Myelination increases conduction speed through saltatory conduction between nodes of Ranvier.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It uses saltatory conduction, where signals jump from node of Ranvier to node of Ranvier, facilitated by myelination.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.8730</span></span>
+      <span class="metric">Jaccard: <span>0.1765</span></span>
+      <span class="metric">BOW cosine: <span>0.3626</span></span>
+      <span class="metric">Lexical combined: <span>0.2695</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">conduction speed</span><span class="concept-tag">saltatory conduction</span><span class="concept-tag">nodes of ranvier</span><span class="concept-tag">myelination</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">conduction speed <span class='rel-type'>IS_A</span> conduction (confidence=0.76): Conduction speed is a property of conduction.</div><div class="bg-line">conduction speed <span class='rel-type'>HAS_PART</span> speed (confidence=0.76): Conduction speed refers to the rate at which signals propagate.</div><div class="bg-line">myelination <span class='rel-type'>IS_A</span> conduction (confidence=0.76): Myelination is a type of conduction mechanism.</div><div class="bg-line">myelination <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> conduction speed (confidence=0.76): Understanding myelination is necessary to comprehend its effect on conduction speed.</div><div class="bg-line">nodes of ranvier <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> conduction speed (confidence=0.76): A measure of how quickly signals travel through neurons.</div><div class="bg-line">nodes of ranvier <span class='rel-type'>HAS_PART</span> myelination (confidence=0.76): The process that creates the myelin sheath.</div><div class="bg-line">nodes of ranvier <span class='rel-type'>IS_A</span> saltatory conduction (confidence=0.76): A type of conduction mechanism.</div><div class="bg-line">saltatory conduction <span class='rel-type'>IS_A</span> conduction mechanism (confidence=0.76): Saltatory conduction is a type of conduction mechanism.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="navigation" data-emb="0.6884">
+  <div class="card-header">
+    <span class="chunk-id">tp_0004</span>
+    <span class="badge" style="background:#2a9d5c">navigation</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.688</span>
+      <span class="score-pill">lex 0.383</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:41.3px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Navigation: In the next section, we compare chemical synapses with electrical synapses (gap junctions).
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Electrical synapses use gap junctions to transmit signals. Chemical synapses involve synaptic transmission.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.6884</span></span>
+      <span class="metric">Jaccard: <span>0.2500</span></span>
+      <span class="metric">BOW cosine: <span>0.5164</span></span>
+      <span class="metric">Lexical combined: <span>0.3832</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">electrical synapses</span><span class="concept-tag">chemical synapses</span><span class="concept-tag">gap junctions</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">chemical synapses <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> axon (confidence=0.76): Chemical synapses occur between axons and dendrites.</div><div class="bg-line">chemical synapses <span class='rel-type'>HAS_PART</span> neurotransmitters (confidence=0.76): Neurotransmitters are released at chemical synapses.</div><div class="bg-line">chemical synapses <span class='rel-type'>IS_A</span> synaptic transmission (confidence=0.76): Chemical synapses involve synaptic transmission.</div><div class="bg-line">electrical synapses <span class='rel-type'>HAS_PART</span> gap junctions (confidence=0.76): Electrical synapses use gap junctions to transmit signals.</div><div class="bg-line">electrical synapses <span class='rel-type'>IS_A</span> synaptic transmission (confidence=0.73): Electrical synapses are a type of synaptic transmission.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="metadata" data-emb="0.5277">
+  <div class="card-header">
+    <span class="chunk-id">tp_0005</span>
+    <span class="badge" style="background:#888888">metadata</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.528</span>
+      <span class="score-pill">lex 0.071</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:31.7px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Metadata: Lab notes, version 0.1. Updated 2026-02-06. Source: practicum testpack.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A practicum testpack is a collection of practice questions used to assess student understanding in a specific subject area. It typically includes multiple-choice, short-answer, and essay-style questions.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.5277</span></span>
+      <span class="metric">Jaccard: <span>0.0526</span></span>
+      <span class="metric">BOW cosine: <span>0.0900</span></span>
+      <span class="metric">Lexical combined: <span>0.0713</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">lab notes</span><span class="concept-tag">version</span><span class="concept-tag">practicum testpack</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="definition" data-emb="0.6405">
+  <div class="card-header">
+    <span class="chunk-id">tp_0006</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.640</span>
+      <span class="score-pill">lex 0.135</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:38.4px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        The hippocampus is involved in episodic memory formation and spatial navigation.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Spatial navigation relies on understanding map reading. It involves creating cognitive maps.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.6405</span></span>
+      <span class="metric">Jaccard: <span>0.0952</span></span>
+      <span class="metric">BOW cosine: <span>0.1741</span></span>
+      <span class="metric">Lexical combined: <span>0.1347</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">spatial navigation</span><span class="concept-tag">episodic memory</span><span class="concept-tag">hippocampus</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">episodic memory <span class='rel-type'>IS_A</span> memory (confidence=0.76): A broader concept encompassing various types of memory.</div><div class="bg-line">hippocampus <span class='rel-type'>IS_A</span> cerebral cortex (confidence=0.76): The hippocampus is a part of the cerebral cortex.</div><div class="bg-line">spatial navigation <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> map reading (confidence=0.76): Understanding maps is crucial for spatial navigation.</div><div class="bg-line">spatial navigation <span class='rel-type'>IS_A</span> orientation (confidence=0.76): Spatial navigation relies on orientation.</div><div class="bg-line">episodic memory <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> formation (confidence=0.75): Understanding the process of formation is crucial for grasping episodic memory.</div><div class="bg-line">hippocampus <span class='rel-type'>IS_A</span> brain (confidence=0.75): The hippocampus is a part of the brain.</div><div class="bg-line">hippocampus <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> episodic memory formation (confidence=0.75): The hippocampus is necessary for forming new episodic memories.</div><div class="bg-line">spatial navigation <span class='rel-type'>HAS_PART</span> cognitive mapping (confidence=0.72): Spatial navigation involves creating cognitive maps.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.8260">
+  <div class="card-header">
+    <span class="chunk-id">tp_0007</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.826</span>
+      <span class="score-pill">lex 0.407</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:49.6px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        GABA is typically inhibitory and glutamate is typically excitatory in the central nervous system.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        GABA is a type of inhibitory neurotransmitter. It plays a crucial role in regulating the activity of neurons in the central nervous system.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.8260</span></span>
+      <span class="metric">Jaccard: <span>0.3478</span></span>
+      <span class="metric">BOW cosine: <span>0.4657</span></span>
+      <span class="metric">Lexical combined: <span>0.4067</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">glutamate</span><span class="concept-tag">central nervous system</span><span class="concept-tag">gaba</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">gaba <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> central nervous system (confidence=0.76): Understanding the central nervous system is necessary to comprehend GABA's role.</div><div class="bg-line">gaba <span class='rel-type'>IS_A</span> neurotransmitter (confidence=0.76): GABA is a type of neurotransmitter.</div><div class="bg-line">gaba <span class='rel-type'>HAS_PART</span> inhibitory (confidence=0.75): GABA's primary function is inhibitory.</div><div class="bg-line">glutamate <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> central nervous system (confidence=0.75): Understanding of the central nervous system is necessary to comprehend glutamate's role.</div><div class="bg-line">glutamate <span class='rel-type'>HAS_PART</span> excitatory (confidence=0.75): Glutamate is an excitatory neurotransmitter.</div><div class="bg-line">glutamate <span class='rel-type'>IS_A</span> neurotransmitter (confidence=0.75): Glutamate is a type of neurotransmitter.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.7977">
+  <div class="card-header">
+    <span class="chunk-id">tp_0008</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.798</span>
+      <span class="score-pill">lex 0.289</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:47.9px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        LTP and LTD are forms of synaptic plasticity; both depend on activity patterns and receptor dynamics.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Synaptic plasticity refers to the ability of neural connections, or synapses, to adapt and change in response to experience. This process involves changes in receptor dynamics, which are a form of synaptic plasticity.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.7977</span></span>
+      <span class="metric">Jaccard: <span>0.2000</span></span>
+      <span class="metric">BOW cosine: <span>0.3782</span></span>
+      <span class="metric">Lexical combined: <span>0.2891</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">synaptic plasticity</span><span class="concept-tag">activity patterns</span><span class="concept-tag">receptor dynamics</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">activity patterns <span class='rel-type'>IS_A</span> neural activity (confidence=0.76): Activity patterns are a form of neural activity.</div><div class="bg-line">activity patterns <span class='rel-type'>HAS_PART</span> synaptic transmission (confidence=0.76): Synaptic transmission is part of activity patterns.</div><div class="bg-line">receptor dynamics <span class='rel-type'>IS_A</span> synaptic plasticity (confidence=0.76): Receptor dynamics are a form of synaptic plasticity.</div><div class="bg-line">synaptic plasticity <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neural adaptation (confidence=0.76): Synaptic plasticity is necessary for neural adaptation.</div><div class="bg-line">receptor dynamics <span class='rel-type'>HAS_PART</span> activity patterns (confidence=0.75): Receptor dynamics involve activity patterns.</div><div class="bg-line">synaptic plasticity <span class='rel-type'>IS_A</span> neurotransmission (confidence=0.73): Synaptic plasticity is a form of neurotransmission.</div><div class="bg-line">synaptic plasticity <span class='rel-type'>HAS_PART</span> synaptic potentiation (confidence=0.73): LTP and LTD are forms of synaptic potentiation.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="example" data-emb="0.6088">
+  <div class="card-header">
+    <span class="chunk-id">tp_0009</span>
+    <span class="badge" style="background:#7b4fb5">example</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.609</span>
+      <span class="score-pill">lex 0.097</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:36.5px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Bullet notes: - neuron fires - synapse strengthens - learning improves (rough summary).
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. Neurons are the basic units of learning.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.6088</span></span>
+      <span class="metric">Jaccard: <span>0.0667</span></span>
+      <span class="metric">BOW cosine: <span>0.1265</span></span>
+      <span class="metric">Lexical combined: <span>0.0966</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">learning</span><span class="concept-tag">synapse</span><span class="concept-tag">neuron</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">learning <span class='rel-type'>IS_A</span> neuron (confidence=0.76): Neurons are the basic units of learning.</div><div class="bg-line">learning <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neuron firing (confidence=0.76): Understanding how neurons fire is essential for learning.</div><div class="bg-line">learning <span class='rel-type'>IS_A</span> synapse (confidence=0.76): Synapses play a crucial role in learning and memory.</div><div class="bg-line">synapse <span class='rel-type'>HAS_PART</span> connection (confidence=0.76): A synapse consists of a connection between two neurons.</div><div class="bg-line">synapse <span class='rel-type'>IS_A</span> neuron (confidence=0.76): A synapse is a connection between two neurons.</div><div class="bg-line">neuron <span class='rel-type'>HAS_PART</span> chemical signal (confidence=0.75): Neurons also use chemical signals to transmit information.</div><div class="bg-line">neuron <span class='rel-type'>HAS_PART</span> electrical signal (confidence=0.75): Neurons use electrical signals to transmit information.</div><div class="bg-line">neuron <span class='rel-type'>IS_A</span> excitable cell (confidence=0.75): A neuron is a type of excitable cell.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="metadata" data-emb="0.6057">
+  <div class="card-header">
+    <span class="chunk-id">tp_0010</span>
+    <span class="badge" style="background:#888888">metadata</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.606</span>
+      <span class="score-pill">lex 0.088</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:36.3px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        See Figure 2 and Table 1 for the full protocol; details are omitted here.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It receives inputs from other neurons, integrates the signals, and then sends output signals to other neurons or to muscles or glands to effect a response.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.6057</span></span>
+      <span class="metric">Jaccard: <span>0.0455</span></span>
+      <span class="metric">BOW cosine: <span>0.1296</span></span>
+      <span class="metric">Lexical combined: <span>0.0875</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">figure 2</span><span class="concept-tag">table 1</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="example" data-emb="0.5101">
+  <div class="card-header">
+    <span class="chunk-id">tp_0011</span>
+    <span class="badge" style="background:#7b4fb5">example</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.510</span>
+      <span class="score-pill">lex 0.235</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:30.6px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Ambiguous: This paragraph mixes a definition of synapse, an example of LTP, and a navigation hint for the next section.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Long-term potentiation is a form of synaptic plasticity where changes in synaptic strength occur. A synapse consists of a connection between two neurons.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.5101</span></span>
+      <span class="metric">Jaccard: <span>0.0857</span></span>
+      <span class="metric">BOW cosine: <span>0.3851</span></span>
+      <span class="metric">Lexical combined: <span>0.2354</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">long-term potentiation</span><span class="concept-tag">synapse</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">long-term potentiation <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neural adaptation (confidence=0.76): LTP is a key mechanism for neural adaptation.</div><div class="bg-line">long-term potentiation <span class='rel-type'>IS_A</span> neurotransmission (confidence=0.76): LTP is a form of synaptic potentiation.</div><div class="bg-line">long-term potentiation <span class='rel-type'>HAS_PART</span> synaptic plasticity (confidence=0.76): LTP involves changes in synaptic strength.</div><div class="bg-line">synapse <span class='rel-type'>HAS_PART</span> connection (confidence=0.76): A synapse consists of a connection between two neurons.</div><div class="bg-line">synapse <span class='rel-type'>IS_A</span> neuron (confidence=0.76): A synapse is a connection between two neurons.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="example" data-emb="0.5656">
+  <div class="card-header">
+    <span class="chunk-id">tp_0012</span>
+    <span class="badge" style="background:#7b4fb5">example</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.566</span>
+      <span class="score-pill">lex 0.190</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:33.9px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Clinical note excerpt: Patient reports memory issues; hippocampal atrophy suspected. (Do not treat as medical advice.)
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Hippocampal atrophy is a type of brain damage. It contributes to cognitive decline, which includes memory issues.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.5656</span></span>
+      <span class="metric">Jaccard: <span>0.1379</span></span>
+      <span class="metric">BOW cosine: <span>0.2425</span></span>
+      <span class="metric">Lexical combined: <span>0.1902</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">hippocampal atrophy</span><span class="concept-tag">memory issues</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">hippocampal atrophy <span class='rel-type'>IS_A</span> brain damage (confidence=0.76): Hippocampal atrophy is a type of brain damage.</div><div class="bg-line">hippocampal atrophy <span class='rel-type'>HAS_PART</span> cerebral degeneration (confidence=0.76): Hippocampal atrophy is part of cerebral degeneration.</div><div class="bg-line">hippocampal atrophy <span class='rel-type'>HAS_PART</span> cognitive decline (confidence=0.76): Hippocampal atrophy contributes to cognitive decline.</div><div class="bg-line">memory issues <span class='rel-type'>IS_A</span> cognitive decline (confidence=0.76): Memory issues are a symptom of cognitive decline.</div><div class="bg-line">memory issues <span class='rel-type'>HAS_PART</span> neurodegeneration (confidence=0.76): Hippocampal atrophy is a sign of neurodegeneration.</div><div class="bg-line">memory issues <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> temporal lobe damage (confidence=0.76): Understanding the relationship between memory issues and temporal lobe damage is essential.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="definition" data-emb="0.5583">
+  <div class="card-header">
+    <span class="chunk-id">tp_0013</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.558</span>
+      <span class="score-pill">lex 0.061</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:33.5px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Graph idea: Create (Chunk)-[:ABOUT]-&gt;(Concept) edges and chain chunks with (:Chunk)-[:NEXT]-&gt;(:Chunk) for reading order.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It receives, integrates, and responds to inputs from other neurons, forming the basis of nervous system function.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.5583</span></span>
+      <span class="metric">Jaccard: <span>0.0222</span></span>
+      <span class="metric">BOW cosine: <span>0.1002</span></span>
+      <span class="metric">Lexical combined: <span>0.0612</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">concept</span><span class="concept-tag">graph idea</span><span class="concept-tag">chunk</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="metadata" data-emb="0.4643">
+  <div class="card-header">
+    <span class="chunk-id">tp_0014</span>
+    <span class="badge" style="background:#888888">metadata</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.464</span>
+      <span class="score-pill">lex 0.036</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#c0392b;border-radius:3px;height:6px;width:27.9px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        RAG note: Retrieve top-k chunks, then generate an answer with citations to chunk_id and evidence spans.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A citation is a reference or credit given to a source of information, such as a book or article.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.4643</span></span>
+      <span class="metric">Jaccard: <span>0.0312</span></span>
+      <span class="metric">BOW cosine: <span>0.0410</span></span>
+      <span class="metric">Lexical combined: <span>0.0361</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">rag</span><span class="concept-tag">citations</span><span class="concept-tag">top-k</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.7488">
+  <div class="card-header">
+    <span class="chunk-id">tp_0015</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.749</span>
+      <span class="score-pill">lex 0.174</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:44.9px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Noise: The the the and and of of — minimal useful content.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        Understanding noise is necessary to appreciate music. Noise requires understanding of music.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.7488</span></span>
+      <span class="metric">Jaccard: <span>0.1429</span></span>
+      <span class="metric">BOW cosine: <span>0.2057</span></span>
+      <span class="metric">Lexical combined: <span>0.1743</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">content</span><span class="concept-tag">noise</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">noise <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> music (confidence=0.76): Understanding noise is necessary to appreciate music.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="definition" data-emb="0.8531">
+  <div class="card-header">
+    <span class="chunk-id">tp_0016</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.853</span>
+      <span class="score-pill">lex 0.283</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:51.2px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Abbrev-heavy: NMDA receptors contribute to plasticity; Ca2+ influx can trigger downstream signaling.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        NMDA receptors are ion channels that require understanding of downstream signaling for activation. They contribute to synaptic plasticity, which is a key aspect of neurotransmission involving neurotransmitter binding.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.8531</span></span>
+      <span class="metric">Jaccard: <span>0.2121</span></span>
+      <span class="metric">BOW cosine: <span>0.3545</span></span>
+      <span class="metric">Lexical combined: <span>0.2833</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">plasticity</span><span class="concept-tag">ca2+ influx</span><span class="concept-tag">nmda receptors</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">nmda receptors <span class='rel-type'>IS_A</span> ca2+ channels (confidence=0.76): Both NMDA receptors and Ca2+ channels are ion channels.</div><div class="bg-line">nmda receptors <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> downstream signaling (confidence=0.76): NMDA receptor activation also requires understanding of downstream signaling.</div><div class="bg-line">nmda receptors <span class='rel-type'>HAS_PART</span> plasticity (confidence=0.76): NMDA receptors contribute to synaptic plasticity.</div><div class="bg-line">plasticity <span class='rel-type'>IS_A</span> neurotransmission (confidence=0.76): Neurotransmitters are involved in plasticity.</div><div class="bg-line">plasticity <span class='rel-type'>HAS_PART</span> synaptic transmission (confidence=0.76): Synaptic transmission is a key aspect of plasticity.</div><div class="bg-line">plasticity <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> neurotransmitter binding (confidence=0.73): Understanding neurotransmitter binding is crucial for grasping plasticity.</div></div></div>
+  </div>
+</div>
+
+<div class="card fail" data-kind="definition" data-emb="0.6321">
+  <div class="card-header">
+    <span class="chunk-id">tp_0017</span>
+    <span class="badge" style="background:#3b6fd4">definition</span>
+    <div class="score-group">
+      <span class="score-pill primary fail">emb 0.632</span>
+      <span class="score-pill">lex 0.124</span>
+      <span class="score-pill fail">FAIL</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#e67e22;border-radius:3px;height:6px;width:37.9px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Definition: A concept is a short noun phrase used to link related chunks in a knowledge graph.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        A neuron is an excitable cell that processes and transmits information through electrical and chemical signals. It receives, integrates, and responds to inputs from other neurons, muscles, or sensory receptors.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.6321</span></span>
+      <span class="metric">Jaccard: <span>0.0750</span></span>
+      <span class="metric">BOW cosine: <span>0.1738</span></span>
+      <span class="metric">Lexical combined: <span>0.1244</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">concept</span><span class="concept-tag">chunk</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="example" data-emb="0.8641">
+  <div class="card-header">
+    <span class="chunk-id">tp_0018</span>
+    <span class="badge" style="background:#7b4fb5">example</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.864</span>
+      <span class="score-pill">lex 0.441</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:51.8px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Example: LangChain calls an LLM (Ollama/OpenAI) to output structured JSON that we validate with Pydantic.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        LangChain uses an LLM to generate output. An LLM is a type of language model that requires understanding of Pydantic validation to output structured JSON.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.8641</span></span>
+      <span class="metric">Jaccard: <span>0.3333</span></span>
+      <span class="metric">BOW cosine: <span>0.5494</span></span>
+      <span class="metric">Lexical combined: <span>0.4413</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">llm</span><span class="concept-tag">openai</span><span class="concept-tag">ollama</span><span class="concept-tag">langchain</span><span class="concept-tag">pydantic</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><div class="bg-lines"><div class="bg-line">langchain <span class='rel-type'>IS_A</span> llm (confidence=0.76): LangChain uses an LLM to generate output.</div><div class="bg-line">llm <span class='rel-type'>HAS_PART</span> artificial intelligence (confidence=0.76): LLMs are part of the broader field of AI.</div><div class="bg-line">llm <span class='rel-type'>IS_A</span> language model (confidence=0.76): An LLM is a type of language model.</div><div class="bg-line">llm <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> pydantic (confidence=0.76): To output structured JSON, an LLM must understand Pydantic validation.</div><div class="bg-line">pydantic <span class='rel-type'>REQUIRES_UNDERSTANDING_OF</span> data validation (confidence=0.76): Pydantic is used for data validation in Python.</div><div class="bg-line">pydantic <span class='rel-type'>IS_A</span> json schema (confidence=0.76): Pydantic uses JSON schema for validation.</div><div class="bg-line">pydantic <span class='rel-type'>HAS_PART</span> model (confidence=0.76): Pydantic models are used to define data structures.</div><div class="bg-line">langchain <span class='rel-type'>HAS_PART</span> pydantic (confidence=0.73): LangChain validates JSON with Pydantic.</div></div></div>
+  </div>
+</div>
+
+<div class="card pass" data-kind="navigation" data-emb="0.7926">
+  <div class="card-header">
+    <span class="chunk-id">tp_0019</span>
+    <span class="badge" style="background:#2a9d5c">navigation</span>
+    <div class="score-group">
+      <span class="score-pill primary pass">emb 0.793</span>
+      <span class="score-pill">lex 0.190</span>
+      <span class="score-pill pass">PASS</span>
+      <div style="background:#eee;border-radius:3px;height:6px;width:60px;display:inline-block;vertical-align:middle;"><div style="background:#2a9d5c;border-radius:3px;height:6px;width:47.6px;"></div></div>
+    </div>
+    <span class="toggle-icon">▶</span>
+  </div>
+  <div class="card-body">
+    <div class="text-grid">
+      <div class="text-block original">
+        <h4>Original</h4>
+        Navigation: Summary → Methods → Results → Discussion. Start with the Summary section before reading details.
+      </div>
+      <div class="text-block regenerated">
+        <h4>Regenerated from graph</h4>
+        To navigate this section, please refer to the summary of key concepts on page 12.
+      </div>
+    </div>
+    <div class="metrics-row">
+      <span class="metric">Embedding cosine: <span>0.7926</span></span>
+      <span class="metric">Jaccard: <span>0.1304</span></span>
+      <span class="metric">BOW cosine: <span>0.2505</span></span>
+      <span class="metric">Lexical combined: <span>0.1905</span></span>
+    </div>
+    <div class="section-title">Concepts used in prompt</div>
+    <div class="concepts-list" style="margin-bottom:12px;"><span class="concept-tag">summary</span><span class="concept-tag">discussion</span><span class="concept-tag">navigation</span><span class="concept-tag">methods</span><span class="concept-tag">results</span></div>
+    <div class="section-title">Relation hints</div>
+    <div style="margin-bottom:12px;"><span class="no-bg">none (policy: graph_only)</span></div>
+    <div class="section-title">Background knowledge injected</div>
+    <div><span class="no-bg">not used</span></div>
+  </div>
+</div>
+</main>
+
+<script>
+function applyFilters() {
+  const kind = document.getElementById('filter-kind').value;
+  const result = document.getElementById('filter-result').value;
+  const threshold = parseFloat(document.getElementById('threshold-slider').value);
+  const cards = document.querySelectorAll('.card[data-kind]');
+
+  cards.forEach(card => {
+    const cardKind = card.dataset.kind;
+    const emb = parseFloat(card.dataset.emb);
+    const passes = emb >= threshold;
+
+    card.classList.toggle('pass', passes);
+    card.classList.toggle('fail', !passes);
+
+    // update primary score pill colour
+    const pill = card.querySelector('.score-pill.primary');
+    if (pill) {
+      pill.classList.toggle('pass', passes);
+      pill.classList.toggle('fail', !passes);
+    }
+
+    const kindMatch = kind === 'all' || cardKind === kind;
+    const resultMatch = result === 'all'
+      || (result === 'pass' && passes)
+      || (result === 'fail' && !passes);
+
+    card.style.display = (kindMatch && resultMatch) ? '' : 'none';
+  });
+
+  // recount visible
+  const visible = [...cards].filter(c => c.style.display !== 'none');
+  const passing = visible.filter(c => c.classList.contains('pass')).length;
+  document.getElementById('visible-count').textContent =
+    visible.length + ' chunks shown, ' + passing + ' passing';
+}
+
+document.getElementById('filter-kind').addEventListener('change', applyFilters);
+document.getElementById('filter-result').addEventListener('change', applyFilters);
+document.getElementById('threshold-slider').addEventListener('input', function() {
+  document.getElementById('threshold-display').textContent = parseFloat(this.value).toFixed(2);
+  applyFilters();
+});
+
+document.querySelectorAll('.card-header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.parentElement.classList.toggle('open');
+  });
+});
+
+// open failing cards by default for easy analysis
+document.querySelectorAll('.card.fail').forEach(c => c.classList.add('open'));
+</script>
+<script>applyFilters();</script>
+</body>
+</html>
