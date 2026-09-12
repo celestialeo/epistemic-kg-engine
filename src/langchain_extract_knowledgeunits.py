@@ -18,6 +18,14 @@ class KUExtraction(BaseModel):
     layer: Layer = Field(description="Which layer this text belongs to: core/support/scaffolding")
     unit_kind: UnitKind = Field(description="What kind of knowledge unit this is")
     concepts: List[str] = Field(description="Key concept strings found in the text")
+    key_predicate: str = Field(
+        default="",
+        description="The single most important verb or relational phrase in the chunk, e.g. 'propagates along', 'is defined as', 'causes', 'triggers'",
+    )
+    anchor_phrases: List[str] = Field(
+        default_factory=list,
+        description="Verbatim technical terms that must not be paraphrased: abbreviations, formulas, specific named mechanisms like 'Ca2+' or 'NMDA receptors'",
+    )
     confidence: float = Field(ge=0.0, le=1.0, description="Confidence in the extraction")
 
 
@@ -57,8 +65,14 @@ def _normalize_llm_dict(d: dict) -> dict:
     concepts = out.get("concepts", [])
     if not isinstance(concepts, list):
         concepts = []
-    # normalize concepts lightly
     out["concepts"] = [str(c).strip() for c in concepts if str(c).strip()]
+
+    out["key_predicate"] = str(out.get("key_predicate", "")).strip()
+
+    anchor_phrases = out.get("anchor_phrases", [])
+    if not isinstance(anchor_phrases, list):
+        anchor_phrases = []
+    out["anchor_phrases"] = [str(a).strip() for a in anchor_phrases if str(a).strip()]
 
     conf = out.get("confidence", 0.5)
     try:
@@ -77,7 +91,13 @@ def make_prompt(text: str) -> str:
         "Return ONLY valid JSON with exactly these keys:\n"
         "layer: one of [core, support, scaffolding]\n"
         "unit_kind: one of [core_statement, definition, example, metadata, navigation, other]\n"
-        "concepts: a list of short noun phrases\n"
+        "concepts: a list of short noun phrases (the key entities or ideas)\n"
+        "key_predicate: the single most important verb or relational phrase in the text, "
+        "e.g. 'propagates along', 'is defined as', 'causes', 'triggers', 'requires understanding of'. "
+        "Use an empty string if none applies (e.g. metadata).\n"
+        "anchor_phrases: a list of verbatim technical terms that must not be paraphrased — "
+        "abbreviations, chemical formulas, specific named mechanisms (e.g. 'Ca2+', 'NMDA receptors', 'LTP'). "
+        "Use an empty list if none apply.\n"
         "confidence: number from 0 to 1\n\n"
         f"TEXT:\n{text}\n"
     )

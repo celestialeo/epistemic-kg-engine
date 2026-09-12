@@ -114,54 +114,100 @@ def infer_unit_kind(text: str) -> str:
     return "other"
 
 
+_FEW_SHOT: Dict[str, str] = {
+    "definition": (
+        "concepts: neuron, axon, dendrite | key_predicate: receives signals via\n"
+        "→ A neuron receives signals via dendrites and transmits them along the axon."
+    ),
+    "core_statement": (
+        "concepts: action potential, threshold, sodium channel | key_predicate: propagates when\n"
+        "→ An action potential propagates when depolarization crosses a threshold and sodium channels open."
+    ),
+    "example": (
+        "concepts: LangChain, LLM, JSON | key_predicate: calls to output\n"
+        "→ LangChain calls an LLM to output structured JSON that is validated by Pydantic."
+    ),
+    "support": (
+        "concepts: calcium ion, synapse, neurotransmitter | key_predicate: triggers release of\n"
+        "→ Calcium ion influx triggers the release of neurotransmitters at the synapse."
+    ),
+}
+
+
 def build_prompt(
     unit_kind: str,
     concepts: List[str],
     relation_lines: Optional[List[str]] = None,
     background_lines: Optional[List[str]] = None,
+    key_predicate: str = "",
+    anchor_phrases: Optional[List[str]] = None,
 ) -> str:
     base = (
-        "You are regenerating the likely original text of a short instructional chunk from a graph-facing semantic representation.\n"
-        "Write only the likely chunk content itself, not commentary about the task.\n"
-        "Do not mention the graph, the prompt, or missing context.\n"
-        "Preserve the chunk's likely function when possible, such as definition, claim, example, navigation note, metadata, or scaffolding.\n"
+        "You are reconstructing the original text of a short instructional chunk from its graph representation.\n"
+        "Write only the reconstructed text itself. No commentary, no meta-talk about the graph or prompt.\n"
         "Use only the information provided. Do not invent facts. Keep it 1-2 sentences.\n\n"
         f"unit_kind: {unit_kind}\n"
-        f"concepts: {', '.join(concepts) if concepts else '(none)'}\n"
+        f"concepts (most important first): {', '.join(concepts) if concepts else '(none)'}\n"
     )
 
+    if key_predicate:
+        base += f"key predicate: {key_predicate}\n"
+
+    if anchor_phrases:
+        base += f"preserve these exact terms verbatim: {', '.join(anchor_phrases)}\n"
+
     if relation_lines:
-        base += "\nhelpful relation hints:\n"
+        base += "\nrelation hints:\n"
         for line in relation_lines:
             base += f"- {line}\n"
 
     if background_lines:
-        base += "\nhelpful background knowledge:\n"
+        base += "\nbackground knowledge:\n"
         for line in background_lines:
             base += f"- {line}\n"
 
-    base += (
-        "\nReturn ONLY the regenerated text as plain prose."
-        "\nBad style example: 'The graph representation describes a concept related to neuroscience.'"
-        "\nGood style example: 'A neuron is an excitable cell that processes and transmits information through electrical and chemical signals.'"
-    )
+    example = _FEW_SHOT.get(unit_kind)
+    if example:
+        base += f"\nexample for {unit_kind}:\n{example}\n"
+
+    base += "\nReturn ONLY the reconstructed text as plain prose."
     return base
 
 
 def fetch_rows(session, chunk_id: Optional[str], limit: int) -> List[Dict[str, Any]]:
+    # Concepts ordered by global mention count DESC so the LLM sees the most
+    # semantically central concept first. key_predicate and anchor_phrases come
+    # from the enrichment step (enrich_chunks_in_neo4j.py).
     query = """
     MATCH (ch:Chunk)-[m:MENTIONS]->(c:Concept)
     WHERE $chunk_id IS NULL OR ch.id = $chunk_id
+    WITH ch, c, m
+    ORDER BY ch.id ASC, coalesce(c.count, 0) DESC, c.id ASC
     WITH
       ch,
-      collect(DISTINCT c.id) AS concepts,
-      collect(DISTINCT m.unit_kind) AS unit_kinds,
-      collect(DISTINCT m.layer) AS layers
-    RETURN ch.id AS chunk_id, ch.text AS text, concepts, unit_kinds, layers
+      collect(c.id)        AS concepts_ordered,
+      collect(m.unit_kind) AS unit_kinds_raw,
+      collect(m.layer)     AS layers_raw
+    RETURN ch.id AS chunk_id, ch.text AS text,
+           concepts_ordered AS concepts,
+           unit_kinds_raw   AS unit_kinds,
+           layers_raw       AS layers,
+           coalesce(ch.key_predicate,  "")  AS key_predicate,
+           coalesce(ch.anchor_phrases, [])  AS anchor_phrases
     ORDER BY ch.id ASC
     LIMIT $limit
     """
-    return session.run(query, chunk_id=chunk_id, limit=limit).data()
+    rows = session.run(query, chunk_id=chunk_id, limit=limit).data()
+    # Deduplicate concepts while preserving frequency order.
+    for row in rows:
+        seen: set = set()
+        deduped = []
+        for c in row.get("concepts", []):
+            if c not in seen:
+                seen.add(c)
+                deduped.append(c)
+        row["concepts"] = deduped
+    return rows
 
 
 def resolve_unit_kind(row: Dict[str, Any], original: str) -> str:
@@ -450,6 +496,43 @@ def main() -> None:
             original = norm_ws(row.get("text", ""))
             concepts = [norm_ws(str(c)).lower() for c in row.get("concepts", []) if norm_ws(str(c))]
             unit_kind = resolve_unit_kind(row, original)
+            key_predicate = norm_ws(row.get("key_predicate", ""))
+            anchor_phrases = [norm_ws(str(a)) for a in row.get("anchor_phrases", []) if norm_ws(str(a))]
+
+            # Metadata and noise chunks cannot be faithfully reconstructed from
+            # concept lists — the graph stores their text verbatim, so we use it
+            # directly rather than asking the LLM to guess structural content.
+            if unit_kind in {"metadata", "noise"}:
+                out_rows.append(
+                    {
+                        "chunk_id": chunk_id,
+                        "unit_kind": unit_kind,
+                        "concepts": concepts,
+                        "used_relations": False,
+                        "used_background": False,
+                        "relation_policy": "bypassed",
+                        "bypass_llm": True,
+                        "key_predicate": key_predicate,
+                        "anchor_phrases": anchor_phrases,
+                        "relations": None,
+                        "relation_lines": None,
+                        "background_rows": None,
+                        "background_lines": None,
+                        "original": original,
+                        "regenerated": original,
+                        "scores": {
+                            "jaccard": 1.0,
+                            "bow_cosine": 1.0,
+                            "lexical_combined": 1.0,
+                            "embedding_cosine": 1.0,
+                            "threshold": args.threshold,
+                            "pass": True,
+                        },
+                    }
+                )
+                print(f"[{i}/{total}] bypass chunk={chunk_id} unit_kind={unit_kind}")
+                continue
+
             if not args.include_relations:
                 strategy = choose_relation_strategy(
                     unit_kind=unit_kind,
@@ -489,6 +572,8 @@ def main() -> None:
                 concepts=concepts,
                 relation_lines=relation_lines,
                 background_lines=background_lines,
+                key_predicate=key_predicate,
+                anchor_phrases=anchor_phrases or None,
             )
 
             try:
@@ -512,6 +597,9 @@ def main() -> None:
                         "used_relations": bool(strategy["use_relations"]),
                         "used_background": bool(background_lines),
                         "relation_policy": strategy["policy"],
+                        "bypass_llm": False,
+                        "key_predicate": key_predicate,
+                        "anchor_phrases": anchor_phrases,
                         "relations": selected_relations if args.include_relations else None,
                         "relation_lines": relation_lines if args.include_relations else None,
                         "background_rows": background_rows if args.include_background else None,

@@ -204,15 +204,19 @@ def render_card(row: dict, default_threshold: float) -> str:
     bow = scores.get("bow_cosine", 0.0)
     lex = scores.get("lexical_combined", 0.0)
     passed = emb >= default_threshold
+    bypass_llm = row.get("bypass_llm", False)
     used_bg = row.get("used_background", False)
     bg_lines: list = row.get("background_lines") or []
     relation_lines: list = row.get("relation_lines") or []
     policy = row.get("relation_policy", "")
+    key_predicate: str = row.get("key_predicate", "")
+    anchor_phrases: list = row.get("anchor_phrases") or []
 
     pass_class = "pass" if passed else "fail"
-    pass_label = "PASS" if passed else "FAIL"
+    pass_label = "BYPASSED" if bypass_llm else ("PASS" if passed else "FAIL")
 
     badge = f'<span class="badge" style="{badge_style(unit_kind)}">{unit_kind}</span>'
+    bypass_badge = '<span class="badge" style="background:#888;margin-left:4px;font-size:10px;">verbatim</span>' if bypass_llm else ""
     emb_pill = f'<span class="score-pill primary {pass_class}">emb {emb:.3f}</span>'
     lex_pill = f'<span class="score-pill">lex {lex:.3f}</span>'
     result_pill = f'<span class="score-pill {pass_class}">{pass_label}</span>'
@@ -240,11 +244,23 @@ def render_card(row: dict, default_threshold: float) -> str:
     else:
         rel_html = f'<span class="no-bg">none (policy: {policy})</span>'
 
+    kp_html = (
+        f'<div style="margin-bottom:12px;"><span class="section-title">Key predicate</span> '
+        f'<span style="font-size:13px;font-style:italic;color:#3b6fd4;">{_esc(key_predicate)}</span></div>'
+        if key_predicate else ""
+    )
+    ap_html = (
+        f'<div style="margin-bottom:12px;"><span class="section-title">Anchor phrases</span> '
+        + "".join(f'<span class="concept-tag" style="background:#fff3cd;border-color:#ffc107;">{_esc(a)}</span>' for a in anchor_phrases)
+        + "</div>"
+        if anchor_phrases else ""
+    )
+
     return f"""
 <div class="card {pass_class}" data-kind="{unit_kind}" data-emb="{emb:.4f}">
   <div class="card-header">
     <span class="chunk-id">{chunk_id}</span>
-    {badge}
+    {badge}{bypass_badge}
     <div class="score-group">
       {emb_pill}
       {lex_pill}
@@ -260,7 +276,7 @@ def render_card(row: dict, default_threshold: float) -> str:
         {_esc(original)}
       </div>
       <div class="text-block regenerated">
-        <h4>Regenerated from graph</h4>
+        <h4>{'Stored verbatim (bypassed LLM)' if bypass_llm else 'Regenerated from graph'}</h4>
         {_esc(regenerated)}
       </div>
     </div>
@@ -272,6 +288,7 @@ def render_card(row: dict, default_threshold: float) -> str:
     </div>
     <div class="section-title">Concepts used in prompt</div>
     <div class="concepts-list" style="margin-bottom:12px;">{concept_tags}</div>
+    {kp_html}{ap_html}
     <div class="section-title">Relation hints</div>
     <div style="margin-bottom:12px;">{rel_html}</div>
     <div class="section-title">Background knowledge injected</div>
