@@ -11,7 +11,7 @@ def load_rows(path: Path) -> Dict[str, Dict[str, Any]]:
     return {
         row["chunk_id"]: row
         for row in data.get("results", [])
-        if "scores" in row
+        if "scores" in row and not row.get("bypass_llm", False)
     }
 
 

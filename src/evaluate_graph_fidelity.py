@@ -174,13 +174,15 @@ def build_prompt(
     return base
 
 
-def fetch_rows(session, chunk_id: Optional[str], limit: int) -> List[Dict[str, Any]]:
+def fetch_rows(session, chunk_id: Optional[str], limit: int, source_type: Optional[str] = None) -> List[Dict[str, Any]]:
     # Concepts ordered by global mention count DESC so the LLM sees the most
     # semantically central concept first. key_predicate and anchor_phrases come
     # from the enrichment step (enrich_chunks_in_neo4j.py).
     query = """
-    MATCH (ch:Chunk)-[m:MENTIONS]->(c:Concept)
-    WHERE $chunk_id IS NULL OR ch.id = $chunk_id
+    MATCH (ch:Chunk)
+    WHERE ($chunk_id IS NULL OR ch.id = $chunk_id)
+      AND ($source_type IS NULL OR ch.source_type = $source_type)
+    OPTIONAL MATCH (ch)-[m:MENTIONS]->(c:Concept)
     WITH ch, c, m
     ORDER BY ch.id ASC, coalesce(c.count, 0) DESC, c.id ASC
     WITH
@@ -197,7 +199,7 @@ def fetch_rows(session, chunk_id: Optional[str], limit: int) -> List[Dict[str, A
     ORDER BY ch.id ASC
     LIMIT $limit
     """
-    rows = session.run(query, chunk_id=chunk_id, limit=limit).data()
+    rows = session.run(query, chunk_id=chunk_id, limit=limit, source_type=source_type).data()
     # Deduplicate concepts while preserving frequency order.
     for row in rows:
         seen: set = set()
@@ -424,6 +426,7 @@ def main() -> None:
         help="Ollama embedding model. Defaults to the chat model name if omitted.",
     )
     p.add_argument("--chunk-id", default="", help="If set, evaluate one chunk only.")
+    p.add_argument("--source-type", default="", help="Evaluate only chunks tagged with this source type/run ID.")
     p.add_argument("--limit", type=int, default=20, help="Maximum number of chunks to evaluate.")
     p.add_argument(
         "--threshold",
@@ -487,7 +490,7 @@ def main() -> None:
 
     out_rows = []
     with driver.session(database=NEO4J_DB) as session:
-        rows = fetch_rows(session, args.chunk_id or None, args.limit)
+        rows = fetch_rows(session, args.chunk_id or None, args.limit, args.source_type or None)
         total = len(rows)
         relation_types = [t.strip() for t in args.relation_types.split(",") if t.strip()]
 

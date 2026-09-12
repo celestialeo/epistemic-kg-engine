@@ -1,5 +1,5 @@
 """
-score_background_candidates_v2.py
+score_background_candidates.py
 -----------------------------------
 Improved scoring pipeline for background knowledge candidates.
 
@@ -244,7 +244,7 @@ def main() -> None:
         )
     )
     parser.add_argument("--in", dest="in_path", required=True,
-                        help="Input background candidates JSON (from expand_background_knowledge_v2.py).")
+                        help="Input background candidates JSON (from expand_background_knowledge.py).")
     parser.add_argument("--out", dest="out_path", required=True,
                         help="Output approved background JSON.")
     parser.add_argument("--use-critic", action="store_true",

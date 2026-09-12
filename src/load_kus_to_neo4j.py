@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from neo4j import GraphDatabase
+from build_mentions_from_extractions import norm_concept, keep_concept
 
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
@@ -14,10 +15,6 @@ NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
 
 def load_json(path: Path) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def norm_concept(s: str) -> str:
-    return " ".join(str(s).strip().lower().split())
 
 
 def main():
@@ -87,7 +84,7 @@ def main():
             # 2) KU -> Concept MENTIONS (for semantic anchoring)
             for c in concepts:
                 cid = norm_concept(c)
-                if not cid:
+                if not keep_concept(cid):
                     continue
                 session.run(
                     """

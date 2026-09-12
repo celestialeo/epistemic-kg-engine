@@ -69,7 +69,7 @@ def main():
     if args.limit and args.limit > 0:
         rows = rows[: args.limit]
 
-    llm = ChatOllama(model=args.model, temperature=0)
+    llm = ChatOllama(model=args.model, temperature=0, format=RelationExtraction.model_json_schema())
 
     out: List[Dict[str, Any]] = []
     total = len(rows)

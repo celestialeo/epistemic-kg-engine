@@ -1,10 +1,10 @@
 """
-select_seed_concepts_v2.py
+select_seed_concepts.py
 ---------------------------
 Updated version of select_seed_concepts.py.
 
 Key change: also exports chunk_id and source_text (the highest-mention chunk's
-paragraph) for each concept. This feeds directly into expand_background_knowledge_v2.py
+paragraph) for each concept. This feeds directly into expand_background_knowledge.py
 so the LLM receives the actual neuroscience context the concept appeared in,
 rather than expanding blindly from the concept string alone.
 """
@@ -27,8 +27,8 @@ NEO4J_DB = os.getenv("NEO4J_DB", "neo4j")
 # Returns the concept's most-cited chunk together with its text,
 # giving the expansion model the neuroscience context it needs.
 Q_TOP_CONCEPTS = """
-MATCH (c:Concept:Entity)
-OPTIONAL MATCH (ch:Chunk:Entity)-[:MENTIONS]->(c)
+MATCH (ch:Chunk:Entity)-[:MENTIONS]->(c:Concept:Entity)
+WHERE $source_type IS NULL OR ch.source_type = $source_type
 WITH c, ch, count(ch) AS w
 ORDER BY w DESC
 WITH c, collect(ch)[0] AS top_chunk, sum(w) AS total_mentions
@@ -48,6 +48,7 @@ def main():
     )
     parser.add_argument("--out", required=True, help="Output JSON file for seed concepts.")
     parser.add_argument("--limit", type=int, default=50, help="Number of seed concepts to export.")
+    parser.add_argument("--source-type", default="", help="Select seeds from this source type/run ID only.")
     args = parser.parse_args()
 
     if not NEO4J_PASSWORD:
@@ -55,7 +56,7 @@ def main():
 
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
     with driver.session(database=NEO4J_DB) as session:
-        rows = session.run(Q_TOP_CONCEPTS, limit=args.limit).data()
+        rows = session.run(Q_TOP_CONCEPTS, limit=args.limit, source_type=args.source_type or None).data()
     driver.close()
 
     out: Dict[str, Any] = {

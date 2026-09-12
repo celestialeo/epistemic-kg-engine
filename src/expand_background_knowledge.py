@@ -1,5 +1,5 @@
 """
-expand_background_knowledge_v2.py
+expand_background_knowledge.py
 ----------------------------------
 Improved background expansion pipeline addressing:
   1. Context-anchored prompting  — source paragraph travels with the concept,

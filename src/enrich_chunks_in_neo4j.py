@@ -6,7 +6,7 @@ Run this after re-extracting with the updated schema to enrich the graph
 without rebuilding it from scratch:
 
     python src/enrich_chunks_in_neo4j.py \
-        --extractions outputs/testpack_v1_extractions.json
+        --extractions outputs/runs/<run-id>/extractions.json
 """
 
 import argparse

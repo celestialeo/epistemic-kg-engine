@@ -29,7 +29,7 @@ def main():
     if not concepts_path.exists():
         raise FileNotFoundError(
     f"Missing {concepts_path}. Generate it using build_mentions_from_extractions.py "
-    f"(e.g., outputs/testpack_v1_concepts_dedup.json)."
+    f"(e.g., outputs/runs/<run-id>/concepts.json)."
 )
 
     concepts: List[Dict[str, Any]] = load_json(concepts_path).get("concepts", [])

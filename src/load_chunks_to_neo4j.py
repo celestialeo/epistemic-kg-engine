@@ -30,7 +30,7 @@ def main():
     if not chunks_path.exists():
         raise FileNotFoundError(
     f"Missing {chunks_path}. Provide a chunks JSON with key 'chunks' "
-    f"(e.g., outputs/testpack_v1_chunks.json)."
+    f"(e.g., data/chunks.json)."
 )
 
     data = load_json(chunks_path)
