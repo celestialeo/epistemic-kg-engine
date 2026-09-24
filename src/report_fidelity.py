@@ -215,13 +215,13 @@ def render_card(row: dict, default_threshold: float) -> str:
     pass_class = "pass" if passed else "fail"
     pass_label = "BYPASSED" if bypass_llm else ("PASS" if passed else "FAIL")
 
-    badge = f'<span class="badge" style="{badge_style(unit_kind)}">{unit_kind}</span>'
+    badge = f'<span class="badge" style="{badge_style(unit_kind)}">{_esc(unit_kind)}</span>'
     bypass_badge = '<span class="badge" style="background:#888;margin-left:4px;font-size:10px;">verbatim</span>' if bypass_llm else ""
     emb_pill = f'<span class="score-pill primary {pass_class}">emb {emb:.3f}</span>'
     lex_pill = f'<span class="score-pill">lex {lex:.3f}</span>'
     result_pill = f'<span class="score-pill {pass_class}">{pass_label}</span>'
 
-    concept_tags = "".join(f'<span class="concept-tag">{c}</span>' for c in concepts) or '<span class="no-bg">none</span>'
+    concept_tags = "".join(f'<span class="concept-tag">{_esc(c)}</span>' for c in concepts) or '<span class="no-bg">none</span>'
 
     bg_html = ""
     if bg_lines:
@@ -239,10 +239,10 @@ def render_card(row: dict, default_threshold: float) -> str:
 
     rel_html = ""
     if relation_lines:
-        items = "".join(f'<div class="bg-line">{line}</div>' for line in relation_lines)
+        items = "".join(f'<div class="bg-line">{_esc(line)}</div>' for line in relation_lines)
         rel_html = f'<div class="bg-lines">{items}</div>'
     else:
-        rel_html = f'<span class="no-bg">none (policy: {policy})</span>'
+        rel_html = f'<span class="no-bg">none (policy: {_esc(policy)})</span>'
 
     kp_html = (
         f'<div style="margin-bottom:12px;"><span class="section-title">Key predicate</span> '
@@ -257,9 +257,9 @@ def render_card(row: dict, default_threshold: float) -> str:
     )
 
     return f"""
-<div class="card {pass_class}" data-kind="{unit_kind}" data-emb="{emb:.4f}">
+<div class="card {pass_class}" data-kind="{_esc(unit_kind)}" data-emb="{emb:.4f}">
   <div class="card-header">
-    <span class="chunk-id">{chunk_id}</span>
+    <span class="chunk-id">{_esc(chunk_id)}</span>
     {badge}{bypass_badge}
     <div class="score-group">
       {emb_pill}
@@ -298,7 +298,7 @@ def render_card(row: dict, default_threshold: float) -> str:
 
 
 def _esc(s: str) -> str:
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&#x27;")
 
 
 def _fmt_bg_line(line: str) -> str:
@@ -347,7 +347,7 @@ def main() -> None:
 
     unit_kinds = sorted({r.get("unit_kind", "other") for r in results if "scores" in r})
     kind_options = '<option value="all">All unit kinds</option>' + "".join(
-        f'<option value="{k}">{k.capitalize()}</option>' for k in unit_kinds
+        f'<option value="{_esc(k)}">{_esc(k.capitalize())}</option>' for k in unit_kinds
     )
 
     cards_html = "\n".join(render_card(r, threshold) for r in results if "scores" in r)
@@ -357,14 +357,14 @@ def main() -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{args.title}</title>
+<title>{_esc(args.title)}</title>
 <style>{_CSS}</style>
 </head>
 <body>
 
 <header>
-  <h1>{args.title}</h1>
-  <p>Source: {args.input} &nbsp;|&nbsp; Model: {model} &nbsp;|&nbsp;
+  <h1>{_esc(args.title)}</h1>
+  <p>Source: {_esc(args.input)} &nbsp;|&nbsp; Model: {_esc(model)} &nbsp;|&nbsp;
      Background: {'on' if include_bg else 'off'} &nbsp;|&nbsp;
      Relations: {'on' if include_rel else 'off'}</p>
 </header>

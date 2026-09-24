@@ -6,6 +6,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import time
@@ -14,6 +15,8 @@ import uuid
 import webbrowser
 
 from .plan import build_plan
+from .graph_view import write_graph
+from .saved_runs import discover_runs, read_manifest, resolve_run, restore_plan
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,10 +63,10 @@ def validate_artifact(path, key, allow_empty=False):
             raise ValueError(f"{path.name}: background critic failed; inspect critic_reason fields.")
 
 
-def check_dependencies():
+def check_dependencies(display_only=False):
     if sys.version_info < (3, 10):
         raise RuntimeError("Python 3.10+ is required (3.11 recommended). Create a new .venv with that Python.")
-    modules = ["dotenv", "neo4j", "langchain_ollama", "pydantic", "numpy", "scipy"]
+    modules = ["dotenv", "neo4j"] if display_only else ["dotenv", "neo4j", "langchain_ollama", "pydantic", "numpy", "scipy"]
     missing = [name for name in modules if importlib.util.find_spec(name) is None]
     if missing:
         raise RuntimeError("Missing dependencies: " + ", ".join(missing) +
@@ -85,10 +88,8 @@ def load_environment():
             raise ValueError(f"Do not embed credentials in {key}; use NEO4J_USER and NEO4J_PASSWORD.")
 
 
-def preflight(args):
+def preflight(args, display_only=False):
     from neo4j import GraphDatabase
-    from ollama import Client
-    from langchain_ollama import OllamaEmbeddings
 
     if args.start_neo4j:
         uri = urlsplit(os.environ["NEO4J_URI"])
@@ -113,6 +114,10 @@ def preflight(args):
                 raise RuntimeError("Neo4j preflight failed. Check its service, URI, database, and password.") from None
             print("Waiting for Neo4j...", flush=True)
             time.sleep(3)
+    if display_only:
+        return
+    from ollama import Client
+    from langchain_ollama import OllamaEmbeddings
     client = Client(host=os.environ["OLLAMA_HOST"], timeout=15)
     try:
         client.show(args.model)
@@ -126,8 +131,8 @@ def preflight(args):
         OllamaEmbeddings(model=args.embedding_model).embed_query("pipeline preflight")
 
 
-def run_step(step, out, index):
-    log = out / "logs" / f"{index:02d}_{step.name}.log"
+def run_step(step, out, index, log_dir=None):
+    log = (log_dir or out / "logs") / f"{index:02d}_{step.name}.log"
     command = [sys.executable, "-u", str(ROOT / "src" / step.script), *step.args]
     print(f"\n[{index}] {step.name}", flush=True)
     env = {**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUNBUFFERED": "1"}
@@ -154,22 +159,25 @@ def run_step(step, out, index):
 
 
 def graph_query(source):
-    # source is generated internally, never inserted from user input.
-    return (f'MATCH (ch:Chunk) WHERE ch.source_type = "{source}"\n'
+    return (f'MATCH (ch:Chunk) WHERE ch.source_type = {json.dumps(source)}\n'
             'OPTIONAL MATCH p=(ch)-[*1..2]->(n)\nRETURN ch, p LIMIT 200')
 
 
 def present(out, source, open_browser):
+    graph = write_graph(out, source)
     query = graph_query(source)
     (out / "graph.cypher").write_text(query + ";\n", encoding="utf-8")
     url = os.environ["NEO4J_BROWSER_URL"].rstrip("/") + "/?" + urlencode({
         "dbms": os.environ["NEO4J_URI"], "db": os.environ["NEO4J_DB"], "cmd": "edit", "arg": query})
     links = "".join(f'<li><a href="{p.name}">{html.escape(p.stem)}</a></li>'
-                    for p in sorted(out.glob("*.html")) if p.name != "index.html")
+                    for p in sorted(out.glob("*.html")) if p.name not in {"index.html", "knowledge_graph.html"})
     page = ('<!doctype html><html lang="en"><meta charset="utf-8"><title>Pipeline results</title>'
             '<style>body{font:17px system-ui;max-width:900px;margin:60px auto;padding:20px;'
             'line-height:1.6}pre{background:#eee;padding:20px;overflow:auto}a{color:#175bc1}</style>'
             f'<h1>Pipeline results</h1><p>Run: {html.escape(source)}</p>'
+            '<p><a href="knowledge_graph.html">Explore the interactive knowledge graph</a></p>'
+            '<p>Blue: document knowledge. Orange: background additions. Purple: document concepts '
+            'used in background knowledge. Select nodes and arrows for names, source text, and explanations.</p>'
             f'<p><a href="{html.escape(url, quote=True)}">Open graph in Neo4j Browser</a></p>'
             '<p>Log in with your Neo4j credentials, then press Play (Ctrl+Enter). '
             'Choose the Graph result view. Double-click nodes to explore their neighbors. '
@@ -177,14 +185,137 @@ def present(out, source, open_browser):
             f'<pre>{html.escape(query)}</pre><h2>Fidelity reports</h2><ul>{links}</ul>'
             '<p><a href="manifest.json">Run manifest</a> · <a href="graph.cypher">Graph query</a></p></html>')
     (out / "index.html").write_text(page, encoding="utf-8")
+    update_comparison_links(out)
     print(f"\nResults: {out / 'index.html'}\nNeo4j: {url}")
     if open_browser:
-        for target in ((out / "index.html").as_uri(), url):
+        for target in ((out / "index.html").as_uri(), graph.as_uri()):
             try:
                 if not webbrowser.open(target):
                     print("Could not open a browser automatically. Open the printed link.")
             except webbrowser.Error:
                 print("Could not open a browser automatically. Open the printed link.")
+
+
+def update_comparison_links(out):
+    """Expose completed and partial experiments without changing historical reports."""
+    index = out / "index.html"
+    if not index.exists():
+        return
+    links = []
+    for report in sorted(out.glob("factscore/*/report.html"), reverse=True):
+        relative = report.relative_to(out).as_posix()
+        dashboard = report.parent / "beforevsafter.html"
+        dashboard_link = (f'<a href="{html.escape(dashboard.relative_to(out).as_posix(), quote=True)}">'
+                          'Graphs and reports dashboard</a> · ') if dashboard.exists() else ''
+        links.append(f'<li><a href="{html.escape(relative, quote=True)}">{html.escape(report.parent.name)}: '
+                     'statistics and claim audit</a> · '
+                     + dashboard_link +
+                     f'<a href="{html.escape(relative.replace("report.html", "graph_comparison.html"), quote=True)}">'
+                     'Compare before/after graphs</a></li>')
+    section = '<!-- FACTSCORE START --><h2>FActScore comparisons</h2><ul>' + ''.join(links) + '</ul><!-- FACTSCORE END -->'
+    page = index.read_text(encoding="utf-8")
+    page = re.sub(r'<!-- FACTSCORE START -->.*?<!-- FACTSCORE END -->', '', page, flags=re.DOTALL)
+    if links:
+        page = page.replace('</html>', section + '</html>')
+    index.write_text(page, encoding="utf-8")
+
+
+def compare_factscore_run(args, source):
+    from .factscore import load_references
+    from .factscore_experiment import run_comparison, validate_source
+    validate_source(source)
+    if args.factscore_reference:
+        load_references(args.factscore_reference)
+    identifier = datetime.now(timezone.utc).strftime("compare_%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:8]
+    destination = source / "factscore" / identifier
+    if args.dry_run:
+        print(f"Compare saved artifacts: {source}\nOutput: {destination}\n"
+              "Steps: freeze artifacts and references; check background evidence; reconstruct both graphs; "
+              "score atomic claims and coverage; write paired statistics and before/after graph views.\n"
+              f"Evidence: {args.factscore_reference or 'input document only (no independent external verification)'}.\n"
+              f"Pilot limits (0=all): {args.factscore_limit} chunks, {args.factscore_edge_limit} background edges.\n"
+              "Execution requires Ollama; no Neo4j reads or writes.")
+        return 0
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env", override=False)
+    data = run_comparison(source, destination, args.factscore_reference, args.factscore_verifier,
+                          limit=args.factscore_limit, edge_limit=args.factscore_edge_limit)
+    update_comparison_links(source)
+    if not args.no_open:
+        try:
+            webbrowser.open((destination / "report.html").as_uri())
+            webbrowser.open((destination / "graph_comparison.html").as_uri())
+        except webbrowser.Error:
+            print(f"Open comparison files in {destination}")
+    if data["status"] != "complete":
+        print("Comparison saved with errors. Read the report's error audit before interpreting results.", file=sys.stderr)
+        return 1
+    return 0
+
+
+def select_number(prompt, maximum):
+    while True:
+        value = input(prompt).strip()
+        if value.isdigit() and 1 <= int(value) <= maximum:
+            return int(value)
+        print(f"Enter a number between 1 and {maximum}.")
+
+
+def list_saved_runs():
+    runs = discover_runs(ROOT / "outputs" / "runs")
+    for i, (directory, manifest) in enumerate(runs, 1):
+        print(f"{i}. {directory.name} | {manifest.get('status', 'unknown')} | "
+              f"{manifest.get('chunk_count', '?')} chunks | {manifest.get('model', '?')}")
+    if not runs:
+        print("No saved runs found in outputs/runs/.")
+    return runs
+
+
+def display_saved_run(args, value):
+    out = resolve_run(value, ROOT / "outputs" / "runs")
+    saved = read_manifest(out)
+    if saved.get("status") == "running":
+        raise ValueError("This run is still marked running. Choose a finished run.")
+    if args.graph_only:
+        if args.dry_run:
+            print(f"Render interactive graph from saved artifacts: {out}")
+            return 0
+        graph = write_graph(out, saved["run_id"])
+        print(f"Knowledge graph: {graph}")
+        if not args.no_open:
+            try:
+                if not webbrowser.open(graph.as_uri()):
+                    print("Could not open a browser automatically. Open the printed file.")
+            except webbrowser.Error:
+                print("Could not open a browser automatically. Open the printed file.")
+        return 0
+    # Check every required artifact before writing anything to Neo4j.
+    for filename, key in [("chunks.json", "chunks"), ("concepts.json", "concepts"),
+                          ("extractions.json", "extractions"), ("mentions.json", "mentions"),
+                          ("relations.json", "relations")]:
+        if not (out / filename).is_file():
+            raise ValueError(f"Cannot restore this run: missing {filename}.")
+        validate_artifact(out / filename, key)
+    if (out / "background_approved.json").exists():
+        validate_artifact(out / "background_approved.json", "approved_edges", allow_empty=True)
+    elif saved.get("background") and saved.get("status") == "complete":
+        raise ValueError("Cannot restore this run: missing background_approved.json.")
+    plan = restore_plan(out, saved)
+    print(f"Opening saved run: {saved['run_id']} ({saved.get('status', 'unknown')})")
+    print("Restore saved graph files and open reports; no extraction, model calls, or evaluation.")
+    if args.dry_run:
+        for step in plan:
+            print(f"  {step.name}: {step.script}")
+        return 0
+    check_dependencies(display_only=True)
+    load_environment()
+    preflight(args, display_only=True)
+    log_dir = out / "logs" / ("display_" + datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:8])
+    log_dir.mkdir(parents=True)
+    for i, step in enumerate(plan, 1):
+        run_step(step, out, i, log_dir=log_dir)
+    present(out, saved["run_id"], not args.no_open)
+    return 0
 
 
 def main(argv=None):
@@ -199,14 +330,61 @@ def main(argv=None):
     parser.add_argument("--skip-evaluation", action="store_true")
     parser.add_argument("--start-neo4j", action="store_true", help="Start the bundled Docker Compose service.")
     parser.add_argument("--no-open", action="store_true", help="Write links without opening browser windows.")
+    parser.add_argument("--graph-only", action="store_true",
+                        help="With --view-run, render the interactive graph without Neo4j or Ollama.")
     parser.add_argument("--dry-run", action="store_true", help="Validate input and show steps without services or writes.")
+    parser.add_argument("--factscore", action="store_true", help="After a new full run, compare baseline and evidence-filtered graphs.")
+    parser.add_argument("--factscore-reference", type=Path, help="Reference passage/chunk JSON; omit to test support against the input document only.")
+    parser.add_argument("--factscore-verifier", help="Ollama verifier model; defaults to the source run's generation model.")
+    parser.add_argument("--factscore-limit", type=int, default=0, help="Pilot: compare the first N saved chunks (0=all).")
+    parser.add_argument("--factscore-edge-limit", type=int, default=0, help="Pilot: compare only N highest-ranked eligible baseline edges (0=all).")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--new", action="store_true", help="Start a new run without the menu.")
+    mode.add_argument("--view-run", nargs="?", const="", metavar="RUN_ID_OR_DIRECTORY",
+                      help="Restore and display a saved run; omit its name to choose from a list.")
+    mode.add_argument("--list-runs", action="store_true", help="List saved runs without connecting to services.")
+    mode.add_argument("--compare-factscore", metavar="RUN_ID_OR_DIRECTORY", help="Compare a saved full run using Ollama, without Neo4j; preserve baseline artifacts.")
     args = parser.parse_args(argv)
     manifest = None
     out = None
     try:
+        if args.factscore_limit < 0 or args.factscore_edge_limit < 0:
+            raise ValueError("FActScore pilot limits must be >= 0.")
+        if (args.factscore_reference or args.factscore_verifier or args.factscore_limit or args.factscore_edge_limit) and not (args.factscore or args.compare_factscore):
+            raise ValueError("Use FActScore options with --factscore or --compare-factscore RUN_ID.")
+        if args.factscore and (args.skip_background or args.skip_evaluation or args.view_run is not None or args.list_runs):
+            raise ValueError("--factscore requires a new full run with background and evaluation enabled.")
+        if args.graph_only and args.view_run is None:
+            raise ValueError("Use --graph-only with --view-run [RUN_ID].")
+        if args.compare_factscore:
+            source_directory = resolve_run(args.compare_factscore, ROOT / "outputs" / "runs")
+            if read_manifest(source_directory).get("status") != "complete":
+                raise ValueError("Choose a completed full run for --compare-factscore.")
+            if args.limit or args.skip_background or args.skip_evaluation or args.output_dir or args.start_neo4j:
+                raise ValueError("Saved comparisons use all saved chunks and their saved models; omit new-run/service options.")
+            return compare_factscore_run(args, source_directory)
+        if args.list_runs:
+            list_saved_runs()
+            return 0
+        if not args.new and not args.factscore and args.view_run is None and not args.dry_run and sys.stdin.isatty():
+            print("\n1. New run\n2. Display existing run")
+            if select_number("Choose [1-2]: ", 2) == 2:
+                args.view_run = ""
+        if args.view_run is not None:
+            if args.view_run == "":
+                runs = list_saved_runs()
+                if not runs:
+                    return 0
+                if not sys.stdin.isatty():
+                    raise ValueError("Provide --view-run RUN_ID when running without an interactive terminal.")
+                args.view_run = str(runs[select_number("Choose a run: ", len(runs)) - 1][0])
+            return display_saved_run(args, args.view_run)
         if args.limit < 0 or args.seed_limit < 1:
             raise ValueError("--limit must be >= 0 and --seed-limit must be >= 1.")
         rows = read_chunks(args.input.resolve(), args.limit)
+        if args.factscore_reference:
+            from .factscore import load_references
+            load_references(args.factscore_reference)
         source = datetime.now(timezone.utc).strftime("run_%Y%m%d_%H%M%S_") + uuid.uuid4().hex[:8]
         out = (args.output_dir or ROOT / "outputs" / "runs" / source).resolve()
         if out.exists() and (not out.is_dir() or any(out.iterdir())):
@@ -217,6 +395,8 @@ def main(argv=None):
             print(f"Input: {args.input.resolve()}\nChunks: {len(rows)}\nOutput: {out}")
             for i, step in enumerate(plan, 1):
                 print(f"{i:02d}. {step.name}: {step.script} " + " ".join(step.args))
+            if args.factscore:
+                print("FActScore: freeze baseline; retrieve evidence; filter background; score both reconstructions; save statistics and graph comparison.")
             print("Finish: write graph query, results page, and Neo4j Browser link.")
             return 0
         check_dependencies()
@@ -245,6 +425,11 @@ def main(argv=None):
         manifest["status"] = "complete"
         write_json(out / "manifest.json", manifest)
         present(out, source, not args.no_open)
+        if args.factscore:
+            # The baseline is complete. A later comparison failure belongs to its
+            # own manifest and must not retroactively fail the baseline run.
+            manifest = None
+            return compare_factscore_run(args, out)
         return 0
     except (Exception, KeyboardInterrupt) as exc:
         if manifest is not None:
