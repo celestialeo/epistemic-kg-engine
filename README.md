@@ -1,345 +1,167 @@
 # Epistemic Knowledge Graph Engine
 
-Run a complete pipeline from chunked text to a knowledge graph, background
-knowledge enrichment, and evaluation reports. When the run finishes, open the
-**Pipeline results** page to read the reports and explore the **interactive HTML
-graph** in your browser.
+One pipeline turns a prose document into a knowledge graph through extraction,
+background proposals, agent debate, and a final reconstruction evaluation.
+The supplied [input](data/input.txt) contains three connected paragraphs (509
+words) about neuronal signaling, synapses, and plasticity.
 
-## Project documentation
+## Run
 
-This README covers running the project and opening its results. For how it works,
-read the **[project overview, file diagrams, and terminology](docs/project-overview.md)**.
-
-For evidence checking, paired statistics, and before/after graphs, see the
-**[FActScore comparison guide](docs/factscore-comparison.md)**. The existing pipeline
-remains the baseline. Compare a completed run without Neo4j using
-`--compare-factscore RUN_ID`; add `--factscore-reference data/references.json` for
-external passage evidence, or omit it for an explicitly labeled input-document
-support check. Start with `--factscore-limit 2 --factscore-edge-limit 2` for a pilot.
-
-**Open graphs and reports together:**
-`& .\.venv\Scripts\python.exe .\run_pipeline_beforevsafter.py`
-opens the latest saved dashboard. To generate a full comparison, use
-`run_pipeline_beforevsafter.py --run RUN_ID`.
-See the **[step-by-step before/after viewing guide](docs/beforevsafter.md)**.
-
-The project tests how well a graph preserves the meaning of source text, and
-whether adding model-generated background knowledge helps reconstruct that text.
-
-```mermaid
-flowchart TD
-    entry["run_pipeline.py"] --> cli["pipeline/cli.py: run and coordinate"]
-    plan["pipeline/plan.py: ordered stages"] --> cli
-    input["data/chunks.json"] --> cli
-    cli --> stages["src/: extract, load, enrich, evaluate"]
-    stages <--> services["Ollama models and Neo4j database"]
-    stages --> saved["outputs/runs/run-id/: saved JSON and reports"]
-    saved --> view["pipeline/graph_view.py + graph_view.html"]
-    view --> graph["knowledge_graph.html"]
-    cli --> results["index.html: Pipeline results"]
-    results -. "links to" .-> graph
-    results -. "links to" .-> reports["HTML fidelity reports"]
-```
-
-Arrows show calls or data flow; dotted arrows are browser links. The
-[detailed diagrams](docs/project-overview.md#how-the-files-work-together) separate
-these responsibilities and show the individual scripts. Mermaid diagrams render
-on GitHub and in Markdown previews with Mermaid support.
-
-## Run the pipeline
-
-If this is your first time using the project, complete the [one-time setup](#one-time-setup)
-below. After that, use these steps each time, including after restarting your laptop.
-
-1. Open **Docker Desktop** and wait until its engine is running.
-2. Open **Ollama** and leave it running.
-3. Open PowerShell or your IDE terminal and run:
+Start Ollama with `llama3.2:3b` and `nomic-embed-text` installed, then run:
 
 ```powershell
-cd C:\Users\miche\Documents\epistemic-kg-engine
-& .\.venv\Scripts\python.exe .\run_pipeline.py --new --start-neo4j
+& .\.venv\Scripts\python.exe .\run_pipeline.py
 ```
 
-Copy the commands inside the code block, without adding a `PS C:\...>` terminal
-prompt. The command uses the project's Python directly; no environment activation
-is needed. `--new` starts immediately without a menu, and `--start-neo4j` starts
-the bundled database container once Docker Desktop is ready.
-
-The pipeline processes **all chunks in `data/chunks.json`**. It extracts concepts
-and relations, loads the graph, adds background knowledge, evaluates the results,
-and generates HTML reports and the interactive graph. Progress appears in the
-terminal, and each execution saves a new run in `outputs/runs/`.
-
-### Try a smaller complete run
-
-To test the full workflow with the first five chunks and up to three background
-seed concepts, use:
+To include the bundled Neo4j database, start Docker Desktop and use:
 
 ```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --new --start-neo4j --limit 5 --seed-limit 3
+& .\.venv\Scripts\python.exe .\run_pipeline.py --start-neo4j
 ```
 
-This includes background enrichment, evaluation, the results page, and the HTML
-graph. Docker Desktop and Ollama must be running, just as for the full run.
+Use `--neo4j` if the database is already running. Database export stores the
+same final graph as the portable JSON/HTML outputs, isolated by run ID. Existing
+database records are not cleared. All database writes commit in one transaction.
+The export uses `PipelineNode` nodes and `LINK` relationships, with readable
+`label`, `kind`/`origin` properties and the complete record in `properties_json`.
+The generated `graph.cypher` selects only the current run.
 
-## Open the pipeline results
+Edit `data/input.txt` directly, or use `--input path/to/document.txt`. Input is
+UTF-8 plain text, with blank lines separating paragraphs. The default input has
+three paragraphs; custom documents may have any number. No manual chunks needed.
 
-When the run finishes, the **results page** and **interactive graph** open in your
-browser. On the results page:
+Options:
 
-- Click **Explore the interactive knowledge graph** to view the graph in HTML.
-- Click **Open graph in Neo4j Browser** to explore the live database using the commands below.
-- Open the **Fidelity reports** to inspect the evaluation results.
-- Open the **Run manifest** to see the run settings and status.
+| Option | Default | Purpose |
+| --- | --- | --- |
+| `--chunk-words` | 85 | Maximum words per chunk |
+| `--seed-limit` | 6 | Most-mentioned concepts for background debate; 0 means all |
+| `--model` | llama3.2:3b | Model used in each agent role |
+| `--embedding-model` | nomic-embed-text | Final semantic similarity evaluation |
+| `--no-open` | off | Save results without opening a browser |
+| `--output-root` | outputs/runs | Parent directory for isolated run folders |
+| `--resume RUN_DIRECTORY` | none | Reuse validated responses with matching prompts and installed model digests |
 
-You can return to the results later by opening `index.html` in the run's folder.
-The HTML graph and reports work without starting Neo4j or Ollama after they have
-been generated. Neo4j is used during pipeline execution; viewing the HTML graph
-requires only your browser.
+Every chunk is extracted and evaluated. The seed limit controls background
+expansion only. Seeds are ranked by chunk mention count, then first occurrence,
+then concept name. All execution is sequential.
 
-Each run saves these files under `outputs/runs/<run-id>/`:
+## Results
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Main results page with links to the graph and reports |
-| `knowledge_graph.html` | Interactive graph with names, colors, and explanations |
-| `concepts_only.html` | Fidelity report using concept hints |
-| `document.html` | Fidelity report including document relations |
-| `with_background.html` | Fidelity report including background knowledge |
-| `manifest.json` | Run settings and status |
-| `logs/` | Output from each pipeline stage |
-
-The report files are generated when their corresponding evaluation stages run.
-In File Explorer, open `outputs`, then `runs`, then your run's folder, and
-double-click `index.html` or `knowledge_graph.html`.
-
-## View the graph in Neo4j Browser
-
-From the results page, click **Open graph in Neo4j Browser**, or open
-[localhost:7474/browser](http://localhost:7474/browser/). Keep Neo4j running and
-log in with the credentials from `.env`.
-
-**Run the following blocks in Neo4j Browser's command editor, not PowerShell.**
-Run each block separately with **Ctrl+Enter**.
-
-### 1. Identify background concepts
-
-Run this after loading a new run or restoring an old one. It refreshes the
-`BackgroundConcept` visualization label using the stored background origin and
-absence of document links. It changes labels, not the saved HTML graph.
-
-```cypher
-MATCH (c:Concept)
-REMOVE c:BackgroundConcept
-WITH c
-WHERE c.source IN ['background', 'document+background']
-  AND NOT EXISTS {
-    MATCH (:Chunk)-[:MENTIONS]->(c)
-  }
-  AND NOT EXISTS {
-    MATCH (:KnowledgeUnit)-[:MENTIONS|DEFINES|PART_OF|CAUSES]->(c)
-  }
-SET c:BackgroundConcept
-RETURN count(c) AS background_concepts;
-```
-
-### 2. Apply names and colors
-
-Paste this whole block as one Browser command:
+Each execution creates **one self-contained folder** at `outputs/runs/<run-id>/`:
 
 ```text
-:style {
-  "node.BackgroundConcept": {"color": "#CF681B", "caption": "{label}"},
-  "node.BackgroundFact": {"color": "#CF681B", "caption": "{text}"},
-  "node.Chunk": {"color": "#60758A", "caption": "{text}"},
-  "node.KnowledgeUnit": {"color": "#2877CC", "caption": "{text}"},
-  "node.Concept": {"color": "#2877CC", "caption": "{label}"}
-}
+index.html                 Readable results, decisions and final statistics
+knowledge_graph.html       Interactive graph; works offline
+report.md                  Concise statistical report
+statistics.json            Machine-readable counts and descriptive statistics
+events.jsonl               Complete ordered application event stream
+run.log                    Terminal output and errors
+manifest.json              Configuration, completion status and artifact hashes
+input.txt                  Exact decoded input snapshot
+graph.cypher               Query for the exported run (when Neo4j is enabled)
+artifacts/
+  paragraphs.json          Paragraph text, ordering and offsets
+  chunks.json              Sequential chunks with source offsets and links
+  environment.json         Model metadata/digests, package versions, source hashes
+  extractions.json         Concepts, claims, relations, evidence and explanations
+  debate.json              Proposals, reviews, rebuttals, verdicts and scores
+  graph.json               Complete final graph with stable node and edge IDs
+  evaluation.json          Per-chunk reconstructions and similarity measures
 ```
 
-| Color | Neo4j nodes |
-| --- | --- |
-| Blue | Document concepts and extracted statements |
-| Orange | Background-only concepts and background facts |
-| Gray | Source chunks |
+Open `index.html` to read the report. Open `knowledge_graph.html` to search and
+explore the graph. Enable **Source chunks** to see the document, paragraphs,
+chunks, and reading-order links. The graph uses no external browser libraries.
 
-Concepts display their names, while chunks, statements, and background facts
-use their text. Click a node to read its full properties, including scores.
+New run folders use local time with an explicit UTC offset, for example
+`run_20260923_231000_UTC-0400_ab12cd34` for September 23 at 11:10 PM in Toronto.
+Older folders used UTC: `run_20260924_025509_...` started September 23 at 10:55:09 PM
+in Toronto. Historical run IDs remain stable for log and database references.
+Manifests include local and UTC start/finish times; new events include both
+`timestamp` (UTC) and `timestamp_local`.
 
-Neo4j uses the first label's style when a node has multiple labels. In the result's
-label overview, put **BackgroundConcept above Concept**, and put **Entity below
-all the labels above** if colors or captions are wrong. These Browser settings
-are separate from the HTML graph's automatic styling.
-[Neo4j styling reference](https://neo4j.com/docs/browser/operations/browser-styling/).
+The final report contains graph counts, accepted/rejected proposals, model
+usage, and mean/median/sample standard deviation/min/max for semantic cosine,
+token cosine and token Jaccard. These are **reconstruction similarities**, not
+factual accuracy scores. Evaluation receives graph claims and relationships,
+not source paragraphs or evidence quotations. Extracted claims can still closely
+resemble the source, so similarity is not an independent validation of the graph.
 
-### 3. Show the graph
+## Pipeline
 
-The results page's Neo4j link prefills a query starting from that run's chunks.
-Run it and select the **Graph** result view. To browse a sample of the entire
-live database instead, run:
+1. Save the input and split paragraphs into contiguous, ordered sentence groups.
+   Long sentences split at word boundaries. No chunk crosses a paragraph;
+   every source word is retained exactly once. Original character offsets are saved.
+2. Extract concepts, claims and directed relations from each chunk. Keep paragraph
+   context for reference resolution. Reject claims/relations with quotations that
+   do not occur exactly in that chunk; record every rejection.
+3. Select seed concepts and propose up to three contextual background relations
+   per seed. Validate structure and direction. Review child/sibling analogies when
+   both exist. The critic challenges proposals, the proposer defends or withdraws,
+   and the judge adjudicates the complete exchange. Responses use exact candidate
+   keys enforced by JSON schemas. `part_of`/`has_part` express components, while
+   `is_a`/`has_subtype` express types; agents review explicit natural-language
+   statements of each relation. Debate rationales are limited to 300 characters
+   and non-extraction model responses to 700 generated tokens.
+4. Rank proposals using relevance, hierarchy, prerequisite and analogy scores.
+   Dimension weights use the leading eigenvector of the uncentered score moment
+   matrix, with a fixed fallback for insufficient/degenerate data. Apply tier
+   thresholds; judge rejection and proposer withdrawal always prevent acceptance.
+5. Build the final graph with document/background provenance, source evidence,
+   claim nodes, reading-order edges, and accepted background additions. Export
+   to Neo4j if requested.
+6. Reconstruct every chunk from the final graph, calculate similarities, and
+   produce one report. There are no alternate comparison pipelines.
 
-```cypher
-MATCH p=(n)-[r]->(m)
-RETURN p
-LIMIT 200;
-```
+Agent roles use separate prompts with the same local model by default. They are
+not independently trained validators. Their explanations and scores are model
+judgments, and background additions are explicitly labeled as inferred.
 
-To explore a named concept, replace `neuron` below with the concept you want:
+## Logs for a future simulator
 
-```cypher
-MATCH (c:Concept)
-WHERE toLower(coalesce(c.label, c.id)) = 'neuron'
-OPTIONAL MATCH p=(c)-[r]-(neighbor)
-RETURN c, p
-LIMIT 200;
-```
+Use `events.jsonl` as the replay source, ordered by `sequence`. Events include
+UTC and elapsed timestamps, stage, entity ID, parent event ID, and full data.
+Logs preserve model prompts, schemas, options, raw responses, exposed reasoning,
+JSON parsing, schema validation, retries, exact evidence checks, normalization,
+seed selection, debate decisions, graph mutations, embeddings, metric computation,
+artifact writes, and database queries/parameters/results.
 
-Double-click nodes to expand their neighbors. These queries show at most 200
-rows, and the live database can contain multiple runs. Concepts and background
-relationships are shared across runs; the HTML graph provides the saved view
-for one run. The Neo4j colors above identify nodes, not relationship origin.
+Explicit rationales and any reasoning returned by Ollama are recorded. Hidden
+internal model thinking cannot be accessed. This is an application trace, not an
+instruction-level trace of Python, the operating system, or model inference.
+Credentials are not included in configuration logs. To recover after a failure,
+add `--resume outputs/runs/<failed-run-id>` to the same command and input settings.
+This creates a new self-contained run, revalidates saved responses, and makes
+fresh calls where prompts or schemas differ. Cache hits retain full raw output
+and source-run/event attribution in the new log; usage counts distinguish reuse
+from new model inference.
 
-## Explore the HTML graph
+See [the event contract](docs/events.md) for replay and ID semantics. Events flush
+after every write. Failures keep their partial artifacts, full error trace, and
+a failed manifest; they do not masquerade as successful runs. Model requests
+retry up to three times on response/validation/transport failures. Incomplete or
+duplicate debate review IDs trigger a corrective retry; persistent errors fail
+the run instead of silently accepting proposals.
 
-The graph starts with one concept and its neighbors so the names are readable.
-Click **Show all** to see the full graph with the current filters.
+## Setup and tests
 
-| Color | Meaning |
-| --- | --- |
-| Blue | Knowledge extracted from the document |
-| Orange | Generated background additions |
-| Purple | A document concept also used in background knowledge |
-| Gray | An original source chunk |
-
-Concepts display their names, and statements display source-text previews. Click
-a node to inspect its full details. Click an orange relationship to read its
-background explanation and score. Scores appear in the details, not as node names.
-Colors identify origin, not correctness.
-
-- **Search** for a concept to see matches and their neighbors.
-- Uncheck **Background** to view document knowledge on its own.
-- Check **Source chunks** to include the original text chunks.
-- Select a node and click **Focus on selected** to explore its neighborhood.
-- Drag nodes to arrange them, drag empty space to pan, and scroll to zoom.
-
-The graph is a self-contained HTML file built from that run's saved data. It uses
-no external scripts or live database connection. The results page also provides
-an optional Neo4j Browser link for exploring the live database, which requires
-Neo4j to be running.
-
-## Revisit a previous run
-
-New runs generate the HTML graph automatically. To generate or refresh the HTML
-graph for a previous run, using its saved files:
-
-```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --view-run --graph-only
-```
-
-The terminal lists saved runs and asks `Choose a run:`. Type the number beside
-your run and press **Enter**. Its graph opens without starting services or
-repeating extraction, model calls, or evaluation. Existing HTML files update
-when regenerated; they do not update themselves.
-
-To list saved runs and find their folders:
-
-```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --list-runs
-```
-
-Open the chosen folder's `index.html` to revisit its reports as well.
-
-## One-time setup
-
-<details>
-<summary>Expand installation and configuration steps</summary>
-
-Skip this if the pipeline already runs on your laptop. Restarting your laptop
-does not require reinstalling dependencies or downloading models again.
-
-Install Python 3.10+ (3.11 recommended), Ollama, and Docker Desktop for the bundled
-Neo4j setup. From the project folder in PowerShell:
+Python 3.10+ is required. For a new environment:
 
 ```powershell
 py -3.11 -m venv .venv
 & .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-if (-not (Test-Path .env)) { Copy-Item .env.example .env }
-notepad .env
-```
-
-Set `NEO4J_PASSWORD` in `.env` to your database password and save the file. Keep
-an existing working configuration. Changing `.env` does not change the password
-stored in an existing Neo4j database.
-
-Open Ollama, then download the default models once:
-
-```powershell
 ollama pull llama3.2:3b
 ollama pull nomic-embed-text
 ```
 
-You are now ready to [run the pipeline](#run-the-pipeline). If you use your own
-running Neo4j server, configure its connection in `.env` and omit `--start-neo4j`.
-On macOS/Linux, create the environment with `python3.11 -m venv .venv` and use
-`.venv/bin/python` instead of the PowerShell Python prefix.
-
-</details>
-
-## More run commands
-
-Run these in **PowerShell**, from the project folder.
-
-**Restore an existing run and open its results** (Docker Desktop/Neo4j required;
-Ollama is not needed). Choose a run number when prompted:
+Only if using Neo4j, copy `.env.example` to `.env` and set `NEO4J_PASSWORD` to
+the database's password. Existing environment variables take precedence.
+`OLLAMA_HOST` selects the Ollama server. The default is `http://127.0.0.1:11434`.
 
 ```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --view-run --start-neo4j
+& .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-**Use your own input file:**
-
-```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --new --start-neo4j --input .\data\my_chunks.json
-```
-
-**Preview the steps without services or model calls:**
-
-```powershell
-& .\.venv\Scripts\python.exe .\run_pipeline.py --dry-run
-```
-
-Add `--no-open` to save results without opening browser windows. Use `--help`
-for all options. Omit `--new` from the main run command to choose between **New
-run** and **Display existing run** in the terminal menu.
-
-## If something fails
-
-| Message or symptom | What to do |
-| --- | --- |
-| `Neo4j preflight failed` | Open Docker Desktop, wait until it is ready, and retry with `--start-neo4j`. If Neo4j is already running, check its connection settings and password in `.env`. |
-| Docker engine unavailable | Start Docker Desktop; `--start-neo4j` starts the container, not Docker Desktop itself. |
-| `Ollama preflight failed` | Open Ollama and download both models from the setup section. |
-| Python executable not found | Check that you are in the project folder and have completed the virtual environment setup. |
-| Browser does not open | Open the printed run folder and double-click `index.html`. |
-| Graph is crowded | Search for a concept or use **Focus on selected**. |
-
-## Input and run notes
-
-The default input is `data/chunks.json`. Custom input files use this format:
-
-```json
-{"chunks": [{"chunk_id": "lesson_001", "text": "A neuron transmits signals."}]}
-```
-
-Chunk IDs must be unique, nonempty strings, and text must be nonempty. Input must
-already be chunked; this pipeline does not ingest PDFs. `--limit 0` processes all
-chunks; `--seed-limit` defaults to 20.
-
-Generated outputs are excluded from Git. Runs stop on stage errors; inspect the
-run's `logs/` folder and retry after fixing the cause. Completed Neo4j writes are
-not rolled back, and existing graph data is not cleared. For controlled experiments,
-use a separate clean database and avoid concurrent runs against the same database.
-
-The concepts-only evaluation still uses predicates and anchor phrases but omits
-relation and background hints. Metadata/noise copied verbatim are excluded from
-hypothesis tests but remain included in report aggregates.
+The project consists of the entry point, the `pipeline/` package, one input,
+one event-contract document and focused tests. Generated outputs are Git-ignored.

@@ -1,1 +1,1 @@
-"""Pipeline orchestration; individual research steps remain in src/."""
+"""Sequential document-to-graph pipeline with traced agent debate."""
