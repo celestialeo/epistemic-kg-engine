@@ -19,6 +19,8 @@ class Trace:
         self.stage = "setup"
         self.stream = (self.directory / "events.jsonl").open("x", encoding="utf-8")
         self.artifacts = {}
+        from .health import HealthMonitor
+        self.health = HealthMonitor(self)
 
     def emit(self, event, *, entity_id=None, parent_id=None, **data):
         self.sequence += 1
