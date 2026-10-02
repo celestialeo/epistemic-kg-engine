@@ -1,0 +1,589 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "TARGET causally produces the occurrence or change of SOURCE, not merely permitting it.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "connects_structure_to_function",
+      "definition": "SOURCE connects the structure of a neuron to its function: receiving inputs, deciding whether to fire, and carrying an output toward other cells.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "provides_route_for",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "contributes_to",
+      "definition": "SOURCE contributes to the occurrence or change of TARGET, not merely permitting it.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "offers_opportunities_for",
+      "definition": "SOURCE offers opportunities for TARGET, without claiming it produces TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "neuron",
+        "target": "excitable_cell",
+        "context": "A neuron is an excitable cell that receives, processes, and transmits information through electrical and chemical signals."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "dendrite",
+        "target": "neuron",
+        "context": "Its dendrites receive many incoming signals"
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "cell_body",
+        "target": "neuron",
+        "context": "while its cell body integrates their effects on the membrane potential."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "axon_initial_segment",
+        "target": "axon",
+        "context": "When sufficient depolarization reaches the axon initial segment"
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "voltage_gated_sodium_channel",
+        "target": "axon_initial_segment",
+        "context": "voltage-gated sodium channels open"
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "action_potential",
+        "target": "axon",
+        "context": "The action potential travels along the axon as successive regions of membrane become depolarized."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "potassium_current",
+        "target": "membrane_return_toward_resting_state",
+        "context": "Potassium currents and changes in sodium channel availability help the membrane return toward its resting state after the spike."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "sodium_channel_availability_change",
+        "target": "membrane_return_toward_resting_state",
+        "context": "Potassium currents and changes in sodium channel availability help the membrane return toward its resting state after the spike."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "myelin",
+        "target": "saltatory conduction",
+        "context": "In many axons, myelin insulates the membrane between small exposed regions called nodes of Ranvier. Action potentials are regenerated at these nodes, allowing saltatory conduction to carry signals rapidly along the axon."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "nodes of ranvier",
+        "target": "saltatory conduction",
+        "context": "Action potentials are regenerated at these nodes, allowing saltatory conduction to carry signals rapidly along the axon."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "connects",
+        "definition": "SOURCE connects the structure of a neuron to its function: receiving inputs, deciding whether to fire, and carrying an output toward other cells.",
+        "source": "arrangement",
+        "target": "neuron",
+        "context": "This arrangement connects the structure of a neuron to its function: receiving inputs, deciding whether to fire, and carrying an output toward other cells."
+      },
+      "canonical_key": "connects_structure_to_function",
+      "reason": "The new relation 'connects_structure_to_function' is coherent and specific, directly preserving the original definition regarding neuronal structure-function mapping. The direction is preserved as false (non-symmetric), which aligns with the biological reality that a neuron's structure connects to its function, but not vice versa in this specific phrasing. Symmetry is correctly set to false. The inverse is null, which is valid per the instructions for cases where an inverse relation does not exist or is not defined; no invented predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "arrival of an action potential",
+        "target": "opening of voltage-gated calcium channels",
+        "context": "At a chemical synapse, the arrival of an action potential at the presynaptic terminal opens voltage-gated calcium channels."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "opening of voltage-gated calcium channels",
+        "target": "entry of calcium ions",
+        "context": "At a chemical synapse, the arrival of an action potential at the presynaptic terminal opens voltage-gated calcium channels. Calcium entry promotes the fusion of synaptic vesicles with the presynaptic membrane, releasing neurotransmitter into the synaptic cleft."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "entry of calcium ions",
+        "target": "fusion of synaptic vesicles with the presynaptic membrane",
+        "context": "Calcium entry promotes the fusion of synaptic vesicles with the presynaptic membrane, releasing neurotransmitter into the synaptic cleft."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "fusion of synaptic vesicles with the presynaptic membrane",
+        "target": "release of neurotransmitter into the synaptic cleft",
+        "context": "Calcium entry promotes the fusion of synaptic vesicles with the presynaptic membrane, releasing neurotransmitter into the synaptic cleft."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_005",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "release of neurotransmitter into the synaptic cleft",
+        "target": "diffusion of neurotransmitter across the synaptic cleft",
+        "context": "The neurotransmitter diffuses across this narrow space and binds to receptors on the postsynaptic cell."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_006",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "diffusion of neurotransmitter across the synaptic cleft",
+        "target": "binding of neurotransmitter to receptors on the postsynaptic cell",
+        "context": "The neurotransmitter diffuses across this narrow space and binds to receptors on the postsynaptic cell."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_007",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "binding of neurotransmitter to receptors",
+        "target": "alteration of ion flow",
+        "context": "These receptors can alter ion flow directly or activate intracellular signaling pathways, changing how likely the receiving neuron is to produce an action potential."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "binding of neurotransmitter to receptors",
+        "target": "activation of intracellular signaling pathways",
+        "context": "These receptors can alter ion flow directly or activate intracellular signaling pathways, changing how likely the receiving neuron is to produce an action potential."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_009",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "alteration of ion flow",
+        "target": "change in likelihood of receiving neuron producing an action potential",
+        "context": "These receptors can alter ion flow directly or activate intracellular signaling pathways, changing how likely the receiving neuron is to produce an action potential."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_010",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "activation of intracellular signaling pathways",
+        "target": "change in likelihood of receiving neuron producing an action potential",
+        "context": "These receptors can alter ion flow directly or activate intracellular signaling pathways, changing how likely the receiving neuron is to produce an action potential."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "glutamate",
+        "target": "excitatory transmission",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_002",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "gaba",
+        "target": "inhibitory transmission",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_003",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "central nervous system",
+        "target": "excitatory transmission",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "central nervous system",
+        "target": "inhibitory transmission",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_005",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "receptors (7dedf586)",
+        "target": "effect of neurotransmitters",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_006",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "ionic conditions",
+        "target": "effect of neurotransmitters",
+        "context": "Glutamate commonly mediates excitatory transmission in the central nervous system, whereas GABA commonly mediates inhibitory transmission, although the effect depends on the receptors and ionic conditions involved."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_007",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "neuron",
+        "target": "combination of excitatory and inhibitory inputs",
+        "context": "A neuron combines many excitatory and inhibitory inputs rather than responding to every synapse in isolation."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_008",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "neuron",
+        "target": "response to synapses",
+        "context": "A neuron combines many excitatory and inhibitory inputs rather than responding to every synapse in isolation."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_009",
+      "original": {
+        "label": "provides",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "electrical synapse",
+        "target": "communication route",
+        "context": "Electrical synapses provide another route for communication: gap junctions allow current to pass directly between connected cells."
+      },
+      "canonical_key": "provides_route_for",
+      "reason": "The new relation 'provides_route_for' is coherent as it explicitly defines the source providing conditions for the target without claiming production, matching the original definition. Direction is preserved by setting 'symmetric' to false and defining the inverse as null, which correctly reflects that 'A provides route for B' does not imply 'B provides route for A'. The inverse is validly null because the relation is asymmetric; swapping endpoints yields a non-equivalent state rather than an equivalent one. No vague predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_004_relation_010",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "gap junction",
+        "target": "current passage between connected cells",
+        "context": "Electrical synapses provide another route for communication: gap junctions allow current to pass directly between connected cells."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_011",
+      "original": {
+        "label": "contributes_to",
+        "definition": "SOURCE contributes to the occurrence or change of TARGET, not merely permitting it.",
+        "source": "both forms of communication",
+        "target": "coordinated activity",
+        "context": "Both forms of communication contribute to coordinated activity, but chemical synapses offer many opportunities to adjust the strength and timing of transmission."
+      },
+      "canonical_key": "contributes_to",
+      "reason": "The new relation 'contributes_to' is coherent and specific, defined as a source actively contributing to a target's occurrence or change. The original data explicitly states this is not symmetric (chemical synapses adjust timing/strength unidirectionally in the context provided), so setting 'symmetric': false correctly preserves direction. The inverse is set to null, which is valid per instructions for asymmetric relations where an explicit inverse relation does not exist. No vague predicates or incompatible entities were introduced; the definition strictly matches the source text."
+    },
+    {
+      "entity_id": "chunk_004_relation_012",
+      "original": {
+        "label": "offers_opportunities_for",
+        "definition": "SOURCE offers opportunities for TARGET, without claiming it produces TARGET.",
+        "source": "chemical synapse (b60a9265)",
+        "target": "adjustment of transmission strength and timing",
+        "context": "Both forms of communication contribute to coordinated activity, but chemical synapses offer many opportunities to adjust the strength and timing of transmission."
+      },
+      "canonical_key": "offers_opportunities_for",
+      "reason": "The new relation 'offers_opportunities_for' is coherent as it explicitly distinguishes offering opportunities from producing the target, matching the original definition. The direction is preserved (SOURCE -> TARGET). Symmetry is correctly set to false because offering an opportunity is not inherently reciprocal in this context. The inverse is correctly null, as there is no defined 'inverse' relation for this specific predicate in the data; the instruction clarifies that inverse refers to swapping endpoints for equivalence, which does not apply here since the relation is directional and non-symmetric."
+    },
+    {
+      "entity_id": "chunk_006_relation_001",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "synaptic plasticity",
+        "target": "capacity of a synapse to change its effectiveness as a result of activity and other influences",
+        "context": "Synaptic plasticity is the capacity of a synapse to change its effectiveness as a result of activity and other influences."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_002",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "long-term potentiation",
+        "target": "long-term potentiation",
+        "context": "Long-term potentiation, often abbreviated as LTP, refers to a lasting increase in synaptic strength"
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_003",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "long-term depression",
+        "target": "lasting decrease in synaptic strength",
+        "context": "while long-term depression, or LTD, refers to a lasting decrease."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "nmda receptors",
+        "target": "linking coincident activity to calcium entry into the postsynaptic neuron",
+        "context": "At some excitatory synapses in the hippocampus, NMDA receptors help link coincident activity to calcium entry into the postsynaptic neuron."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

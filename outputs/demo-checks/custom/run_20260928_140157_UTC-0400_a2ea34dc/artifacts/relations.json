@@ -1,0 +1,193 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "TARGET causally produces the occurrence or change of SOURCE, not merely permitting it.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "neuron",
+        "target": "excitable cell",
+        "context": "A neuron is an excitable cell that receives, processes, and transmits information through electrical and chemical signals."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "dendrite",
+        "target": "neuron",
+        "context": "Its dendrites receive many incoming signals"
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "cell body",
+        "target": "neuron",
+        "context": "while its cell body integrates their effects on the membrane potential."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "voltage-gated sodium channel",
+        "target": "axon initial segment",
+        "context": "When sufficient depolarization reaches the axon initial segment, voltage-gated sodium channels open and an action potential begins."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "depolarization",
+        "target": "opening of voltage-gated sodium channels",
+        "context": "When sufficient depolarization reaches the axon initial segment, voltage-gated sodium channels open and an action potential begins."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "opening of voltage-gated sodium channels",
+        "target": "action potential",
+        "context": "When sufficient depolarization reaches the axon initial segment, voltage-gated sodium channels open and an action potential begins."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

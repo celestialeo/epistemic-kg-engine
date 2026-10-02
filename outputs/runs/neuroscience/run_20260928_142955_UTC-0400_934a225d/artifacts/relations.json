@@ -1,0 +1,349 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "TARGET causally produces the occurrence or change of SOURCE, not merely permitting it.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "links_behavior_to_activity",
+      "definition": "SOURCE links the behavior of TARGET to the activity of SOURCE.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "specialized_for",
+      "definition": "SOURCE is adapted to perform the functions listed in TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "operates_in",
+      "definition": "SOURCE functions within the context of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_instance_of",
+      "definition": "SOURCE is an instance or component of TARGET, rather than a subtype.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "combines",
+      "definition": "SOURCE has the capability to merge or integrate TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "modifies",
+      "definition": "SOURCE has the capability to modify or change TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "connects",
+        "definition": "SOURCE links the behavior of TARGET to the activity of SOURCE.",
+        "source": "neuronal communication",
+        "target": "behavior of individual cells",
+        "context": "Neuronal communication connects the behavior of individual cells to the activity of an entire nervous system."
+      },
+      "canonical_key": "links_behavior_to_activity",
+      "reason": "The new relation 'links_behavior_to_activity' is coherent and specific, directly mirroring the original definition where SOURCE (neuronal communication) links TARGET (individual cell behavior) to SOURCE activity. Direction is preserved as the flow is from cells to system via the source. Symmetry is correctly set to false because the relationship is directional (cells link to system, not vice versa in this context). The inverse is null, which is valid per instructions for non-equivalence relations where swapping endpoints does not yield a related pair."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "connects",
+        "definition": "SOURCE links the behavior of TARGET to the activity of SOURCE.",
+        "source": "neuronal communication",
+        "target": "activity of an entire nervous system",
+        "context": "Neuronal communication connects the behavior of individual cells to the activity of an entire nervous system."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "neuron",
+        "target": "excitable cell",
+        "context": "A neuron is an excitable cell specialized for receiving, processing, and transmitting signals."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "specialized_for",
+        "definition": "SOURCE is adapted to perform the functions listed in TARGET.",
+        "source": "neuron",
+        "target": "receiving, processing, and transmitting signals",
+        "context": "A neuron is an excitable cell specialized for receiving, processing, and transmitting signals."
+      },
+      "canonical_key": "specialized_for",
+      "reason": "The relation 'specialized_for' is inherently asymmetric (a neuron is specialized for signals, but signals are not specialized for a neuron), so setting symmetric to false is correct. The inverse is null, which is valid because the definition does not describe a reciprocal relationship where the target adapts to the source's functions; thus, no non-null inverse exists. The definitions in occurrence and new_contract match exactly, preserving meaning and direction without invention or vagueness."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "operate_in",
+        "definition": "SOURCE functions within the context of TARGET.",
+        "source": "neuron",
+        "target": "circuit",
+        "context": "Neurons operate in circuits rather than as isolated decision makers."
+      },
+      "canonical_key": "operates_in",
+      "reason": "The new relation 'operates_in' is coherent as it defines a functional context where a source (neuron) operates within a target (circuit). The meaning and direction are exactly preserved from the original definition. Symmetry is correctly set to false because operating in a circuit does not imply the circuit operates in the neuron. The inverse is correctly null, as there is no standard inverse relation defined for this specific directional context in the provided data."
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "not_is_a",
+        "definition": "SOURCE is not a subtype or kind of TARGET, but rather an instance or component.",
+        "source": "neuron",
+        "target": "isolated decision makers",
+        "context": "Neurons operate in circuits rather than as isolated decision makers."
+      },
+      "canonical_key": "is_instance_of",
+      "reason": "The new relation 'is_instance_of' correctly captures the semantic shift from 'not_is_a' (subtype) to instance/component. The direction is preserved as SOURCE (neuron) is an instance of TARGET (isolated decision makers contextually). Symmetry is false, which is correct for an instance-of relationship. The inverse is null, which is valid per instructions for non-equivalence relations where swapping endpoints does not yield a standard equivalence predicate."
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "can_combine",
+        "definition": "SOURCE has the capability to merge or integrate TARGET.",
+        "source": "circuit",
+        "target": "sensory information",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "combines",
+      "reason": "The new relation 'combines' is defined identically to the original 'can_combine', preserving meaning and direction. The 'symmetric' flag is correctly set to false, reflecting that merging is not inherently bidirectional in this context. The 'inverse' is null, which is valid per instructions when no specific inverse relation exists or is required. No vague predicates or incompatible entities were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "can_alter",
+        "definition": "SOURCE has the capability to modify or change TARGET.",
+        "source": "circuit",
+        "target": "movement",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "modifies",
+      "reason": "The new_contract definition exactly matches the original occurrence definition. The 'modifies' key correctly reflects the non-symmetric capability described in the context (a circuit alters movement). Symmetry is false as intended by the one-way capability. The inverse is null, which is valid since the relation is not symmetric and no reverse capability is defined."
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "circuit",
+        "target": "forming a memory",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "understanding a circuit",
+        "target": "anatomy of its cells",
+        "context": "Understanding a circuit requires several levels of explanation: the anatomy of its cells, the electrical properties of their membranes, the connections between them, and the ways those connections change."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "understanding a circuit",
+        "target": "electrical properties of their membranes",
+        "context": "Understanding a circuit requires several levels of explanation: the anatomy of its cells, the electrical properties of their membranes, the connections between them, and the ways those connections change."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "understanding a circuit",
+        "target": "connections between them",
+        "context": "Understanding a circuit requires several levels of explanation: the anatomy of its cells, the electrical properties of their membranes, the connections between them, and the ways those connections change."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "understanding a circuit",
+        "target": "ways those connections change",
+        "context": "Understanding a circuit requires several levels of explanation: the anatomy of its cells, the electrical properties of their membranes, the connections between them, and the ways those connections change."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "action_potential",
+        "target": "electrical_event",
+        "context": "an action potential is an electrical event occurring across a membrane."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "cell_body",
+        "target": "nucleus",
+        "context": "The cell body of a typical neuron contains the nucleus and much of the machinery needed to maintain the cell."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "cell_body",
+        "target": "machinery",
+        "context": "The cell body of a typical neuron contains the nucleus and much of the machinery needed to maintain the cell."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

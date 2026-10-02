@@ -1,0 +1,865 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "discharges_into",
+      "definition": "SOURCE moves out of and enters TARGET, changing its state or location.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "water cycle",
+        "target": "water movement process",
+        "context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "ocean",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "lake",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "river",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "soil",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "snow",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "ice",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "evaporation",
+        "target": "liquid to vapor change",
+        "context": "Evaporation changes liquid water into water vapor"
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "liquid to vapor change",
+        "target": "liquid water",
+        "context": "Evaporation changes liquid water into water vapor"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "condensation",
+        "target": "vapor to liquid change",
+        "context": "while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "vapor to liquid change",
+        "target": "water vapor",
+        "context": "while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "solar energy supply",
+        "target": "evaporation",
+        "context": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_014",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "humidity factor",
+        "target": "evaporation rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_015",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "wind factor",
+        "target": "evaporation rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_016",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "water availability",
+        "target": "evaporation rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "plant root absorption",
+        "target": "water",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "stomatal vapor release",
+        "target": "water vapor (272523ab)",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "transpiration",
+        "target": "stomatal vapor release",
+        "context": "This release is transpiration."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "evapotranspiration",
+        "target": "evapotranspiration",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "air transport of vapor",
+        "target": "water vapor (272523ab)",
+        "context": "Moving air transports water vapor."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "air cooling and saturation",
+        "target": "vapor condensation",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_007",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "vapor condensation",
+        "target": "small particles",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_008",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "cloud",
+        "target": "tiny liquid droplets",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_009",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "cloud",
+        "target": "ice crystals",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "cloud particle growth",
+        "target": "precipitation fall",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "precipitation fall",
+        "target": "water (6b225a36)",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "water evaporation before ground",
+        "target": "water (6b225a36)",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "rain snow return",
+        "target": "atmospheric water",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "precipitation",
+        "target": "land",
+        "context": "After precipitation reaches land, water can follow several pathways."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "evaporation (5e1d8a7d)",
+        "target": "precipitation",
+        "context": "Some remains on leaves and later evaporates,"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "surface flow",
+        "target": "precipitation",
+        "context": "some flows over the surface,"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "infiltration",
+        "target": "precipitation",
+        "context": "and some enters the ground."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "soil structure",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_006",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "existing moisture",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_007",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "vegetation",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "rainfall intensity",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_009",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "root absorption",
+        "target": "water in soil",
+        "context": "Water in soil may be absorbed by roots,"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_010",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "pore space retention",
+        "target": "water in soil",
+        "context": "remain in pore spaces,"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_011",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "percolation",
+        "target": "water in soil",
+        "context": "or move deeper through the subsurface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_001",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "groundwater recharge",
+        "target": "groundwater (0f6e24d1)",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_002",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "groundwater (0f6e24d1)",
+        "target": "aquifer",
+        "context": "Groundwater fills pores or fractures in saturated material."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "discharges_into",
+        "definition": "SOURCE moves out of and enters TARGET, changing its state or location.",
+        "source": "groundwater (0f6e24d1)",
+        "target": "stream",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "discharges_into",
+      "reason": "The new relation 'discharges_into' is coherent as it describes a physical flow from source to target. The definition exactly matches the original data, preserving meaning and direction (source moves out of and enters target). Symmetry is correctly set to false because discharge is directional (A discharges into B does not imply B discharges into A). The inverse is correctly null, as there is no standard inverse relation defined for this specific process in the provided context, and 'null' is a valid inverse state per instructions."
+    },
+    {
+      "entity_id": "chunk_005_relation_004",
+      "original": {
+        "label": "discharges_into",
+        "definition": "SOURCE moves out of and enters TARGET, changing its state or location.",
+        "source": "groundwater (0f6e24d1)",
+        "target": "lake (1c351daa)",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "discharges_into",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_005",
+      "original": {
+        "label": "discharges_into",
+        "definition": "SOURCE moves out of and enters TARGET, changing its state or location.",
+        "source": "groundwater (0f6e24d1)",
+        "target": "spring",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "discharges_into",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_012",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "watershed",
+        "target": "watershed",
+        "context": "A watershed is the land area that drains surface water toward a common outlet."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_013",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "river (e1ab0bf7)",
+        "target": "watershed",
+        "context": "A watershed is the land area that drains surface water toward a common outlet."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_014",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "lake (11b34797)",
+        "target": "watershed",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_015",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "wetland",
+        "target": "watershed",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_016",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "snow (d27a6191)",
+        "target": "watershed",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_017",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "ice (ca7c0452)",
+        "target": "watershed",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_001",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "water budget",
+        "target": "water budget",
+        "context": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_002",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "sustained withdrawals greater than replenishment",
+        "target": "groundwater storage reduction",
+        "context": "sustained withdrawals greater than replenishment can reduce groundwater storage"
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "groundwater storage reduction",
+        "target": "groundwater (1939c456)",
+        "context": "reduce groundwater storage"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "aquifer",
+        "target": "percolation (901cb26d)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter states that groundwater recharge is limited by factors such as soil saturation and low infiltration capacity. When these conditions exist (e.g., saturated soil), they physically inhibit the percolation event required for recharge into an aquifer. This aligns with the background question regarding limiting factors."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "aquifer",
+        "target": "surface runoff generation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text explicitly links surface runoff generation to conditions where infiltration fails (exceeding capacity or saturation). High rates of surface runoff directly inhibit the percolation event necessary for groundwater recharge into an aquifer. This addresses the background question about limiting factors."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "aquifer",
+        "target": "soil saturation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter identifies soil saturation as a specific condition limiting recharge. When an aquifer's recharge zone is saturated, it inhibits the percolation event. This is a direct geological factor mentioned in the text that answers the background question."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET.",
+        "source": "evapotranspiration",
+        "target": "stomatal vapor release (787b1c59)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The seed concept 'evapotranspiration' is defined as the combined process of evaporation and transpiration. Transpiration is mechanistically realized by stomatal vapor release. Therefore, the specific event of stomatal vapor release is a subtype (component instance) of the broader category 'evapotranspiration' in this context, or more precisely, 'evapotranspiration' encompasses both 'evaporation' and 'stomatal vapor release'. However, strictly following the schema where SOURCE is a subtype of TARGET: 'stomatal vapor release' is a specific type of event that contributes to 'evapotranspiration'. A better fit for 'is_a' might be if we consider 'evapotranspiration' as the super-category. Let's refine: The question asks for mechanisms distinguishing them. 'Stomatal vapor release' is the specific"
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "caused_by",
+        "definition": "The explicit event SOURCE is causally produced by TARGET.",
+        "source": "groundwater recharge",
+        "target": "infiltration limitation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater recharge is the specific outcome of water successfully entering the saturated zone; this process is directly caused by the event of infiltration limitation being absent or overcome. The target must be an event (infiltration limitation) rather than a static object."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "caused_by",
+        "definition": "The explicit event SOURCE is causally produced by TARGET.",
+        "source": "groundwater recharge",
+        "target": "surface sealing",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Surface sealing is a distinct event that inhibits recharge. Recharge events are caused by the absence of such sealing events or their resolution. This addresses the 'specific factors' in the background question regarding soil types prone to crusting."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0007",
+      "original": {
+        "label": "caused_by",
+        "definition": "The explicit event SOURCE is causally produced by TARGET.",
+        "source": "groundwater recharge",
+        "target": "aquifer saturation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. When an aquifer reaches saturation, the recharge process (adding to storage) stops or shifts to lateral flow. The event of recharge is thus caused by conditions where saturation has not yet occurred, but the limiting factor is the event of saturation itself."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

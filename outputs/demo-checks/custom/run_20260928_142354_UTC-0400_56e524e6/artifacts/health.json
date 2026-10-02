@@ -1,0 +1,59 @@
+{
+  "step": "semantic_review:document",
+  "error": "Stopped early: semantic_review:document failed 6/10 recent checks (limit 50%). Latest reason: The relation 'part_of' requires SOURCE to be a structural component of TARGET. The quote states that 'plasticity... describe[s] connected levels of explanation,' establishing plasticity as a conceptual descriptor or category within the framework, not a physical structural part. Furthermore, 'connected levels of explanation' is an abstract framework, while 'plasticity' is defined in the concept senses as a property; a property cannot be a structural component of an abstract framework. The quote entails that plasticity describes the levels, not that it constitutes their physical structure. Failed gates: semantics_valid, types_valid, certain, evidence. Inspect artifacts/health.json and events.jsonl before rerunning.",
+  "window": 10,
+  "minimum": 5,
+  "max_failure_rate": 0.5,
+  "recent": [
+    {
+      "passed": true,
+      "reason": "The text states 'it involves interacting neurons', where 'it' refers to 'Learning'. This directly entails the relation 'involves_participation_of' between 'learning' and 'interacting_neurons'. The quote includes both endpoints and the specific qualification 'involves'.",
+      "entity_id": "chunk_007_relation_009"
+    },
+    {
+      "passed": true,
+      "reason": "The quote explicitly states 'it involves interacting neurons, inhibition...', directly entailing that learning involves the participation of inhibition as a component aspect. The endpoints match the concepts exactly.",
+      "entity_id": "chunk_007_relation_010"
+    },
+    {
+      "passed": true,
+      "reason": "The quote explicitly states 'it involves... changes across many synapses', directly entailing that learning involves the participation of changes across many synapses as a component aspect. The endpoints match the concepts exactly.",
+      "entity_id": "chunk_007_relation_011"
+    },
+    {
+      "passed": true,
+      "reason": "The quote explicitly states 'it involves... activity distributed through wider networks', directly entailing that learning involves the participation of activity distributed through wider networks as a component aspect. The endpoints match the concepts exactly.",
+      "entity_id": "chunk_007_relation_012"
+    },
+    {
+      "passed": false,
+      "reason": "The quote states that neuronal excitability 'describe[s] connected levels of explanation', which implies a descriptive relationship or equivalence in context, not a subtype relationship ('is_a'). The relation definition requires SOURCE to be a subtype of TARGET, but the text does not support this classification; it lists them as parallel components describing a framework. Failed gates: semantics_valid, direction_valid, types_valid, evidence",
+      "entity_id": "chunk_008_relation_001"
+    },
+    {
+      "passed": false,
+      "reason": "The quote lists 'synaptic communication' as one of three items that collectively 'describe connected levels of explanation.' This establishes a collective description or enumeration relationship, not a subtype ('is_a') relationship where synaptic communication is a kind of the abstract framework itself. The relation definition requires SOURCE to be a subtype of TARGET; here, the source is merely an element contributing to the description of the target concept. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "entity_id": "chunk_008_relation_002"
+    },
+    {
+      "passed": false,
+      "reason": "The quote states that 'neuronal excitability, synaptic communication, and plasticity' together describe the levels of explanation. This implies these are distinct phenomena or properties being grouped to form a description, not that 'plasticity' is a subtype or kind of 'connected levels of explanation.' The text treats them as parallel components of the explanation hierarchy rather than instances of the framework itself. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "entity_id": "chunk_008_relation_003"
+    },
+    {
+      "passed": false,
+      "reason": "The relation definition for 'part_of' requires the SOURCE to be a structural component of the TARGET. The quote lists 'neuronal excitability' as one of three concepts that 'describe connected levels of explanation.' This is a semantic grouping or enumeration relationship, not a structural composition where neuronal excitability is a physical part of the abstract framework 'connected levels of explanation.' Furthermore, 'neuronal excitability' is defined in concept_senses as a process ('electrical behavior'), while 'connected levels of explanation' is an abstract framework; a process cannot be a structural component of an abstract framework in this context. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "entity_id": "chunk_008_relation_004"
+    },
+    {
+      "passed": false,
+      "reason": "The relation definition for 'part_of' requires the SOURCE to be a structural component of the TARGET. The quote lists 'synaptic communication' as one of three concepts that collectively describe the levels of explanation. This indicates an enumerative relationship where these items are examples or categories within the framework, not structural components making up the abstract concept itself. Additionally, 'synaptic communication' is defined as a process, which cannot be a structural component of an abstract framework. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "entity_id": "chunk_008_relation_005"
+    },
+    {
+      "passed": false,
+      "reason": "The relation 'part_of' requires SOURCE to be a structural component of TARGET. The quote states that 'plasticity... describe[s] connected levels of explanation,' establishing plasticity as a conceptual descriptor or category within the framework, not a physical structural part. Furthermore, 'connected levels of explanation' is an abstract framework, while 'plasticity' is defined in the concept senses as a property; a property cannot be a structural component of an abstract framework. The quote entails that plasticity describes the levels, not that it constitutes their physical structure. Failed gates: semantics_valid, types_valid, certain, evidence",
+      "entity_id": "chunk_008_relation_006"
+    }
+  ]
+}

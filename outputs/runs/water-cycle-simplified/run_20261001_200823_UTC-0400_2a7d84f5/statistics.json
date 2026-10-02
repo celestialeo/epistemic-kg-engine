@@ -1,0 +1,113 @@
+{
+  "run_id": "run_20261001_200823_UTC-0400_2a7d84f5",
+  "unresolved_items": [
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_004",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    }
+  ],
+  "input": {
+    "paragraphs": 3,
+    "chunks": 7,
+    "words": 486,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 35,
+    "incomplete_chunks": [
+      "chunk_001",
+      "chunk_004"
+    ],
+    "unresolved_records": 6,
+    "relations": 20,
+    "reviewed": 46,
+    "review_attempted": 46,
+    "semantic_rejections": 26,
+    "rejection_categories": {
+      "unsupported_claim": 14,
+      "meaning_changed": 12,
+      "wrong_direction": 11,
+      "wrong_kind": 11,
+      "quote_too_short": 1
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 12
+  },
+  "debate": {
+    "seeds": 29,
+    "proposed": 74,
+    "accepted": 6,
+    "rejected": 68,
+    "unresolved": 0,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 130,
+    "edges": 161,
+    "domain_nodes": 84,
+    "domain_edges": 26,
+    "provenance_edges": 135,
+    "isolated_domain_nodes": 48,
+    "node_kinds": {
+      "chunk": 11,
+      "concept": 76,
+      "event": 8,
+      "statement": 35
+    },
+    "edge_origins": {
+      "document": 155,
+      "background": 6
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 550,
+    "retries": 9,
+    "cache_hits": 0,
+    "embedding_calls": 15,
+    "prompt_tokens": 537278,
+    "output_tokens": 172306
+  },
+  "fidelity": {
+    "semantic_cosine": {
+      "n": 7,
+      "mean": 0.9942408341750221,
+      "median": 1.0,
+      "min": 0.9636155510698754,
+      "max": 1.0,
+      "sample_stddev": 0.013556505200819488
+    },
+    "token_jaccard": {
+      "n": 7,
+      "mean": 0.9564164648910412,
+      "median": 1.0,
+      "min": 0.711864406779661,
+      "max": 1.0,
+      "sample_stddev": 0.1080221598594353
+    },
+    "token_cosine": {
+      "n": 7,
+      "mean": 0.9788471570494174,
+      "median": 1.0,
+      "min": 0.8684012632589198,
+      "max": 1.0,
+      "sample_stddev": 0.04895316734594759
+    }
+  },
+  "interpretation": "Reconstruction similarity, not factual accuracy. The same model serves all roles; debate judgments are not independent verification. No significance tests on one document."
+}

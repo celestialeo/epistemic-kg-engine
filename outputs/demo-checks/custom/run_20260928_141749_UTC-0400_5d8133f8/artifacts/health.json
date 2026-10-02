@@ -1,0 +1,34 @@
+{
+  "step": "semantic_review:document",
+  "error": "Stopped early: semantic_review:document failed 5/5 recent checks (limit 50%). Latest reason: The quote states channels 'open' (an event/action), but the relation requires a structural component ('part_of'). Opening is not being a part; the channel is located in the segment, not structurally defined as a part by this specific action description. Failed gates: semantics_valid, types_valid, certain, objections_resolved, evidence. Inspect artifacts/health.json and events.jsonl before rerunning.",
+  "window": 10,
+  "minimum": 5,
+  "max_failure_rate": 0.5,
+  "recent": [
+    {
+      "passed": false,
+      "reason": "The quote explicitly defines a neuron as 'an excitable cell', satisfying the 'is_a' subtype relation with correct direction and no contradictions. Failed gates: evidence",
+      "entity_id": "chunk_001_relation_001"
+    },
+    {
+      "passed": false,
+      "reason": "The quote states 'Its dendrites receive many incoming signals' within the context of a neuron's architecture, confirming dendrites are structural components (parts) of the neuron. Failed gates: evidence",
+      "entity_id": "chunk_001_relation_002"
+    },
+    {
+      "passed": false,
+      "reason": "The quote identifies the 'cell body' as integrating effects within the neuron's description, establishing it as a structural component (part) of the neuron. Failed gates: evidence",
+      "entity_id": "chunk_001_relation_003"
+    },
+    {
+      "passed": false,
+      "reason": "The quote mentions the 'axon initial segment' in the context of depolarization reaching it to trigger action potentials along the axon, confirming it is a structural component (part) of the axon. Failed gates: evidence",
+      "entity_id": "chunk_001_relation_004"
+    },
+    {
+      "passed": false,
+      "reason": "The quote states channels 'open' (an event/action), but the relation requires a structural component ('part_of'). Opening is not being a part; the channel is located in the segment, not structurally defined as a part by this specific action description. Failed gates: semantics_valid, types_valid, certain, objections_resolved, evidence",
+      "entity_id": "chunk_001_relation_005"
+    }
+  ]
+}

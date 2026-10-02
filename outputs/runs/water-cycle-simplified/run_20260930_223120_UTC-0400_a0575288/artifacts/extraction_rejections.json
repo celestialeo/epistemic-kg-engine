@@ -1,0 +1,321 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "unsupported_claim": 14,
+    "meaning_changed": 12,
+    "wrong_direction": 11,
+    "wrong_kind": 11,
+    "quote_too_short": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_001_relation_002",
+      "chunk_id": "chunk_001",
+      "source": "oceans",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'Oceans' as a reservoir storing water but does not explicitly state that oceans participate in the 'water cycle' process itself; it only describes storage. The relation requires participation in the movement process, which is not entailed by the specific sentence provided. Failed gates: evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_003",
+      "chunk_id": "chunk_001",
+      "source": "lakes",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'lakes' as a reservoir storing water but does not explicitly state that lakes participate in the 'water cycle' process itself; it only describes storage. The relation requires participation in the movement process, which is not entailed by the specific sentence provided. Failed gates: evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_004",
+      "chunk_id": "chunk_001",
+      "source": "rivers",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'rivers' as a reservoir storing water but does not explicitly state that rivers participate in the 'water cycle' process itself; it only describes storage. The relation requires participation in the movement process, which is not entailed by the specific sentence provided. Failed gates: evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_005",
+      "chunk_id": "chunk_001",
+      "source": "soil",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'soil' as a reservoir storing water but does not explicitly state that soil participates in the 'water cycle' process itself; it only describes storage. The relation requires participation in the movement process, which is not entailed by the specific sentence provided. Failed gates: evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_006",
+      "chunk_id": "chunk_001",
+      "source": "groundwater",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'groundwater' as a reservoir storing water within the context of the water cycle description. While this implies participation, the specific relation 'participates_in' requires explicit textual support linking groundwater's action to the process itself rather than just its state as a storage component. The text describes the water cycle as moving between atmosphere, land, and bodies of water, then lists reservoirs. Groundwater is listed as a reservoir, not explicitly described as an active participant in the movement process in the quote provided. Failed gates: semantics_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_007",
+      "chunk_id": "chunk_001",
+      "source": "snow",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'snow' as a reservoir storing water. Similar to groundwater, the text presents snow as a storage entity within the cycle's description but does not explicitly state that snow 'participates in' the process of moving water between atmosphere, land, and bodies of water in the provided snippet. The relation requires explicit participation evidence. Failed gates: semantics_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_008",
+      "chunk_id": "chunk_001",
+      "source": "ice",
+      "relation": "participates_in",
+      "target": "water cycle",
+      "decision_reason": "The quote lists 'ice' as a reservoir storing water. The text identifies ice as a storage component but does not explicitly describe it participating in the movement process defined by the water cycle relation in the provided quote. Failed gates: semantics_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_009",
+      "chunk_id": "chunk_001",
+      "source": "evaporation",
+      "relation": "part_of",
+      "target": "water cycle",
+      "decision_reason": "The quote states 'Evaporation changes liquid water into water vapor'. The relation definition for 'part_of' requires SOURCE to be a structural component of TARGET. Evaporation is an event/process within the cycle, not a structural part (like a gear in a machine or a chapter in a book). The text describes evaporation as a phase change driven by solar energy, not a constituent part of the cycle's structure. Thus, 'part_of' is semantically invalid for an event being a part of a process. Failed gates: semantics_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_010",
+      "chunk_id": "chunk_001",
+      "source": "condensation",
+      "relation": "part_of",
+      "target": "water cycle",
+      "decision_reason": "The quote describes condensation as a process (event) changing vapor to liquid, not as a structural component of the water cycle process. The relation 'part_of' requires a structural part relationship, which is absent; an event cannot be a structural part of another process in this context. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_001",
+      "chunk_id": "chunk_002",
+      "source": "release of water vapor through leaf openings called stomata",
+      "relation": "is_a",
+      "target": "transpiration",
+      "decision_reason": "The quote 'This release is transpiration' defines the specific event (release of water vapor) as an instance or example of the general process 'transpiration', not a subtype in the sense of 'is_a' where SOURCE is a distinct kind of TARGET. The relation definition requires SOURCE to be a subtype/kind, but here SOURCE is the specific occurrence being named by TARGET. Additionally, the quote explicitly equates the release event with transpiration rather than stating 'release... is a type of transpiration'. Failed gates: semantics_valid, types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_003",
+      "chunk_id": "chunk_002",
+      "source": "moving air",
+      "relation": "causes",
+      "target": "water vapor transport",
+      "decision_reason": "The quote 'Moving air transports water vapor' describes the action of moving air on water vapor. However, the TARGET in the relation is 'water vapor transport', which is a process name. The quote does not explicitly state that 'moving air causes water vapor transport' as a distinct event; rather, it uses the verb 'transports'. More critically, the concept sense for 'water vapor transport' defines it as 'movement of water vapor by moving air'. While semantically close, strict adherence to 'causes' requires the quote to frame the movement as an event caused by the agent. The quote frames it as a direct action ('transports') rather than a causal production of a named process event. Furthermore, the relation definition states TARGET must name the action or change, not its affected object. Here 'water vapor transport' names the process, but the quote's phrasing 'Moving air transports water vapor' makes 'water vapor' the object, not the process itself as the target of the causal claim in the exact wording. Failed gates: semantics_valid, types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_001",
+      "chunk_id": "chunk_003",
+      "source": "cloud particle",
+      "relation": "causes",
+      "target": "precipitation",
+      "decision_reason": "The quote states 'Cloud particles must grow before they can fall as precipitation', which describes a necessary condition for the event of falling (precipitation), not a direct causal production where the particle itself causes the event in the sense defined ('SOURCE causally produces the explicit event TARGET'). The relation definition requires SOURCE to produce TARGET, but the text frames it as a prerequisite condition ('must grow before'), implying a process dependency rather than a direct causal act of production by the specific entity 'cloud particle' on the event 'precipitation' without further context. Furthermore, 'precipitation' is defined as an event (falling water), and while the quote links growth to falling, the strict causal definition often requires the source to be the active agent producing the change; here the growth is a state change enabling the event. More critically, the relation definition says 'TARGET names the action or change', but 'precipitation' is used as a noun for the event. The quote supports that growth is required for precipitation, but does not strictly entail that the 'cloud particle' (as an entity) causes the 'precipitation' (event) in the exact Failed gates: semantics_valid, direction_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_003",
+      "chunk_id": "chunk_003",
+      "source": "snow (85e3a00a)",
+      "relation": "acts_on",
+      "target": "atmospheric water",
+      "decision_reason": "The relation definition requires TARGET to be an object (not another event or process). Here, SOURCE is 'snow' (an event) and TARGET is 'atmospheric water' (a substance), which violates the constraint that TARGET must not be another event or process if the relation implies acting on a process. More critically, the quote states snow returns atmospheric water to the surface, implying an action on the substance's position/availability, but the definition explicitly forbids TARGET being 'another event or process'. While 'atmospheric water' is a substance, the phrasing 'acts_on' combined with the definition's restriction suggests a mismatch if the system interprets 'returning' as changing the state of an entity rather than acting on it. However, the primary failure here is likely the interpretation of 'atmospheric water' as the target of an action that changes its state/position. The quote supports the action, but strict adherence to 'TARGET is not another event or process' is met since 'atmospheric water' is a substance. Re-evaluating: The definition says 'TARGET is not another event or process'. 'Atmospheric water' is a substance. This should be valid. Wait, the instruction says 'Doct Failed gates: semantics_valid, types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_002",
+      "chunk_id": "chunk_005",
+      "source": "groundwater (04ac1a99)",
+      "relation": "contained_in",
+      "target": "saturated zone",
+      "decision_reason": "The quote states 'Groundwater fills pores or fractures in saturated material.' This describes the location/content of groundwater but does not explicitly state that groundwater is spatially contained *in* the saturated zone as a whole entity. The relation 'contained_in' implies a spatial containment relationship between the substance and the zone, which is not directly entailed by the phrase 'fills pores...'. While semantically plausible in the real world, the strict entailment condition requires the text to support the specific spatial containment claim. The text defines what groundwater does (fills pores) rather than explicitly stating its containment relation to the zone itself. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_003",
+      "chunk_id": "chunk_005",
+      "source": "aquifer",
+      "relation": "contains",
+      "target": "groundwater (04ac1a99)",
+      "decision_reason": "The quote states 'An aquifer is a geologic formation that stores and transmits usable quantities of groundwater.' While this implies the aquifer contains groundwater, the relation definition for 'contains' requires explicit spatial containment. The text defines the function (stores/transmits) rather than explicitly stating the spatial containment relationship ('aquifer contains groundwater'). Strict entailment fails because the quote describes a functional role rather than the structural containment state required by the relation. Failed gates: semantics_valid, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_004",
+      "chunk_id": "chunk_005",
+      "source": "groundwater (04ac1a99)",
+      "relation": "participates_in",
+      "target": "groundwater recharge",
+      "decision_reason": "The quote states 'Water reaching the saturated zone can contribute to groundwater recharge'. The relation is 'participates_in' with SOURCE='groundwater' and TARGET='groundwater recharge'. However, the quote refers to 'Water reaching the saturated zone' (a specific subset or state of water) contributing to recharge, not explicitly 'groundwater' as a general substance participating in the process. While semantically close, strict entailment requires the text to link the exact entity 'groundwater' to the participation. The phrase 'Water reaching...' is a description of the mechanism, not an explicit statement that the entity 'groundwater' participates. Failed gates: semantics_valid, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_001",
+      "chunk_id": "chunk_006",
+      "source": "surface runoff",
+      "relation": "caused_by",
+      "target": "rainfall",
+      "decision_reason": "The quote states 'Surface runoff develops when... rainfall exceeds...', establishing that rainfall is a condition or cause for runoff. The candidate relation claims 'surface runoff' (SOURCE) is caused_by 'rainfall' (TARGET). While the direction of causality in the text matches the relation definition (Rainfall -> Runoff), the semantic validity fails because the quote explicitly frames rainfall as an antecedent condition ('when rainfall exceeds...') rather than the sole explicit event producing the process in isolation, but more critically, the relation definition requires the SOURCE to be the action produced by TARGET. Here, 'surface runoff' is indeed the action produced. However, looking closer at the instruction: 'The explicit event SOURCE is causally produced by TARGET.' In the quote, 'Surface runoff develops' (SOURCE) happens 'when rainfall...' (TARGET). This seems valid. Let's re-evaluate strictness. The prompt says 'Evaluate the literal SOURCE relation TARGET'. Quote: 'Surface runoff develops when... rainfall...'. Relation: surface runoff caused_by rainfall. This looks supported. Wait, I need to check if there are objections. Is rainfall an 'event'? Yes. Is runoff a 'process' Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_002",
+      "chunk_id": "chunk_006",
+      "source": "surface runoff",
+      "relation": "caused_by",
+      "target": "ground saturation",
+      "decision_reason": "The quote states runoff develops 'when the ground is already saturated'. This describes a state (ground saturation) as a condition for runoff, not necessarily an active event causing it in the same causal sense as rainfall, though logically related. However, the primary issue is that 'ground saturation' is defined as a 'state', while the relation definition implies an explicit event producing another. More importantly, the quote lists 'rainfall exceeds...' OR 'ground is already saturated'. The relation isolates 'ground saturation' as the cause. While valid in one clause, the quote presents it as a condition alongside rainfall. But strictly, if ground is saturated, runoff develops. So 'ground saturation' causes 'runoff'? Or is it a prerequisite? The definition says 'explicit event SOURCE is causally produced by TARGET'. If TARGET is 'ground saturation', does it produce 'surface runoff'? Yes, when the ground is saturated, runoff occurs. But is 'ground saturation' an event? The concept sense defines it as a 'state'. The relation definition requires 'event'. This mismatch in kind (state vs event) makes it invalid under strict definitions provided. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_003",
+      "chunk_id": "chunk_006",
+      "source": "surface runoff",
+      "relation": "occurs_in",
+      "target": "watershed",
+      "decision_reason": "The quote defines a watershed as 'the land area that drains surface water'. It does not state that surface runoff 'occurs in' the watershed. While logically true that runoff happens within a watershed, the specific textual evidence required to support the relation 'occurs_in' is missing from the provided quote. The quote only defines the watershed's function, not the location of the runoff process relative to it. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "quote_too_short",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_004",
+      "chunk_id": "chunk_006",
+      "source": "river",
+      "relation": "part_of",
+      "target": "watershed",
+      "decision_reason": "The relation claims a river is a structural part of a watershed ('part_of'). The quote defines a watershed as 'the land area that drains surface water toward a common outlet' and mentions rivers carry water downstream. It does not state that the river is a component or part of the watershed structure. A river flows through a watershed; it is not a sub-component in the structural sense implied by 'part_of'. The text describes functional relationships, not structural composition. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_005",
+      "chunk_id": "chunk_006",
+      "source": "lake",
+      "relation": "part_of",
+      "target": "watershed",
+      "decision_reason": "The quote states lakes 'store' water and influence timing; it does not state a lake is a structural component of the watershed land area. The relation definition requires 'SOURCE is a structural component of TARGET'. A lake is located within or drains into a watershed but is not a part of the land area itself (which is soil/rock). This violates the 'structural component' requirement and changes meaning from 'storage feature' to 'part_of'. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_006",
+      "chunk_id": "chunk_006",
+      "source": "wetland",
+      "relation": "part_of",
+      "target": "watershed",
+      "decision_reason": "The quote states wetlands 'store' water and influence timing; it does not state a wetland is a structural component of the watershed land area. Similar to relation 005, a wetland is a feature within the drainage basin, not a part of the land area definition itself. This violates the 'structural component' requirement. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_007",
+      "chunk_id": "chunk_006",
+      "source": "snow (810735c0)",
+      "relation": "part_of",
+      "target": "watershed",
+      "decision_reason": "The quote states snow 'stores' water; it does not state snow is a structural component of the watershed land area. Snow is a substance that may be present in a watershed, but it is not a part of the land area (soil/rock) itself. This violates the 'structural component' requirement. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_008",
+      "chunk_id": "chunk_006",
+      "source": "ice (c42c0aec)",
+      "relation": "part_of",
+      "target": "watershed",
+      "decision_reason": "The quote states ice 'stores' water; it does not state ice is a structural component of the watershed land area. Ice is a substance that may be present in a watershed, but it is not a part of the land area (soil/rock) itself. This violates the 'structural component' requirement. Failed gates: semantics_valid, direction_valid, types_valid, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_001",
+      "chunk_id": "chunk_007",
+      "source": "water budget",
+      "relation": "is_a",
+      "target": "process (d60d01d4)",
+      "decision_reason": "The quote defines 'water budget' as a comparison of inputs/outputs/storage (a process), while the target 'process (d60d01d4)' is defined as a general category of activity. The relation 'is_a' requires the source to be a subtype or kind of the target. Here, the source is an instance of a specific process type, not necessarily a subtype of the generic 'process' entity in the ontology sense required by the definition (SOURCE is a subtype or kind of TARGET). Furthermore, the quote describes the specific activity, whereas the target is a generic category; the quote does not explicitly state that 'water budget' is a *kind* of 'process' but rather defines what it *is*. The relation definition demands a subtype/kind relationship which is not strictly entailed by the definitional quote alone without assuming the generic 'process' node covers all specific processes as subtypes, which might be an ontology assumption. More critically, the target concept sense is 'entity', while the source is 'process'. A process cannot be a subtype of an entity in this schema unless 'process' is treated as a kind of entity, but the relation definition says 'SOURCE is a subtype or kind of TARGET'. If TARGET is Failed gates: semantics_valid, types_valid, evidence",
+      "categories": [
+        "unsupported_claim",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_005",
+      "chunk_id": "chunk_007",
+      "source": "pumping",
+      "relation": "acts_on",
+      "target": "groundwater",
+      "decision_reason": "The quote states 'Pumping removes groundwater', which entails that the process 'pumping' acts on the entity 'groundwater'. However, the relation definition requires TARGET to be an object/entity, not another event or process. While 'groundwater' is an entity, the specific claim in the quote is about removing the substance itself rather than changing its state/position via an external agent in a way that distinguishes it from the process of removal being the act. More critically, the relation definition says 'TARGET is not another event or process'. Here TARGET is 'groundwater' (entity), so types are valid. Wait, re-evaluating: Source='pumping' (process), Target='groundwater' (entity). Quote: 'Pumping removes groundwater'. This fits 'acts_on'. Why invalid? The instruction says 'TARGET is not another event or process'. Groundwater is an entity. So types are valid. Is there a contradiction? No. Is it certain? Yes. Then why unsupported? Ah, the relation definition says 'The event SOURCE acts on or changes the state... of the object TARGET'. Pumping removes groundwater. This changes the availability/state (by removing). It seems valid. Let me re-read the rejection criteria. Maybe the 'p Failed gates: semantics_valid, types_valid, evidence",
+      "categories": [
+        "unsupported_claim",
+        "wrong_kind"
+      ]
+    }
+  ]
+}

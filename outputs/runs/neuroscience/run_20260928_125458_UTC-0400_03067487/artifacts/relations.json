@@ -1,0 +1,613 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "TARGET causally produces the occurrence or change of SOURCE, not merely permitting it.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "can_participate_in",
+      "definition": "SOURCE has the capability to take part in the process listed in TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_not_composed_of",
+      "definition": "SOURCE is explicitly not equivalent to or composed of TARGET, negating a specific compositional claim.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "operate_in",
+        "definition": "SOURCE operates within the context or structure of TARGET.",
+        "source": "neurons",
+        "target": "circuit",
+        "context": "Neurons operate in circuits rather than as isolated decision makers."
+      },
+      "canonical_key": null,
+      "reason": "Conflicting inverse or symmetry contract"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "can_participate_in",
+        "definition": "SOURCE has the capability to take part in the process listed in TARGET.",
+        "source": "circuit",
+        "target": "forming a memory",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "can_participate_in",
+      "reason": "The new relation 'can_participate_in' is coherent as it defines a capability relationship. The original meaning and direction are exactly preserved: SOURCE (circuit) has the capability to take part in TARGET (forming a memory). Symmetry is correctly set to false because capability is not inherently reciprocal (if A can participate in B, B does not necessarily have the capability to participate in A). The inverse is correctly null because 'can_participate_in' describes an asymmetric capability, and its inverse would require a distinct predicate for the reverse process, which is not defined here. No vague predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "understanding",
+        "target": "circuit",
+        "context": "Understanding a circuit requires several levels of explanation: the anatomy of its cells, the electrical properties of their membranes, the connections between them, and the ways those connections change."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "neuron's plasma membrane",
+        "target": "neuron's plasma membrane",
+        "context": "The membrane's lipid bilayer impedes the movement of many charged particles"
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_004",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "neuron's plasma membrane",
+        "target": "embedded proteins",
+        "context": "while embedded proteins provide regulated paths across it."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_005",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "embedded proteins",
+        "target": "ion channels",
+        "context": "Ion channels permit selected ions to move according to their electrochemical gradients."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_006",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "embedded proteins",
+        "target": "transporters",
+        "context": "Transporters and pumps move substances by other mechanisms, sometimes using metabolic energy."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_007",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "embedded proteins",
+        "target": "pumps",
+        "context": "Transporters and pumps move substances by other mechanisms, sometimes using metabolic energy."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "channel",
+        "target": "ion current",
+        "context": "The presence of a channel permits an ion current under suitable conditions; the channel does not create the ions."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_002",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "membrane",
+        "target": "electrical signaling",
+        "context": "Likewise, the membrane provides a location for electrical signaling without becoming a structural component of the electrical event itself."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_010_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "channel availability",
+        "target": "initiation of a spike by a particular input",
+        "context": "Channel availability, recent activity, and the state of the membrane influence whether a particular input will initiate a spike."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_013_relation_001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "action potential",
+        "target": "propagation",
+        "context": "An action potential propagates because electrical current from an active region influences neighboring membrane."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_013_relation_004",
+      "original": {
+        "label": "has_participant",
+        "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+        "source": "unmyelinated axon",
+        "target": "regeneration",
+        "context": "In an unmyelinated axon, successive nearby regions regenerate the signal."
+      },
+      "canonical_key": "has_participant",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_013_relation_008",
+      "original": {
+        "label": "has_part",
+        "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+        "source": "myelinated axon",
+        "target": "node of ranvier",
+        "context": "In a myelinated axon, insulating myelin surrounds intervals of the axon, leaving gaps called nodes of Ranvier."
+      },
+      "canonical_key": "has_part",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_013_relation_010",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "regeneration",
+        "target": "saltatory conduction",
+        "context": "Regeneration of the action potential is concentrated at the nodes, producing saltatory conduction."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_013_relation_011",
+      "original": {
+        "label": "does_not_represent",
+        "definition": "SOURCE is explicitly not equivalent to or composed of TARGET; this negates a specific compositional claim.",
+        "source": "action potential",
+        "target": "packet of sodium ions traveling unchanged from the cell body to the terminal",
+        "context": "The signal does not represent one packet of sodium ions traveling unchanged from the cell body to the terminal."
+      },
+      "canonical_key": "is_not_composed_of",
+      "reason": "The new relation 'is_not_composed_of' correctly formalizes the source text's negation of composition. The definition explicitly states SOURCE is not equivalent to or composed of TARGET, matching the context. Symmetry is false because if A is not composed of B, B may still be composed of A (or vice versa depending on semantics), so the relation is asymmetric. The inverse is null, which is valid for an asymmetric negation relation where swapping endpoints does not yield a standard equivalence-based inverse. No vague predicates or incompatible entities are used."
+    },
+    {
+      "entity_id": "chunk_018_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "arriving spike",
+        "target": "channel opening",
+        "context": "The arriving spike promotes channel opening"
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_018_relation_002",
+      "original": {
+        "label": "is_not_composed_of",
+        "definition": "SOURCE is explicitly not equivalent to or composed of TARGET, negating a specific compositional claim.",
+        "source": "arriving spike",
+        "target": "calcium channels",
+        "context": "it does not manufacture calcium channels."
+      },
+      "canonical_key": "is_not_composed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_021_relation_003",
+      "original": {
+        "label": "has_part",
+        "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+        "source": "neurons",
+        "target": "dendrites",
+        "context": "A neuron usually receives many inputs distributed across its dendrites and cell body."
+      },
+      "canonical_key": "has_part",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_021_relation_004",
+      "original": {
+        "label": "has_part",
+        "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+        "source": "neurons",
+        "target": "cell body",
+        "context": "A neuron usually receives many inputs distributed across its dendrites and cell body."
+      },
+      "canonical_key": "has_part",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_022_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "two individually weak inputs",
+        "target": "firing",
+        "context": "Two individually weak inputs may jointly contribute to firing"
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_022_relation_002",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "an inhibitory input",
+        "target": "a group of excitatory inputs from reaching threshold",
+        "context": "an inhibitory input may prevent a group of excitatory inputs from reaching threshold"
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_001",
+      "original": {
+        "label": "requires_understanding_of",
+        "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+        "source": "chemical signaling",
+        "target": "synapse",
+        "context": "Chemical signaling must also end or change if a synapse is to remain responsive."
+      },
+      "canonical_key": "requires_understanding_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_002",
+      "original": {
+        "label": "can_participate_in",
+        "definition": "SOURCE has the capability to take part in the process listed in TARGET.",
+        "source": "neurotransmitter",
+        "target": "uptake into cells",
+        "context": "Neurotransmitter can be removed through uptake into cells, enzymatic breakdown, or diffusion away from receptors, depending on the transmitter and synapse."
+      },
+      "canonical_key": "can_participate_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_003",
+      "original": {
+        "label": "can_participate_in",
+        "definition": "SOURCE has the capability to take part in the process listed in TARGET.",
+        "source": "neurotransmitter",
+        "target": "enzymatic breakdown",
+        "context": "Neurotransmitter can be removed through uptake into cells, enzymatic breakdown, or diffusion away from receptors, depending on the transmitter and synapse."
+      },
+      "canonical_key": "can_participate_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_004",
+      "original": {
+        "label": "can_participate_in",
+        "definition": "SOURCE has the capability to take part in the process listed in TARGET.",
+        "source": "neurotransmitter",
+        "target": "diffusion away from receptors",
+        "context": "Neurotransmitter can be removed through uptake into cells, enzymatic breakdown, or diffusion away from receptors, depending on the transmitter and synapse."
+      },
+      "canonical_key": "can_participate_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_005",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "uptake into cells",
+        "target": "receptor activation",
+        "context": "These mechanisms limit the duration of receptor activation and influence responses to subsequent signals."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_006",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "enzymatic breakdown",
+        "target": "receptor activation",
+        "context": "These mechanisms limit the duration of receptor activation and influence responses to subsequent signals."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_007",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "diffusion away from receptors",
+        "target": "receptor activation",
+        "context": "These mechanisms limit the duration of receptor activation and influence responses to subsequent signals."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_008",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "electrical synapse",
+        "target": "synapse",
+        "context": "Electrical synapses provide another form of communication."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_009",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "gap junction channels",
+        "target": "electrical synapse",
+        "context": "Gap junction channels connect adjacent cells and permit direct passage of electrical current."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_011",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "electrical synapse",
+        "target": "chemical signaling",
+        "context": "Electrical and chemical synapses differ in their mechanisms, yet both can contribute to coordinated activity."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_012",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "chemical signaling",
+        "target": "electrical synapse",
+        "context": "Electrical and chemical synapses differ in their mechanisms, yet both can contribute to coordinated activity."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_023_relation_013",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "electrical synapse",
+        "target": "chemical signaling",
+        "context": "Electrical and chemical synapses differ in their mechanisms, yet both can contribute to coordinated activity."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_033_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "neuronal_signaling",
+        "target": "coordinated_set",
+        "context": "Neuronal signaling is best understood as a coordinated set of structures, processes, and changing conditions."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_033_relation_004",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "axons",
+        "target": "signal_delivery",
+        "context": "Axons and their supporting glia shape the delivery of signals."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_033_relation_005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "glia",
+        "target": "signal_delivery",
+        "context": "Axons and their supporting glia shape the delivery of signals."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "action potential",
+        "target": "voltage-gated sodium channel",
+        "context": "This chapter outlines the circuit-based system of neuronal communication, progressing from structural anatomy (cell body, dendrites, axons, spines) and plasma membrane dynamics (lipid bilayers, ion gradients, resting potential) to signal propagation mechanisms in unmyelinated and myelinated axons. It details chemical synaptic transmission involving calcium influx, vesicle fusion, and receptor types (ionotropic/metabotropic), alongside electrical synapses via gap junctions. The text covers neuronal integration through spatial and temporal summation, signal termination methods, and synaptic plasticity (LTP/LTD) mediated by calcium-dependent signaling in the hippocampus, while emphasizing the interdependence of neurons and glial cells within distributed memory systems. The text states that depolarization triggers sodium influx followed by potassium efflux to terminate the spike. In neurophysiology, this specific sequence is driven by voltage-gated sodium channels opening first (causing the upstroke) and then inactivating. The 'depolarization' event described as triggering the influx is the direct causal mechanism provided by these channels. While 'depolarization' itself is a state change, the structural entity enabling the *occurrence* of the rapid sodium influx constituting the action potential rise is the channel. However, strictly adhering to 'Outside knowledge cannot repair missing evidence', we must look for what the text explicitly links. The text says 'depolarization triggers sodium influx'. Depolarization is an event/state. Sodium influx is a ion"
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "action potential",
+        "target": "inward sodium current",
+        "context": "This chapter outlines the circuit-based system of neuronal communication, progressing from structural anatomy (cell body, dendrites, axons, spines) and plasma membrane dynamics (lipid bilayers, ion gradients, resting potential) to signal propagation mechanisms in unmyelinated and myelinated axons. It details chemical synaptic transmission involving calcium influx, vesicle fusion, and receptor types (ionotropic/metabotropic), alongside electrical synapses via gap junctions. The text covers neuronal integration through spatial and temporal summation, signal termination methods, and synaptic plasticity (LTP/LTD) mediated by calcium-dependent signaling in the hippocampus, while emphasizing the interdependence of neurons and glial cells within distributed memory systems. The segment explicitly states: 'depolarization triggers sodium influx'. This establishes a direct causal link where the event of depolarization (a change in membrane potential) causes the event of sodium influx. The text treats this as a mechanistic sequence essential for the action potential rise."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the occurrence or change of TARGET, not merely permitting it.",
+        "source": "action potential",
+        "target": "outward potassium currents",
+        "context": "This chapter outlines the circuit-based system of neuronal communication, progressing from structural anatomy (cell body, dendrites, axons, spines) and plasma membrane dynamics (lipid bilayers, ion gradients, resting potential) to signal propagation mechanisms in unmyelinated and myelinated axons. It details chemical synaptic transmission involving calcium influx, vesicle fusion, and receptor types (ionotropic/metabotropic), alongside electrical synapses via gap junctions. The text covers neuronal integration through spatial and temporal summation, signal termination methods, and synaptic plasticity (LTP/LTD) mediated by calcium-dependent signaling in the hippocampus, while emphasizing the interdependence of neurons and glial cells within distributed memory systems. The text describes the sequence: 'depolarization triggers sodium influx followed by potassium efflux'. This implies a temporal and causal chain where the initial depolarization event leads to the subsequent occurrence of potassium efflux (often via delayed opening of voltage-gated K+ channels), which is necessary for repolarization. The text presents these as sequential events triggered by the initiation mechanism."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

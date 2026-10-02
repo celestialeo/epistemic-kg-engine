@@ -1,0 +1,1645 @@
+{
+  "relations": [
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "influences_rate_of",
+      "definition": "SOURCE influences the speed or frequency of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "water cycle",
+        "target": "water cycle",
+        "context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "oceans",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "lakes",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "rivers",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "soil",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "snow",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "ice",
+        "target": "water cycle",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "evaporation",
+        "target": "water cycle",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "condensation",
+        "target": "water cycle",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "solar energy",
+        "target": "evaporation",
+        "context": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "humidity",
+        "target": "evaporation",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "The new relation 'influences_rate_of' is coherent and specific, matching the source definition exactly. The direction (source to target) is preserved without extra restrictions. Symmetry is correctly set to false as influence is directional. The inverse is null, which is valid since the relation is not symmetric; an inverse would require swapping endpoints to form a distinct relation, but here no such inverse exists in the data."
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "wind",
+        "target": "evaporation",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_014",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "availability of water",
+        "target": "evaporation",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "The occurrence definition 'SOURCE influences the speed or frequency of TARGET' is identical to the proposed contract definition. The direction (unidirectional influence) matches, causal strength ('influences') is consistent, modality is factual, and endpoint types are preserved without reinterpretation as parthood. The context regarding humidity and wind does not alter the core relation between water availability and evaporation rate."
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "release of water vapor through leaf openings called stomata",
+        "target": "transpiration",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "evapotranspiration",
+        "target": "process",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "moving air",
+        "target": "water vapor transport",
+        "context": "Moving air transports water vapor."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "cooling and saturation of air",
+        "target": "condensation (d5d59f98)",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "tiny liquid droplets",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "ice crystals",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "cloud particle",
+        "target": "precipitation",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "rain",
+        "target": "atmospheric water",
+        "context": "Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "snow (85e3a00a)",
+        "target": "atmospheric water",
+        "context": "Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "infiltration",
+        "target": "infiltration",
+        "context": "Infiltration is the entry of water through the ground surface into soil or other porous material."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_002",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "soil structure",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_003",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "existing moisture",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "vegetation",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_005",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "rainfall intensity",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_006",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "percolation",
+        "target": "percolation",
+        "context": "This deeper movement is called percolation."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "groundwater recharge",
+        "target": "groundwater recharge",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_002",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "groundwater (04ac1a99)",
+        "target": "saturated zone",
+        "context": "Groundwater fills pores or fractures in saturated material."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "aquifer",
+        "target": "groundwater (04ac1a99)",
+        "context": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater (04ac1a99)",
+        "target": "groundwater recharge",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_005",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater (04ac1a99)",
+        "target": "discharge into streams",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_006",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater (04ac1a99)",
+        "target": "discharge into lakes",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_007",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater (04ac1a99)",
+        "target": "discharge into springs",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_008",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "spring",
+        "target": "spring",
+        "context": "A spring occurs where groundwater emerges at the surface."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_009",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "groundwater (04ac1a99)",
+        "target": "maintain flow in streams",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_001",
+      "original": {
+        "label": "caused_by",
+        "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+        "source": "surface runoff",
+        "target": "rainfall",
+        "context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated."
+      },
+      "canonical_key": "caused_by",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_002",
+      "original": {
+        "label": "caused_by",
+        "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+        "source": "surface runoff",
+        "target": "ground saturation",
+        "context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated."
+      },
+      "canonical_key": "caused_by",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_003",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "surface runoff",
+        "target": "watershed",
+        "context": "A watershed is the land area that drains surface water toward a common outlet."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_004",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "river",
+        "target": "watershed",
+        "context": "A watershed is the land area that drains surface water toward a common outlet."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_005",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "lake",
+        "target": "watershed",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_006",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "wetland",
+        "target": "watershed",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_007",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "snow (810735c0)",
+        "target": "watershed",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_008",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "ice (c42c0aec)",
+        "target": "watershed",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_001",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "water budget",
+        "target": "process (d60d01d4)",
+        "context": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "balance",
+        "context": "Human activities can alter this balance."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_003",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "paved surfaces",
+        "target": "infiltration (69f01697)",
+        "context": "Paved surfaces often reduce infiltration and increase rapid runoff."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_004",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "paved surfaces",
+        "target": "rapid runoff",
+        "context": "Paved surfaces often reduce infiltration and increase rapid runoff."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_005",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "pumping",
+        "target": "groundwater (9db0cf19)",
+        "context": "Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_006",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "sustained withdrawals",
+        "target": "groundwater storage",
+        "context": "Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "rainfall intensity",
+        "target": "infiltration capacity",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks specifically how variations in rainfall intensity alter infiltration capacity. The provided known fact establishes that rainfall intensity influences the rate of infiltration. Since 'infiltration' is a process with a measurable rate (capacity), and the chapter discusses infiltration mechanisms influenced by soil factors and precipitation exceeding capacity, it is scientifically accurate to state that rainfall intensity directly influences the rate at which water infiltrates (i.e., the effective infiltration capacity during an event). This addresses the seed's background question without inventing new mechanisms."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "saturated zone",
+        "target": "soil structure (35813211)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly states that infiltration mechanisms (which control recharge into the saturated zone) are influenced by soil factors, specifically mentioning 'soil structure'. Poor or compacted soil structure limits pore connectivity, thereby inhibiting the rate of percolation and recharge. This aligns with the background question regarding limiting factors."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "saturated zone",
+        "target": "ground saturation (c6c35118)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text notes that surface runoff occurs when precipitation exceeds infiltration capacity or 'soil saturation'. When a zone is saturated, it cannot accept more water via infiltration; thus, the state of ground saturation directly inhibits the process of groundwater recharge into that specific zone."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "saturated zone",
+        "target": "pumping (0e796cee)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter lists 'groundwater pumping' as a significant human alteration to the water budget balance. While pumping primarily removes water, in the context of recharge dynamics, high withdrawal rates can lower the water table below recharge zones or create hydraulic gradients that oppose natural infiltration, effectively inhibiting the net accumulation (recharge) of groundwater in the saturated zone compared to a static system."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "sustained withdrawals",
+        "target": "groundwater storage (7730fce2)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Sustained withdrawals directly reduce the volume and level of groundwater storage. The known fact confirms this 'acts_on' relationship. This addresses the background question regarding consequences on aquifer storage."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "sustained withdrawals",
+        "target": "groundwater recharge (1eb24c65)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Sustained withdrawals lower the water table and can alter hydraulic gradients, thereby reducing the area available for infiltration and suppressing the rate at which aquifers recharge. This addresses the background question regarding consequences on recharge rates."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0007",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "sustained withdrawals",
+        "target": "surface runoff (36adf421)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. By lowering groundwater levels and potentially drying out soil pores (reducing infiltration capacity), sustained withdrawals can increase the proportion of precipitation that becomes surface runoff rather than recharging the aquifer. This connects to the chapter's discussion on post-precipitation pathways."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0008",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "transpiration",
+        "target": "transpiration rate",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how stomatal mechanisms regulate transpiration rates in response to humidity and soil moisture. Stomatal opening/closing directly modulates the rate of water vapor release. This fits the 'influences_rate_of' predicate precisely without inventing a causal mechanism not implied by the regulation context."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0009",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "transpiration",
+        "target": "transpiration (f5ef3d0e)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Humidity and soil moisture availability are environmental factors that regulate (influence the rate of) the transpiration process. The chapter explicitly lists 'Environmental Influences' as a topic affecting the water cycle components. This relation captures the regulatory effect described in the background question."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0010",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "transpiration",
+        "target": "evapotranspiration (ec262200)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Since transpiration is a component of evapotranspiration (as defined in the chapter overview), factors regulating transpiration rates inherently influence the overall rate of evapotranspiration. This adds useful unstated knowledge connecting the specific seed process to the broader chapter concept."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0011",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "watershed",
+        "target": "peak runoff timing and volume",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly links watershed dynamics (shape and slope) to surface runoff generation mechanisms. Steeper slopes and elongated shapes accelerate flow, directly influencing the rate (timing) and volume concentration of peak runoff compared to circular basins. This addresses the background question without inventing external data."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0012",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "watershed",
+        "target": "surface runoff generation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Watershed geometry (shape and slope) is a primary factor determining how quickly surface runoff is generated and transported to outlets. The chapter details post-precipitation pathways where these physical characteristics dictate flow velocity and volume accumulation rates."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0013",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "watershed",
+        "target": "water budget balance",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. By altering the timing and volume of peak runoff, watershed shape and slope directly impact the rate at which the water budget balance shifts during storm events. This connects the specific seed concept to the chapter's broader discussion on quantifying hydrological balances."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0014",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "aquifer",
+        "target": "permeability",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Low permeability (e.g., in clay layers) is a primary geological condition that severely limits the rate at which water infiltrates and recharges an aquifer, directly inhibiting the recharge process."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0015",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "aquifer",
+        "target": "ground saturation (fbe52e9e)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. When soil reaches saturation, its capacity to accept additional water is exhausted, thereby inhibiting further groundwater recharge until drainage occurs."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0016",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "aquifer",
+        "target": "infiltration (c1687d2f)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil texture and structure (the source conditions) directly influence the rate of infiltration, which is the immediate precursor to groundwater recharge; poor soil conditions reduce this rate."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0017",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "evapotranspiration",
+        "target": "transpiration (7e99a9b3)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how stomatal opening rates modulate transpiration. Stomata are the physical gateways for transpiration; their opening rate directly controls the flux of water vapor. Therefore, the 'rate of stomatal opening' (an event/process) influences the rate of the process 'transpiration'. This captures the specific modulation mechanism requested in the question without conflating it with passive evaporation."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0018",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "evapotranspiration",
+        "target": "passive surface evaporation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question explicitly contrasts stomatal regulation (transpiration) with passive surface evaporation. While they are distinct processes within the combined phenomenon of evapotranspiration, the text distinguishes them based on mechanism (biological vs. physical). An 'associated_with' relation acknowledges that both occur simultaneously in the context of the water cycle and evapotranspiration without falsely implying one causes the other or that they share a structural component."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0019",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "evapotranspiration",
+        "target": "humidity (3a013f6a)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question specifies 'under varying humidity conditions.' Humidity is a key environmental variable that modulates the driving force for evaporation and transpiration (via vapor pressure deficit). High humidity reduces the rate of both processes, while low humidity increases them. Thus, the state of humidity influences the rate of the combined process or its components."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0020",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET.",
+        "source": "spring",
+        "target": "groundwater emergence",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how pressure differences cause emergence. The 'pressure difference' (a physical state/event) is the direct causal agent producing the 'groundwater emergence' event. This fits the 'causes' predicate where SOURCE is the action/change and TARGET is the resulting event."
+      },
+      "canonical_key": "causes",
+      "reason": "The occurrence definition ('SOURCE causally produces the explicit event TARGET') and the proposed contract definition ('SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change...') share identical core semantics regarding directionality (causal production), modality (explicit causation vs permission), and endpoint types (event to event). The additional constraints in the contract ('not merely permitting', 'TARGET names action/change') are clarifications that do not alter the fundamental truth conditions of the occurrence's specific instance, where 'pressure difference' is explicitly identified as the direct causal agent producing 'groundwater emergence'. No reinterpretation of participation or location occurred; the structural parhity"
+    },
+    {
+      "entity_id": "candidate_0021",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "spring",
+        "target": "aquifer (71eba061)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater exists within an aquifer and moves through it due to pressure gradients. The 'aquifer' is the medium participating in the 'pressure difference' event (or the flow process driven by it). While 'occurs_in' might seem appropriate for location, 'participates_in' better captures the dynamic role of the aquifer's properties (permeability, storage) in enabling the pressure-driven flow that results in a spring."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0022",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "springs",
+        "target": "geological structure",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks for 'geological conditions' leading to spring formation. Geological structures (like faults or aquitard-aquifer interfaces) are the primary physical causes that force groundwater to emerge at the surface, creating multiple spring points. This fits the 'causes' predicate where the geological condition is the source and the emergence of springs is the resulting event/state."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0023",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "springs",
+        "target": "groundwater discharge",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Springs are defined as locations where groundwater emerges. The existence of a spring is synonymous with the occurrence of the discharge event. Therefore, the entity 'springs' (as the location/feature) causes or represents the event of 'groundwater discharge'. While semantically close, this relation asserts that the feature enables/constitutes the discharge event."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0024",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "springs",
+        "target": "aquifer system",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. An aquifer system is a necessary condition for a spring to exist; without the water storage and flow capacity of an aquifer, discharge cannot occur. However, the aquifer alone does not 'cause' the spring in isolation (geological structure also required), so 'enables' is the precise predicate reflecting that it provides the capacity/conditions for the emergence event."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0025",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "balance",
+        "target": "balance (a869346b)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Human activities such as paving surfaces directly alter the local water budget balance by reducing infiltration and increasing runoff, thereby changing the equilibrium between inputs, outputs, and storage. This aligns with the chapter's discussion on significant alterations to hydrological balance caused by human actions."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0026",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "evaporation",
+        "target": "wind (95707287)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter overview explicitly lists 'wind' as an environmental factor influencing evaporation. Wind physically removes water vapor near surfaces (increasing evaporation) and affects transpiration rates by altering boundary layer resistance. This is a specific differentiation mechanism mentioned in the scope of environmental influences."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0027",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "evaporation",
+        "target": "humidity (70b72e23)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text identifies 'humidity' as a key environmental factor. High humidity reduces the vapor pressure deficit, slowing both evaporation and transpiration, while low humidity accelerates them. This is a primary differentiator between the rates of these processes under varying atmospheric conditions."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0028",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "evaporation",
+        "target": "water availability",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. While 'availability of water' is already a known fact for evaporation, it critically differentiates transpiration rates because transpiration is biologically limited by soil moisture and plant water status. If water availability drops below a threshold, transpiration ceases or drastically slows while evaporation from dry surfaces stops entirely; the specific constraint on biological uptake makes this factor distinctively relevant to differentiating the two rates."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0029",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "water budget (9148e0fd)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly states that human activities (specifically paving and pumping) cause significant alterations to the water balance/budget. The predicate 'acts_on' accurately captures this causal modification of the system's state without implying structural part-whole relationships or broadening the concept beyond the text's assertion of alteration."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0030",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "human activities",
+        "target": "surface runoff generation (7c5ffdb1)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Paving surfaces reduce infiltration capacity and increase imperviousness, which directly suppresses (inhibits) the natural process of infiltration and consequently alters the dynamics of surface runoff generation by increasing its volume/speed rather than allowing subsurface movement. While the text says paving 'alters' the balance, 'inhibits' is a precise mechanism for how paving affects the specific sub-process of infiltration-driven runoff reduction, whereas it might 'enables' rapid runoff. Given the instruction to avoid inventing actions, 'acts_on' is safer for the general budget, but 'inhibits' is scientifically precise for the infiltration aspect mentioned in the text's context of paving. However, to strictly adhere to 'do not invent an omitted action' and stick to the text saying 'p"
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0031",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "groundwater storage (85142dd2)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater pumping is explicitly described in the chapter as a human activity that alters the water balance. Pumping directly reduces the volume available for storage, thereby acting on and changing the state of groundwater storage. This aligns with the text's mention of 'significant alterations' caused by such activities."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0032",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "lakes (40fea635)",
+        "target": "groundwater discharge into lakes",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how variations in recharge and saturation alter discharge volume/timing. Increased recharge or higher soil saturation directly increases the rate/volume of groundwater discharge into lakes, while low recharge/saturation inhibits it. This fits the 'influences_rate_of' predicate precisely without inventing mechanisms."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0033",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "lakes (40fea635)",
+        "target": "groundwater storage (4fc11651)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Variations in aquifer recharge rates directly influence the rate at which groundwater storage changes (accumulates or depletes). High recharge increases the rate of storage accumulation; low recharge slows it down. This addresses the 'timing' aspect of the background question regarding the state of the system leading to discharge."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0034",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "lakes (40fea635)",
+        "target": "surface runoff generation (8691d9e7)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter notes that surface runoff occurs when precipitation exceeds infiltration capacity OR soil saturation. High soil saturation levels (a variation mentioned in the background question) actually promote runoff by reducing infiltration capacity. However, high *aquifer* recharge often implies a system where water is being stored rather than running off immediately, or conversely, if recharge is low, more water might run off. A safer interpretation based on standard hydrology and the text's focus on 'altering volume': High soil saturation leads to runoff (promotes), but high aquifer recharge *can* imply a system with lower immediate runoff potential if infiltration is efficient, or conversely, rapid recharge events cause runoff. Given the ambiguity of 'recharge' vs 'saturation' effects"
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0035",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "paved surfaces",
+        "target": "infiltration capacity (452fc50c)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how pavement material properties alter infiltration capacity. Since 'paved surfaces' are defined as entities that inhibit infiltration (per known facts), their specific material properties directly influence the rate of this process. The predicate 'influences_rate_of' is appropriate because it captures the causal link between the property (material type) and the hydrological rate without overstating the mechanism to 'causes' an event, which fits the schema's requirement for precise predicates."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0036",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "paved surfaces",
+        "target": "runoff volume",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Similar to infiltration, the specific properties of pavement materials (e.g., impermeability) directly alter the magnitude and generation rate of surface runoff. While 'causes' is used for events like 'rapid runoff', 'runoff volume' is a quantitative property/state. 'Influences_rate_of' or a similar property-influencing predicate is scientifically precise here, acknowledging that material properties modulate the hydrological balance rather than just triggering a binary event."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0037",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "paved surfaces",
+        "target": "water budget (4fd8e363)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter overview explicitly states that human activities like paving surfaces cause significant alterations to the water budget balance. The specific properties of the pavement determine the magnitude of these alterations (runoff vs. infiltration), thereby influencing the rate at which the water budget components change. This connects the seed to the broader chapter topic of 'Water budget components and timescales'."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0038",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "rapid runoff",
+        "target": "soil structure (947a6663)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter states that surface runoff generation depends on infiltration capacity, which is directly influenced by soil factors (specifically soil structure). Poorer soil structure reduces infiltration, thereby increasing the rate at which rapid runoff initiates. This aligns with the background question about factors determining the threshold for rapid runoff."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0039",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "rapid runoff",
+        "target": "ground saturation (61144783)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text explicitly links rapid runoff generation to conditions where precipitation exceeds infiltration capacity or when soil is saturated. Ground saturation acts as a critical threshold factor; once reached, it drastically increases the rate of rapid runoff initiation regardless of other factors."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0040",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "rapid runoff",
+        "target": "paved surfaces (85b51d56)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. While known_seed_facts state paved surfaces 'cause' rapid runoff, the background question asks for factors determining the *threshold* in *different soil types*. Paved surfaces represent an extreme case where infiltration capacity is effectively zero, thus setting the threshold for rapid runoff to any amount of precipitation. This represents a specific condition (human impact) altering the natural soil-type thresholds described in the chapter."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0041",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "reservoirs",
+        "target": "surface runoff generation (d6619718)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly states that lakes and wetlands act as 'temporary storage' within watersheds. By holding water temporarily, they delay its entry into the stream network compared to immediate surface runoff on impermeable surfaces or saturated soil. This directly influences the rate (slowing it down) of surface runoff generation downstream, altering the timescale of water movement."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0042",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "reservoirs",
+        "target": "water budget (ead8673c)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Lakes and wetlands are identified as 'temporary storage' features within a watershed. Since the water budget tracks 'storage changes across varying timescales,' these specific reservoirs actively participate in that accounting process by providing the storage component that modulates the balance between inputs (precipitation) and outputs (runoff/evaporation)."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0043",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "reservoirs",
+        "target": "rapid runoff (85a7de86)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text contrasts natural storage features (lakes/wetlands) with human alterations like paving that cause 'rapid runoff.' By functioning as temporary storage, lakes and wetlands absorb water that would otherwise flow rapidly off the surface, thereby inhibiting the occurrence or intensity of rapid runoff events in the watershed."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0044",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "soil structure",
+        "target": "percolation (9b977e8c)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly links 'soil structure' as a factor influencing infiltration and subsurface movement. Since percolation is the specific mechanism of subsurface water movement described, soil structure (specifically pore arrangement) directly alters its rate. This addresses the background question regarding connectivity and pathway alteration without inventing mechanisms."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0045",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "soil structure",
+        "target": "surface runoff (ba0fb78e)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil structure determines infiltration capacity. When structure limits infiltration (e.g., compaction, lack of macropores), it causes precipitation to exceed infiltration capacity, thereby increasing the rate/generation of surface runoff. This connects the seed to the chapter's discussion on runoff generation mechanisms."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0046",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "soil structure",
+        "target": "groundwater storage (d5c4146a)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil structure controls percolation rates and infiltration efficiency, which are the primary drivers for groundwater recharge (storage accumulation). Therefore, soil structure influences the rate at which groundwater storage changes. This aligns with the chapter's focus on water budget components and storage changes."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0047",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "surface runoff",
+        "target": "infiltration capacity (ab0a4381)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter states that surface runoff generation occurs when precipitation exceeds infiltration capacity or soil saturation. Therefore, exceeding the 'infiltration capacity' (a specific threshold) is the direct causal trigger for the transition to 'surface runoff'. This aligns with the background question regarding specific thresholds."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0048",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "surface runoff",
+        "target": "soil saturation",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text explicitly lists 'soil saturation' alongside infiltration capacity as a condition triggering surface runoff. When soil reaches this saturated state (a threshold), the transition from infiltration to runoff occurs. This directly addresses the background question about specific thresholds."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0049",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "surface runoff",
+        "target": "precipitation intensity",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. While not explicitly detailed as a 'threshold' in the provided snippet, high precipitation intensity is a standard hydrological factor that can overwhelm infiltration capacity even before saturation is reached, effectively acting as a threshold trigger for runoff generation. The chapter mentions 'rainfall intensity' as a concept, making this a valid addition of unstated but scientifically necessary knowledge to explain the transition dynamics."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0050",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "tiny liquid droplets",
+        "target": "clouds (ba59808c)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly states that clouds consist of visible droplets or crystals rather than invisible vapor. The seed 'tiny liquid droplets' is a constituent entity within the spatial extent of 'clouds'. This relation captures the visibility distinction (droplets make clouds visible) and the growth mechanism context (droplets are the material composing the cloud)."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0051",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "tiny liquid droplets",
+        "target": "condensation (8d999363)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how droplets form and distinguishes them from vapor. The formation of 'tiny liquid droplets' is the direct result of the process of 'condensation'. While the chapter mentions condensation as a phase change, establishing that this process causes the existence of the droplet entity addresses the 'how they form' aspect of the question."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0052",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "underground reserves",
+        "target": "groundwater storage (c95d3bfe)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how soil factors and percolation rates limit or enhance underground reserves. Percolation is the process of water moving downward through soil; its rate directly determines how quickly recharge occurs into groundwater storage. Therefore, 'percolation' (as a process) influences the rate at which 'groundwater storage' changes (replenishes). This aligns with the chapter's focus on subsurface movement and recharge limitations."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0053",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "underground reserves",
+        "target": "groundwater storage (c95d3bfe)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil factors (texture, structure, saturation) control infiltration capacity and percolation rates. When these factors restrict water movement (e.g., low permeability), they limit the rate at which new water enters 'groundwater storage'. Conversely, favorable soil factors enhance this rate. The relation captures the causal link between the physical properties of the soil/percolation process and the dynamics of the storage volume."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0054",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "underground reserves",
+        "target": "percolation (cb0fd030)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question specifically mentions 'percolation rates'. The rate of percolation itself is influenced by soil factors (porosity, compaction, saturation). While this might seem circular, it establishes a precise mechanistic link: the physical state of the soil acts as a constraint or enabler for the *rate* of the percolation process. This adds unstated knowledge about the feedback loop between soil condition and flow velocity."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0055",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "water budget",
+        "target": "human impacted watersheds",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text explicitly links 'water budget' quantification to 'human activities' (paving, pumping) causing significant alterations. The background question asks about the specific timescales required for these impacted watersheds versus natural ones. Since the text establishes that human impacts alter the balance, a water budget process is inherently associated with such watersheds. No stronger causal or part-whole relation applies as the budget is a measurement of the system, not a component of it."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0056",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "water budget",
+        "target": "natural basins",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Similar to the previous proposal, the text discusses quantifying water budgets across varying timescales in the context of natural systems (implied by the contrast with human impacts). The process of a 'water budget' is associated with 'natural basins' as they represent the baseline state against which human impacts are measured. The text does not define them as subtypes or structural parts, making 'associated_with' the precise predicate."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0057",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "water budget",
+        "target": "timescales",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The definition of 'water budget' explicitly includes 'within a defined area and time interval'. The background question specifically asks about the 'specific timescales' required. Therefore, the concept of a water budget is fundamentally associated with the entity of timescales. While one might argue for 'requires_understanding_of', the text presents timescales as an intrinsic parameter of the definition rather than a prerequisite learning concept separate from the process itself. 'Associated_with' accurately captures this definitional dependency without overstating it as a causal mechanism."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0058",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET.",
+        "source": "streams",
+        "target": "maintain flow in streams (728d762f)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The seed 'streams' (specifically via groundwater discharge) is the direct causal agent that sustains the event of maintaining flow during dry periods. The chapter explicitly links groundwater discharge to this specific outcome. This relation captures the mechanism described in the background question without broadening the concept or inventing actions."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0059",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "streams",
+        "target": "surface runoff generation (72a6cd2b)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater discharge into streams (the seed's function) increases baseflow, which can reduce the volume of water requiring surface runoff pathways during dry periods or moderate peak flows, effectively inhibiting the dominance of rapid surface runoff generation that characterizes storm events. While less direct than 'causes', it reflects the hydrological balance where groundwater presence suppresses the need for alternative flow paths like excessive surface runoff."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0060",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "streams",
+        "target": "water budget (053b72ae)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater discharge from streams (or into them) is a critical component of the water budget equation (Inputs - Outputs + Storage Change). The seed 'streams' acts as a participant in the broader process of maintaining the water budget balance, particularly during dry periods when this specific flux becomes a dominant term. This aligns with the chapter's focus on quantifying budgets and human impacts on these balances."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0061",
+      "original": {
+        "label": "causes",
+        "definition": "The cooling and saturation of air (SOURCE) causally produces the transition from invisible water vapor to visible cloud droplets (TARGET).",
+        "source": "condensation",
+        "target": "cloud particle (5ec550ba)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks for conditions triggering the transition to visible droplets. The chapter states clouds consist of visible droplets/crystals rather than invisible vapor and that condensation is the process changing vapor back to liquid. Cooling air to saturation (a condition) causes the phase change event where vapor becomes visible cloud particles. This directly answers the 'what triggers' aspect of the question without inventing mechanisms."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0062",
+      "original": {
+        "label": "causes",
+        "definition": "The cooling and saturation of air (SOURCE) causally produces the condensation event (TARGET), transforming invisible vapor into visible cloud droplets.",
+        "source": "condensation",
+        "target": "cooling and saturation of air (4298712a)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. This relation captures the causal mechanism described in the chapter overview: clouds form when vapor becomes visible droplets. The specific trigger for this transition is the cooling of air to saturation. Using 'causes' correctly links the condition (cooling/saturation) to the resulting event (condensation/formation of visible droplets), addressing the seed's background question about effective triggers."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0063",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "discharge into springs",
+        "target": "spring (54a2823e)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The seed 'discharge into springs' is a specific hydrological process defined by groundwater moving through connected openings to emerge. The target 'spring' is the physical location/entity where this emergence occurs. Groundwater (the agent of discharge) participates in the event of discharging into a spring. This relation correctly distinguishes the process from structural parthood (a spring is not a component of the discharge process, nor is the discharge process a component of the spring's structure)."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0064",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "discharge into springs",
+        "target": "groundwater storage (3955db2f)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Groundwater storage is a state or reservoir within the water cycle. The specific process of 'discharge into springs' represents a pathway where stored groundwater moves out of the saturated zone to the surface. Thus, the discharge process participates in the broader dynamic system of groundwater storage/release cycles. This avoids claiming the discharge *is* the storage (subtype) or that the storage is merely a location."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0065",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "discharge into springs",
+        "target": "surface runoff generation (574958eb)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Both 'discharge into springs' and 'surface runoff generation' are post-precipitation pathways involving subsurface and surface water movement. They are distinct processes that can occur simultaneously or sequentially in a watershed but do not imply one causes the other directly (runoff often competes with infiltration leading to discharge) nor is one a part of the other. An association captures their co-occurrence within the chapter's scope of post-precipitation dynamics without overstating the causal link."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0066",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "groundwater",
+        "target": "groundwater recharge limitations",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly links infiltration mechanisms and soil factors to groundwater storage and recharge. The concept 'groundwater recharge limitations' represents the specific constraints mentioned in the text that affect how quickly water can replenish aquifers. Therefore, geological settings (which determine these limitations) influence the rate of recharge."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0067",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "groundwater",
+        "target": "infiltration (be0b15b8)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The text details 'infiltration mechanisms influenced by soil factors.' Geological settings dictate these soil factors (porosity, permeability), which directly control the rate at which infiltration occurs. Thus, geological settings influence the rate of infiltration."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0068",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "groundwater",
+        "target": "groundwater storage (414dc674)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter discusses 'groundwater storage within aquifers' and 'groundwater recharge limitations.' Since recharge is the primary mechanism for increasing groundwater storage, factors limiting recharge (geological settings) directly influence the rate at which groundwater storage increases or changes."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0069",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "groundwater recharge",
+        "target": "groundwater recharge efficiency",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks how soil properties and vegetation cover quantitatively influence recharge efficiency. The chapter details infiltration mechanisms and post-precipitation pathways where these factors determine the balance between infiltration and runoff. Therefore, specific soil properties (e.g., porosity, structure) and vegetation cover directly influence the rate/efficiency of the groundwater recharge process."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0070",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "groundwater recharge",
+        "target": "infiltration (3a97a1a6)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter explicitly links infiltration mechanisms to soil factors and groundwater storage. Soil properties (texture, structure) and vegetation cover are primary determinants of infiltration rates. Since groundwater recharge is a subset of water reaching the saturated zone via infiltration, influencing infiltration inherently influences the recharge process."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0071",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "groundwater recharge",
+        "target": "surface runoff generation (74e13037)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The chapter states that surface runoff occurs when precipitation exceeds infiltration capacity. High soil permeability (a property) and vegetation cover (which enhances infiltration) reduce surface runoff by increasing infiltration. Thus, these factors inhibit the process of surface runoff generation, which is a competing pathway to groundwater recharge."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0072",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "percolation",
+        "target": "soil texture",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil texture directly controls hydraulic conductivity and pore connectivity; coarse textures (high sand content) facilitate rapid percolation, while fine textures (high clay/silt) restrict it. This is a fundamental hydrological principle described in the chapter's discussion of infiltration mechanisms and subsurface movement."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0073",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "percolation",
+        "target": "lateral subsurface flow",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. The background question asks for thresholds determining dominance between percolation and lateral flow. Soil texture is the primary variable governing this partitioning: coarse soils favor vertical percolation, whereas fine-textured or compacted zones may shift flow laterally. Thus, soil texture influences the rate/dominance of lateral subsurface flow relative to percolation."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0074",
+      "original": {
+        "label": "influences_rate_of",
+        "definition": "SOURCE influences the speed or frequency of TARGET.",
+        "source": "percolation",
+        "target": "percolation (972971a6)",
+        "context": "This chapter examines the water cycle's movement between atmosphere, land, and bodies of water, driven by solar energy and influenced by environmental factors such as humidity and wind. It distinguishes evaporation, transpiration via stomata, and their combined effect as evapotranspiration, clarifying that clouds consist of visible droplets or crystals rather than invisible vapor, and outlines conditions for cloud particle growth into precipitation. The text then details post-precipitation pathways on land, focusing on infiltration mechanisms influenced by soil factors, subsurface water movement (percolation), and groundwater storage within aquifers. Finally, it addresses surface runoff generation via gravity-driven flow when precipitation exceeds infiltration capacity or soil saturation, watershed dynamics involving lakes and wetlands as temporary storage, the quantification of water budgets tracking inputs, outputs, and storage changes across varying timescales, and significant alterations to this balance caused by human activities like paving surfaces and groundwater pumping. Soil texture thresholds (e.g., sand vs. clay content) determine whether percolation dominates over lateral flow. Therefore, soil texture influences the rate at which percolation occurs relative to alternative pathways like lateral subsurface flow. This addresses the background question directly by linking texture to process dominance."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

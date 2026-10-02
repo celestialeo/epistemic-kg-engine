@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20260928_141749_UTC-0400_5d8133f8",
+  "status": "failed",
+  "config": {
+    "input": "data\\sample.txt",
+    "chapter": "custom",
+    "output_root": "outputs\\demo-checks\\custom",
+    "chunk_words": 85,
+    "seed_limit": 3,
+    "seed_threshold": 0.7,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": "outputs\\demo-checks\\custom\\run_20260928_140457_UTC-0400_89fd62a3",
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": true,
+    "new": false
+  },
+  "started_at": "2026-09-28T14:17:49.287691-04:00",
+  "started_at_utc": "2026-09-28T18:17:49.287691+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [],
+  "error": "Stopped early: semantic_review:document failed 5/5 recent checks (limit 50%). Latest reason: The quote states channels 'open' (an event/action), but the relation requires a structural component ('part_of'). Opening is not being a part; the channel is located in the segment, not structurally defined as a part by this specific action description. Failed gates: semantics_valid, types_valid, certain, objections_resolved, evidence. Inspect artifacts/health.json and events.jsonl before rerunning.",
+  "error_type": "HealthFailure",
+  "finished_at": "2026-09-28T14:23:02.770057-04:00",
+  "finished_at_utc": "2026-09-28T18:23:02.770057+00:00",
+  "duration_seconds": 313.48400000002584,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "2558ad2d747a8057fb75e52465857d58fdc41f73921877c73c39d28a3b0f6696",
+      "bytes": 3645
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "1fa6c6cb4254ab039a7616abbd4169a1f9cd0c7e38e7aeb7b62c64d14e8cea70",
+      "bytes": 3944
+    },
+    "artifacts/chunks.json": {
+      "sha256": "9218d87e15bf51f070cfbfa1f7bb8a47dec05fad8b529233d4c53103e4581727",
+      "bytes": 5141
+    },
+    "artifacts/environment.json": {
+      "sha256": "faf22e863d922a8079a576b544970b2934c80437d13a47f7caff5eb6a77f09d6",
+      "bytes": 55547
+    },
+    "artifacts/relations.json": {
+      "sha256": "b53b9565b019c39e028ce34b22abc505e22cfc0b9ba18b931226d26a3b5e1ce2",
+      "bytes": 44321
+    },
+    "artifacts/concepts.json": {
+      "sha256": "383f0d8ae52616d97f6e307450f71fe1761c762e0773ed1c51825d741b4d86db",
+      "bytes": 76883
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "9061b4c5db6025f939b5e7d2ca36919187b3fe085ca6d5235680a98bf72c436e",
+      "bytes": 3982
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "24b061689ee9ed5dc3405c0aa29fb25b645a8617ff21de62be8d4a3ed62dd59f",
+      "bytes": 99430
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "f1dca30e3335c50115d89c50f0be8ca20be1c93c83d6c849850d9e6962b311b5",
+      "bytes": 9016
+    },
+    "artifacts/health.json": {
+      "sha256": "1e212d7a1460590b9deeb2fa8992884364d220b34b94c1c591d8b1e7e1994905",
+      "bytes": 2232
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 243,
+    "stage.started": 5,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 8,
+    "input.coverage_validated": 1,
+    "stage.completed": 4,
+    "service.request": 3,
+    "service.response": 3,
+    "embedding.request": 1,
+    "embedding.response": 1,
+    "embedding.validated": 1,
+    "cache.metadata_parsed": 1,
+    "cache.read": 1,
+    "cache.parsed": 1,
+    "database.export_disabled": 1,
+    "model.request": 174,
+    "cache.hit": 105,
+    "model.response": 174,
+    "parse.started": 174,
+    "parse.completed": 174,
+    "validation.started": 174,
+    "validation.completed": 174,
+    "outline.segment": 3,
+    "extraction.evidence_checked": 85,
+    "registry.identity_candidates": 100,
+    "registry.concept_resolved": 160,
+    "registry.relation_resolved": 56,
+    "registry.identity_reused": 21,
+    "extraction.normalized": 8,
+    "registry.relation_added": 7,
+    "extraction.record_rejected": 3,
+    "debate.verdict_conflict": 4,
+    "debate.adjudicated": 5,
+    "debate.decision": 4,
+    "health.failed": 1,
+    "stage.failed": 1,
+    "run.failed": 1
+  }
+}
