@@ -10,9 +10,12 @@ ConceptKind = Literal["entity", "structure", "process", "event", "substance", "p
 
 
 class Concept(Record):
-    name: str = Field(min_length=1, max_length=120)
+    name: str = Field(min_length=1, max_length=400,
+        description="Canonical name of a standalone concept, never a statement or context-dependent reference")
     definition: str = Field(min_length=1, max_length=400)
     kind: ConceptKind
+    form: Literal["concept"] = Field(default="concept",
+        description="All graph endpoints are standalone concepts; assertions belong in relations")
     kind_detail: str | None = Field(default=None, max_length=120,
         description="Optional specific domain label, e.g. cell_type, receptor, or system")
 
@@ -169,16 +172,17 @@ class ConceptRegistry:
         return [e for _, e in sorted(ranked, key=lambda x: (-x[0], x[1]["name"]))[:8]]
 
     def resolve(self, mention, context, entity_id):
-        value = mention.model_dump() if isinstance(mention, Concept) else dict(mention)
+        value = Concept.model_validate(mention).model_dump()
         value["name"] = normalize_name(value["name"])
         value.setdefault("kind_detail", None)
+        value.setdefault("form", "concept")
         name = value["name"]
-        signature = (name, value["definition"], value["kind"], value["kind_detail"], context)
+        signature = (name, value["definition"], value["kind"], value["kind_detail"], value["form"], context)
         if signature in self.resolved:
             self.trace.emit("registry.identity_reused", entity_id=entity_id, name=name)
             return self._record(value, self.resolved[signature], entity_id)
         existing = self.entries.get(name)
-        if existing and all(existing[k] == value[k] for k in ("definition", "kind")):
+        if existing and existing.get("form", "concept") == value["form"] and all(existing[k] == value[k] for k in ("definition", "kind")):
             return self._record(value, name, entity_id)
         likely = self.likely_matches(value)
         self.trace.emit("registry.identity_candidates", entity_id=entity_id, name=name,
@@ -210,7 +214,7 @@ class ConceptRegistry:
         # corrupting an existing node. No string-stemming heuristic merges nodes.
         if name in self.entries:
             import hashlib
-            suffix = hashlib.sha256((value["kind"] + ":" + value["definition"]).encode()).hexdigest()[:8]
+            suffix = hashlib.sha256((value["form"] + ":" + value["kind"] + ":" + value["definition"]).encode()).hexdigest()[:8]
             name = f"{name} ({suffix})"
             if name in self.entries:
                 return self._record(value, name, entity_id)
@@ -219,7 +223,7 @@ class ConceptRegistry:
         return self._record(value, name, entity_id)
 
     def reconcile(self, extractions, outline):
-        """Resolve residual spelling/number aliases globally before seed selection."""
+        """Merge remaining copies and aliases before seed selection, preserving distinct senses."""
         from .models import ModelResponseError
         from .health import finish_item
         redirects = {}
@@ -229,20 +233,21 @@ class ConceptRegistry:
                 continue
             canonical = self.entries[name]
             variants = set().union(*(name_variants(n) for n in [name, *canonical.get("aliases", [])]))
+            likely = {entry["name"] for entry in self.likely_matches(canonical)}
             for other in names[index+1:]:
                 if other in redirects:
                     continue
                 entry = self.entries[other]
                 if (canonical["kind"] == "event") != (entry["kind"] == "event"):
                     continue
-                if not any(variants & name_variants(n) for n in [other, *entry.get("aliases", [])]):
+                if other not in likely and not any(variants & name_variants(n) for n in [other, *entry.get("aliases", [])]):
                     continue
                 payload = dict(first=canonical, second=entry,
                                chapter={k: outline[k] for k in ("overview", "topics")})
                 instruction = ("Check exact concept identity in this chapter. Singular/plural, spacing and punctuation "
-                    "variants denote the same concept when their senses agree. Complementary descriptions of the "
-                    "same entity do not create distinct senses. Preserve genuine subtype, state, action, object and "
-                    "sense distinctions. Set same_direction=true only for identity. Explain the concrete distinction "
+                    "variants and synonymous names denote the same concept when their senses agree. Complementary descriptions of the "
+                    "same entity do not create distinct senses. Preserve genuine subtype, state, action, object "
+                    "and sense distinctions. Set same_direction=true only for identity. Explain the concrete distinction "
                     "if rejecting a merge; differences in wording alone are insufficient.")
                 pair_id = name + " :: " + other
                 try:
@@ -311,7 +316,8 @@ class FactIndex:
     def find(self, row):
         key = self.relations.fact_key(row["source"], row["relation"], row["target"])
         # Recompute keys: a verified new inverse may extend the vocabulary.
-        return next((r for r in self.rows if self.relations.fact_key(r["source"], r["relation"], r["target"]) == key), None)
+        return next((r for r in self.rows if self.relations.fact_key(r["source"], r["relation"], r["target"]) == key
+                     and all(r.get(k) == row.get(k) for k in ("conditions", "modality"))), None)
 
     def add(self, row):
         duplicate = self.find(row)

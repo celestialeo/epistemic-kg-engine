@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261004_202728_UTC-0400_389ecba2",
+  "status": "completed_with_issues",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\water_cycle_sample.txt",
+    "chapter": "water-cycle-simplified",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\water-cycle-simplified",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "seed_similarity_threshold": 0.85,
+    "seed_threshold": 0.7,
+    "seed_max_words": 4,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph"
+  ],
+  "started_at": "2026-10-04T20:27:28.545364-04:00",
+  "started_at_utc": "2026-10-05T00:27:28.545364+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [
+    "chunk_001",
+    "chunk_002",
+    "chunk_004",
+    "chunk_006",
+    "chunk_007"
+  ],
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_claims_0",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the previous record ('The water cycle describes...') is derived from PREVIOUS_SENTENCE. Per instructions, assertions must be extracted only from CURRENT_SENTENCE. The current sentence asserts that 'Oceans, lakes...' store 'water', not that the water cycle describes movement. Therefore, no claim can be generated for this index based on the current sentence's content."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record was invalid because it relied on PREVIOUS_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice' store 'water'. This supports a 'stores' relation where the collective list of entities is the source and 'water' is the target. The previous record incorrectly attempted to model the water cycle description from the prior sentence. A valid relation must be extracted from the current sentence: [Oceans, lakes, rivers, soil, groundwater, snow, and ice] -> stores -> water."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_004",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The failed record cites a definition from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The CURRENT_SENTENCE asserts causal influences on 'how quickly infiltration occurs', which requires extracting relations involving the rate of infiltration and its causes, rather than re-defining infiltration itself."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_concept_4",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_004",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_003_concept_2",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    }
+  ],
+  "finished_at": "2026-10-04T22:32:48.097947-04:00",
+  "finished_at_utc": "2026-10-05T02:32:48.097947+00:00",
+  "duration_seconds": 7519.5470000000205,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "bytes": 3295
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "238a9a60d15f6593bdac3d62113ceeee2b30c9eaad610e37b8088c6aebe7a645",
+      "bytes": 3599
+    },
+    "artifacts/chunks.json": {
+      "sha256": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "bytes": 4605
+    },
+    "artifacts/environment.json": {
+      "sha256": "65277255fc092ceb4393c21a9aed4189c5e92c397e5fc3eb348d839e51e9984b",
+      "bytes": 30518
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "0e5cb307c8088f1b07b7561002beeffe4f7c9019ad2a1c37c9091ccadea9dfa8",
+      "bytes": 2742
+    },
+    "artifacts/relations.json": {
+      "sha256": "24650e100b141641ef1e0caf80aa5b904874164b751562e8f6f8e720be217860",
+      "bytes": 354840
+    },
+    "artifacts/concepts.json": {
+      "sha256": "9fabaf758afdf24172d465a2899439240b2c7e025440e5975077074072d7dc78",
+      "bytes": 212593
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "d6898b033872560264edf2888035092759aabdd687ed0212e6a538ebe979bb69",
+      "bytes": 176518
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "9222387c3a1991eabb91664e529cd6060a9a76171e5de2d0308b8549d3de155a",
+      "bytes": 5578
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "4a3d28e4a871ffc55636ca38039802e4455f01c771a1a34b8ef001c29a3af38a",
+      "bytes": 2285
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "be9082419debd1cb207945d5206a5b88130226d93ba98d816912886549b36528",
+      "bytes": 4067
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "3ed10b83996ddba3e7d90cccef3a10ef6ef4d1ed67c5aa94dd2222cbfe0017b9",
+      "bytes": 475
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "b50eb720dbaf75f4da9c6327afd4d4cf1a51f0b29c15561bba6e1d2b8cba8ea6",
+      "bytes": 240866
+    },
+    "artifacts/extractions.json": {
+      "sha256": "c641186daff27d083529c01290fedd00e446e809e79913d00baa989f285728d1",
+      "bytes": 485155
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "236e2a6fff8421037d95d4d5ee61a2605bd8d0a4cea2fb65ff9137e2820447b9",
+      "bytes": 813
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "03e111c3286b052a33d9f25618c66041effea6e92834a8acee50e492f48552d6",
+      "bytes": 19057
+    },
+    "artifacts/seeds.json": {
+      "sha256": "87ddaf627b1ea10b057357a8d124403c4c485a8314b81e90082ee3afa9f9ae5e",
+      "bytes": 46377
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "270814f9a39b6e3d2968d15650df946109de55a5c0e0b76aba40e0d6a0963a69",
+      "bytes": 897781
+    },
+    "artifacts/debate.json": {
+      "sha256": "249e13ba766a15a10238140484ce92b87bf0fff03dc3d7447224ea44dae25d42",
+      "bytes": 1186306
+    },
+    "artifacts/graph.json": {
+      "sha256": "3eaabb43d7ea4a059c01a59427e36eb019eab1216b82131b889595f66597a36a",
+      "bytes": 132459
+    },
+    "knowledge_graph.html": {
+      "sha256": "5f1ae50651e36c480a803541bb1db121cbc5af38856abd3d8f29789e8b17c8a4",
+      "bytes": 121359
+    },
+    "statistics.json": {
+      "sha256": "57cafa086a6ea57f6cb94a6781dbd8982e0303d2df53e1d5b2a118e4af0eaf7c",
+      "bytes": 7047
+    },
+    "index.html": {
+      "sha256": "0771a7c48fa4e2c27ecbb2a9d8b60322f37914a9f161040cf3c75f5b3d59731b",
+      "bytes": 450780
+    },
+    "report.md": {
+      "sha256": "d706a3539ad7a0f39cea2079eec8cf4713b60be5ee24ad84f0c876732d65f7bf",
+      "bytes": 1960
+    },
+    "artifacts/evaluation.json": {
+      "sha256": "34024ff44c06b93e199ccfa61de8ed4da45dfe5ddcf01a2b852648be2aab59ff",
+      "bytes": 77719
+    },
+    "reconstruction.txt": {
+      "sha256": "7d87022e8bc28a299aa3911ebb22ce009e6de939ea1fba9a799921742fafee77",
+      "bytes": 3269
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 1154,
+    "stage.started": 5,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 7,
+    "input.coverage_validated": 1,
+    "stage.completed": 5,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 1623,
+    "model.response": 1623,
+    "parse.started": 1623,
+    "parse.completed": 1623,
+    "validation.started": 1623,
+    "validation.completed": 1607,
+    "extraction.evidence_checked": 110,
+    "registry.identity_candidates": 330,
+    "registry.concept_resolved": 428,
+    "registry.relation_resolved": 231,
+    "extraction.quote_retry_requested": 2,
+    "validation.failed": 16,
+    "model.attempt_failed": 16,
+    "model.retry": 12,
+    "extraction.quote_retry_completed": 2,
+    "extraction.record_rejected": 10,
+    "extraction.unresolved": 7,
+    "registry.identity_reused": 12,
+    "extraction.normalized": 7,
+    "item.completed": 850,
+    "item.unresolved": 7,
+    "registry.relation_added": 12,
+    "extraction.reference_resolved": 3,
+    "cache.hit": 10,
+    "outline.segment": 3,
+    "registry.concepts_merged": 10,
+    "debate.adjudicated": 119,
+    "debate.decision": 225,
+    "debate.verdict_conflict": 3,
+    "extraction.chunk_review_summary": 7,
+    "embedding.request": 125,
+    "embedding.response": 125,
+    "embedding.validated": 125,
+    "seed.filtered": 32,
+    "seed.selected": 93,
+    "debate.proposed": 161,
+    "debate.novelty_checked": 716,
+    "debate.ids_validated": 48,
+    "graph.node_added": 132,
+    "graph.edge_added": 55,
+    "graph.node_updated": 7,
+    "graph.validated": 1,
+    "presentation.browser_requested": 1
+  },
+  "evaluation": {
+    "source_run": "run_20261004_202728_UTC-0400_389ecba2",
+    "started_at": "2026-10-04T22:56:37.839199-04:00",
+    "source_sha256": {
+      "input.txt": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "artifacts/chunks.json": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "artifacts/graph.json": "3eaabb43d7ea4a059c01a59427e36eb019eab1216b82131b889595f66597a36a"
+    },
+    "status": "incomplete",
+    "trace_directory": "evaluation_20261004_225637_9a074b7e",
+    "final_score": null,
+    "finished_at": "2026-10-04T23:03:27.208623-04:00",
+    "duration_seconds": 409.375,
+    "metric_version": "reconstruction_fidelity_v1",
+    "unresolved_items": [
+      {
+        "step": "evaluation",
+        "id": "evaluation:document",
+        "status": "unresolved",
+        "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+      }
+    ],
+    "models": {
+      "generation": "qwen3.5:9b",
+      "calls": 27,
+      "retries": 1,
+      "prompt_tokens": 22610,
+      "output_tokens": 23583
+    }
+  }
+}

@@ -30,6 +30,7 @@ def build_graph(text, paragraphs, chunks, extractions, debate, trace, concepts=N
         entry = concepts.entries.get(name, {}) if concepts else {}
         return node(concept_id(name), name, "event" if entry.get("kind") == "event" else "concept", origin,
                     definition=entry.get("definition"), semantic_kind=entry.get("kind"),
+                    form=entry.get("form", "concept"),
                     kind_detail=entry.get("kind_detail"), kind_details=entry.get("kind_details", []),
                     aliases=entry.get("aliases", []), alternative_definitions=entry.get("alternative_definitions", []))
 
@@ -41,27 +42,10 @@ def build_graph(text, paragraphs, chunks, extractions, debate, trace, concepts=N
         edges.append(value)
         trace.emit("graph.edge_added", entity_id=identifier, edge=value)
 
-    node("document", "Input document", "chunk", text=text, source_kind="document")
-    for paragraph in paragraphs:
-        node(paragraph["id"], f"Paragraph {paragraph['order']+1}", "chunk", source_kind="paragraph", **{k: v for k, v in paragraph.items() if k != "id"})
-        edge("document", paragraph["id"], "contains")
-    for a, b in zip(paragraphs, paragraphs[1:]):
-        edge(a["id"], b["id"], "next paragraph")
-    for chunk in chunks:
-        node(chunk["id"], f"Chunk {chunk['order']+1}: {chunk['text']}", "chunk", source_kind="chunk",
-             **{k: v for k, v in chunk.items() if k != "id"})
-        edge(chunk["paragraph_id"], chunk["id"], "contains")
-        if chunk["previous_id"]:
-            edge(chunk["previous_id"], chunk["id"], "next")
     for extraction in extractions:
         chunk_id = extraction["chunk_id"]
         for name in extraction["concepts"]:
-            edge(chunk_id, concept(name), "mentions", chunk_id=chunk_id)
-        for i, claim in enumerate(extraction["claims"], 1):
-            identifier = f"{chunk_id}_claim_{i:03d}"
-            node(identifier, claim["text"], "statement", **claim, chunk_id=chunk_id,
-                 confidence=extraction["confidence"], unit_kind=extraction["unit_kind"])
-            edge(chunk_id, identifier, "has statement", chunk_id=chunk_id)
+            concept(name)
         for relation in extraction["relations"]:
             if not relation.get("accepted"):
                 continue
@@ -70,14 +54,20 @@ def build_graph(text, paragraphs, chunks, extractions, debate, trace, concepts=N
                  evidence_start=relation["evidence_start"], evidence_end=relation["evidence_end"],
                  candidate_id=relation["id"], definition=relation["relation_definition"],
                  supporting_evidence=relation.get("supporting_evidence", []),
+                 conditions=relation.get("conditions"), modality=relation.get("modality"),
                  verification_basis=relation["verification_basis"])
     for row in debate["candidates"]:
         if row["accepted"]:
             edge(concept(row["source"], "background"), concept(row["target"], "background"),
                  row["relation"], "background", candidate_id=row["id"], chunk_id=row["chunk_id"],
                  score=row["score"], tier=row.get("tier", "related"), reason=row["decision_reason"],
+                 conditions=row.get("conditions"), modality=row.get("modality"),
                  definition=row.get("relation_definition"), verification_basis=row.get("verification_basis", "model_knowledge"))
     graph = {"schema_version": 2, "run_id": trace.run_id, "nodes": list(nodes.values()), "edges": edges,
+             "provenance": {"text": text, "paragraphs": paragraphs, "chunks": chunks,
+                            "extractions": [{k: extraction[k] for k in
+                                ("chunk_id", "concepts", "claims", "confidence", "unit_kind")}
+                                for extraction in extractions]},
              "relation_registry": relations.vocabulary() if relations else []}
     trace.emit("graph.validated", node_count=len(nodes), edge_count=len(edges), dangling_edges=0)
     return graph

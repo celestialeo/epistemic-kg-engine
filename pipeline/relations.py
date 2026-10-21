@@ -4,6 +4,8 @@ Definitions ALWAYS read SOURCE -> TARGET. Similarity is not equivalence.
 Inverse keys express equivalent facts ONLY after exchanging the endpoints.
 """
 DEFAULT_RELATIONS = {
+    "describes": ("SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.", None, False),
+    "stores": ("SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.", None, False),
     "is_a": ("SOURCE is a subtype or kind of TARGET, not a component or instance.", "has_subtype", False),
     "has_subtype": ("TARGET is a subtype or kind of SOURCE, not a component or instance.", "is_a", False),
     "part_of": ("SOURCE is a structural component of TARGET, not merely located there or participating in it.", "has_part", False),

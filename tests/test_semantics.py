@@ -361,12 +361,12 @@ class SemanticTests(unittest.TestCase):
         paragraphs, chunks = split_document(text, 85, self.trace)
         def respond(role, p):
             if role == "extractor":
-                first = p["CURRENT_CHUNK"].startswith("A neuron")
+                first = p["CURRENT_SENTENCE"].startswith("A neuron")
                 key = "has_part" if first else "part_of"
                 return dict(unit_kind="core_statement", concepts=[concept("neuron"), concept("axon")],
-                    claims=[dict(text=p["CURRENT_CHUNK"], evidence=p["CURRENT_CHUNK"])],
+                    claims=[dict(text=p["CURRENT_SENTENCE"], evidence=p["CURRENT_SENTENCE"])],
                     relations=[dict(source=concept("neuron" if first else "axon"), target=concept("axon" if first else "neuron"),
-                        relation=key, relation_definition=relations.entries[key]["definition"], evidence=p["CURRENT_CHUNK"])],
+                        relation=key, relation_definition=relations.entries[key]["definition"], evidence=p["CURRENT_SENTENCE"])],
                     confidence=.9, reason="Quoted structure")
             if role == "concept_resolver":
                 return dict(key=None, exact_meaning=False, same_direction=False, reason="Distinct concept")
@@ -420,7 +420,7 @@ class SemanticTests(unittest.TestCase):
                 elif role == "chapter_summarizer":
                     value = dict(overview=payload["segments"][0]["overview"], topics=["chapter subject"])
                 elif role == "extractor":
-                    text = payload["CURRENT_CHUNK"]
+                    text = payload["CURRENT_SENTENCE"]
                     name = "neuron" if "neuron" in text else "water"
                     value = dict(unit_kind="core_statement", concepts=[concept(name)],
                                  claims=[dict(text=text, evidence=text)], relations=[], confidence=.9, reason="Fixture")
@@ -431,7 +431,11 @@ class SemanticTests(unittest.TestCase):
                 elif role == "proposer":
                     value = dict(proposals=[], reason="No useful addition")
                 elif role == "reconstructor":
-                    value = dict(text=" ".join(payload["claims"]), reason="Fixture")
+                    raise AssertionError("No document relations were extracted")
+                elif role == "evaluation_claims":
+                    value = dict(claims=[dict(text=payload["text"], evidence=payload["text"])])
+                elif role == "evaluation_alignment":
+                    value = dict(matches=[dict(original_index=0, reconstructed_index=0, reason="Same claim")])
                 else:
                     raise AssertionError(role)
                 result = schema.model_validate(value)

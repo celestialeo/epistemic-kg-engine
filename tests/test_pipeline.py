@@ -71,7 +71,15 @@ class PipelineTests(unittest.TestCase):
                         "target": {"name": "memory", "definition": "Retention of experience", "kind": "abstract"},
                         "evidence": "invented evidence"}],
             confidence=.8, reason="Source describes a neuron")
-        model = SimpleNamespace(ask=lambda *args, **kwargs: result)
+        def ask(role, instruction, payload, schema, entity_id, validator=None):
+            if role == "extractor_quote_repair":
+                repaired = schema.model_validate(dict(records=[dict(f, record=None, reason="Unsupported quote")
+                                                                for f in payload["failed_records"]]))
+                if validator:
+                    validator(repaired)
+                return repaired
+            return result
+        model = SimpleNamespace(ask=ask)
         values = extract(chunks, paragraphs, model, self.trace,
                          ConceptRegistry(model, self.trace), RelationRegistry(model, self.trace))
         self.assertEqual(values[0]["relations"], [])
@@ -223,7 +231,9 @@ class PipelineTests(unittest.TestCase):
     def test_invalid_model_budgets_fail_before_creating_a_run(self):
         from pipeline.cli import main
         for flags in (["--context-tokens", "0"], ["--max-output-tokens", "0"],
-                      ["--model-timeout", "0"], ["--max-output-tokens", "8192"]):
+                      ["--model-timeout", "0"], ["--max-output-tokens", "8192"],
+                      ["--document-context-tokens", "0"], ["--document-output-tokens", "0"],
+                      ["--document-output-tokens", "16384"]):
             with self.subTest(flags=flags), self.assertRaises(SystemExit) as raised:
                 main(flags)
             self.assertEqual(raised.exception.code, 2)
@@ -241,6 +251,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_complete_workflow_artifacts_and_report_links(self):
         from pipeline.cli import main
+        roles = []
         class FakeModels:
             model = embedding_model = "fixture"
             calls = retries = prompt_tokens = output_tokens = cache_hits = 0
@@ -253,8 +264,9 @@ class PipelineTests(unittest.TestCase):
             def embed(self, text, entity):
                 return [1., 2., 3.]
             def ask(self, role, instruction, payload, schema, entity, validator=None):
+                roles.append(role)
                 if role == "extractor":
-                    text = payload["CURRENT_CHUNK"]
+                    text = payload["CURRENT_SENTENCE"]
                     name = "neuron" if "A neuron" in text else "neurons"
                     value = {"unit_kind": "definition", "concepts": [{"name": name, "definition": "Excitable cell", "kind": "entity"}],
                              "claims": [{"text": text, "evidence": text}],
@@ -275,7 +287,12 @@ class PipelineTests(unittest.TestCase):
                 elif role == "proposer":
                     value = {"proposals": [], "reason": "No useful background additions"}
                 elif role == "reconstructor":
-                    value = {"text": " ".join(payload["claims"]), "reason": "Fixture"}
+                    raise AssertionError("No document relations were extracted")
+                elif role == "evaluation_claims":
+                    value = dict(claims=[dict(text=text, evidence=text) for text in payload["text"].split("\n\n")])
+                elif role == "evaluation_alignment":
+                    value = dict(matches=[dict(original_index=i, reconstructed_index=i, reason="Same claim")
+                                          for i in range(len(payload["original_claims"]))])
                 else:
                     raise AssertionError(role)
                 result = schema.model_validate(value)
@@ -305,7 +322,22 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(stats["models"]["embedding"], "nomic-embed-text")
         self.assertEqual(stats["input"]["chunks"], 3)
         self.assertEqual(stats["debate"]["proposed"], 0)
-        self.assertAlmostEqual(stats["fidelity"]["semantic_cosine"]["mean"], 1.)
+        self.assertEqual(stats["reconstruction_score"], 0)
+        self.assertEqual(stats["fidelity"]["final_score"]["mean"], 0)
+        self.assertEqual(manifest["pipeline_stages"], ["extraction", "debate", "graph", "evaluation"])
+        self.assertEqual(manifest["evaluation_status"], "completed")
+        self.assertEqual(manifest["reconstruction_score"], 0)
+        self.assertEqual(roles[0], "extractor")
+        self.assertNotIn("seed_selector", roles)
+        self.assertEqual(roles.count("reconstructor"), 0)
+        self.assertEqual(roles.count("evaluation_alignment"), 0)
+        self.assertEqual((run / "reconstruction.txt").read_text().strip(), "")
+        evaluation = json.loads((run / "artifacts/evaluation.json").read_text())
+        self.assertEqual(evaluation["status"], "completed")
+        self.assertEqual(evaluation["document_metrics"]["matched_claim_count"], 0)
+        events = [json.loads(line) for line in (run / "events.jsonl").read_text().splitlines()]
+        stages = [e["stage"] for e in events if e["event"] == "stage.started"]
+        self.assertEqual(stages, ["input", "preflight", "extraction", "debate", "graph", "evaluation"])
 
 
 if __name__ == "__main__":

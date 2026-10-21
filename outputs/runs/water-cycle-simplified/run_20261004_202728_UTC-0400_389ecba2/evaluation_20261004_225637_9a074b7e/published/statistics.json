@@ -1,0 +1,191 @@
+{
+  "run_id": "run_20261004_202728_UTC-0400_389ecba2",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_claims_0",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the previous record ('The water cycle describes...') is derived from PREVIOUS_SENTENCE. Per instructions, assertions must be extracted only from CURRENT_SENTENCE. The current sentence asserts that 'Oceans, lakes...' store 'water', not that the water cycle describes movement. Therefore, no claim can be generated for this index based on the current sentence's content."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record was invalid because it relied on PREVIOUS_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice' store 'water'. This supports a 'stores' relation where the collective list of entities is the source and 'water' is the target. The previous record incorrectly attempted to model the water cycle description from the prior sentence. A valid relation must be extracted from the current sentence: [Oceans, lakes, rivers, soil, groundwater, snow, and ice] -> stores -> water."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_004",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The failed record cites a definition from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The CURRENT_SENTENCE asserts causal influences on 'how quickly infiltration occurs', which requires extracting relations involving the rate of infiltration and its causes, rather than re-defining infiltration itself."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_concept_4",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_004",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_003_concept_2",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    }
+  ],
+  "input": {
+    "paragraphs": 3,
+    "chunks": 7,
+    "words": 486,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 35,
+    "incomplete_chunks": [
+      "chunk_001",
+      "chunk_002",
+      "chunk_004",
+      "chunk_006",
+      "chunk_007"
+    ],
+    "unresolved_records": 7,
+    "relations": 48,
+    "reviewed": 64,
+    "review_attempted": 64,
+    "semantic_rejections": 16,
+    "rejection_categories": {
+      "wrong_direction": 13,
+      "meaning_changed": 11,
+      "unsupported_claim": 6,
+      "wrong_kind": 4,
+      "contradiction": 1
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 10
+  },
+  "debate": {
+    "seeds": 93,
+    "proposed": 161,
+    "accepted": 7,
+    "rejected": 154,
+    "unresolved": 0,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 132,
+    "edges": 55,
+    "domain_nodes": 132,
+    "domain_edges": 55,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 50,
+    "node_kinds": {
+      "concept": 122,
+      "event": 10
+    },
+    "edge_origins": {
+      "document": 48,
+      "background": 7
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 1613,
+    "retries": 12,
+    "cache_hits": 10,
+    "embedding_calls": 125,
+    "prompt_tokens": 1573324,
+    "output_tokens": 356014
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 7,
+      "mean": 0.9409053944158309,
+      "median": 1.0,
+      "min": 0.6451612903225806,
+      "max": 1.0,
+      "sample_stddev": 0.1322406333380888
+    },
+    "idea_order_agreement": {
+      "n": 7,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": 0.0
+    },
+    "rouge_l_f1": {
+      "n": 7,
+      "mean": 0.9937120154074754,
+      "median": 1.0,
+      "min": 0.9618320610687023,
+      "max": 1.0,
+      "sample_stddev": 0.014225674368510537
+    },
+    "length_similarity": {
+      "n": 7,
+      "mean": 0.9878151260504202,
+      "median": 1.0,
+      "min": 0.9264705882352942,
+      "max": 1.0,
+      "sample_stddev": 0.027403420184324585
+    },
+    "final_score": {
+      "n": 7,
+      "mean": 96.56506810744966,
+      "median": 100.0,
+      "min": 80.30774437675467,
+      "max": 100.0,
+      "sample_stddev": 7.3500098102227485
+    }
+  },
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification.",
+  "reconstruction_score": null,
+  "evaluation": {
+    "source_run": "run_20261004_202728_UTC-0400_389ecba2",
+    "started_at": "2026-10-04T22:56:37.839199-04:00",
+    "source_sha256": {
+      "input.txt": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "artifacts/chunks.json": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "artifacts/graph.json": "3eaabb43d7ea4a059c01a59427e36eb019eab1216b82131b889595f66597a36a"
+    },
+    "status": "incomplete",
+    "trace_directory": "evaluation_20261004_225637_9a074b7e",
+    "final_score": null,
+    "finished_at": "2026-10-04T23:03:27.208623-04:00",
+    "duration_seconds": 409.375,
+    "metric_version": "reconstruction_fidelity_v1",
+    "unresolved_items": [
+      {
+        "step": "evaluation",
+        "id": "evaluation:document",
+        "status": "unresolved",
+        "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+      }
+    ],
+    "models": {
+      "generation": "qwen3.5:9b",
+      "calls": 27,
+      "retries": 1,
+      "prompt_tokens": 22610,
+      "output_tokens": 23583
+    }
+  }
+}

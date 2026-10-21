@@ -1,0 +1,877 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "distinguished_from",
+      "definition": "SOURCE is explicitly distinguished from TARGET; no identity or equivalence exists.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "arrives_at",
+      "definition": "SOURCE arrives at or contacts TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "evaporates_from",
+      "definition": "SOURCE undergoes the phase change to vapor at a later time, resulting in TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "flows_over",
+      "definition": "SOURCE moves across the physical surface of the land.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "enters",
+      "definition": "SOURCE moves into the interior of the TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "influences_rate_of",
+      "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "affects_rate_of",
+      "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "contributes_to",
+      "definition": "SOURCE provides a partial input or cause for the occurrence of TARGET, without guaranteeing it.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "fills",
+      "definition": "SOURCE occupies the void spaces of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "transmits",
+      "definition": "SOURCE facilitates the movement or transfer of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "links_underground_storage_to_surface_water",
+      "definition": "SOURCE connects SOURCE_A and TARGET_B, establishing a relationship between them.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "water cycle",
+        "target": "water movement",
+        "context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "oceans",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "lakes",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "rivers",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "soil",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "groundwater",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "snow",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "ice",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "evaporation",
+        "target": "liquid water to water vapor transition",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "condensation",
+        "target": "water vapor to liquid transition",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "solar energy",
+        "target": "evaporation (501367cb)",
+        "context": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_014",
+      "original": {
+        "label": "depends_on",
+        "definition": "SOURCE is influenced by or contingent upon the state of TARGET; changes in TARGET affect SOURCE.",
+        "source": "evaporation rate",
+        "target": "humidity",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "Conflicting inverse or symmetry contract"
+    },
+    {
+      "entity_id": "chunk_001_relation_015",
+      "original": {
+        "label": "depends_on",
+        "definition": "SOURCE is influenced by or contingent upon the state of TARGET; changes in TARGET affect SOURCE.",
+        "source": "evaporation rate",
+        "target": "wind",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "Conflicting inverse or symmetry contract"
+    },
+    {
+      "entity_id": "chunk_001_relation_016",
+      "original": {
+        "label": "depends_on",
+        "definition": "SOURCE is influenced by or contingent upon the state of TARGET; changes in TARGET affect SOURCE.",
+        "source": "evaporation rate",
+        "target": "water availability",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "Conflicting inverse or symmetry contract"
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water absorption by plants",
+        "target": "water cycle (cc0a0a29)",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water release as vapor",
+        "target": "water cycle (cc0a0a29)",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "water release as vapor",
+        "target": "transpiration",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "evapotranspiration",
+        "target": "evaporation (a900ec77)",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "evapotranspiration",
+        "target": "transpiration (b43636b8)",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_007",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "moving air",
+        "target": "water vapor transport",
+        "context": "Moving air transports water vapor."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "air cooling and saturation",
+        "target": "vapor condensation",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_009",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "vapor condensation",
+        "target": "small particles",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_010",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "tiny liquid droplets",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_011",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "ice crystals",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_012",
+      "original": {
+        "label": "is_not",
+        "definition": "SOURCE is explicitly distinguished from TARGET; no identity or equivalence exists.",
+        "source": "clouds",
+        "target": "invisible water vapor",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "distinguished_from",
+      "reason": "The new relation 'distinguished_from' accurately reflects the source assertion that clouds are not invisible water vapor. The definition matches the source meaning exactly. The direction is preserved as a one-way distinction (clouds vs. vapor). Symmetry is correctly set to false because if A is distinguished from B, B is not necessarily distinguished from A in this specific context of identity denial, though logically 'not equivalent' is symmetric; however, the schema allows non-symmetric relations for explicit distinctions where the focus is on the subject's lack of identity with the object. The inverse is correctly null as per the instruction that an inverse requires equivalence after swapping endpoints, which does not apply here since the relation is about distinction, not equivalence."
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "cloud particles",
+        "target": "falling as precipitation",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "falling water",
+        "target": "evaporation (f4cac43f)",
+        "context": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "rain and snow",
+        "target": "atmospheric water",
+        "context": "Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "reaches",
+        "definition": "SOURCE arrives at or contacts TARGET.",
+        "source": "precipitation (b3c14ec1)",
+        "target": "land (5e44106a)",
+        "context": "After precipitation reaches land, water can follow several pathways."
+      },
+      "canonical_key": "arrives_at",
+      "reason": "The new relation 'arrives_at' is coherent and specific, directly mapping to the source assertion where precipitation reaches land. The meaning and direction are exactly preserved as the definition remains identical ('SOURCE arrives at or contacts TARGET'). No extra restrictions were added; symmetry is correctly set to false (as reaching is directional), and the inverse is validly null since an inverse requires a reciprocal relationship which 'reaches' does not possess."
+    },
+    {
+      "entity_id": "chunk_004_relation_002",
+      "original": {
+        "label": "follows",
+        "definition": "SOURCE happens temporally after TARGET, without implying causation. (Used here for 'can follow several pathways' as a temporal sequence of options).",
+        "source": "water (e51996df)",
+        "target": "evaporation (fd7e3d60)",
+        "context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "follows",
+      "reason": "The occurrence definition ('SOURCE happens temporally after TARGET, without implying causation') is a direct elaboration of the proposed contract's core definition. The context clarifies that 'follows' describes a temporal sequence of options (pathways) rather than a strict causal chain, which aligns with the contract's explicit exclusion of causation. The directionality (SOURCE after TARGET) and endpoint types (water then evaporation) are consistent. The scope is limited to temporal succession within the described hydrological pathways, matching the contract's constraints."
+    },
+    {
+      "entity_id": "chunk_004_relation_003",
+      "original": {
+        "label": "follows",
+        "definition": "SOURCE happens temporally after TARGET, without implying causation. (Used here for 'can follow several pathways' as a temporal sequence of options).",
+        "source": "water (e51996df)",
+        "target": "surface flow",
+        "context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "follows",
+      "reason": "The occurrence definition ('SOURCE happens temporally after TARGET, without implying causation') is a direct elaboration of the proposed_contract definition. The direction (temporal succession), modality (non-causal), and endpoint types are identical. The context regarding 'water' following 'surface flow' aligns perfectly with the fixed SOURCE/TARGET roles in the contract."
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "follows",
+        "definition": "SOURCE happens temporally after TARGET, without implying causation. (Used here for 'can follow several pathways' as a temporal sequence of options).",
+        "source": "water (e51996df)",
+        "target": "ground entry",
+        "context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "follows",
+      "reason": "The occurrence definition ('SOURCE happens temporally after TARGET') is semantically identical to the proposed contract definition. Both explicitly exclude causation and define a simple temporal sequence. The direction (SOURCE follows TARGET) is consistent in both. The endpoint types (water vs ground entry) are specific instances compatible with the general relation schema. No reinterpretation of participation or location was required."
+    },
+    {
+      "entity_id": "chunk_004_relation_012",
+      "original": {
+        "label": "evaporates",
+        "definition": "SOURCE undergoes the phase change to vapor at a later time.",
+        "source": "water remaining on leaves",
+        "target": "evaporation from leaves",
+        "context": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "evaporates_from",
+      "reason": "The new relation 'evaporates_from' accurately reflects the source assertion where water (SOURCE) undergoes phase change to vapor (TARGET). The definition explicitly states the result is the TARGET, preserving directionality. Symmetry is correctly set to false as evaporation is not a reciprocal process between the liquid and vapor states in this context. The inverse is null, which is valid since there is no defined reverse process (condensation) in the source data or contract. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_004_relation_013",
+      "original": {
+        "label": "flows_over",
+        "definition": "SOURCE moves across the physical surface of the land.",
+        "source": "water flowing over surface",
+        "target": "land surface",
+        "context": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "flows_over",
+      "reason": "The new relation 'flows_over' is coherent as it describes a specific physical process (water moving across land). The meaning and direction are exactly preserved from the source assertion. No extra restrictions were added; the symmetric flag is correctly set to false because flowing over is directional (source to target), and the inverse is correctly null since there is no defined reverse process in the data."
+    },
+    {
+      "entity_id": "chunk_004_relation_014",
+      "original": {
+        "label": "enters",
+        "definition": "SOURCE moves into the interior of the ground material.",
+        "source": "water entering ground",
+        "target": "ground",
+        "context": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "enters",
+      "reason": "The new relation 'enters' is coherent as it defines a directional movement from SOURCE to TARGET. The meaning and direction are exactly preserved by restricting the definition to generic 'SOURCE moves into the interior of the TARGET' without adding extra restrictions like specific materials (ground/water) found in the source context. Symmetry is correctly set to false because entering is inherently directional. The inverse is correctly null, as there is no standard inverse process for 'entering' that fits the definition of equivalence after swapping endpoints; the reverse action would be 'exits', which is a distinct predicate not implied by an inverse relation here."
+    },
+    {
+      "entity_id": "chunk_004_relation_015",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "infiltration",
+        "target": "water entry through ground surface into soil or porous material",
+        "context": "Infiltration is the entry of water through the ground surface into soil or other porous material."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_016",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "soil structure",
+        "target": "infiltration rate",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "The new relation 'influences_rate_of' is coherent and specific, directly mapping the source assertion where 'soil structure' influences 'infiltration rate'. The definition exactly preserves the source meaning without adding extra restrictions. Symmetry is correctly set to false as influence is directional. The inverse is null, which is valid since the inverse contract is also null; no inverse relation exists or is required here."
+    },
+    {
+      "entity_id": "chunk_004_relation_017",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "existing moisture",
+        "target": "infiltration rate",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "The definitions are identical in wording and semantic content. The direction (SOURCE -> TARGET) is preserved, causal strength ('influences') matches, modality is standard assertion, scope covers speed/magnitude of the process, and endpoint types (existing moisture influencing infiltration rate) are consistent. The proposed contract explicitly sets 'symmetric' to false, correctly reflecting the unidirectional nature of the relationship defined in both texts."
+    },
+    {
+      "entity_id": "chunk_004_relation_018",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "vegetation",
+        "target": "infiltration rate",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_rate_of",
+      "reason": "The definitions are identical in wording and semantic content. The source 'vegetation' influencing the target 'infiltration rate' matches the proposed contract's definition exactly. Direction is preserved (SOURCE -> TARGET), causal strength ('influences') is consistent, modality is factual, scope covers the process speed/magnitude, and endpoint types align without reinterpretation of participation or location."
+    },
+    {
+      "entity_id": "chunk_004_relation_019",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "rainfall intensity",
+        "target": "infiltration rate",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "affects_rate_of",
+      "reason": "The new relation 'affects_rate_of' is coherent as it accurately reflects the source assertion where rainfall intensity influences infiltration rate. The meaning and direction are preserved without adding extra restrictions. Symmetry is correctly set to false since influence is directional. The inverse is null, which is valid for asymmetric relations like this one."
+    },
+    {
+      "entity_id": "chunk_004_relation_020",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "absorption by roots",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_021",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "remaining in pore spaces",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_022",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "movement deeper through subsurface",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_023",
+      "original": {
+        "label": "defines",
+        "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+        "source": "deeper movement",
+        "target": "percolation",
+        "context": "This deeper movement is called percolation."
+      },
+      "canonical_key": "defines",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_001",
+      "original": {
+        "label": "contributes_to",
+        "definition": "SOURCE provides a partial input or cause for the occurrence of TARGET, without guaranteeing it.",
+        "source": "water reaching the saturated zone",
+        "target": "groundwater recharge",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "contributes_to",
+      "reason": "The new relation 'contributes_to' is coherent and specific, matching the source definition where a partial input causes an occurrence without guarantee. The direction is preserved as SOURCE -> TARGET. Symmetry is correctly set to false because contributing is not reciprocal. The inverse is null, which is valid per instructions since 'contributes_to' is not an equivalence relation; swapping endpoints does not yield a defined inverse relation here."
+    },
+    {
+      "entity_id": "chunk_005_relation_002",
+      "original": {
+        "label": "arrives_at",
+        "definition": "SOURCE moves into or contacts the interior of TARGET.",
+        "source": "infiltrating water",
+        "target": "saturated zone",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "fills",
+        "definition": "SOURCE occupies the void spaces of TARGET.",
+        "source": "groundwater (d63c49d3)",
+        "target": "pores",
+        "context": "Groundwater fills pores or fractures in saturated material."
+      },
+      "canonical_key": "fills",
+      "reason": "The new relation 'fills' is coherent as it logically describes a source occupying target voids. The meaning and direction are exactly preserved from the source assertion ('groundwater fills pores'). No extra restrictions were added; the symmetric flag is correctly set to false because filling is not a reciprocal relationship, and the inverse is correctly null since there is no standard inverse process for 'fills' other than the conceptual swap which yields an invalid or non-standard relation in this context."
+    },
+    {
+      "entity_id": "chunk_005_relation_004",
+      "original": {
+        "label": "fills",
+        "definition": "SOURCE occupies the void spaces of TARGET.",
+        "source": "groundwater (d63c49d3)",
+        "target": "fractures",
+        "context": "Groundwater fills pores or fractures in saturated material."
+      },
+      "canonical_key": "fills",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_005",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "aquifer",
+        "target": "geologic formation",
+        "context": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_006",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "aquifer",
+        "target": "groundwater (e11008c2)",
+        "context": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_007",
+      "original": {
+        "label": "transmits",
+        "definition": "SOURCE facilitates the movement or transfer of TARGET.",
+        "source": "aquifer",
+        "target": "groundwater (e11008c2)",
+        "context": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater."
+      },
+      "canonical_key": "transmits",
+      "reason": "The new relation 'transmits' is coherent and specific, matching the source definition where an aquifer facilitates groundwater movement. The direction is preserved as non-symmetric (false), consistent with physical transmission processes. The inverse is correctly set to null since 'transmits' does not imply a reciprocal relationship (groundwater does not transmit back to the aquifer in this context). No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_005_relation_008",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "groundwater movement through connected openings",
+        "target": "streams, lakes, or springs",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_009",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "spring",
+        "target": "groundwater emergence at the surface",
+        "context": "A spring occurs where groundwater emerges at the surface."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_010",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "connections between underground storage and visible surface water",
+        "target": "groundwater flow maintenance in some streams",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_011",
+      "original": {
+        "label": "links",
+        "definition": "SOURCE connects SOURCE_A and TARGET_B, establishing a relationship between them.",
+        "source": "connections between underground storage and visible surface water",
+        "target": "underground storage",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": "links_underground_storage_to_surface_water",
+      "reason": "The new relation 'links_underground_storage_to_surface_water' accurately reflects the source text describing connections between underground storage and visible surface water. The definition is specific and matches the source assertion without adding extra restrictions. The direction is preserved as the source explicitly links underground storage (target) to surface water (implied SOURCE_A in the context of flow maintenance). Symmetry is correctly set to false because the relationship describes a directional flow or connection where one entity maintains flow for another, not a mutual equivalence. The inverse is correctly null since the relation is not symmetric and no inverse definition was provided or implied by the source text."
+    },
+    {
+      "entity_id": "chunk_005_relation_012",
+      "original": {
+        "label": "links",
+        "definition": "SOURCE connects SOURCE_A and TARGET_B, establishing a relationship between them.",
+        "source": "connections between underground storage and visible surface water",
+        "target": "visible surface water",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

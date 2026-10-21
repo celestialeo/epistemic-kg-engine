@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261002_104618_UTC-0400_b7692622",
+  "status": "completed_with_issues",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\water_cycle_sample.txt",
+    "chapter": "water-cycle-simplified",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\water-cycle-simplified",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "seed_threshold": 0.7,
+    "seed_max_words": 4,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph"
+  ],
+  "started_at": "2026-10-02T10:46:18.466910-04:00",
+  "started_at_utc": "2026-10-02T14:46:18.466910+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [
+    "chunk_002",
+    "chunk_005",
+    "chunk_007"
+  ],
+  "unresolved_items": [
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_002",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_005",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_007",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0007",
+      "status": "unresolved",
+      "reason": "No validated background decision: critic failed for candidate_0007 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    }
+  ],
+  "finished_at": "2026-10-02T12:44:20.582807-04:00",
+  "finished_at_utc": "2026-10-02T16:44:20.582807+00:00",
+  "duration_seconds": 7083.391000000003,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "bytes": 3295
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "238a9a60d15f6593bdac3d62113ceeee2b30c9eaad610e37b8088c6aebe7a645",
+      "bytes": 3599
+    },
+    "artifacts/chunks.json": {
+      "sha256": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "bytes": 4605
+    },
+    "artifacts/environment.json": {
+      "sha256": "cf5459b4a81ebe22b1a329ef9b188e6102afa641ce09f9b9443c5c9deb3abab9",
+      "bytes": 30518
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "36c15d5e97a4581148c352c5a468e3134b2a8870235276ba01ce906370240c78",
+      "bytes": 732
+    },
+    "artifacts/relations.json": {
+      "sha256": "ab4717f3a8f18245f733624c538457e09cb72f1a3635423d3f206bff147e10ee",
+      "bytes": 442293
+    },
+    "artifacts/concepts.json": {
+      "sha256": "b174deb25fba82e317962e8e0c6a84d4e5f6b506e6fca37038299f27ed0db019",
+      "bytes": 195423
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "e76263b03c95996ab5d47f6a06cd74db8a0316749fe6c31417ca1120a40ac491",
+      "bytes": 154085
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "d2806993d70c5836e5e523103f97a394fa316693aa63dbfd782ec3487b80a49c",
+      "bytes": 1373
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "4a3d28e4a871ffc55636ca38039802e4455f01c771a1a34b8ef001c29a3af38a",
+      "bytes": 2285
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "be9082419debd1cb207945d5206a5b88130226d93ba98d816912886549b36528",
+      "bytes": 4067
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "1b8b213bf467792acf10be7afba1bd42c02f1c7046ea90a2ebc883b565113410",
+      "bytes": 157
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "4e05be02fd042e4a96f3738057863dc6bce38d0c9db3fd033c94808098b973a4",
+      "bytes": 198916
+    },
+    "artifacts/extractions.json": {
+      "sha256": "c4618580a9ea80bc35877c66d01e95d129878cbedd61bb392692d657cd1b1fcd",
+      "bytes": 401170
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "7049205aba7c0233f57d7e76555361d80f8d51309424e1f755453c3d05ca32a2",
+      "bytes": 808
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "bac9d4be999cde38a65320f4d665f55c84d8b8eb10560e37784e26d3753e97f9",
+      "bytes": 16171
+    },
+    "artifacts/seeds.json": {
+      "sha256": "3c172dcc86875f3d24001a9c845c3a3367b54c2758bd18af4cd417c16d644ed6",
+      "bytes": 42376
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "75682126f3425e309d5aa6b8ac8658bbd372659f69a006fca5dc00d5823f0b7a",
+      "bytes": 1109314
+    },
+    "artifacts/debate.json": {
+      "sha256": "f23da27433c05cc43ed2f62179111be7fccad473259a118c54efc814c5c16d2c",
+      "bytes": 1358351
+    },
+    "artifacts/graph.json": {
+      "sha256": "0ac84b4e4c7e1843cb0032e61ef38818697c09dd652be3dfa5aaf9d7f125cd7e",
+      "bytes": 172528
+    },
+    "knowledge_graph.html": {
+      "sha256": "05ce1ac8163cec8108bb5ac4e857a3be5e1c07253114d021040bdf677ea5d079",
+      "bytes": 157156
+    },
+    "statistics.json": {
+      "sha256": "e08581c14b8af5785821de12145c307a7ad155dc107a02ca009361fc4978120d",
+      "bytes": 2534
+    },
+    "index.html": {
+      "sha256": "b2bd3e22663702fafe9882f4956e292a71587b8a863e999c586592975325cf99",
+      "bytes": 511656
+    },
+    "report.md": {
+      "sha256": "b562b248733379cf9f4f07a60be3899434002724dc5663d5410d0580bcc94bf1",
+      "bytes": 1054
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 1206,
+    "stage.started": 5,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 7,
+    "input.coverage_validated": 1,
+    "stage.completed": 5,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 1547,
+    "model.response": 1547,
+    "parse.started": 1547,
+    "parse.completed": 1547,
+    "validation.started": 1547,
+    "validation.completed": 1531,
+    "extraction.evidence_checked": 96,
+    "registry.identity_candidates": 345,
+    "registry.concept_resolved": 423,
+    "registry.relation_resolved": 266,
+    "extraction.record_rejected": 6,
+    "extraction.normalized": 7,
+    "item.completed": 391,
+    "registry.identity_reused": 8,
+    "validation.failed": 16,
+    "model.attempt_failed": 16,
+    "model.retry": 11,
+    "extraction.unresolved": 3,
+    "registry.relation_added": 16,
+    "item.unresolved": 4,
+    "outline.segment": 3,
+    "registry.concepts_merged": 2,
+    "debate.adjudicated": 125,
+    "debate.decision": 260,
+    "extraction.chunk_review_summary": 7,
+    "seed.selected": 105,
+    "debate.proposed": 207,
+    "debate.novelty_checked": 825,
+    "debate.unresolved": 1,
+    "debate.ids_validated": 63,
+    "graph.node_added": 160,
+    "graph.edge_added": 227,
+    "graph.node_updated": 15,
+    "graph.validated": 1,
+    "presentation.browser_requested": 1
+  }
+}

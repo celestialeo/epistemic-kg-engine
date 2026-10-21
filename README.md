@@ -1,7 +1,7 @@
 # Epistemic Knowledge Graph Engine
 
-One pipeline turns a prose document into a knowledge graph through extraction,
-background proposals, agent debate, and a final reconstruction evaluation.
+One pipeline turns a prose document into a knowledge graph through
+sentence-based extraction, background debate, graph construction, and reconstruction evaluation.
 Two full introductory chapters are supplied: [neuronal communication](data/input.txt)
 and [the water cycle](data/water_cycle.txt). The original short neuroscience
 input is preserved as [sample.txt](data/sample.txt). A comparable shorter water-cycle
@@ -10,7 +10,7 @@ input is available as [water_cycle_sample.txt](data/water_cycle_sample.txt).
 ## Run
 
 Start a current version of [Ollama for Windows](https://ollama.com/download/windows)
-with `qwen3.5:9b` and `nomic-embed-text` installed, then run:
+with `qwen3.5:9b` installed, then run:
 
 ```powershell
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter neuroscience
@@ -45,9 +45,7 @@ Options:
 | --- | --- | --- |
 | `--chunk-words` | 85 | Maximum words per chunk |
 | `--chapter` | neuroscience | neuroscience, neuroscience-simplified, water-cycle, water-cycle-simplified, or both (the two full chapters) |
-| `--seed-threshold` | 0.7 | Minimum importance, direct relevance AND expansion usefulness |
-| `--seed-limit` | 0 | Optional cap after scoring every concept; 0 means all eligible |
-| `--seed-max-words` | 4 | Maximum words in a seed name; longer graph concepts/claims are retained |
+| `--seed-limit` | 0 | Optional cap on concepts sent to debate; 0 means all extracted concepts |
 | `--model` | qwen3.5:9b | Model used in every language role |
 | `--registry-model` | same as --model | Optional different installed model for isolated relation/concept checks |
 | `--batch-size` | 4 | Items per review/seed call; all items still checked |
@@ -57,28 +55,47 @@ Options:
 | `--think` | off | Enable extended thinking on a supported model |
 | `--context-tokens` | 8192 | Context window; larger values need more memory |
 | `--max-output-tokens` | 4096 | Output budget per call, including thinking when enabled |
+| `--document-context-tokens` | 16384 | Minimum context window for the final full-document claim alignment |
+| `--document-output-tokens` | 8192 | Minimum output budget for the final full-document claim alignment |
 | `--model-timeout` | 600 | Ollama request timeout in seconds |
-| `--embedding-model` | nomic-embed-text | Final semantic similarity evaluation |
 | `--no-open` | off | Save results without opening a browser |
 | `--output-root` | outputs/runs | Parent directory for isolated run folders |
 | `--resume RUN_DIRECTORY` | none | Reuse validated responses with matching prompts and installed model digests |
 
-Every chunk is extracted and evaluated. The seed limit controls background
-expansion only. Every segment is summarized. Seed candidates are normalized and
-reconciled for exact identity first. Quantified phrases and names longer than
-`--seed-max-words` are excluded from expansion, without deleting graph knowledge.
-The selector rejects vague words, redundant aliases and sentence fragments in
-chapter context. A seed needs a specific unanswered background question, a
-chapter topic, and importance, relevance and expansion usefulness above the
-threshold in at least one segment group. Eligible concepts are ranked by their lowest dimension, with a
-name tie-breaker. Frequency is not the selection criterion. All execution is
-sequential. Full chapters and semantic checks involve substantially more model
-calls than the original short demonstration.
+Extraction sends only the current sentence and its previous sentence, adding the
+next sentence when it supplies an adjacent name. Only the current sentence is
+extracted; neighboring sentences help interpret it. References can resolve to a
+concept named in the current sentence before it is registered. Self-relations
+created by reference resolution are dropped.
 
-Qwen3.5 9B handles outlines, extraction, seed assessment, proposals, criticism,
-rebuttals, judging, novelty checks, and reconstruction. It also handles isolated
-registry checks unless `--registry-model` selects another installed model.
-`nomic-embed-text` remains the embedding model.
+Failed evidence quotes receive one targeted sentence retry with the exact
+failure reason. Records that already passed are retained, and repaired records
+undergo the same exact-quote and sentence-overlap checks. Remaining failures are
+excluded and logged while extraction continues. Health monitoring counts final
+record outcomes after repair, rather than incomplete chunks; a sentence response
+with no usable output counts as one unresolved item. Service failures remain
+fatal, and the default health threshold stops a stage when most recent records
+fail (after the minimum sample count).
+
+Every distinct extracted concept is sent to
+background debate by default, including concepts found at either endpoint.
+Descriptive phrases remain graph endpoints and are excluded from debate seeds.
+The optional seed limit caps background work in source discovery order.
+Legacy `--seed-threshold` and `--seed-max-words` arguments are accepted for old
+commands but no longer filter concepts.
+
+Qwen3.5 9B handles extraction, chapter scope, background proposals, criticism,
+rebuttals, judging and novelty checks. Registry checks use the same model unless
+`--registry-model` selects another installed model. Every regular run also
+reconstructs text from the completed graph and evaluates it against the source.
+No extra flag is needed. Seed selection uses the configured embedding model;
+reconstruction fidelity uses claim matching and text metrics.
+
+The final document alignment uses at least a 16K context and an 8K output budget
+so both complete claim lists and the answer can fit. Other calls retain their
+usual budgets. The document budgets can be increased with the two options above;
+larger contexts may move part of the model onto CPU memory on an 8 GiB GPU.
+
 The default explicitly disables extended thinking and uses temperature 0 for
 schema-constrained JSON; agents still return concise explanations in `reason`
 fields. This is a desktop runtime configuration, not the model's benchmark setup.
@@ -125,6 +142,7 @@ events.jsonl               Complete ordered application event stream
 run.log                    Terminal output and errors
 manifest.json              Configuration, completion status and artifact hashes
 input.txt                  Exact decoded input snapshot
+reconstruction.txt         Complete rebuilt text, in source chunk order
 graph.cypher               Query for the exported run (when Neo4j is enabled)
 artifacts/
   paragraphs.json          Paragraph text, ordering and offsets
@@ -141,10 +159,11 @@ artifacts/
   health.json              Failing step and recent examples, if early-stop monitoring triggers
   health_warning.json      Latest recoverable health warning; all warnings remain in events.jsonl
   extractions.json         Reviewed relations, claims and source evidence
-  seeds.json               All concept assessments, thresholds and selected seeds
+  seeds.json               Concepts for debate and excluded descriptive phrases
   debate.json              Background decisions plus document review transcripts
   graph.json               Complete final graph with stable node and edge IDs
-  evaluation.json          Per-chunk reconstructions and similarity measures
+  evaluation_progress.json Per-chunk reconstruction and scoring checkpoints
+  evaluation.json          Chunk metrics, full-document alignment and final 0–100 score
 ```
 
 Open `index.html` to read the report. Open `knowledge_graph.html` to search and
@@ -158,161 +177,83 @@ in Toronto. Historical run IDs remain stable for log and database references.
 Manifests include local and UTC start/finish times; new events include both
 `timestamp` (UTC) and `timestamp_local`.
 
-The final report contains graph counts, accepted/rejected proposals, model
-usage, and mean/median/sample standard deviation/min/max for semantic cosine,
-token cosine and token Jaccard. These are **reconstruction similarities**, not
-factual accuracy scores. Evaluation receives graph claims and relationships,
-not source paragraphs or evidence quotations. Extracted claims can still closely
-resemble the source, so similarity is not an independent validation of the graph.
+The report contains extracted relations with their source quotes, background
+decisions, graph counts, rebuilt text, reconstruction scores and model usage. Conditions and modality appear in
+relation details. These judgments are not independent factual verification.
 
 ## Pipeline
 
-1. Save the input and split paragraphs into contiguous, ordered sentence groups.
-   Long sentences split at word boundaries. No chunk crosses a paragraph;
-   every source word is retained exactly once. Original character offsets are saved.
-2. Summarize every segment, then combine summaries hierarchically. Extract
-   concept meanings, claims and directed relation proposals from each current
-   chunk. Each relation carries full source and target objects (name, definition,
-   kind). The standalone concept list is optional in content and may be empty;
-   endpoints do not have to be repeated in it. There is no count cap on extracted
-   concepts, claims or relations. Reject quotations that do not occur exactly
-   in its source evidence context or that do not overlap the extraction unit.
-3. Canonicalize concept identity using isolated model matching and verification.
-   Merge true aliases/plurals, not related subtypes or parts. Resolve predicates
-   against the same registry used by background proposals.
-4. Review every extracted relation with a single evidence reviewer, in batches. The
-   quote must entail its exact meaning, direction, endpoints and qualifications.
-   An exact substring or endpoint co-occurrence alone is insufficient.
-   Its evidence schema permits only `supported` or `unsupported`; `not_applicable`
-   is unavailable for document facts. This does not force a positive decision.
-5. Assess all concepts against the segment/topic map and select seeds by the
-   threshold. Propose up to three useful unstated background facts per seed.
-   Check duplicates across all seeds and accepted document/background facts,
-   including inverses and symmetric forms. Compare against every chapter chunk
-   and every accepted fact in bounded batches for semantic repetition and
-   contradiction, including statements not extracted as edges.
-6. Apply the full critic/rebuttal/judge debate to novel background proposals, in batches. General knowledge is
-   permitted without a source quote, but must be sound, directly relevant and
-   consistent with the chapter. The judge sees arguments but no critic scores,
-   critic boolean verdicts, proposer confidence or defend/withdraw label.
-   Semantic validity, direction, endpoint types, certainty, no contradiction
-   and resolved objections are mandatory. Background review uses the whole
-   chapter overview, exact topic list and canonical chapter concept names, without
-   a seed paragraph or document-only evidence rules. It must identify a related
-   chapter topic; numeric relevance is descriptive, not a cutoff. Extracted
-   relations additionally require quote entailment. Scores cannot
-   compensate for a failed gate; a withdrawal alone does not decide truth.
-   Reasons allow up to 1,200 characters. Contradictory verdict/gate outputs are logged.
-7. Build the final graph with document/background provenance, source evidence,
-   claim nodes, reading-order edges, and accepted background additions. Export
-   to Neo4j if requested.
-8. Reconstruct every chunk from the final graph, calculate similarities, and
-   produce its chapter report.
+The processing stages are **Extraction → Debate → Graph → Evaluation**. Input
+loading and model preflight are setup. The evaluation stage includes text
+reconstruction, scoring and final report generation.
 
-The editable starting relationship list is in [pipeline/relations.py](pipeline/relations.py).
-Happenings are explicit event concepts. For example, `action potential causes
-channel opening` and `channel opening acts_on calcium channel` preserve both
-the action and its object when both are supported. Causal endpoints may be events
-or processes. A process and its defining transformation must not become two
-artificially connected events. An `acts_on` companion is optional. Event/object
-identity merges are forbidden, and the graph marks event nodes with **E**.
-Extracted event-object links are reviewed with the same evidence checks as
-other relations; the pipeline does not invent them automatically from labels.
+1. **Extraction.** Process the sentences in source order and construct
+   `concept → relation → target` assertions. Keep exact source quotes and
+   character offsets. Targets may be standalone concepts or complete descriptive
+   phrases, marked by `form: concept` or `form: phrase`. Each endpoint also has
+   a definition and semantic kind. Retain conditions and modality/negation in
+   the relation fields. Claims remain available as source annotations, but
+   relations are the primary graph view.
+2. **Debate.** Build the chapter context, reconcile concept aliases, and review
+   document relations for quote entailment. Then send every distinct extracted
+   concept to the existing background proposer/critic/rebuttal/judge flow.
+   There is no model-based seed ranking or word-count cutoff in this path.
+   Descriptive phrases are excluded; standalone topics named inside them may
+   be extracted separately and debated. Background proposals may introduce
+   concepts as before and undergo chapter-wide novelty checks. Accepted
+   background knowledge stays distinguishable from document assertions.
+3. **Graph.** Build the graph from reviewed document relations and accepted
+   background relations. Save the graph and interactive viewer, plus Neo4j when
+   requested.
+4. **Reconstruction and evaluation.** Reconstruct each chunk from graph claims,
+   concepts and relations. Compare the rebuilt and original texts through
+   independently extracted claims and one-to-one semantic alignment. The final
+   score compares the complete documents and weights claim fidelity (55%), idea
+   order (25%), ROUGE-L F1 (10%) and length similarity (10%). It is not the mean
+   of chunk scores. The report links to `reconstruction.txt` and
+   `artifacts/evaluation.json`. An unresolved evaluation produces a null overall
+   score and `completed_with_issues` (exit code 2); available results are retained.
 
-Before proposing background knowledge, the proposer receives every currently
-accepted fact involving its seed in either direction, plus its unanswered
-background question. Background proposals may reuse the relation registry or
-propose a precise new predicate subject to the same meaning checks. The seed
-may be either endpoint; an omitted or null source means the seed itself.
-They have no `event_objects` field. If that obsolete field appears in any
-model response it is dropped with a logged warning; other fields and explicit
-extracted event relations retain strict validation.
+For example:
 
-New predicates have a key, a precise SOURCE-to-TARGET definition, optional inverse,
-and symmetry flag. A resolver proposes exact equivalence and a separate stateless
-verification call checks it. New definitions and inverse claims also require
-verification. `enables` cannot be collapsed into the established `causes` key.
-`has-a` is checked per occurrence: ownership, location and structural parthood
-are different meanings. No ambiguous surface label becomes a global alias.
-Verified new keys extend only the current run's registry and are saved in
-`artifacts/relations.json`. Inspect those before manually adding a useful
-domain-independent contract to the starting list.
-Extraction can introduce precise predicates such as `affects_rate_of` rather
-than forcing a rate influence into `enables` or `causes`. Background expansion
-uses the same dynamic vocabulary.
+```text
+Water cycle → describes → Water movement between the atmosphere,
+                         land, and bodies of water
+```
 
-Inverse predicates stay distinct vocabulary keys but identify the same fact
-after swapping endpoints: `neuron has_part axon` equals `axon part_of neuron`.
-Repeated extracted evidence is attached to the first accepted fact. Structural
-document links such as paragraph containment are presentation metadata, not
-model-extracted domain relations.
+The target stays whole: splitting it into "movement between atmosphere" and
+similar fragments would lose the connection among the places. Conversely, a
+shared predicate that applies independently to every listed subject may split:
 
-Agent roles use separate prompts with the same local model by default. They are
-not independently trained validators. Their explanations and scores are model
-judgments, and background additions are explicitly labeled as inferred.
+```text
+Oceans      → stores → Water in reservoirs
+Lakes       → stores → Water in reservoirs
+Rivers      → stores → Water in reservoirs
+Soil        → stores → Water in reservoirs
+Groundwater → stores → Water in reservoirs
+Snow        → stores → Water in reservoirs
+Ice         → stores → Water in reservoirs
+```
 
-Generation requires a nonempty definition and a schema-enforced broad `kind`
-for every endpoint and standalone concept. Domain labels such as `cell_type`
-or `system` go in the separate `kind_detail` field. This prevents the former
-kind-mismatch repair loop while retaining the specific description. The older
-targeted repair helper remains only as a defensive path for legacy/incomplete
-in-memory records; normal schema-valid live output needs no metadata repair.
+Collective actions, comparisons and "between" constructions must not be
+distributed this way. These are extraction instructions, not hardcoded facts:
+the source sentence and semantic review still determine which edges survive.
 
-Identity lookup retrieves at most eight likely candidates using names, aliases,
-abbreviations, and definition overlap. Retrieval only proposes comparisons:
-resolver and verifier must still agree on exact identity before any merge.
-Retrieval can miss a synonym, leaving distinct nodes; it never justifies a merge
-on similarity alone. Context-specific validated identity results are reused.
-Identical model requests also reuse validated responses in memory, with schema
-and semantic validation run again on every cache hit.
+The starting vocabulary includes general `describes` and `stores` relations.
+Other predicates may still be proposed and checked against their definitions.
+Concept aliases require semantic verification. Differently worded descriptive
+phrases are kept separate instead of shortened or merged into head nouns.
+Qualified facts are not collapsed into unqualified triples.
 
-Extracted relation review, seed assessment, background debate, and novelty
-comparisons use batches. Background novelty still covers every source chunk
-and accepted fact; accepted peers within a batch receive an additional novelty
-check before admission. No validity gate or source coverage is removed.
+Inspect `artifacts/extraction_proposals.json` for proposals,
+`artifacts/extraction_review.json` for decisions, and
+`artifacts/extractions.json` for retained relations. The report shows rejections
+and unresolved records. Partial runs keep valid results and return exit code 2;
+successful runs return 0, failures 1, and interruptions 130.
 
-Rejected relations are completed reviews, not processing failures. They remain
-excluded from the graph regardless of rejection rate. Every review decision is
-saved immediately; `extraction_quality.json` records counts separately for each
-chunk. A summary sentence can legitimately yield a claim and no relation edges.
-
-Malformed extraction/review responses, invalid quotations, and unresolved
-metadata produce logged warnings and local issues instead of aborting the run.
-Failed review batches split to isolate problematic candidates; an individual
-candidate that still lacks a valid review is marked unresolved and excluded.
-Model retries remain bounded. Valid records survive, later chunks continue,
-and the final report identifies incomplete extraction/review with exit code 2.
-Ordinary semantic rejections alone do not mark extraction incomplete.
-
-Malformed model output is isolated to the affected item across outline, seed
-selection, background generation/review, and reconstruction as well. Failures
-are saved in `artifacts/unresolved_items.json`; valid items remain usable.
-Unreachable model services and systematic item failures stop the run.
-With defaults, fatal health monitoring stops after more than half of a step's
-final items fail, once five item outcomes exist, using a rolling window of ten.
-Retries and split batch attempts never count as additional failed items.
-`health.json` saves fatal diagnostics, and `events.jsonl` retains every attempt.
-These controls do not relax individual edge acceptance requirements.
-
-Adaptive splitting changes extraction work units, not the original chapter
-chunks. Quotes retain original character offsets and all resulting proposals
-retain their parent chunk ID. A work unit that still cannot be extracted is
-recorded as incomplete. Evidence context includes the immediately adjacent
-sentences within the same paragraph. A continuous exact quote may span two
-sentences and must overlap the current unit; unrelated neighboring facts are
-not extraction targets. Semantic review checks the whole supporting span.
-
-`artifacts/extraction_rejections.json`, `statistics.json`, the HTML report, and
-the Markdown report show rejection categories (meaning changed, quote too
-short, wrong direction, wrong kind, and other explicit causes). Categories can
-overlap; unresolved reviews are reported separately from semantic rejections.
-
-Runs with unresolved items still generate a graph and report for
-their retained data. They visibly report **incomplete extraction**, use manifest
-status `completed_with_issues`, and return exit code 2. Ordinary successful runs
-return 0; failures return 1; interrupts return 130. The two-chapter command
-continues after incomplete extraction. Chunks without grounded claims are not
-reconstructed or assigned similarity scores.
+All roles use the same local model unless configured otherwise. Debate
+judgments are not independent external verification. Extraction can still miss
+or misinterpret an assertion, so compare the retained triples with their quotes.
 
 ## Logs for a future simulator
 
@@ -351,7 +292,6 @@ Python 3.10+ is required. For a new environment:
 py -3 -m venv .venv
 & .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ollama pull qwen3.5:9b
-ollama pull nomic-embed-text
 ```
 
 Only if using Neo4j, copy `.env.example` to `.env` and set `NEO4J_PASSWORD` to

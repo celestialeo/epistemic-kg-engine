@@ -1,0 +1,3071 @@
+[
+  {
+    "chunk_id": "chunk_001",
+    "unit_kind": "other",
+    "confidence": 0.95,
+    "reason": "The sentence explicitly states that 'The water cycle describes how water moves...'. This supports a 'describes' relation from the process 'water_cycle' to the phenomenon 'how water moves between the atmosphere, the land, and bodies of water'. The entities involved (atmosphere, land, bodies of water) are mentioned as part of the condition ('between...') rather than as separate targets of the main assertion. No other causal or structural relations are supported by this single sentence. Extracted 'describes' relation from PREVIOUS_SENTENCE linking 'water_cycle' to the specific movement process described. Extracted eight 'stores' relations from CURRENT_SENTENCE, distributing the predicate over each listed entity (oceans, lakes, rivers, soil, groundwater, snow, ice) individually as per instructions for lists of topics where the action applies to every item. Conditions 'in reservoirs' were retained in all store relations. No new predicates were invented; only 'describes' and 'stores' from available_relations were used. The sentence explicitly states that Evaporation causes the change of liquid water to water vapor and Condensation causes the change of vapor to liquid. These are distinct causal events described in a single sentence. The 'changes' verb indicates an event transformation which is best modeled as a target event caused by the process. No other relations like 'part_of' or 'is_a' apply directly to the action descriptions without inventing extra nodes. The sentence explicitly states that solar energy 'supplies much of the energy needed for evaporation'. This supports an 'enables' relation because supplying necessary energy is a condition permitting the process, rather than a direct causal production of the event itself (which would be 'causes'). The phrase 'from oceans, lakes, and moist ground' defines the scope/conditions of the evaporation process mentioned. No other relations are supported by this specific sentence without inventing extra nodes or misinterpreting the text. The sentence explicitly states that 'the rate' (referring to evaporation from the previous context) depends on three specific factors: humidity, wind, and availability of water. These are extracted as distinct concepts. The relation 'depends_on' is used because the text uses the verb 'depends on', indicating influence or contingency rather than direct causation of the event itself or structural part-whole relationships. No other relations from the schema fit better without inventing meaning.",
+    "concepts": [
+      "water cycle",
+      "atmosphere",
+      "land",
+      "bodies of water",
+      "how water moves between atmosphere land and bodies of water",
+      "oceans",
+      "lakes",
+      "rivers",
+      "soil",
+      "groundwater",
+      "snow",
+      "ice",
+      "water",
+      "reservoirs",
+      "evaporation",
+      "liquid water",
+      "water vapor",
+      "condensation",
+      "liquid water changes into water vapor",
+      "water vapor changes into liquid",
+      "solar energy",
+      "oceans (74598aac)",
+      "moist ground",
+      "humidity",
+      "wind",
+      "availability of water",
+      "rate of evaporation"
+    ],
+    "claims": [
+      {
+        "text": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+        "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+        "evidence_start": 0,
+        "evidence_end": 96
+      },
+      {
+        "text": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179
+      },
+      {
+        "text": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid.",
+        "evidence": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid.",
+        "evidence_start": 180,
+        "evidence_end": 281
+      },
+      {
+        "text": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground.",
+        "evidence": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground.",
+        "evidence_start": 282,
+        "evidence_end": 383
+      },
+      {
+        "text": "The rate also depends on humidity, wind, and the availability of water.",
+        "evidence": "The rate also depends on humidity, wind, and the availability of water.",
+        "evidence_start": 384,
+        "evidence_end": 455
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "water cycle",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "how water moves between atmosphere land and bodies of water",
+        "conditions": "between the atmosphere, the land, and bodies of water",
+        "modality": null,
+        "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+        "evidence_start": 0,
+        "evidence_end": 96,
+        "source_mention": {
+          "name": "water_cycle",
+          "definition": "The water cycle",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "how_water_moves_between_atmosphere_land_and_bodies_of_water",
+          "definition": "how water moves between the atmosphere, the land, and bodies of water",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water_cycle",
+        "surface_target": "how_water_moves_between_atmosphere_land_and_bodies_of_water",
+        "surface_relation": "describes",
+        "id": "chunk_001_relation_001",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "oceans",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "oceans",
+          "definition": "Oceans",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "oceans",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_003",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "lakes",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "lakes",
+          "definition": "lakes",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "lakes",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_004",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "rivers",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "rivers",
+          "definition": "rivers",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "rivers",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_005",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "soil",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "soil",
+          "definition": "soil",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "soil",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_006",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "groundwater",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "groundwater",
+          "definition": "groundwater",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "groundwater",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_007",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "snow",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "snow",
+          "definition": "snow",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "snow",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_008",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "ice",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water",
+        "conditions": "in reservoirs",
+        "modality": null,
+        "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+        "evidence_start": 97,
+        "evidence_end": 179,
+        "source_mention": {
+          "name": "ice",
+          "definition": "ice",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "water",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "ice",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_001_relation_009",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "evaporation",
+        "relation": "causes",
+        "relation_definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "target": "liquid water changes into water vapor",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid.",
+        "evidence_start": 180,
+        "evidence_end": 281,
+        "source_mention": {
+          "name": "Evaporation",
+          "definition": "Process changing liquid water into water vapor",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "liquid water changes into water vapor",
+          "definition": "Transformation of liquid water into water vapor",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Evaporation",
+        "surface_target": "liquid water changes into water vapor",
+        "surface_relation": "causes",
+        "id": "chunk_001_relation_010",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "condensation",
+        "relation": "causes",
+        "relation_definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "target": "water vapor changes into liquid",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid.",
+        "evidence_start": 180,
+        "evidence_end": 281,
+        "source_mention": {
+          "name": "Condensation",
+          "definition": "Process changing water vapor back into liquid",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water vapor changes into liquid",
+          "definition": "Transformation of water vapor back into liquid",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Condensation",
+        "surface_target": "water vapor changes into liquid",
+        "surface_relation": "causes",
+        "id": "chunk_001_relation_011",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "solar energy",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "evaporation",
+        "conditions": "from oceans, lakes, and moist ground",
+        "modality": "supplies much of the energy needed",
+        "evidence": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground.",
+        "evidence_start": 282,
+        "evidence_end": 383,
+        "source_mention": {
+          "name": "Solar energy",
+          "definition": "Energy derived from the sun",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "evaporation",
+          "definition": "The process of liquid water turning into vapor",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Solar energy",
+        "surface_target": "evaporation",
+        "surface_relation": "enables",
+        "id": "chunk_001_relation_012",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "extraction_unit_id": "chunk_001_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_001_sentence_001",
+        "start": 0,
+        "end": 97,
+        "text": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_001_sentence_002",
+        "start": 97,
+        "end": 180,
+        "text": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs. ",
+        "status": "incomplete"
+      },
+      {
+        "id": "chunk_001_sentence_003",
+        "start": 180,
+        "end": 282,
+        "text": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_001_sentence_004",
+        "start": 282,
+        "end": 384,
+        "text": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_001_sentence_005",
+        "start": 384,
+        "end": 455,
+        "text": "The rate also depends on humidity, wind, and the availability of water.",
+        "status": "complete"
+      }
+    ],
+    "issues": [
+      {
+        "id": "chunk_001_sentence_002_claims_0",
+        "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the previous record ('The water cycle describes...') is derived from PREVIOUS_SENTENCE. Per instructions, assertions must be extracted only from CURRENT_SENTENCE. The current sentence asserts that 'Oceans, lakes...' store 'water', not that the water cycle describes movement. Therefore, no claim can be generated for this index based on the current sentence's content.",
+        "record": {
+          "text": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+          "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+        }
+      },
+      {
+        "id": "chunk_001_relation_002",
+        "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record was invalid because it relied on PREVIOUS_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice' store 'water'. This supports a 'stores' relation where the collective list of entities is the source and 'water' is the target. The previous record incorrectly attempted to model the water cycle description from the prior sentence. A valid relation must be extracted from the current sentence: [Oceans, lakes, rivers, soil, groundwater, snow, and ice] -> stores -> water.",
+        "record": {
+          "source": {
+            "name": "water_cycle",
+            "definition": "The water cycle",
+            "kind": "process",
+            "form": "concept",
+            "reference_phrase": null,
+            "kind_detail": null
+          },
+          "relation": "describes",
+          "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+          "target": {
+            "name": "movement_of_water_between_atmosphere_land_and_bodies_of_water",
+            "definition": "how water moves between the atmosphere, the land, and bodies of water",
+            "kind": "process",
+            "form": "concept",
+            "reference_phrase": null,
+            "kind_detail": null
+          },
+          "conditions": "between the atmosphere, the land, and bodies of water",
+          "modality": null,
+          "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+        }
+      }
+    ],
+    "status": "incomplete"
+  },
+  {
+    "chunk_id": "chunk_002",
+    "unit_kind": "other",
+    "confidence": 0.95,
+    "reason": "Extracted relations based on the explicit actions described in CURRENT_SENTENCE: Plants absorbing water via roots and releasing vapor via stomata. Identified 'roots' and 'leaf openings/stomata' as participants in these processes. Established 'stomata' as a subtype of 'leaf openings'. No external context from PREVIOUS or NEXT sentences was used to invent new claims, though 'NEXT_SENTENCE' confirms the identity of the release process as transpiration (not extracted as a separate claim per instructions). All concepts are derived directly from the text without invention. The sentence 'This release is transpiration' explicitly equates a specific event ('This release') with a general process ('transpiration'). The predicate 'is_a' accurately captures this classification relationship without implying causation or parthood. No other relations are supported by the text. The sentence explicitly states that Evapotranspiration 'combines' two specific processes: 'evaporation from surfaces' and 'transpiration by plants'. The relation 'combines' is proposed as a new predicate to accurately reflect this integration without forcing it into existing categories like 'causes' or 'part_of', which do not fit the semantic meaning of combining distinct phenomena. Both target concepts are derived directly from the text, resolving references to 'evaporation from surfaces' and 'transpiration by plants' as standalone process concepts. The sentence asserts that cooling and saturation enable condensation (enables relation) and that the condensation process acts on small particles to form droplets (acts_on relation). The modality 'can' is preserved in conditions. No other causal or structural relations are explicitly supported by this single sentence. The sentence explicitly states that clouds contain specific components (droplets, crystals) and distinguishes them from vapor. The 'contains' relation is used for the spatial inclusion of these components. The negation regarding water vapor is handled by defining the concept rather than a negative relation, as per instructions to preserve precise assertions.",
+    "concepts": [
+      "plants",
+      "water",
+      "roots",
+      "vapor",
+      "leaf openings",
+      "stomata",
+      "water (69201511)",
+      "absorb water through roots",
+      "transpiration",
+      "evapotranspiration",
+      "evaporation from surfaces",
+      "small particles",
+      "droplets",
+      "air cooling and saturation",
+      "condensation",
+      "clouds",
+      "tiny liquid droplets",
+      "ice crystals",
+      "water vapor",
+      "water vapor (68527be0)"
+    ],
+    "claims": [
+      {
+        "text": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565
+      },
+      {
+        "text": "This release is transpiration.",
+        "evidence": "This release is transpiration.",
+        "evidence_start": 566,
+        "evidence_end": 596
+      },
+      {
+        "text": "Evapotranspiration combines evaporation from surfaces with transpiration by plants.",
+        "evidence": "Evapotranspiration combines evaporation from surfaces with transpiration by plants.",
+        "evidence_start": 597,
+        "evidence_end": 680
+      },
+      {
+        "text": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets.",
+        "evidence": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets.",
+        "evidence_start": 716,
+        "evidence_end": 824
+      },
+      {
+        "text": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "evidence": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "evidence_start": 825,
+        "evidence_end": 927
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "plants",
+        "relation": "absorbs_water_via_roots",
+        "relation_definition": "Process by which plants take in water via their roots.",
+        "target": "water (69201511)",
+        "conditions": "through their roots",
+        "modality": null,
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565,
+        "source_mention": {
+          "name": "Plants",
+          "definition": "Organisms that absorb water through roots and release vapor through stomata.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "Substance absorbed by plants and released as vapor.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Plants",
+        "surface_target": "water",
+        "surface_relation": "absorb_water_through_roots",
+        "id": "chunk_002_relation_001",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "plants",
+        "relation": "emits_vapor_through_stomata",
+        "relation_definition": "Process by which plants emit water vapor through leaf openings.",
+        "target": "vapor",
+        "conditions": "through leaf openings called stomata",
+        "modality": null,
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565,
+        "source_mention": {
+          "name": "Plants",
+          "definition": "Organisms that absorb water through roots and release vapor through stomata.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "vapor",
+          "definition": "Water released by plants as gas through stomata.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Plants",
+        "surface_target": "vapor",
+        "surface_relation": "release_vapor_through_stomata",
+        "id": "chunk_002_relation_002",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "roots",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "absorb water through roots",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565,
+        "source_mention": {
+          "name": "roots",
+          "definition": "Structures through which plants absorb water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "absorb_water_through_roots",
+          "definition": "Process by which plants take in water via their roots.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "roots",
+        "surface_target": "absorb_water_through_roots",
+        "surface_relation": "participates_in",
+        "id": "chunk_002_relation_003",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "leaf openings",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "transpiration",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565,
+        "source_mention": {
+          "name": "leaf openings",
+          "definition": "Openings in leaves called stomata through which vapor is released.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "release_vapor_through_stomata",
+          "definition": "Process by which plants emit water vapor through leaf openings.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "leaf openings",
+        "surface_target": "release_vapor_through_stomata",
+        "surface_relation": "participates_in",
+        "id": "chunk_002_relation_004",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "stomata",
+        "relation": "is_a",
+        "relation_definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "target": "leaf openings",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata.",
+        "evidence_start": 456,
+        "evidence_end": 565,
+        "source_mention": {
+          "name": "stomata",
+          "definition": "Leaf openings through which plants release water vapor.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "leaf openings",
+          "definition": "Openings in leaves called stomata through which vapor is released.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "stomata",
+        "surface_target": "leaf openings",
+        "surface_relation": "is_a",
+        "id": "chunk_002_relation_005",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "evapotranspiration",
+        "relation": "integrates_with",
+        "relation_definition": "SOURCE merges multiple distinct processes into a single composite phenomenon TARGET.",
+        "target": "evaporation from surfaces",
+        "conditions": "with transpiration_by_plants",
+        "modality": null,
+        "evidence": "Evapotranspiration combines evaporation from surfaces with transpiration by plants.",
+        "evidence_start": 597,
+        "evidence_end": 680,
+        "source_mention": {
+          "name": "Evapotranspiration",
+          "definition": "Process combining evaporation from surfaces with transpiration by plants.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "evaporation_from_surfaces",
+          "definition": "Process of water vapor release from surfaces.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Evapotranspiration",
+        "surface_target": "evaporation_from_surfaces",
+        "surface_relation": "combines",
+        "id": "chunk_002_relation_007",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "air cooling and saturation",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "condensation",
+        "conditions": "onto small particles",
+        "modality": "can",
+        "evidence": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets.",
+        "evidence_start": 716,
+        "evidence_end": 824,
+        "source_mention": {
+          "name": "air_cooling_and_saturation",
+          "definition": "The process where air cools sufficiently and becomes saturated.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "vapor_condensation",
+          "definition": "The process where vapor condenses onto small particles to form droplets.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "air_cooling_and_saturation",
+        "surface_target": "vapor_condensation",
+        "surface_relation": "enables",
+        "id": "chunk_002_relation_009",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "condensation",
+        "relation": "acts_on",
+        "relation_definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "target": "small particles",
+        "conditions": "to form droplets",
+        "modality": "can",
+        "evidence": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets.",
+        "evidence_start": 716,
+        "evidence_end": 824,
+        "source_mention": {
+          "name": "vapor_condensation",
+          "definition": "The process where vapor condenses onto small particles to form droplets.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "small_particles",
+          "definition": "Particles that serve as nuclei for droplet formation.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "vapor_condensation",
+        "surface_target": "small_particles",
+        "surface_relation": "acts_on",
+        "id": "chunk_002_relation_010",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "clouds",
+        "relation": "contains",
+        "relation_definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "target": "tiny liquid droplets",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "evidence_start": 825,
+        "evidence_end": 927,
+        "source_mention": {
+          "name": "Clouds",
+          "definition": "Atmospheric formations containing tiny liquid droplets, ice crystals, or both.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "tiny liquid droplets",
+          "definition": "Small liquid water particles found within clouds.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Clouds",
+        "surface_target": "tiny liquid droplets",
+        "surface_relation": "contains",
+        "id": "chunk_002_relation_011",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "clouds",
+        "relation": "contains",
+        "relation_definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "target": "ice crystals",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "evidence_start": 825,
+        "evidence_end": 927,
+        "source_mention": {
+          "name": "Clouds",
+          "definition": "Atmospheric formations containing tiny liquid droplets, ice crystals, or both.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "ice crystals",
+          "definition": "Frozen water particles found within clouds.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Clouds",
+        "surface_target": "ice crystals",
+        "surface_relation": "contains",
+        "id": "chunk_002_relation_012",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "clouds",
+        "relation": "contains",
+        "relation_definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "target": "water vapor (68527be0)",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "evidence_start": 825,
+        "evidence_end": 927,
+        "source_mention": {
+          "name": "Clouds",
+          "definition": "Atmospheric formations containing tiny liquid droplets, ice crystals, or both.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water vapor",
+          "definition": "Gaseous state of water, described as invisible in the context of clouds.",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Clouds",
+        "surface_target": "water vapor",
+        "surface_relation": "contains",
+        "id": "chunk_002_relation_013",
+        "chunk_id": "chunk_002",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "The rate also depends on humidity, wind, and the availability of water. Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. This release is transpiration. Evapotranspiration combines evaporation from surfaces with transpiration by plants. Moving air transports water vapor. When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "extraction_unit_id": "chunk_002_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_002_sentence_001",
+        "start": 456,
+        "end": 566,
+        "text": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_002_sentence_002",
+        "start": 566,
+        "end": 597,
+        "text": "This release is transpiration. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_002_sentence_003",
+        "start": 597,
+        "end": 681,
+        "text": "Evapotranspiration combines evaporation from surfaces with transpiration by plants. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_002_sentence_004",
+        "start": 681,
+        "end": 716,
+        "text": "Moving air transports water vapor. ",
+        "status": "incomplete"
+      },
+      {
+        "id": "chunk_002_sentence_005",
+        "start": 716,
+        "end": 825,
+        "text": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_002_sentence_006",
+        "start": 825,
+        "end": 927,
+        "text": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor.",
+        "status": "complete"
+      }
+    ],
+    "issues": [
+      {
+        "id": "chunk_002_sentence_004",
+        "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge",
+        "record": {
+          "id": "chunk_002_sentence_004",
+          "start": 681,
+          "end": 716,
+          "text": "Moving air transports water vapor. "
+        }
+      }
+    ],
+    "status": "incomplete"
+  },
+  {
+    "chunk_id": "chunk_003",
+    "unit_kind": "example",
+    "confidence": 0.9500000000000001,
+    "reason": "The sentence explicitly states two distinct processes: cloud particles growing as a prerequisite for falling as precipitation, and some falling water evaporating before hitting the ground. These are extracted as specific relations with their respective conditions ('before they can fall', 'before reaching the ground') and modalities ('must', 'some'). No other causal or structural links are implied by the text. The sentence explicitly states that 'Rain' and 'Snow' perform the action of returning atmospheric water to the surface. This action is modeled as a process ('Return Atmospheric Water to Surface'). Since rain and snow are distinct entities participating in this collective process rather than being structural parts or causes of the process itself, the relation 'participates_in' is used for both. The evidence quote contains the full assertion.",
+    "concepts": [
+      "cloud particles",
+      "precipitation",
+      "falling water",
+      "evaporation (bc1b19d3)",
+      "rain",
+      "snow",
+      "atmospheric water",
+      "surface",
+      "return atmospheric water to surface"
+    ],
+    "claims": [
+      {
+        "text": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "evidence": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "evidence_start": 928,
+        "evidence_end": 1054
+      },
+      {
+        "text": "Rain and snow return atmospheric water to the surface.",
+        "evidence": "Rain and snow return atmospheric water to the surface.",
+        "evidence_start": 1055,
+        "evidence_end": 1109
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "cloud particles",
+        "relation": "grows_into_precipitation",
+        "relation_definition": "The entity SOURCE must undergo growth to reach the state of falling as precipitation TARGET.",
+        "target": "precipitation",
+        "conditions": "before they can fall",
+        "modality": "must",
+        "evidence": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "evidence_start": 928,
+        "evidence_end": 1054,
+        "source_mention": {
+          "name": "Cloud particles",
+          "definition": "Tiny liquid droplets or ice crystals within clouds.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Precipitation",
+          "definition": "Water falling from the sky to the ground.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Cloud particles",
+        "surface_target": "Precipitation",
+        "surface_relation": "must_grow_before_falling_as_precipitation",
+        "id": "chunk_003_relation_001",
+        "chunk_id": "chunk_003",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface.",
+        "extraction_unit_id": "chunk_003_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "falling water",
+        "relation": "evaporates_before_reaching_ground",
+        "relation_definition": "The entity SOURCE undergoes evaporation before reaching the ground.",
+        "target": "evaporation (bc1b19d3)",
+        "conditions": "before reaching the ground",
+        "modality": "some",
+        "evidence": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground.",
+        "evidence_start": 928,
+        "evidence_end": 1054,
+        "source_mention": {
+          "name": "Falling water",
+          "definition": "Water in the process of descending through the atmosphere.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Evaporation",
+          "definition": "The process where liquid water turns into vapor.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Falling water",
+        "surface_target": "Evaporation",
+        "surface_relation": "evaporates_before_reaching_ground",
+        "id": "chunk_003_relation_002",
+        "chunk_id": "chunk_003",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface.",
+        "extraction_unit_id": "chunk_003_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "rain",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "return atmospheric water to surface",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Rain and snow return atmospheric water to the surface.",
+        "evidence_start": 1055,
+        "evidence_end": 1109,
+        "source_mention": {
+          "name": "Rain",
+          "definition": "Precipitation falling from clouds as liquid water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Return Atmospheric Water to Surface",
+          "definition": "The process of moving water from the atmosphere back to the ground via precipitation.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Rain",
+        "surface_target": "Return Atmospheric Water to Surface",
+        "surface_relation": "participates_in",
+        "id": "chunk_003_relation_003",
+        "chunk_id": "chunk_003",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface.",
+        "extraction_unit_id": "chunk_003_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "snow",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "return atmospheric water to surface",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Rain and snow return atmospheric water to the surface.",
+        "evidence_start": 1055,
+        "evidence_end": 1109,
+        "source_mention": {
+          "name": "Snow",
+          "definition": "Precipitation falling from clouds as frozen ice crystals.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Return Atmospheric Water to Surface",
+          "definition": "The process of moving water from the atmosphere back to the ground via precipitation.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Snow",
+        "surface_target": "Return Atmospheric Water to Surface",
+        "surface_relation": "participates_in",
+        "id": "chunk_003_relation_004",
+        "chunk_id": "chunk_003",
+        "paragraph_id": "paragraph_001",
+        "origin": "document",
+        "evidence_context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor. Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. Rain and snow return atmospheric water to the surface.",
+        "extraction_unit_id": "chunk_003_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_003_sentence_001",
+        "start": 928,
+        "end": 1055,
+        "text": "Cloud particles must grow before they can fall as precipitation, and some falling water evaporates before reaching the ground. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_003_sentence_002",
+        "start": 1055,
+        "end": 1109,
+        "text": "Rain and snow return atmospheric water to the surface.",
+        "status": "complete"
+      }
+    ],
+    "issues": [],
+    "status": "complete"
+  },
+  {
+    "chunk_id": "chunk_004",
+    "unit_kind": "other",
+    "confidence": 0.95,
+    "reason": "The sentence describes a conditional possibility ('can') regarding 'water' following 'pathways' after 'precipitation reaches land'. No explicit causal, structural, or temporal relation between distinct named entities is asserted beyond the narrative flow. The phrase 'several pathways' refers to an unspecified set of processes not individually named in the text, so no specific 'participates_in', 'follows', or 'causes' relations can be extracted without inventing nodes. The assertion is a descriptive statement about potential behavior rather than a defined structural or causal link between two specific concepts. The sentence lists three distinct processes (remaining/evaporating, flowing, entering) that occur after precipitation reaches land. The previous sentence establishes 'precipitation reaches land' as the enabling condition. The current sentence asserts these pathways are possible ('can follow'), supporting 'enables' relations from the precipitation event to each specific process. No direct causation ('causes') is asserted for the processes themselves, only that they are permitted pathways. The quote spans both sentences to capture the context of 'can follow' and the specific examples. The sentence defines 'Infiltration' as a specific process ('entry of water...'). The relation 'describes' is used to link the concept name to its definition/event description without implying causation or parthood. Other entities (water, ground surface, soil) are participants in the event described but do not form separate causal or structural relations based solely on this definitional sentence. The sentence explicitly lists four factors (Soil structure, existing moisture, vegetation, rainfall intensity) that 'affect how quickly infiltration occurs'. This supports a causal influence on the rate of the process 'infiltration'. The definition of 'infiltration' is taken from the previous sentence to ensure complete object names. A new predicate 'affects_rate_of' is used because the text specifies affecting 'how quickly', which implies rate, rather than just enabling or causing the event itself. No other relations are supported by the text. The sentence explicitly lists three potential fates for water in soil: absorption by roots, retention in pore spaces, and movement deeper through the subsurface. These are treated as distinct processes or states enabled by possibility ('may'). The relation 'absorbs_water_via_roots' captures the first fate. The relation 'stores' captures the second fate (water remaining in pores). The third fate is captured via 'participates_in' linking water to the movement process, as no specific predicate like 'moves_through' exists in the provided schema for this exact phrasing, and 'participates_in' fits the participation of a substance in a flow process. Modality 'may' is preserved in conditions. The sentence 'This deeper movement is called percolation' explicitly defines the term 'percolation' as a 'deeper movement'. The relation 'describes' is appropriate here because the sentence provides an account/definition of the phenomenon without asserting causation or parthood. No other relations are supported by this specific sentence.",
+    "concepts": [
+      "precipitation",
+      "land",
+      "water (e51996df)",
+      "pathways",
+      "precipitation reaching land",
+      "water remains on leaves",
+      "water flows over surface",
+      "water enters ground",
+      "infiltration",
+      "water (87826376)",
+      "surface",
+      "soil",
+      "other porous material",
+      "entry of water through the ground surface into soil or other porous material",
+      "soil structure",
+      "existing moisture",
+      "vegetation",
+      "rainfall intensity",
+      "water in soil",
+      "roots (d81b2e4d)",
+      "pore spaces",
+      "subsurface",
+      "percolation"
+    ],
+    "claims": [
+      {
+        "text": "After precipitation reaches land, water can follow several pathways.",
+        "evidence": "After precipitation reaches land, water can follow several pathways.",
+        "evidence_start": 1111,
+        "evidence_end": 1179
+      },
+      {
+        "text": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground.",
+        "evidence": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground.",
+        "evidence_start": 1111,
+        "evidence_end": 1281
+      },
+      {
+        "text": "Infiltration is the entry of water through the ground surface into soil or other porous material.",
+        "evidence": "Infiltration is the entry of water through the ground surface into soil or other porous material.",
+        "evidence_start": 1282,
+        "evidence_end": 1379
+      },
+      {
+        "text": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence_start": 1380,
+        "evidence_end": 1489
+      },
+      {
+        "text": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface.",
+        "evidence": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface.",
+        "evidence_start": 1490,
+        "evidence_end": 1591
+      },
+      {
+        "text": "This deeper movement is called percolation.",
+        "evidence": "This deeper movement is called percolation.",
+        "evidence_start": 1592,
+        "evidence_end": 1635
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "precipitation reaching land",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "water remains on leaves",
+        "conditions": null,
+        "modality": null,
+        "evidence": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground.",
+        "evidence_start": 1111,
+        "evidence_end": 1281,
+        "source_mention": {
+          "name": "precipitation_reaching_land",
+          "definition": "The event where precipitation arrives on land.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water_remains_on_leaves",
+          "definition": "The portion of water that stays on leaves and later evaporates.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "precipitation_reaching_land",
+        "surface_target": "water_remains_on_leaves",
+        "surface_relation": "enables",
+        "id": "chunk_004_relation_001",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "precipitation reaching land",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "water flows over surface",
+        "conditions": null,
+        "modality": null,
+        "evidence": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground.",
+        "evidence_start": 1111,
+        "evidence_end": 1281,
+        "source_mention": {
+          "name": "precipitation_reaching_land",
+          "definition": "The event where precipitation arrives on land.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water_flows_over_surface",
+          "definition": "The portion of water that moves across the land surface.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "precipitation_reaching_land",
+        "surface_target": "water_flows_over_surface",
+        "surface_relation": "enables",
+        "id": "chunk_004_relation_002",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "precipitation reaching land",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "water enters ground",
+        "conditions": null,
+        "modality": null,
+        "evidence": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground.",
+        "evidence_start": 1111,
+        "evidence_end": 1281,
+        "source_mention": {
+          "name": "precipitation_reaching_land",
+          "definition": "The event where precipitation arrives on land.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water_enters_ground",
+          "definition": "The portion of water that infiltrates into the soil.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "precipitation_reaching_land",
+        "surface_target": "water_enters_ground",
+        "surface_relation": "enables",
+        "id": "chunk_004_relation_003",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "infiltration",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "entry of water through the ground surface into soil or other porous material",
+        "conditions": "through the ground surface into soil or other porous material",
+        "modality": null,
+        "evidence": "Infiltration is the entry of water through the ground surface into soil or other porous material.",
+        "evidence_start": 1282,
+        "evidence_end": 1379,
+        "source_mention": {
+          "name": "Infiltration",
+          "definition": "the entry of water through the ground surface into soil or other porous material",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "entry of water through the ground surface into soil or other porous material",
+          "definition": "phenomenon described by Infiltration",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Infiltration",
+        "surface_target": "entry of water through the ground surface into soil or other porous material",
+        "surface_relation": "describes",
+        "id": "chunk_004_relation_004",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "soil structure",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "infiltration",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence_start": 1380,
+        "evidence_end": 1489,
+        "source_mention": {
+          "name": "Soil structure",
+          "definition": "A physical property of the ground.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "infiltration",
+          "definition": "The entry of water through the ground surface into soil or other porous material.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Soil structure",
+        "surface_target": "infiltration",
+        "surface_relation": "affects_rate_of",
+        "id": "chunk_004_relation_005",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "existing moisture",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "infiltration",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence_start": 1380,
+        "evidence_end": 1489,
+        "source_mention": {
+          "name": "existing moisture",
+          "definition": "The current water content in the soil.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "infiltration",
+          "definition": "The entry of water through the ground surface into soil or other porous material.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "existing moisture",
+        "surface_target": "infiltration",
+        "surface_relation": "affects_rate_of",
+        "id": "chunk_004_relation_006",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "vegetation",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "infiltration",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence_start": 1380,
+        "evidence_end": 1489,
+        "source_mention": {
+          "name": "vegetation",
+          "definition": "Plant life present on the surface.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "infiltration",
+          "definition": "The entry of water through the ground surface into soil or other porous material.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "vegetation",
+        "surface_target": "infiltration",
+        "surface_relation": "affects_rate_of",
+        "id": "chunk_004_relation_007",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "rainfall intensity",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "infiltration",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs.",
+        "evidence_start": 1380,
+        "evidence_end": 1489,
+        "source_mention": {
+          "name": "rainfall intensity",
+          "definition": "The rate of precipitation falling.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "infiltration",
+          "definition": "The entry of water through the ground surface into soil or other porous material.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "rainfall intensity",
+        "surface_target": "infiltration",
+        "surface_relation": "affects_rate_of",
+        "id": "chunk_004_relation_008",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "water in soil",
+        "relation": "absorbs_water_via_roots",
+        "relation_definition": "Process by which plants take in water via their roots.",
+        "target": "roots (d81b2e4d)",
+        "conditions": "may",
+        "modality": "possibility",
+        "evidence": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface.",
+        "evidence_start": 1490,
+        "evidence_end": 1591,
+        "source_mention": {
+          "name": "water_in_soil",
+          "definition": "Water present within the soil matrix.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "roots",
+          "definition": "Plant root structures.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water_in_soil",
+        "surface_target": "roots",
+        "surface_relation": "absorbs_water_via_roots",
+        "id": "chunk_004_relation_009",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "water in soil",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "pore spaces",
+        "conditions": "may",
+        "modality": "possibility",
+        "evidence": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface.",
+        "evidence_start": 1490,
+        "evidence_end": 1591,
+        "source_mention": {
+          "name": "water_in_soil",
+          "definition": "Water present within the soil matrix.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "pore_spaces",
+          "definition": "Void spaces within the soil structure.",
+          "kind": "structure",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water_in_soil",
+        "surface_target": "pore_spaces",
+        "surface_relation": "stores",
+        "id": "chunk_004_relation_010",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "water in soil",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "percolation",
+        "conditions": "may",
+        "modality": "possibility",
+        "evidence": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface.",
+        "evidence_start": 1490,
+        "evidence_end": 1591,
+        "source_mention": {
+          "name": "water_in_soil",
+          "definition": "Water present within the soil matrix.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "movement_deeper_through_subsurface",
+          "definition": "The process of water moving downward through the subsurface.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water_in_soil",
+        "surface_target": "movement_deeper_through_subsurface",
+        "surface_relation": "participates_in",
+        "id": "chunk_004_relation_011",
+        "chunk_id": "chunk_004",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "After precipitation reaches land, water can follow several pathways. Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. Infiltration is the entry of water through the ground surface into soil or other porous material. Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "extraction_unit_id": "chunk_004_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_004_sentence_001",
+        "start": 1111,
+        "end": 1180,
+        "text": "After precipitation reaches land, water can follow several pathways. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_004_sentence_002",
+        "start": 1180,
+        "end": 1282,
+        "text": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_004_sentence_003",
+        "start": 1282,
+        "end": 1380,
+        "text": "Infiltration is the entry of water through the ground surface into soil or other porous material. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_004_sentence_004",
+        "start": 1380,
+        "end": 1490,
+        "text": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs. ",
+        "status": "incomplete"
+      },
+      {
+        "id": "chunk_004_sentence_005",
+        "start": 1490,
+        "end": 1592,
+        "text": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_004_sentence_006",
+        "start": 1592,
+        "end": 1635,
+        "text": "This deeper movement is called percolation.",
+        "status": "complete"
+      }
+    ],
+    "issues": [
+      {
+        "id": "chunk_004_sentence_004_claims_1",
+        "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The failed record cites a definition from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The CURRENT_SENTENCE asserts causal influences on 'how quickly infiltration occurs', which requires extracting relations involving the rate of infiltration and its causes, rather than re-defining infiltration itself.",
+        "record": {
+          "text": "Infiltration is the entry of water through the ground surface into soil or other porous material.",
+          "evidence": "Infiltration is the entry of water through the ground surface into soil or other porous material."
+        }
+      }
+    ],
+    "status": "incomplete"
+  },
+  {
+    "chunk_id": "chunk_005",
+    "unit_kind": "other",
+    "confidence": 0.9499999999999998,
+    "reason": "The sentence asserts that 'Water reaching the saturated zone' can contribute to 'groundwater recharge', which maps to an 'enables' relation with modality 'can'. It also states that 'not all infiltrating water reaches that zone', implying a partial participation of 'infiltrating water' in the process of 'reaching the saturated zone'. The second relation uses 'participates_in' to capture this partial involvement without asserting full causation or structural part-whole relationships. No other relations are supported by the text. The sentence explicitly states that 'Groundwater fills pores or fractures'. This is a direct predication of filling action. The relation 'fills' is used to capture this specific interaction, as standard relations like 'contains' imply structural parthood which might not be the primary intent here (though 'contains' could arguably fit, 'fills' is more precise for the action described). The target 'pores or fractures in saturated material' is treated as a collective structure. No other assertions are made in this sentence. The sentence explicitly states that an aquifer 'stores' groundwater. The relation 'stores' is used to capture this assertion. The definition of 'groundwater' includes the qualifier 'usable quantities' as specified in the sentence. The sentence describes a process ('move... and discharge') involving 'Groundwater' as the subject acting on locations ('connected openings', 'streams', 'lakes', 'springs'). The available relations do not include a generic 'moves_through' or 'discharges_into'. While 'participates_in' exists, it requires an event/process name (e.g., 'flow') rather than a location. 'acts_on' is restricted to changing the state/position of an object, not merely moving through a medium or discharging into a body of water in this context without a specific predicate for flow/discharge. The sentence asserts capabilities ('can move', 'discharge') which are processes, but no single available relation key perfectly captures 'moves_through' or 'discharges_into' as defined in the schema (e.g., 'fills_voids_in' is too The sentence asserts that a 'spring' is a process/event occurring specifically 'where groundwater emerges'. The phrase 'where groundwater emerges' defines the location/condition of the occurrence. Since 'groundwater emergence' is an event described by the condition, and 'spring' is the process occurring there, the relation 'occurs_in' (or potentially 'is_a' if interpreted as a type, but here it's a specific instance) fits best with the condition attached. However, looking at the available relations, 'occurs_in' usually implies a spatial location. The sentence says 'A spring occurs where...'. This can be modeled as the process 'spring' occurring in the context/location defined by 'groundwater emergence'. Alternatively, if 'groundwater emerges' is treated as a location description, 'occurs'+ The sentence explicitly states that groundwater maintains flow in streams and links underground storage to surface water. The relations 'maintains_flow_in' and 'links_to' are derived directly from the verbs 'maintain flow' and 'linking'. No extra nodes or causal edges were invented; only the explicit connections described in the text are represented.",
+    "concepts": [
+      "water reaching the saturated zone",
+      "groundwater recharge",
+      "infiltrating water",
+      "reaching the saturated zone",
+      "groundwater",
+      "pore spaces",
+      "aquifer",
+      "groundwater (0a93a11f)",
+      "connected openings",
+      "streams",
+      "lakes (cd9936d5)",
+      "springs",
+      "spring",
+      "groundwater emergence",
+      "stream",
+      "underground storage",
+      "surface water"
+    ],
+    "claims": [
+      {
+        "text": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "evidence": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone.",
+        "evidence_start": 1636,
+        "evidence_end": 1759
+      },
+      {
+        "text": "Groundwater fills pores or fractures in saturated material.",
+        "evidence": "Groundwater fills pores or fractures in saturated material.",
+        "evidence_start": 1760,
+        "evidence_end": 1819
+      },
+      {
+        "text": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater.",
+        "evidence": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater.",
+        "evidence_start": 1820,
+        "evidence_end": 1914
+      },
+      {
+        "text": "Groundwater can move through connected openings and discharge into streams, lakes, or springs.",
+        "evidence": "Groundwater can move through connected openings and discharge into streams, lakes, or springs.",
+        "evidence_start": 1915,
+        "evidence_end": 2009
+      },
+      {
+        "text": "A spring occurs where groundwater emerges at the surface.",
+        "evidence": "A spring occurs where groundwater emerges at the surface.",
+        "evidence_start": 2010,
+        "evidence_end": 2067
+      },
+      {
+        "text": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "evidence_start": 2068,
+        "evidence_end": 2210
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "water reaching the saturated zone",
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "target": "groundwater recharge",
+        "conditions": "can contribute",
+        "modality": "can",
+        "evidence": "Water reaching the saturated zone can contribute to groundwater recharge",
+        "evidence_start": 1636,
+        "evidence_end": 1708,
+        "source_mention": {
+          "name": "Water reaching the saturated zone",
+          "definition": "Water that has reached the saturated zone",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "groundwater recharge",
+          "definition": "The process of groundwater recharge",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Water reaching the saturated zone",
+        "surface_target": "groundwater recharge",
+        "surface_relation": "enables",
+        "id": "chunk_005_relation_001",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "infiltrating water",
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "target": "reaching the saturated zone",
+        "conditions": "not all ... reaches",
+        "modality": null,
+        "evidence": "not all infiltrating water reaches that zone",
+        "evidence_start": 1714,
+        "evidence_end": 1758,
+        "source_mention": {
+          "name": "infiltrating water",
+          "definition": "Water that infiltrates into the ground",
+          "kind": "other",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "reaching the saturated zone",
+          "definition": "The process of water reaching the saturated zone",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "infiltrating water",
+        "surface_target": "reaching the saturated zone",
+        "surface_relation": "participates_in",
+        "id": "chunk_005_relation_002",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "groundwater",
+        "relation": "fills_voids_in",
+        "relation_definition": "SOURCE occupies the space of TARGET, specifically filling voids like pores or fractures.",
+        "target": "pore spaces",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Groundwater fills pores or fractures in saturated material.",
+        "evidence_start": 1760,
+        "evidence_end": 1819,
+        "source_mention": {
+          "name": "Groundwater",
+          "definition": "Water that fills pores or fractures in saturated material.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "pores or fractures in saturated material",
+          "definition": "Spaces within geological material that are filled with water.",
+          "kind": "structure",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Groundwater",
+        "surface_target": "pores or fractures in saturated material",
+        "surface_relation": "fills",
+        "id": "chunk_005_relation_003",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "aquifer",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "groundwater (0a93a11f)",
+        "conditions": "usable quantities",
+        "modality": null,
+        "evidence": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater.",
+        "evidence_start": 1820,
+        "evidence_end": 1914,
+        "source_mention": {
+          "name": "aquifer",
+          "definition": "geologic formation that stores and transmits usable quantities of groundwater",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "groundwater",
+          "definition": "usable quantity of water stored in an aquifer",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "aquifer",
+        "surface_target": "groundwater",
+        "surface_relation": "stores",
+        "id": "chunk_005_relation_004",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "spring",
+        "relation": "occurs_in",
+        "relation_definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "target": "groundwater emergence",
+        "conditions": "where groundwater emerges at the surface",
+        "modality": null,
+        "evidence": "A spring occurs where groundwater emerges at the surface.",
+        "evidence_start": 2010,
+        "evidence_end": 2067,
+        "source_mention": {
+          "name": "spring",
+          "definition": "A geological feature where groundwater emerges at the surface.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "groundwater emergence",
+          "definition": "The event of groundwater coming out at the surface.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "spring",
+        "surface_target": "groundwater emergence",
+        "surface_relation": "occurs_in",
+        "id": "chunk_005_relation_005",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "groundwater (0a93a11f)",
+        "relation": "maintains_flow_in",
+        "relation_definition": "SOURCE sustains the movement or presence of TARGET under specific conditions.",
+        "target": "stream",
+        "conditions": "during dry periods",
+        "modality": null,
+        "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "evidence_start": 2068,
+        "evidence_end": 2210,
+        "source_mention": {
+          "name": "groundwater",
+          "definition": "Subsurface water that maintains flow in streams during dry periods.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "stream",
+          "definition": "A visible surface water body.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "groundwater",
+        "surface_target": "stream",
+        "surface_relation": "maintains_flow_in",
+        "id": "chunk_005_relation_006",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "groundwater (0a93a11f)",
+        "relation": "links_to",
+        "relation_definition": "SOURCE connects or associates with TARGET, facilitating interaction between them.",
+        "target": "underground storage",
+        "conditions": null,
+        "modality": null,
+        "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "evidence_start": 2068,
+        "evidence_end": 2210,
+        "source_mention": {
+          "name": "groundwater",
+          "definition": "Subsurface water that maintains flow in streams during dry periods.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "underground storage",
+          "definition": "The subsurface reservoir linked to surface water flow.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "groundwater",
+        "surface_target": "underground storage",
+        "surface_relation": "links_to",
+        "id": "chunk_005_relation_007",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "underground storage",
+        "relation": "links_to",
+        "relation_definition": "SOURCE connects or associates with TARGET, facilitating interaction between them.",
+        "target": "surface water",
+        "conditions": null,
+        "modality": null,
+        "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "evidence_start": 2068,
+        "evidence_end": 2210,
+        "source_mention": {
+          "name": "underground storage",
+          "definition": "The subsurface reservoir linked to surface water flow.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "surface water",
+          "definition": "Visible water bodies such as streams.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "underground storage",
+        "surface_target": "surface water",
+        "surface_relation": "links_to",
+        "id": "chunk_005_relation_008",
+        "chunk_id": "chunk_005",
+        "paragraph_id": "paragraph_002",
+        "origin": "document",
+        "evidence_context": "This deeper movement is called percolation. Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. Groundwater fills pores or fractures in saturated material. An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. Groundwater can move through connected openings and discharge into streams, lakes, or springs. A spring occurs where groundwater emerges at the surface. These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "extraction_unit_id": "chunk_005_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_005_sentence_001",
+        "start": 1636,
+        "end": 1760,
+        "text": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_005_sentence_002",
+        "start": 1760,
+        "end": 1820,
+        "text": "Groundwater fills pores or fractures in saturated material. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_005_sentence_003",
+        "start": 1820,
+        "end": 1915,
+        "text": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_005_sentence_004",
+        "start": 1915,
+        "end": 2010,
+        "text": "Groundwater can move through connected openings and discharge into streams, lakes, or springs. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_005_sentence_005",
+        "start": 2010,
+        "end": 2068,
+        "text": "A spring occurs where groundwater emerges at the surface. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_005_sentence_006",
+        "start": 2068,
+        "end": 2210,
+        "text": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+        "status": "complete"
+      }
+    ],
+    "issues": [],
+    "status": "complete"
+  },
+  {
+    "chunk_id": "chunk_006",
+    "unit_kind": "other",
+    "confidence": 0.95,
+    "reason": "The sentence explicitly states that 'Surface runoff' develops under specific conditions involving 'water flows over the land'. The relation 'describes' is used because the text defines the phenomenon of surface runoff by describing the event of water flowing over land, rather than asserting a causal mechanism (causes) or structural part relationship. The additional clauses ('including when...') are treated as conditions modifying the primary description. The sentence explicitly states that Gravity moves runoff. This supports a causal or physical interaction relation. 'acts_on' is the most precise available predicate for an entity (Gravity) causing movement/change in another entity (runoff). The directionality is clear: Gravity acts on runoff. The target of the action includes channels, streams, and rivers as destinations, which are captured in the conditions field rather than as separate targets to avoid inventing pairwise routes not explicitly asserted as distinct relations. The sentence explicitly defines 'watershed' as a specific type of 'land_area'. The predicate 'is_a' captures this definitional relationship. The condition 'that drains surface water toward a common outlet' is retained in the relation to preserve the precise meaning of the assertion without inventing extra nodes or causal links. The sentence explicitly states that rivers carry water downstream (maintains_flow_in), lakes and wetlands can temporarily store it (stores with modality 'can' and condition 'temporarily'), and both lakes and wetlands influence the timing of its movement (influences_rate_of). No other causal or structural links are asserted in this specific sentence. Extracted 'stores' relation for Snow and ice holding water based on the first clause. Extracted 'releases' for melting producing liquid water. Extracted two 'enters' relations with modality 'can' for liquid water entering streams or soil, preserving the conditional nature of the original text.",
+    "concepts": [
+      "surface runoff",
+      "water flows over the land",
+      "rainfall exceeds the ground's ability to absorb it",
+      "gravity",
+      "runoff",
+      "channels",
+      "streams (cbbb0f21)",
+      "rivers (0a66b8fa)",
+      "watershed",
+      "land area",
+      "rivers (57be18d5)",
+      "water (f247c5d1)",
+      "lakes (8391f031)",
+      "wetlands",
+      "downstream movement",
+      "snow and ice",
+      "water (d5c878ab)",
+      "melting",
+      "liquid water (3d513e36)",
+      "streams (4673ae94)",
+      "soil (3e08f7c1)"
+    ],
+    "claims": [
+      {
+        "text": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated.",
+        "evidence": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated.",
+        "evidence_start": 2212,
+        "evidence_end": 2374
+      },
+      {
+        "text": "Gravity moves runoff downslope toward channels, streams, and rivers.",
+        "evidence": "Gravity moves runoff downslope toward channels, streams, and rivers.",
+        "evidence_start": 2375,
+        "evidence_end": 2443
+      },
+      {
+        "text": "A watershed is the land area that drains surface water toward a common outlet.",
+        "evidence": "A watershed is the land area that drains surface water toward a common outlet.",
+        "evidence_start": 2444,
+        "evidence_end": 2522
+      },
+      {
+        "text": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645
+      },
+      {
+        "text": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "evidence": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "evidence_start": 2646,
+        "evidence_end": 2738
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "surface runoff",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "water flows over the land",
+        "conditions": "when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated",
+        "modality": null,
+        "evidence": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated.",
+        "evidence_start": 2212,
+        "evidence_end": 2374,
+        "source_mention": {
+          "name": "Surface runoff",
+          "definition": "Water flowing over the land.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water flows over the land",
+          "definition": "The movement of water across a surface.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Surface runoff",
+        "surface_target": "water flows over the land",
+        "surface_relation": "describes",
+        "id": "chunk_006_relation_001",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "gravity",
+        "relation": "acts_on",
+        "relation_definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "target": "runoff",
+        "conditions": "downslope toward channels, streams, and rivers",
+        "modality": null,
+        "evidence": "Gravity moves runoff downslope toward channels, streams, and rivers.",
+        "evidence_start": 2375,
+        "evidence_end": 2443,
+        "source_mention": {
+          "name": "Gravity",
+          "definition": "The force that moves runoff downslope.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "runoff",
+          "definition": "Water flowing over the land toward channels, streams, and rivers.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Gravity",
+        "surface_target": "runoff",
+        "surface_relation": "acts_on",
+        "id": "chunk_006_relation_002",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "watershed",
+        "relation": "is_a",
+        "relation_definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "target": "land area",
+        "conditions": "that drains surface water toward a common outlet",
+        "modality": null,
+        "evidence": "A watershed is the land area that drains surface water toward a common outlet.",
+        "evidence_start": 2444,
+        "evidence_end": 2522,
+        "source_mention": {
+          "name": "watershed",
+          "definition": "land area that drains surface water toward a common outlet",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "land_area",
+          "definition": "a region of land",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "watershed",
+        "surface_target": "land_area",
+        "surface_relation": "is_a",
+        "id": "chunk_006_relation_003",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_003",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "rivers (57be18d5)",
+        "relation": "maintains_flow_in",
+        "relation_definition": "SOURCE sustains the movement or presence of TARGET under specific conditions.",
+        "target": "downstream movement",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645,
+        "source_mention": {
+          "name": "Rivers",
+          "definition": "Natural watercourses that transport water downstream.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Downstream movement",
+          "definition": "The process of water flowing away from its source.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Rivers",
+        "surface_target": "Downstream movement",
+        "surface_relation": "maintains_flow_in",
+        "id": "chunk_006_relation_004",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "lakes (8391f031)",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water (f247c5d1)",
+        "conditions": "temporarily",
+        "modality": "can",
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645,
+        "source_mention": {
+          "name": "Lakes",
+          "definition": "Bodies of water that can temporarily hold water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Water",
+          "definition": "The substance being transported and stored in the hydrological cycle.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Lakes",
+        "surface_target": "Water",
+        "surface_relation": "stores",
+        "id": "chunk_006_relation_005",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "wetlands",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water (f247c5d1)",
+        "conditions": "temporarily",
+        "modality": "can",
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645,
+        "source_mention": {
+          "name": "Wetlands",
+          "definition": "Ecosystems capable of temporarily holding water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Water",
+          "definition": "The substance being transported and stored in the hydrological cycle.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Wetlands",
+        "surface_target": "Water",
+        "surface_relation": "stores",
+        "id": "chunk_006_relation_006",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "lakes (8391f031)",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "downstream movement",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645,
+        "source_mention": {
+          "name": "Lakes",
+          "definition": "Bodies of water that can temporarily hold water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Downstream movement",
+          "definition": "The process of water flowing away from its source.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Lakes",
+        "surface_target": "Downstream movement",
+        "surface_relation": "influences_rate_of",
+        "id": "chunk_006_relation_007",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "wetlands",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "downstream movement",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+        "evidence_start": 2523,
+        "evidence_end": 2645,
+        "source_mention": {
+          "name": "Wetlands",
+          "definition": "Ecosystems capable of temporarily holding water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "Downstream movement",
+          "definition": "The process of water flowing away from its source.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Wetlands",
+        "surface_target": "Downstream movement",
+        "surface_relation": "influences_rate_of",
+        "id": "chunk_006_relation_008",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "snow and ice",
+        "relation": "stores",
+        "relation_definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "target": "water (d5c878ab)",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "evidence_start": 2646,
+        "evidence_end": 2738,
+        "source_mention": {
+          "name": "Snow and ice",
+          "definition": "Frozen water forms found in the environment.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "Liquid substance stored by snow and ice.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Snow and ice",
+        "surface_target": "water",
+        "surface_relation": "stores",
+        "id": "chunk_006_relation_009",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "liquid water (3d513e36)",
+        "relation": "enters",
+        "relation_definition": "SOURCE moves into or becomes part of TARGET.",
+        "target": "streams (4673ae94)",
+        "conditions": null,
+        "modality": "can",
+        "evidence": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "evidence_start": 2646,
+        "evidence_end": 2738,
+        "source_mention": {
+          "name": "liquid water",
+          "definition": "Water in its liquid state released by melting.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "streams",
+          "definition": "Natural flowing channels of water.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "liquid water",
+        "surface_target": "streams",
+        "surface_relation": "enters",
+        "id": "chunk_006_relation_011",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "liquid water (3d513e36)",
+        "relation": "enters",
+        "relation_definition": "SOURCE moves into or becomes part of TARGET.",
+        "target": "soil (3e08f7c1)",
+        "conditions": null,
+        "modality": "can",
+        "evidence": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "evidence_start": 2646,
+        "evidence_end": 2738,
+        "source_mention": {
+          "name": "liquid water",
+          "definition": "Water in its liquid state released by melting.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "soil",
+          "definition": "Upper layer of earth containing organic matter.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "liquid water",
+        "surface_target": "soil",
+        "surface_relation": "enters",
+        "id": "chunk_006_relation_012",
+        "chunk_id": "chunk_006",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. Gravity moves runoff downslope toward channels, streams, and rivers. A watershed is the land area that drains surface water toward a common outlet. Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "extraction_unit_id": "chunk_006_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_006_sentence_001",
+        "start": 2212,
+        "end": 2375,
+        "text": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated. ",
+        "status": "incomplete"
+      },
+      {
+        "id": "chunk_006_sentence_002",
+        "start": 2375,
+        "end": 2444,
+        "text": "Gravity moves runoff downslope toward channels, streams, and rivers. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_006_sentence_003",
+        "start": 2444,
+        "end": 2523,
+        "text": "A watershed is the land area that drains surface water toward a common outlet. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_006_sentence_004",
+        "start": 2523,
+        "end": 2646,
+        "text": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_006_sentence_005",
+        "start": 2646,
+        "end": 2738,
+        "text": "Snow and ice also store water; melting releases liquid water that can enter streams or soil.",
+        "status": "complete"
+      }
+    ],
+    "issues": [
+      {
+        "id": "chunk_006_sentence_001_concept_4",
+        "reason": "Standalone concept metadata could not be resolved",
+        "record": {
+          "name": "the ground is already saturated",
+          "definition": "A state where soil pores are full of water.",
+          "kind": "event",
+          "form": "concept",
+          "reference_phrase": null,
+          "kind_detail": null
+        }
+      }
+    ],
+    "status": "incomplete"
+  },
+  {
+    "chunk_id": "chunk_007",
+    "unit_kind": "other",
+    "confidence": 0.95,
+    "reason": "Extracted 'Storage and movement' as a process describing the behavior of 'water'. The sentence explicitly negates that water follows 'one compulsory loop', creating a distinct relation for this negative assertion rather than forcing a positive causal link. No other relations are supported by the text. The sentence explicitly states that 'A water budget' performs the action of 'compares' regarding 'inputs, outputs, and changes in storage'. The relation 'describes' is selected because the process accounts for these phenomena without implying causation or parthood. The conditions 'within a defined area and time interval' are extracted from the sentence to qualify the scope of the comparison. No other causal or structural relations are supported by this single sentence. The sentence explicitly states that 'Human activities' can 'alter this balance'. The predicate 'acts_on' is selected because altering a balance constitutes changing the state or availability of that property. The modality 'can' is preserved in the relation field. No other concepts or relations are supported by the text. The sentence explicitly states that 'Paved surfaces' 'reduce infiltration', which maps to the 'inhibits' relation. It also states they 'increase rapid runoff', which maps to 'influences_rate_of'. No other causal or structural relations are supported by the text. Extracted two distinct assertions from the single sentence. The first clause 'Pumping removes groundwater' maps to an acts_on relation between the process and the substance. The second clause 'sustained withdrawals... can reduce...' maps to a new predicate 'can_reduce' capturing the conditional capacity described, preserving the modality 'can' and the condition 'greater than replenishment'. No other relations are supported by the text. The sentence explicitly states that 'Understanding these pathways' serves to 'explain' the connection between rainfall, underground reserves, and downstream water availability. The relation 'describes' is selected because the text provides an account of this phenomenon without asserting a direct causal mechanism or structural part-whole relationship between the understanding itself and the physical connections. The target concept captures the specific phenomenon being explained as described in the sentence.",
+    "concepts": [
+      "storage and movement",
+      "water (6c413c62)",
+      "one compulsory loop",
+      "water budget",
+      "inputs",
+      "outputs",
+      "changes in storage",
+      "defined area",
+      "time interval",
+      "inputs, outputs, and changes in storage within a defined area and time interval",
+      "human activities",
+      "paved surfaces",
+      "infiltration",
+      "rapid runoff",
+      "pumping",
+      "groundwater",
+      "sustained withdrawals greater than replenishment",
+      "groundwater storage",
+      "understanding these pathways",
+      "how rainfall, underground reserves, and downstream water availability are connected"
+    ],
+    "claims": [
+      {
+        "text": "Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "evidence": "Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "evidence_start": 2739,
+        "evidence_end": 2838
+      },
+      {
+        "text": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval.",
+        "evidence": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval.",
+        "evidence_start": 2839,
+        "evidence_end": 2943
+      },
+      {
+        "text": "Human activities can alter this balance.",
+        "evidence": "Human activities can alter this balance.",
+        "evidence_start": 2944,
+        "evidence_end": 2984
+      },
+      {
+        "text": "Paved surfaces often reduce infiltration and increase rapid runoff.",
+        "evidence": "Paved surfaces often reduce infiltration and increase rapid runoff.",
+        "evidence_start": 2985,
+        "evidence_end": 3052
+      },
+      {
+        "text": "Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage.",
+        "evidence": "Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage.",
+        "evidence_start": 3053,
+        "evidence_end": 3166
+      },
+      {
+        "text": "Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "evidence": "Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "evidence_start": 3167,
+        "evidence_end": 3294
+      }
+    ],
+    "relations": [],
+    "relation_proposals": [
+      {
+        "source": "storage and movement",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "water (6c413c62)",
+        "conditions": "occur over different timescales",
+        "modality": null,
+        "evidence": "Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "evidence_start": 2739,
+        "evidence_end": 2838,
+        "source_mention": {
+          "name": "Storage and movement",
+          "definition": "Processes occurring over different timescales in the water cycle.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "water",
+          "definition": "The substance undergoing storage and movement.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Storage and movement",
+        "surface_target": "water",
+        "surface_relation": "describes",
+        "id": "chunk_007_relation_001",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "water (6c413c62)",
+        "relation": "does_not_follow",
+        "relation_definition": "SOURCE does not adhere to the pattern or path of TARGET.",
+        "target": "one compulsory loop",
+        "conditions": null,
+        "modality": "negation",
+        "evidence": "Storage and movement occur over different timescales, so water does not follow one compulsory loop.",
+        "evidence_start": 2739,
+        "evidence_end": 2838,
+        "source_mention": {
+          "name": "water",
+          "definition": "The substance undergoing storage and movement.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "one compulsory loop",
+          "definition": "A single mandatory cycle path for water.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water",
+        "surface_target": "one compulsory loop",
+        "surface_relation": "does_not_follow",
+        "id": "chunk_007_relation_002",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_001",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "water budget",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "inputs, outputs, and changes in storage within a defined area and time interval",
+        "conditions": "within a defined area and time interval",
+        "modality": null,
+        "evidence": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval.",
+        "evidence_start": 2839,
+        "evidence_end": 2943,
+        "source_mention": {
+          "name": "water budget",
+          "definition": "A comparison of inputs, outputs, and changes in storage within a defined area and time interval.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "inputs, outputs, and changes in storage within a defined area and time interval",
+          "definition": "The components compared by the water budget.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "water budget",
+        "surface_target": "inputs, outputs, and changes in storage within a defined area and time interval",
+        "surface_relation": "describes",
+        "id": "chunk_007_relation_003",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_002",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "paved surfaces",
+        "relation": "inhibits",
+        "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "target": "infiltration",
+        "conditions": "often",
+        "modality": null,
+        "evidence": "Paved surfaces often reduce infiltration and increase rapid runoff.",
+        "evidence_start": 2985,
+        "evidence_end": 3052,
+        "source_mention": {
+          "name": "Paved surfaces",
+          "definition": "Artificial ground coverings made of hard materials like concrete or asphalt.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "infiltration",
+          "definition": "The process of water entering the soil surface.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Paved surfaces",
+        "surface_target": "infiltration",
+        "surface_relation": "inhibits",
+        "id": "chunk_007_relation_005",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "paved surfaces",
+        "relation": "influences_rate_of",
+        "relation_definition": "SOURCE influences the speed at which TARGET occurs.",
+        "target": "rapid runoff",
+        "conditions": "often",
+        "modality": null,
+        "evidence": "Paved surfaces often reduce infiltration and increase rapid runoff.",
+        "evidence_start": 2985,
+        "evidence_end": 3052,
+        "source_mention": {
+          "name": "Paved surfaces",
+          "definition": "Artificial ground coverings made of hard materials like concrete or asphalt.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "rapid runoff",
+          "definition": "Fast-moving water flow over the land surface.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Paved surfaces",
+        "surface_target": "rapid runoff",
+        "surface_relation": "influences_rate_of",
+        "id": "chunk_007_relation_006",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_004",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "pumping",
+        "relation": "acts_on",
+        "relation_definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "target": "groundwater",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Pumping removes groundwater",
+        "evidence_start": 3053,
+        "evidence_end": 3080,
+        "source_mention": {
+          "name": "Pumping",
+          "definition": "The process of removing groundwater.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "groundwater",
+          "definition": "Water stored underground.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Pumping",
+        "surface_target": "groundwater",
+        "surface_relation": "acts_on",
+        "id": "chunk_007_relation_007",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "sustained withdrawals greater than replenishment",
+        "relation": "reduces_storage_of",
+        "relation_definition": "SOURCE has the capacity to decrease the quantity or level of TARGET under specific conditions.",
+        "target": "groundwater storage",
+        "conditions": "greater than replenishment",
+        "modality": "can",
+        "evidence": "sustained withdrawals greater than replenishment can reduce groundwater storage",
+        "evidence_start": 3086,
+        "evidence_end": 3165,
+        "source_mention": {
+          "name": "sustained withdrawals greater than replenishment",
+          "definition": "A condition where extraction exceeds natural recharge.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "groundwater storage",
+          "definition": "The volume of water held in the subsurface.",
+          "kind": "substance",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "sustained withdrawals greater than replenishment",
+        "surface_target": "groundwater storage",
+        "surface_relation": "can_reduce",
+        "id": "chunk_007_relation_008",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_005",
+        "reason": "Quoted extraction proposed for semantic review"
+      },
+      {
+        "source": "understanding these pathways",
+        "relation": "describes",
+        "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "target": "how rainfall, underground reserves, and downstream water availability are connected",
+        "conditions": null,
+        "modality": null,
+        "evidence": "Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "evidence_start": 3167,
+        "evidence_end": 3294,
+        "source_mention": {
+          "name": "Understanding these pathways",
+          "definition": "The act of comprehending the described connections.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target_mention": {
+          "name": "how rainfall, underground reserves, and downstream water availability are connected",
+          "definition": "The phenomenon of connection between specific water resources.",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "surface_source": "Understanding these pathways",
+        "surface_target": "how rainfall, underground reserves, and downstream water availability are connected",
+        "surface_relation": "describes",
+        "id": "chunk_007_relation_009",
+        "chunk_id": "chunk_007",
+        "paragraph_id": "paragraph_003",
+        "origin": "document",
+        "evidence_context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil. Storage and movement occur over different timescales, so water does not follow one compulsory loop. A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. Human activities can alter this balance. Paved surfaces often reduce infiltration and increase rapid runoff. Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "extraction_unit_id": "chunk_007_sentence_006",
+        "reason": "Quoted extraction proposed for semantic review"
+      }
+    ],
+    "units": [
+      {
+        "id": "chunk_007_sentence_001",
+        "start": 2739,
+        "end": 2839,
+        "text": "Storage and movement occur over different timescales, so water does not follow one compulsory loop. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_007_sentence_002",
+        "start": 2839,
+        "end": 2944,
+        "text": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_007_sentence_003",
+        "start": 2944,
+        "end": 2985,
+        "text": "Human activities can alter this balance. ",
+        "status": "incomplete"
+      },
+      {
+        "id": "chunk_007_sentence_004",
+        "start": 2985,
+        "end": 3053,
+        "text": "Paved surfaces often reduce infiltration and increase rapid runoff. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_007_sentence_005",
+        "start": 3053,
+        "end": 3167,
+        "text": "Pumping removes groundwater, and sustained withdrawals greater than replenishment can reduce groundwater storage. ",
+        "status": "complete"
+      },
+      {
+        "id": "chunk_007_sentence_006",
+        "start": 3167,
+        "end": 3294,
+        "text": "Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+        "status": "complete"
+      }
+    ],
+    "issues": [
+      {
+        "id": "chunk_007_sentence_003_concept_2",
+        "reason": "Standalone concept metadata could not be resolved",
+        "record": {
+          "name": "this balance",
+          "definition": "The specific equilibrium state previously discussed or implied in context.",
+          "kind": "property",
+          "form": "concept",
+          "reference_phrase": null,
+          "kind_detail": null
+        }
+      },
+      {
+        "id": "chunk_007_relation_004",
+        "reason": "Relation endpoint metadata could not be resolved",
+        "record": {
+          "source": {
+            "name": "Human activities",
+            "definition": "Actions performed by humans that can alter environmental balances.",
+            "kind": "process",
+            "form": "concept",
+            "reference_phrase": null,
+            "kind_detail": null
+          },
+          "relation": "acts_on",
+          "relation_definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+          "target": {
+            "name": "this balance",
+            "definition": "The specific equilibrium state previously discussed or implied in context.",
+            "kind": "property",
+            "form": "concept",
+            "reference_phrase": null,
+            "kind_detail": null
+          },
+          "conditions": null,
+          "modality": "can",
+          "evidence": "Human activities can alter this balance.",
+          "evidence_start": 2944,
+          "evidence_end": 2984
+        }
+      }
+    ],
+    "status": "incomplete"
+  }
+]

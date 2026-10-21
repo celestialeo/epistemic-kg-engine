@@ -155,10 +155,16 @@ class ItemRecoveryTests(unittest.TestCase):
         quote = "Water moves deeper. This movement is percolation."
         paragraphs, chunks = split_document(text, 4, self.trace)
         def ask(role, instruction, payload, schema, entity_id, validator=None):
-            current = payload["CURRENT_CHUNK"]
+            if role == "extractor_quote_repair":
+                value = schema.model_validate(dict(records=[dict(f, reason="Still unsupported")
+                                                            for f in payload["failed_records"]]))
+                if validator:
+                    validator(value)
+                return value
+            current = payload["CURRENT_SENTENCE"]
             claims = [dict(text=current, evidence=current)]
             if current == "Water moves deeper.":
-                self.assertIn(quote, payload["EVIDENCE_CONTEXT"])
+                self.assertEqual(payload["NEXT_SENTENCE"], "This movement is percolation.")
                 claims += [dict(text="This movement is percolation.", evidence=quote),
                            dict(text="Clouds are visible.", evidence="Clouds are visible.")]
             value = schema.model_validate(dict(unit_kind="core_statement", concepts=[],

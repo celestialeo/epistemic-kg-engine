@@ -22,6 +22,8 @@ class Proposal(Record):
     relation_definition: str = Field(min_length=1, max_length=400)
     confidence: float = Field(ge=0, le=1)
     reason: str = Field(min_length=1, max_length=800)
+    conditions: str | None = None
+    modality: str | None = None
 
 
 class Expansion(Record):
@@ -78,12 +80,17 @@ class Novelty(Record):
 
 
 COMMON_POLICY = (
+    "Every endpoint must be a standalone concept, never a statement or context-dependent reference. "
+    "Express the assertion through a precise relation, with qualifications in conditions and modality. "
     "Evaluate the literal SOURCE relation TARGET under the supplied relation definition and concept senses. "
     "A structural part is not a subtype; an event's location is not its physical component. "
     "Keep direction, causal strength, negation, conditions and specificity. "
+    "Read conditions and modality as part of the assertion, including negation; preserve them in proposals. "
     "Never broaden a concept, invent an omitted action, or upgrade 'helps' to 'primary'. "
 )
 DOCUMENT_POLICY = EVENT_POLICY + COMMON_POLICY + (
+    "Check that all participants, locations, negation and qualifications survive in the relation and its "
+    "conditions and modality. Preserve collective scope without inventing pairwise routes. "
     "These are DOCUMENT candidates. The exact quote must entail THIS relation, including both endpoints, meaning, "
     "direction and qualifications; co-occurrence is insufficient. Outside knowledge cannot repair missing evidence. "
     "A quote may span multiple adjacent sentences. Judge entailment, not whether it literally contains the "
@@ -142,6 +149,7 @@ def review_context(row, chunk, outline, concepts):
         "id", "source", "target", "relation", "relation_definition", "origin", "reason")},
         "concept_senses": [concepts.entries[row[k]] for k in ("source", "target")],
         "chapter": {k: outline[k] for k in ("overview", "topics")}}
+    context["candidate"].update(conditions=row.get("conditions"), modality=row.get("modality"))
     if row["origin"] == "document":
         context.update(quote=row.get("evidence"), source_chunk=row.get("evidence_context", chunk["text"]))
     else:
@@ -325,7 +333,8 @@ def check_novelty(row, chunks, facts, models, trace):
     # Chunk text also catches document statements the extractor did not turn into edges.
     references = [{"id": c["id"], "text": c["text"]} for c in chunks]
     references += [{"id": f["id"], "source": f["source"], "target": f["target"],
-                    "relation": f["relation"], "relation_definition": f["relation_definition"]} for f in facts.rows]
+                    "relation": f["relation"], "relation_definition": f["relation_definition"],
+                    "conditions": f.get("conditions"), "modality": f.get("modality")} for f in facts.rows]
     checked = []
     for index, page in enumerate(batches(references, 6)):
         allowed = {r["id"] for r in page}
@@ -341,7 +350,7 @@ def check_novelty(row, chunks, facts, models, trace):
             "Opposite direction alone does not prove contradiction. Missing text support is neither contradiction nor "
             "uncertainty. Return new if none establishes repetition/conflict. If a comparison cannot be resolved, "
             "return uncertain. Cite reference IDs for duplicates/contradictions.",
-            {"candidate": {k: row.get(k) for k in ("source", "target", "relation", "relation_definition", "origin")},
+            {"candidate": {k: row.get(k) for k in ("source", "target", "relation", "relation_definition", "origin", "conditions", "modality")},
              "references": page}, Novelty, f"{row['id']}_novelty_{index}", validator=validate)
         checked.extend(r["id"] for r in page)
         trace.emit("debate.novelty_checked", entity_id=row["id"], references=list(allowed), result=result.model_dump())
@@ -366,7 +375,7 @@ def check_novelty_many(rows, chunks, facts, models, trace):
         else:
             pending.append(row)
     references = [{"id": c["id"], "text": c["text"]} for c in chunks]
-    references += [{k: f.get(k) for k in ("id", "source", "target", "relation", "relation_definition")} for f in facts.rows]
+    references += [{k: f.get(k) for k in ("id", "source", "target", "relation", "relation_definition", "conditions", "modality")} for f in facts.rows]
     checked = []
     for index, page in enumerate(batches(references, 6)):
         if not pending:
@@ -378,7 +387,7 @@ def check_novelty_many(rows, chunks, facts, models, trace):
             if result.status in ("duplicate", "contradiction") and not result.evidence_ids:
                 raise ValueError("Duplicate/contradiction requires specific reference IDs")
         items = [dict(id=r["id"], candidate={k: r.get(k) for k in
-                 ("source", "target", "relation", "relation_definition", "origin")}) for r in pending]
+                 ("source", "target", "relation", "relation_definition", "origin", "conditions", "modality")}) for r in pending]
         errors = {}
         judgments = ask_keyed(models, "novelty_checker", NOVELTY_POLICY +
             "Compare EACH candidate against EVERY reference. Return duplicate only for equivalent assertions "
@@ -465,7 +474,7 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
     by_chunk = {c["id"]: c for c in chunks}
     for seed in seeds:
         print(f"  Debate {seed['id']}: {seed['concept']}", flush=True)
-        known = [{k: fact[k] for k in ("id", "source", "relation", "target", "relation_definition", "origin")}
+        known = [{k: fact.get(k) for k in ("id", "source", "relation", "target", "relation_definition", "origin", "conditions", "modality")}
                  for fact in facts.rows if seed["concept"] in (fact["source"], fact["target"])]
         try:
             proposal = models.ask("proposer", BACKGROUND_POLICY +
@@ -515,6 +524,7 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                 relation=relation or value.relation, relation_definition=value.relation_definition,
                 surface_relation=value.relation, surface_target=value.target.name,
                 confidence=value.confidence, reason=value.reason, chunk_id=seed["chunk_id"],
+                conditions=value.conditions, modality=value.modality,
                 paragraph_id=seed["paragraph_id"], origin="background", tier="related",
                 accepted=False, score=None, decision_reason="Unverified relation, self relation, or low confidence")
             candidates.append(row)
@@ -531,6 +541,7 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                 key = relations.fact_key(row["source"], relation, target)
                 previous = next((p for p in seen_proposals
                     if p.get("review_status") != "unresolved"
+                    and all(p.get(k) == row.get(k) for k in ("conditions", "modality"))
                     and relations.fact_key(p["source"], p["relation"], p["target"]) == key), None)
                 seen_proposals.append(row)
                 if previous:

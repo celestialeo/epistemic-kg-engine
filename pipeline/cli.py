@@ -53,9 +53,11 @@ def main(argv=None):
                         help="Built-in chapter; both runs full neuroscience and water-cycle; default: neuroscience")
     parser.add_argument("--output-root", type=Path, default=ROOT / "outputs/runs")
     parser.add_argument("--chunk-words", type=int, default=85, help="Maximum words per chunk; sentences and paragraphs retain order")
-    parser.add_argument("--seed-limit", type=int, default=0, help="Optional cap AFTER assessing all concepts (0=all eligible)")
-    parser.add_argument("--seed-threshold", type=float, default=.7, help="Minimum importance, relevance AND expansion value (default: .7)")
-    parser.add_argument("--seed-max-words", type=int, default=4, help="Maximum words in an expansion seed; longer concepts remain in the graph")
+    parser.add_argument("--seed-limit", type=int, default=0, help="Optional cap after duplicate and similarity filtering (0=no cap)")
+    parser.add_argument("--seed-similarity-threshold", type=float, default=.85,
+                        help="Skip seeds with cosine similarity at or above this value to a picked seed (default: .85)")
+    parser.add_argument("--seed-threshold", type=float, default=.7, help=argparse.SUPPRESS)
+    parser.add_argument("--seed-max-words", type=int, default=4, help=argparse.SUPPRESS)
     parser.add_argument("--model", default="qwen3.5:9b", help="Model for every language role (default: qwen3.5:9b)")
     parser.add_argument("--registry-model", help="Optional separate Ollama model for isolated concept/relation checks; defaults to --model")
     parser.add_argument("--batch-size", type=int, default=4, help="Review/seed items per model call; no items are skipped")
@@ -65,6 +67,10 @@ def main(argv=None):
     parser.add_argument("--think", action="store_true", help="Enable extended model thinking; requires a thinking-capable model")
     parser.add_argument("--context-tokens", type=int, default=8192, help="Model context window (default: 8192)")
     parser.add_argument("--max-output-tokens", type=int, default=4096, help="Per-call output budget, including thinking when enabled (default: 4096)")
+    parser.add_argument("--document-context-tokens", type=int, default=16384,
+                        help="Minimum context for complete-document claim alignment (default: 16384)")
+    parser.add_argument("--document-output-tokens", type=int, default=8192,
+                        help="Minimum output budget for complete-document claim alignment (default: 8192)")
     parser.add_argument("--model-timeout", type=int, default=600, help="Ollama request timeout in seconds (default: 600)")
     parser.add_argument("--resume", type=Path, help="Reuse validated model responses from this run when prompts and model digests match; writes a new complete run")
     parser.add_argument("--embedding-model", default="nomic-embed-text")
@@ -77,6 +83,8 @@ def main(argv=None):
         parser.error("chunk-words and seed-max-words must be positive; seed-limit must be nonnegative")
     if not 0 <= args.seed_threshold <= 1:
         parser.error("seed-threshold must be between 0 and 1")
+    if not 0 <= args.seed_similarity_threshold <= 1:
+        parser.error("seed-similarity-threshold must be between 0 and 1")
     if args.batch_size < 1 or not 1 <= args.health_min_samples <= args.health_window:
         parser.error("batch-size must be positive; health-min-samples must be between 1 and health-window")
     if not 0 <= args.health_max_failure_rate < 1:
@@ -87,6 +95,8 @@ def main(argv=None):
         parser.error("context-tokens, max-output-tokens and model-timeout must be positive")
     if args.max_output_tokens >= args.context_tokens:
         parser.error("max-output-tokens must be smaller than context-tokens to leave room for the prompt")
+    if not 0 < args.document_output_tokens < args.document_context_tokens:
+        parser.error("document token budgets must be positive, with document-output-tokens smaller than document-context-tokens")
     selected = ["neuroscience", "water-cycle"] if args.chapter == "both" else [args.chapter or ("custom" if args.input else "neuroscience")]
     code = 0
     for chapter in selected:
@@ -111,6 +121,7 @@ def run_chapter(args):
     trace.health = HealthMonitor(trace, args.health_window, args.health_min_samples, args.health_max_failure_rate)
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
     manifest = {"schema_version": 1, "run_id": run_id, "status": "running", "config": config,
+                "pipeline_stages": ["extraction", "debate", "graph", "evaluation"],
                 "started_at": started.isoformat(),
                 "started_at_utc": started.astimezone(timezone.utc).isoformat(),
                 "time_zone": started.tzname(),
@@ -132,7 +143,7 @@ def run_chapter(args):
                 from .models import Models
                 from .extraction import extract
                 from .debate import review_extractions, debate
-                from .seeds import build_outline, select_seeds
+                from .seeds import build_outline, collect_seeds
                 from .registry import ConceptRegistry, RelationRegistry, FactIndex
                 from .graph_view import build_graph, render_graph
                 from .evaluation import evaluate
@@ -158,7 +169,9 @@ def run_chapter(args):
                     models = Models(trace, args.model, args.embedding_model, host,
                                     timeout=args.model_timeout, think=args.think,
                                     context_tokens=args.context_tokens, max_output_tokens=args.max_output_tokens,
-                                    registry_model=args.registry_model, batch_size=args.batch_size)
+                                    registry_model=args.registry_model, batch_size=args.batch_size,
+                                    document_context_tokens=args.document_context_tokens,
+                                    document_output_tokens=args.document_output_tokens)
                     models.preflight()
                     if args.resume:
                         models.load_cache(args.resume)
@@ -176,20 +189,23 @@ def run_chapter(args):
                 facts = FactIndex(relations)
                 trace.save("artifacts/relations.json", relations.snapshot())
                 trace.save("artifacts/concepts.json", {"concepts": [], "mentions": []})
-                with trace.span("outline"):
-                    outline = build_outline(chunks, models, trace)
                 with trace.span("extraction"):
                     extractions = extract(chunks, paragraphs, models, trace, concepts, relations)
+                with trace.span("debate"):
+                    # Chapter scope and identity checks support the existing debate.
+                    outline = build_outline(chunks, models, trace)
                     concepts.reconcile(extractions, outline)
                     trace.save("artifacts/extraction_proposals.json", extractions)
-                with trace.span("extraction_review"):
                     document_reviews = review_extractions(extractions, chunks, outline, concepts, facts, models, trace)
                     trace.save("artifacts/extractions.json", extractions)
                     manifest["incomplete_extraction_chunks"] = [e["chunk_id"] for e in extractions if e["status"] == "incomplete"]
-                with trace.span("seeds"):
-                    seeds = select_seeds(extractions, chunks, concepts, outline, models, trace,
-                                         args.seed_threshold, args.seed_limit, args.seed_max_words)
-                with trace.span("debate"):
+                    seeds = collect_seeds(extractions, chunks, concepts, trace, args.seed_limit,
+                                          args.seed_similarity_threshold) if outline["topics"] else []
+                    if not outline["topics"]:
+                        seeds = []
+                        trace.emit("debate.skipped", reason="Chapter scope is unresolved; document reviews retained")
+                        trace.save("artifacts/seeds.json", dict(policy="deduplicated_diverse_concepts", selected=[],
+                                   status="unresolved", reason="No validated chapter topics"))
                     result = debate(seeds, chunks, outline, concepts, relations, facts, models, trace, document_reviews)
                     trace.save("artifacts/debate.json", result)
                 with trace.span("graph"):
@@ -202,17 +218,23 @@ def run_chapter(args):
                 with trace.span("evaluation"):
                     evaluation = evaluate(chunks, graph, models, trace)
                     trace.save("artifacts/evaluation.json", evaluation)
-                with trace.span("report"):
+                    trace.text("reconstruction.txt", "\n\n".join(
+                        row["reconstruction"] for row in evaluation["results"]) + "\n")
+                    manifest.update(evaluation_status=evaluation["status"],
+                                    reconstruction_score=evaluation["final_score"])
                     stats = statistics_for(paragraphs, chunks, extractions, result, graph, evaluation, models, trace)
                     trace.save("statistics.json", stats)
                     page, markdown = render_report(stats, paragraphs, chunks, result, evaluation)
                     trace.text("index.html", page)
                     trace.text("report.md", markdown)
                 manifest["unresolved_items"] = getattr(trace, "unresolved_items", [])
-                incomplete = manifest["incomplete_extraction_chunks"] or manifest["unresolved_items"]
+                incomplete = (manifest["incomplete_extraction_chunks"] or manifest["unresolved_items"]
+                              or evaluation["status"] != "completed")
                 manifest["status"] = "completed_with_issues" if incomplete else "completed"
                 code = 2 if incomplete else 0
                 label = "Completed with unresolved items; inspect the report" if incomplete else "Completed"
+                if evaluation["final_score"] is not None:
+                    print(f"\nReconstruction score: {evaluation['final_score']:.2f} / 100", flush=True)
                 print(f"\n{label}: {out / 'index.html'}", flush=True)
                 if not args.no_open:
                     opened = webbrowser.open((out / "index.html").as_uri())

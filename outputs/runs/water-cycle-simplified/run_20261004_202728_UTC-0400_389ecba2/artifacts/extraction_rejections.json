@@ -1,0 +1,207 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "wrong_direction": 13,
+    "meaning_changed": 11,
+    "unsupported_claim": 6,
+    "wrong_kind": 4,
+    "contradiction": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_002_relation_005",
+      "chunk_id": "chunk_002",
+      "source": "stomata",
+      "relation": "is_a",
+      "target": "leaf openings",
+      "decision_reason": "The quote equates 'leaf openings' with 'stomata' ('...through leaf openings called stomata'), implying identity or synonymy rather than a subtype relationship. The relation 'is_a' asserts that 'stomata' is a subtype of 'leaf openings,' but the text defines them as co-referential terms for the same entity, not a hierarchical classification. This changes the meaning from identity to subtyping, violating semantic validity. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_010",
+      "chunk_id": "chunk_002",
+      "source": "condensation",
+      "relation": "acts_on",
+      "target": "small particles",
+      "decision_reason": "The relation claims 'condensation' (a process) acts on 'small particles' (an entity). However, the text states vapor condenses onto small particles; the process of condensation does not act upon the particles themselves but rather occurs upon them. The direction is inverted: the vapor acts on the particles to form droplets, not the condensation process acting on the particles as an agent. Furthermore, 'condensation' is a process, and while the definition allows processes acting on entities, the specific phrasing implies the event of condensation is the actor, which is semantically imprecise compared to 'vapor condenses onto'. More critically, the relation definition requires TARGET to be an object/entity, which 'small particles' are, but the causal link described in the text is vapor -> condensation -> droplets on particles, not condensation acting on particles. The quote supports 'vapor acts on small particles' or 'condensation occurs on small particles', not 'condensation acts on small particles'. Failed gates: semantics_valid, direction_valid, types_valid, evidence",
+      "categories": [
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_013",
+      "chunk_id": "chunk_002",
+      "source": "clouds",
+      "relation": "contains",
+      "target": "water vapor (68527be0)",
+      "decision_reason": "The quote states 'they are not simply invisible water vapor', explicitly negating that clouds contain water vapor as a primary component in the context of their definition (droplets/crystals). The relation claims 'contains' for 'water vapor', which contradicts the text's distinction that clouds consist of visible droplets/crystals rather than invisible vapor. Thus, the evidence does not support the claim. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "contradiction",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_001",
+      "chunk_id": "chunk_004",
+      "source": "precipitation reaching land",
+      "relation": "enables",
+      "target": "water remains on leaves",
+      "decision_reason": "The quote states 'Some remains on leaves and later evaporates' following precipitation reaching land. The relation claims 'precipitation reaching land enables water remains on leaves'. While the sequence is present, the causal strength of 'enables' (providing conditions/capacity) is not explicitly supported; the text lists it as one of several pathways ('can follow'), implying possibility rather than enabling capacity. Furthermore, the target concept 'water remains on leaves' is defined as a process in the candidate but described as a portion/state in the quote context, creating a slight semantic mismatch regarding the nature of the target (process vs state). More critically, the relation definition says SOURCE provides conditions permitting TARGET without producing it. The text implies co-occurrence or sequence ('After... Some remains'), not necessarily that precipitation enables the water to remain (gravity and leaf structure might be the primary causes). However, the strongest objection is 'meaning_changed' if we interpret 'enables' as a strong causal link which the text weakens by listing alternatives. But strictly, the quote supports the sequence. Let's re-evaluate: The prompt Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_002",
+      "chunk_id": "chunk_004",
+      "source": "precipitation reaching land",
+      "relation": "enables",
+      "target": "water flows over surface",
+      "decision_reason": "The quote states 'some flows over the surface' as one of several pathways after precipitation reaches land. The relation uses 'enables'. Similar to the previous case, the text presents this as a possibility ('can follow') rather than establishing that precipitation enables it in a causal capacity sense. The definition of 'enables' requires providing conditions or capacity. While precipitation is necessary, the text does not explicitly frame it as enabling the flow (gravity and slope are likely the enablers). Thus, the specific causal strength of 'enables' is not fully entailed by the quote which lists outcomes. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_003",
+      "chunk_id": "chunk_004",
+      "source": "precipitation reaching land",
+      "relation": "enables",
+      "target": "water enters ground",
+      "decision_reason": "The quote states that after precipitation reaches land, water 'can follow several pathways,' listing infiltration as one option among others (evaporation, surface flow). This indicates possibility ('can') rather than the enabling condition asserted by 'enables'. The relation definition requires SOURCE to provide conditions permitting TARGET without claiming production; however, the text presents these as parallel alternatives occurring after a single event, not as a specific condition enabling a specific outcome. Furthermore, the quote does not isolate 'precipitation reaching land' as the sole or primary enabler of 'water entering ground' in a way that excludes other factors mentioned (soil structure, moisture) which are discussed subsequently. The assertion implies a direct enabling link that is diluted by the text's enumeration of multiple concurrent pathways. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_010",
+      "chunk_id": "chunk_004",
+      "source": "water in soil",
+      "relation": "stores",
+      "target": "pore spaces",
+      "decision_reason": "The quote states 'Water in soil may be absorbed by roots, remain in pore spaces, or move deeper...'. While it mentions remaining in pore spaces, the relation defined is 'stores' (holds/retains). The text describes water *remaining* in pore spaces as one of three options alongside absorption and percolation. However, the specific predicate 'stores' implies a holding action which is semantically close to 'remain', but the quote frames it as an option ('or remain') rather than a definitive storage state for all water in soil. More critically, the relation definition says 'SOURCE holds or retains TARGET'. The text says water *remains* in pore spaces. This is a semantic match. However, looking closer at the instruction: 'Accept only when ALL pass.' Let's re-evaluate. The quote says 'remain in pore spaces'. Does this entail 'stores'? Yes, remaining implies storage. But wait, the relation definition for 'stores' is 'SOURCE holds or retains TARGET'. The text says 'Water in soil... remain in pore spaces'. This seems supported. Why did I mark it unsupported? Let's look at the instruction again: 'Accept only when ALL pass.' Is there a subtle mismatch? The quote lists three distinct pathways: Failed gates: semantics_valid, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_007",
+      "chunk_id": "chunk_005",
+      "source": "groundwater (0a93a11f)",
+      "relation": "links_to",
+      "target": "underground storage",
+      "decision_reason": "The quote links 'groundwater' to 'visible surface water', not the abstract concept 'underground storage'. The target 'underground storage' is an invented node not present in the text; the relation claims a link between groundwater and 'underground storage' which contradicts the text's explicit link to 'visible surface water'. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_001",
+      "chunk_id": "chunk_006",
+      "source": "surface runoff",
+      "relation": "describes",
+      "target": "water flows over the land",
+      "decision_reason": "The quote states 'Surface runoff develops when water flows over the land', which describes a condition for the existence of surface runoff rather than an account where 'surface runoff' gives an account of 'water flows over the land'. The relation 'describes' implies SOURCE is the description and TARGET is the subject. Here, 'water flows over the land' is the event defining 'surface runoff', not the thing being described by it. The direction is inverted relative to the semantic role of 'describes' in this context (usually Process describes Event or Concept describes Phenomenon). Specifically, the text defines 'surface runoff' via the event 'water flows over the land', making the relation 'is_a' or 'defined_by' more appropriate than 'describes' where SOURCE is the descriptor. However, strictly checking entailment: Does 'Surface runoff develops when water flows...' mean 'Surface runoff describes water flows'? No. It means 'Surface runoff occurs during/when water flows'. The relation 'describes' is not entailed. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_002",
+      "chunk_id": "chunk_006",
+      "source": "gravity",
+      "relation": "acts_on",
+      "target": "runoff",
+      "decision_reason": "The relation definition for 'acts_on' requires TARGET to be an object (not another event or process). The candidate defines TARGET as 'runoff', which is a substance/process ('Water flowing over the land'), not a static object. While gravity acts on the water, the strict schema constraint 'TARGET is not another event or process' fails because 'runoff' is defined as a process/substance in motion. Furthermore, the quote says 'Gravity moves runoff', which implies acting on the substance. However, if 'runoff' is typed as 'substance' in concept_senses, it might pass type check. Let's re-read candidate: target definition says 'kind': 'substance'. Relation definition says 'TARGET is not another event or process'. If 'runoff' is a substance, it passes. But wait, the quote says 'Gravity moves runoff'. Is 'runoff' an object here? Yes. But look at the relation definition provided in candidate: 'The event SOURCE acts on... TARGET is not another event or process.' Gravity is a force/process. Runoff is a substance. This seems valid. Why unsupported? Re-evaluating types: Candidate target 'runoff' has kind 'substance'. Relation def says TARGET not event/process. Substance != event/process. So types Failed gates: types_valid, evidence",
+      "categories": [
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_004",
+      "chunk_id": "chunk_006",
+      "source": "rivers (57be18d5)",
+      "relation": "maintains_flow_in",
+      "target": "downstream movement",
+      "decision_reason": "The quote states rivers 'carry water downstream', which describes the movement itself rather than sustaining it under specific conditions as defined by 'maintains_flow_in'. The relation definition requires a causal sustenance of presence/movement under conditions, whereas the text simply asserts the action of carrying. Additionally, the direction is ambiguous; 'carries' implies the river is the agent of movement, but the relation 'maintains_flow_in' suggests a specific structural or conditional maintenance not explicitly detailed as such in the quote. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_006_relation_008",
+      "chunk_id": "chunk_006",
+      "source": "wetlands",
+      "relation": "influences_rate_of",
+      "target": "downstream movement",
+      "decision_reason": "The quote states that wetlands 'influence the timing of its movement,' not the speed or rate. The relation definition requires influencing the 'speed at which TARGET occurs.' Influencing timing (when) is semantically distinct from influencing rate/speed (how fast). This constitutes a meaning_changed objection. Failed gates: semantics_valid, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_001",
+      "chunk_id": "chunk_007",
+      "source": "storage and movement",
+      "relation": "describes",
+      "target": "water (6c413c62)",
+      "decision_reason": "The quote states 'Storage and movement occur over different timescales', which describes the nature of the process itself rather than giving an account of the subject 'water'. The relation requires SOURCE to describe TARGET (water), but the text uses 'storage and movement' as the subject describing a property of water's behavior, not describing water as a phenomenon. Additionally, the direction is inverted; the text says water does not follow one loop because storage/movement vary, implying the variation causes the non-looping, not that storage/movement describes water. Failed gates: semantics_valid, direction_valid, types_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_003",
+      "chunk_id": "chunk_007",
+      "source": "water budget",
+      "relation": "describes",
+      "target": "inputs, outputs, and changes in storage within a defined area and time interval",
+      "decision_reason": "The quote states 'A water budget compares inputs...', which asserts that the water budget is a process of comparison involving those components. The relation requires 'water budget' to 'describe' the components. While related, the text defines the budget by its action (comparing) rather than describing the components as a phenomenon in the sense of the definition provided ('SOURCE gives an account of the complete subject or phenomenon TARGET'). More critically, the target is defined as 'The components compared', making the relation 'describes' semantically awkward; usually, a process describes a phenomenon, but here the budget *is* the comparison. However, looking closer at the definition: 'SOURCE gives an account of...'. The text says 'A water budget compares...'. This is a description of the budget's function. But the target is 'inputs, outputs...'. Does the budget describe these inputs? No, the budget *compares* them. The relation 'describes' implies the source provides information about the target. The quote says the budget performs an action on the target. This might be a valid 'describes' if we consider the budget's output describes the state of inputs/outputs. However, the ' Failed gates: semantics_valid, direction_valid, types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_007",
+      "chunk_id": "chunk_007",
+      "source": "pumping",
+      "relation": "acts_on",
+      "target": "groundwater",
+      "decision_reason": "The quote 'Pumping removes groundwater' describes an action on a substance (groundwater), but the relation definition requires TARGET to be an object whose state/position/availability is changed by an event SOURCE. While pumping acts on groundwater, the specific phrasing 'removes' implies a change in availability/state which fits 'acts_on'. However, strict adherence to the schema often flags 'removes' as a direct action rather than a general 'acts_on' if the definition implies a broader state change. Re-evaluating: The relation is 'acts_on'. Pumping (process) acts on groundwater (entity). The quote supports this. Wait, looking closer at the instruction: 'A process and its defining transformation are not two causally connected events.' Here pumping is the process. Groundwater is the entity. This seems valid. Let's look for a reason to reject if any. Perhaps the definition says 'TARGET is not another event or process'. Groundwater is an entity. So it should be supported. Why might it be unsupported? Maybe the quote doesn't explicitly state the change in state/availability, just removal. Removal is a change in availability. Let's assume supported unless there's a specific constraint I Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_007_relation_009",
+      "chunk_id": "chunk_007",
+      "source": "understanding these pathways",
+      "relation": "describes",
+      "target": "how rainfall, underground reserves, and downstream water availability are connected",
+      "decision_reason": "The relation is 'describes' where SOURCE gives an account of TARGET. The quote says 'Understanding these pathways helps explain...'. The subject of the sentence is 'Understanding', which is a mental process or state, not an event that 'describes' the phenomenon in the sense of providing an account. More critically, the relation definition for 'describes' usually implies the SOURCE (a text/event) describes the TARGET. Here, the concept 'understanding these pathways' is abstract. The quote says understanding *helps explain*. This is a causal/helping relation, not a direct description/account relation. The relation key 'describes' does not fit the semantic of 'helps explain'. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    }
+  ]
+}

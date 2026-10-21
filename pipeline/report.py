@@ -47,18 +47,23 @@ def statistics_for(paragraphs, chunks, extractions, debate, graph, evaluation, m
                    "cache_hits": models.cache_hits,
                    "embedding_calls": trace.counts["embedding.request"],
                    "prompt_tokens": models.prompt_tokens, "output_tokens": models.output_tokens},
-        "fidelity": evaluation["summary"],
-        "interpretation": evaluation["interpretation"]}
+        "fidelity": evaluation["summary"] if evaluation else {},
+        "reconstruction_score": evaluation["final_score"] if evaluation else None,
+        "evaluation_status": evaluation["status"] if evaluation else "not_run",
+        "evaluation_metric_version": evaluation["metric_version"] if evaluation else None,
+        "interpretation": evaluation["interpretation"] if evaluation else
+            "Extraction → Debate → Graph. Document relations retain source quotes; background relations "
+            "are model knowledge. Review decisions are not external factual verification."}
 
 
 def render_report(stats, paragraphs, chunks, debate, evaluation):
     esc = lambda value: html.escape(str(value))
     metric = lambda value: f"{value:.3f}" if value is not None else "not evaluated"
-    summary = stats["fidelity"]["semantic_cosine"]
     cards = [("Paragraphs", stats["input"]["paragraphs"]), ("Sequential chunks", stats["input"]["chunks"]),
              ("Graph nodes", stats["graph"]["nodes"]), ("Graph edges", stats["graph"]["edges"]),
-             ("Accepted proposals", f"{stats['debate']['accepted']} / {stats['debate']['proposed']}"),
-             ("Text reconstruction similarity", metric(summary["mean"]))]
+             ("Accepted background proposals", f"{stats['debate']['accepted']} / {stats['debate']['proposed']}")]
+    if stats["fidelity"]:
+        cards.append(("Reconstruction score (0–100)", metric((evaluation or {}).get("final_score"))))
     if "domain_edges" in stats["graph"]:
         cards.extend([("Domain relationships", stats["graph"]["domain_edges"]),
                       ("Isolated domain nodes", stats["graph"]["isolated_domain_nodes"])])
@@ -85,6 +90,8 @@ def render_report(stats, paragraphs, chunks, debate, evaluation):
         "".join(f"<td>{values[k]:.3f}</td>" if values[k] is not None else "<td>n/a</td>"
                 for k in ("mean", "median", "sample_stddev", "min", "max")) + "</tr>"
         for name, values in stats["fidelity"].items())
+    metric_table = ('<table><thead><tr><th>Metric</th><th>Mean</th><th>Median</th><th>Sample SD</th>'
+                    '<th>Min</th><th>Max</th></tr></thead><tbody>' + metric_rows + '</tbody></table>') if metric_rows else ''
     paragraph_html = "".join(f'<p><b>{p["order"]+1}.</b> {esc(p["text"])}</p>' for p in paragraphs)
     chunk_html = "".join(f'<details><summary>{esc(c["id"])} · {esc(c["paragraph_id"])} · {c["word_count"]} words · '
         f'characters {c["start"]}–{c["end"]}</summary><p>{esc(c["text"])}</p></details>' for c in chunks)
@@ -94,6 +101,9 @@ def render_report(stats, paragraphs, chunks, debate, evaluation):
         body = f'<p><b>Origin:</b> {esc(c.get("origin", "background"))}</p><p><b>Proposal:</b> {esc(c["reason"])}</p>'
         if c.get("evidence"):
             body += f'<p><b>Quote:</b> {esc(c["evidence"])}</p>'
+        for field in ("conditions", "modality"):
+            if c.get(field):
+                body += f'<p><b>{field.title()}:</b> {esc(c[field])}</p>'
         if c.get("duplicate_of"):
             body += f'<p>Combined with equivalent fact {esc(c["duplicate_of"])}; evidence retained.</p>'
         for key in ("reviewer", "critic", "rebuttal", "judge"):
@@ -108,10 +118,21 @@ def render_report(stats, paragraphs, chunks, debate, evaluation):
         if c.get("gates"):
             body += '<p>' + esc(", ".join(k + ": " + ("pass" if v else "fail") for k, v in c["gates"].items())) + '</p>'
         debate_html += f'<details><summary><span class="{label.lower()}">{label}</span> · {esc(c["source"])} '
-        debate_html += f'→ {esc(c["relation"])} → {esc(c["target"])}</summary>{body}</details>'
-    reconstructions = "".join(f'<details><summary>{esc(r["chunk_id"])} · semantic similarity {metric(r["semantic_cosine"])}</summary>'
+        qualifiers = "; ".join(c[field] for field in ("modality", "conditions") if c.get(field))
+        relation_label = c["relation"] + (" [" + qualifiers + "]" if qualifiers else "")
+        debate_html += f'→ {esc(relation_label)} → {esc(c["target"])}</summary>{body}</details>'
+    reconstructions = "".join(f'<details><summary>{esc(r["chunk_id"])} · reconstruction score (0–100) {metric(r["final_score"])}</summary>'
         f'<div class="pair"><div><h3>Original</h3><p>{esc(r["original"])}</p></div><div><h3>Reconstruction</h3>'
-        f'<p>{esc(r["reconstruction"])}</p><p>{esc(r["reason"])}</p></div></div></details>' for r in evaluation["results"])
+        f'<p>{esc(r["reconstruction"])}</p><p>{esc(r["reason"])}</p></div></div></details>' for r in (evaluation or {}).get("results", []))
+    reconstruction_section = ''
+    if evaluation:
+        incomplete_evaluation = ('<p><b>Evaluation incomplete:</b> ' + esc(evaluation.get("reason")) +
+                                '. No complete-document score is available.</p>') if evaluation["status"] != "completed" else ''
+        reconstruction_section = ('<section><h2>Final graph reconstruction</h2>'
+            '<p><a href="reconstruction.txt">Complete rebuilt text</a> · '
+            '<a href="artifacts/evaluation.json">Detailed evaluation scores</a></p>' +
+            incomplete_evaluation + reconstructions + '</section>')
+    stage_label = "EXTRACTION → DEBATE → GRAPH" + (" → RECONSTRUCTION & EVALUATION" if evaluation else "")
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Debate pipeline · Results</title><style>
 :root{{color-scheme:light}}body{{font:16px/1.65 system-ui,sans-serif;color:#23324a;background:#f3f6fa;margin:0}}
@@ -123,15 +144,14 @@ section{{margin-top:20px}}a{{color:#165e99}}nav{{display:flex;gap:20px;flex-wrap
 table{{width:100%;border-collapse:collapse}}th,td{{text-align:left;padding:10px;border-bottom:1px solid #e4e9ef}}
 details{{margin:10px 0}}summary{{cursor:pointer;font-weight:600}}.accepted{{color:#19724b}}.rejected{{color:#a74c30}}
 .pair{{display:grid;grid-template-columns:1fr 1fr;gap:24px}}@media(max-width:650px){{.pair{{grid-template-columns:1fr}}table{{font-size:12px}}}}
-</style></head><body><main><p class="muted">DOCUMENT → CHUNKS → EXTRACTION → DEBATE → GRAPH</p>
+</style></head><body><main><p class="muted">{stage_label}</p>
 <h1>Debate pipeline results</h1><p class="muted">{esc(stats['run_id'])}</p>
 <nav><a href="knowledge_graph.html">Explore graph</a><a href="events.jsonl">Complete event log</a>
 <a href="statistics.json">Statistics JSON</a><a href="report.md">Markdown report</a><a href="manifest.json">Run manifest</a></nav>
 <div class="cards">{card_html}</div>
 {quality_html}
 {rejection_html}
-<section><h2>Final statistical report</h2><table><thead><tr><th>Metric</th><th>Mean</th><th>Median</th><th>Sample SD</th><th>Min</th><th>Max</th></tr></thead>
-<tbody>{metric_rows}</tbody></table><p>{esc(stats['interpretation'])}</p>
+<section><h2>Run statistics</h2>{metric_table}<p>{esc(stats['interpretation'])}</p>
 <p>{stats['models']['calls']} live model calls; {stats['models']['cache_hits']} reused responses; {stats['models']['retries']} retries; {stats['models']['prompt_tokens']:,} new prompt tokens; {stats['models']['output_tokens']:,} new output tokens.
 {stats['extraction']['evidence_rejections']} extraction records rejected by evidence or structural validation.</p></section>
 <section><h2>The input document</h2>{paragraph_html}<h3>Sequential chunks</h3>{chunk_html}</section>
@@ -139,14 +159,14 @@ details{{margin:10px 0}}summary{{cursor:pointer;font-weight:600}}.accepted{{colo
 Isolated registry checks use {esc(stats['models']['registry'])}. Background knowledge need not appear in the chapter.
 Every accepted relation passes semantic gates; model judgments are not external factual verification.
 Open a decision to inspect its quote, arguments and checks.</p>{debate_html}</section>
-<section><h2>Final graph reconstruction</h2>{reconstructions}</section>
+{reconstruction_section}
 <section><h2>Simulation data</h2><p><a href="events.jsonl">events.jsonl</a> is ordered by sequence and contains full requests, responses, parsing,
 validation, decisions and graph mutations. Each event identifies its stage, entity, parent event and elapsed time.
 The log captures explicit explanations and any reasoning the provider exposes; hidden internal thinking is unavailable.</p>
 <p><a href="artifacts/graph.json">Final graph</a> · <a href="artifacts/debate.json">Debate transcripts</a> ·
-<a href="artifacts/chunks.json">Chunks and source offsets</a> · <a href="artifacts/evaluation.json">Evaluation</a> ·
+<a href="artifacts/chunks.json">Chunks and source offsets</a> ·
 <a href="artifacts/relations.json">Relation registry</a> · <a href="artifacts/concepts.json">Concept aliases</a> ·
-<a href="artifacts/chapter_outline.json">Chapter segments</a> · <a href="artifacts/seeds.json">Seed assessments</a> ·
+<a href="artifacts/chapter_outline.json">Chapter segments</a> · <a href="artifacts/seeds.json">Concepts for debate</a> ·
 <a href="artifacts/extraction_review.json">Extraction reviews</a> ·
 <a href="artifacts/extraction_quality.json">Review counts by chunk</a> ·
 <a href="artifacts/extraction_issues.json">Unresolved extraction records</a></p></section>
@@ -159,10 +179,15 @@ The log captures explicit explanations and any reasoning the provider exposes; h
     markdown += "| Category | Relations |\n| --- | ---: |\n"
     markdown += "".join(f"| {category.replace('_', ' ')} | {count} |\n" for category, count in category_counts.items()) + "\n"
     markdown += "\n".join(f"- {name}: {value}" for name, value in cards) + "\n\n"
-    markdown += "| Metric | Mean | Median | Sample SD | Min | Max |\n| --- | ---: | ---: | ---: | ---: | ---: |\n"
+    if stats["fidelity"]:
+        markdown += "| Metric | Mean | Median | Sample SD | Min | Max |\n| --- | ---: | ---: | ---: | ---: | ---: |\n"
     for key, values in stats["fidelity"].items():
         markdown += "| " + key + " | " + " | ".join(f"{values[k]:.3f}" if values[k] is not None else "n/a"
                       for k in ("mean", "median", "sample_stddev", "min", "max")) + " |\n"
-    markdown += "\n" + stats["interpretation"] + "\n\nOpen `index.html` for the input, decisions and reconstructions. "
+    markdown += "\n" + stats["interpretation"] + "\n\nOpen `index.html` for the input, relations and decisions. "
     markdown += "Use `events.jsonl` for simulation and `artifacts/graph.json` for the final graph.\n"
+    if evaluation:
+        markdown += "\n[Complete rebuilt text](reconstruction.txt) · [Detailed evaluation scores](artifacts/evaluation.json)\n"
+        if evaluation["status"] != "completed":
+            markdown += f"\nEvaluation incomplete: {evaluation.get('reason')}. No complete-document score is available.\n"
     return page, markdown

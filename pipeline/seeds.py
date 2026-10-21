@@ -1,5 +1,6 @@
-"""Segment coverage first, then threshold every canonical concept."""
+"""Collect canonical concepts and suppress semantically redundant expansion seeds."""
 from collections import Counter, defaultdict
+import math
 from typing import Annotated, Literal
 import re
 from pydantic import Field
@@ -96,7 +97,61 @@ def build_outline(chunks, models, trace):
         level = reduced
 
 
+def collect_seeds(extractions, chunks, concepts, trace, limit=0, similarity_threshold=.85):
+    """After identity reconciliation, pick concepts dissimilar to previously selected seeds."""
+    if not 0 <= similarity_threshold <= 1:
+        raise ValueError("Seed similarity threshold must be between 0 and 1")
+    occurrences = defaultdict(list)
+    for extraction in extractions:
+        for name in extraction["concepts"]:
+            if extraction["chunk_id"] not in occurrences[name]:
+                occurrences[name].append(extraction["chunk_id"])
+    by_chunk = {c["id"]: c for c in chunks}
+    seeds, excluded, vectors = [], [], []
+    omitted_by_limit = 0
+    for name, chunk_ids in occurrences.items():
+        entry = concepts.entries[name]
+        if entry.get("form", "concept") == "phrase":
+            excluded.append(dict(concept=name, reason="Not a standalone concept"))
+            continue
+        if limit and len(seeds) >= limit:
+            omitted_by_limit += 1
+            continue
+        vector = concepts.models.embed(f"{name}: {entry['definition']}", f"seed_candidate_{name}")
+        magnitude = math.sqrt(sum(value * value for value in vector))
+        if not vector or not math.isfinite(magnitude) or magnitude == 0:
+            raise ValueError(f"Invalid seed embedding for {name}")
+        vector = [value / magnitude for value in vector]
+        if vectors and len(vector) != len(vectors[0]):
+            raise ValueError("Seed embedding dimensions changed during selection")
+        similarities = [sum(a * b for a, b in zip(vector, picked)) for picked in vectors]
+        if similarities:
+            closest = max(range(len(similarities)), key=similarities.__getitem__)
+            similarity = max(-1., min(1., similarities[closest]))
+            if similarity >= similarity_threshold:
+                decision = dict(concept=name, similar_to=seeds[closest]["concept"],
+                                similarity=similarity, chunk_ids=chunk_ids,
+                                reason="Embedding is too similar to an already selected seed")
+                excluded.append(decision)
+                trace.emit("seed.filtered", entity_id=name, decision=decision)
+                continue
+        chunk = by_chunk[chunk_ids[0]]
+        vectors.append(vector)
+        seeds.append(dict(id=f"seed_{len(seeds)+1:03d}", concept=name,
+                          definition=entry["definition"], kind=entry["kind"],
+                          chunk_id=chunk["id"], paragraph_id=chunk["paragraph_id"], chunk_ids=chunk_ids,
+                          reason="Canonical concept distinct from previously selected seed embeddings",
+                          background_question=None))
+    trace.save("artifacts/seeds.json", dict(policy="deduplicated_diverse_concepts", limit=limit,
+               similarity_threshold=similarity_threshold, selected=seeds, excluded=excluded,
+               omitted_by_limit=omitted_by_limit))
+    for seed in seeds:
+        trace.emit("seed.selected", entity_id=seed["id"], seed=seed)
+    return seeds
+
+
 def select_seeds(extractions, chunks, concepts, outline, models, trace, threshold=.7, limit=0, max_words=4):
+    """Legacy scored selection, retained for replay callers; the pipeline uses collect_seeds."""
     if not outline["topics"]:
         trace.save("artifacts/seeds.json", dict(threshold=threshold, limit=limit, max_words=max_words,
             assessments=[], selected=[], status="unresolved", reason="No validated chapter topics available"))

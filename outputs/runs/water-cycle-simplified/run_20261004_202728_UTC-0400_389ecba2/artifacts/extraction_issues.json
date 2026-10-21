@@ -1,0 +1,115 @@
+[
+  {
+    "chunk_id": "chunk_001",
+    "id": "chunk_001_sentence_002_claims_0",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the previous record ('The water cycle describes...') is derived from PREVIOUS_SENTENCE. Per instructions, assertions must be extracted only from CURRENT_SENTENCE. The current sentence asserts that 'Oceans, lakes...' store 'water', not that the water cycle describes movement. Therefore, no claim can be generated for this index based on the current sentence's content.",
+    "record": {
+      "text": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+      "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+    }
+  },
+  {
+    "chunk_id": "chunk_001",
+    "id": "chunk_001_relation_002",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record was invalid because it relied on PREVIOUS_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice' store 'water'. This supports a 'stores' relation where the collective list of entities is the source and 'water' is the target. The previous record incorrectly attempted to model the water cycle description from the prior sentence. A valid relation must be extracted from the current sentence: [Oceans, lakes, rivers, soil, groundwater, snow, and ice] -> stores -> water.",
+    "record": {
+      "source": {
+        "name": "water_cycle",
+        "definition": "The water cycle",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "describes",
+      "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "target": {
+        "name": "movement_of_water_between_atmosphere_land_and_bodies_of_water",
+        "definition": "how water moves between the atmosphere, the land, and bodies of water",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": "between the atmosphere, the land, and bodies of water",
+      "modality": null,
+      "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+    }
+  },
+  {
+    "chunk_id": "chunk_002",
+    "id": "chunk_002_sentence_004",
+    "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge",
+    "record": {
+      "id": "chunk_002_sentence_004",
+      "start": 681,
+      "end": 716,
+      "text": "Moving air transports water vapor. "
+    }
+  },
+  {
+    "chunk_id": "chunk_004",
+    "id": "chunk_004_sentence_004_claims_1",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The failed record cites a definition from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The CURRENT_SENTENCE asserts causal influences on 'how quickly infiltration occurs', which requires extracting relations involving the rate of infiltration and its causes, rather than re-defining infiltration itself.",
+    "record": {
+      "text": "Infiltration is the entry of water through the ground surface into soil or other porous material.",
+      "evidence": "Infiltration is the entry of water through the ground surface into soil or other porous material."
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_sentence_001_concept_4",
+    "reason": "Standalone concept metadata could not be resolved",
+    "record": {
+      "name": "the ground is already saturated",
+      "definition": "A state where soil pores are full of water.",
+      "kind": "event",
+      "form": "concept",
+      "reference_phrase": null,
+      "kind_detail": null
+    }
+  },
+  {
+    "chunk_id": "chunk_007",
+    "id": "chunk_007_sentence_003_concept_2",
+    "reason": "Standalone concept metadata could not be resolved",
+    "record": {
+      "name": "this balance",
+      "definition": "The specific equilibrium state previously discussed or implied in context.",
+      "kind": "property",
+      "form": "concept",
+      "reference_phrase": null,
+      "kind_detail": null
+    }
+  },
+  {
+    "chunk_id": "chunk_007",
+    "id": "chunk_007_relation_004",
+    "reason": "Relation endpoint metadata could not be resolved",
+    "record": {
+      "source": {
+        "name": "Human activities",
+        "definition": "Actions performed by humans that can alter environmental balances.",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "acts_on",
+      "relation_definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "target": {
+        "name": "this balance",
+        "definition": "The specific equilibrium state previously discussed or implied in context.",
+        "kind": "property",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": null,
+      "modality": "can",
+      "evidence": "Human activities can alter this balance.",
+      "evidence_start": 2944,
+      "evidence_end": 2984
+    }
+  }
+]

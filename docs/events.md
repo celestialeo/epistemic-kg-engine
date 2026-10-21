@@ -29,9 +29,10 @@ UTC and remain stable.
 `parent_id` links an event to its initiating event, such as a model request or
 stage start. It is nullable; graph entities are linked through IDs in `data`.
 `entity_id` is the chunk, seed, candidate, graph node or graph edge concerned.
-Stage order is input → preflight → outline → extraction → extraction_review →
-seeds → debate → graph → evaluation → report. Every selected chapter has its
-own trace and run ID.
+Setup is input → preflight. Processing is extraction → debate → graph → evaluation.
+Chapter scope, document review, concept reconciliation and seed collection are
+internal work in debate. Evaluation reconstructs and scores the text, then
+generates the report. Every selected chapter has its own trace and run ID.
 
 ## Event families
 
@@ -48,11 +49,11 @@ own trace and run ID.
 | `registry.*` | Concept identity, contextual relation matches and verified new definitions |
 | `health.failed` | Failing step, recent failure fraction, examples and early-stop reason |
 | `health.warning` | Recoverable extraction/review failures; recent examples, without stopping execution |
-| `seed.*` | All-concept assessment count, threshold, selected contexts, optional limit and omitted counts |
+| `seed.*` | Distinct extracted concepts selected for debate; descriptive phrases are excluded |
 | `debate.*` | Proposal, ID coverage, chapter-wide novelty, semantic gates, verdict conflicts and final decision |
 | `graph.*` | Full node additions/updates, full edge additions, endpoint validation |
-| `embedding.*` | Input text, model, raw vectors, dimension validation and errors |
-| `evaluation.*` | Reconstruction context, individual metrics and aggregate statistics |
+| `embedding.*` | Seed-diversity embedding requests, responses and validation |
+| `evaluation.*` | Reconstruction contexts, per-chunk and complete-document metrics, and summary statistics |
 | `database.*` | Connections, queries/parameters/results/counters, transaction commit/rollback |
 | `process.*` | Docker Compose command and captured output, when requested |
 | `artifact.written` | Relative path, SHA-256, UTF-8 byte size |
@@ -83,6 +84,16 @@ uses the same kind enum as Concept, and keeps domain-specific labels in
 `kind_detail`; normal live output does not need kind/definition repair.
 `extraction.unresolved` preserves records that cannot be recovered.
 `artifacts/extraction_issues.json` aggregates these records across chunks.
+`extraction.quote_retry_requested` records each failed claim/relation index and
+its exact-quote or sentence-overlap failure reason. The `extractor_quote_repair`
+role repairs those records once per sentence; passed records are retained.
+`extraction.evidence_checked` uses `attempt: 0` for the original and `attempt: 1`
+for the repair. `extraction.quote_retry_completed` records recovered/unresolved
+counts; `extraction.quote_retry_failed` records an unusable repair response.
+Final `item.completed`/`item.unresolved` events use step `extraction_record`,
+and only these final outcomes contribute to extraction health monitoring.
+A sentence with no usable response contributes one unresolved item. Chunks
+retain their aggregate status for reporting, but do not count as health failures.
 Malformed extraction or normalization responses are isolated to the affected
 work unit or record after bounded retries. Failed review batches emit
 `extraction.review_batch_failed` and split to isolate individual candidates.
@@ -183,11 +194,18 @@ documents containing characters outside the Basic Multilingual Plane.
 ## Completion and failures
 
 Trust `manifest.json.status` and the final `run.completed` event together.
-Status `completed_with_issues` means the pipeline finished with incomplete
-extraction and returned exit code 2; it is not a fully successful extraction.
-The manifest lists `incomplete_extraction_chunks`, and the report links to the
-unresolved records. `evaluation.skipped` identifies chunks without grounded
-claims; these have null similarity metrics and are excluded from averages.
+Status `completed_with_issues` means the pipeline finished with unresolved work
+or incomplete evaluation and returned exit code 2. The manifest lists
+`incomplete_extraction_chunks`, `evaluation_status`, and `reconstruction_score`;
+the report links to unresolved records. `evaluation.context_built` records the
+claims, concepts and relations supplied to the reconstructor, without source
+chunk text or evidence quotes. Chunks without grounded content are evaluated as
+empty reconstructions. Unresolved evaluations have null scores. Per-chunk results
+are checkpointed in `artifacts/evaluation_progress.json`; the final result is
+`artifacts/evaluation.json`, and `reconstruction.txt` joins the rebuilt chunks in
+source order. `final_score` is the complete-document score, never a substitute
+chunk mean. The final document alignment has separate context/output budgets,
+recorded in configuration and each request's effective options and cache key.
 `run.failed` carries the full traceback and the run closes with failure status.
 A stopped run can contain useful partial events and artifacts but no final graph
 or report. A forced process kill may leave status `running`; no completion event

@@ -97,8 +97,10 @@ class RecoveryTests(unittest.TestCase):
         valid = self.relation(concept("runoff"), concept("rivers"), first)
         invalid = self.relation(concept("runoff"), concept("unclear"), "Invented evidence.")
         def respond(role, p):
+            if role == "extractor_quote_repair":
+                return dict(records=[dict(f, reason="Still unsupported") for f in p["failed_records"]])
             if role == "extractor":
-                return extraction(p["CURRENT_CHUNK"], [valid, invalid] if p["CURRENT_CHUNK"] == first else [
+                return extraction(p["CURRENT_SENTENCE"], [valid, invalid] if p["CURRENT_SENTENCE"] == first else [
                     self.relation(concept("water"), concept("soil"), second)])
             return dict(concept=None, reason="Intended endpoint is ambiguous")
         result, _, concepts = self.run_extraction(first + "\n\n" + second, respond)
@@ -127,10 +129,10 @@ class RecoveryTests(unittest.TestCase):
             with self.subTest(changes=changes), self.assertRaises(ValueError):
                 complete_endpoint(original, {}, "target", "Rivers flow.", model, self.trace, "repair")
 
-    def test_truncation_splits_sentences_and_preserves_offsets_and_parent_id(self):
+    def test_sentence_units_preserve_offsets_and_parent_id(self):
         text = "Runoff enters rivers.\r\nRivers reach oceans."
         def respond(role, p):
-            current = p["CURRENT_CHUNK"]
+            current = p["CURRENT_SENTENCE"]
             if current == text:
                 raise OutputLimitError("Truncated fixture")
             return extraction(current, [self.relation(concept("runoff"), concept("rivers"), current)])
@@ -138,8 +140,8 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["status"], "complete")
         self.assertEqual("".join(u["text"] for u in result[0]["units"]), text)
-        self.assertEqual(self.trace.counts["extraction.unit_split"], 1)
-        self.assertEqual(sum(r["role"] == "extractor" for r in model.requests), 3)
+        self.assertEqual(self.trace.counts["extraction.unit_split"], 0)
+        self.assertEqual(sum(r["role"] == "extractor" for r in model.requests), 2)
         for row in result[0]["claims"] + result[0]["relation_proposals"]:
             self.assertEqual(text[row["evidence_start"]:row["evidence_end"]], row["evidence"])
         self.assertTrue(all(r["chunk_id"] == result[0]["chunk_id"] for r in result[0]["relation_proposals"]))
@@ -154,9 +156,9 @@ class RecoveryTests(unittest.TestCase):
 
     def test_single_long_sentence_splits_at_words_with_finite_progress(self):
         def respond(role, p):
-            if len(p["CURRENT_CHUNK"].split()) > 1:
+            if len(p["CURRENT_SENTENCE"].split()) > 1:
                 raise OutputLimitError("Truncated")
-            return extraction(p["CURRENT_CHUNK"])
+            return extraction(p["CURRENT_SENTENCE"])
         result, _, _ = self.run_extraction("one two three four", respond)
         self.assertEqual(result[0]["status"], "complete")
         self.assertEqual("".join(u["text"] for u in result[0]["units"]), "one two three four")
@@ -195,8 +197,10 @@ class RecoveryTests(unittest.TestCase):
                     value = dict(overview="Water", topics=["water"])
                 elif role == "extractor":
                     raise ModelResponseError("Unusable fixture output")
+                elif role == "evaluation_claims":
+                    value = dict(claims=[dict(text=payload["text"], evidence=payload["text"])])
                 else:
-                    raise AssertionError("No model review/evaluation should run without extracted content: " + role)
+                    raise AssertionError("No review or reconstruction should run without extracted content: " + role)
                 return schema.model_validate(value)
         source = Path(self.temp.name) / "input.txt"
         source.write_text("Water flows.", encoding="utf-8")
@@ -210,7 +214,9 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual(manifest["incomplete_extraction_chunks"], ["chunk_001"])
         self.assertIn("Incomplete extraction", (run / "index.html").read_text(encoding="utf-8"))
         evaluation = json.loads((run / "artifacts/evaluation.json").read_text())
-        self.assertIsNone(evaluation["summary"]["semantic_cosine"]["mean"])
+        self.assertEqual(evaluation["final_score"], 0)
+        self.assertEqual((run / "reconstruction.txt").read_text().strip(), "")
+        self.assertEqual(manifest["pipeline_stages"], ["extraction", "debate", "graph", "evaluation"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,100 @@
+{
+  "run_id": "run_20261002_104618_UTC-0400_b7692622",
+  "unresolved_items": [
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_002",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_005",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "extraction_chunk",
+      "id": "chunk_007",
+      "status": "unresolved",
+      "reason": "Chunk contains unresolved extraction records"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0007",
+      "status": "unresolved",
+      "reason": "No validated background decision: critic failed for candidate_0007 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    }
+  ],
+  "input": {
+    "paragraphs": 3,
+    "chunks": 7,
+    "words": 486,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 37,
+    "incomplete_chunks": [
+      "chunk_002",
+      "chunk_005",
+      "chunk_007"
+    ],
+    "unresolved_records": 3,
+    "relations": 38,
+    "reviewed": 53,
+    "review_attempted": 53,
+    "semantic_rejections": 15,
+    "rejection_categories": {
+      "meaning_changed": 9,
+      "wrong_kind": 6,
+      "wrong_direction": 6,
+      "unsupported_claim": 3
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 6
+  },
+  "debate": {
+    "seeds": 105,
+    "proposed": 207,
+    "accepted": 15,
+    "rejected": 191,
+    "unresolved": 1,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 160,
+    "edges": 227,
+    "domain_nodes": 112,
+    "domain_edges": 53,
+    "provenance_edges": 174,
+    "isolated_domain_nodes": 42,
+    "node_kinds": {
+      "chunk": 11,
+      "concept": 107,
+      "statement": 37,
+      "event": 5
+    },
+    "edge_origins": {
+      "document": 212,
+      "background": 15
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 1547,
+    "retries": 11,
+    "cache_hits": 0,
+    "embedding_calls": 0,
+    "prompt_tokens": 1625085,
+    "output_tokens": 374198
+  },
+  "fidelity": {},
+  "interpretation": "Extraction → Debate → Graph. Document relations retain source quotes; background relations are model knowledge. Review decisions are not external factual verification."
+}
