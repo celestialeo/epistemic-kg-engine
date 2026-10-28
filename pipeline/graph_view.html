@@ -3,30 +3,38 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Knowledge graph</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font:15px system-ui;color:#17283e;background:#f5f7fb}
-header{padding:20px 24px;background:white;border-bottom:1px solid #d9e0ea}h1{font-size:25px;margin:0 0 5px}p{line-height:1.5;margin:8px 0}
-.muted{color:#57677d;font-size:13px}.toolbar,.legend{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:14px}
-input[type=search]{padding:9px;border:1px solid #aebdce;border-radius:6px;min-width:240px}button{padding:8px 12px;border:1px solid #aebdce;border-radius:6px;background:white;color:#17283e;cursor:pointer}button:hover{background:#eaf0f9}button:disabled{opacity:.4;cursor:default}
-.legend span:before{content:'';display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--color);margin-right:6px}
-main{display:grid;grid-template-columns:minmax(0,1fr) 320px;height:calc(100vh - 225px);min-height:480px}#canvas{width:100%;height:100%;touch-action:none;cursor:grab}aside{background:white;padding:20px;overflow:auto;border-left:1px solid #d9e0ea}h2{font-size:19px;overflow-wrap:anywhere}dt{font-weight:650;margin-top:15px;text-transform:capitalize}dd{margin:4px 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5}
-.node{cursor:pointer}.node text{font:14px system-ui;fill:#17283e;paint-order:stroke;stroke:#f5f7fb;stroke-width:4px;stroke-linejoin:round;pointer-events:none}.edge{cursor:pointer}.edge text{font:12px system-ui;fill:#45566d;paint-order:stroke;stroke:#f5f7fb;stroke-width:4px}.node:focus{outline:none}.node:focus circle{stroke:#101c2d;stroke-width:4px}
-#status{padding:8px 24px;background:white;border-top:1px solid #d9e0ea;font-size:13px}
-@media(max-width:800px){main{grid-template-columns:1fr;height:auto}#canvas{height:65vh}aside{max-height:40vh;border-top:1px solid #d9e0ea}header{padding:12px}}
+:root{color-scheme:dark;--bg:#080d18;--panel:#101827;--border:#26344a;--text:#e6edf8;--muted:#9cacc3;--accent:#78b6ff}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 system-ui,-apple-system,sans-serif;color:var(--text);background:radial-gradient(ellipse at 50% 0, #192443 0,transparent 55%),var(--bg)}
+header{max-width:1600px;margin:auto;padding:26px 32px 18px}h1{font-size:22px;letter-spacing:-.6px;margin:0 0 4px}p{line-height:1.6;margin:8px 0}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:5px}.muted{color:var(--muted);font-size:12px}#run{overflow-wrap:anywhere}
+a{color:var(--accent);text-underline-offset:3px}.toolbar,.legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.toolbar{padding:14px 20px;border-bottom:1px solid var(--border);background:#111b2b}.toolbar label{display:flex;align-items:center;gap:6px;font-size:12px;color:#bdcbe0}.toolbar input[type=checkbox]{accent-color:var(--accent)}
+input[type=search]{padding:9px 12px;border:1px solid var(--border);border-radius:8px;min-width:200px;max-width:100%;background:#0a1220;color:var(--text);font:inherit}input::placeholder,textarea::placeholder{color:#8294b0}
+button{padding:9px 13px;border:1px solid #34445e;border-radius:8px;background:#19263a;color:var(--text);font:inherit;font-size:12px;cursor:pointer;transition:background .15s,border-color .15s}button:hover{background:#233752;border-color:#5b7fae}button:disabled{opacity:.4;cursor:default}:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.graph-shell{margin:0 24px 24px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--panel);box-shadow:0 20px 60px #0003}.graph-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px}.graph-heading h2{margin:0;font-size:15px}.legend{gap:16px;font-size:11px;color:var(--muted)}.legend span:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--color);margin-right:7px;box-shadow:0 0 10px color-mix(in srgb,var(--color) 35%,transparent)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 300px;height:65vh;min-height:460px}#canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;background-color:#0b1220;background-image:radial-gradient(#26354b 1px,transparent 1px);background-size:24px 24px}#canvas:active{cursor:grabbing}aside{background:#101827;padding:22px;overflow:auto;border-left:1px solid var(--border);font-size:13px;scrollbar-width:thin;scrollbar-color:#34445e transparent}h2{font-size:17px;overflow-wrap:anywhere}aside h2{margin-top:0}#hint{color:#bdcbe0}dt{color:#9cacc3;font-size:11px;font-weight:650;margin-top:18px;text-transform:capitalize}dd{margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+.node{cursor:pointer}.node text{font:14px system-ui;fill:#e6edf8;paint-order:stroke;stroke:#0b1220;stroke-width:4px;stroke-linejoin:round;pointer-events:none}.edge{cursor:pointer}.edge text{font:12px system-ui;fill:#b3c4dc;paint-order:stroke;stroke:#0b1220;stroke-width:4px}.node:focus{outline:none}.node:focus circle{stroke:#fff;stroke-width:4px}
+.graph-help{padding:10px 20px;margin:0;border-top:1px solid var(--border);font-size:11px}#status{padding:10px 20px;background:#111b2b;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+@media(min-width:1650px){.graph-shell{max-width:1552px;margin-left:auto;margin-right:auto}}
+@media(max-width:800px){header{padding:20px 16px 14px}.graph-shell{margin:0 12px 16px;border-radius:12px}.graph-heading,.toolbar{padding:14px;gap:12px}.toolbar input[type=search]{width:100%}main{grid-template-columns:1fr;height:auto;min-height:0}#canvas{height:60vh;min-height:360px}aside{max-height:45vh;border-left:0;border-top:1px solid var(--border)}}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
 </style>
-<header><h1>Knowledge graph</h1><div id="run" class="muted"></div>
-<div class="legend"><span style="--color:#2877cc">Document knowledge</span><span style="--color:#cf681b">Background additions</span><span style="--color:#8054ba">Document concept used in background</span></div>
+<header><div class="eyebrow">Epistemic / Graph explorer</div><h1>Knowledge graph</h1><div id="run" class="muted"></div></header>
+<section class="graph-shell" aria-label="Graph workspace">
+<div class="graph-heading"><h2>Explore connections</h2><div class="legend"><span style="--color:#69aeff">Document knowledge</span><span style="--color:#f5ae68">Background additions</span></div></div>
 <div class="toolbar"><input id="search" type="search" aria-label="Find a concept" placeholder="Find a concept…"><label><input id="background" type="checkbox" checked> Background</label><label><input id="labels" type="checkbox" checked> All relationship labels</label><button id="focus" disabled>Focus on selected</button><button id="reset">Show all</button><button id="fit">Fit graph</button></div>
-<p class="muted">Event nodes are marked E and connect to their objects through acts_on. Select a node or arrow for details. Drag nodes to arrange; drag empty space to pan; scroll to zoom. Search shows matches and their immediate neighbors.</p></header>
 <main><svg id="canvas" aria-label="Interactive knowledge graph"><defs><marker id="arrow-document" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2877cc"/></marker><marker id="arrow-background" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#cf681b"/></marker></defs><g id="viewport"><g id="edges"></g><g id="nodes"></g></g></svg>
 <aside><h2 id="detail-title">Explore the knowledge</h2><p id="hint">Concepts use their names. Background facts appear as orange relationships, with explanations and scores in this panel.</p><dl id="details"></dl><p class="muted">Document knowledge is model-extracted from your text. Background knowledge is model-generated enrichment. Colors describe origin, not correctness. Scores are not calibrated probabilities.</p></aside></main>
-<div id="status" role="status"></div>
+<p class="muted graph-help">Select a node or arrow for details. Drag to arrange or pan; scroll to zoom. Search includes immediate neighbors. Document knowledge takes precedence when a concept also appears in background additions.</p>
+<div id="status" role="status"></div></section>
 <script type="application/json" id="graph-data">__GRAPH_DATA__</script>
 <script>
 'use strict';
 const data=JSON.parse(document.getElementById('graph-data').textContent);
+for(const record of [...data.nodes,...data.edges])if(record.origin==='both')record.origin='document';
 const $=id=>document.getElementById(id), svg=$('canvas'), viewport=$('viewport'), ns='http://www.w3.org/2000/svg';
-const colors={document:'#2877cc',background:'#cf681b',both:'#8054ba'};
-const origins={document:'Extracted from document',background:'Generated background knowledge',both:'In document and used in background knowledge'};
+const colors={document:'#69aeff',background:'#f5ae68'};
+for(const origin of ['document','background'])document.querySelector('#arrow-'+origin+' path').setAttribute('fill',colors[origin]);
+const origins={document:'Extracted from document',background:'Generated background knowledge'};
 const byId=new Map(data.nodes.map((n,i)=>[n.id,Object.assign(n,{x:Math.cos(i*2.39996)*Math.sqrt(i+1)*55,y:Math.sin(i*2.39996)*Math.sqrt(i+1)*55,vx:0,vy:0})]));
 let visible=[], links=[], selected=null, focus=null, zoom=1, panX=0, panY=0, drag=null, frame=0, ticks=0;
 $('run').textContent=data.run_id+' · Saved run snapshot';
@@ -55,9 +63,8 @@ svg.addEventListener('pointerdown',e=>{if(e.target.closest('.edge'))return;drag=
 svg.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(drag.node){drag.node.x+=dx/zoom;drag.node.y+=dy/zoom;draw()}else{panX+=dx;panY+=dy;transform()}drag.x=e.clientX;drag.y=e.clientY});
 svg.addEventListener('pointerup',()=>{drag=null});svg.addEventListener('pointercancel',()=>{drag=null});
 svg.addEventListener('wheel',e=>{e.preventDefault();const r=svg.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,next=Math.max(.06,Math.min(5,zoom*Math.exp(-e.deltaY*.001)));panX=x-(x-panX)*next/zoom;panY=y-(y-panY)*next/zoom;zoom=next;transform()},{passive:false});
-$('search').addEventListener('input',()=>{focus=null;selected=null;$('focus').disabled=true;render()});for(const id of ['background'])$(id).addEventListener('change',render);$('labels').addEventListener('change',highlight);$('focus').onclick=()=>{focus=selected;$('search').value='';render()};$('reset').onclick=()=>{focus=null;selected=null;$('focus').disabled=true;$('search').value='';render()};$('fit').onclick=fit;window.addEventListener('resize',fit);
-// Start with one connected concept so names are readable immediately.
-const degree=new Map();for(const e of data.edges){degree.set(e.source,(degree.get(e.source)||0)+1);degree.set(e.target,(degree.get(e.target)||0)+1)}
-const initial=data.nodes.filter(n=>['concept','event'].includes(n.kind)&&n.origin!=='background').sort((a,b)=>(degree.get(b.id)||0)-(degree.get(a.id)||0))[0];
-if(initial){focus=initial.id;selected=initial.id}render();if(initial)details(initial);
+$('search').addEventListener('input',()=>{focus=null;selected=null;$('focus').disabled=true;render()});for(const id of ['background'])$(id).addEventListener('change',render);$('labels').addEventListener('change',highlight);$('focus').onclick=()=>{focus=selected;$('search').value='';render()};$('reset').onclick=showAll;$('fit').onclick=fit;window.addEventListener('resize',fit);
+function showAll(){focus=null;selected=null;$('focus').disabled=true;$('search').value='';$('background').checked=true;render()}
+// Open the complete saved graph, including background and disconnected nodes.
+showAll();
 </script></html>

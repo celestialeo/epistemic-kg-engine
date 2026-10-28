@@ -125,20 +125,21 @@ only accepted proposals become background graph edges. Extracted relationships
 also require semantic review before graph insertion. Equivalent source
 assertions are combined into one edge with additional `supporting_evidence`.
 Inverse and symmetric forms are compared using the run's relation registry.
-Concept IDs hash canonical names after identity resolution; aliases are retained.
-Graph schema version 2 includes the final `relation_registry` in its header.
-Explicit happenings now use node `kind: event` and `semantic_kind: event`;
-event nodes retain deterministic concept IDs. `acts_on` connects an event to
-its affected object. Causal endpoints may be events or processes; an object link
-is optional and never synthesized. Historical `debate.event_link_rejected`
-events remain replayable, but new runs do not apply that blanket dependency.
-Replayers use the latest decision per candidate ID.
+Graph schema version 3 hashes normalized concept names (case, punctuation and
+English singular/plural inflection). Nodes contain a name (`label`), one short
+`definition`, and operational `id`, `kind: concept`, and `origin` fields. Context
+never splits nodes. Endpoint kinds remain occurrence metadata for review rather
+than graph identity. Relationships retain their own conditions, modality and
+source evidence. Provenance is either `document` or `background`; document wins.
 
-`registry.concepts_merged` records independently verified global alias merges;
-`concept_reconciliation.json` records redirects. Orthographic normalization
-handles case, whitespace, underscores and hyphens before identity checks.
-Plural variants retrieve potential aliases but never authorize a merge alone.
-`registry.alias_unresolved` records an unsuccessful reconciliation response.
+`registry.identity_reused` records reuse by normalized name. `registry.concepts_merged`
+and `concept_reconciliation.json` record normalization redirects, without model
+identity checks. `graph.canonicalized` records the final safeguard merging same-name
+nodes and rerouting/deduplicating edges. Duplicate document evidence is preserved.
+The saved graph artifact is authoritative after this final pass; earlier node/edge
+addition events describe construction before final deduplication. Historical alias
+verification events remain readable but new runs do not emit them.
+
 `seed.filtered` records quantified/overlong names excluded from expansion;
 `seeds.json` retains these exclusions and all model assessments. Eligible seeds
 must identify an unanswered background question and a chapter topic.
@@ -179,8 +180,8 @@ Categories can overlap. Malformed/unresolved reviews are counted separately.
 Evidence may include the immediately adjacent source sentences, provided the
 exact continuous quote overlaps its extraction work unit. Original character
 offsets are preserved and semantic entailment still must pass.
-`registry.identity_candidates` records the shortlist and full registry size;
-`registry.identity_reused` records a validated context-specific identity reuse.
+`registry.identity_candidates` is historical. New concept identity decisions are
+name-based, not context-specific model decisions.
 Memory cache hits include the source event/run just like resumed cache hits.
 
 `start` and `end` are zero-based Unicode character offsets in the decoded
@@ -217,3 +218,22 @@ The manifest hashes saved artifacts, except itself and the live event/console
 logs. `event_counts_before_finalization` explicitly excludes the final manifest
 write and closing event. Read the stream for exact final event counts. Console
 output is in `run.log`; structured model and database data is in `events.jsonl`.
+
+
+## Explorer quizzes
+
+Explorer logs live in the source run's `explorer_sessions/explorer_<id>/events.jsonl`.
+`quiz.request` records each action, page/session/question IDs and submitted answer.
+`quiz.state` records the current question, cumulative edge/node colors and coverage.
+`quiz.error` records failures. Model requests/responses share the explorer trace.
+`quiz/<quiz_id>.json` checkpoints the question state and full answer history.
+Request IDs make retries idempotent; stale question IDs cannot advance another
+question. Hints and reveals do not increment the question number or earn coverage.
+
+Each round contains at most five questions: highest document-degree concept for Q1;
+its unmapped connections to highest-degree neighbors for Q2/Q3; green neighbors
+with the most unmapped relationships for Q4/Q5. Partial and contradicted edges are
+still unmapped. No eligible neighbor produces an explicit current-concept/review
+fallback. Q5's answer completes the round. Continue explicitly starts another five
+while preserving mapped relationships. Coverage separates independent and assisted
+matches, and does not count reveal-only relationships as recalled.

@@ -303,7 +303,7 @@ class PipelineTests(unittest.TestCase):
         fixture.write_text("A neuron is excitable.\n\nNeurons transmit signals.\n\nSynapses connect neurons.", encoding="utf-8")
         destination = Path(self.temp.name) / "complete"
         with patch("pipeline.models.Models", FakeModels):
-            code = main(["--input", str(fixture), "--output-root", str(destination), "--no-open"])
+            code = main(["--input", str(fixture), "--output-root", str(destination), "--no-open", "--no-explorer"])
         self.assertEqual(code, 0)
         run = next(p for p in (destination / "custom").iterdir() if p.is_dir())
         manifest = json.loads((run / "manifest.json").read_text())

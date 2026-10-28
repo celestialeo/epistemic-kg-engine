@@ -1,0 +1,190 @@
+{
+  "run_id": "run_20261026_064711_UTC-0400_a6b2d8e4",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_claims_0",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'The water cycle describes how water moves...' is found in PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The claim about the water cycle describing movement is not asserted in CURRENT_SENTENCE; therefore, no valid record can be generated for this index based on the current sentence's content."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record relied on evidence from PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.' This supports a 'stores' relation between the collective list of bodies (concept) and water (target), with 'in reservoirs' as a condition. The previous record attempted to describe the water cycle using evidence from the wrong sentence. A new valid relation must be constructed from CURRENT_SENTENCE, but since the task is to repair failed records by returning null if unsupported or correcting them, and the original record's evidence source was invalid for the current extraction constraint, it cannot be corrected to a valid CURRENT_SENTENCE assertion."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_001_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The assertion 'Rain and snow return atmospheric water to the surface' is supported by PREVIOUS_SENTENCE. The CURRENT_SENTENCE ('After precipitation reaches land...') describes subsequent pathways but does not support the claim that rain/snow return water; it presupposes the event in PREVIOUS_SENTENCE has occurred. Therefore, no relation can be extracted from CURRENT_SENTENCE alone for this specific claim without inventing an antecedent or misattributing the source. The failed record requires repair by acknowledging the evidence lies in PREVIOUS_SENTENCE, but per instructions to extract only from CURRENT_SENTENCE and resolve references, if the CURRENT_SENTENCE does not independently assert the 'returns' action (it only describes what happens *after* precipitation reaches land), the relation"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The assertion in the failed record relies on 'These connections' which is a reference phrase not explicitly named as a standalone concept in the CURRENT_SENTENCE. The CURRENT_SENTENCE describes conditions for 'Surface runoff' but does not contain an independent assertion about 'connections' allowing groundwater flow; that information belongs to PREVIOUS_SENTENCE. Extracting this as a claim from CURRENT_SENTENCE violates the rule to extract only from CURRENT_SENTENCE and resolve references."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_003",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_004",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relation 'allows' connects 'connections' (a reference phrase) to 'groundwater'. The text 'These connections allow...' is in PREVIOUS_SENTENCE. Per instructions, we must extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE does not assert that 'connections' allow groundwater flow; it asserts conditions for runoff development. Therefore, no faithful triple can be extracted for this specific assertion from the current sentence context."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_005",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relation 'maintains_flow_in' connects 'groundwater' to 'streams'. The evidence provided is from PREVIOUS_SENTENCE. The CURRENT_SENTENCE discusses 'Surface runoff', 'water flows over the land', 'rainfall', and 'saturated ground'. It does not contain an assertion that groundwater maintains flow in streams. Extracting this relation from the current sentence would require inventing facts or misattributing the source of the assertion, violating the constraint to extract only from CURRENT_SENTENCE."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_002",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_011",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_006_concept_1",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0065",
+      "status": "unresolved",
+      "reason": "No validated background decision: critic failed for candidate_0065 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    },
+    {
+      "step": "evaluation",
+      "id": "chunk_002",
+      "status": "unresolved",
+      "reason": "evaluation_alignment failed for chunk_002:alignment after 3 attempts: Claim alignment must be one-to-one"
+    }
+  ],
+  "input": {
+    "paragraphs": 3,
+    "chunks": 7,
+    "words": 486,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 35,
+    "incomplete_chunks": [
+      "chunk_001",
+      "chunk_004",
+      "chunk_006",
+      "chunk_007"
+    ],
+    "unresolved_records": 10,
+    "relations": 50,
+    "reviewed": 68,
+    "review_attempted": 68,
+    "semantic_rejections": 18,
+    "rejection_categories": {
+      "wrong_direction": 13,
+      "meaning_changed": 10,
+      "wrong_kind": 5,
+      "unsupported_claim": 4
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 10
+  },
+  "debate": {
+    "seeds": 82,
+    "proposed": 210,
+    "accepted": 11,
+    "rejected": 198,
+    "unresolved": 1,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 112,
+    "edges": 61,
+    "domain_nodes": 112,
+    "domain_edges": 61,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 36,
+    "node_kinds": {
+      "concept": 112
+    },
+    "edge_origins": {
+      "document": 50,
+      "background": 11
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 1141,
+    "retries": 29,
+    "cache_hits": 0,
+    "embedding_calls": 112,
+    "prompt_tokens": 1401114,
+    "output_tokens": 379033
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 6,
+      "mean": 0.5522535435578914,
+      "median": 0.5457875457875458,
+      "min": 0.2857142857142857,
+      "max": 0.8695652173913043,
+      "sample_stddev": 0.2086971494944537
+    },
+    "idea_order_agreement": {
+      "n": 6,
+      "mean": 0.7055555555555556,
+      "median": 0.9166666666666667,
+      "min": 0.0,
+      "max": 1.0,
+      "sample_stddev": 0.4165555407367888
+    },
+    "rouge_l_f1": {
+      "n": 6,
+      "mean": 0.5067367763675409,
+      "median": 0.5339265850945495,
+      "min": 0.34545454545454546,
+      "max": 0.6363636363636364,
+      "sample_stddev": 0.10482496826831281
+    },
+    "length_similarity": {
+      "n": 6,
+      "mean": 0.7036036499605502,
+      "median": 0.7454703832752614,
+      "min": 0.4666666666666667,
+      "max": 0.8571428571428571,
+      "sample_stddev": 0.15454358582144323
+    },
+    "final_score": {
+      "n": 6,
+      "mean": 60.11623804785383,
+      "median": 58.869293749728534,
+      "min": 33.450441100155686,
+      "max": 86.69775871557891,
+      "sample_stddev": 18.75900933750633
+    }
+  },
+  "reconstruction_score": null,
+  "evaluation_status": "incomplete",
+  "evaluation_metric_version": "reconstruction_fidelity_v1",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

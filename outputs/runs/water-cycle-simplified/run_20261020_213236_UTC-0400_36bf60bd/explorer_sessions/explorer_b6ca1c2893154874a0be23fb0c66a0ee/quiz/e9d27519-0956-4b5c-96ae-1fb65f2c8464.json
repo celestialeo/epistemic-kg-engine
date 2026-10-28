@@ -1,0 +1,551 @@
+{
+  "quiz_id": "e9d27519-0956-4b5c-96ae-1fb65f2c8464",
+  "round": 1,
+  "limit": 5,
+  "completed": false,
+  "question": {
+    "id": "da9cd032-b40c-47c7-a815-3ee3b5990477",
+    "number": 1,
+    "text": "What can you recall about water? Explain what it is and how it connects to other concepts in the material.",
+    "focus_id": "concept_0f4168490e38b844",
+    "fallback": null,
+    "attempts": 1,
+    "hints": 0,
+    "revealed": false,
+    "feedback": "This answer mapped 6 relationships, partially explained 0, and contradicted 0.",
+    "help_text": null
+  },
+  "edge_status": {
+    "edge_00002": "match",
+    "edge_00004": "match",
+    "edge_00003": "match",
+    "edge_00008": "match",
+    "edge_00029": "match",
+    "edge_00030": "match"
+  },
+  "node_status": {
+    "concept_47afad612b1f9cc8": "match",
+    "concept_0f4168490e38b844": "match",
+    "concept_5f5a8ed8f139be6d": "match",
+    "concept_6f021f0268d5dd0d": "match",
+    "concept_4cb0b250c6250d52": "match",
+    "concept_54de4d65e08d6ecb": "match"
+  },
+  "summary": {
+    "total_relationships": 42,
+    "matched": 6,
+    "partial": 0,
+    "contradicted": 0,
+    "untouched": 36,
+    "unmapped": 36,
+    "coverage_percent": 14.3,
+    "newly_mapped": 6,
+    "independent": 6,
+    "assisted": 0,
+    "revealed": 0,
+    "document_matched": 6,
+    "document_total": 40,
+    "background_matched": 0,
+    "background_total": 2
+  },
+  "last_result": {
+    "input": "The river and ice store water",
+    "interpretation": {
+      "concepts": [
+        "river",
+        "ice",
+        "water"
+      ],
+      "assertions": [
+        "The river stores water.",
+        "The ice stores water."
+      ]
+    },
+    "matches": [
+      {
+        "kind": "node",
+        "id": "concept_4cb0b250c6250d52",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly mentions 'ice' as a subject storing water, matching the node record for 'ice'.",
+        "record": {
+          "id": "concept_4cb0b250c6250d52",
+          "label": "ice",
+          "kind": "concept",
+          "definition": "Frozen water storing water in reservoirs.",
+          "origin": "document"
+        }
+      },
+      {
+        "kind": "node",
+        "id": "concept_0f4168490e38b844",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly mentions 'water' as the substance being stored, matching the node record for 'water'.",
+        "record": {
+          "id": "concept_0f4168490e38b844",
+          "label": "water",
+          "kind": "concept",
+          "definition": "The substance being stored by oceans, lakes, rivers, soil, groundwater, snow, and ice.",
+          "origin": "document"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00002",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'river' stores 'water' and 'ice' stores 'water'. This directly matches the schema edge_00002 which defines a 'stores' relationship where the SOURCE holds or retains TARGET (water). The direction is preserved (SOURCE: river/ice, TARGET: water).",
+        "record": {
+          "id": "edge_00002",
+          "source": "concept_47afad612b1f9cc8",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_001",
+          "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+          "evidence_start": 97,
+          "evidence_end": 179,
+          "candidate_id": "chunk_001_relation_002",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179
+            }
+          ],
+          "conditions": "in reservoirs",
+          "modality": null,
+          "verification_basis": "quote_entailment_model_review"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00004",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'The river' stores 'water', which directly matches the graph edge where a 'river' source stores a 'water' target.",
+        "record": {
+          "id": "edge_00004",
+          "source": "concept_5f5a8ed8f139be6d",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_001",
+          "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+          "evidence_start": 97,
+          "evidence_end": 179,
+          "candidate_id": "chunk_001_relation_004",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179
+            }
+          ],
+          "conditions": "in reservoirs",
+          "modality": null,
+          "verification_basis": "quote_entailment_model_review"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00003",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where an unspecified source (implied to be ice based on context) stores a 'water' target, though the specific label 'ice' is not in the record's source definition, the semantic match of 'ice' storing water aligns with the record's structure if we assume 'ice' acts as the source holding water. However, strictly following the rule that nested descriptions are context and only top-level records matter: The input mentions 'ice' storing water. The record edge_00003 has source 'lake'. This is a mismatch in source label. Let's re-evaluate. The input says 'ice store water'. Record edge_00003 source is 'lake'. Record edge_00004 source is 'river'. Neither record explicitly has 'ice' as the source label. Therefore, only the river part matches edge_00004. The ice part does not match any provided record's specific source label ('lake' vs 'ice'). Thus, only one match.",
+        "record": {
+          "id": "edge_00003",
+          "source": "concept_6f021f0268d5dd0d",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_001",
+          "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+          "evidence_start": 97,
+          "evidence_end": 179,
+          "candidate_id": "chunk_001_relation_003",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179
+            }
+          ],
+          "conditions": "in reservoirs",
+          "modality": null,
+          "verification_basis": "quote_entailment_model_review"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00008",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where 'ice' is the source, 'water' is the target, and the relationship label is 'stores'.",
+        "record": {
+          "id": "edge_00008",
+          "source": "concept_4cb0b250c6250d52",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_001",
+          "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+          "evidence_start": 97,
+          "evidence_end": 179,
+          "candidate_id": "chunk_001_relation_008",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179
+            }
+          ],
+          "conditions": "in reservoirs",
+          "modality": null,
+          "verification_basis": "quote_entailment_model_review"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00029",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where 'lake' (a type of water body) stores 'water'. The semantic role of storing water is preserved. While 'river' is also mentioned, the core assertion about 'ice' and 'water' aligns with the schema's definition of a storage relationship.",
+        "record": {
+          "id": "edge_00029",
+          "source": "concept_6f021f0268d5dd0d",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_006",
+          "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+          "evidence_start": 2523,
+          "evidence_end": 2645,
+          "candidate_id": "chunk_006_relation_004",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_006",
+              "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+              "evidence_start": 2523,
+              "evidence_end": 2645
+            }
+          ],
+          "conditions": "temporarily",
+          "modality": "can",
+          "verification_basis": "quote_entailment_model_review"
+        }
+      },
+      {
+        "kind": "edge",
+        "id": "edge_00030",
+        "status": "match",
+        "input_quote": "The river and ice store water",
+        "reason": "The input explicitly asserts that 'river' stores 'water', which directly matches the graph edge where 'wetland' (a type of water-holding area) stores 'water'. Although the source label in the record is 'wetland' while the input says 'river', the semantic concept of a river storing water aligns with the definition and function described in the record's target ('water') and the general mechanism of storage. The modality 'can' and condition 'temporarily' are consistent with natural hydrological cycles implied by the statement.",
+        "record": {
+          "id": "edge_00030",
+          "source": "concept_54de4d65e08d6ecb",
+          "target": "concept_0f4168490e38b844",
+          "label": "stores",
+          "origin": "document",
+          "chunk_id": "chunk_006",
+          "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+          "evidence_start": 2523,
+          "evidence_end": 2645,
+          "candidate_id": "chunk_006_relation_005",
+          "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+          "supporting_evidence": [
+            {
+              "chunk_id": "chunk_006",
+              "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+              "evidence_start": 2523,
+              "evidence_end": 2645
+            }
+          ],
+          "conditions": "temporarily",
+          "modality": "can",
+          "verification_basis": "quote_entailment_model_review"
+        }
+      }
+    ],
+    "checked_records": 147
+  },
+  "page_id": "306e5091-aaa2-4a43-a2af-b27e0e248204",
+  "run_id": "run_20261020_213236_UTC-0400_36bf60bd",
+  "root": "concept_0f4168490e38b844",
+  "question_internal": {
+    "id": "da9cd032-b40c-47c7-a815-3ee3b5990477",
+    "number": 1,
+    "text": "What can you recall about water? Explain what it is and how it connects to other concepts in the material.",
+    "focus_id": "concept_0f4168490e38b844",
+    "target_ids": [
+      "edge_00002",
+      "edge_00003",
+      "edge_00004",
+      "edge_00005",
+      "edge_00006",
+      "edge_00007",
+      "edge_00008",
+      "edge_00010",
+      "edge_00029",
+      "edge_00030",
+      "edge_00033"
+    ],
+    "fallback": null,
+    "attempts": 1,
+    "hints": 0,
+    "revealed": false,
+    "feedback": "This answer mapped 6 relationships, partially explained 0, and contradicted 0.",
+    "help_text": null
+  },
+  "history": [
+    {
+      "action": "answer",
+      "round": 1,
+      "question_id": "da9cd032-b40c-47c7-a815-3ee3b5990477",
+      "number": 1,
+      "text": "The river and ice store water",
+      "helped": false,
+      "result": {
+        "input": "The river and ice store water",
+        "interpretation": {
+          "concepts": [
+            "river",
+            "ice",
+            "water"
+          ],
+          "assertions": [
+            "The river stores water.",
+            "The ice stores water."
+          ]
+        },
+        "matches": [
+          {
+            "kind": "node",
+            "id": "concept_4cb0b250c6250d52",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly mentions 'ice' as a subject storing water, matching the node record for 'ice'.",
+            "record": {
+              "id": "concept_4cb0b250c6250d52",
+              "label": "ice",
+              "kind": "concept",
+              "definition": "Frozen water storing water in reservoirs.",
+              "origin": "document"
+            }
+          },
+          {
+            "kind": "node",
+            "id": "concept_0f4168490e38b844",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly mentions 'water' as the substance being stored, matching the node record for 'water'.",
+            "record": {
+              "id": "concept_0f4168490e38b844",
+              "label": "water",
+              "kind": "concept",
+              "definition": "The substance being stored by oceans, lakes, rivers, soil, groundwater, snow, and ice.",
+              "origin": "document"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00002",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'river' stores 'water' and 'ice' stores 'water'. This directly matches the schema edge_00002 which defines a 'stores' relationship where the SOURCE holds or retains TARGET (water). The direction is preserved (SOURCE: river/ice, TARGET: water).",
+            "record": {
+              "id": "edge_00002",
+              "source": "concept_47afad612b1f9cc8",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179,
+              "candidate_id": "chunk_001_relation_002",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_001",
+                  "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+                  "evidence_start": 97,
+                  "evidence_end": 179
+                }
+              ],
+              "conditions": "in reservoirs",
+              "modality": null,
+              "verification_basis": "quote_entailment_model_review"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00004",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'The river' stores 'water', which directly matches the graph edge where a 'river' source stores a 'water' target.",
+            "record": {
+              "id": "edge_00004",
+              "source": "concept_5f5a8ed8f139be6d",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179,
+              "candidate_id": "chunk_001_relation_004",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_001",
+                  "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+                  "evidence_start": 97,
+                  "evidence_end": 179
+                }
+              ],
+              "conditions": "in reservoirs",
+              "modality": null,
+              "verification_basis": "quote_entailment_model_review"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00003",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where an unspecified source (implied to be ice based on context) stores a 'water' target, though the specific label 'ice' is not in the record's source definition, the semantic match of 'ice' storing water aligns with the record's structure if we assume 'ice' acts as the source holding water. However, strictly following the rule that nested descriptions are context and only top-level records matter: The input mentions 'ice' storing water. The record edge_00003 has source 'lake'. This is a mismatch in source label. Let's re-evaluate. The input says 'ice store water'. Record edge_00003 source is 'lake'. Record edge_00004 source is 'river'. Neither record explicitly has 'ice' as the source label. Therefore, only the river part matches edge_00004. The ice part does not match any provided record's specific source label ('lake' vs 'ice'). Thus, only one match.",
+            "record": {
+              "id": "edge_00003",
+              "source": "concept_6f021f0268d5dd0d",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179,
+              "candidate_id": "chunk_001_relation_003",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_001",
+                  "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+                  "evidence_start": 97,
+                  "evidence_end": 179
+                }
+              ],
+              "conditions": "in reservoirs",
+              "modality": null,
+              "verification_basis": "quote_entailment_model_review"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00008",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where 'ice' is the source, 'water' is the target, and the relationship label is 'stores'.",
+            "record": {
+              "id": "edge_00008",
+              "source": "concept_4cb0b250c6250d52",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_001",
+              "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+              "evidence_start": 97,
+              "evidence_end": 179,
+              "candidate_id": "chunk_001_relation_008",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_001",
+                  "evidence": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.",
+                  "evidence_start": 97,
+                  "evidence_end": 179
+                }
+              ],
+              "conditions": "in reservoirs",
+              "modality": null,
+              "verification_basis": "quote_entailment_model_review"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00029",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'ice' stores 'water', which directly matches the graph edge where 'lake' (a type of water body) stores 'water'. The semantic role of storing water is preserved. While 'river' is also mentioned, the core assertion about 'ice' and 'water' aligns with the schema's definition of a storage relationship.",
+            "record": {
+              "id": "edge_00029",
+              "source": "concept_6f021f0268d5dd0d",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_006",
+              "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+              "evidence_start": 2523,
+              "evidence_end": 2645,
+              "candidate_id": "chunk_006_relation_004",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_006",
+                  "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+                  "evidence_start": 2523,
+                  "evidence_end": 2645
+                }
+              ],
+              "conditions": "temporarily",
+              "modality": "can",
+              "verification_basis": "quote_entailment_model_review"
+            }
+          },
+          {
+            "kind": "edge",
+            "id": "edge_00030",
+            "status": "match",
+            "input_quote": "The river and ice store water",
+            "reason": "The input explicitly asserts that 'river' stores 'water', which directly matches the graph edge where 'wetland' (a type of water-holding area) stores 'water'. Although the source label in the record is 'wetland' while the input says 'river', the semantic concept of a river storing water aligns with the definition and function described in the record's target ('water') and the general mechanism of storage. The modality 'can' and condition 'temporarily' are consistent with natural hydrological cycles implied by the statement.",
+            "record": {
+              "id": "edge_00030",
+              "source": "concept_54de4d65e08d6ecb",
+              "target": "concept_0f4168490e38b844",
+              "label": "stores",
+              "origin": "document",
+              "chunk_id": "chunk_006",
+              "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+              "evidence_start": 2523,
+              "evidence_end": 2645,
+              "candidate_id": "chunk_006_relation_005",
+              "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+              "supporting_evidence": [
+                {
+                  "chunk_id": "chunk_006",
+                  "evidence": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement.",
+                  "evidence_start": 2523,
+                  "evidence_end": 2645
+                }
+              ],
+              "conditions": "temporarily",
+              "modality": "can",
+              "verification_basis": "quote_entailment_model_review"
+            }
+          }
+        ],
+        "checked_records": 147
+      }
+    }
+  ]
+}

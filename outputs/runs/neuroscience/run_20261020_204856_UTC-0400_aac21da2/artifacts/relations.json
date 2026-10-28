@@ -1,0 +1,229 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "integrates",
+      "definition": "SOURCE has the capacity to integrate or merge multiple inputs of type TARGET into a unified representation.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "neuronal communication",
+        "target": "behavior of individual cells",
+        "context": "Neuronal communication connects the behavior of individual cells to the activity of an entire nervous system."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "neuronal communication",
+        "target": "activity of an entire nervous system",
+        "context": "Neuronal communication connects the behavior of individual cells to the activity of an entire nervous system."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "neuron",
+        "target": "excitable cell",
+        "context": "A neuron is an excitable cell specialized for receiving, processing, and transmitting signals."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "neurons",
+        "target": "circuits",
+        "context": "Neurons operate in circuits rather than as isolated decision makers."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "can_combine",
+        "definition": "SOURCE has the capacity to integrate or merge multiple inputs of type TARGET into a unified representation.",
+        "source": "circuits",
+        "target": "sensory information",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "integrates",
+      "reason": "The new relation 'integrates' is coherent and specific, directly derived from the source definition of 'can_combine'. It preserves the exact meaning (capacity to merge inputs into a unified representation) and direction (SOURCE acts on TARGET). The 'symmetric' flag is correctly set to false as integration is not inherently reciprocal. The 'inverse' is correctly null because an inverse requires a distinct, defined reverse process (e.g., 'separates'), which does not exist here; the instruction clarifies that null inverse is valid when no such reverse relation is defined. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "can_alter",
+        "definition": "SOURCE has the capacity to modify, change, or influence the state or trajectory of TARGET.",
+        "source": "circuits",
+        "target": "ongoing movement",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE takes part in the event or process TARGET without being its structural component.",
+        "source": "circuits",
+        "target": "memory formation",
+        "context": "A circuit can combine sensory information, alter an ongoing movement, or participate in forming a memory."
+      },
+      "canonical_key": "participates_in",
+      "reason": "The definitions are semantically equivalent: both state that SOURCE takes part in TARGET without being a structural component. The proposed contract's 'inverse' key 'has_participant' correctly reverses the direction (TARGET has participant SOURCE), and 'symmetric': false is accurate because participation is not inherently symmetric. Modality, scope, and causal strength are preserved; no reinterpretation of location or participation as parthood occurred."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

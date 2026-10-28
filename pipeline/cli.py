@@ -77,8 +77,12 @@ def main(argv=None):
     parser.add_argument("--neo4j", action="store_true", help="Also export the final graph to Neo4j")
     parser.add_argument("--start-neo4j", action="store_true", help="Start bundled Neo4j using Docker Compose and export the graph")
     parser.add_argument("--no-open", action="store_true", help="Do not open the results page automatically")
+    parser.add_argument("--no-explorer", action="store_true", help="Stop after evaluation/reporting without starting the interactive graph console")
+    parser.add_argument("--explorer-port", type=int, default=0, help="Local graph explorer port; 0 selects a free port (default)")
     parser.add_argument("--new", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
+    if not 0 <= args.explorer_port <= 65535:
+        parser.error("explorer-port must be between 0 and 65535")
     if args.chunk_words < 1 or args.seed_limit < 0 or args.seed_max_words < 1:
         parser.error("chunk-words and seed-max-words must be positive; seed-limit must be nonnegative")
     if not 0 <= args.seed_threshold <= 1:
@@ -99,6 +103,7 @@ def main(argv=None):
         parser.error("document token budgets must be positive, with document-output-tokens smaller than document-context-tokens")
     selected = ["neuroscience", "water-cycle"] if args.chapter == "both" else [args.chapter or ("custom" if args.input else "neuroscience")]
     code = 0
+    completed_runs = []
     for chapter in selected:
         config = argparse.Namespace(**vars(args))
         config.chapter = chapter
@@ -108,6 +113,18 @@ def main(argv=None):
         if result == 130:
             return result
         code = max(code, result)
+        if result in (0, 2) and getattr(config, "completed_run_directory", None):
+            completed_runs.append(config.completed_run_directory)
+    if completed_runs and not args.no_explorer:
+        try:
+            from .explorer import serve
+            serve(completed_runs, port=args.explorer_port, open_browser=not args.no_open)
+        except KeyboardInterrupt:
+            pass
+        except Exception as exc:
+            print(f"Graph explorer could not start: {exc}. Completed pipeline results are saved. "
+                  "Reopen them with python -m pipeline.explorer RUN_DIRECTORY.", file=sys.stderr)
+            return max(code, 1)
     return code
 
 
@@ -259,4 +276,6 @@ def run_chapter(args):
                 trace.save("manifest.json", manifest)
                 trace.emit("run.completed" if code in (0, 2) else "run.closed", status=manifest["status"])
                 trace.close()
+    if code in (0, 2):
+        args.completed_run_directory = out
     return code

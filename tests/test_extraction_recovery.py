@@ -206,7 +206,7 @@ class RecoveryTests(unittest.TestCase):
         source.write_text("Water flows.", encoding="utf-8")
         out = Path(self.temp.name) / "partial"
         with patch("pipeline.models.Models", FakeModels):
-            code = main(["--input", str(source), "--output-root", str(out), "--no-open"])
+            code = main(["--input", str(source), "--output-root", str(out), "--no-open", "--no-explorer"])
         self.assertEqual(code, 2)
         run = next((out / "custom").iterdir())
         manifest = json.loads((run / "manifest.json").read_text())

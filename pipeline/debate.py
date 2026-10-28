@@ -82,7 +82,9 @@ class Novelty(Record):
 COMMON_POLICY = (
     "Every endpoint must be a standalone concept, never a statement or context-dependent reference. "
     "Express the assertion through a precise relation, with qualifications in conditions and modality. "
-    "Evaluate the literal SOURCE relation TARGET under the supplied relation definition and concept senses. "
+    "Evaluate the literal SOURCE relation TARGET under its relation definition, conditions and evidence. "
+    "Concept names identify shared nodes across contexts; infer their contextual meaning from the relationship "
+    "and supplied source material, not from separate node senses or an exhaustive node definition. "
     "A structural part is not a subtype; an event's location is not its physical component. "
     "Keep direction, causal strength, negation, conditions and specificity. "
     "Read conditions and modality as part of the assertion, including negation; preserve them in proposals. "
@@ -144,10 +146,12 @@ def review_batch(models, role, instruction, payload, row_schema, candidates, tra
 
 
 def review_context(row, chunk, outline, concepts):
-    row["endpoint_kinds"] = {k: concepts.entries[row[k]]["kind"] for k in ("source", "target")}
+    row["endpoint_kinds"] = {k: (row.get(k + "_mention") or concepts.entries[row[k]])["kind"]
+                             for k in ("source", "target")}
     context = {"candidate": {k: row[k] for k in (
         "id", "source", "target", "relation", "relation_definition", "origin", "reason")},
-        "concept_senses": [concepts.entries[row[k]] for k in ("source", "target")],
+        "concepts": [{field: concepts.entries[row[k]][field] for field in ("name", "definition")}
+                     for k in ("source", "target")],
         "chapter": {k: outline[k] for k in ("overview", "topics")}}
     context["candidate"].update(conditions=row.get("conditions"), modality=row.get("modality"))
     if row["origin"] == "document":
@@ -486,7 +490,8 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                 "missing measurements, conditions, or external evidence. Never fill a quota or invent a vague peer. "
                 "Do not use SOURCE as TARGET. Read known_seed_facts before proposing: do not repeat them, "
                 "their inverses, or paraphrases. Prefer answering the seed's background_question. "
-                "Use short canonical singular names; definitions may be detailed.",
+                "Use short canonical singular names and one short definition per endpoint. "
+                "Keep contextual qualifications in the relationship's conditions and modality.",
                 {"seed": {k: seed[k] for k in ("concept", "definition", "kind")},
                  "chapter": {**{k: outline[k] for k in ("overview", "topics")},
                              "concepts": getattr(concepts, "chapter_names", []) or sorted(concepts.entries)},
@@ -521,6 +526,8 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                 transcript["candidate_ids"].append(identifier)
                 continue
             row = dict(id=identifier, seed_id=seed["id"], source=source, target=target,
+                source_mention=value.source.model_dump() if value.source is not None else concepts.entries[source],
+                target_mention=value.target.model_dump(),
                 relation=relation or value.relation, relation_definition=value.relation_definition,
                 surface_relation=value.relation, surface_target=value.target.name,
                 confidence=value.confidence, reason=value.reason, chunk_id=seed["chunk_id"],
@@ -530,7 +537,7 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
             candidates.append(row)
             transcript["candidate_ids"].append(identifier)
             trace.emit("debate.proposed", entity_id=identifier, proposal=row.copy())
-            error = kind_error(relation, concepts.entries[source]["kind"], concepts.entries[target]["kind"])
+            error = kind_error(relation, row["source_mention"]["kind"], row["target_mention"]["kind"])
             if error:
                 row["decision_reason"] = error
             if seed["concept"] not in (source, target):

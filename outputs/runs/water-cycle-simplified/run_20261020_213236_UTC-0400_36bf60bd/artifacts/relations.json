@@ -1,0 +1,1813 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "supplies_energy_for",
+      "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "influences_speed_of",
+      "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "absorbs_water_via_roots",
+      "definition": "Process by which plants take in water via their roots.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "releases_vapor_through_stomata",
+      "definition": "Process by which plants release water as vapor through leaf openings called stomata.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "grows_into",
+      "definition": "SOURCE must undergo growth to achieve the state of falling as TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "evaporates_before_reaching",
+      "definition": "SOURCE undergoes evaporation before reaching TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "returns_to",
+      "definition": "SOURCE returns TARGET to a specific location or state.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "links_to",
+      "definition": "SOURCE establishes a connection between two distinct entities, here underground storage and visible surface water.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "transports",
+      "definition": "SOURCE transports TARGET from one location to another.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "emits_liquid_water_via_melting",
+      "definition": "SOURCE causes the release or emission of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "enters",
+      "definition": "SOURCE moves into or becomes part of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "water cycle",
+        "target": "how water moves between atmosphere land and bodies of water",
+        "context": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "oceans",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "lakes",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "rivers",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "soil",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "groundwater",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "snow",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "ice",
+        "target": "water",
+        "context": "Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "evaporation",
+        "target": "liquid water",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "becomes",
+        "definition": "SOURCE transforms into TARGET as a result of the process.",
+        "source": "liquid water",
+        "target": "water vapor",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "condensation",
+        "target": "water vapor",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "becomes",
+        "definition": "SOURCE transforms into TARGET as a result of the process.",
+        "source": "water vapor",
+        "target": "liquid water",
+        "context": "Evaporation changes liquid water into water vapor, while condensation changes vapor back into liquid."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "supplies_energy_for",
+        "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+        "source": "solar energy",
+        "target": "evaporation (bd1edb86)",
+        "context": "Solar energy supplies much of the energy needed for evaporation from oceans, lakes, and moist ground."
+      },
+      "canonical_key": "supplies_energy_for",
+      "reason": "The new relation 'supplies_energy_for' is coherent and specific, matching the source definition where solar energy enables evaporation. The direction is preserved as non-symmetric (false), consistent with physical causality. The inverse is correctly set to null because an inverse requires swapping endpoints to form a valid equivalence; here, evaporation does not supply energy back to solar processes in the same defined manner, so no inverse relation exists. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_014",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "humidity",
+        "target": "rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "The new relation 'influences_speed_of' is coherent and specific, directly mapping to the source assertion where humidity affects rate. The definition exactly preserves the source meaning ('SOURCE influences the speed or magnitude of the process TARGET'). Direction is preserved as the source (humidity) acts on the target (rate). Symmetry is correctly set to false because influence is directional. The inverse is null, which is valid per instructions since an inverse requires equivalence after swapping endpoints, and 'influences_speed_of' does not imply a reciprocal relationship where rate influences humidity. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_015",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wind",
+        "target": "rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_001_relation_016",
+      "original": {
+        "label": "affects_rate_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "availability of water",
+        "target": "rate",
+        "context": "The rate also depends on humidity, wind, and the availability of water."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "absorb_water_through_roots",
+        "definition": "Process by which plants take in water via their roots.",
+        "source": "plants",
+        "target": "water (69201511)",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "absorbs_water_via_roots",
+      "reason": "The new relation 'absorbs_water_via_roots' is coherent and specific, directly derived from the source definition without adding extra restrictions. The direction (plants -> water) is preserved exactly as in the source assertion. Symmetry is correctly set to false because absorption is not a reciprocal process between plants and water. The inverse is correctly null, as there is no defined inverse relationship where water 'absorbs' via roots; an inverse requires swapping endpoints to form a valid predicate, which does not exist here."
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "release_vapor_through_stomata",
+        "definition": "Process by which plants release water as vapor through leaf openings called stomata.",
+        "source": "plants",
+        "target": "vapor",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "releases_vapor_through_stomata",
+      "reason": "The new relation 'releases_vapor_through_stomata' is coherent and specific, directly derived from the source definition without adding extra restrictions. The direction (plants -> vapor) is preserved exactly as stated in the source context. Symmetry is correctly set to false because the process is not reversible (vapor does not release water through stomata). The inverse is correctly null, as there is no defined inverse relation for this specific biological process under the given definition."
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "roots",
+        "target": "plants",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "leaf openings",
+        "target": "stomata",
+        "context": "Plants absorb water through their roots and release some of it as vapor through leaf openings called stomata."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "transpiration",
+        "target": "transpiration (3094ea92)",
+        "context": "This release is transpiration."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "combines",
+        "definition": "SOURCE combines the processes or components listed in TARGET.",
+        "source": "evapotranspiration",
+        "target": "evaporation from surfaces",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_002_relation_007",
+      "original": {
+        "label": "combines",
+        "definition": "SOURCE combines the processes or components listed in TARGET.",
+        "source": "evapotranspiration",
+        "target": "transpiration by plants",
+        "context": "Evapotranspiration combines evaporation from surfaces with transpiration by plants."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_002_relation_008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "air cooling sufficiently and becoming saturated",
+        "target": "vapor condensing onto small particles to form droplets",
+        "context": "When air cools sufficiently and becomes saturated, vapor can condense onto small particles to form droplets."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_009",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "tiny liquid droplets",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_010",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "ice crystals",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_011",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "water vapor (68527be0)",
+        "context": "Clouds contain tiny liquid droplets, ice crystals, or both; they are not simply invisible water vapor."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "must_grow_before_falling_as",
+        "definition": "SOURCE must undergo growth to achieve the state of falling as TARGET.",
+        "source": "cloud particles",
+        "target": "precipitation",
+        "context": "Cloud particles must grow before they can fall as precipitation"
+      },
+      "canonical_key": "grows_into",
+      "reason": "The new relation 'grows_into' accurately reflects the source assertion that cloud particles (source) must grow to become precipitation (target). The definition is specific and matches the source context. Symmetry is correctly set to false as growth into a state is directional. The inverse is null, which is valid since the process is not reversible in this context. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "evaporates_before_reaching",
+        "definition": "SOURCE undergoes evaporation before reaching TARGET.",
+        "source": "falling water",
+        "target": "ground",
+        "context": "some falling water evaporates before reaching the ground"
+      },
+      "canonical_key": "evaporates_before_reaching",
+      "reason": "The new relation 'evaporates_before_reaching' is coherent as it describes a specific physical process where water evaporates before hitting the ground. The meaning and direction are exactly preserved from the source assertion ('falling water' undergoes evaporation before reaching 'ground'). No extra restrictions were added; the symmetric flag is correctly set to false because evaporation before reaching a target is not a reciprocal relationship (the ground does not evaporate before reaching the water). The inverse is correctly null, as there is no valid inverse process defined for this specific directional event in the source context."
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "return",
+        "definition": "SOURCE returns TARGET to a specific location or state.",
+        "source": "rain",
+        "target": "atmospheric water",
+        "context": "Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "returns_to",
+      "reason": "The new relation 'returns_to' is coherent and specific, matching the source definition where rain returns atmospheric water to a location. The direction is preserved as SOURCE -> TARGET (rain -> water). Symmetry is correctly set to false because returning is not a reciprocal action in this context. The inverse is null, which is valid per instructions for non-equivalence relations. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "return",
+        "definition": "SOURCE returns TARGET to a specific location or state.",
+        "source": "snow (735a51b5)",
+        "target": "atmospheric water",
+        "context": "Rain and snow return atmospheric water to the surface."
+      },
+      "canonical_key": "returns_to",
+      "reason": "The occurrence definition 'SOURCE returns TARGET to a specific location or state' is semantically identical to the proposed contract definition. The directionality (SOURCE -> TARGET) is preserved in both. The modality implies a completed action of returning, which aligns with the non-symmetric nature of the relation. The endpoint type ('to a specific location or state') matches exactly. No reinterpretation of participation or location as structural parthood is required; the text describes a transfer event consistent across both definitions."
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "evaporates_before_reaching",
+        "definition": "SOURCE undergoes evaporation before reaching TARGET.",
+        "source": "remains on leaves",
+        "target": "evaporates",
+        "context": "Some remains on leaves and later evaporates, some flows over the surface, and some enters the ground."
+      },
+      "canonical_key": "evaporates_before_reaching",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "infiltration",
+        "target": "entry of water through the ground surface into soil or other porous material",
+        "context": "Infiltration is the entry of water through the ground surface into soil or other porous material."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_005",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "soil structure",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_006",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "existing moisture",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_007",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "vegetation",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_008",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "rainfall intensity",
+        "target": "infiltration",
+        "context": "Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_009",
+      "original": {
+        "label": "absorbs_water_via_roots",
+        "definition": "Process by which plants take in water via their roots.",
+        "source": "water in soil",
+        "target": "roots (d81b2e4d)",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "absorbs_water_via_roots",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_010",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "water in soil",
+        "target": "pore spaces",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_004_relation_011",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "movement deeper through subsurface",
+        "context": "Water in soil may be absorbed by roots, remain in pore spaces, or move deeper through the subsurface."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_001",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "water reaching the saturated zone",
+        "target": "groundwater recharge",
+        "context": "Water reaching the saturated zone can contribute to groundwater recharge, but not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_002",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "infiltrating water",
+        "target": "saturated zone",
+        "context": "not all infiltrating water reaches that zone."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "fills",
+        "definition": "SOURCE occupies the space of TARGET.",
+        "source": "groundwater (ed90d802)",
+        "target": "pore spaces",
+        "context": "Groundwater fills pores or fractures in saturated material."
+      },
+      "canonical_key": null,
+      "reason": "Conflicting inverse or symmetry contract"
+    },
+    {
+      "entity_id": "chunk_005_relation_004",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "aquifer",
+        "target": "groundwater (ba89f202)",
+        "context": "An aquifer is a geologic formation that stores and transmits usable quantities of groundwater."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_005",
+      "original": {
+        "label": "can_discharge_into",
+        "definition": "SOURCE can discharge into TARGET.",
+        "source": "groundwater (4fca5fca)",
+        "target": "streams",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_005_relation_006",
+      "original": {
+        "label": "can_discharge_into",
+        "definition": "SOURCE can discharge into TARGET.",
+        "source": "groundwater (4fca5fca)",
+        "target": "lakes (96224f52)",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_005_relation_007",
+      "original": {
+        "label": "can_discharge_into",
+        "definition": "SOURCE can discharge into TARGET.",
+        "source": "groundwater (4fca5fca)",
+        "target": "springs",
+        "context": "Groundwater can move through connected openings and discharge into streams, lakes, or springs."
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "chunk_005_relation_008",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "spring",
+        "target": "where groundwater emerges at the surface",
+        "context": "A spring occurs where groundwater emerges at the surface."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_009",
+      "original": {
+        "label": "maintains_flow_in",
+        "definition": "SOURCE enables the continuation of TARGET within the context of SOURCE's presence, specifically during conditions like dry periods.",
+        "source": "groundwater (ed90d802)",
+        "target": "flow in some streams",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": "enables",
+      "reason": "The occurrence definition 'SOURCE enables the continuation of TARGET' aligns with the contract key 'enables'. Both specify that SOURCE provides conditions for TARGET without producing it. Direction is identical (SOURCE -> TARGET). Modality matches ('continuation' vs 'permitting'). Scope is consistent regarding dry periods as a condition. Endpoint types match."
+    },
+    {
+      "entity_id": "chunk_005_relation_010",
+      "original": {
+        "label": "links_to",
+        "definition": "SOURCE establishes a connection between two distinct entities, here underground storage and visible surface water.",
+        "source": "groundwater (ed90d802)",
+        "target": "underground storage to visible surface water",
+        "context": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+      },
+      "canonical_key": "links_to",
+      "reason": "The new relation 'links_to' is coherent and specific, preserving the source assertion that groundwater connects to visible surface water. The direction is maintained as defined in the source (groundwater -> underground storage to visible surface water). Symmetry is correctly set to false because the connection is directional (groundwater links TO surface water, not vice versa in this context). The inverse is null, which is valid per instructions since an inverse requires equivalence after swapping endpoints, and here the relation is not symmetric. No extra restrictions or vague predicates are introduced."
+    },
+    {
+      "entity_id": "chunk_006_relation_001",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "surface runoff",
+        "target": "water flows over the land",
+        "context": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_002",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "watershed",
+        "target": "land area",
+        "context": "A watershed is the land area that drains surface water toward a common outlet."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_003",
+      "original": {
+        "label": "carries",
+        "definition": "SOURCE transports TARGET from one location to another.",
+        "source": "rivers (a13ebe5d)",
+        "target": "water (f247c5d1)",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "transports",
+      "reason": "The new relation 'transports' is coherent and specific, directly derived from the source definition. It exactly preserves the meaning and direction of the source assertion ('carries') without adding extra restrictions. The symmetry flag is correctly set to false as transport is directional. The inverse is null, which is valid per instructions since no inverse relation was defined or required."
+    },
+    {
+      "entity_id": "chunk_006_relation_004",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "lakes (7d6dc75b)",
+        "target": "water (f247c5d1)",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_005",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "wetlands",
+        "target": "water (f247c5d1)",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_006",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "lakes (7d6dc75b)",
+        "target": "timing of movement",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_007",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wetlands",
+        "target": "timing of movement",
+        "context": "Rivers carry water downstream, while lakes and wetlands can temporarily store it and influence the timing of its movement."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_008",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "snow and ice",
+        "target": "water (d5c878ab)",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_006_relation_009",
+      "original": {
+        "label": "releases",
+        "definition": "SOURCE causes the release or emission of TARGET.",
+        "source": "melting",
+        "target": "liquid water (3d513e36)",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "emits_liquid_water_via_melting",
+      "reason": "The new relation 'emits_liquid_water_via_melting' accurately reflects the source assertion where 'melting' causes the release of 'liquid water'. The definition is identical to the source. Symmetry is correctly set to false as melting is not a symmetric process (ice doesn't melt into snow). The inverse is correctly null because there is no defined inverse relation for this specific causal event in the source data, and per instructions, a null inverse is valid when no inverse exists."
+    },
+    {
+      "entity_id": "chunk_006_relation_010",
+      "original": {
+        "label": "enters",
+        "definition": "SOURCE moves into or becomes part of TARGET.",
+        "source": "liquid water (3d513e36)",
+        "target": "streams (4673ae94)",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "enters",
+      "reason": "The new relation 'enters' is coherent as it defines a directional movement from source to target. The meaning and direction are exactly preserved by retaining the original definition without adding extra restrictions. Symmetry is correctly set to false because 'entering' is inherently asymmetric (A enters B does not imply B enters A). The inverse is correctly null, as there is no standard inverse process for 'enters' that fits the definition of equivalence after swapping endpoints in this context."
+    },
+    {
+      "entity_id": "chunk_006_relation_011",
+      "original": {
+        "label": "enters",
+        "definition": "SOURCE moves into or becomes part of TARGET.",
+        "source": "liquid water (3d513e36)",
+        "target": "soil (3e08f7c1)",
+        "context": "Snow and ice also store water; melting releases liquid water that can enter streams or soil."
+      },
+      "canonical_key": "enters",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_001",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "storage and movement",
+        "target": "water (504f89bf)",
+        "context": "Storage and movement occur over different timescales, so water does not follow one compulsory loop."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_002",
+      "original": {
+        "label": "follows",
+        "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+        "source": "water (504f89bf)",
+        "target": "one compulsory loop",
+        "context": "Storage and movement occur over different timescales, so water does not follow one compulsory loop."
+      },
+      "canonical_key": "follows",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_003",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "water budget",
+        "target": "inputs",
+        "context": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_004",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "water budget",
+        "target": "outputs",
+        "context": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_005",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "water budget",
+        "target": "changes in storage",
+        "context": "A water budget compares inputs, outputs, and changes in storage within a defined area and time interval."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_006",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "balance",
+        "context": "Human activities can alter this balance."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_007",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "paved surfaces",
+        "target": "infiltration (54a5ef1c)",
+        "context": "Paved surfaces often reduce infiltration and increase rapid runoff."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_008",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "paved surfaces",
+        "target": "rapid runoff",
+        "context": "Paved surfaces often reduce infiltration and increase rapid runoff."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_009",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "pumping",
+        "target": "groundwater (1da0c79e)",
+        "context": "Pumping removes groundwater"
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_007_relation_010",
+      "original": {
+        "label": "can",
+        "definition": "Modal qualifier indicating possibility or potentiality.",
+        "source": "sustained withdrawals greater than replenishment",
+        "target": "groundwater storage",
+        "context": "sustained withdrawals greater than replenishment can reduce groundwater storage"
+      },
+      "canonical_key": null,
+      "reason": "New relation key collision or unknown inverse"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "supplies_energy_for",
+        "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+        "source": "water cycle",
+        "target": "solar energy (60e4688f)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The chapter overview explicitly states that water cycle mechanisms are 'driven by solar energy,' covering evaporation and transpiration. This establishes a direct causal energy dependency where solar energy is the prerequisite driver for these phase changes and movements."
+      },
+      "canonical_key": "supplies_energy_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "water cycle",
+        "target": "groundwater",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The text describes 'groundwater storage within aquifers' as a specific post-precipitation pathway where water is retained underground. The concept 'groundwater storage' represents the state or capacity held by the system described in the chapter."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "water cycle",
+        "target": "surface runoff (6b923002)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The chapter details 'surface runoff generation via gravity when infiltration limits are exceeded.' While gravity is the immediate force, the accumulation of water exceeding infiltration capacity (the condition described) causally produces the event of surface runoff flowing over the land."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water",
+        "target": "water cycle",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water is the substance that moves through and constitutes the water cycle; it participates in the cycle rather than being a structural component of the abstract process itself."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "water",
+        "target": "evaporation (0f8d65f2)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The presence and availability of water (SOURCE) is the necessary material condition that allows the process of evaporation (TARGET) to occur; without water, this specific phase change event cannot happen."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "water",
+        "target": "groundwater storage (8fd37a8d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The existence of water in soil and aquifers (SOURCE) provides the physical medium required for the process of groundwater storage to exist; however, the storage is a dynamic state/process enabled by the presence of the substance."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0007",
+      "original": {
+        "label": "evaporates_before_reaching",
+        "definition": "SOURCE undergoes evaporation before reaching TARGET.",
+        "source": "evaporation",
+        "target": "water vapor (c7247637)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evaporation is the specific process by which liquid water transitions into water vapor; therefore, the substance 'water vapor' is the direct result of this phase change occurring prior to any other atmospheric transport or deposition events."
+      },
+      "canonical_key": "evaporates_before_reaching",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0008",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "evaporation",
+        "target": "atmosphere (d278530d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evaporation is a physical process that happens at the interface between liquid water surfaces and the air; thus, the process occurs within the spatial domain of the atmosphere."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0009",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "evaporation",
+        "target": "water cycle (814ad950)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evaporation is a fundamental mechanism driving the water cycle, contributing to atmospheric moisture and precipitation patterns, making it an active participant in the broader cyclical system."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0010",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "liquid water",
+        "target": "water cycle (814ad950)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Liquid water is a fundamental substance that actively participates in the continuous loop of the water cycle through phase changes and movement between reservoirs."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0011",
+      "original": {
+        "label": "enters",
+        "definition": "SOURCE moves into or becomes part of TARGET.",
+        "source": "liquid water",
+        "target": "aquifer (f9b21f6d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Liquid water infiltrates the ground and enters aquifers during subsurface percolation, becoming part of the groundwater storage system described in the chapter."
+      },
+      "canonical_key": "enters",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0012",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+        "source": "liquid water",
+        "target": "surface runoff (41728a51)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. When liquid water accumulates on land and infiltration capacity is exceeded, it causes the generation of surface runoff via gravity."
+      },
+      "canonical_key": "causes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0013",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water vapor",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water vapor is a fundamental component of the atmospheric phase of the water cycle. It participates in the cycle by undergoing condensation to form clouds and precipitation, which then return to reservoirs, completing the loop described in the chapter overview."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0014",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "water vapor",
+        "target": "atmosphere (25f3967d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water vapor exists as a gas within the atmospheric layer. The chapter discusses atmospheric water, humidity, and phase changes occurring within this specific physical location."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0015",
+      "original": {
+        "label": "is_a",
+        "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+        "source": "water vapor",
+        "target": "evaporation (981945ea)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water vapor represents the gaseous state resulting from the process of evaporation. In the context of the chapter's taxonomy of phase changes, water vapor is the specific instance or product type associated with the general concept of evaporation."
+      },
+      "canonical_key": "is_a",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0016",
+      "original": {
+        "label": "supplies_energy_for",
+        "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+        "source": "solar energy",
+        "target": "evaporation (a97a9d4f)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Solar energy is the primary driver providing the thermal energy required for phase change from liquid to vapor; this is a fundamental physical mechanism described in the chapter overview."
+      },
+      "canonical_key": "supplies_energy_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0017",
+      "original": {
+        "label": "supplies_energy_for",
+        "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+        "source": "solar energy",
+        "target": "transpiration (bd948036)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Solar energy drives the heating of leaf surfaces and the opening of stomata, facilitating the release of water vapor; without this energy input, the rate of transpiration would be negligible."
+      },
+      "canonical_key": "supplies_energy_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0018",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "solar energy",
+        "target": "surface runoff (5e6126e9)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Solar energy heats the ground and water bodies, increasing evaporation rates which can lower soil moisture content, thereby affecting infiltration capacity and subsequently influencing the speed and volume of surface runoff generation."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0019",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "humidity",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Humidity represents atmospheric moisture content which directly affects the rate of evaporation and condensation processes within the water cycle. High humidity slows net evaporation, while low humidity accelerates it, thus influencing the speed of the overall cycle's phase change dynamics."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0020",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "humidity",
+        "target": "evaporation (93767b6f)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The definition of humidity explicitly states it affects 'the rate' (speed) of evaporation. High atmospheric moisture content reduces the vapor pressure deficit, thereby slowing the rate at which water evaporates from surfaces."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0021",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "humidity",
+        "target": "condensation (bc3fcdad)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Humidity determines how close the air is to saturation. When humidity is high, condensation occurs more readily and rapidly as the air reaches dew point; when low, condensation is inhibited. Thus, humidity influences the speed of condensation."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0022",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wind",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wind acts as a primary driver for evaporation and transpiration rates within the water cycle by removing saturated air near surfaces, thereby influencing the overall speed of the cycle's phase change components."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0023",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wind",
+        "target": "evaporation (93767b6f)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wind increases the rate of evaporation by reducing the boundary layer of humid air above water surfaces and vegetation, directly affecting the magnitude of this phase change process."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0024",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wind",
+        "target": "transpiration (f2da2813)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wind enhances transpiration by lowering humidity around stomata and removing water vapor, thus influencing the speed at which plants release water vapor."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0025",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "availability of water",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The concept 'availability of water' represents a fundamental state variable within the broader phenomenon described by the 'water cycle'. The chapter details mechanisms (evaporation, transpiration, condensation, infiltration) that govern this availability, meaning the concept serves as a descriptive attribute or component state of the entire cycle process rather than a causal agent or structural part."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0026",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "availability of water",
+        "target": "water budget (ccfc22cd)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. 'Availability of water' is the primary variable tracked and analyzed in a 'water budget'. The chapter explicitly mentions 'water budget analysis for tracking inputs and outputs', establishing that the concept describes the core subject matter of this analytical process."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0027",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "availability of water",
+        "target": "hydrological balance",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The chapter discusses 'human impacts such as paving and excessive groundwater withdrawal on hydrological balance'. The 'availability of water' is the specific metric that defines whether this balance is maintained or disrupted; thus, the concept describes the state of the hydrological balance."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0028",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "plants",
+        "target": "evapotranspiration (c34242b2)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Plants release vapor through stomata (transpiration) and absorb water via roots; collectively, these actions constitute participation in the broader process of evapotranspiration. This aligns with the chapter's focus on biological contributions to the water cycle."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0029",
+      "original": {
+        "label": "releases_vapor_through_stomata",
+        "definition": "Process by which plants release water as vapor through leaf openings called stomata.",
+        "source": "plants",
+        "target": "water vapor (68527be0) (f63ffc0c)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The seed definition explicitly states that plants release vapor through stomata. This relation directly captures that mechanism without broadening the concept or inventing actions."
+      },
+      "canonical_key": "releases_vapor_through_stomata",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0030",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "plants",
+        "target": "groundwater storage (bd024241)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Plants compete with groundwater storage for available water; excessive plant uptake can reduce recharge rates or deplete stored groundwater, thereby inhibiting the maintenance or growth of groundwater storage levels under certain conditions (e.g., drought)."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0031",
+      "original": {
+        "label": "releases_vapor_through_stomata",
+        "definition": "Process by which plants release water as vapor through leaf openings called stomata.",
+        "source": "leaf openings",
+        "target": "transpiration (f2da2813)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The seed 'leaf openings' (stomata) are the specific structural mechanism defined in the chapter for releasing vapor during transpiration. The relation 'releases_vapor_through_stomata' precisely captures this functional role without implying causation or parthood errors."
+      },
+      "canonical_key": "releases_vapor_through_stomata",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0032",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "leaf openings",
+        "target": "evapotranspiration (70df4277)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Leaf openings are a critical component enabling the biological contribution to evapotranspiration. They participate in this larger hydrological cycle process as described in the chapter's topic on biological contributions."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0033",
+      "original": {
+        "label": "releases_vapor_through_stomata",
+        "definition": "Process by which plants release water as vapor through leaf openings called stomata.",
+        "source": "transpiration",
+        "target": "water vapor (a6502479)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Transpiration is defined as the act of releasing water vapor from plants. This occurs specifically via stomata (leaf openings). The relation 'releases_vapor_through_stomata' precisely captures this mechanism without broadening the concept to general evaporation or implying structural part-whole relationships."
+      },
+      "canonical_key": "releases_vapor_through_stomata",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0034",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "transpiration",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Transpiration is a biological component of the broader water cycle mechanisms described in the chapter overview. It contributes to atmospheric moisture but is not the entire cycle itself, nor a physical structural part of it. 'participates_in' correctly denotes this functional contribution within the system."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0035",
+      "original": {
+        "label": "occurs_in",
+        "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+        "source": "transpiration",
+        "target": "atmosphere (25f3967d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Transpiration releases water vapor into the atmosphere. The process physically occurs within the atmospheric domain where the vapor mixes with other atmospheric components. This relation respects the spatial context without implying causation of the atmosphere itself."
+      },
+      "canonical_key": "occurs_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0036",
+      "original": {
+        "label": "absorbs_water_via_roots",
+        "definition": "Process by which plants take in water via their roots.",
+        "source": "evapotranspiration",
+        "target": "plants (a9ae8601)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evapotranspiration is the combined process of evaporation and transpiration. Transpiration specifically requires plants to absorb water through their roots before releasing it as vapor. This relation captures the necessary biological mechanism within the defined process."
+      },
+      "canonical_key": "absorbs_water_via_roots",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0037",
+      "original": {
+        "label": "absorbs_water_via_roots",
+        "definition": "Process by which plants take in water via their roots.",
+        "source": "evapotranspiration",
+        "target": "releases vapor through stomata",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evapotranspiration involves the movement of water from soil to atmosphere. Plants are the agents that absorb this water (via roots) and subsequently release it as vapor (via stomata). The relation 'absorbs_water_via_roots' correctly identifies the plant's role in the first half of the evapotranspiration cycle, which is a prerequisite for the second half."
+      },
+      "canonical_key": "absorbs_water_via_roots",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0038",
+      "original": {
+        "label": "supplies_energy_for",
+        "definition": "SOURCE provides the necessary energy input for TARGET to occur.",
+        "source": "evapotranspiration",
+        "target": "supplies energy for",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Evapotranspiration is driven by solar energy, which provides the heat required for phase changes (liquid to vapor). While 'solar energy' is a concept in the chapter, linking it directly via 'supplies_energy_for' clarifies the causal mechanism enabling the process described by evapotranspiration."
+      },
+      "canonical_key": "supplies_energy_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0039",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "clouds",
+        "target": "atmosphere (d4e2c9da)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Clouds are atmospheric formations physically located within the atmosphere. The chapter defines clouds as containing droplets or ice crystals, which implies their existence within the atmospheric medium. This is a fundamental spatial relationship supported by general knowledge and the chapter's scope on atmospheric water."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0040",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "clouds",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Clouds are a critical component of the water cycle, specifically representing the condensation phase where water vapor transforms into liquid or solid particles. They facilitate the redistribution of water from oceans to land via precipitation. The chapter details these mechanisms, making clouds an active participant in the cycle rather than just a static object."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0041",
+      "original": {
+        "label": "precedes",
+        "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+        "source": "clouds",
+        "target": "precipitation (b20ac994)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. In the standard hydrological sequence described in the chapter (evaporation -> condensation -> precipitation), clouds form through condensation and must exist prior to the event of precipitation falling from them. While clouds don't always precipitate immediately, the formation of a cloud is temporally antecedent to any precipitation event originating from it."
+      },
+      "canonical_key": "precedes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0042",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "land (045ee106)",
+        "target": "groundwater storage (2ffa9702)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The chapter explicitly details groundwater storage within aquifers as a key post-precipitation pathway. The concept 'land' serves as the destination where precipitation reaches after falling from the atmosphere; this water subsequently enters the ground and contributes to groundwater storage. Therefore, land acts as the container or destination that stores the resulting groundwater resource in the context of the hydrological cycle described."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0043",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "land (045ee106)",
+        "target": "surface runoff (80aec077)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. While surface runoff flows over the land rather than being held within it like groundwater, the chapter describes land as the destination for precipitation and a site where water budgets are tracked. In the context of temporary storage features mentioned (lakes, wetlands) which are on land, and the general role of land in managing post-precipitation pathways, 'land' can be viewed as the spatial domain that temporarily stores or manages surface runoff before it reaches downstream bodies of water or infiltrates. However, a more precise relation might be 'participates_in' if we consider land as the medium through which runoff occurs. Given the instruction to add useful unstated knowledge and avoid restatements, let's refine this: The chapter mentions 'water flows over the land'. A better fit,"
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0044",
+      "original": {
+        "label": "causes",
+        "definition": "SOURCE causally produces the explicit event TARGET.",
+        "source": "vegetation",
+        "target": "transpiration (57f3e795)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Vegetation performs transpiration; this is a direct causal action where the biological entity (vegetation) drives the physical process (transpiration). The chapter explicitly links vegetation to transpiration as a mechanism of water movement."
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0045",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "vegetation",
+        "target": "infiltration (ae2b93b7)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Vegetation canopy intercepts rainfall and root systems alter soil structure, directly influencing the rate at which water infiltrates the ground. The chapter notes infiltration limits and mechanisms where vegetation plays a role."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0046",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "vegetation",
+        "target": "evapotranspiration (cba4d73e)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Vegetation is a primary participant in evapotranspiration, contributing the transpiration component. The chapter lists 'Biological contribution: Transpiration, stomata function, evapotranspiration' as a distinct topic."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0047",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "water in soil",
+        "target": "soil (675e3bbf)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water present within the soil matrix is physically located inside the soil substance. This is a direct spatial containment relationship consistent with hydrological definitions where 'water in soil' represents the water phase occupying pore spaces within the solid soil matrix."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0048",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "infiltration (ae2b93b7)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water residing in the soil matrix is a constituent participant in the broader hydrological process of infiltration, which describes the movement and storage of water entering the ground. The water itself does not cause infiltration but is the material undergoing the process."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0049",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water in soil",
+        "target": "groundwater",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water stored in the soil matrix acts as a reservoir that feeds into and participates in the groundwater system through subsurface percolation. While distinct phases (soil moisture vs. deep groundwater), they are functionally linked participants in the continuous movement of water within the vadose zone."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0050",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "underground storage",
+        "target": "groundwater storage (3ec7771e)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The seed 'underground storage' is defined as subsurface reservoirs linked to surface water systems. The concept 'groundwater storage' represents the specific phenomenon held within these reservoirs. Therefore, the underground storage structure holds or retains the groundwater storage volume."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0051",
+      "original": {
+        "label": "links_to",
+        "definition": "SOURCE establishes a connection between two distinct entities, here underground storage and visible surface water.",
+        "source": "underground storage",
+        "target": "visible surface water (e84f046d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The seed definition explicitly states that underground storage is 'linked to surface water systems.' This establishes a direct conceptual connection between the subsurface reservoirs (underground storage) and the surface bodies of water (visible surface water), fitting the specific predicate 'links_to' designed for this relationship."
+      },
+      "canonical_key": "links_to",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0052",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "underground storage",
+        "target": "aquifer (f9b21f6d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. An 'underground storage' unit functions as a specific instance or structural component of the broader geological feature known as an 'aquifer.' The storage capacity exists within the aquifer structure, making the storage a part of the aquifer system."
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0053",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "wetlands",
+        "target": "water budget (e501f503)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wetlands act as temporary storage features within watersheds; their presence and function are integral components of the water budget analysis which tracks inputs, outputs, and storage changes. They participate in this process by providing temporary storage capacity that affects the balance."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0054",
+      "original": {
+        "label": "influences_speed_of",
+        "definition": "SOURCE influences the speed or magnitude of the process TARGET.",
+        "source": "wetlands",
+        "target": "surface runoff generation",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wetlands function as temporary storage features that intercept surface runoff. By holding water temporarily, they reduce the velocity and volume of rapid runoff generation downstream, thereby influencing the speed and magnitude of this hydrological process."
+      },
+      "canonical_key": "influences_speed_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0055",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "wetlands",
+        "target": "groundwater recharge (545a8527)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Wetlands facilitate groundwater recharge by allowing water to infiltrate through saturated soils and porous materials. They provide the necessary condition (saturated material and vegetation cover) that permits the process of recharge to occur effectively, though they do not solely produce it."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0056",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "soil (3e08f7c1)",
+        "target": "water in soil (388798a2)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The seed 'soil' is defined as the upper layer of earth containing organic matter. By definition, this layer holds water within its pore spaces. The relation 'contains' accurately describes the spatial relationship where soil physically holds water without implying that water is a structural component of soil itself or vice versa. This aligns with the chapter's discussion of infiltration and storage in various reservoirs."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0057",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "soil (3e08f7c1)",
+        "target": "infiltration (7661e7da)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Soil is a primary medium through which the hydrological process of infiltration occurs. Water enters the soil during this event. The soil participates in the process by providing the porous structure necessary for water entry, but it is not the event itself nor the sole cause (gravity and saturation status also drive infiltration). This fits the chapter's focus on post-precipitation pathways."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0058",
+      "original": {
+        "label": "part_of",
+        "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+        "source": "soil (3e08f7c1)",
+        "target": "groundwater storage (bd024241)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Soil, specifically when saturated, forms the physical structure that constitutes part of the groundwater storage system. While soil can be above the water table, the concept of 'soil' in a hydrological context often includes the vadose zone which is integral to the overall storage and movement system leading to groundwater. However, a stricter interpretation might favor 'associated_with'. Given the instruction to add useful unstated knowledge, recognizing soil as a structural component (part) of the broader 'groundwater storage' system (which includes the saturated zone often found within deep soil profiles) is valid. Alternatively, if strict separation is needed, 'associated_with' is safer. Let's refine: Soil is not *always* part of groundwater storage (only when saturated). A better fit:"
+      },
+      "canonical_key": "part_of",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0059",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "water (504f89bf)",
+        "target": "water cycle (fcbf5a3d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water is the fundamental substance that moves through every stage of the hydrological cycle; it is a primary participant rather than a structural component of the cycle itself."
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0060",
+      "original": {
+        "label": "stores",
+        "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+        "source": "water (504f89bf)",
+        "target": "aquifer (f9b21f6d)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Aquifers function as underground reservoirs specifically designed to hold and retain groundwater, distinguishing them from transient surface bodies."
+      },
+      "canonical_key": "stores",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0061",
+      "original": {
+        "label": "contained_in",
+        "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+        "source": "water (504f89bf)",
+        "target": "atmosphere (35c0ae33)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. Water exists as vapor or liquid droplets within the atmospheric envelope during phases like evaporation and condensation, making it spatially contained by the atmosphere."
+      },
+      "canonical_key": "contained_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0062",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "balance (52798b52)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. The chapter explicitly states that human activities (such as paving and excessive groundwater withdrawal) impact the hydrological balance. The existing fact confirms this with 'can' modality. This relation captures the causal influence of human actions on the system's equilibrium without overstating it to a primary driver."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0063",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "human activities",
+        "target": "hydrological balance (17c0297b)",
+        "context": "This chapter details the water cycle mechanisms driven by solar energy, covering evaporation, transpiration, and condensation across various reservoirs. It examines post-precipitation pathways including infiltration, subsurface percolation, and groundwater storage within aquifers. The segment further analyzes surface runoff generation via gravity when infiltration limits are exceeded, watershed dynamics involving temporary storage in lakes and wetlands, water budget analysis for tracking inputs and outputs, and human impacts such as paving and excessive groundwater withdrawal on hydrological balance. While 'balance' is a concept in the chapter, 'hydrological balance' is the specific topic mentioned in the overview as being affected by human impacts. Using the exact topic name from the chapter's scope ensures relevance to the whole chapter rather than just the seed paragraph."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

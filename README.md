@@ -21,6 +21,109 @@ with `qwen3.5:9b` installed, then run:
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter both
 ```
 
+After evaluation and reporting finish, a local **graph explorer** starts and opens
+in your browser. Enter a concept, statement, or question in its text console to
+highlight matching concepts and relationships. Keep the terminal open while using
+the explorer; press Ctrl+C to stop it. Extraction, debate, graph construction, and
+evaluation use the same logic as before. With `--chapter both`, both runs finish
+before the explorer opens a page where you can choose either graph.
+
+To run only the pipeline through reconstruction evaluation and reporting:
+
+```powershell
+& .\.venv\Scripts\python.exe .\run_pipeline.py --chapter neuroscience --no-explorer
+```
+
+To reopen a completed graph without running the pipeline again:
+
+```powershell
+& .\.venv\Scripts\python.exe -m pipeline.explorer "outputs/runs/neuroscience/YOUR_RUN_DIRECTORY"
+```
+
+The viewer opens the full final saved graph, including background knowledge and
+disconnected concepts, fitted to the canvas. Search and **Focus on selected** let
+you inspect a smaller neighborhood; **Show all** clears those filters and restores
+background knowledge.
+
+Graph provenance has two categories: **Document knowledge** and **Background
+additions**. Document provenance takes precedence for shared concepts and duplicate
+relationships. Concept identity is the normalized English name (case, punctuation,
+and singular/plural inflection), independent of definition or context. Each graph
+node contains its name and one short definition, plus its ID, origin, and generic
+concept type. Different senses never create suffixed nodes. A final pass merges
+same-name nodes, reroutes endpoints, and collapses duplicate relationships, retaining
+document evidence. Direction, conditions, and modality remain on relationships;
+different qualifications do not count as duplicate edges. This rule intentionally
+shares a node across contexts; differently named synonyms remain distinct.
+
+Choose **Start a 5-question quiz** in the local explorer to map what you know:
+
+1. Q1 asks for open recall of the concept with the most document relationships.
+2. Q2–Q3 ask about its unmapped relationships to the best-connected neighbors.
+3. Q4–Q5 move from the current concept to its green neighbor with the most
+   unmapped relationships. Ties use total relationship count, then name and ID.
+
+Answers are interpreted in the question's context and checked against the graph.
+Matched relationships and their endpoints turn green; partial explanations are
+amber and contradictions red. A name mention alone does not earn coverage. When a
+node touches several assessed relationships, green takes precedence over red,
+then amber; each relationship keeps its own assessment. Unmapped means not green,
+so partial and contradicted relationships remain eligible for follow-up. If no
+eligible neighbor or unmapped relationship exists, the question explains its
+fallback to the current concept or review. An empty graph cannot start a quiz.
+
+Hints, reveals, and answer revisions stay within the current question. **Next
+question** advances after an answer or reveal. The fifth submitted answer finishes
+the session automatically; revealing Q5 also allows **Finish session**. The summary
+shows cumulative relationship coverage, partial/contradicted/untouched counts,
+document/background coverage, and independent versus assisted matches. Reveals
+alone do not earn coverage. **Continue with 5 more questions** retains the map and
+starts a new five-question round. Relationship labels and details are concealed
+until mapped during the quiz; **Explore freely** restores normal browsing.
+
+Quiz actions, answers, model calls, and coverage are logged in the corresponding
+run's explorer session. The latest quiz snapshot and full answer history are saved
+under `explorer_sessions/explorer_<id>/quiz/<quiz_id>.json`. Reloading the same browser
+tab resumes its quiz while the same server remains running. Restarting the server
+requires a new quiz; previous logs and snapshots remain on disk. Opening an older
+saved run normalizes its graph in memory for the explorer without rewriting its
+original graph or evaluation scores.
+
+The explorer uses FastAPI, Uvicorn, the existing Ollama integration, and the
+existing graph viewer. Run `& .\.venv\Scripts\python.exe -m pip install -r requirements.txt`
+after updating an older environment. It listens only on `127.0.0.1`, selecting a
+free port by default; `--explorer-port 8765` selects a fixed port in the pipeline
+(`--port 8765` in the standalone command). `--no-open` prints the URL without
+opening the browser; it does not disable the server.
+
+Matching first interprets your input, then checks all saved nodes and relationships
+in bounded LLM batches, including definitions, direction, conditions and
+negation. Green means a matching concept or a supported relationship; amber means
+related; red means a conflicting relationship. A green concept alone does not
+confirm your statement. The results show explanations, origins and source quotes
+where available. No match produces an explicit empty result. The server validates
+every returned ID and input quote. Matching is model-based, not independent fact
+verification; larger graphs can take several minutes per query. This initial
+version needs no additional embedding model or vector database.
+
+Saved graphs and evaluation scores remain unchanged. Explorer logs are saved inside
+the graph's source run at `RUN_DIRECTORY/explorer_sessions/explorer_<id>/events.jsonl`.
+Each server session records page visits, node/edge and result selections, search and
+query text edits (including unsubmitted text), filters, focus/reset/fit, node drags,
+panning, zooming, scrolling, and page visibility/navigation. Drag/pan events record
+the completed gesture; other controls record their changes. Submitted queries,
+model requests/responses, results, and failures share the same session log. Browser
+events include a page ID, client timestamp and sequence; server events include
+receipt timestamps. Logs are flushed to disk as they arrive, including while a
+model query is running. The page reports saving failures and retries while open.
+Closing a page uses best-effort delivery; abrupt browser/server termination can
+lose events not yet delivered. Offline HTML cannot save interaction logs to disk;
+use the local explorer for logging. Runs marked `completed_with_issues` can also
+be explored; the page displays their status and any available reconstruction score.
+The saved `knowledge_graph.html` still works offline; the LLM console is available
+on the local server page. The standalone command inherits the saved model settings;
+use `--model NAME` or `--context-tokens 16384` to override them for exploration only.
+
 To include the bundled Neo4j database, start Docker Desktop and use:
 
 ```powershell
@@ -47,7 +150,7 @@ Options:
 | `--chapter` | neuroscience | neuroscience, neuroscience-simplified, water-cycle, water-cycle-simplified, or both (the two full chapters) |
 | `--seed-limit` | 0 | Optional cap on concepts sent to debate; 0 means all extracted concepts |
 | `--model` | qwen3.5:9b | Model used in every language role |
-| `--registry-model` | same as --model | Optional different installed model for isolated relation/concept checks |
+| `--registry-model` | same as --model | Optional different installed model for relation checks and endpoint repair |
 | `--batch-size` | 4 | Items per review/seed call; all items still checked |
 | `--health-window` | 10 | Recent outcomes used to detect systematic failures |
 | `--health-min-samples` | 5 | Minimum observations before the early-stop check |
@@ -59,6 +162,8 @@ Options:
 | `--document-output-tokens` | 8192 | Minimum output budget for the final full-document claim alignment |
 | `--model-timeout` | 600 | Ollama request timeout in seconds |
 | `--no-open` | off | Save results without opening a browser |
+| `--no-explorer` | off | Stop after evaluation/reporting; do not start the local graph console |
+| `--explorer-port` | 0 | Explorer port; 0 selects a free local port |
 | `--output-root` | outputs/runs | Parent directory for isolated run folders |
 | `--resume RUN_DIRECTORY` | none | Reuse validated responses with matching prompts and installed model digests |
 
@@ -149,8 +254,8 @@ artifacts/
   chunks.json              Sequential chunks with source offsets and links
   environment.json         Model metadata/digests, package versions, source hashes
   chapter_outline.json     Every segment's ideas and the combined chapter overview
-  concepts.json            Canonical meanings, aliases and occurrence decisions
-  concept_reconciliation.json Verified global alias redirects before review and seed selection
+  concepts.json            Normalized names, short definitions and occurrence records
+  concept_reconciliation.json Name-normalization redirects before review and seed selection
   relations.json           Run-local vocabulary, inverse definitions and match decisions
   extraction_proposals.json Original normalized proposals before semantic review
   extraction_issues.json    Unresolved records/work units, with reasons and source context
@@ -194,7 +299,7 @@ reconstruction, scoring and final report generation.
    a definition and semantic kind. Retain conditions and modality/negation in
    the relation fields. Claims remain available as source annotations, but
    relations are the primary graph view.
-2. **Debate.** Build the chapter context, reconcile concept aliases, and review
+2. **Debate.** Build the chapter context, reconcile normalized names, and review
    document relations for quote entailment. Then send every distinct extracted
    concept to the existing background proposer/critic/rebuttal/judge flow.
    There is no model-based seed ranking or word-count cutoff in this path.
@@ -241,8 +346,8 @@ the source sentence and semantic review still determine which edges survive.
 
 The starting vocabulary includes general `describes` and `stores` relations.
 Other predicates may still be proposed and checked against their definitions.
-Concept aliases require semantic verification. Differently worded descriptive
-phrases are kept separate instead of shortened or merged into head nouns.
+Concept identity uses normalized names, including singular/plural forms.
+Differently named concepts remain separate; context never splits the same name.
 Qualified facts are not collapsed into unqualified triples.
 
 Inspect `artifacts/extraction_proposals.json` for proposals,

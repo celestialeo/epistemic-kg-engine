@@ -1,0 +1,197 @@
+[
+  {
+    "chunk_id": "chunk_001",
+    "id": "chunk_001_sentence_002_claims_0",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'The water cycle describes how water moves...' is found in PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The claim about the water cycle describing movement is not asserted in CURRENT_SENTENCE; therefore, no valid record can be generated for this index based on the current sentence's content.",
+    "record": {
+      "text": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+      "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+    }
+  },
+  {
+    "chunk_id": "chunk_001",
+    "id": "chunk_001_relation_002",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record relied on evidence from PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.' This supports a 'stores' relation between the collective list of bodies (concept) and water (target), with 'in reservoirs' as a condition. The previous record attempted to describe the water cycle using evidence from the wrong sentence. A new valid relation must be constructed from CURRENT_SENTENCE, but since the task is to repair failed records by returning null if unsupported or correcting them, and the original record's evidence source was invalid for the current extraction constraint, it cannot be corrected to a valid CURRENT_SENTENCE assertion.",
+    "record": {
+      "source": {
+        "name": "water_cycle",
+        "definition": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water.",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "describes",
+      "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "target": {
+        "name": "water_movement_between_atmosphere_land_and_bodies_of_water",
+        "definition": "how water moves between the atmosphere, the land, and bodies of water",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": null,
+      "modality": null,
+      "evidence": "The water cycle describes how water moves between the atmosphere, the land, and bodies of water."
+    }
+  },
+  {
+    "chunk_id": "chunk_004",
+    "id": "chunk_004_sentence_001_claims_1",
+    "reason": "Quote is not an exact continuous source substring; The assertion 'Rain and snow return atmospheric water to the surface' is supported by PREVIOUS_SENTENCE. The CURRENT_SENTENCE ('After precipitation reaches land...') describes subsequent pathways but does not support the claim that rain/snow return water; it presupposes the event in PREVIOUS_SENTENCE has occurred. Therefore, no relation can be extracted from CURRENT_SENTENCE alone for this specific claim without inventing an antecedent or misattributing the source. The failed record requires repair by acknowledging the evidence lies in PREVIOUS_SENTENCE, but per instructions to extract only from CURRENT_SENTENCE and resolve references, if the CURRENT_SENTENCE does not independently assert the 'returns' action (it only describes what happens *after* precipitation reaches land), the relation",
+    "record": {
+      "text": "Rain and snow return atmospheric water to the surface.",
+      "evidence": "Rain and snow return atmospheric water to the surface."
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_sentence_001_claims_1",
+    "reason": "Quote is not an exact continuous source substring; The assertion in the failed record relies on 'These connections' which is a reference phrase not explicitly named as a standalone concept in the CURRENT_SENTENCE. The CURRENT_SENTENCE describes conditions for 'Surface runoff' but does not contain an independent assertion about 'connections' allowing groundwater flow; that information belongs to PREVIOUS_SENTENCE. Extracting this as a claim from CURRENT_SENTENCE violates the rule to extract only from CURRENT_SENTENCE and resolve references.",
+    "record": {
+      "text": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water.",
+      "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_relation_004",
+    "reason": "Quote is not an exact continuous source substring; The relation 'allows' connects 'connections' (a reference phrase) to 'groundwater'. The text 'These connections allow...' is in PREVIOUS_SENTENCE. Per instructions, we must extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE does not assert that 'connections' allow groundwater flow; it asserts conditions for runoff development. Therefore, no faithful triple can be extracted for this specific assertion from the current sentence context.",
+    "record": {
+      "source": {
+        "name": "connections",
+        "definition": "Links between underground storage and visible surface water",
+        "kind": "entity",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "allows",
+      "relation_definition": "SOURCE provides the means for TARGET to occur.",
+      "target": {
+        "name": "groundwater",
+        "definition": "Water stored underground",
+        "kind": "substance",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": "to maintain flow in some streams during dry periods",
+      "modality": null,
+      "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_relation_005",
+    "reason": "Quote is not an exact continuous source substring; The relation 'maintains_flow_in' connects 'groundwater' to 'streams'. The evidence provided is from PREVIOUS_SENTENCE. The CURRENT_SENTENCE discusses 'Surface runoff', 'water flows over the land', 'rainfall', and 'saturated ground'. It does not contain an assertion that groundwater maintains flow in streams. Extracting this relation from the current sentence would require inventing facts or misattributing the source of the assertion, violating the constraint to extract only from CURRENT_SENTENCE.",
+    "record": {
+      "source": {
+        "name": "groundwater",
+        "definition": "Water stored underground",
+        "kind": "substance",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "maintains_flow_in",
+      "relation_definition": "SOURCE enables the continuation of flow within TARGET.",
+      "target": {
+        "name": "streams",
+        "definition": "Channels of flowing water",
+        "kind": "entity",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": "during dry periods",
+      "modality": null,
+      "evidence": "These connections allow groundwater to maintain flow in some streams during dry periods, linking underground storage to visible surface water."
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_relation_003",
+    "reason": "Relation endpoint metadata could not be resolved",
+    "record": {
+      "source": {
+        "name": "ground",
+        "definition": "The earth's surface",
+        "kind": "entity",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "is_already_saturated",
+      "relation_definition": "SOURCE is in a state of saturation.",
+      "target": {
+        "name": "itself",
+        "definition": "The ground itself",
+        "kind": "entity",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": null,
+      "modality": null,
+      "evidence": "Surface runoff develops when water flows over the land, including when rainfall exceeds the ground's ability to absorb it or when the ground is already saturated.",
+      "evidence_start": 2212,
+      "evidence_end": 2374
+    }
+  },
+  {
+    "chunk_id": "chunk_006",
+    "id": "chunk_006_sentence_002",
+    "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge",
+    "record": {
+      "id": "chunk_006_sentence_002",
+      "start": 2375,
+      "end": 2444,
+      "text": "Gravity moves runoff downslope toward channels, streams, and rivers. "
+    }
+  },
+  {
+    "chunk_id": "chunk_007",
+    "id": "chunk_007_sentence_006_concept_1",
+    "reason": "Standalone concept metadata could not be resolved",
+    "record": {
+      "name": "Understanding these pathways",
+      "definition": "The act of comprehending the connections between rainfall, underground reserves, and downstream water availability.",
+      "kind": "process",
+      "form": "concept",
+      "reference_phrase": null,
+      "kind_detail": null
+    }
+  },
+  {
+    "chunk_id": "chunk_007",
+    "id": "chunk_007_relation_011",
+    "reason": "Relation endpoint metadata could not be resolved",
+    "record": {
+      "source": {
+        "name": "Understanding these pathways",
+        "definition": "The act of comprehending the connections between rainfall, underground reserves, and downstream water availability.",
+        "kind": "process",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "relation": "describes",
+      "relation_definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "target": {
+        "name": "connection between rainfall, underground reserves, and downstream water availability",
+        "definition": "The relationship linking rainfall inputs, underground storage levels, and resulting downstream water access.",
+        "kind": "entity",
+        "form": "concept",
+        "reference_phrase": null,
+        "kind_detail": null
+      },
+      "conditions": null,
+      "modality": null,
+      "evidence": "Understanding these pathways helps explain how rainfall, underground reserves, and downstream water availability are connected.",
+      "evidence_start": 3167,
+      "evidence_end": 3294
+    }
+  }
+]

@@ -1,9 +1,8 @@
-"""Isolated semantic checks; no label-only alias learning or cross-run state."""
+"""Name-based concept identity and semantic relationship contracts."""
 from typing import Literal
-import re
-from difflib import SequenceMatcher
 from pydantic import Field
-from .records import Record, normalize, normalize_name, name_variants, batches
+from .records import Record, batches
+from .identity import concept_key, short_definition
 from .relations import DEFAULT_RELATIONS
 
 ConceptKind = Literal["entity", "structure", "process", "event", "substance", "property", "abstract", "other"]
@@ -142,169 +141,55 @@ class RelationRegistry:
 
 
 class ConceptRegistry:
+    """Every occurrence of a normalized name has exactly one canonical concept."""
     def __init__(self, models, trace):
         self.models, self.trace = models, trace
         self.entries = {}
         self.mentions = []
-        self.resolved = {}
         self.chapter_names = []
-
-    def likely_matches(self, value):
-        """Retrieve candidates only; never merge on string similarity."""
-        stop = {"the", "a", "an", "of", "is", "in", "and", "to", "that", "with", "for", "or", "concept"}
-        def words(text):
-            return set(re.findall(r"\w+", normalize(text))) - stop
-        name_words = words(value["name"])
-        definition_words = words(value["definition"])
-        ranked = []
-        for entry in self.entries.values():
-            names = [entry["name"], *entry.get("aliases", [])]
-            name_score = max(SequenceMatcher(None, value["name"], n).ratio() for n in names)
-            overlap = max(len(name_words & words(n)) for n in names)
-            shared = len(definition_words & words(entry["definition"]))
-            acronym = any(value["name"] == "".join(w[0] for w in n.split()) or
-                          n == "".join(w[0] for w in value["name"].split()) for n in names)
-            variant = any(name_variants(value["name"]) & name_variants(n) for n in names)
-            if variant or name_score >= .65 or overlap or shared >= 2 or acronym:
-                ranked.append((100 * variant + 4 * overlap + 3 * acronym + name_score + shared / max(len(definition_words), 1), entry))
-        # A retrieval bound, not a limit on extracted concepts. All merges below
-        # still require resolver AND verifier agreement. Misses remain distinct.
-        return [e for _, e in sorted(ranked, key=lambda x: (-x[0], x[1]["name"]))[:8]]
 
     def resolve(self, mention, context, entity_id):
         value = Concept.model_validate(mention).model_dump()
-        value["name"] = normalize_name(value["name"])
-        value.setdefault("kind_detail", None)
-        value.setdefault("form", "concept")
-        name = value["name"]
-        signature = (name, value["definition"], value["kind"], value["kind_detail"], value["form"], context)
-        if signature in self.resolved:
+        name = concept_key(value["name"])
+        if name not in self.entries:
+            # Kind is extraction/review metadata, never part of identity. Graph
+            # nodes expose only the canonical name and one short definition.
+            self.entries[name] = dict(name=name, definition=short_definition(value["definition"]),
+                                      kind=value["kind"], form="concept")
+        else:
             self.trace.emit("registry.identity_reused", entity_id=entity_id, name=name)
-            return self._record(value, self.resolved[signature], entity_id)
-        existing = self.entries.get(name)
-        if existing and existing.get("form", "concept") == value["form"] and all(existing[k] == value[k] for k in ("definition", "kind")):
-            return self._record(value, name, entity_id)
-        likely = self.likely_matches(value)
-        self.trace.emit("registry.identity_candidates", entity_id=entity_id, name=name,
-                        registry_size=len(self.entries), candidates=[e["name"] for e in likely])
-        for page in batches(likely, 8):
-            match = self.models.ask("concept_resolver",
-                "Find EXACT concept identity, not relatedness. Singular/plural forms and genuine abbreviations "
-                "may name the same concept. Never merge a subtype, component, broader concept, or different sense. "
-                "Descriptions of different functions of the same entity can be complementary, not different senses. "
-                "Never merge an action/event with its affected object. Choose an existing name as key or null. "
-                "Set same_direction=true for identity.",
-                {"mention": value, "context": context, "available": page}, Match, entity_id)
-            matched_key = normalize_name(match.key) if match.key else None
-            if matched_key not in {r["name"] for r in page} or not match.exact_meaning:
-                continue
-            match.key = matched_key
-            if (value["kind"] == "event") != (self.entries[match.key]["kind"] == "event"):
-                continue
-            check = self.models.ask("concept_match_verifier",
-                "Verify that these names denote the SAME concept in context, not merely related concepts. "
-                "Preserve specificity and sense; receptor and NMDA receptor are not identical. "
-                "Complementary definitions of the same entity are compatible. An event is never its affected object. "
-                "Singular/plural variants may be identical. Set same_direction=true only for identity.",
-                {"mention": value, "canonical": self.entries[match.key], "context": context}, Equivalence, entity_id)
-            if check.exact_meaning and check.same_direction and check.compatible_types:
-                self.resolved[signature] = match.key
-                return self._record(value, match.key, entity_id)
-        # Ambiguous surface forms retain distinct meanings rather than silently
-        # corrupting an existing node. No string-stemming heuristic merges nodes.
-        if name in self.entries:
-            import hashlib
-            suffix = hashlib.sha256((value["form"] + ":" + value["kind"] + ":" + value["definition"]).encode()).hexdigest()[:8]
-            name = f"{name} ({suffix})"
-            if name in self.entries:
-                return self._record(value, name, entity_id)
-        self.entries[name] = dict(value, name=name, aliases=[])
-        self.resolved[signature] = name
-        return self._record(value, name, entity_id)
+        row = dict(entity_id=entity_id, mention=value, canonical=name)
+        self.mentions.append(row)
+        self.trace.emit("registry.concept_resolved", **row)
+        self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()),
+                                                       mentions=self.mentions))
+        return name
 
     def reconcile(self, extractions, outline):
-        """Merge remaining copies and aliases before seed selection, preserving distinct senses."""
-        from .models import ModelResponseError
-        from .health import finish_item
-        redirects = {}
-        names = sorted(self.entries, key=lambda n: (len(n), n))
-        for index, name in enumerate(names):
-            if name in redirects:
-                continue
-            canonical = self.entries[name]
-            variants = set().union(*(name_variants(n) for n in [name, *canonical.get("aliases", [])]))
-            likely = {entry["name"] for entry in self.likely_matches(canonical)}
-            for other in names[index+1:]:
-                if other in redirects:
-                    continue
-                entry = self.entries[other]
-                if (canonical["kind"] == "event") != (entry["kind"] == "event"):
-                    continue
-                if other not in likely and not any(variants & name_variants(n) for n in [other, *entry.get("aliases", [])]):
-                    continue
-                payload = dict(first=canonical, second=entry,
-                               chapter={k: outline[k] for k in ("overview", "topics")})
-                instruction = ("Check exact concept identity in this chapter. Singular/plural, spacing and punctuation "
-                    "variants and synonymous names denote the same concept when their senses agree. Complementary descriptions of the "
-                    "same entity do not create distinct senses. Preserve genuine subtype, state, action, object "
-                    "and sense distinctions. Set same_direction=true only for identity. Explain the concrete distinction "
-                    "if rejecting a merge; differences in wording alone are insufficient.")
-                pair_id = name + " :: " + other
-                try:
-                    first = self.models.ask("concept_alias_reconciler", instruction, payload, Equivalence, other)
-                    if not (first.exact_meaning and first.same_direction and first.compatible_types):
-                        finish_item(self.trace, "concept_reconciliation", pair_id)
-                        continue
-                    check = self.models.ask("concept_alias_verifier", "Independently verify this pair. " + instruction,
-                                            payload, Equivalence, other)
-                except ModelResponseError as exc:
-                    self.trace.emit("registry.alias_unresolved", entity_id=other, error=str(exc), retained_separately=True)
-                    finish_item(self.trace, "concept_reconciliation", pair_id, exc)
-                    continue
-                finish_item(self.trace, "concept_reconciliation", pair_id)
-                if not (check.exact_meaning and check.same_direction and check.compatible_types):
-                    continue
-                redirects[other] = name
-                canonical["aliases"] = list(dict.fromkeys([*canonical.get("aliases", []), other, *entry.get("aliases", [])]))
-                canonical.setdefault("alternative_definitions", []).append(entry["definition"])
-                canonical["kind_details"] = list(dict.fromkeys([*canonical.get("kind_details", []),
-                    *entry.get("kind_details", []), *([entry["kind_detail"]] if entry.get("kind_detail") else [])]))
-                self.trace.emit("registry.concepts_merged", canonical=name, alias=other, reason=check.reason)
-                variants.update(name_variants(other))
+        """Normalize imported names without model-driven sense splitting/merging."""
+        redirects, canonical = {}, {}
+        for old_name, entry in self.entries.items():
+            name = concept_key(old_name)
+            redirects[old_name] = name
+            canonical.setdefault(name, dict(name=name, definition=short_definition(entry["definition"]),
+                                            kind=entry["kind"], form="concept"))
+            if old_name != name:
+                self.trace.emit("registry.concepts_merged", canonical=name, alias=old_name,
+                                reason="Same normalized name")
+        self.entries = canonical
         for extraction in extractions:
-            extraction["concepts"] = list(dict.fromkeys(redirects.get(n, n) for n in extraction["concepts"]))
-            retained = []
-            for row in extraction["relation_proposals"]:
-                for side in ("source", "target"):
-                    row[side] = redirects.get(row[side], row[side])
-                if row["source"] == row["target"]:
-                    self.trace.emit("extraction.record_rejected", entity_id=row["id"], record=row,
-                                    reason="Alias reconciliation made this a self relation; definition and claims retained")
-                else:
-                    retained.append(row)
-            extraction["relation_proposals"] = retained
+            extraction["concepts"] = list(dict.fromkeys(concept_key(n) for n in extraction["concepts"]))
+            for collection in ("relation_proposals", "relations"):
+                for row in extraction.get(collection, []):
+                    for side in ("source", "target"):
+                        row[side] = concept_key(row[side])
         for mention in self.mentions:
-            mention["canonical"] = redirects.get(mention["canonical"], mention["canonical"])
-        for signature, canonical in list(self.resolved.items()):
-            self.resolved[signature] = redirects.get(canonical, canonical)
-        for alias in redirects:
-            del self.entries[alias]
+            mention["canonical"] = concept_key(mention["canonical"])
         self.chapter_names = sorted(self.entries)
-        self.trace.save("artifacts/concept_reconciliation.json", dict(redirects=redirects))
+        self.trace.save("artifacts/concept_reconciliation.json", dict(
+            policy="normalized_name_only", redirects=redirects))
         self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()), mentions=self.mentions))
         self.trace.save("artifacts/extraction_proposals.json", extractions)
-
-    def _record(self, mention, name, entity_id):
-        if mention["name"] not in self.entries[name]["aliases"]:
-            self.entries[name]["aliases"].append(mention["name"])
-        detail = mention.get("kind_detail")
-        if detail and detail not in self.entries[name].setdefault("kind_details", []):
-            self.entries[name]["kind_details"].append(detail)
-        row = dict(entity_id=entity_id, mention=mention, canonical=name)
-        self.mentions.append(row)
-        self.trace.emit("registry.concept_resolved", entity_id=entity_id, mention=mention, canonical=name)
-        self.trace.save("artifacts/concepts.json", {"concepts": list(self.entries.values()), "mentions": self.mentions})
-        return name
 
 
 class FactIndex:

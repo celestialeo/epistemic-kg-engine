@@ -13,7 +13,7 @@ def normalize(value):
 
 
 def normalize_name(value):
-    """Orthographic normalization only; semantic and number identity is verified."""
+    """Orthographic normalization for source matching; identity uses concept_key."""
     value = unicodedata.normalize("NFKC", value)
     return normalize(re.sub(r"[_\u2010-\u2015-]+", " ", value))
 

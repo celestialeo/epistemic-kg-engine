@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from pipeline.extraction import INSTRUCTION, Extraction, Endpoint, resolve_endpoint
+from pipeline.extraction import INSTRUCTION, Extraction, Endpoint, reference_name, resolve_endpoint
 from pipeline.health import HealthFailure
 from pipeline.models import ModelResponseError, OutputLimitError
 from pipeline.registry import ConceptRegistry, RelationRegistry
@@ -225,6 +225,94 @@ class SentenceRecoveryTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "incomplete")
         self.assertEqual(len(rows[0]["issues"]), 1)
         self.assertEqual(registry.entries, {})
+
+    def test_reference_detection_distinguishes_articles_and_embedded_pronouns(self):
+        for name in ("The cell membrane", "cell membrane", "the anatomy of the circuit's cells",
+                     "theory", "thermal properties", "somatic cells"):
+            with self.subTest(name=name):
+                self.assertFalse(reference_name(name))
+        for name in ("its cells", "the anatomy of its cells", "electrical properties of their membranes",
+                     "connections between them", "ways those connections change", "this process", "it"):
+            with self.subTest(name=name):
+                self.assertTrue(reference_name(name))
+
+    def test_ordinary_article_names_normalize_without_reference_calls_or_evidence_changes(self):
+        text = "The cell membrane is associated with the cell interior."
+        source = fixtures.concept("The cell membrane", kind="structure")
+        target = fixtures.concept("the cell interior", kind="structure")
+        relation = self.relation(source, target, text)
+
+        def respond(role, payload):
+            self.assertEqual(role, "extractor", "Ordinary names must not trigger reference resolution")
+            return fixtures.extraction(text, [relation], concepts=[source, target])
+
+        rows, model, registry = self.run_extraction(text, respond)
+        self.assertEqual(rows[0]["status"], "complete")
+        self.assertEqual(set(registry.entries), {"cell membrane", "cell interior"})
+        proposal = rows[0]["relation_proposals"][0]
+        self.assertEqual((proposal["source"], proposal["target"]), ("cell membrane", "cell interior"))
+        self.assertEqual(proposal["source_mention"]["definition"], source["definition"])
+        self.assertEqual(proposal["surface_source"], "The cell membrane")
+        self.assertEqual(proposal["surface_target"], "the cell interior")
+        self.assertEqual(text[proposal["evidence_start"]:proposal["evidence_end"]], text)
+        self.assertNotIn("concept_reference_resolver", [r["role"] for r in model.requests])
+
+    def test_embedded_references_resolve_with_scope_and_original_evidence_preserved(self):
+        first = "A circuit has cells."
+        current = ("Understanding a circuit requires several levels of explanation: the anatomy of its cells, "
+                   "the electrical properties of their membranes, the connections between them, "
+                   "and the ways those connections change.")
+        names = {
+            "the anatomy of its cells": "the anatomy of the circuit's cells",
+            "the electrical properties of their membranes": "electrical properties of the circuit's cell membranes",
+            "the connections between them": "connections between the circuit's cells",
+            "the ways those connections change": "changes to connections between the circuit's cells",
+        }
+        mentions = [fixtures.concept(name) for name in names]
+        relations = [self.relation(fixtures.concept("circuit"), mention, current) for mention in mentions]
+
+        def respond(role, payload):
+            if role == "concept_reference_resolver":
+                self.assertEqual(payload["PREVIOUS_SENTENCE"], first)
+                self.assertEqual(payload["CURRENT_SENTENCE"], current)
+                return dict(concept=fixtures.concept(names[payload["reference_phrase"]]),
+                            reason="Replace references with their stated owners without dropping the named property")
+            self.assertEqual(role, "extractor")
+            if payload["CURRENT_SENTENCE"].strip() == first:
+                return fixtures.extraction(first)
+            return fixtures.extraction(current, relations, concepts=mentions)
+
+        rows, model, registry = self.run_extraction(first + " " + current, respond)
+        self.assertEqual(rows[0]["status"], "complete")
+        proposals = rows[0]["relation_proposals"]
+        self.assertEqual(len(proposals), 4)
+        self.assertEqual({p["target"] for p in proposals}, {n.removeprefix("the ") for n in names.values()})
+        self.assertTrue(all(p["evidence"] == current for p in proposals))
+        self.assertEqual({p["surface_target"] for p in proposals}, set(names))
+        self.assertEqual(sum(r["role"] == "concept_reference_resolver" for r in model.requests), 4)
+        self.assertFalse(set(names) & set(registry.entries))
+
+    def test_resolver_rejects_unresolved_pronouns_even_without_leading_article(self):
+        text = "A circuit has cells; the anatomy of its cells matters."
+        unit = dict(id="sentence", start=0, end=len(text), text=text)
+        model = fixtures.FixtureModel(lambda role, p: dict(
+            concept=fixtures.concept("anatomy of its cells"), reason="Still unresolved"))
+        registry = ConceptRegistry(model, self.trace)
+        with self.assertRaisesRegex(ValueError, "remaining pronouns"):
+            resolve_endpoint(Endpoint(**fixtures.concept("the anatomy of its cells")), {}, "target", unit,
+                             unit, registry, model, self.trace, "reference", {})
+
+    def test_explicit_reference_hint_still_resolves_an_article_name(self):
+        before, current = "ProcessP occurs.", "The rate changes."
+        unit = dict(id="sentence", start=len(before) + 1, end=len(before) + 1 + len(current), text=current)
+        context = dict(start=0, text=before + " " + current)
+        model = fixtures.FixtureModel(lambda role, p: dict(
+            concept=fixtures.concept("the rate of ProcessP", kind="property"), reason="Rate of the preceding process"))
+        registry = ConceptRegistry(model, self.trace)
+        result = resolve_endpoint(Endpoint(**fixtures.concept("The rate", reference_phrase="The rate")),
+                                  {}, "target", unit, context, registry, model, self.trace, "reference", {})
+        self.assertEqual(result.name, "rate of ProcessP")
+        self.assertEqual(model.requests[0]["role"], "concept_reference_resolver")
 
 
 if __name__ == "__main__":

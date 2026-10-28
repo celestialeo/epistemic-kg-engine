@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261020_213236_UTC-0400_36bf60bd",
+  "status": "completed_with_issues",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\water_cycle_sample.txt",
+    "chapter": "water-cycle-simplified",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\water-cycle-simplified",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "seed_similarity_threshold": 0.85,
+    "seed_threshold": 0.7,
+    "seed_max_words": 4,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 16384,
+    "document_output_tokens": 8192,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "no_explorer": false,
+    "explorer_port": 0,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-10-20T21:32:36.468087-04:00",
+  "started_at_utc": "2026-10-21T01:32:36.468087+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [
+    "chunk_002",
+    "chunk_004",
+    "chunk_005",
+    "chunk_006",
+    "chunk_007"
+  ],
+  "evaluation_status": "incomplete",
+  "reconstruction_score": null,
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_002_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'This release is transpiration' in the current sentence defines the specific event 'release' (from previous context) as the process 'transpiration'. The available relations do not include a direct 'is_a' or 'defines' link between an instance/event and a general process name without implying subtype/instance confusion. However, the instruction states: 'Use a claim without an edge only when no faithful triple can express the assertion.' Here, 'This release is transpiration' asserts that the specific occurrence (release) falls under the category/process of transpiration. The relation 'is_a' is defined as 'SOURCE is a subtype or kind of TARGET'. If we treat 'transpiration' as the process type and 'this release' as an instance/event of that process, 'is_a' fits if we accept the ph"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_004",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence 'Infiltration is the entry of water through the ground surface into soil or other porous material.' comes from PREVIOUS_SENTENCE. Per instructions, independent assertions must be extracted only from CURRENT_SENTENCE. The assertion in the failed record describes a definition found in the previous sentence, not an explicit predication supported by the current sentence's text."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'An aquifer is a geologic formation that stores and transmits usable quantities of groundwater' is found in PREVIOUS_SENTENCE. The instruction requires extracting only from CURRENT_SENTENCE ('Groundwater can move through connected openings and discharge into streams, lakes, or springs.') for new assertions. While the previous sentence defines 'aquifer', the current sentence describes the movement and discharge of 'groundwater'. No relation exists between 'groundwater' (subject of current sentence) and 'aquifer' (subject of previous sentence) within the CURRENT_SENTENCE text itself to support a triple like 'groundwater -> occurs_in -> aquifer' or similar without inventing nodes not explicitly linked in the current quote. The failed record's reason correctly identifies that the"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_concept_3",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_002",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_011",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_006_concept_1",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0060",
+      "status": "unresolved",
+      "reason": "No validated background decision: judge failed for candidate_0060 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    },
+    {
+      "step": "evaluation",
+      "id": "chunk_006",
+      "status": "unresolved",
+      "reason": "evaluation_alignment failed for chunk_006:alignment after 3 attempts: Claim alignment must be one-to-one"
+    }
+  ],
+  "finished_at": "2026-10-20T23:13:23.294943-04:00",
+  "finished_at_utc": "2026-10-21T03:13:23.294943+00:00",
+  "duration_seconds": 6046.828,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "bytes": 3295
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "238a9a60d15f6593bdac3d62113ceeee2b30c9eaad610e37b8088c6aebe7a645",
+      "bytes": 3599
+    },
+    "artifacts/chunks.json": {
+      "sha256": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "bytes": 4605
+    },
+    "artifacts/environment.json": {
+      "sha256": "97a814b40651a065587d95801105468aa40c6add3c4370fbc88206a3b6d6e12f",
+      "bytes": 29958
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "1cf21e4dea1bd0e234819e7d6bc31031e8f869b7af18284bbf329828e2f4eb7f",
+      "bytes": 4258
+    },
+    "artifacts/relations.json": {
+      "sha256": "ab7a7c0478a99a6b78e244acdf773153418870307d2113e7abed5d920372350f",
+      "bytes": 133210
+    },
+    "artifacts/concepts.json": {
+      "sha256": "82abced035391e7e580d627a96789a317730f2a2055cc6997c04712618352ff5",
+      "bytes": 157903
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "448ed1fa6db15c2033ae8511348dbc20a8869fb72107b7dde1d64a0cdf261dfa",
+      "bytes": 164424
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "8e3974d2bdac8858784191b43a66fc17bc1726de087162b5f6a8f0ffd452f3d4",
+      "bytes": 6424
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "6542ba59d7602ffee0309df005a0ed1783bce22e72983cf5d7bd17ad06d59585",
+      "bytes": 2512
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "b9fa6d74f9f4d801735629e06372c1fe0bff38954015158d16b9a3ad8d8538dd",
+      "bytes": 4059
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "d1c5209eeb9e7ca4b5c10d94dd07bed9b52bd7961e29077749fda30409ff3859",
+      "bytes": 579
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "af9ff5a36eb958d65777f1a128ce0e3b340c26e37e5e7d369528c5c7b4a2d154",
+      "bytes": 218919
+    },
+    "artifacts/extractions.json": {
+      "sha256": "ee59a77fdc8634805ef52bc6fd24ab60c043ddbb8505136dbb5d651a7892aea6",
+      "bytes": 434527
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "d7c0b9dc30041ed0ce3d76efc308faf56f57c4df5c1d8a096535c4af05458e62",
+      "bytes": 810
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "26d9ada4858b63b5d9ce788d32bfd04b2cd6128939a91c8b27ac38fc264adefc",
+      "bytes": 19378
+    },
+    "artifacts/seeds.json": {
+      "sha256": "b3243d310037d82ce35579294118ff2c49287c1614ef6f2f3743f32bb06181b3",
+      "bytes": 45159
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "d3a0ee24e5ee6584e2df6275e60b57dbdd8116f47c2f165fc701f05b5dce3e5c",
+      "bytes": 415861
+    },
+    "artifacts/debate.json": {
+      "sha256": "3c14ff5617604b4c35f453845ce5ceb5e4ea099b59b9669e29bfa4f9a11cf2c9",
+      "bytes": 679565
+    },
+    "artifacts/graph.json": {
+      "sha256": "da2206a99bf47090097a5521da3d8dfd0d7b18a5e33c54bc3943dc8d1ee21ca0",
+      "bytes": 119001
+    },
+    "knowledge_graph.html": {
+      "sha256": "df63d4d8835223ded7d863ce2a624360eda73416a88621227f6a18944aeede96",
+      "bytes": 109752
+    },
+    "artifacts/evaluation_progress.json": {
+      "sha256": "e82997d52c3c8685c572ee3b1cba13400f59e71a7db7e34cb248e704adbbdfea",
+      "bytes": 39281
+    },
+    "artifacts/evaluation.json": {
+      "sha256": "64c9f853bf8fe1123e5f68c4d3471025a77f8edb21a912a89dae94a67cfca2b9",
+      "bytes": 42508
+    },
+    "reconstruction.txt": {
+      "sha256": "d98d5b3be51efb1c308cdab46021d769963fcb15666ad9d9b43121c749fad474",
+      "bytes": 1819
+    },
+    "statistics.json": {
+      "sha256": "c7a196a134707560bdd75f948367b641785c4d7e4eec9b092f04ee20f5ee073f",
+      "bytes": 7668
+    },
+    "index.html": {
+      "sha256": "d12f1b0340c9011117a768042ab6328c6ca1534afbaa30515ffb0ca38d9accec",
+      "bytes": 247201
+    },
+    "report.md": {
+      "sha256": "c3116486ca53b10ed50b2d7733111336ac65e4fcb72f8ad131156f41c83ece15",
+      "bytes": 2074
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 859,
+    "stage.started": 6,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 7,
+    "input.coverage_validated": 1,
+    "stage.completed": 6,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 1220,
+    "model.response": 1220,
+    "parse.started": 1220,
+    "parse.completed": 1220,
+    "validation.started": 1220,
+    "validation.completed": 1197,
+    "extraction.evidence_checked": 112,
+    "registry.identity_candidates": 233,
+    "registry.concept_resolved": 339,
+    "registry.relation_resolved": 134,
+    "registry.identity_reused": 17,
+    "extraction.record_rejected": 19,
+    "registry.relation_added": 11,
+    "extraction.normalized": 7,
+    "item.completed": 768,
+    "extraction.quote_retry_requested": 3,
+    "extraction.quote_retry_completed": 3,
+    "extraction.unresolved": 8,
+    "extraction.reference_resolved": 3,
+    "validation.failed": 23,
+    "model.attempt_failed": 23,
+    "model.retry": 17,
+    "item.unresolved": 10,
+    "cache.hit": 8,
+    "outline.segment": 3,
+    "registry.concepts_merged": 13,
+    "debate.adjudicated": 83,
+    "debate.decision": 121,
+    "debate.verdict_conflict": 3,
+    "extraction.chunk_review_summary": 7,
+    "embedding.request": 124,
+    "embedding.response": 124,
+    "embedding.validated": 124,
+    "seed.filtered": 36,
+    "seed.selected": 88,
+    "debate.proposed": 63,
+    "debate.novelty_checked": 287,
+    "debate.ids_validated": 26,
+    "debate.unresolved": 1,
+    "graph.node_added": 126,
+    "graph.edge_added": 42,
+    "graph.node_updated": 2,
+    "graph.validated": 1,
+    "evaluation.context_built": 7,
+    "evaluation.metrics_computed": 6,
+    "evaluation.summary_computed": 1,
+    "presentation.browser_requested": 1
+  }
+}

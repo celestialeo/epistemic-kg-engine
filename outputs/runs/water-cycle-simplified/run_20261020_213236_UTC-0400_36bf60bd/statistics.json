@@ -1,0 +1,180 @@
+{
+  "run_id": "run_20261020_213236_UTC-0400_36bf60bd",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_002_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'This release is transpiration' in the current sentence defines the specific event 'release' (from previous context) as the process 'transpiration'. The available relations do not include a direct 'is_a' or 'defines' link between an instance/event and a general process name without implying subtype/instance confusion. However, the instruction states: 'Use a claim without an edge only when no faithful triple can express the assertion.' Here, 'This release is transpiration' asserts that the specific occurrence (release) falls under the category/process of transpiration. The relation 'is_a' is defined as 'SOURCE is a subtype or kind of TARGET'. If we treat 'transpiration' as the process type and 'this release' as an instance/event of that process, 'is_a' fits if we accept the ph"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_004",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_002_sentence_004 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence 'Infiltration is the entry of water through the ground surface into soil or other porous material.' comes from PREVIOUS_SENTENCE. Per instructions, independent assertions must be extracted only from CURRENT_SENTENCE. The assertion in the failed record describes a definition found in the previous sentence, not an explicit predication supported by the current sentence's text."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'An aquifer is a geologic formation that stores and transmits usable quantities of groundwater' is found in PREVIOUS_SENTENCE. The instruction requires extracting only from CURRENT_SENTENCE ('Groundwater can move through connected openings and discharge into streams, lakes, or springs.') for new assertions. While the previous sentence defines 'aquifer', the current sentence describes the movement and discharge of 'groundwater'. No relation exists between 'groundwater' (subject of current sentence) and 'aquifer' (subject of previous sentence) within the CURRENT_SENTENCE text itself to support a triple like 'groundwater -> occurs_in -> aquifer' or similar without inventing nodes not explicitly linked in the current quote. The failed record's reason correctly identifies that the"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_concept_3",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_002",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_011",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_006_concept_1",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0060",
+      "status": "unresolved",
+      "reason": "No validated background decision: judge failed for candidate_0060 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    },
+    {
+      "step": "evaluation",
+      "id": "chunk_006",
+      "status": "unresolved",
+      "reason": "evaluation_alignment failed for chunk_006:alignment after 3 attempts: Claim alignment must be one-to-one"
+    }
+  ],
+  "input": {
+    "paragraphs": 3,
+    "chunks": 7,
+    "words": 486,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 34,
+    "incomplete_chunks": [
+      "chunk_002",
+      "chunk_004",
+      "chunk_005",
+      "chunk_006",
+      "chunk_007"
+    ],
+    "unresolved_records": 8,
+    "relations": 40,
+    "reviewed": 58,
+    "review_attempted": 58,
+    "semantic_rejections": 18,
+    "rejection_categories": {
+      "meaning_changed": 14,
+      "wrong_direction": 9,
+      "wrong_kind": 7,
+      "unsupported_claim": 5
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 19
+  },
+  "debate": {
+    "seeds": 88,
+    "proposed": 63,
+    "accepted": 2,
+    "rejected": 60,
+    "unresolved": 1,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 126,
+    "edges": 42,
+    "domain_nodes": 126,
+    "domain_edges": 42,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 67,
+    "node_kinds": {
+      "concept": 118,
+      "event": 8
+    },
+    "edge_origins": {
+      "document": 40,
+      "background": 2
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 1212,
+    "retries": 17,
+    "cache_hits": 8,
+    "embedding_calls": 124,
+    "prompt_tokens": 1104766,
+    "output_tokens": 253444
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 6,
+      "mean": 0.4985225885225885,
+      "median": 0.5576923076923077,
+      "min": 0.15384615384615385,
+      "max": 0.8,
+      "sample_stddev": 0.2854179750873812
+    },
+    "idea_order_agreement": {
+      "n": 6,
+      "mean": 0.9444444444444444,
+      "median": 1.0,
+      "min": 0.6666666666666666,
+      "max": 1.0,
+      "sample_stddev": 0.13608276348795437
+    },
+    "rouge_l_f1": {
+      "n": 6,
+      "mean": 0.523721057434512,
+      "median": 0.5351543446449725,
+      "min": 0.2857142857142857,
+      "max": 0.6521739130434783,
+      "sample_stddev": 0.1358412554429612
+    },
+    "length_similarity": {
+      "n": 6,
+      "mean": 0.5266879265856801,
+      "median": 0.5979151154132539,
+      "min": 0.2804878048780488,
+      "max": 0.6428571428571429,
+      "sample_stddev": 0.14291356431136476
+    },
+    "final_score": {
+      "n": 6,
+      "mean": 61.5339433200554,
+      "median": 60.519337920700906,
+      "min": 42.58801821231728,
+      "max": 81.95031055900621,
+      "sample_stddev": 17.503650072920134
+    }
+  },
+  "reconstruction_score": null,
+  "evaluation_status": "incomplete",
+  "evaluation_metric_version": "reconstruction_fidelity_v1",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

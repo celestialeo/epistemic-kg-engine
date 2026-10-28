@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261026_064711_UTC-0400_a6b2d8e4",
+  "status": "completed_with_issues",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\water_cycle_sample.txt",
+    "chapter": "water-cycle-simplified",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\water-cycle-simplified",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "seed_similarity_threshold": 0.85,
+    "seed_threshold": 0.7,
+    "seed_max_words": 4,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 16384,
+    "document_output_tokens": 8192,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "no_explorer": false,
+    "explorer_port": 0,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-10-26T06:47:11.194886-04:00",
+  "started_at_utc": "2026-10-26T10:47:11.194886+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [
+    "chunk_001",
+    "chunk_004",
+    "chunk_006",
+    "chunk_007"
+  ],
+  "evaluation_status": "incomplete",
+  "reconstruction_score": null,
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_claims_0",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'The water cycle describes how water moves...' is found in PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The claim about the water cycle describing movement is not asserted in CURRENT_SENTENCE; therefore, no valid record can be generated for this index based on the current sentence's content."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record relied on evidence from PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.' This supports a 'stores' relation between the collective list of bodies (concept) and water (target), with 'in reservoirs' as a condition. The previous record attempted to describe the water cycle using evidence from the wrong sentence. A new valid relation must be constructed from CURRENT_SENTENCE, but since the task is to repair failed records by returning null if unsupported or correcting them, and the original record's evidence source was invalid for the current extraction constraint, it cannot be corrected to a valid CURRENT_SENTENCE assertion."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_001_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The assertion 'Rain and snow return atmospheric water to the surface' is supported by PREVIOUS_SENTENCE. The CURRENT_SENTENCE ('After precipitation reaches land...') describes subsequent pathways but does not support the claim that rain/snow return water; it presupposes the event in PREVIOUS_SENTENCE has occurred. Therefore, no relation can be extracted from CURRENT_SENTENCE alone for this specific claim without inventing an antecedent or misattributing the source. The failed record requires repair by acknowledging the evidence lies in PREVIOUS_SENTENCE, but per instructions to extract only from CURRENT_SENTENCE and resolve references, if the CURRENT_SENTENCE does not independently assert the 'returns' action (it only describes what happens *after* precipitation reaches land), the relation"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_001_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The assertion in the failed record relies on 'These connections' which is a reference phrase not explicitly named as a standalone concept in the CURRENT_SENTENCE. The CURRENT_SENTENCE describes conditions for 'Surface runoff' but does not contain an independent assertion about 'connections' allowing groundwater flow; that information belongs to PREVIOUS_SENTENCE. Extracting this as a claim from CURRENT_SENTENCE violates the rule to extract only from CURRENT_SENTENCE and resolve references."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_003",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_004",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relation 'allows' connects 'connections' (a reference phrase) to 'groundwater'. The text 'These connections allow...' is in PREVIOUS_SENTENCE. Per instructions, we must extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE does not assert that 'connections' allow groundwater flow; it asserts conditions for runoff development. Therefore, no faithful triple can be extracted for this specific assertion from the current sentence context."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_relation_005",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relation 'maintains_flow_in' connects 'groundwater' to 'streams'. The evidence provided is from PREVIOUS_SENTENCE. The CURRENT_SENTENCE discusses 'Surface runoff', 'water flows over the land', 'rainfall', and 'saturated ground'. It does not contain an assertion that groundwater maintains flow in streams. Extracting this relation from the current sentence would require inventing facts or misattributing the source of the assertion, violating the constraint to extract only from CURRENT_SENTENCE."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_sentence_002",
+      "status": "unresolved",
+      "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_relation_011",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_006_concept_1",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0065",
+      "status": "unresolved",
+      "reason": "No validated background decision: critic failed for candidate_0065 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+    },
+    {
+      "step": "evaluation",
+      "id": "chunk_002",
+      "status": "unresolved",
+      "reason": "evaluation_alignment failed for chunk_002:alignment after 3 attempts: Claim alignment must be one-to-one"
+    }
+  ],
+  "finished_at": "2026-10-26T09:08:28.036563-04:00",
+  "finished_at_utc": "2026-10-26T13:08:28.036563+00:00",
+  "duration_seconds": 8476.844000000041,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "e1cbbeb9d8562b76346bfb2c3d074e4725583c11bca934551b2d4b044ff37dc0",
+      "bytes": 3295
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "238a9a60d15f6593bdac3d62113ceeee2b30c9eaad610e37b8088c6aebe7a645",
+      "bytes": 3599
+    },
+    "artifacts/chunks.json": {
+      "sha256": "ebf3deed63e832f19a99121f7618f16f01c15b40d589fb6cc79674d7016a0c33",
+      "bytes": 4605
+    },
+    "artifacts/environment.json": {
+      "sha256": "52c89ad8ca0fbafea18d4aa96e6d331c3be1b5917aefbfc542d24e353f859b00",
+      "bytes": 30444
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "cceb9a359f8bc1fdf4f5449191925122b766a6edcd81b1a88d59b6d24454979e",
+      "bytes": 5804
+    },
+    "artifacts/relations.json": {
+      "sha256": "4c9703f68109498a85cda76f74298e1919929a708d0a0103cecad048c64fe35f",
+      "bytes": 354176
+    },
+    "artifacts/concepts.json": {
+      "sha256": "7efe5697cfa8a9fea97a346ddc01f601616ca615cc092ce3fa6de16952d813e2",
+      "bytes": 176466
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "10a2eadfa7ec87a6e1fcb32b2104d657dfd89510d92f6119bdba4c434df1931c",
+      "bytes": 190983
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "198c78f15ac0c50002fea6ee70187d0d84575de03bdedb12c7c5b7e8de98d71f",
+      "bytes": 10987
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "bea748156f9a21fe615b78b15446e0ac83c77b69cca48b63a2a86220e23bab8b",
+      "bytes": 2488
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "76a74803648069ee3f512c664c74c36a6fddcb8cdc01c7f18bd1b296cdc22a66",
+      "bytes": 4129
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "f57e6b37450d6bc8767b074ac66feb30caf4a03a5b283502356170f257343c26",
+      "bytes": 4664
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "748992d8a54bc24ac5d8e42989b80f2e6e495026516c50294a44f90e6f5ecda3",
+      "bytes": 248504
+    },
+    "artifacts/extractions.json": {
+      "sha256": "327897eb3b59eeebef2c2479196a5a74765a521fa1f2eb38c0eccac53d5d4745",
+      "bytes": 505501
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "39a8270706bb0113de72cb53c9e9b97196b3191d04722fe30677708562939e40",
+      "bytes": 816
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "79bfab2a138ddce8a85ede15d8d42e4eb3fb8c1b3b779b469ff877ff0f055ba9",
+      "bytes": 18860
+    },
+    "artifacts/seeds.json": {
+      "sha256": "44f0bf79541304dd3ebf825b50fe0d2ffaa09afa156abd55c19cd0a3f90f8d77",
+      "bytes": 41728
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "688f8dc4d47817dea4bb0b89cd16b53c588fc65541f61934a3832b683fc083ad",
+      "bytes": 1290249
+    },
+    "artifacts/debate.json": {
+      "sha256": "65734c094e72c7a81564cdcfc7adc988b140091796a2a0a7e9f7a0ebb12fdfab",
+      "bytes": 1582719
+    },
+    "artifacts/graph.json": {
+      "sha256": "c163d6c6289bf8e0f72c3d1470e5c98cd6a5f52794384841b9adb99bb87211ca",
+      "bytes": 121666
+    },
+    "knowledge_graph.html": {
+      "sha256": "4c5d767117077825b4eb46b5292dcf53945bd01a1bc7e728127b14e6ff229b4e",
+      "bytes": 116193
+    },
+    "artifacts/evaluation_progress.json": {
+      "sha256": "4cd6971d0c78650ab7dc48ec5bb403b0c680e8f90628334e9ef1c192dc7937a0",
+      "bytes": 64167
+    },
+    "artifacts/evaluation.json": {
+      "sha256": "1b61e0a5002616dcf3a371fd4679df9a3d9898df08e22dcbbfb6d34b4282af6e",
+      "bytes": 67627
+    },
+    "reconstruction.txt": {
+      "sha256": "c2f40b8aa6a3c58af2026441b981e71d1be7613db2478fe4a1cb7aa6539a7c0b",
+      "bytes": 2334
+    },
+    "statistics.json": {
+      "sha256": "39a64f3753f26d1d9e3e2b6b6cfaef4e513dc35a216bf64887ea7f8234f71633",
+      "bytes": 9224
+    },
+    "index.html": {
+      "sha256": "493ffdf9b938ac4abaf7faad45237915f9de1581a4da817d011882d165badaee",
+      "bytes": 593827
+    },
+    "report.md": {
+      "sha256": "98922ac8281e716776a41c86e58981f637681c32ebeab3ed36ce64b793dbe79b",
+      "bytes": 2067
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 1321,
+    "stage.started": 6,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 7,
+    "input.coverage_validated": 1,
+    "stage.completed": 6,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 1141,
+    "model.response": 1141,
+    "parse.started": 1141,
+    "parse.completed": 1141,
+    "validation.started": 1141,
+    "validation.completed": 1103,
+    "extraction.evidence_checked": 115,
+    "registry.concept_resolved": 482,
+    "registry.identity_reused": 363,
+    "registry.relation_resolved": 280,
+    "extraction.quote_retry_requested": 3,
+    "validation.failed": 38,
+    "model.attempt_failed": 38,
+    "model.retry": 29,
+    "extraction.quote_retry_completed": 3,
+    "extraction.record_rejected": 10,
+    "extraction.unresolved": 10,
+    "registry.relation_added": 25,
+    "extraction.normalized": 7,
+    "item.completed": 604,
+    "item.unresolved": 12,
+    "extraction.reference_resolved": 3,
+    "outline.segment": 3,
+    "debate.adjudicated": 157,
+    "debate.decision": 278,
+    "debate.verdict_conflict": 11,
+    "extraction.chunk_review_summary": 7,
+    "embedding.request": 112,
+    "embedding.response": 112,
+    "embedding.validated": 112,
+    "seed.filtered": 30,
+    "seed.selected": 82,
+    "debate.proposed": 210,
+    "debate.novelty_checked": 1180,
+    "debate.ids_validated": 42,
+    "debate.unresolved": 1,
+    "graph.node_added": 112,
+    "graph.edge_added": 61,
+    "graph.canonicalized": 1,
+    "graph.validated": 1,
+    "evaluation.context_built": 7,
+    "evaluation.metrics_computed": 6,
+    "evaluation.summary_computed": 1,
+    "presentation.browser_requested": 1
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261020_205841_UTC-0400_773ad308",
+  "status": "failed",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\input.txt",
+    "chapter": "neuroscience",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\neuroscience",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "seed_similarity_threshold": 0.85,
+    "seed_threshold": 0.7,
+    "seed_max_words": 4,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 16384,
+    "document_output_tokens": 8192,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "no_explorer": false,
+    "explorer_port": 0,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-10-20T20:58:41.766672-04:00",
+  "started_at_utc": "2026-10-21T00:58:41.766672+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "error": "Model service failed for relation_resolver/chunk_009_relation_003: an error was encountered while running the model: CUDA error: unknown error (status code: 500)",
+  "error_type": "RuntimeError",
+  "finished_at": "2026-10-20T21:17:37.395781-04:00",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_003_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'A neuron is an excitable cell specialized for receiving, processing, and transmitting signals' is found in PREVIOUS_SENTENCE. The instruction requires extracting only from CURRENT_SENTENCE ('Neurons operate in circuits rather than as isolated decision makers.') and resolving references within that sentence. No assertions can be extracted from the current sentence regarding neurons being excitable cells or their specific signal functions without inventing facts not present in the current text's explicit predication."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_011",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_005_concept_5",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_001_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the failed record ('Understanding a circuit requires...') is found entirely in PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted; only facts supported by CURRENT_SENTENCE are returned. The current sentence contains no new claims to extract."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'Understanding -> requires_understanding_of -> circuit' is derived from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The current sentence ('These levels interact, but they should not be treated as interchangeable.') does not support a new relation between 'levels' and 'circuit' or 'Understanding'. No faithful triple can be formed for the current sentence."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_003_sentence_002_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'The cell body of a typical neuron contains the nucleus and much of the machinery needed to maintain the cell' is found in PREVIOUS_SENTENCE. The instruction requires extracting only from CURRENT_SENTENCE ('Dendrites extend from the cell body and receive many synaptic inputs'). No assertions can be extracted for this index because the source text does not overlap with CURRENT_SENTENCE."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_007_sentence_003_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the failed record ('This resting membrane potential reflects...') is derived from PREVIOUS_SENTENCE. Per instructions, independent assertions from PREVIOUS_SENTENCE must not be extracted. The CURRENT_SENTENCE asserts that 'Potassium permeability is especially important in many resting neurons.' This sentence describes a property (importance) of Potassium permeability regarding resting neurons but does not explicitly assert a causal event or structural part relation supported by an exact quote overlapping the current sentence for extraction as a new claim. No faithful triple can be formed from CURRENT_SENTENCE alone that matches the schema without inventing edges, and the specific failed record's text is outside the extraction scope of CURRENT_SENTENCE."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_008_relation_004",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_008_relation_005",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_008_relation_006",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_008_concept_4",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    }
+  ],
+  "finished_at_utc": "2026-10-21T01:17:37.395781+00:00",
+  "duration_seconds": 1135.6250000000005,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "d127bb814aec513580ca38625b212fe79237fdfe26e80836f2c61ac61c0edee2",
+      "bytes": 12309
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "2b9fa483e2bd7416da9a3a53bd4f98c7d52aceed0a870ad3d83931e69ab98b0f",
+      "bytes": 14039
+    },
+    "artifacts/chunks.json": {
+      "sha256": "448a9ab365fe8ff028bb4d454ae91c1ce418207f9d34ead543e9cf4ad2cb5e5d",
+      "bytes": 18747
+    },
+    "artifacts/environment.json": {
+      "sha256": "44886c1c4ae1df486f556c8ad6b3f27dceaa4d0311c52a425181c08b4f799ad0",
+      "bytes": 29958
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "ca12c56018ea8202eba426ec8ecdffacadf54ddf4cdcfd21c73e1cf66b76b144",
+      "bytes": 4478
+    },
+    "artifacts/relations.json": {
+      "sha256": "fb79e0e6b1313f7a6576a080f976467262ebc80da0a6432f045c25d81b2e8958",
+      "bytes": 34977
+    },
+    "artifacts/concepts.json": {
+      "sha256": "7606a6c3f781a0eeffd6d2aa3d19f5777f402a58376e15f4fcbecb70780316c4",
+      "bytes": 81215
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "f79f383a7cdabdb4d94f9abe3e842c9bfbec5ee0054e269a2647099b056798fd",
+      "bytes": 125579
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "823bb951adc13ba6b20bf1085f5df7cdc70f418401344e54ca3b7737e760b767",
+      "bytes": 10805
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 251,
+    "stage.started": 3,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 17,
+    "input.sentences_parsed": 17,
+    "input.chunk_created": 34,
+    "input.coverage_validated": 1,
+    "stage.completed": 2,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 237,
+    "model.response": 236,
+    "parse.started": 236,
+    "parse.completed": 236,
+    "validation.started": 236,
+    "validation.completed": 232,
+    "extraction.evidence_checked": 85,
+    "registry.identity_candidates": 103,
+    "registry.concept_resolved": 174,
+    "registry.relation_resolved": 42,
+    "extraction.quote_retry_requested": 4,
+    "extraction.quote_retry_completed": 4,
+    "extraction.record_rejected": 8,
+    "extraction.unresolved": 11,
+    "registry.relation_added": 11,
+    "cache.hit": 6,
+    "validation.failed": 4,
+    "model.attempt_failed": 5,
+    "model.retry": 4,
+    "extraction.reference_resolved": 7,
+    "extraction.normalized": 8,
+    "item.completed": 147,
+    "item.unresolved": 11,
+    "registry.identity_reused": 2,
+    "stage.failed": 1,
+    "run.failed": 1
+  }
+}

@@ -63,6 +63,19 @@ class QuoteRepairs(Record):
     records: list[QuoteRepair]
 
 
+REFERENCE_POLICY = (
+    "A leading definite article alone does not make a name an unresolved reference: "
+    "'the ConceptA' can be named 'ConceptA'. Resolve pronouns and demonstratives anywhere "
+    "inside a name, including its, their, them, and those, using the supplied sentences. "
+    "Replace each reference with its text-supported antecedent while preserving the full "
+    "concept, its owner, and its scope. If ConceptA has parts, 'the structure of its parts' "
+    "can become 'structure of ConceptA's parts'; do not reduce it to ConceptA or to parts. "
+    "For a chain of references, resolve each link from the same sentence or the previous one. "
+    "Such a standalone reformulation need not occur verbatim or already exist in the registry. "
+    "Do not invent an antecedent when the supplied text leaves it ambiguous. "
+)
+
+
 INSTRUCTION = EVENT_POLICY + (
     "Extract only from CURRENT_SENTENCE. PREVIOUS_SENTENCE and optional NEXT_SENTENCE are only for "
     "understanding it, resolving references or completing a name; never extract their independent assertions. "
@@ -74,6 +87,7 @@ INSTRUCTION = EVENT_POLICY + (
     "'this process' can refer to ProcessP; 'This process is ProcessP' names ProcessP in the current sentence. "
     "A referent need not already be registered. Set reference_phrase to the exact reference text "
     "and name to its concept; never list the reference as an additional concept. Do not guess an ambiguous referent. "
+    + REFERENCE_POLICY +
     "Preserve all participants and locations in collective constructions without inventing pairwise routes. "
     "For 'ConceptA describes ProcessP between ConceptB, ConceptC, and ConceptD', "
     "extract ConceptA -> describes -> ProcessP, with 'between ConceptB, ConceptC, and ConceptD' in conditions. "
@@ -162,8 +176,15 @@ def previous_sentence(context, start):
 
 
 def reference_name(name):
-    return bool(re.match(r"^(?:(?:this|that|these|those|the)\b|(?:it|its|they|them|their|some)\Z)",
-                         normalize_name(name)))
+    """Detect contextual references anywhere, not ordinary definite noun names."""
+    normalized = normalize_name(name)
+    return normalized in {"the", "some"} or bool(re.search(
+        r"\b(?:this|that|these|those|it|its|itself|they|them|their|theirs|themselves)\b", normalized))
+
+
+def strip_definite_article(name):
+    """Remove only the leading article; preserve the named concept and its scope."""
+    return re.sub(r"^the\s+(?=\S)", "", name.strip(), flags=re.IGNORECASE)
 
 
 def sentence_payload(unit, context, relations):
@@ -251,6 +272,7 @@ def complete_endpoint(endpoint, record, side, text, models, trace, identifier):
 def resolve_endpoint(endpoint, record, side, unit, context, concepts, models, trace, identifier, cache):
     reference = endpoint.reference_phrase or (endpoint.name if reference_name(endpoint.name) else None)
     if reference is None:
+        endpoint = endpoint.model_copy(update={"name": strip_definite_article(endpoint.name)})
         return complete_endpoint(endpoint, record, side, context["text"], models, trace, identifier)
     if normalize(reference) not in normalize(unit["text"]):
         return None
@@ -264,14 +286,17 @@ def resolve_endpoint(endpoint, record, side, unit, context, concepts, models, tr
 
     def validate(result):
         if result.concept is not None and reference_name(result.concept.name):
-            raise ValueError("Return a standalone concept name, not another reference phrase")
+            raise ValueError("Return a standalone concept name: replace remaining pronouns or demonstratives "
+                             "with their text-supported antecedents, preserving the concept and its scope")
 
     try:
         result = models.ask("concept_reference_resolver",
             "Resolve this reference phrase using the previous sentence and the current sentence only. "
             "Return the standalone concept it denotes, using an available canonical name when it is the same "
-            "concept. You may return an existing concept or a concept named in CURRENT_SENTENCE even if it "
-            "is not registered yet. Not being in the registry is never a reason to leave a reference unresolved. "
+            "concept. You may return an existing concept or a standalone reformulation grounded in the "
+            "supplied sentences even if it is not registered yet. Not being in the registry is never a "
+            "reason to leave a reference unresolved. "
+            + REFERENCE_POLICY +
             "For 'This process is ProcessP', return ProcessP; for 'The rate also depends on PropertyQ' "
             "after a sentence about ProcessP, return the rate of ProcessP. A rate is a property of a process, "
             "not the process itself. Do not turn a statement into a concept or invent a referent. "
@@ -285,6 +310,9 @@ def resolve_endpoint(endpoint, record, side, unit, context, concepts, models, tr
         trace.emit("extraction.reference_unresolved", entity_id=identifier, reference=reference, error=str(exc))
         cache[key] = None
         return None
+    if result.concept is not None:
+        result = result.model_copy(update={"concept": result.concept.model_copy(
+            update={"name": strip_definite_article(result.concept.name)})})
     trace.emit("extraction.reference_resolved", entity_id=identifier, reference=reference,
                previous_sentence=before, result=result.model_dump())
     cache[key] = result.concept
@@ -449,8 +477,8 @@ def extract(chunks, paragraphs, models, trace, concepts, relations):
                 if any(endpoint is None for endpoint in endpoints):
                     issue(identifier, "Relation endpoint metadata could not be resolved", row)
                     continue
-                # Resolve each complete endpoint occurrence independently. A
-                # name-only map would conflate distinct senses of the same word.
+                # Route every complete endpoint through the shared name identity.
+                # Context remains on its relationships, never in a second node.
                 try:
                     source, target = [concepts.resolve(e, row["evidence"], identifier) for e in endpoints]
                     data["concepts"].extend((source, target))

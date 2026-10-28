@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import time
+import threading
 
 
 class Trace:
@@ -17,12 +18,17 @@ class Trace:
         self.started = time.monotonic()
         self.counts = Counter()
         self.stage = "setup"
+        self._write_lock = threading.RLock()
         self.stream = (self.directory / "events.jsonl").open("x", encoding="utf-8")
         self.artifacts = {}
         from .health import HealthMonitor
         self.health = HealthMonitor(self)
 
     def emit(self, event, *, entity_id=None, parent_id=None, **data):
+        with self._write_lock:
+            return self._emit(event, entity_id=entity_id, parent_id=parent_id, **data)
+
+    def _emit(self, event, *, entity_id=None, parent_id=None, **data):
         self.sequence += 1
         now = datetime.now(timezone.utc)
         row = dict(schema_version=1, run_id=self.run_id, sequence=self.sequence,

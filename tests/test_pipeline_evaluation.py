@@ -69,7 +69,7 @@ class PipelineEvaluationTests(unittest.TestCase):
         with patch("pipeline.cli.CHAPTERS", {"water-cycle-simplified": source}), \
              patch("pipeline.models.Models", FixtureModels), \
              patch("pipeline.graph_view.build_graph", return_value=graph):
-            code = main(["--chapter", "water-cycle-simplified", "--output-root", str(destination), "--no-open"])
+            code = main(["--chapter", "water-cycle-simplified", "--output-root", str(destination), "--no-open", "--no-explorer"])
         directory = next((destination / "water-cycle-simplified").iterdir())
         return code, directory, calls, settings
 

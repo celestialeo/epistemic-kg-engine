@@ -449,7 +449,7 @@ class SemanticTests(unittest.TestCase):
             inputs[name] = path
         out = Path(self.temp.name) / "both"
         with patch("pipeline.cli.CHAPTERS", inputs), patch("pipeline.models.Models", FakeModels):
-            code = main(["--chapter", "both", "--output-root", str(out), "--no-open"])
+            code = main(["--chapter", "both", "--output-root", str(out), "--no-open", "--no-explorer"])
         self.assertEqual(code, 0)
         self.assertEqual(len(instances), 2)
         self.assertIsNot(instances[0], instances[1])

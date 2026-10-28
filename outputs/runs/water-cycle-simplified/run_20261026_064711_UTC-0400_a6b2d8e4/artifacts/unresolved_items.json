@@ -1,0 +1,74 @@
+[
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_002_claims_0",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion 'The water cycle describes how water moves...' is found in PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The claim about the water cycle describing movement is not asserted in CURRENT_SENTENCE; therefore, no valid record can be generated for this index based on the current sentence's content."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_002",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous relation record relied on evidence from PREVIOUS_SENTENCE. Per instructions, extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE asserts that 'Oceans, lakes, rivers, soil, groundwater, snow, and ice store water in reservoirs.' This supports a 'stores' relation between the collective list of bodies (concept) and water (target), with 'in reservoirs' as a condition. The previous record attempted to describe the water cycle using evidence from the wrong sentence. A new valid relation must be constructed from CURRENT_SENTENCE, but since the task is to repair failed records by returning null if unsupported or correcting them, and the original record's evidence source was invalid for the current extraction constraint, it cannot be corrected to a valid CURRENT_SENTENCE assertion."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_sentence_001_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The assertion 'Rain and snow return atmospheric water to the surface' is supported by PREVIOUS_SENTENCE. The CURRENT_SENTENCE ('After precipitation reaches land...') describes subsequent pathways but does not support the claim that rain/snow return water; it presupposes the event in PREVIOUS_SENTENCE has occurred. Therefore, no relation can be extracted from CURRENT_SENTENCE alone for this specific claim without inventing an antecedent or misattributing the source. The failed record requires repair by acknowledging the evidence lies in PREVIOUS_SENTENCE, but per instructions to extract only from CURRENT_SENTENCE and resolve references, if the CURRENT_SENTENCE does not independently assert the 'returns' action (it only describes what happens *after* precipitation reaches land), the relation"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_sentence_001_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The assertion in the failed record relies on 'These connections' which is a reference phrase not explicitly named as a standalone concept in the CURRENT_SENTENCE. The CURRENT_SENTENCE describes conditions for 'Surface runoff' but does not contain an independent assertion about 'connections' allowing groundwater flow; that information belongs to PREVIOUS_SENTENCE. Extracting this as a claim from CURRENT_SENTENCE violates the rule to extract only from CURRENT_SENTENCE and resolve references."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_003",
+    "status": "unresolved",
+    "reason": "Relation endpoint metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_004",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The relation 'allows' connects 'connections' (a reference phrase) to 'groundwater'. The text 'These connections allow...' is in PREVIOUS_SENTENCE. Per instructions, we must extract only from CURRENT_SENTENCE. The CURRENT_SENTENCE does not assert that 'connections' allow groundwater flow; it asserts conditions for runoff development. Therefore, no faithful triple can be extracted for this specific assertion from the current sentence context."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_005",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The relation 'maintains_flow_in' connects 'groundwater' to 'streams'. The evidence provided is from PREVIOUS_SENTENCE. The CURRENT_SENTENCE discusses 'Surface runoff', 'water flows over the land', 'rainfall', and 'saturated ground'. It does not contain an assertion that groundwater maintains flow in streams. Extracting this relation from the current sentence would require inventing facts or misattributing the source of the assertion, violating the constraint to extract only from CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_sentence_002",
+    "status": "unresolved",
+    "reason": "extractor failed for chunk_006_sentence_002 after 3 attempts: acts_on requires an event/process source and a non-event object target; correct the relationship without inventing an event or companion edge"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_007_relation_011",
+    "status": "unresolved",
+    "reason": "Relation endpoint metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_007_sentence_006_concept_1",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "background_candidate",
+    "id": "candidate_0065",
+    "status": "unresolved",
+    "reason": "No validated background decision: critic failed for candidate_0065 after 3 attempts: A related background fact must cite an exact supplied chapter topic"
+  },
+  {
+    "step": "evaluation",
+    "id": "chunk_002",
+    "status": "unresolved",
+    "reason": "evaluation_alignment failed for chunk_002:alignment after 3 attempts: Claim alignment must be one-to-one"
+  }
+]
