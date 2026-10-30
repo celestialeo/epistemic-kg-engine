@@ -99,6 +99,21 @@ def render_report(stats, paragraphs, chunks, debate, evaluation):
     for c in debate.get("document_reviews", []) + debate["candidates"]:
         label = "Unresolved" if c.get("review_status") == "unresolved" else "Accepted" if c["accepted"] else "Rejected"
         body = f'<p><b>Origin:</b> {esc(c.get("origin", "background"))}</p><p><b>Proposal:</b> {esc(c["reason"])}</p>'
+        if c.get("intended_fact"):
+            body += f'<p><b>Intended fact:</b> {esc(c["intended_fact"])}</p>'
+        if c.get("link_reading"):
+            body += f'<p><b>Literal link meaning:</b> {esc(c["link_reading"])}</p>'
+        if c.get("representation_check"):
+            body += f'<p><b>Representation check:</b> {esc(c["representation_check"]["reason"])}</p>'
+        if c.get("repair_of"):
+            body += (f'<p>Separate correction of <a href="#{esc(c["repair_of"])}">'
+                     f'{esc(c["repair_of"])}</a>; reviewed again through the admission checks.</p>')
+        if c.get("repair_candidate_id"):
+            body += (f'<p>Original rejection retained. Corrected candidate: '
+                     f'<a href="#{esc(c["repair_candidate_id"])}">{esc(c["repair_candidate_id"])}</a>.</p>')
+        if c.get("case_specific_unknowns"):
+            body += '<p><b>Still unknown for this case:</b></p><ul>' + ''.join(
+                f'<li>{esc(item["question"])}</li>' for item in c["case_specific_unknowns"]) + '</ul>'
         if c.get("evidence"):
             body += f'<p><b>Quote:</b> {esc(c["evidence"])}</p>'
         for field in ("conditions", "modality"):
@@ -117,9 +132,9 @@ def render_report(stats, paragraphs, chunks, debate, evaluation):
         body += f'<p><b>Decision:</b> {esc(c["decision_reason"])}</p>'
         if c.get("gates"):
             body += '<p>' + esc(", ".join(k + ": " + ("pass" if v else "fail") for k, v in c["gates"].items())) + '</p>'
-        debate_html += f'<details><summary><span class="{label.lower()}">{label}</span> · {esc(c["source"])} '
+        debate_html += f'<details id="{esc(c["id"])}"><summary><span class="{label.lower()}">{label}</span> · {esc(c["source"])} '
         qualifiers = "; ".join(c[field] for field in ("modality", "conditions") if c.get(field))
-        relation_label = c["relation"] + (" [" + qualifiers + "]" if qualifiers else "")
+        relation_label = (c.get("relation") or "link not constructed") + (" [" + qualifiers + "]" if qualifiers else "")
         debate_html += f'→ {esc(relation_label)} → {esc(c["target"])}</summary>{body}</details>'
     reconstructions = "".join(f'<details><summary>{esc(r["chunk_id"])} · reconstruction score (0–100) {metric(r["final_score"])}</summary>'
         f'<div class="pair"><div><h3>Original</h3><p>{esc(r["original"])}</p></div><div><h3>Reconstruction</h3>'

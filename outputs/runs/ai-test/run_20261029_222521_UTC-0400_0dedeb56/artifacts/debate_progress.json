@@ -1,0 +1,2381 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self-attention computes relationships between words in a sequence by calculating attention scores based on query and key vector interactions, normalizing these scores via softmax, and generating contextual representations through weighted sums of value vectors.",
+      "confidence": 0.95,
+      "reason": "This fact supplies the missing mathematical mechanism (Q-K-V operations) required to answer the gap regarding *how* relationships are computed, using well-established general knowledge about transformer architecture compatible with the chapter's topic.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "The specific algorithmic steps of self-attention (matrix multiplication of Q, K, V and softmax normalization). This knowledge is general explanatory information not explicitly detailed in the source text but necessary to explain the 'how' of the mechanism.",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "text",
+      "relation": "participates_in",
+      "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "conditions": "The sentence describes self-attention computing relationships between words in a sequence. The 'sequence' constitutes the 'text'. Therefore, the mechanism (self attention) participates in the processing of the text. The predicate 'participates_in' is chosen because self-attention is an active process within the broader event of processing text, rather than a structural component ('part_of') or a mere association.",
+      "modality": "conceptual",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+          "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+          "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+        }
+      ],
+      "gap_analysis": "The source context states that self-attention is the mechanism for processing text but does not detail the specific mathematical operations (query, key, value vectors, softmax) used to compute relationships. The gap requires explaining the internal computational steps of the mechanism.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "withdrawn",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Proposer withdrew: The proposed relation 'participates_in' is rejected because it misrepresents the causal directionality between a computational mechanism and its input data. A mechanism ('self attention') operates upon or processes an entity ('text'), rather than mutually participating in an event with that entity. The predicate implies symmetry or co-agency which contradicts the functional architecture where the mechanism applies specific operations (Q-K-V matrix multiplications) to the data. The correct assertion must reflect this unidirectional action of processing, not participation.",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism used by a small transformer to process text.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "text",
+          "definition": "The input data processed by self-attention.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "participates_in",
+        "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "conditions": "The sentence describes self-attention computing relationships between words in a sequence. The 'sequence' constitutes the 'text'. Therefore, the mechanism (self attention) participates in the processing of the text. The predicate 'participates_in' is chosen because self-attention is an active process within the broader event of processing text, rather than a structural component ('part_of') or a mere association.",
+        "modality": "conceptual",
+        "intended_fact": "Self-attention computes relationships between words in a sequence by calculating attention scores based on query and key vector interactions, normalizing these scores via softmax, and generating contextual representations through weighted sums of value vectors.",
+        "confidence": 0.95,
+        "reason": "This fact supplies the missing mathematical mechanism (Q-K-V operations) required to answer the gap regarding *how* relationships are computed, using well-established general knowledge about transformer architecture compatible with the chapter's topic.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "The specific algorithmic steps of self-attention (matrix multiplication of Q, K, V and softmax normalization). This knowledge is general explanatory information not explicitly detailed in the source text but necessary to explain the 'how' of the mechanism."
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "text",
+        "definition": "The input data processed by self-attention.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "participates_in",
+      "surface_target": "text",
+      "representation_check": {
+        "link_reading": "The graph asserts that 'self attention' participates in 'text'.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The link reading correctly identifies the literal assertion: 'self attention' (SOURCE) participates in 'text' (TARGET). The explanation supports this by stating self-attention computes relationships within a sequence (which constitutes the text), fitting the definition of 'participates_in'. There is no reversal, scope change, or disagreement between the graph representation and the provided explanation. The case-specific claim that self-attention processes text is supported by the source context describing transformers using self-attention to process text.",
+        "suggested_correction": null
+      },
+      "link_reading": "The graph asserts that 'self attention' participates in 'text'.",
+      "explanation_context": [],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_003",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "entity"
+      },
+      "critic": {
+        "candidate_id": "candidate_0001",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": false,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 0.85,
+        "reason": "The relation 'participates_in' between 'self attention' and 'text' is semantically invalid because 'self attention' is a computational mechanism/process, while 'text' is the input data entity; mechanisms do not 'participate in' data entities in the sense of an event or process. The correct semantic relationship should be that the mechanism operates on or processes the entity, but 'participates_in' implies mutual involvement in an event which misrepresents the static nature of 'text' as input versus the dynamic nature of the mechanism. Furthermore, the direction is flawed: the mechanism acts upon the text, not merely participating alongside it as co-agents in an event. The types are compatible (process and entity), but the predicate choice fails to capture the specific 'operates_on' or 'processes' relationship defined by transformer architecture. This violates the instruction to use a precise predicate appropriate to the asserted meaning and to avoid broadening concepts or inventing omitted actions like mutual participation where only unidirectional processing exists.",
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "objections": [
+          "The predicate 'participates_in' incorrectly models the relationship between a computational mechanism ('self attention') and its input data ('text'). Mechanisms do not 'participate in' data; they operate on or process it. The correct relation should reflect unidirectional action (e.g., 'operates_on' or 'processes'), not mutual participation in an event.",
+          "The assertion implies a symmetric or co-occurring event relationship between the mechanism and the text, whereas the reality is that the mechanism applies operations to the text. This misrepresents the causal and functional directionality inherent in transformer architecture.",
+          "Using 'participates_in' for this pair broadens the concept of 'self attention' beyond its specific role as a processor, suggesting it is an agent equal to the data rather than a tool acting upon it, which contradicts the precise definition required by the schema."
+        ]
+      },
+      "rebuttal": {
+        "candidate_id": "candidate_0001",
+        "position": "withdraw",
+        "reason": "The proposed relation 'participates_in' is rejected because it misrepresents the causal directionality between a computational mechanism and its input data. A mechanism ('self attention') operates upon or processes an entity ('text'), rather than mutually participating in an event with that entity. The predicate implies symmetry or co-agency which contradicts the functional architecture where the mechanism applies specific operations (Q-K-V matrix multiplications) to the data. The correct assertion must reflect this unidirectional action of processing, not participation."
+      },
+      "verification_basis": "model_knowledge",
+      "rejection_stage": "withdrawal",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "No responsible correction exists for the original knowledge gap because the intended fact describes specific algorithmic steps (Q-K-V matrix multiplications, softmax) that are not present in the source context. The instructions state: 'Distinguish general explanatory knowledge from unknown choices or measurements in the particular case' and 'The source context establishes what needs explaining, not a boundary on what you may know.' However, the rejection reason explicitly states the claim itself was wrong due to semantic invalidity ('participates_in' is incorrect). Since the original fact relies on external general knowledge not supported by the text, and the specific predicate choice was rejected as semantically invalid for this context, adding the detailed algorithmic steps would constitute 'inventing an omitted action' or broadening the concept beyond what the source supports. The gap asks 'How', but the source only says it 'processes'. Providing the mathematical 'how' violates the constraint to distinguish general knowledge from case-specific unknowns unless explicitly permitted by the text, which it is not. Therefore, the fact cannot be corrected to a supported assertion without violating the evidence constraints."
+      }
+    },
+    {
+      "intended_fact": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+      "confidence": 0.95,
+      "reason": "This fact addresses the identified gap regarding 'how' predictions are improved by introducing the mechanism of gradient descent, which is standard general knowledge compatible with the chapter's topic on training processes.",
+      "gap_ids": [
+        "seed_candidate_0004_gap_001"
+      ],
+      "added_knowledge": "mechanism of gradient descent and partial derivatives in weight updates",
+      "id": "candidate_0002",
+      "seed_id": "seed_002",
+      "source": "prediction error",
+      "target": "backpropagation",
+      "relation": "causes",
+      "relation_definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "conditions": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+      "modality": "explicit",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+          "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+          "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0004_gap_001",
+          "seed_candidate_id": "seed_candidate_0004",
+          "concept": "backpropagation",
+          "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explicitly detail the role of gradients in weight adjustment. General knowledge fills this gap by defining gradients as partial derivatives indicating the direction and magnitude for minimizing loss.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "backpropagation",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to improve its predictions during training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The proposed predicate has no validated meaning-preserving contract",
+      "original_proposal": {
+        "source": {
+          "name": "prediction error",
+          "definition": "The difference between predicted outputs and actual values that the model aims to minimize.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "backpropagation",
+          "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "causes",
+        "relation_definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+        "conditions": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+        "modality": "explicit",
+        "intended_fact": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+        "confidence": 0.95,
+        "reason": "This fact addresses the identified gap regarding 'how' predictions are improved by introducing the mechanism of gradient descent, which is standard general knowledge compatible with the chapter's topic on training processes.",
+        "gap_ids": [
+          "seed_candidate_0004_gap_001"
+        ],
+        "added_knowledge": "mechanism of gradient descent and partial derivatives in weight updates"
+      },
+      "source_mention": {
+        "name": "prediction error",
+        "definition": "The difference between predicted outputs and actual values that the model aims to minimize.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "causes",
+      "surface_target": "backpropagation",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The proposed relation 'causes' between 'prediction error' and 'backpropagation' is invalid because prediction error does not cause the process of backpropagation; rather, backpropagation is the mechanism used to compute gradients based on the error. The intended fact describes the nature of gradients (partial derivatives), but the current structure incorrectly attributes this description as a causal event produced by the error itself leading to backpropagation. A sound correction would require redefining the source/target/relation to accurately reflect that 'prediction error' provides the signal for 'gradient computation', which is then used in 'backpropagation'. Since the original claim conflates the input signal (error) with the algorithmic process (backpropagation) via an invalid causal predicate, no simple factual sentence can be extracted without fundamentally restructuring the assertion to match standard ML definitions. The gap asks for the role of gradients, but the proposed link fails to represent this correctly."
+      }
+    },
+    {
+      "intended_fact": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+      "confidence": 0.95,
+      "reason": "General knowledge confirms these are the primary methods for regularization; source text only mentions the function (generalization) not the method.",
+      "gap_ids": [
+        "seed_candidate_0007_gap_001"
+      ],
+      "added_knowledge": "Specific implementation details (dropout, weight decay) and their purpose (preventing overfitting).",
+      "id": "candidate_0003",
+      "seed_id": "seed_003",
+      "source": "regularization",
+      "target": "generalization beyond training example",
+      "relation": "enables",
+      "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "conditions": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+          "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+          "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0007_gap_001",
+          "seed_candidate_id": "seed_candidate_0007",
+          "concept": "regularization",
+          "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+        }
+      ],
+      "gap_analysis": "The source text states that regularization helps generalization but does not specify the implementation mechanisms. General knowledge fills this gap by identifying dropout and weight decay as standard techniques.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_003",
+          "source": "regularization",
+          "relation": "enables",
+          "target": "generalization beyond training example",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "for the small transformer (it)",
+          "modality": "helps"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The link_reading 'Regularization enables generalization beyond training example' accurately reflects the source text's statement that 'Regularization helps it generalize beyond its training examples.' The explanation correctly notes that while the source mentions the function (generalization), it does not explicitly list specific methods like dropout or weight decay; however, this is a limitation of the source text regarding method attribution, not a factual error in the link reading itself. Since the intended_fact asserts these techniques are implemented to prevent overfitting (which enables generalization), and the link_reading captures the core causal relationship present in the source, there is no mismatch between the link reading and the explanation's assessment of what the source actually says versus what it implies. The explanation correctly identifies that the source lacks explicit method names, which aligns with the link_reading not claiming specific methods are mentioned. Therefore, the explanation matches the link_reading by accurately describing the scope of the source text.",
+      "original_proposal": {
+        "source": {
+          "name": "regularization",
+          "definition": "A technique applied to machine learning models.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "generalization beyond training example",
+          "definition": "The ability of a model to perform well on unseen data.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "conditions": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+        "modality": null,
+        "intended_fact": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+        "confidence": 0.95,
+        "reason": "General knowledge confirms these are the primary methods for regularization; source text only mentions the function (generalization) not the method.",
+        "gap_ids": [
+          "seed_candidate_0007_gap_001"
+        ],
+        "added_knowledge": "Specific implementation details (dropout, weight decay) and their purpose (preventing overfitting)."
+      },
+      "source_mention": {
+        "name": "regularization",
+        "definition": "A technique applied to machine learning models.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "enables",
+      "surface_target": "generalization beyond training example",
+      "representation_check": {
+        "link_reading": "Regularization enables generalization beyond training example.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": false,
+        "reason": "The link_reading 'Regularization enables generalization beyond training example' accurately reflects the source text's statement that 'Regularization helps it generalize beyond its training examples.' The explanation correctly notes that while the source mentions the function (generalization), it does not explicitly list specific methods like dropout or weight decay; however, this is a limitation of the source text regarding method attribution, not a factual error in the link reading itself. Since the intended_fact asserts these techniques are implemented to prevent overfitting (which enables generalization), and the link_reading captures the core causal relationship present in the source, there is no mismatch between the link reading and the explanation's assessment of what the source actually says versus what it implies. The explanation correctly identifies that the source lacks explicit method names, which aligns with the link_reading not claiming specific methods are mentioned. Therefore, the explanation matches the link_reading by accurately describing the scope of the source text.",
+        "suggested_correction": null
+      },
+      "link_reading": "Regularization enables generalization beyond training example.",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The original claim introduces specific techniques (dropout, weight decay) and their purpose (preventing overfitting) which are not present in the source text. The source only states 'Regularization helps it generalize'. Adding these specific methods constitutes inventing omitted actions and broadening the concept beyond the provided evidence. No correction exists that preserves the original knowledge gap while adhering to the constraint of not inventing details absent from the source."
+      }
+    },
+    {
+      "intended_fact": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+      "confidence": 0.95,
+      "reason": "General knowledge defines the mechanism of dropout; source text lacks this detail.",
+      "gap_ids": [
+        "seed_candidate_0007_gap_001"
+      ],
+      "added_knowledge": "Mechanism of action for dropout.",
+      "id": "candidate_0004",
+      "seed_id": "seed_003",
+      "source": "dropout",
+      "target": "generalization beyond training example",
+      "relation": "enables",
+      "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "conditions": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+          "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+          "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0007_gap_001",
+          "seed_candidate_id": "seed_candidate_0007",
+          "concept": "regularization",
+          "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+        }
+      ],
+      "gap_analysis": "The source text states that regularization helps generalization but does not specify the implementation mechanisms. General knowledge fills this gap by identifying dropout and weight decay as standard techniques.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_003",
+          "source": "regularization",
+          "relation": "enables",
+          "target": "generalization beyond training example",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "for the small transformer (it)",
+          "modality": "helps"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The link reading asserts that dropout 'enables' generalization via a specific mechanism ('randomly deactivating neurons to reduce co-adaptation'). The source text only states that 'Regularization helps it generalize,' without specifying the mechanism or explicitly linking dropout to this outcome. Thus, meaning_matches is false due to unsupported specificity and direction (source says regularization helps; link reading claims dropout enables via a specific process). Direction_valid is false because the inference from 'regularization helps' to 'dropout enables via co-adaptation reduction' adds unverified causal details not present in the source. Scope_preserved is false because the link reading narrows the scope from general 'regularization' to the specific technique 'dropout' and its internal mechanism, which exceeds the source's claim. Case_specific_claim_supported is false as the source provides no evidence for the co-adaptation mechanism. Explanation_matches is true because the explanation correctly identifies that the source lacks the specific mechanistic detail claimed in the link reading, thereby supporting the 'false' label for meaning_matches.",
+      "original_proposal": {
+        "source": {
+          "name": "dropout",
+          "definition": "A specific regularization technique involving randomly deactivating neurons.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "generalization beyond training example",
+          "definition": "The ability of a model to perform well on unseen data.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "conditions": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+        "modality": null,
+        "intended_fact": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+        "confidence": 0.95,
+        "reason": "General knowledge defines the mechanism of dropout; source text lacks this detail.",
+        "gap_ids": [
+          "seed_candidate_0007_gap_001"
+        ],
+        "added_knowledge": "Mechanism of action for dropout."
+      },
+      "source_mention": {
+        "name": "dropout",
+        "definition": "A specific regularization technique involving randomly deactivating neurons.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "enables",
+      "surface_target": "generalization beyond training example",
+      "representation_check": {
+        "link_reading": "dropout enables generalization beyond training example",
+        "meaning_matches": false,
+        "direction_valid": false,
+        "explanation_matches": true,
+        "scope_preserved": false,
+        "case_specific_claim_supported": false,
+        "reason": "The link reading asserts that dropout 'enables' generalization via a specific mechanism ('randomly deactivating neurons to reduce co-adaptation'). The source text only states that 'Regularization helps it generalize,' without specifying the mechanism or explicitly linking dropout to this outcome. Thus, meaning_matches is false due to unsupported specificity and direction (source says regularization helps; link reading claims dropout enables via a specific process). Direction_valid is false because the inference from 'regularization helps' to 'dropout enables via co-adaptation reduction' adds unverified causal details not present in the source. Scope_preserved is false because the link reading narrows the scope from general 'regularization' to the specific technique 'dropout' and its internal mechanism, which exceeds the source's claim. Case_specific_claim_supported is false as the source provides no evidence for the co-adaptation mechanism. Explanation_matches is true because the explanation correctly identifies that the source lacks the specific mechanistic detail claimed in the link reading, thereby supporting the 'false' label for meaning_matches.",
+        "suggested_correction": "Limit the assertion to: 'Regularization techniques, such as dropout, help models generalize beyond training examples.' Remove references to the specific mechanism of 'reducing co-adaptation' unless the source explicitly mentions it."
+      },
+      "link_reading": "dropout enables generalization beyond training example",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The original claim specifies a mechanism ('randomly deactivating neurons') and a specific outcome ('reduce co-adaptation'). The source text mentions 'Regularization' generally but does not name 'dropout' or describe its internal mechanism. Asserting that dropout enables generalization via this specific mechanism adds unverified causal details not present in the source. A correction is impossible without violating the rule against inventing omitted actions or upgrading general claims to specific ones."
+      }
+    },
+    {
+      "intended_fact": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+      "confidence": 0.95,
+      "reason": "General knowledge defines the mechanism of weight decay (L2 regularization); source text lacks this detail.",
+      "gap_ids": [
+        "seed_candidate_0007_gap_001"
+      ],
+      "added_knowledge": "Mechanism of action for weight decay.",
+      "id": "candidate_0005",
+      "seed_id": "seed_003",
+      "source": "weight decay",
+      "target": "generalization beyond training example",
+      "relation": "enables",
+      "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "conditions": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+          "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+          "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0007_gap_001",
+          "seed_candidate_id": "seed_candidate_0007",
+          "concept": "regularization",
+          "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+        }
+      ],
+      "gap_analysis": "The source text states that regularization helps generalization but does not specify the implementation mechanisms. General knowledge fills this gap by identifying dropout and weight decay as standard techniques.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_003",
+          "source": "regularization",
+          "relation": "enables",
+          "target": "generalization beyond training example",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "for the small transformer (it)",
+          "modality": "helps"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The link reading 'weight decay enables generalization beyond training example' is semantically supported by the source text which states 'Regularization helps it generalize...'. The direction (technique -> outcome) is valid as per the relation definition. The explanation correctly notes that the specific mechanism (penalty term) is missing from the source text, but this does not invalidate the high-level claim of enabling generalization; thus, the explanation accurately reflects the scope limitation without being factually wrong about the link's validity. All flags are corrected to reflect that the representation aligns with the source text's high-level claim while acknowledging the missing mechanistic detail.",
+      "original_proposal": {
+        "source": {
+          "name": "weight decay",
+          "definition": "A specific regularization technique involving adding a penalty term to the loss function.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "generalization beyond training example",
+          "definition": "The ability of a model to perform well on unseen data.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "enables",
+        "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "conditions": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+        "modality": null,
+        "intended_fact": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+        "confidence": 0.95,
+        "reason": "General knowledge defines the mechanism of weight decay (L2 regularization); source text lacks this detail.",
+        "gap_ids": [
+          "seed_candidate_0007_gap_001"
+        ],
+        "added_knowledge": "Mechanism of action for weight decay."
+      },
+      "source_mention": {
+        "name": "weight decay",
+        "definition": "A specific regularization technique involving adding a penalty term to the loss function.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "enables",
+      "surface_target": "generalization beyond training example",
+      "representation_check": {
+        "link_reading": "weight decay enables generalization beyond training example",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": false,
+        "reason": "The link reading 'weight decay enables generalization beyond training example' is semantically supported by the source text which states 'Regularization helps it generalize...'. The direction (technique -> outcome) is valid as per the relation definition. The explanation correctly notes that the specific mechanism (penalty term) is missing from the source text, but this does not invalidate the high-level claim of enabling generalization; thus, the explanation accurately reflects the scope limitation without being factually wrong about the link's validity. All flags are corrected to reflect that the representation aligns with the source text's high-level claim while acknowledging the missing mechanistic detail.",
+        "suggested_correction": null
+      },
+      "link_reading": "weight decay enables generalization beyond training example",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The original claim specifies a mechanism ('adding a penalty term') for 'weight decay'. The source text mentions 'Regularization' generally but does not name 'weight decay' or describe its internal mechanism. Asserting that weight decay enables generalization via this specific mechanism adds unverified causal details not present in the source. A correction is impossible without violating the rule against inventing omitted actions."
+      }
+    },
+    {
+      "intended_fact": "A model's ability to generalize beyond training examples is quantified using performance metrics calculated on held-out datasets distinct from the training set.",
+      "confidence": 0.95,
+      "reason": "Standard machine learning practice distinguishes generalization capability via evaluation on unseen data (test/validation splits) rather than training data alone.",
+      "gap_ids": [
+        "seed_candidate_0008_gap_001"
+      ],
+      "added_knowledge": "Specific metrics and evaluation protocols (e.g., accuracy, perplexity, train/test split methodology). This is general explanatory knowledge required to answer the gap about how generalization is measured.",
+      "id": "candidate_0006",
+      "seed_id": "seed_004",
+      "source": "generalization beyond training example",
+      "target": "generalization beyond training example",
+      "relation": "quantified_by",
+      "relation_definition": "SOURCE is measured, assessed, or quantified using TARGET; TARGET provides the numerical value or metric for SOURCE.",
+      "conditions": "The fact states that generalization capability (a property) is determined by specific evaluation metrics on unseen data. The predicate 'quantified_by' captures this measurement relationship precisely without implying causation or parthood.",
+      "modality": "assertion",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What metrics or evaluation protocols are typically used to measure performance on 'unseen data' versus training data?",
+          "assumed_knowledge": "The distinction between train/validation/test splits, perplexity scores, or accuracy metrics calculated on held-out datasets.",
+          "why_useful": "Understanding how generalization is quantified helps distinguish between a model that merely memorizes and one that truly learns patterns.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0008_gap_001",
+          "seed_candidate_id": "seed_candidate_0008",
+          "concept": "generalization beyond training example",
+          "document_coverage": "The source defines generalization as the ability to perform well on unseen data and notes it is enabled by regularization."
+        }
+      ],
+      "gap_analysis": "The source defines generalization as performance on unseen data enabled by regularization but lacks specific metrics or evaluation protocols. General knowledge fills this gap by identifying standard practices like train/validation/test splits and accuracy/perplexity scores.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_003",
+          "source": "regularization",
+          "relation": "enables",
+          "target": "generalization beyond training example",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "for the small transformer (it)",
+          "modality": "helps"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Both endpoints resolve to the same canonical concept",
+      "original_proposal": {
+        "source": {
+          "name": "generalization beyond training example",
+          "definition": "The ability of a model to perform well on unseen data.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "performance metrics calculated on held-out datasets distinct from the training set",
+          "definition": "Quantitative measures derived from test or validation splits used to evaluate a model's capability on unseen data.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "quantified_by",
+        "relation_definition": "SOURCE is measured, assessed, or quantified using TARGET; TARGET provides the numerical value or metric for SOURCE.",
+        "conditions": "The fact states that generalization capability (a property) is determined by specific evaluation metrics on unseen data. The predicate 'quantified_by' captures this measurement relationship precisely without implying causation or parthood.",
+        "modality": "assertion",
+        "intended_fact": "A model's ability to generalize beyond training examples is quantified using performance metrics calculated on held-out datasets distinct from the training set.",
+        "confidence": 0.95,
+        "reason": "Standard machine learning practice distinguishes generalization capability via evaluation on unseen data (test/validation splits) rather than training data alone.",
+        "gap_ids": [
+          "seed_candidate_0008_gap_001"
+        ],
+        "added_knowledge": "Specific metrics and evaluation protocols (e.g., accuracy, perplexity, train/test split methodology). This is general explanatory knowledge required to answer the gap about how generalization is measured."
+      },
+      "source_mention": {
+        "name": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "performance metrics calculated on held-out datasets distinct from the training set",
+        "definition": "Quantitative measures derived from test or validation splits used to evaluate a model's capability on unseen data.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "quantified_by",
+      "surface_target": "performance metrics calculated on held-out datasets distinct from the training set",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The candidate is rejected because the target concept 'performance metrics calculated on held-out datasets distinct from the training set' resolves to the same canonical concept as the source 'generalization beyond training example' under the provided schema constraints. The intended fact attempts to quantify a property using an entity that is semantically identical to the property's definition in this context, violating the requirement for distinct endpoints. No responsible correction exists that separates these concepts without inventing new entities or contradicting the provided definitions."
+      }
+    },
+    {
+      "intended_fact": "Quantization reduces memory requirements by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+      "confidence": 0.95,
+      "reason": "This fact directly addresses gap_002 by explaining the physical mechanism (bit-width reduction) linking numerical precision to memory footprint, using general knowledge about data representation.",
+      "gap_ids": [
+        "seed_candidate_0009_gap_002"
+      ],
+      "added_knowledge": "The specific relationship between bit-width and storage size (4x reduction for 8-bit vs 32-bit) and the concept of contiguous memory layout.",
+      "id": "candidate_0007",
+      "seed_id": "seed_005",
+      "source": "quantization",
+      "target": "memory requirement",
+      "relation": "reduces",
+      "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "conditions": "by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How exactly does reducing bit-width translate to a reduction in memory footprint (e.g., via contiguous storage of weights vs. sparse representations)?",
+          "assumed_knowledge": "The relationship between data type size (bits per parameter) and total model memory consumption.",
+          "why_useful": "The source states quantization 'reduces memory requirements' but treats the magnitude of this reduction as a given fact. Explaining the storage mechanics validates the claim and distinguishes it from other optimization methods like pruning.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0009_gap_002",
+          "seed_candidate_id": "seed_candidate_0009",
+          "concept": "quantization",
+          "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+        }
+      ],
+      "gap_analysis": "The source text asserts that quantization reduces memory requirements after training but lacks specific details on the mechanism (e.g., bit-width reduction, contiguous storage) or the technical safeguards (e.g., calibration, distribution preservation) that prevent accuracy degradation. The explanation must bridge the gap between 'reducing precision' and 'maintained performance' using general knowledge.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_004",
+          "source": "quantization",
+          "relation": "reduces",
+          "target": "memory requirement",
+          "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+          "origin": "document",
+          "conditions": "after training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The candidate assertion states that 'quantization' reduces 'memory requirement' by decreasing bit-width. Reference chunk_001_relation_004 asserts the same source, target, and relation ('reduces'). The additional detail in the candidate regarding the mechanism (decreasing bit-width from 32-bit to 8-bit) is an elaboration of the definition of quantization inherent to the term itself, not new external information. Therefore, the core assertion is fully entailed by the reference.",
+      "original_proposal": {
+        "source": {
+          "name": "quantization",
+          "definition": "a process that reduces memory requirements after training",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "memory requirement",
+          "definition": "the amount of memory needed by a process",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "reduces",
+        "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "conditions": "by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+        "modality": null,
+        "intended_fact": "Quantization reduces memory requirements by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+        "confidence": 0.95,
+        "reason": "This fact directly addresses gap_002 by explaining the physical mechanism (bit-width reduction) linking numerical precision to memory footprint, using general knowledge about data representation.",
+        "gap_ids": [
+          "seed_candidate_0009_gap_002"
+        ],
+        "added_knowledge": "The specific relationship between bit-width and storage size (4x reduction for 8-bit vs 32-bit) and the concept of contiguous memory layout."
+      },
+      "source_mention": {
+        "name": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "memory requirement",
+        "definition": "the amount of memory needed by a process",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "reduces",
+      "surface_target": "memory requirement",
+      "representation_check": {
+        "link_reading": "quantization reduces memory requirement by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link ('quantization reduces memory requirement...') matches the intended_fact exactly in direction (SOURCE -> TARGET), scope (bit-width reduction mechanism), and modality. The explanation correctly identifies the physical mechanism without inventing facts. No reversal or scope change is present; the narrower category 'quantization' correctly acts as the agent reducing the property 'memory requirement'. All case-specific attributions align with source_context chunk_001.",
+        "suggested_correction": null
+      },
+      "link_reading": "quantization reduces memory requirement by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+      "explanation_context": [],
+      "novelty_references": [
+        {
+          "id": "chunk_001_relation_004",
+          "source": "quantization",
+          "target": "memory requirement",
+          "relation": "reduces",
+          "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+          "conditions": "after training",
+          "modality": null
+        }
+      ],
+      "novelty": {
+        "status": "duplicate",
+        "evidence_ids": [
+          "chunk_001_relation_004"
+        ],
+        "related_reference_ids": [],
+        "reason": "The candidate assertion states that 'quantization' reduces 'memory requirement' by decreasing bit-width. Reference chunk_001_relation_004 asserts the same source, target, and relation ('reduces'). The additional detail in the candidate regarding the mechanism (decreasing bit-width from 32-bit to 8-bit) is an elaboration of the definition of quantization inherent to the term itself, not new external information. Therefore, the core assertion is fully entailed by the reference."
+      },
+      "rejection_stage": "novelty",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The assertion 'Quantization reduces memory requirements by decreasing the bit-width...' is fully entailed by the existing reference chunk_001_relation_004 ('quantization' -> 'reduces' -> 'memory requirement'). The additional detail regarding bit-width mechanics (32-bit to 8-bit) is an elaboration of the definition inherent to the concept 'quantization', not new external information required to fill a knowledge gap. Per instructions, do not broaden concepts or invent omitted actions; the core relation is already supported by the source context."
+      }
+    },
+    {
+      "intended_fact": "Techniques such as post-training calibration or quantization-aware training preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+      "confidence": 0.9,
+      "reason": "This fact addresses gap_001 by explaining how numerical precision is reduced without significant degradation, utilizing general knowledge about calibration methods.",
+      "gap_ids": [
+        "seed_candidate_0009_gap_001"
+      ],
+      "added_knowledge": "The role of calibration in preserving distributional properties during quantization.",
+      "id": "candidate_0008",
+      "seed_id": "seed_005",
+      "source": "technique such a post training calibration or quantization aware training",
+      "target": "model accuracy",
+      "relation": "preserves_accuracy_via_calibration",
+      "relation_definition": "SOURCE maintains the state or magnitude of TARGET, preventing significant degradation through techniques such as post-training calibration or quantization-aware training.",
+      "conditions": "by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What specific mechanisms allow reducing numerical precision (e.g., from 32-bit to 8-bit) without causing significant degradation in model accuracy?",
+          "assumed_knowledge": "The existence of quantization-aware training or post-training calibration techniques that preserve distributional properties despite lower bit-widths.",
+          "why_useful": "The source claims memory reduction occurs 'without significant accuracy loss,' but does not explain the technical bridge between precision reduction and maintained performance. Understanding this mechanism clarifies how the optimization is viable.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0009_gap_001",
+          "seed_candidate_id": "seed_candidate_0009",
+          "concept": "quantization",
+          "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+        }
+      ],
+      "gap_analysis": "The source text asserts that quantization reduces memory requirements after training but lacks specific details on the mechanism (e.g., bit-width reduction, contiguous storage) or the technical safeguards (e.g., calibration, distribution preservation) that prevent accuracy degradation. The explanation must bridge the gap between 'reducing precision' and 'maintained performance' using general knowledge.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_004",
+          "source": "quantization",
+          "relation": "reduces",
+          "target": "memory requirement",
+          "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+          "origin": "document",
+          "conditions": "after training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "techniques such as post-training calibration or quantization-aware training",
+          "definition": "methods that preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "model accuracy",
+          "definition": "the degree to which a model's predictions match actual values",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "preserves",
+        "relation_definition": "SOURCE maintains the state or magnitude of TARGET, preventing significant degradation.",
+        "conditions": "by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+        "modality": null,
+        "intended_fact": "Techniques such as post-training calibration or quantization-aware training preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+        "confidence": 0.9,
+        "reason": "This fact addresses gap_001 by explaining how numerical precision is reduced without significant degradation, utilizing general knowledge about calibration methods.",
+        "gap_ids": [
+          "seed_candidate_0009_gap_001"
+        ],
+        "added_knowledge": "The role of calibration in preserving distributional properties during quantization."
+      },
+      "source_mention": {
+        "name": "techniques such as post-training calibration or quantization-aware training",
+        "definition": "methods that preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "model accuracy",
+        "definition": "the degree to which a model's predictions match actual values",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "preserves",
+      "surface_target": "model accuracy",
+      "representation_check": {
+        "link_reading": "The source 'technique such a post training calibration or quantization aware training' preserves the target 'model accuracy' by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link confirms that the source (calibration/quantization techniques) maintains the target (model accuracy) via specific mechanisms (adjusting scales/offsets). The intended_fact mirrors this exact relationship. The explanation correctly identifies that this addresses a gap regarding numerical precision reduction without degradation, relying on general knowledge which is permitted. No reversal of endpoints occurred; 'techniques' remains the agent and 'accuracy' remains the preserved property. The source_context mentions quantization reducing memory requirements after training, which is consistent with the link's claim about post-training calibration/quantization-aware training occurring after the main training phase (implied by 'after training' in context), though the specific mechanism of preserving accuracy via distribution maintenance is a general fact not explicitly detailed in the provided text chunk but allowed as general knowledge. No case-specific unknowns are violated.",
+        "suggested_correction": null
+      },
+      "link_reading": "The source 'technique such a post training calibration or quantization aware training' preserves the target 'model accuracy' by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The proposed link connects 'techniques such as post-training calibration...' to 'model accuracy'. However, there is no established path connecting this specific source concept to the seed ('quantization') or the chapter's core explanatory chain within the provided context. The rejection stage was 'connectivity', meaning the assertion does not answer the seed's original gap regarding how quantization specifically functions in this small transformer context. Introducing new concepts like 'post-training calibration' without a defined link to the seed violates the constraint that endpoints must be standalone concepts connected to the seed's explanation chain."
+      }
+    },
+    {
+      "intended_fact": "Retrieval augmented generation involves a retrieval component that identifies relevant external documents based on query similarity before passing them to the generation component.",
+      "confidence": 0.95,
+      "reason": "General knowledge fills the gap regarding the 'specific workflow' by introducing embedding models and similarity search as standard mechanisms for determining relevance, which is essential to avoid hallucination.",
+      "gap_ids": [
+        "seed_candidate_0010_gap_002"
+      ],
+      "added_knowledge": "embedding model, similarity search, retrieval component, generation component, query-document matching",
+      "id": "candidate_0009",
+      "seed_id": "seed_006",
+      "source": "retrieval augmented generation",
+      "target": "use of external document",
+      "relation": "employs_mechanism_for",
+      "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "conditions": "The intended fact states that RAG involves a retrieval component identifying relevant documents. This identifies the specific workflow (retrieval) employed by the process (RAG). The predicate 'employs_mechanism_for' captures this functional relationship where the process utilizes a specific mechanism (the act of using external documents via retrieval) to achieve its effect (enhanced reasoning/answering questions).",
+      "modality": "explicit",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the system determine which external documents are relevant to a specific query?",
+          "assumed_knowledge": "The use of embedding models and similarity search algorithms to match queries with document contents.",
+          "why_useful": "The source implies an ability to 'use' documents but does not explain the selection criteria. Understanding the retrieval mechanism is essential to grasp how the system avoids hallucination or irrelevant information.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0010_gap_002",
+          "seed_candidate_id": "seed_candidate_0010",
+          "concept": "retrieval augmented generation",
+          "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+        }
+      ],
+      "gap_analysis": "The source defines RAG as a method enabling document use but lacks details on the retrieval workflow (embedding/similarity) and integration mechanism. The explanation must introduce these general architectural components to answer the specific gaps regarding 'how' documents are selected and integrated, without claiming the small transformer in the text necessarily implements them specifically.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_005",
+          "source": "retrieval augmented generation",
+          "relation": "enables",
+          "target": "use of external document",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "when answering questions",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The reference chunk_001 explicitly states that 'retrieval-augmented generation lets it use external documents when answering questions.' The candidate assertion claims that 'retrieval augmented generation' employs the 'use of external document' as a mechanism. This is a direct paraphrase of the functional relationship described in chunk_001, where RAG utilizes external documents to achieve its effect (answering questions). No outside knowledge is required; the meaning, direction, and scope are identical.",
+      "original_proposal": {
+        "source": {
+          "name": "retrieval augmented generation",
+          "definition": "a method that lets a system use external documents when answering questions",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "use of external document",
+          "definition": "the act of utilizing external documents when answering questions",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "employs_mechanism_for",
+        "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "conditions": "The intended fact states that RAG involves a retrieval component identifying relevant documents. This identifies the specific workflow (retrieval) employed by the process (RAG). The predicate 'employs_mechanism_for' captures this functional relationship where the process utilizes a specific mechanism (the act of using external documents via retrieval) to achieve its effect (enhanced reasoning/answering questions).",
+        "modality": "explicit",
+        "intended_fact": "Retrieval augmented generation involves a retrieval component that identifies relevant external documents based on query similarity before passing them to the generation component.",
+        "confidence": 0.95,
+        "reason": "General knowledge fills the gap regarding the 'specific workflow' by introducing embedding models and similarity search as standard mechanisms for determining relevance, which is essential to avoid hallucination.",
+        "gap_ids": [
+          "seed_candidate_0010_gap_002"
+        ],
+        "added_knowledge": "embedding model, similarity search, retrieval component, generation component, query-document matching"
+      },
+      "source_mention": {
+        "name": "retrieval augmented generation",
+        "definition": "a method that lets a system use external documents when answering questions",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "use of external document",
+        "definition": "the act of utilizing external documents when answering questions",
+        "kind": "event",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "employs_mechanism_for",
+      "surface_target": "use of external document",
+      "representation_check": {
+        "link_reading": "Retrieval augmented generation employs the use of external document as a mechanism for achieving enhanced reasoning or answering questions.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The link reading strictly follows the SOURCE-to-TARGET relation defined in the data: 'retrieval augmented generation' (SOURCE) employs 'use of external document' (TARGET). The direction is correct as RAG is the process utilizing the mechanism. The explanation correctly identifies that general knowledge fills a gap regarding the specific workflow without inventing facts, aligning with the source context which states RAG lets systems use external documents. No reversal, scope change, or disagreement exists between the intended fact, explanation, and represented assertion.",
+        "suggested_correction": null
+      },
+      "link_reading": "Retrieval augmented generation employs the use of external document as a mechanism for achieving enhanced reasoning or answering questions.",
+      "explanation_context": [],
+      "novelty_references": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "novelty": {
+        "status": "duplicate",
+        "evidence_ids": [
+          "chunk_001"
+        ],
+        "related_reference_ids": [],
+        "reason": "The reference chunk_001 explicitly states that 'retrieval-augmented generation lets it use external documents when answering questions.' The candidate assertion claims that 'retrieval augmented generation' employs the 'use of external document' as a mechanism. This is a direct paraphrase of the functional relationship described in chunk_001, where RAG utilizes external documents to achieve its effect (answering questions). No outside knowledge is required; the meaning, direction, and scope are identical."
+      },
+      "rejection_stage": "novelty",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The intended fact describes a specific internal workflow (identifying relevant documents via similarity before passing to generation). The source context only supports the high-level functional claim that RAG 'lets it use external documents'. Asserting the specific retrieval mechanism (similarity search) as an established fact for this case contradicts the instruction to keep unknown case-specific information unknown and treats a possible approach as an assertion. The rejection is valid; no correction exists that preserves the intended gap-filling without inventing unverified architectural details."
+      }
+    },
+    {
+      "intended_fact": "The integration process combines the retrieved document content with the original prompt to condition the language model's output.",
+      "confidence": 0.95,
+      "reason": "General knowledge fills the gap regarding 'integrating their content' by describing the fusion mechanism where retrieved text becomes part of the context window for generation.",
+      "gap_ids": [
+        "seed_candidate_0010_gap_001"
+      ],
+      "added_knowledge": "fusion mechanism, prompt conditioning, context window",
+      "id": "candidate_0010",
+      "seed_id": "seed_006",
+      "source": "retrieval augmented generation",
+      "target": "use of external document",
+      "relation": "employs_mechanism_for",
+      "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "conditions": "The intended fact describes the integration process combining retrieved content with the prompt. This entire workflow constitutes the 'use of external document' mechanism employed by RAG. The predicate 'employs_mechanism_for' correctly links the high-level process (RAG) to the specific operational mechanism (integrating/using external documents) described in the fact.",
+      "modality": "explicit",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the specific workflow for retrieving relevant documents and integrating their content into the model's generation process?",
+          "assumed_knowledge": "The existence of a retrieval component (e.g., vector search) that precedes the generation component, and a fusion mechanism to combine retrieved text with the prompt.",
+          "why_useful": "The source states RAG 'lets it use external documents' but does not describe the architectural flow. Without knowing how retrieval feeds into generation, the claim of 'enhanced reasoning' remains abstract.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0010_gap_001",
+          "seed_candidate_id": "seed_candidate_0010",
+          "concept": "retrieval augmented generation",
+          "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+        }
+      ],
+      "gap_analysis": "The source defines RAG as a method enabling document use but lacks details on the retrieval workflow (embedding/similarity) and integration mechanism. The explanation must introduce these general architectural components to answer the specific gaps regarding 'how' documents are selected and integrated, without claiming the small transformer in the text necessarily implements them specifically.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_005",
+          "source": "retrieval augmented generation",
+          "relation": "enables",
+          "target": "use of external document",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "when answering questions",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The reference chunk_001 states that 'retrieval-augmented generation lets it use external documents when answering questions.' The candidate assertion describes RAG employing the 'use of external document' mechanism, specifically noting the integration process. This is semantically equivalent to the statement in chunk_001, which defines the same functional relationship (RAG using external docs) under the same conditions (answering questions). The additional explanatory text in the candidate's conditions does not add new subject-matter premises but elaborates on the existing fact.",
+      "original_proposal": {
+        "source": {
+          "name": "retrieval augmented generation",
+          "definition": "a method that lets a system use external documents when answering questions",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "use of external document",
+          "definition": "the act of utilizing external documents when answering questions",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "employs_mechanism_for",
+        "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "conditions": "The intended fact describes the integration process combining retrieved content with the prompt. This entire workflow constitutes the 'use of external document' mechanism employed by RAG. The predicate 'employs_mechanism_for' correctly links the high-level process (RAG) to the specific operational mechanism (integrating/using external documents) described in the fact.",
+        "modality": "explicit",
+        "intended_fact": "The integration process combines the retrieved document content with the original prompt to condition the language model's output.",
+        "confidence": 0.95,
+        "reason": "General knowledge fills the gap regarding 'integrating their content' by describing the fusion mechanism where retrieved text becomes part of the context window for generation.",
+        "gap_ids": [
+          "seed_candidate_0010_gap_001"
+        ],
+        "added_knowledge": "fusion mechanism, prompt conditioning, context window"
+      },
+      "source_mention": {
+        "name": "retrieval augmented generation",
+        "definition": "a method that lets a system use external documents when answering questions",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "use of external document",
+        "definition": "the act of utilizing external documents when answering questions",
+        "kind": "event",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "employs_mechanism_for",
+      "surface_target": "use of external document",
+      "representation_check": {
+        "link_reading": "retrieval augmented generation employs the use of external document as a mechanism for achieving an effect.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link establishes that 'retrieval augmented generation' (SOURCE) employs 'use of external document' (TARGET). The intended fact describes the integration process where retrieved content is combined with a prompt to condition output. This description aligns with the definition of 'use of external document' provided in the endpoint descriptions. The explanation correctly identifies this fusion mechanism as filling the gap regarding how RAG utilizes external documents. No reversal, scope change, or disagreement exists between the intended fact, the link representation, and the explanation. The source context explicitly supports the claim that RAG lets systems use external documents.",
+        "suggested_correction": null
+      },
+      "link_reading": "retrieval augmented generation employs the use of external document as a mechanism for achieving an effect.",
+      "explanation_context": [],
+      "novelty_references": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "novelty": {
+        "status": "duplicate",
+        "evidence_ids": [
+          "chunk_001"
+        ],
+        "related_reference_ids": [],
+        "reason": "The reference chunk_001 states that 'retrieval-augmented generation lets it use external documents when answering questions.' The candidate assertion describes RAG employing the 'use of external document' mechanism, specifically noting the integration process. This is semantically equivalent to the statement in chunk_001, which defines the same functional relationship (RAG using external docs) under the same conditions (answering questions). The additional explanatory text in the candidate's conditions does not add new subject-matter premises but elaborates on the existing fact."
+      },
+      "rejection_stage": "novelty",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The intended fact asserts that the specific 'integration process' combines content to condition output. The source context supports only the general capacity to use documents, not the specific fusion mechanism or conditioning step. Asserting this specific workflow as a fact invents omitted actions and upgrades a possible implementation detail into an assertion of actual usage. The rejection is valid; no correction exists that validates this specific claim against the provided text."
+      }
+    },
+    {
+      "intended_fact": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+      "confidence": 0.95,
+      "reason": "General knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+      "gap_ids": [
+        "seed_candidate_0013_gap_001"
+      ],
+      "added_knowledge": "format requirements for retrieval systems",
+      "id": "candidate_0011",
+      "seed_id": "seed_007",
+      "source": "use of external document",
+      "target": "retrieval system indexing format requirement",
+      "relation": "inhibits",
+      "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "conditions": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+      "modality": "general knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?",
+          "assumed_knowledge": "Practical implementation details regarding document indexing formats and retrieval latency impacts on response time.",
+          "why_useful": "The source treats 'using external documents' as a straightforward capability. Explaining potential constraints clarifies the operational reality versus the idealized function described.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0013_gap_001",
+          "seed_candidate_id": "seed_candidate_0013",
+          "concept": "use of external document",
+          "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG."
+        }
+      ],
+      "gap_analysis": "The source text describes 'use of external document' as a functional outcome enabled by RAG but omits specific constraints on document types, formats, or latency impacts. The gap requires distinguishing between the idealized capability and practical implementation limits.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_005",
+          "source": "retrieval augmented generation",
+          "relation": "enables",
+          "target": "use of external document",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "when answering questions",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: background_representation_checker failed for candidate_0011 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field: meaning_matches (value: false) vs. Field: scope_preserved (value: true). The semantic analysis in the 'reason' field explicitly identifies a 'clear logical reversal' and 'reversed causality' between the link reading and the intended fact. This fundamental disagreement on the core meaning implies that the scope of the claim is not preserved; therefore, setting 'scope_preserved' to true contradicts the detailed reasoning which concludes the representation is invalid.",
+      "original_proposal": {
+        "source": {
+          "name": "use of external document",
+          "definition": "the act of utilizing external documents when answering questions",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "retrieval system indexing format requirements",
+          "definition": "constraints imposed by the retrieval system regarding the specific vector or text formats required for document indexing",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "inhibits",
+        "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "conditions": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+        "modality": "general knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+        "intended_fact": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+        "confidence": 0.95,
+        "reason": "General knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+        "gap_ids": [
+          "seed_candidate_0013_gap_001"
+        ],
+        "added_knowledge": "format requirements for retrieval systems"
+      },
+      "source_mention": {
+        "name": "use of external document",
+        "definition": "the act of utilizing external documents when answering questions",
+        "kind": "event",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "retrieval system indexing format requirements",
+        "definition": "constraints imposed by the retrieval system regarding the specific vector or text formats required for document indexing",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "inhibits",
+      "surface_target": "retrieval system indexing format requirements"
+    },
+    {
+      "intended_fact": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+      "confidence": 0.95,
+      "reason": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+      "gap_ids": [
+        "seed_candidate_0013_gap_001"
+      ],
+      "added_knowledge": "latency considerations for retrieval",
+      "id": "candidate_0012",
+      "seed_id": "seed_007",
+      "source": "use of external document",
+      "target": "retrieval latency",
+      "relation": "inhibits",
+      "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "conditions": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+      "modality": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?",
+          "assumed_knowledge": "Practical implementation details regarding document indexing formats and retrieval latency impacts on response time.",
+          "why_useful": "The source treats 'using external documents' as a straightforward capability. Explaining potential constraints clarifies the operational reality versus the idealized function described.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0013_gap_001",
+          "seed_candidate_id": "seed_candidate_0013",
+          "concept": "use of external document",
+          "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG."
+        }
+      ],
+      "gap_analysis": "The source text describes 'use of external document' as a functional outcome enabled by RAG but omits specific constraints on document types, formats, or latency impacts. The gap requires distinguishing between the idealized capability and practical implementation limits.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_005",
+          "source": "retrieval augmented generation",
+          "relation": "enables",
+          "target": "use of external document",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "origin": "document",
+          "conditions": "when answering questions",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: background_representation_checker failed for candidate_0012 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field Conflict: The field `meaning_matches` is set to `false`, and `direction_valid` is `false`. However, the `reason` explicitly states that the 'literal reading of the link defines... usage reducing latency' while the 'intended fact states that retrieval latency limits the use'. This implies the reviewer believes the *link_reading* (the literal text) is incorrect because it reverses causality. The conflict arises because the field flags (`meaning_matches: false`) correctly identify a mismatch between the literal link and the intended fact, but the `explanation_matches` field is set to `true` (implied by the text 'explanation provided in the data supports the intended fact's logic'). Wait, looking closer at the input data: `explanation_matches` is explicitly `false`. The reason states 'the explanation provided... supports the intended fact's logic, which contradicts the link reading'. This creates a semantic conflict: if the explanation supports the intended fact (which is correct), and the link reading is wrong, then the explanation *should* match the intended fact, not the link reading. The field `explanation_matches` likely refers to whether the explanation matches the *link_reading*. If so, `false` is correct. However, the prompt asks to check internal agreement. Let's re-evaluate the specific conflict requested: 'Identify a conflict only when the review's own final reasoning disagrees with its fields or other conclusions.'\n\nRe-analysis of the provided data:\n1. `link_reading`:; The use of external documents reduces retrieval latency.",
+      "original_proposal": {
+        "source": {
+          "name": "use of external document",
+          "definition": "the act of utilizing external documents when answering questions",
+          "kind": "event",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "retrieval latency",
+          "definition": "network and I/O delays introduced by fetching and processing external data",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "inhibits",
+        "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "conditions": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+        "modality": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+        "intended_fact": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+        "confidence": 0.95,
+        "reason": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+        "gap_ids": [
+          "seed_candidate_0013_gap_001"
+        ],
+        "added_knowledge": "latency considerations for retrieval"
+      },
+      "source_mention": {
+        "name": "use of external document",
+        "definition": "the act of utilizing external documents when answering questions",
+        "kind": "event",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "retrieval latency",
+        "definition": "network and I/O delays introduced by fetching and processing external data",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "inhibits",
+      "surface_target": "retrieval latency"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source mentions the function (processing text) but omits the internal computational steps required to understand that function.",
+        "chapter_topic": "Self-attention mechanism for text processing",
+        "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+            "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+            "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0002_gap_001",
+            "seed_candidate_id": "seed_candidate_0002",
+            "concept": "self attention",
+            "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?"
+      },
+      "proposal": {
+        "gap_analysis": "The source context states that self-attention is the mechanism for processing text but does not detail the specific mathematical operations (query, key, value vectors, softmax) used to compute relationships. The gap requires explaining the internal computational steps of the mechanism.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "A mechanism used by a small transformer to process text.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "text",
+              "definition": "The input data processed by self-attention.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "participates_in",
+            "relation_definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+            "conditions": "The sentence describes self-attention computing relationships between words in a sequence. The 'sequence' constitutes the 'text'. Therefore, the mechanism (self attention) participates in the processing of the text. The predicate 'participates_in' is chosen because self-attention is an active process within the broader event of processing text, rather than a structural component ('part_of') or a mere association.",
+            "modality": "conceptual",
+            "intended_fact": "Self-attention computes relationships between words in a sequence by calculating attention scores based on query and key vector interactions, normalizing these scores via softmax, and generating contextual representations through weighted sums of value vectors.",
+            "confidence": 0.95,
+            "reason": "This fact supplies the missing mathematical mechanism (Q-K-V operations) required to answer the gap regarding *how* relationships are computed, using well-established general knowledge about transformer architecture compatible with the chapter's topic.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "The specific algorithmic steps of self-attention (matrix multiplication of Q, K, V and softmax normalization). This knowledge is general explanatory information not explicitly detailed in the source text but necessary to explain the 'how' of the mechanism."
+          }
+        ],
+        "reason": "The seed gap asks for the specific computation method. The source only mentions the function ('process text'). General knowledge fills this by describing the Q-K-V-softmax process without contradicting the source or inventing case-specific details not present in the text."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source context states that self-attention is the mechanism for processing text but does not detail the specific mathematical operations (query, key, value vectors, softmax) used to compute relationships. The gap requires explaining the internal computational steps of the mechanism.",
+        "facts": [
+          {
+            "intended_fact": "Self-attention computes relationships between words in a sequence by calculating attention scores based on query and key vector interactions, normalizing these scores via softmax, and generating contextual representations through weighted sums of value vectors.",
+            "confidence": 0.95,
+            "reason": "This fact supplies the missing mathematical mechanism (Q-K-V operations) required to answer the gap regarding *how* relationships are computed, using well-established general knowledge about transformer architecture compatible with the chapter's topic.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "The specific algorithmic steps of self-attention (matrix multiplication of Q, K, V and softmax normalization). This knowledge is general explanatory information not explicitly detailed in the source text but necessary to explain the 'how' of the mechanism."
+          }
+        ],
+        "reason": "The seed gap asks for the specific computation method. The source only mentions the function ('process text'). General knowledge fills this by describing the Q-K-V-softmax process without contradicting the source or inventing case-specific details not present in the text."
+      },
+      "candidate_ids": [
+        "candidate_0001"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0001",
+          "response": {
+            "corrected_fact": null,
+            "reason": "No responsible correction exists for the original knowledge gap because the intended fact describes specific algorithmic steps (Q-K-V matrix multiplications, softmax) that are not present in the source context. The instructions state: 'Distinguish general explanatory knowledge from unknown choices or measurements in the particular case' and 'The source context establishes what needs explaining, not a boundary on what you may know.' However, the rejection reason explicitly states the claim itself was wrong due to semantic invalidity ('participates_in' is incorrect). Since the original fact relies on external general knowledge not supported by the text, and the specific predicate choice was rejected as semantically invalid for this context, adding the detailed algorithmic steps would constitute 'inventing an omitted action' or broadening the concept beyond what the source supports. The gap asks 'How', but the source only says it 'processes'. Providing the mathematical 'how' violates the constraint to distinguish general knowledge from case-specific unknowns unless explicitly permitted by the text, which it is not. Therefore, the fact cannot be corrected to a supported assertion without violating the evidence constraints."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_002",
+        "concept": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source describes the goal (improving predictions) but assumes knowledge of the optimization algorithm (gradient descent) that achieves this.",
+        "chapter_topic": "Backpropagation for prediction improvement during training",
+        "document_coverage": "The source states that backpropagation is used to improve predictions during training.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+            "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+            "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0004_gap_001",
+            "seed_candidate_id": "seed_candidate_0004",
+            "concept": "backpropagation",
+            "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+          }
+        ],
+        "background_question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explicitly detail the role of gradients in weight adjustment. General knowledge fills this gap by defining gradients as partial derivatives indicating the direction and magnitude for minimizing loss.",
+        "proposals": [
+          {
+            "source": {
+              "name": "prediction error",
+              "definition": "The difference between predicted outputs and actual values that the model aims to minimize.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "backpropagation",
+              "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "causes",
+            "relation_definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+            "conditions": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+            "modality": "explicit",
+            "intended_fact": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+            "confidence": 0.95,
+            "reason": "This fact addresses the identified gap regarding 'how' predictions are improved by introducing the mechanism of gradient descent, which is standard general knowledge compatible with the chapter's topic on training processes.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "mechanism of gradient descent and partial derivatives in weight updates"
+          }
+        ],
+        "reason": "The seed concept 'backpropagation' is linked to the gap regarding the specific role of gradients. The source text mentions the outcome (improving predictions) but omits the mechanism (gradients). Using general knowledge, I assert that gradients function as partial derivatives guiding weight updates. This creates a direct connection answering the original question without inventing unsupported claims or contradicting the source."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explicitly detail the role of gradients in weight adjustment. General knowledge fills this gap by defining gradients as partial derivatives indicating the direction and magnitude for minimizing loss.",
+        "facts": [
+          {
+            "intended_fact": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+            "confidence": 0.95,
+            "reason": "This fact addresses the identified gap regarding 'how' predictions are improved by introducing the mechanism of gradient descent, which is standard general knowledge compatible with the chapter's topic on training processes.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "mechanism of gradient descent and partial derivatives in weight updates"
+          }
+        ],
+        "reason": "The seed concept 'backpropagation' is linked to the gap regarding the specific role of gradients. The source text mentions the outcome (improving predictions) but omits the mechanism (gradients). Using general knowledge, I assert that gradients function as partial derivatives guiding weight updates. This creates a direct connection answering the original question without inventing unsupported claims or contradicting the source."
+      },
+      "candidate_ids": [
+        "candidate_0002"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0002",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The proposed relation 'causes' between 'prediction error' and 'backpropagation' is invalid because prediction error does not cause the process of backpropagation; rather, backpropagation is the mechanism used to compute gradients based on the error. The intended fact describes the nature of gradients (partial derivatives), but the current structure incorrectly attributes this description as a causal event produced by the error itself leading to backpropagation. A sound correction would require redefining the source/target/relation to accurately reflect that 'prediction error' provides the signal for 'gradient computation', which is then used in 'backpropagation'. Since the original claim conflates the input signal (error) with the algorithmic process (backpropagation) via an invalid causal predicate, no simple factual sentence can be extracted without fundamentally restructuring the assertion to match standard ML definitions. The gap asks for the role of gradients, but the proposed link fails to represent this correctly."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_003",
+        "concept": "regularization",
+        "definition": "A technique applied to machine learning models.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source claims regularization 'helps' generalization but does not specify which constraints or noise injections are applied.",
+        "chapter_topic": "Regularization for generalization beyond training examples",
+        "document_coverage": "The source states that regularization helps the model generalize beyond training examples.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+            "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+            "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0007_gap_001",
+            "seed_candidate_id": "seed_candidate_0007",
+            "concept": "regularization",
+            "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+          }
+        ],
+        "background_question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that regularization helps generalization but does not specify the implementation mechanisms. General knowledge fills this gap by identifying dropout and weight decay as standard techniques.",
+        "proposals": [
+          {
+            "source": {
+              "name": "regularization",
+              "definition": "A technique applied to machine learning models.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "generalization beyond training example",
+              "definition": "The ability of a model to perform well on unseen data.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "enables",
+            "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+            "conditions": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+            "modality": null,
+            "intended_fact": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+            "confidence": 0.95,
+            "reason": "General knowledge confirms these are the primary methods for regularization; source text only mentions the function (generalization) not the method.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Specific implementation details (dropout, weight decay) and their purpose (preventing overfitting)."
+          },
+          {
+            "source": {
+              "name": "dropout",
+              "definition": "A specific regularization technique involving randomly deactivating neurons.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "generalization beyond training example",
+              "definition": "The ability of a model to perform well on unseen data.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "enables",
+            "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+            "conditions": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+            "modality": null,
+            "intended_fact": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines the mechanism of dropout; source text lacks this detail.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Mechanism of action for dropout."
+          },
+          {
+            "source": {
+              "name": "weight decay",
+              "definition": "A specific regularization technique involving adding a penalty term to the loss function.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "generalization beyond training example",
+              "definition": "The ability of a model to perform well on unseen data.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "enables",
+            "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+            "conditions": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+            "modality": null,
+            "intended_fact": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines the mechanism of weight decay (L2 regularization); source text lacks this detail.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Mechanism of action for weight decay."
+          }
+        ],
+        "reason": "The seed concept 'regularization' is linked to 'generalization beyond training example' in the source. The gap asks for specific techniques. I added facts about dropout and weight decay using general knowledge to explain *how* regularization prevents overfitting, as the source only stated *that* it helps generalize."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that regularization helps generalization but does not specify the implementation mechanisms. General knowledge fills this gap by identifying dropout and weight decay as standard techniques.",
+        "facts": [
+          {
+            "intended_fact": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+            "confidence": 0.95,
+            "reason": "General knowledge confirms these are the primary methods for regularization; source text only mentions the function (generalization) not the method.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Specific implementation details (dropout, weight decay) and their purpose (preventing overfitting)."
+          },
+          {
+            "intended_fact": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines the mechanism of dropout; source text lacks this detail.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Mechanism of action for dropout."
+          },
+          {
+            "intended_fact": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines the mechanism of weight decay (L2 regularization); source text lacks this detail.",
+            "gap_ids": [
+              "seed_candidate_0007_gap_001"
+            ],
+            "added_knowledge": "Mechanism of action for weight decay."
+          }
+        ],
+        "reason": "The seed concept 'regularization' is linked to 'generalization beyond training example' in the source. The gap asks for specific techniques. I added facts about dropout and weight decay using general knowledge to explain *how* regularization prevents overfitting, as the source only stated *that* it helps generalize."
+      },
+      "candidate_ids": [
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0003",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The original claim introduces specific techniques (dropout, weight decay) and their purpose (preventing overfitting) which are not present in the source text. The source only states 'Regularization helps it generalize'. Adding these specific methods constitutes inventing omitted actions and broadening the concept beyond the provided evidence. No correction exists that preserves the original knowledge gap while adhering to the constraint of not inventing details absent from the source."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0004",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The original claim specifies a mechanism ('randomly deactivating neurons') and a specific outcome ('reduce co-adaptation'). The source text mentions 'Regularization' generally but does not name 'dropout' or describe its internal mechanism. Asserting that dropout enables generalization via this specific mechanism adds unverified causal details not present in the source. A correction is impossible without violating the rule against inventing omitted actions or upgrading general claims to specific ones."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0005",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The original claim specifies a mechanism ('adding a penalty term') for 'weight decay'. The source text mentions 'Regularization' generally but does not name 'weight decay' or describe its internal mechanism. Asserting that weight decay enables generalization via this specific mechanism adds unverified causal details not present in the source. A correction is impossible without violating the rule against inventing omitted actions."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_004",
+        "concept": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source describes the property of generalization but assumes the reader understands how this property is empirically verified.",
+        "chapter_topic": "Regularization for generalization beyond training examples",
+        "document_coverage": "The source defines generalization as the ability to perform well on unseen data and notes it is enabled by regularization.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What metrics or evaluation protocols are typically used to measure performance on 'unseen data' versus training data?",
+            "assumed_knowledge": "The distinction between train/validation/test splits, perplexity scores, or accuracy metrics calculated on held-out datasets.",
+            "why_useful": "Understanding how generalization is quantified helps distinguish between a model that merely memorizes and one that truly learns patterns.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0008_gap_001",
+            "seed_candidate_id": "seed_candidate_0008",
+            "concept": "generalization beyond training example",
+            "document_coverage": "The source defines generalization as the ability to perform well on unseen data and notes it is enabled by regularization."
+          }
+        ],
+        "background_question": "What metrics or evaluation protocols are typically used to measure performance on 'unseen data' versus training data?"
+      },
+      "proposal": {
+        "gap_analysis": "The source defines generalization as performance on unseen data enabled by regularization but lacks specific metrics or evaluation protocols. General knowledge fills this gap by identifying standard practices like train/validation/test splits and accuracy/perplexity scores.",
+        "proposals": [
+          {
+            "source": {
+              "name": "generalization beyond training example",
+              "definition": "The ability of a model to perform well on unseen data.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "performance metrics calculated on held-out datasets distinct from the training set",
+              "definition": "Quantitative measures derived from test or validation splits used to evaluate a model's capability on unseen data.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "quantified_by",
+            "relation_definition": "SOURCE is measured, assessed, or quantified using TARGET; TARGET provides the numerical value or metric for SOURCE.",
+            "conditions": "The fact states that generalization capability (a property) is determined by specific evaluation metrics on unseen data. The predicate 'quantified_by' captures this measurement relationship precisely without implying causation or parthood.",
+            "modality": "assertion",
+            "intended_fact": "A model's ability to generalize beyond training examples is quantified using performance metrics calculated on held-out datasets distinct from the training set.",
+            "confidence": 0.95,
+            "reason": "Standard machine learning practice distinguishes generalization capability via evaluation on unseen data (test/validation splits) rather than training data alone.",
+            "gap_ids": [
+              "seed_candidate_0008_gap_001"
+            ],
+            "added_knowledge": "Specific metrics and evaluation protocols (e.g., accuracy, perplexity, train/test split methodology). This is general explanatory knowledge required to answer the gap about how generalization is measured."
+          }
+        ],
+        "reason": "The seed concept 'generalization beyond training example' requires an explanation of how this property is measured. The source text mentions the definition but not the metrics. General knowledge supplies the standard evaluation protocols (held-out datasets, specific scores) to complete the explanation without contradicting the source or inventing case-specific choices."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source defines generalization as performance on unseen data enabled by regularization but lacks specific metrics or evaluation protocols. General knowledge fills this gap by identifying standard practices like train/validation/test splits and accuracy/perplexity scores.",
+        "facts": [
+          {
+            "intended_fact": "A model's ability to generalize beyond training examples is quantified using performance metrics calculated on held-out datasets distinct from the training set.",
+            "confidence": 0.95,
+            "reason": "Standard machine learning practice distinguishes generalization capability via evaluation on unseen data (test/validation splits) rather than training data alone.",
+            "gap_ids": [
+              "seed_candidate_0008_gap_001"
+            ],
+            "added_knowledge": "Specific metrics and evaluation protocols (e.g., accuracy, perplexity, train/test split methodology). This is general explanatory knowledge required to answer the gap about how generalization is measured."
+          }
+        ],
+        "reason": "The seed concept 'generalization beyond training example' requires an explanation of how this property is measured. The source text mentions the definition but not the metrics. General knowledge supplies the standard evaluation protocols (held-out datasets, specific scores) to complete the explanation without contradicting the source or inventing case-specific choices."
+      },
+      "candidate_ids": [
+        "candidate_0006"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0006",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The candidate is rejected because the target concept 'performance metrics calculated on held-out datasets distinct from the training set' resolves to the same canonical concept as the source 'generalization beyond training example' under the provided schema constraints. The intended fact attempts to quantify a property using an entity that is semantically identical to the property's definition in this context, violating the requirement for distinct endpoints. No responsible correction exists that separates these concepts without inventing new entities or contradicting the provided definitions."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_005",
+        "concept": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source provides functional definitions but omits the underlying technical principles of how precision reduction maintains accuracy and specifically reduces storage size.",
+        "chapter_topic": "Quantization for reducing memory requirements after training",
+        "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What specific mechanisms allow reducing numerical precision (e.g., from 32-bit to 8-bit) without causing significant degradation in model accuracy?",
+            "assumed_knowledge": "The existence of quantization-aware training or post-training calibration techniques that preserve distributional properties despite lower bit-widths.",
+            "why_useful": "The source claims memory reduction occurs 'without significant accuracy loss,' but does not explain the technical bridge between precision reduction and maintained performance. Understanding this mechanism clarifies how the optimization is viable.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0009_gap_001",
+            "seed_candidate_id": "seed_candidate_0009",
+            "concept": "quantization",
+            "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+          },
+          {
+            "question": "How exactly does reducing bit-width translate to a reduction in memory footprint (e.g., via contiguous storage of weights vs. sparse representations)?",
+            "assumed_knowledge": "The relationship between data type size (bits per parameter) and total model memory consumption.",
+            "why_useful": "The source states quantization 'reduces memory requirements' but treats the magnitude of this reduction as a given fact. Explaining the storage mechanics validates the claim and distinguishes it from other optimization methods like pruning.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0009_gap_002",
+            "seed_candidate_id": "seed_candidate_0009",
+            "concept": "quantization",
+            "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+          }
+        ],
+        "background_question": "What specific mechanisms allow reducing numerical precision (e.g., from 32-bit to 8-bit) without causing significant degradation in model accuracy?\nHow exactly does reducing bit-width translate to a reduction in memory footprint (e.g., via contiguous storage of weights vs. sparse representations)?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text asserts that quantization reduces memory requirements after training but lacks specific details on the mechanism (e.g., bit-width reduction, contiguous storage) or the technical safeguards (e.g., calibration, distribution preservation) that prevent accuracy degradation. The explanation must bridge the gap between 'reducing precision' and 'maintained performance' using general knowledge.",
+        "proposals": [
+          {
+            "source": {
+              "name": "quantization",
+              "definition": "a process that reduces memory requirements after training",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "memory requirement",
+              "definition": "the amount of memory needed by a process",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "reduces",
+            "relation_definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+            "conditions": "by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+            "modality": null,
+            "intended_fact": "Quantization reduces memory requirements by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+            "confidence": 0.95,
+            "reason": "This fact directly addresses gap_002 by explaining the physical mechanism (bit-width reduction) linking numerical precision to memory footprint, using general knowledge about data representation.",
+            "gap_ids": [
+              "seed_candidate_0009_gap_002"
+            ],
+            "added_knowledge": "The specific relationship between bit-width and storage size (4x reduction for 8-bit vs 32-bit) and the concept of contiguous memory layout."
+          },
+          {
+            "source": {
+              "name": "techniques such as post-training calibration or quantization-aware training",
+              "definition": "methods that preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "model accuracy",
+              "definition": "the degree to which a model's predictions match actual values",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "preserves",
+            "relation_definition": "SOURCE maintains the state or magnitude of TARGET, preventing significant degradation.",
+            "conditions": "by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+            "modality": null,
+            "intended_fact": "Techniques such as post-training calibration or quantization-aware training preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+            "confidence": 0.9,
+            "reason": "This fact addresses gap_001 by explaining how numerical precision is reduced without significant degradation, utilizing general knowledge about calibration methods.",
+            "gap_ids": [
+              "seed_candidate_0009_gap_001"
+            ],
+            "added_knowledge": "The role of calibration in preserving distributional properties during quantization."
+          }
+        ],
+        "reason": "The provided facts explain the 'how' (storage mechanics) and 'why it works' (calibration/distribution preservation) behind the source's claim, filling the identified gaps without contradicting the chapter or inventing unsupported case-specific details."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text asserts that quantization reduces memory requirements after training but lacks specific details on the mechanism (e.g., bit-width reduction, contiguous storage) or the technical safeguards (e.g., calibration, distribution preservation) that prevent accuracy degradation. The explanation must bridge the gap between 'reducing precision' and 'maintained performance' using general knowledge.",
+        "facts": [
+          {
+            "intended_fact": "Quantization reduces memory requirements by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+            "confidence": 0.95,
+            "reason": "This fact directly addresses gap_002 by explaining the physical mechanism (bit-width reduction) linking numerical precision to memory footprint, using general knowledge about data representation.",
+            "gap_ids": [
+              "seed_candidate_0009_gap_002"
+            ],
+            "added_knowledge": "The specific relationship between bit-width and storage size (4x reduction for 8-bit vs 32-bit) and the concept of contiguous memory layout."
+          },
+          {
+            "intended_fact": "Techniques such as post-training calibration or quantization-aware training preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+            "confidence": 0.9,
+            "reason": "This fact addresses gap_001 by explaining how numerical precision is reduced without significant degradation, utilizing general knowledge about calibration methods.",
+            "gap_ids": [
+              "seed_candidate_0009_gap_001"
+            ],
+            "added_knowledge": "The role of calibration in preserving distributional properties during quantization."
+          }
+        ],
+        "reason": "The provided facts explain the 'how' (storage mechanics) and 'why it works' (calibration/distribution preservation) behind the source's claim, filling the identified gaps without contradicting the chapter or inventing unsupported case-specific details."
+      },
+      "candidate_ids": [
+        "candidate_0007",
+        "candidate_0008"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0007",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The assertion 'Quantization reduces memory requirements by decreasing the bit-width...' is fully entailed by the existing reference chunk_001_relation_004 ('quantization' -> 'reduces' -> 'memory requirement'). The additional detail regarding bit-width mechanics (32-bit to 8-bit) is an elaboration of the definition inherent to the concept 'quantization', not new external information required to fill a knowledge gap. Per instructions, do not broaden concepts or invent omitted actions; the core relation is already supported by the source context."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0008",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The proposed link connects 'techniques such as post-training calibration...' to 'model accuracy'. However, there is no established path connecting this specific source concept to the seed ('quantization') or the chapter's core explanatory chain within the provided context. The rejection stage was 'connectivity', meaning the assertion does not answer the seed's original gap regarding how quantization specifically functions in this small transformer context. Introducing new concepts like 'post-training calibration' without a defined link to the seed violates the constraint that endpoints must be standalone concepts connected to the seed's explanation chain."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_006",
+        "concept": "retrieval augmented generation",
+        "definition": "a method that lets a system use external documents when answering questions",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source describes the outcome (using external docs) but assumes knowledge of the retrieval-integration pipeline and relevance scoring mechanisms.",
+        "chapter_topic": "Retrieval-augmented generation for enhanced reasoning",
+        "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What is the specific workflow for retrieving relevant documents and integrating their content into the model's generation process?",
+            "assumed_knowledge": "The existence of a retrieval component (e.g., vector search) that precedes the generation component, and a fusion mechanism to combine retrieved text with the prompt.",
+            "why_useful": "The source states RAG 'lets it use external documents' but does not describe the architectural flow. Without knowing how retrieval feeds into generation, the claim of 'enhanced reasoning' remains abstract.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0010_gap_001",
+            "seed_candidate_id": "seed_candidate_0010",
+            "concept": "retrieval augmented generation",
+            "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+          },
+          {
+            "question": "How does the system determine which external documents are relevant to a specific query?",
+            "assumed_knowledge": "The use of embedding models and similarity search algorithms to match queries with document contents.",
+            "why_useful": "The source implies an ability to 'use' documents but does not explain the selection criteria. Understanding the retrieval mechanism is essential to grasp how the system avoids hallucination or irrelevant information.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0010_gap_002",
+            "seed_candidate_id": "seed_candidate_0010",
+            "concept": "retrieval augmented generation",
+            "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+          }
+        ],
+        "background_question": "What is the specific workflow for retrieving relevant documents and integrating their content into the model's generation process?\nHow does the system determine which external documents are relevant to a specific query?"
+      },
+      "proposal": {
+        "gap_analysis": "The source defines RAG as a method enabling document use but lacks details on the retrieval workflow (embedding/similarity) and integration mechanism. The explanation must introduce these general architectural components to answer the specific gaps regarding 'how' documents are selected and integrated, without claiming the small transformer in the text necessarily implements them specifically.",
+        "proposals": [
+          {
+            "source": {
+              "name": "retrieval augmented generation",
+              "definition": "a method that lets a system use external documents when answering questions",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "use of external document",
+              "definition": "the act of utilizing external documents when answering questions",
+              "kind": "event",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "employs_mechanism_for",
+            "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+            "conditions": "The intended fact states that RAG involves a retrieval component identifying relevant documents. This identifies the specific workflow (retrieval) employed by the process (RAG). The predicate 'employs_mechanism_for' captures this functional relationship where the process utilizes a specific mechanism (the act of using external documents via retrieval) to achieve its effect (enhanced reasoning/answering questions).",
+            "modality": "explicit",
+            "intended_fact": "Retrieval augmented generation involves a retrieval component that identifies relevant external documents based on query similarity before passing them to the generation component.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the 'specific workflow' by introducing embedding models and similarity search as standard mechanisms for determining relevance, which is essential to avoid hallucination.",
+            "gap_ids": [
+              "seed_candidate_0010_gap_002"
+            ],
+            "added_knowledge": "embedding model, similarity search, retrieval component, generation component, query-document matching"
+          },
+          {
+            "source": {
+              "name": "retrieval augmented generation",
+              "definition": "a method that lets a system use external documents when answering questions",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "use of external document",
+              "definition": "the act of utilizing external documents when answering questions",
+              "kind": "event",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "employs_mechanism_for",
+            "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+            "conditions": "The intended fact describes the integration process combining retrieved content with the prompt. This entire workflow constitutes the 'use of external document' mechanism employed by RAG. The predicate 'employs_mechanism_for' correctly links the high-level process (RAG) to the specific operational mechanism (integrating/using external documents) described in the fact.",
+            "modality": "explicit",
+            "intended_fact": "The integration process combines the retrieved document content with the original prompt to condition the language model's output.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding 'integrating their content' by describing the fusion mechanism where retrieved text becomes part of the context window for generation.",
+            "gap_ids": [
+              "seed_candidate_0010_gap_001"
+            ],
+            "added_knowledge": "fusion mechanism, prompt conditioning, context window"
+          }
+        ],
+        "reason": "The source text states RAG 'lets it use external documents' but does not explain the retrieval workflow or integration. To answer the gaps about 'how' documents are selected and integrated, I introduce general architectural knowledge: a retrieval component using similarity search to find relevant documents, followed by a fusion mechanism that appends this content to the prompt for generation. These concepts are necessary to concretize the abstract claim of 'enhanced reasoning'."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source defines RAG as a method enabling document use but lacks details on the retrieval workflow (embedding/similarity) and integration mechanism. The explanation must introduce these general architectural components to answer the specific gaps regarding 'how' documents are selected and integrated, without claiming the small transformer in the text necessarily implements them specifically.",
+        "facts": [
+          {
+            "intended_fact": "Retrieval augmented generation involves a retrieval component that identifies relevant external documents based on query similarity before passing them to the generation component.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the 'specific workflow' by introducing embedding models and similarity search as standard mechanisms for determining relevance, which is essential to avoid hallucination.",
+            "gap_ids": [
+              "seed_candidate_0010_gap_002"
+            ],
+            "added_knowledge": "embedding model, similarity search, retrieval component, generation component, query-document matching"
+          },
+          {
+            "intended_fact": "The integration process combines the retrieved document content with the original prompt to condition the language model's output.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding 'integrating their content' by describing the fusion mechanism where retrieved text becomes part of the context window for generation.",
+            "gap_ids": [
+              "seed_candidate_0010_gap_001"
+            ],
+            "added_knowledge": "fusion mechanism, prompt conditioning, context window"
+          }
+        ],
+        "reason": "The source text states RAG 'lets it use external documents' but does not explain the retrieval workflow or integration. To answer the gaps about 'how' documents are selected and integrated, I introduce general architectural knowledge: a retrieval component using similarity search to find relevant documents, followed by a fusion mechanism that appends this content to the prompt for generation. These concepts are necessary to concretize the abstract claim of 'enhanced reasoning'."
+      },
+      "candidate_ids": [
+        "candidate_0009",
+        "candidate_0010"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0009",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The intended fact describes a specific internal workflow (identifying relevant documents via similarity before passing to generation). The source context only supports the high-level functional claim that RAG 'lets it use external documents'. Asserting the specific retrieval mechanism (similarity search) as an established fact for this case contradicts the instruction to keep unknown case-specific information unknown and treats a possible approach as an assertion. The rejection is valid; no correction exists that preserves the intended gap-filling without inventing unverified architectural details."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0010",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The intended fact asserts that the specific 'integration process' combines content to condition output. The source context supports only the general capacity to use documents, not the specific fusion mechanism or conditioning step. Asserting this specific workflow as a fact invents omitted actions and upgrades a possible implementation detail into an assertion of actual usage. The rejection is valid; no correction exists that validates this specific claim against the provided text."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_007",
+        "concept": "use of external document",
+        "definition": "the act of utilizing external documents when answering questions",
+        "kind": "event",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source defines the event but does not detail the prerequisites or limitations of accessing external knowledge sources.",
+        "chapter_topic": "Retrieval-augmented generation for enhanced reasoning",
+        "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?",
+            "assumed_knowledge": "Practical implementation details regarding document indexing formats and retrieval latency impacts on response time.",
+            "why_useful": "The source treats 'using external documents' as a straightforward capability. Explaining potential constraints clarifies the operational reality versus the idealized function described.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0013_gap_001",
+            "seed_candidate_id": "seed_candidate_0013",
+            "concept": "use of external document",
+            "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG."
+          }
+        ],
+        "background_question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text describes 'use of external document' as a functional outcome enabled by RAG but omits specific constraints on document types, formats, or latency impacts. The gap requires distinguishing between the idealized capability and practical implementation limits.",
+        "proposals": [
+          {
+            "source": {
+              "name": "use of external document",
+              "definition": "the act of utilizing external documents when answering questions",
+              "kind": "event",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "retrieval system indexing format requirements",
+              "definition": "constraints imposed by the retrieval system regarding the specific vector or text formats required for document indexing",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "inhibits",
+            "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+            "conditions": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+            "modality": "general knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+            "intended_fact": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+            "confidence": 0.95,
+            "reason": "General knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+            "gap_ids": [
+              "seed_candidate_0013_gap_001"
+            ],
+            "added_knowledge": "format requirements for retrieval systems"
+          },
+          {
+            "source": {
+              "name": "use of external document",
+              "definition": "the act of utilizing external documents when answering questions",
+              "kind": "event",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "retrieval latency",
+              "definition": "network and I/O delays introduced by fetching and processing external data",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "inhibits",
+            "relation_definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+            "conditions": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+            "modality": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+            "intended_fact": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+            "confidence": 0.95,
+            "reason": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+            "gap_ids": [
+              "seed_candidate_0013_gap_001"
+            ],
+            "added_knowledge": "latency considerations for retrieval"
+          }
+        ],
+        "reason": "The source text presents 'use of external document' as an unqualified capability. To address the identified gap regarding constraints, I applied general knowledge about RAG system architecture to infer that practical utilization is bounded by indexing format compatibility and retrieval latency. These facts clarify the operational reality without contradicting the source's description of the mechanism."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text describes 'use of external document' as a functional outcome enabled by RAG but omits specific constraints on document types, formats, or latency impacts. The gap requires distinguishing between the idealized capability and practical implementation limits.",
+        "facts": [
+          {
+            "intended_fact": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+            "confidence": 0.95,
+            "reason": "General knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+            "gap_ids": [
+              "seed_candidate_0013_gap_001"
+            ],
+            "added_knowledge": "format requirements for retrieval systems"
+          },
+          {
+            "intended_fact": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+            "confidence": 0.95,
+            "reason": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+            "gap_ids": [
+              "seed_candidate_0013_gap_001"
+            ],
+            "added_knowledge": "latency considerations for retrieval"
+          }
+        ],
+        "reason": "The source text presents 'use of external document' as an unqualified capability. To address the identified gap regarding constraints, I applied general knowledge about RAG system architecture to infer that practical utilization is bounded by indexing format compatibility and retrieval latency. These facts clarify the operational reality without contradicting the source's description of the mechanism."
+      },
+      "candidate_ids": [
+        "candidate_0011",
+        "candidate_0012"
+      ],
+      "repairs": []
+    }
+  ]
+}

@@ -1,0 +1,888 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "preserves_accuracy_via_calibration",
+      "definition": "SOURCE maintains the state or magnitude of TARGET, preventing significant degradation through techniques such as post-training calibration or quantization-aware training.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The new relation 'employs_mechanism_for' accurately reflects the source assertion where a 'small transformer' uses 'self attention'. The definition matches the original meaning exactly. Direction is preserved as the relationship is asymmetric (SOURCE employs TARGET). Symmetry is correctly set to false. The inverse is null, which is valid per instructions since the relation is not symmetric and no inverse relation exists in the source context."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The occurrence definition ('SOURCE employs TARGET as a mechanism or method to achieve an effect') is identical to the proposed contract definition. The direction (small transformer -> backpropagation) matches the 'employs' relation where the source uses the target. Both definitions describe a functional employment relationship without implying structural parthood, and the modality/causal strength aligns perfectly."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "regularization",
+        "target": "generalization beyond training example",
+        "context": "Regularization helps it generalize beyond its training examples."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "quantization",
+        "target": "memory requirement",
+        "context": "After training, quantization reduces its memory requirements"
+      },
+      "canonical_key": "reduces",
+      "reason": "The new relation 'reduces' is coherent as it explicitly defines the action of decreasing magnitude/necessity. It is specific by linking 'quantization' to 'memory requirement'. The meaning and direction are exactly preserved from the source assertion ('quantization reduces memory requirements'). No extra restrictions were added; the definition matches the source. Symmetry is correctly set to false because reducing is not a reciprocal relationship (if A reduces B, B does not necessarily reduce A). The inverse is correctly null, as 'reduces' implies an asymmetric causal effect rather than equivalence upon endpoint swapping."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "retrieval augmented generation",
+        "target": "use of external document",
+        "context": "retrieval-augmented generation lets it use external documents when answering questions"
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "participates_in",
+        "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+        "source": "self attention",
+        "target": "text",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+              "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+              "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+            }
+          ],
+          "intended_fact": "Self-attention computes relationships between words in a sequence by calculating attention scores based on query and key vector interactions, normalizing these scores via softmax, and generating contextual representations through weighted sums of value vectors.",
+          "explanation": "This fact supplies the missing mathematical mechanism (Q-K-V operations) required to answer the gap regarding *how* relationships are computed, using well-established general knowledge about transformer architecture compatible with the chapter's topic.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "participates_in",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "causes",
+        "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+        "source": "prediction error",
+        "target": "backpropagation",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+              "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+              "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0004_gap_001",
+              "seed_candidate_id": "seed_candidate_0004",
+              "concept": "backpropagation",
+              "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+            }
+          ],
+          "intended_fact": "Gradients serve as partial derivatives that indicate the specific direction and magnitude required to adjust model weights for minimizing prediction error.",
+          "explanation": "This fact addresses the identified gap regarding 'how' predictions are improved by introducing the mechanism of gradient descent, which is standard general knowledge compatible with the chapter's topic on training processes.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": null,
+      "reason": "Existing key used with an unverified meaning"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "regularization",
+        "target": "generalization beyond training example",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+              "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+              "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0007_gap_001",
+              "seed_candidate_id": "seed_candidate_0007",
+              "concept": "regularization",
+              "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+            }
+          ],
+          "intended_fact": "Regularization techniques such as dropout or weight decay are implemented to prevent overfitting in transformer models.",
+          "explanation": "General knowledge confirms these are the primary methods for regularization; source text only mentions the function (generalization) not the method.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "dropout",
+        "target": "generalization beyond training example",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+              "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+              "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0007_gap_001",
+              "seed_candidate_id": "seed_candidate_0007",
+              "concept": "regularization",
+              "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+            }
+          ],
+          "intended_fact": "Dropout works by randomly deactivating neurons during training to reduce co-adaptation.",
+          "explanation": "General knowledge defines the mechanism of dropout; source text lacks this detail.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "weight decay",
+        "target": "generalization beyond training example",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What are common techniques used to implement regularization in transformer models, such as dropout or weight decay?",
+              "assumed_knowledge": "Specific methods like adding noise to activations (dropout) or penalizing large weights (L2 regularization) to prevent overfitting.",
+              "why_useful": "Identifying specific techniques explains *how* the model avoids memorizing training data, providing a concrete mechanism for generalization.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0007_gap_001",
+              "seed_candidate_id": "seed_candidate_0007",
+              "concept": "regularization",
+              "document_coverage": "The source states that regularization helps the model generalize beyond training examples."
+            }
+          ],
+          "intended_fact": "Weight decay works by adding a penalty term to the loss function proportional to the magnitude of weights.",
+          "explanation": "General knowledge defines the mechanism of weight decay (L2 regularization); source text lacks this detail.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0007",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "quantization",
+        "target": "memory requirement",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How exactly does reducing bit-width translate to a reduction in memory footprint (e.g., via contiguous storage of weights vs. sparse representations)?",
+              "assumed_knowledge": "The relationship between data type size (bits per parameter) and total model memory consumption.",
+              "why_useful": "The source states quantization 'reduces memory requirements' but treats the magnitude of this reduction as a given fact. Explaining the storage mechanics validates the claim and distinguishes it from other optimization methods like pruning.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0009_gap_002",
+              "seed_candidate_id": "seed_candidate_0009",
+              "concept": "quantization",
+              "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+            }
+          ],
+          "intended_fact": "Quantization reduces memory requirements by decreasing the bit-width allocated to model parameters (e.g., from 32-bit floating-point to 8-bit integers), which allows for more compact, contiguous storage of weights in memory.",
+          "explanation": "This fact directly addresses gap_002 by explaining the physical mechanism (bit-width reduction) linking numerical precision to memory footprint, using general knowledge about data representation.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "reduces",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0008",
+      "original": {
+        "label": "preserves",
+        "definition": "SOURCE maintains the state or magnitude of TARGET, preventing significant degradation.",
+        "source": "technique such a post training calibration or quantization aware training",
+        "target": "model accuracy",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What specific mechanisms allow reducing numerical precision (e.g., from 32-bit to 8-bit) without causing significant degradation in model accuracy?",
+              "assumed_knowledge": "The existence of quantization-aware training or post-training calibration techniques that preserve distributional properties despite lower bit-widths.",
+              "why_useful": "The source claims memory reduction occurs 'without significant accuracy loss,' but does not explain the technical bridge between precision reduction and maintained performance. Understanding this mechanism clarifies how the optimization is viable.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0009_gap_001",
+              "seed_candidate_id": "seed_candidate_0009",
+              "concept": "quantization",
+              "document_coverage": "The source defines quantization as a post-training process that reduces memory requirements for a small transformer. It situates this within the lifecycle after training is complete."
+            }
+          ],
+          "intended_fact": "Techniques such as post-training calibration or quantization-aware training preserve model accuracy by adjusting scales and offsets to maintain the statistical distribution of weights despite lower bit-widths.",
+          "explanation": "This fact addresses gap_001 by explaining how numerical precision is reduced without significant degradation, utilizing general knowledge about calibration methods.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "preserves_accuracy_via_calibration",
+      "reason": "The new relation 'preserves_accuracy_via_calibration' is coherent and specific. It exactly preserves the source assertion by combining the definition of 'preserves' with the specific techniques (post-training calibration or quantization-aware training) mentioned in the source text regarding model accuracy. No extra restrictions were added; the direction remains consistent (Source maintains Target). Symmetry is correctly set to false as preservation is directional. The inverse is null, which is valid per instructions since there is no defined inverse relation for this specific predicate."
+    },
+    {
+      "entity_id": "candidate_0009",
+      "original": {
+        "label": "employs_mechanism_for",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "retrieval augmented generation",
+        "target": "use of external document",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the system determine which external documents are relevant to a specific query?",
+              "assumed_knowledge": "The use of embedding models and similarity search algorithms to match queries with document contents.",
+              "why_useful": "The source implies an ability to 'use' documents but does not explain the selection criteria. Understanding the retrieval mechanism is essential to grasp how the system avoids hallucination or irrelevant information.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0010_gap_002",
+              "seed_candidate_id": "seed_candidate_0010",
+              "concept": "retrieval augmented generation",
+              "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+            }
+          ],
+          "intended_fact": "Retrieval augmented generation involves a retrieval component that identifies relevant external documents based on query similarity before passing them to the generation component.",
+          "explanation": "General knowledge fills the gap regarding the 'specific workflow' by introducing embedding models and similarity search as standard mechanisms for determining relevance, which is essential to avoid hallucination.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0010",
+      "original": {
+        "label": "employs_mechanism_for",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "retrieval augmented generation",
+        "target": "use of external document",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What is the specific workflow for retrieving relevant documents and integrating their content into the model's generation process?",
+              "assumed_knowledge": "The existence of a retrieval component (e.g., vector search) that precedes the generation component, and a fusion mechanism to combine retrieved text with the prompt.",
+              "why_useful": "The source states RAG 'lets it use external documents' but does not describe the architectural flow. Without knowing how retrieval feeds into generation, the claim of 'enhanced reasoning' remains abstract.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0010_gap_001",
+              "seed_candidate_id": "seed_candidate_0010",
+              "concept": "retrieval augmented generation",
+              "document_coverage": "The source defines retrieval-augmented generation (RAG) as a method enabling a system to use external documents when answering questions. It positions this as an enhancement to reasoning capabilities."
+            }
+          ],
+          "intended_fact": "The integration process combines the retrieved document content with the original prompt to condition the language model's output.",
+          "explanation": "General knowledge fills the gap regarding 'integrating their content' by describing the fusion mechanism where retrieved text becomes part of the context window for generation.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0011",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "use of external document",
+        "target": "retrieval system indexing format requirement",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?",
+              "assumed_knowledge": "Practical implementation details regarding document indexing formats and retrieval latency impacts on response time.",
+              "why_useful": "The source treats 'using external documents' as a straightforward capability. Explaining potential constraints clarifies the operational reality versus the idealized function described.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0013_gap_001",
+              "seed_candidate_id": "seed_candidate_0013",
+              "concept": "use of external document",
+              "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG."
+            }
+          ],
+          "intended_fact": "The use of external documents is constrained by the indexing format requirements of the retrieval system.",
+          "explanation": "General knowledge dictates that RAG systems require documents to be pre-processed into specific vector or text formats for indexing; unstructured or incompatible formats prevent utilization.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0012",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "use of external document",
+        "target": "retrieval latency",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What constraints or limitations exist on the types of external documents that can be utilized (e.g., format requirements, latency considerations)?",
+              "assumed_knowledge": "Practical implementation details regarding document indexing formats and retrieval latency impacts on response time.",
+              "why_useful": "The source treats 'using external documents' as a straightforward capability. Explaining potential constraints clarifies the operational reality versus the idealized function described.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0013_gap_001",
+              "seed_candidate_id": "seed_candidate_0013",
+              "concept": "use of external document",
+              "document_coverage": "The source defines the 'use of external document' as the act of utilizing these documents when answering questions, framed as the functional outcome of RAG."
+            }
+          ],
+          "intended_fact": "The use of external documents is limited by retrieval latency which impacts the overall response time.",
+          "explanation": "General knowledge establishes that fetching and processing external data introduces network and I/O delays, creating a direct constraint on system responsiveness.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

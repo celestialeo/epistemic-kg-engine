@@ -1,0 +1,137 @@
+{
+  "run_id": "run_20261029_225724_UTC-0400_6a4ff367",
+  "unresolved_items": [
+    {
+      "step": "background_candidate",
+      "id": "candidate_0001",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0001 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: direction_valid: The field 'direction_valid' is defined as checking whether endpoint roles and relation direction preserve the intended sentence. The reasoning explicitly states that the graph link fails by 'reversing the logical relationship between the process and its input,' which constitutes a failure to preserve the intended direction/roles. Therefore, the value 'false' aligns with the reasoning. (quote: This creates a category error where a mechanism operates on an entity rather than participating in it.); meaning_matches: The field 'meaning_matches' checks if the literal graph assertion expresses the intended factual sentence. The reasoning concludes the representation is 'structurally invalid' and that the explanation's claim 'contradicts the literal assertion.' This confirms a mismatch between the literal graph meaning and the intended fact, justifying the value 'false'. (quote: Consequently, the explanation's claim that the graph supplies the missing mathematical mechanism contradicts the literal assertion because the representation itself is structurally invalid due to this directional and categorical mismatch.); explanation_matches: The field 'explanation_matches' checks if the proposer's explanation agrees with the LITERAL GRAPH ASSERTION. The reasoning states the explanation's claim 'contradicts the literal assertion.' This indicates a disagreement between the explanation and the literal graph, justifying the value 'false'. (quote: Consequently, the explanation's claim that the graph supplies the missing mathematical mechanism contradicts the literal assertion because the representation itself is structurally invalid due to this directional and categorical mismatch.)"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0003",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0003 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: explanation_matches: The field 'explanation_matches' is defined as checking whether the proposer's explanation agrees with the LITERAL GRAPH ASSERTION. The review's own reasoning identifies a direct factual conflict: the explanation asserts that the source text does not mention specific methods ('not the method'), while the provided data context (source_context) explicitly lists them ('dropout or weight decay'). Since the explanation contains a statement that is factually contradicted by the available evidence within the review itself, it fails to agree with the reality of the situation described in the data. This internal contradiction between the explanation's claim about the source content and the actual source content provided makes the representation inaccurate, justifying a 'false' value for this field. (quote: The proposer's explanation claims that the source text mentions only the function and not the methods (dropout/weight decay). However, the provided source_context explicitly lists 'dropout or weight decay' as specific methods implemented to prevent overfitting.)"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0004",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0004 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: meaning_matches: The field 'meaning_matches' is defined as whether the literal graph assertion expresses the intended factual sentence. The review's own reasoning explicitly states that the graph uses a 'capacity-permitting relation' ('enables') rather than describing the specific causal mechanism ('works by'), concluding they are not equivalent. However, the review simultaneously asserts that 'direction_valid' is true and 'explanation_matches' is true. The core conflict arises because the reviewer identifies a semantic gap between the intended fact (mechanism) and the graph assertion (capacity), yet marks 'meaning_matches' as false based on this gap while acknowledging the explanation correctly identifies the source text's lack of detail. The inconsistency lies in the internal logic: if the literal graph assertion ('enables') is semantically distinct from the intended fact ('works by'), then 'meaning_matches' should indeed be false, but the reviewer's justification conflates the *reason* for the mismatch (missing mechanism) with the *definition* of the field. More critically, the review states 'The explanation correctly identifies that the source text lacks the mechanistic detail', implying the explanation aligns with the literal graph's limitation, yet marks 'meaning_matches' false. The conflict is that the reviewer admits the explanation agrees with the literal graph (explanation_matches: true) but then claims the literal graph does not express the intended sentence (meaning_matches: false). This is logically consistent only if the intended sentence requires the mechanism. However, the prompt instruction says 'A direction error can coexist with preserved scope...'. Here, the conflict is self-referential: The reviewer concludes 'meaning_matches is false' because the statements are not equivalent. But then they say 'The explanation correctly identifies that the source text lacks the mechanistic detail'. If the explanation agrees with the literal graph (which lacks the detail), and the literal graph differs from the intended fact, then meaning_matches=false is correct. The actual conflict is in the 'scope_preserved' field. The reviewer states 'scope_preserved: false' because 'enabling' is broader than 'working by'. But the definition of scope_preserved says it assesses conditions, quantifiers, modality and level of generality. The reviewer argues that because the graph uses a broader relation ('enables'), the specific causal claim is not fully represented. This makes sense. Where is the conflict? Re-reading the prompt: 'Identify a conflict only when the review's own final reasoning disagrees with its fields or other conclusions.' The reviewer says: 1. Literal graph = 'enables'. Intended fact = 'works by'. 2. These are not equivalent. 3. Therefore meaning_matches = false. 4. Explanation agrees with literal graph (so explanation_matches = true). 5. Scope is not preserved because 'enabling' is broader. This seems internally consistent. Let's look closer at the 'direction_valid': true. The intended fact is 'dropout enables generalization'. The graph asserts 'dropout enables generalization'. The direction is correct. The relation type differs ('enables' vs 'works_by'). Is there a conflict? The reviewer says 'meaning_matches is false because the statements are not equivalent'. This is consistent with the definition. Wait, the instruction says 'Check only internal agreement... Return consistent=true and an empty list unless you can identify a direct, unambiguous conflict'. Let's re-evaluate the 'explanation_matches' field. Definition: 'Whether the proposer's explanation agrees with the LITERAL GRAPH ASSERTION'. The reviewer says: 'The explanation correctly identifies that the source text lacks the mechanistic detail'. This implies the explanation agrees with the literal graph (which lacks the detail). So explanation_matches=true is consistent. Now look at 'meaning_matches'. Definition: 'Whether the literal graph assertion expresses the intended factual sentence'. The reviewer says it does not, because one describes mechanism and the other capacity. So meaning_matches=false is consistent. Is there a contradiction between 'explanation_matches' and 'meaning_matches'? No, they measure different things (Explanation vs Literal Graph vs Intended Fact). Explanation matches Literal Graph. Literal Graph != Intended Fact. Therefore Meaning Matches = False. This is logically sound. Why would this be inconsistent? Perhaps the conflict is in the 'reason' text itself. The reason says: 'The literal graph assertion ('dropout enables generalization') differs semantically from the intended fact ('Dropout works by randomly deactivating neurons...').'. Then it concludes meaning_matches is false. This is consistent. Is there a hidden dependency? 'A direction error can coexist with preserved scope...'. Here direction_valid is true. Scope_preserved is false. The reviewer says scope is not preserved because 'enabling' is broader than 'working by'. But the definition of scope_preserved says 'this does not assess endpoint direction'. It doesn't explicitly say it doesn't assess relation type generality, but 'level of generality' usually covers this. So scope_preserved=false is consistent with the reasoning. Let's look at 'case_specific_claim_supported'. The intended fact is general ('dropout enables...'). The graph is also general. The reviewer marks this as true. Consistent. Is there any part where the reviewer contradicts themselves? 'The explanation correctly identifies that the source text lacks the mechanistic detail, this gap means the literal graph assertion does not express the intended factual sentence.' This links the lack of detail in the source (and thus the graph) to the failure of meaning_matches. This is consistent. Wait, maybe the conflict is between 'explanation_matches' and 'meaning_matches' if the explanation was supposed to bridge the gap? No, the definition says explanation matches the LITERAL GRAPH. If the literal graph is weak, the explanation can match it while still failing to match the intended fact. That's allowed. Let's reconsider the 'scope_preserved' reasoning. 'The scope is not preserved because 'enabling' is broader than 'working by', and the specific causal claim in the intended fact is not fully represented by the graph's literal assertion.' The definition of scope_preserved includes 'level of generality'. If the graph is more general ('enables') than the fact ('works by'), then scope is NOT preserved (i.e., false). This matches the field value. Everything seems consistent. Is it possible the conflict is that the reviewer claims 'meaning_matches' is false, but then implies the explanation resolves it? No, the text says 'this gap means...'. The reviewer does not claim resolution. Okay, let's look at the instruction again: 'A direction error can coexist with preserved scope, conditions and modality.' This suggests that if direction is wrong, other fields might still be true. Here direction is valid. What if the conflict is that the reviewer says 'meaning_matches' is false because of a semantic difference, but then in the 'suggested_correction' they suggest changing the relation to 'works_by'. If they change the relation to 'works_by', then the new graph would match the intended fact, making meaning_matches true. But the current state is false. That's not a conflict. Is there a contradiction in the 'reason' field regarding the definition of 'meaning_matches'? The reason says: 'Therefore, meaning_matches is false because the statements are not equivalent'. This aligns perfectly with the definition. I am struggling to find an inconsistency. Let me re-read the 'explanation_matches' part carefully. 'The explanation correctly identifies that the source text lacks the mechanistic detail'. Does this mean the explanation agrees with the literal graph? Yes, if the literal graph lacks the detail, and the explanation says the source lacks it, they agree on the content (lack of detail). So explanation_matches=true is correct. Is it possible the conflict is that the reviewer implies the explanation *should* have included the mechanism? No, the text says 'this gap means...'. Okay, let's try a different angle. Maybe the conflict is between 'direction_valid' and the relation type change suggested? No. What if the 'case_specific_claim_supported' is actually false? The intended fact is general. The graph is general. So true is correct. Is there a subtle contradiction in the 'reason' text? 'The literal graph assertion... differs semantically from the intended fact...'. Then 'Therefore, meaning_matches is false'. This is a direct logical consequence. Unless... the definition of 'meaning_matches' implies that if the explanation matches the literal graph, and the literal graph is close enough, it should be true? No, the definition is strict: 'expresses the intended factual sentence'. If they differ semantically (mechanism vs capacity), they don't express the same sentence. So false is correct. I suspect there might not be a conflict here, but the prompt asks me to check. Let's assume there IS a conflict and find it. Could the conflict be that the reviewer says 'scope_preserved' is false because of generality, but then in the reason they say 'The scope is not preserved because...'. This is consistent. Wait! The instruction says: 'A direction error can coexist with preserved scope...'. It does NOT say a semantic difference (relation type) can coexist with meaning_matches=false while explanation_matches=true. But that's not an error, that's a feature. Let's look at the 'suggested_correction'. It suggests changing 'enables' to 'works_by'. If they do that, the graph becomes equivalent to the intended fact. The reviewer acknowledges this in the correction. Is there a conflict between the current state (meaning_matches=false) and the correction? No. Okay, let's look at the very first sentence of the reason: 'The literal graph assertion ('dropout enables generalization') differs semantically from the intended fact ('Dropout works by randomly deactivating neurons...').'. Then it says 'While the explanation correctly identifies that the source text lacks the mechanistic detail, this gap means the literal graph assertion does not express the intended factual sentence.' This implies the explanation agrees with the gap (i.e., agrees with the literal graph's limitation). So explanation_matches=true. And meaning_matches=false. This is consistent. Is it possible the conflict is that the reviewer claims 'direction_valid' is true, but the relation type change suggests a direction or role issue? No, 'enables' and 'works_by' are both source->target relations in this context. Maybe the conflict is that the reviewer says 'meaning_matches' is false, but then says 'The explanation correctly identifies...'. If the explanation correctly identifies the gap, does it mean the explanation *corrects* the graph? No, it just identifies the gap. Okay, I will conclude there is NO conflict based on the provided text, as the reasoning supports the field values logically according to their definitions. Wait, I must return consistent=true or false. If I find no conflict, I return true. But usually these tasks have a conflict. Let's re-read the 'scope_preserved' definition: 'Whether conditions, quantifiers, modality and level of generality are preserved'. The reviewer says scope is not preserved because 'enabling' is broader than 'working by'. This is a difference in level of generality. So scope_preserved=false is correct. What if the conflict is that the reviewer says 'meaning_matches' is false, but the 'direction_valid' is true? No, direction and meaning are different dimensions. Is it possible the conflict is in the 'reason' field itself being contradictory? 'The literal graph assertion... differs semantically...'. 'Therefore, meaning_matches is false'. This is not contradictory. Okay, let's consider the possibility that the reviewer implies the explanation *resolves* the issue by identifying the gap, but then marks meaning_matches as false. That's fine; identifying a gap doesn't fix it. I will state consistent=true because the reasoning aligns with the field definitions and values without internal contradiction. Wait, looking at the instruction again: 'Identify a conflict only when the review's own final reasoning disagrees with its fields or other conclusions.' The reviewer concludes meaning_matches=false. The reason supports this. The reviewer concludes explanation_matches=true. The reason supports this (explanation agrees with literal graph). The reviewer concludes scope_preserved=false. The reason supports this (generality not preserved). There is no disagreement between the reason and the fields. Therefore, consistent=true. But wait, if I say consistent=true, I must return an empty list. If I say false, I must provide conflicts. Let me double check if 'explanation_matches' definition allows for 'true' when the literal graph is semantically different from the intended fact. Yes, because explanation_matches compares explanation with LITERAL GRAPH ASSERTION. It does not care about the intended fact. So explanation can match the literal graph (which is weak) while meaning_matches is false (because literal graph != intended fact). This is a standard pattern in these checks. So no conflict there. What about 'case_specific_claim_supported'? The reviewer says true. The claim is general. Correct. Okay, I'm confident there is no conflict. But wait, the prompt says 'Check only internal agreement...'. Maybe the conflict is that the reviewer says 'meaning_matches' is false due to semantic difference, but then suggests a correction that makes them equivalent. That's not a conflict in the current state. Okay, I will output consistent=true. Wait, one more check. The reason says: 'The literal graph assertion ('dropout enables generalization') differs semantically from the intended fact ('Dropout works by randomly deactivating neurons...').'. Then it says 'Therefore, meaning_matches is false'. This is a direct logical link. No conflict. The only potential issue is if the reviewer thought the explanation *should* have fixed it, but they didn't claim that. They said 'this gap means...'. So the gap exists. Consistent=true. Wait, I might be missing something obvious. Let's look at the 'direction_valid' field. It says true. The intended fact is 'dropout enables generalization'. The graph is 'dropout enables generalization'. Direction is preserved. Correct. What if the relation type change ('enables' to 'works_by') implies a direction change? No, both are source->target. Okay, I'll stick with consistent=true. Wait, no. Let's look at the instruction: 'A direction error can coexist with preserved scope...'. This implies that sometimes fields disagree. But here they agree. Is there any ambiguity in 'meaning_matches'? 'Whether the literal graph assertion expresses the intended factual sentence'. The reviewer says it does not. Reason: one describes mechanism, other capacity. Correct. Okay, I will assume consistent=true. Wait, actually, looking at similar tasks, often the conflict is that the explanation claims to resolve an issue but the field remains false. Here, the explanation 'identifies' the gap, it doesn't claim to resolve it. So no conflict. Final decision: consistent=true. Wait, I need to be careful. The prompt says 'Return JSON matching the schema'. If consistent=true, reason should be empty? No, 'Give concise decision explanations in reason fields'. If consistent=true, the list of inconsistencies is empty. The 'reason' field in the output JSON is for the overall consistency check? No, the output schema usually has a 'consistent' boolean and a list of 'inconsistencies'. The prompt says 'Return JSON matching the schema'. It doesn't specify the exact output schema keys beyond 'consistent' and 'inconsistencies' (implied). Wait, the prompt says 'Give concise decision explanations in reason fields'. This likely refers to the 'reason' field inside each inconsistency object. If consistent=true, the list is empty. So no 'reason' fields needed for the top level? The output format usually is `{ (quote: Therefore, meaning_matches is false because the statements are not equivalent; one describes a mechanism while the other describes an enabling capacity.)"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0011",
+      "status": "unresolved",
+      "reason": "No validated background decision: Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0012",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0012 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: meaning_matches: The field 'meaning_matches' is set to false because the literal graph assertion contradicts the intended fact. The reason explicitly states that the causal direction in the graph (action causing reduced latency) differs from the intended fact (latency constraining usage). Since the literal meaning of the graph does not match the intended sentence, setting this field to false is consistent with the provided reason. (quote: The literal graph assertion states that 'use of external document' inhibits (reduces) 'retrieval latency'. This implies the action causes the delay to decrease. However, the intended fact and explanation state that 'retrieval latency' is the constraint that limits the 'use of external documents', meaning the delay is a consequence of the action, not something suppressed by it.); direction_valid: The field 'direction_valid' is set to false because the reason identifies a reversal of the causal relationship between the subject and object. The definition of 'direction_valid' concerns whether endpoint roles and relation direction preserve the intended sentence. The reason confirms this preservation has failed due to the reversed causality, making the field value consistent with the explanation. (quote: The causal direction (subject vs. object) has been reversed in the graph assertion compared to the intended fact. This reversal constitutes a failure to preserve the scope of the claim regarding what limits what.); explanation_matches: The field 'explanation_matches' is set to false. The reason states that while the explanation aligns with the intended fact, it contradicts the *literal graph reading*. The definition of 'explanation_matches' requires agreement with the *literal graph assertion*, not just the intended sentence. Since the explanation contradicts the literal graph reading (as admitted in the reason), setting this field to false is consistent. (quote: The explanation matches the intended fact but contradicts the literal graph reading due to this directional error.); scope_preserved: The field 'scope_preserved' is set to false. The reason explicitly links the directional error to a 'failure to preserve the scope of the claim'. Although the definition notes this field does not assess endpoint direction, the reason interprets the 'what limits what' relationship (a semantic scope issue) as being violated by the reversal. Thus, marking it as false is consistent with the reviewer's own reasoning that the scope regarding the constraint relationship was not preserved. (quote: This reversal constitutes a failure to preserve the scope of the claim regarding what limits what.)"
+    }
+  ],
+  "input": {
+    "paragraphs": 1,
+    "chunks": 1,
+    "words": 42,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 3,
+    "incomplete_chunks": [],
+    "unresolved_records": 0,
+    "relations": 5,
+    "reviewed": 5,
+    "review_attempted": 5,
+    "semantic_rejections": 0,
+    "rejection_categories": {},
+    "unresolved_reviews": 0,
+    "evidence_rejections": 0
+  },
+  "debate": {
+    "seeds": 7,
+    "proposed": 12,
+    "accepted": 0,
+    "rejected": 7,
+    "unresolved": 5,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 13,
+    "edges": 5,
+    "domain_nodes": 13,
+    "domain_edges": 5,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 4,
+    "node_kinds": {
+      "concept": 13
+    },
+    "edge_origins": {
+      "document": 5
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 180,
+    "retries": 19,
+    "cache_hits": 3,
+    "embedding_calls": 0,
+    "prompt_tokens": 166520,
+    "output_tokens": 53551
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "idea_order_agreement": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "rouge_l_f1": {
+      "n": 1,
+      "mean": 0.6875,
+      "median": 0.6875,
+      "min": 0.6875,
+      "max": 0.6875,
+      "sample_stddev": null
+    },
+    "length_similarity": {
+      "n": 1,
+      "mean": 0.8076923076923077,
+      "median": 0.8076923076923077,
+      "min": 0.8076923076923077,
+      "max": 0.8076923076923077,
+      "sample_stddev": null
+    },
+    "final_score": {
+      "n": 1,
+      "mean": 94.95192307692308,
+      "median": 94.95192307692308,
+      "min": 94.95192307692308,
+      "max": 94.95192307692308,
+      "sample_stddev": null
+    }
+  },
+  "reconstruction_score": 94.95192307692308,
+  "evaluation_status": "completed",
+  "evaluation_metric_version": "reconstruction_fidelity_v1",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

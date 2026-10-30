@@ -1,5 +1,11 @@
 # Chapter inputs
 
+- `ai_test.txt`: AI test, a three-sentence input covering a small transformer,
+  training, regularization, quantization, and retrieval-augmented generation.
+  Select it with `--chapter ai-test`; results save to
+  `outputs/runs/ai-test/<run-id>/`. It uses the full pipeline and fits into one
+  chunk at the default 85-word limit. Prerequisites are inferred by the existing
+  background debate, with no input-specific prerequisite mappings.
 - `input.txt`: expanded introductory chapter on neuronal communication.
 - `water_cycle.txt`: introductory chapter on reservoirs, transfers, groundwater,
   surface water, water budgets and human influences.

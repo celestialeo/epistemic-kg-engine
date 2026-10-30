@@ -1,0 +1,355 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The new relation 'employs_mechanism_for' accurately reflects the source assertion where a 'small transformer' uses 'self attention'. The definition matches the original meaning exactly. Direction is preserved as the relationship is asymmetric (SOURCE employs TARGET). Symmetry is correctly set to false. The inverse is null, which is valid per instructions since the relation is not symmetric and no inverse relation exists in the source context."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The occurrence definition ('SOURCE employs TARGET as a mechanism or method to achieve an effect') is identical to the proposed contract definition. The direction (small transformer -> backpropagation) matches the 'employs' relation where the source uses the target. Both definitions describe a functional employment relationship without implying structural parthood, and the modality/causal strength aligns perfectly."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "regularization",
+        "target": "generalization beyond training example",
+        "context": "Regularization helps it generalize beyond its training examples."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "quantization",
+        "target": "memory requirement",
+        "context": "After training, quantization reduces its memory requirements"
+      },
+      "canonical_key": "reduces",
+      "reason": "The new relation 'reduces' is coherent as it explicitly defines the action of decreasing magnitude/necessity. It is specific by linking 'quantization' to 'memory requirement'. The meaning and direction are exactly preserved from the source assertion ('quantization reduces memory requirements'). No extra restrictions were added; the definition matches the source. Symmetry is correctly set to false because reducing is not a reciprocal relationship (if A reduces B, B does not necessarily reduce A). The inverse is correctly null, as 'reduces' implies an asymmetric causal effect rather than equivalence upon endpoint swapping."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "retrieval augmented generation",
+        "target": "use of external document",
+        "context": "retrieval-augmented generation lets it use external documents when answering questions"
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "employs_mechanism_for",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "generalization beyond training example",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter overview explicitly links regularization strategies to achieving generalization beyond training examples. Since 'small transformer' is the subject of the chapter and utilizes regularization (a known concept in the scope), it employs this strategy to achieve the property of generalization."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "small transformer",
+        "target": "memory requirement",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter states that quantization is used for reducing memory requirements after training. As a small transformer undergoing post-training optimization via quantization, it reduces its own memory requirement."
+      },
+      "canonical_key": "reduces",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "employs_mechanism_for",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "retrieval augmented generation",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter overview lists 'Retrieval-augmented generation for enhanced reasoning' as a capability of the small transformer. Therefore, the small transformer employs this specific process to achieve enhanced reasoning capabilities."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "text",
+        "target": "self attention",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter overview explicitly states that the text details 'Self-attention mechanism for text processing'. The seed 'text' is defined as 'The input data processed by self-attention', implying the text serves as the descriptive account or subject matter of this specific mechanism within the context of the chapter's scope."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "text",
+        "target": "training",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter overview lists 'training processes (self-attention and backpropagation)' as a core topic. The seed 'text' represents the input data processed during these mechanisms; thus, the text describes the subject matter of the training event in this specific context."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "text",
+        "target": "generalization beyond training example",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter covers 'generalization strategies via regularization'. The input text processed by the model is the vehicle through which generalization is evaluated and described; the text data embodies the instances from which generalization beyond training examples is derived and discussed."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0007",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "prediction",
+        "target": "training process",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The concept 'prediction' is defined as the output improved during training; thus, the definition of 'prediction' describes the nature and outcome of the 'training process'."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0008",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "prediction",
+        "target": "generalization beyond training example",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter states that generalization strategies via regularization are a key topic; the 'prediction' concept (as an improved output) relies on these strategies to enable the property of generalization."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0009",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "prediction",
+        "target": "memory requirement",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The chapter details post-training memory optimization through quantization; while 'prediction' itself doesn't reduce memory, the context implies that optimized predictions (via quantization) reduce the overall memory requirement associated with deploying such models."
+      },
+      "canonical_key": "reduces",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0010",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "external document",
+        "target": "small transformer",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The concept 'external document' serves as a descriptive entity explaining the operational mechanisms and training processes of the 'small transformer' within the chapter's scope."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0011",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "external document",
+        "target": "training process",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The 'external document' provides a detailed account of the 'training process', covering self-attention and backpropagation as defined in the chapter overview."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0012",
+      "original": {
+        "label": "describes",
+        "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+        "source": "external document",
+        "target": "generalization strategy",
+        "context": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation. The 'external document' accounts for 'generalization strategies', specifically mentioning regularization as a mechanism to handle data beyond training examples."
+      },
+      "canonical_key": "describes",
+      "reason": "Existing exact relation contract; usage requires review"
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

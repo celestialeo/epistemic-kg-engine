@@ -12,6 +12,10 @@ class ModelResponseError(RuntimeError):
     """The model answered, but its response could not be validated."""
 
 
+class ModelServiceError(RuntimeError):
+    """The inference service failed before producing a usable response."""
+
+
 class OutputLimitError(ModelResponseError):
     """A truncated response must not be accepted or retried unchanged."""
 
@@ -43,7 +47,7 @@ def discard_event_objects(value, trace, entity_id, path="$", parent_id=None):
 class Models:
     def __init__(self, trace, model, embedding_model, host, timeout=600, *,
                  think=False, context_tokens=8192, max_output_tokens=4096, registry_model=None, batch_size=4,
-                 document_context_tokens=16384, document_output_tokens=8192):
+                 document_context_tokens=None, document_output_tokens=None):
         self.trace, self.model, self.embedding_model = trace, model, embedding_model
         self.registry_model = registry_model or model
         self.batch_size = batch_size
@@ -51,8 +55,12 @@ class Models:
         self.think = think
         self.options = {"temperature": 0, "seed": 7, "num_ctx": context_tokens,
                         "num_predict": max_output_tokens}
-        self.document_context_tokens = document_context_tokens
-        self.document_output_tokens = document_output_tokens
+        # Keep the same model allocation throughout a run unless the caller
+        # explicitly requests larger document-evaluation budgets.
+        self.document_context_tokens = context_tokens if document_context_tokens is None else document_context_tokens
+        self.document_output_tokens = max_output_tokens if document_output_tokens is None else document_output_tokens
+        if not 0 < self.document_output_tokens < self.document_context_tokens:
+            raise ValueError("Document output budget must be positive and smaller than its context budget")
         self.calls = self.retries = self.prompt_tokens = self.output_tokens = 0
         self.cache_hits = 0
         self.cache = {}
@@ -182,12 +190,12 @@ class Models:
                     self.trace.emit(phase + ".failed", entity_id=entity_id, parent_id=request, error=error)
                 self.trace.emit("model.attempt_failed", entity_id=entity_id, parent_id=request,
                                 error=error, error_type=type(exc).__name__, attempt=attempt)
-                if isinstance(exc, OutputLimitError):
+                if isinstance(exc, (OutputLimitError, ModelServiceError)):
                     raise
                 # Health is measured at the caller's final item boundary. Retries
                 # and failed batches that will be split are diagnostic events only.
                 if phase == "model":
-                    raise RuntimeError(f"Model service failed for {role}/{entity_id}: {error}") from exc
+                    raise ModelServiceError(f"Model service failed for {role}/{entity_id}: {error}") from exc
                 if attempt < 3:
                     self.retries += 1
                     self.trace.emit("model.retry", entity_id=entity_id, parent_id=request, next_attempt=attempt+1)

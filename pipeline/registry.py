@@ -4,6 +4,8 @@ from pydantic import Field
 from .records import Record, batches
 from .identity import concept_key, short_definition
 from .relations import DEFAULT_RELATIONS
+from .models import ModelResponseError
+from .health import finish_item
 
 ConceptKind = Literal["entity", "structure", "process", "event", "substance", "property", "abstract", "other"]
 
@@ -31,6 +33,17 @@ class Equivalence(Record):
     same_direction: bool
     compatible_types: bool
     reason: str = Field(min_length=1, max_length=800)
+
+
+class ConceptMatch(Record):
+    canonical_name: str | None
+    reason: str = Field(min_length=1)
+
+
+class ConceptIdentity(Record):
+    same_concept: bool
+    same_scope: bool
+    reason: str = Field(min_length=1)
 
 
 class NewRelation(Record):
@@ -141,16 +154,63 @@ class RelationRegistry:
 
 
 class ConceptRegistry:
-    """Every occurrence of a normalized name has exactly one canonical concept."""
+    """Normalized names and verified aliases share one canonical concept."""
     def __init__(self, models, trace):
         self.models, self.trace = models, trace
         self.entries = {}
         self.mentions = []
         self.chapter_names = []
+        self.aliases = {}
+
+    def _save(self):
+        self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()),
+            mentions=self.mentions, aliases=dict(self.aliases)))
+
+    def _semantic_match(self, mention, available, context, entity_id):
+        """Similarity alone never merges concepts; verify identity and scope."""
+        for page in batches(available.values(), self.models.batch_size):
+            def validate(result):
+                if result.canonical_name is not None and result.canonical_name not in {c["name"] for c in page}:
+                    raise ValueError("A concept alias must select a supplied canonical name")
+            match = self.models.ask("concept_alias_resolver",
+                "Decide whether the occurrence denotes the SAME concept as a supplied entry, despite a "
+                "different name, phrasing, or definition. Use contextual meaning and scope. Related concepts, "
+                "different levels of specificity, and concepts merely mentioned in another definition are "
+                "not aliases. Differences in what a definition explains do not by themselves establish "
+                "different identity. Select an existing canonical_name only for identity, otherwise null.",
+                {"occurrence": mention, "context": context, "existing_concepts": page},
+                ConceptMatch, entity_id, validator=validate)
+            if match.canonical_name is None:
+                continue
+            check = self.models.ask("concept_alias_verifier",
+                "Independently decide whether these names refer to the same concept at the same scope "
+                "in this context. Check whether substituting the canonical name preserves the reference. "
+                "Overlap, association, or an explanatory relationship is insufficient. Definition wording "
+                "and inferred kind labels are fallible descriptions, not identity constraints.",
+                {"occurrence": mention, "existing_concept": available[match.canonical_name],
+                 "context": context}, ConceptIdentity, entity_id)
+            self.trace.emit("registry.concept_alias_checked", entity_id=entity_id,
+                            occurrence=mention, canonical=match.canonical_name, result=check.model_dump())
+            if check.same_concept and check.same_scope:
+                return match.canonical_name
+        return None
+
+    def resolve_background(self, mention, context, entity_id):
+        """Reuse a verified existing concept before registering a new endpoint."""
+        value = Concept.model_validate(mention).model_dump()
+        name = concept_key(value["name"])
+        if name not in self.entries and name not in self.aliases:
+            canonical = self._semantic_match(value, self.entries, context, entity_id)
+            if canonical is not None:
+                self.aliases[name] = canonical
+                self.trace.emit("registry.concepts_merged", entity_id=entity_id,
+                                alias=name, canonical=canonical, reason="Verified same concept and scope")
+        return self.resolve(value, context, entity_id)
 
     def resolve(self, mention, context, entity_id):
         value = Concept.model_validate(mention).model_dump()
         name = concept_key(value["name"])
+        name = self.aliases.get(name, name)
         if name not in self.entries:
             # Kind is extraction/review metadata, never part of identity. Graph
             # nodes expose only the canonical name and one short definition.
@@ -161,34 +221,47 @@ class ConceptRegistry:
         row = dict(entity_id=entity_id, mention=value, canonical=name)
         self.mentions.append(row)
         self.trace.emit("registry.concept_resolved", **row)
-        self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()),
-                                                       mentions=self.mentions))
+        self._save()
         return name
 
     def reconcile(self, extractions, outline):
-        """Normalize imported names without model-driven sense splitting/merging."""
+        """Reconcile verified document aliases before seed selection and fact indexing."""
         redirects, canonical = {}, {}
         for old_name, entry in self.entries.items():
             name = concept_key(old_name)
+            context = dict(chapter={key: outline[key] for key in ("overview", "topics")},
+                           source_claims=[claim for extraction in extractions
+                                          if old_name in extraction["concepts"]
+                                          for claim in extraction.get("claims", [])])
+            if name not in canonical:
+                try:
+                    match = self._semantic_match(entry, canonical, context, f"reconcile_{old_name}")
+                except ModelResponseError as exc:
+                    finish_item(self.trace, "concept_identity", old_name, exc)
+                else:
+                    if match is not None:
+                        name = match
+                    finish_item(self.trace, "concept_identity", old_name)
             redirects[old_name] = name
+            self.aliases[concept_key(old_name)] = name
             canonical.setdefault(name, dict(name=name, definition=short_definition(entry["definition"]),
                                             kind=entry["kind"], form="concept"))
             if old_name != name:
                 self.trace.emit("registry.concepts_merged", canonical=name, alias=old_name,
-                                reason="Same normalized name")
+                                reason="Same normalized name or verified semantic identity")
         self.entries = canonical
         for extraction in extractions:
-            extraction["concepts"] = list(dict.fromkeys(concept_key(n) for n in extraction["concepts"]))
+            extraction["concepts"] = list(dict.fromkeys(redirects[n] for n in extraction["concepts"]))
             for collection in ("relation_proposals", "relations"):
                 for row in extraction.get(collection, []):
                     for side in ("source", "target"):
-                        row[side] = concept_key(row[side])
+                        row[side] = redirects.get(row[side], concept_key(row[side]))
         for mention in self.mentions:
-            mention["canonical"] = concept_key(mention["canonical"])
+            mention["canonical"] = redirects.get(mention["canonical"], concept_key(mention["canonical"]))
         self.chapter_names = sorted(self.entries)
         self.trace.save("artifacts/concept_reconciliation.json", dict(
-            policy="normalized_name_only", redirects=redirects))
-        self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()), mentions=self.mentions))
+            policy="normalized_names_and_verified_aliases", redirects=redirects))
+        self._save()
         self.trace.save("artifacts/extraction_proposals.json", extractions)
 
 

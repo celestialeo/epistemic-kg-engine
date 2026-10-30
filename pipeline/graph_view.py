@@ -108,6 +108,8 @@ def build_graph(text, paragraphs, chunks, extractions, debate, trace, concepts=N
                  row["relation"], "background", candidate_id=row["id"], chunk_id=row["chunk_id"],
                  score=row["score"], tier=row.get("tier", "related"), reason=row["decision_reason"],
                  conditions=row.get("conditions"), modality=row.get("modality"),
+                 intended_fact=row.get("intended_fact"), link_reading=row.get("link_reading"),
+                 repair_of=row.get("repair_of"), seed_id=row.get("seed_id"), gap_ids=row.get("gap_ids", []),
                  definition=row.get("relation_definition"), verification_basis=row.get("verification_basis", "model_knowledge"))
     graph = {"schema_version": 3, "run_id": trace.run_id, "nodes": list(nodes.values()), "edges": edges,
              "provenance": {"text": text, "paragraphs": paragraphs, "chunks": chunks,

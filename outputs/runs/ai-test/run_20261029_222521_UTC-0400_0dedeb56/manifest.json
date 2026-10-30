@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261029_222521_UTC-0400_0dedeb56",
+  "status": "failed",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\ai_test.txt",
+    "chapter": "ai-test",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\ai-test",
+    "chunk_words": 85,
+    "seed_limit": 0,
+    "background_proposal_limit": 0,
+    "seed_similarity_threshold": null,
+    "seed_threshold": null,
+    "seed_max_words": null,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 16384,
+    "document_output_tokens": 8192,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "no_explorer": false,
+    "explorer_port": 0,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-10-29T22:25:21.182402-04:00",
+  "started_at_utc": "2026-10-30T02:25:21.182402+00:00",
+  "time_zone": "Eastern Daylight Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [],
+  "error": "Model service failed for evaluation_alignment/evaluation:document:alignment: llama-server process has terminated: exit status 0xc0000409: The system detected an overrun of a stack-based buffer in this application. This overrun could potentially allow a malicious user to gain control of this application.: CUDA error: shared object initialization failed (status code: 500)",
+  "error_type": "RuntimeError",
+  "finished_at": "2026-10-29T22:43:14.453868-04:00",
+  "unresolved_items": [
+    {
+      "step": "background_candidate",
+      "id": "candidate_0011",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0011 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field: meaning_matches (value: false) vs. Field: scope_preserved (value: true). The semantic analysis in the 'reason' field explicitly identifies a 'clear logical reversal' and 'reversed causality' between the link reading and the intended fact. This fundamental disagreement on the core meaning implies that the scope of the claim is not preserved; therefore, setting 'scope_preserved' to true contradicts the detailed reasoning which concludes the representation is invalid."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0012",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0012 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field Conflict: The field `meaning_matches` is set to `false`, and `direction_valid` is `false`. However, the `reason` explicitly states that the 'literal reading of the link defines... usage reducing latency' while the 'intended fact states that retrieval latency limits the use'. This implies the reviewer believes the *link_reading* (the literal text) is incorrect because it reverses causality. The conflict arises because the field flags (`meaning_matches: false`) correctly identify a mismatch between the literal link and the intended fact, but the `explanation_matches` field is set to `true` (implied by the text 'explanation provided in the data supports the intended fact's logic'). Wait, looking closer at the input data: `explanation_matches` is explicitly `false`. The reason states 'the explanation provided... supports the intended fact's logic, which contradicts the link reading'. This creates a semantic conflict: if the explanation supports the intended fact (which is correct), and the link reading is wrong, then the explanation *should* match the intended fact, not the link reading. The field `explanation_matches` likely refers to whether the explanation matches the *link_reading*. If so, `false` is correct. However, the prompt asks to check internal agreement. Let's re-evaluate the specific conflict requested: 'Identify a conflict only when the review's own final reasoning disagrees with its fields or other conclusions.'\n\nRe-analysis of the provided data:\n1. `link_reading`:; The use of external documents reduces retrieval latency."
+    }
+  ],
+  "finished_at_utc": "2026-10-30T02:43:14.453868+00:00",
+  "duration_seconds": 1073.265000000014,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "1f083c8d7b08dd0a0f35a63a770f04e63be2fe01bcd912d9c206fdd92e3612c1",
+      "bytes": 341
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "3dab6e9a50a92810964c45a3f7f84596ee18e1caffe494c4a51ed85e0c535785",
+      "bytes": 442
+    },
+    "artifacts/chunks.json": {
+      "sha256": "f0895cd64106d68c6c7af79e4af3aeaa04a9e22a0668162d31179f78e7b7a6f2",
+      "bytes": 522
+    },
+    "artifacts/environment.json": {
+      "sha256": "3859c840c60a1a3116e9b1fe0ef00ec9bc544ef3623616c3360d278b052603e2",
+      "bytes": 30444
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "a1e84d38b5de983c44e61a353989c0541a28b8add1a57b274480d0e46361cf9f",
+      "bytes": 2660
+    },
+    "artifacts/relations.json": {
+      "sha256": "4539e55b023b4642cd385199423a64cbcc329ccee75682e0a8b7ee18fbc0db83",
+      "bytes": 49957
+    },
+    "artifacts/concepts.json": {
+      "sha256": "2d6d4365b2d77ca2d1abedd4f6c03b9ab8ffbd1c56712457b9c21725d82d10b5",
+      "bytes": 20943
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "9915527b0f52fe02eb6bfee9d0537b69138c598a6d9b6036fcaed987f42635ec",
+      "bytes": 12948
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "77f97d23dbc54470bbf2ca9eee5a8c309ef1ac7a06b232e80f0fe19006512025",
+      "bytes": 688
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "04e50ec166337d2ac3f6a56b7f522a45ef1b10fff10cc0906b160e82d6690d06",
+      "bytes": 1408
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "acccd44850e01c8d7076e768606c37de883c1b7c7df50334afbd2b4aae666424",
+      "bytes": 675
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "ed5673ac9657ed02b87f413a9ba4f42efe5e424118b12112bbbef878d5d4574a",
+      "bytes": 15368
+    },
+    "artifacts/extractions.json": {
+      "sha256": "956fb212460abf4ce606c657f12af5b4ba4f25b50fdb4040bbc075f4ecbbbd75",
+      "bytes": 37448
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "f537a12ea35d3c29ba65f93d928226e131dddeb37271470e6168d2758b07bacf",
+      "bytes": 118
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "976dbbdb0dc1aefb7dfad5fe06844a79248f270bac1c576c39c55d3f26d1b361",
+      "bytes": 102
+    },
+    "artifacts/seeds.json": {
+      "sha256": "4d6640ccd6dba02aad0146734e299b17be061eafa23a4eb752159f0518843d6e",
+      "bytes": 49794
+    },
+    "artifacts/seed_progress.json": {
+      "sha256": "01545e9844512848710795171c31124545740cf9aed00734f6ed5c7b6958eeff",
+      "bytes": 14478
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "5356f7e930a0a58f0550bb51f71627f3ab9191ed67f3f85e9b77ad582f6849cf",
+      "bytes": 170300
+    },
+    "artifacts/debate.json": {
+      "sha256": "b1210f9417008afc109c33c9216e8cfdc525dc6c00438b4f91806105d63c877b",
+      "bytes": 201905
+    },
+    "artifacts/graph.json": {
+      "sha256": "0cce41154d1ed7f17c4c96fb0e07ff6f27484b64b31915b272dea356f1e5c71c",
+      "bytes": 16336
+    },
+    "knowledge_graph.html": {
+      "sha256": "dbc783c01af26ed162b8cd21ab38fc5974ed0c0f5c75bb73638533e462d4a331",
+      "bytes": 28606
+    },
+    "artifacts/evaluation_progress.json": {
+      "sha256": "f2b4892fb28ed5f80e5d809cecf7727a7cf916eefa09ca4cb2b7f0d4fc43636b",
+      "bytes": 6757
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 189,
+    "stage.started": 6,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 1,
+    "input.sentences_parsed": 1,
+    "input.chunk_created": 1,
+    "input.coverage_validated": 1,
+    "stage.completed": 5,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 184,
+    "model.response": 183,
+    "parse.started": 183,
+    "parse.completed": 183,
+    "validation.started": 183,
+    "validation.completed": 167,
+    "extraction.evidence_checked": 8,
+    "registry.concept_resolved": 46,
+    "registry.identity_reused": 26,
+    "registry.relation_added": 3,
+    "registry.relation_resolved": 16,
+    "extraction.reference_resolved": 1,
+    "extraction.normalized": 1,
+    "item.completed": 90,
+    "outline.segment": 1,
+    "registry.concept_alias_checked": 6,
+    "debate.adjudicated": 5,
+    "debate.decision": 17,
+    "extraction.chunk_review_summary": 1,
+    "validation.failed": 16,
+    "model.attempt_failed": 17,
+    "model.retry": 14,
+    "seed.gap_coverage_checked": 9,
+    "seed.filtered": 6,
+    "seed.selected": 7,
+    "seed.selection_completed": 1,
+    "debate.fact_written": 12,
+    "debate.proposed": 12,
+    "debate.representation_checked": 8,
+    "debate.novelty_checked": 6,
+    "debate.withdrawn": 1,
+    "debate.rejected": 9,
+    "registry.concepts_merged": 1,
+    "debate.unresolved": 2,
+    "item.unresolved": 2,
+    "graph.node_added": 13,
+    "graph.edge_added": 5,
+    "graph.canonicalized": 1,
+    "graph.validated": 1,
+    "evaluation.context_built": 1,
+    "evaluation.metrics_computed": 1,
+    "cache.hit": 2,
+    "stage.failed": 1,
+    "run.failed": 1
+  }
+}

@@ -4,7 +4,7 @@ import statistics
 
 from pydantic import Field
 from .records import Record
-from .models import ModelResponseError
+from .models import ModelResponseError, ModelServiceError
 from .health import finish_item
 
 
@@ -239,8 +239,10 @@ def evaluate(chunks, graph, models, trace):
         try:
             document_metrics = compare_texts("\n\n".join(r["original"] for r in results),
                 "\n\n".join(r["reconstruction"] for r in results), models, "evaluation:document")
-        except ModelResponseError as exc:
+        except (ModelResponseError, ModelServiceError) as exc:
             document_error = str(exc)
+            # The graph and per-chunk results already exist. Preserve them and
+            # report an incomplete document score if final inference fails.
             finish_item(trace, "evaluation", "evaluation:document", exc)
         else:
             document_error = None

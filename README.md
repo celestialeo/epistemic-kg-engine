@@ -6,6 +6,8 @@ Two full introductory chapters are supplied: [neuronal communication](data/input
 and [the water cycle](data/water_cycle.txt). The original short neuroscience
 input is preserved as [sample.txt](data/sample.txt). A comparable shorter water-cycle
 input is available as [water_cycle_sample.txt](data/water_cycle_sample.txt).
+For a minimal input, [AI test](data/ai_test.txt) contains three sentences and fits
+into one default-sized chunk; background prerequisites are inferred by the pipeline.
 
 ## Run
 
@@ -17,6 +19,7 @@ with `qwen3.5:9b` installed, then run:
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter neuroscience-simplified
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter water-cycle
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter water-cycle-simplified
+& .\.venv\Scripts\python.exe .\run_pipeline.py --chapter ai-test
 # Or run full neuroscience and water-cycle sequentially, with separate outputs:
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter both
 ```
@@ -147,7 +150,7 @@ Options:
 | Option | Default | Purpose |
 | --- | --- | --- |
 | `--chunk-words` | 85 | Maximum words per chunk |
-| `--chapter` | neuroscience | neuroscience, neuroscience-simplified, water-cycle, water-cycle-simplified, or both (the two full chapters) |
+| `--chapter` | neuroscience | neuroscience, neuroscience-simplified, water-cycle, water-cycle-simplified, ai-test, or both (the two full chapters) |
 | `--seed-limit` | 0 | Optional cap on concepts sent to debate; 0 means all extracted concepts |
 | `--model` | qwen3.5:9b | Model used in every language role |
 | `--registry-model` | same as --model | Optional different installed model for relation checks and endpoint repair |

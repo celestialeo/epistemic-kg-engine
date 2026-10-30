@@ -1,0 +1,14 @@
+[
+  {
+    "step": "background_candidate",
+    "id": "candidate_0011",
+    "status": "unresolved",
+    "reason": "No validated background decision: background_representation_checker failed for candidate_0011 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field: meaning_matches (value: false) vs. Field: scope_preserved (value: true). The semantic analysis in the 'reason' field explicitly identifies a 'clear logical reversal' and 'reversed causality' between the link reading and the intended fact. This fundamental disagreement on the core meaning implies that the scope of the claim is not preserved; therefore, setting 'scope_preserved' to true contradicts the detailed reasoning which concludes the representation is invalid."
+  },
+  {
+    "step": "background_candidate",
+    "id": "candidate_0012",
+    "status": "unresolved",
+    "reason": "No validated background decision: background_representation_checker failed for candidate_0012 after 3 attempts: Resolve your review's internal inconsistency without blindly flipping flags: Field Conflict: The field `meaning_matches` is set to `false`, and `direction_valid` is `false`. However, the `reason` explicitly states that the 'literal reading of the link defines... usage reducing latency' while the 'intended fact states that retrieval latency limits the use'. This implies the reviewer believes the *link_reading* (the literal text) is incorrect because it reverses causality. The conflict arises because the field flags (`meaning_matches: false`) correctly identify a mismatch between the literal link and the intended fact, but the `explanation_matches` field is set to `true` (implied by the text 'explanation provided in the data supports the intended fact's logic'). Wait, looking closer at the input data: `explanation_matches` is explicitly `false`. The reason states 'the explanation provided... supports the intended fact's logic, which contradicts the link reading'. This creates a semantic conflict: if the explanation supports the intended fact (which is correct), and the link reading is wrong, then the explanation *should* match the intended fact, not the link reading. The field `explanation_matches` likely refers to whether the explanation matches the *link_reading*. If so, `false` is correct. However, the prompt asks to check internal agreement. Let's re-evaluate the specific conflict requested: 'Identify a conflict only when the review's own final reasoning disagrees with its fields or other conclusions.'\n\nRe-analysis of the provided data:\n1. `link_reading`:; The use of external documents reduces retrieval latency."
+  }
+]

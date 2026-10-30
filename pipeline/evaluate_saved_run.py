@@ -27,9 +27,13 @@ def evaluate_saved_run(directory, host="http://localhost:11434", *, resume=None,
     stats = read("statistics.json")
     config = manifest["config"]
     if document_context_tokens is None:
-        document_context_tokens = config.get("document_context_tokens", 16384)
+        document_context_tokens = config.get("document_context_tokens")
+        if document_context_tokens is None:
+            document_context_tokens = config.get("context_tokens", 8192)
     if document_output_tokens is None:
-        document_output_tokens = config.get("document_output_tokens", 8192)
+        document_output_tokens = config.get("document_output_tokens")
+        if document_output_tokens is None:
+            document_output_tokens = config.get("max_output_tokens", 4096)
     if not 0 < document_output_tokens < document_context_tokens:
         raise ValueError("Document output budget must be positive and smaller than its context window")
     started = datetime.now().astimezone()
