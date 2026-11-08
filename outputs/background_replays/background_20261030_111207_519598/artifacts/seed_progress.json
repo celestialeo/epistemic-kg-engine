@@ -1,0 +1,259 @@
+{
+  "topics": {
+    "seed_candidate_0001": {
+      "expand": false,
+      "chapter_topic": "small transformer",
+      "importance": 0.2,
+      "relevance": 0.5,
+      "reason": "The term 'small transformer' is a generic system-level label rather than a specific operational mechanism; expanding it offers no substantive insight into the chapter's core technical processes like attention or backpropagation."
+    },
+    "seed_candidate_0002": {
+      "expand": true,
+      "chapter_topic": "Self-attention mechanism for text processing",
+      "importance": 0.95,
+      "relevance": 1.0,
+      "reason": "This concept is central to the chapter's description of how the model processes text; explaining its internal workings (query/key/value interactions) materially helps readers understand the primary operational mechanism described."
+    },
+    "seed_candidate_0003": {
+      "expand": false,
+      "chapter_topic": "text",
+      "importance": 0.1,
+      "relevance": 0.2,
+      "reason": "'Text' is a generic data entity mentioned only as input; it carries no specific explanatory role regarding the model's internal mechanics or training strategies discussed in the chapter."
+    },
+    "seed_candidate_0004": {
+      "expand": true,
+      "chapter_topic": "Backpropagation for prediction improvement during training",
+      "importance": 0.95,
+      "relevance": 1.0,
+      "reason": "Backpropagation is a fundamental training process explicitly detailed in the chapter; expanding on how gradients are computed and weights updated provides essential context for understanding model learning."
+    },
+    "seed_candidate_0005": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.0,
+      "relevance": 0.0,
+      "reason": "The term 'prediction' is a generic output concept mentioned only as the object of improvement; it lacks specific operational detail in this context and does not require expansion to understand the chapter's mechanisms."
+    },
+    "seed_candidate_0006": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.0,
+      "relevance": 0.0,
+      "reason": "'Training' is a broad process term; the chapter explains specific mechanisms (self-attention, backpropagation) within it rather than defining 'training' itself as a distinct concept needing expansion."
+    },
+    "seed_candidate_0007": {
+      "expand": true,
+      "chapter_topic": "Regularization for generalization beyond training examples",
+      "importance": 0.85,
+      "relevance": 0.95,
+      "reason": "The current definition is too generic ('technique applied to machine learning models'). Expanding on how regularization specifically prevents overfitting in small transformers to enable generalization beyond training examples is crucial for understanding the chapter's core mechanism."
+    },
+    "seed_candidate_0008": {
+      "expand": true,
+      "chapter_topic": "Regularization for generalization beyond training examples",
+      "importance": 0.75,
+      "relevance": 0.9,
+      "reason": "While the definition is accurate, explaining the nature of 'generalization beyond training examples' as a specific property achieved through regularization helps clarify the goal of that process, distinguishing it from mere performance on seen data."
+    },
+    "seed_candidate_0009": {
+      "expand": true,
+      "chapter_topic": "Quantization for reducing memory requirements after training",
+      "importance": 0.85,
+      "relevance": 0.9,
+      "reason": "The concept of quantization is central to the chapter's post-training optimization strategy; expanding it clarifies how precision reduction achieves memory savings without retraining, directly supporting the main idea of efficient deployment."
+    },
+    "seed_candidate_0010": {
+      "expand": true,
+      "chapter_topic": "Retrieval-augmented generation for enhanced reasoning",
+      "importance": 0.9,
+      "relevance": 0.95,
+      "reason": "This concept defines the chapter's primary mechanism for enhancing reasoning via external knowledge; expanding it explains the retrieval and integration workflow essential to understanding the model's augmented capabilities."
+    },
+    "seed_candidate_0011": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.2,
+      "relevance": 0.3,
+      "reason": "Memory requirement is a generic property mentioned only as a target of quantization; it lacks independent explanatory depth within this chapter's context and does not warrant expansion."
+    },
+    "seed_candidate_0012": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.15,
+      "relevance": 0.25,
+      "reason": "External document is a peripheral entity referenced only to define the scope of RAG; it carries no substantive explanatory role beyond being an object of the retrieval process."
+    },
+    "seed_candidate_0013": {
+      "expand": true,
+      "chapter_topic": "Retrieval-augmented generation for enhanced reasoning",
+      "importance": 0.95,
+      "relevance": 0.95,
+      "reason": "The concept 'use of external document' is the functional outcome of Retrieval-Augmented Generation (RAG). While RAG is defined as the mechanism enabling this use, a reader needs to understand the specific nature of 'using external documents' (e.g., accessing knowledge beyond the model's training distribution) to grasp how RAG enhances reasoning. This distinction clarifies that the model does not just generate answers from internal weights but actively queries and integrates outside information, which is central to the chapter's claim of enhanced capabilities."
+    }
+  },
+  "plans": {
+    "seed_candidate_0002": {
+      "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for this purpose and notes its role in the operational mechanisms of the model.",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact within the attention mechanism to compute relevance between tokens?",
+          "assumed_knowledge": "The mathematical formulation involving dot products, scaling, softmax normalization, and weight matrices that transform inputs into these vectors.",
+          "why_useful": "The source only mentions 'processing text' but does not explain the internal linear algebra operations. Without understanding how attention weights are derived from Q/K/V interactions, the reader cannot grasp *how* the mechanism processes text beyond a black-box description.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What is the specific role of the softmax function in normalizing attention scores to form a probability distribution over tokens?",
+          "assumed_knowledge": "The mechanism of converting raw attention scores into normalized weights that sum to one, ensuring stable gradient flow and interpretable focus.",
+          "why_useful": "The text implies a functional outcome ('process text') but omits the normalization step critical to the definition of self-attention. Explaining this clarifies how the model decides which parts of the input to focus on.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text describes the function (processing text) but lacks the mechanistic details (Q/K/V interactions, softmax normalization) required to explain *how* that function is achieved. These are general explanatory gaps regarding the basis of the concept."
+    },
+    "seed_candidate_0004": {
+      "document_coverage": "The source text identifies backpropagation as a mechanism used by the small transformer to improve predictions during training.",
+      "gaps": [
+        {
+          "question": "How are gradients computed with respect to model parameters using the chain rule, and how are these gradients applied to update weights?",
+          "assumed_knowledge": "The calculus-based process of calculating partial derivatives through the computational graph and applying optimization algorithms like stochastic gradient descent.",
+          "why_useful": "The source states the outcome ('improve predictions') but does not explain the iterative learning process. Understanding the computation of gradients and weight updates is essential to comprehend how 'improvement' occurs mechanistically.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What is the role of activation functions (e.g., ReLU, GELU) in enabling non-linear learning during backpropagation?",
+          "assumed_knowledge": "The necessity of non-linearity for the model to learn complex patterns and how their derivatives are used in the backward pass.",
+          "why_useful": "The text mentions improving predictions but omits the architectural components (activations) that make backpropagation effective. Explaining this clarifies why simple linear transformations are insufficient.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text defines the goal of backpropagation (improving predictions) but assumes knowledge of the underlying calculus and optimization steps. These gaps address the general explanatory basis of the concept rather than unknown details of a specific case."
+    },
+    "seed_candidate_0007": {
+      "document_coverage": "The source text states that regularization helps a small transformer generalize beyond its training examples.",
+      "gaps": [
+        {
+          "question": "What are the common techniques for regularization (e.g., dropout, weight decay) and how do they specifically prevent overfitting in transformers?",
+          "assumed_knowledge": "The mechanisms of randomly dropping units or penalizing large weights to reduce model complexity and reliance on specific training patterns.",
+          "why_useful": "The source mentions the effect ('generalize') but not the method. Explaining *how* regularization prevents overfitting (e.g., by adding noise or constraining weights) is necessary to understand the mechanism described.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "How does the choice of regularization strength impact the trade-off between bias and variance in the model's performance?",
+          "assumed_knowledge": "The theoretical concept of the bias-variance trade-off and how regularization parameters tune this balance.",
+          "why_useful": "The text implies a benefit ('helps generalize') without explaining the underlying statistical principle. Understanding this trade-off clarifies why regularization is needed and how it functions theoretically.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text describes the outcome of regularization (generalization) but assumes the reader knows the techniques involved. These gaps address the general explanatory basis of how regularization works to achieve that outcome."
+    },
+    "seed_candidate_0008": {
+      "document_coverage": "The source text defines 'generalization beyond training example' as the ability of a model to perform well on unseen data, noting it is enabled by regularization.",
+      "gaps": [
+        {
+          "question": "What constitutes 'unseen data' in the context of transformer evaluation, and how does distributional shift affect generalization?",
+          "assumed_knowledge": "The definition of the test set as independent and identically distributed (i.i.d.) samples from the same underlying distribution, and the challenges posed by out-of-distribution inputs.",
+          "why_useful": "The source mentions 'unseen data' but does not define it or explain the statistical conditions required for generalization. Clarifying this helps distinguish between memorization and true generalization.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "How is model performance on unseen data typically measured (e.g., accuracy, F1 score) to quantify generalization?",
+          "assumed_knowledge": "Standard evaluation metrics used to assess predictive capability on held-out datasets.",
+          "why_useful": "The source implies a qualitative ability ('perform well') but does not specify the quantitative measures. Explaining these metrics clarifies how generalization is empirically verified.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text describes the property of generalization but assumes knowledge of what 'unseen data' entails and how it is measured. These gaps address the general explanatory basis of evaluating model performance."
+    },
+    "seed_candidate_0009": {
+      "document_coverage": "The source states that quantization is a process occurring after training that reduces memory requirements.",
+      "gaps": [
+        {
+          "question": "What specific technical mechanisms (e.g., bit-width reduction, weight pruning) constitute 'quantization' in this context?",
+          "assumed_knowledge": "The reader assumes the term 'quantization' implies a specific mathematical operation on model weights or activations to lower precision.",
+          "why_useful": "Explaining that reducing numerical precision (e.g., float32 to int8) directly correlates to smaller memory footprints clarifies *how* the reduction happens without retraining, distinguishing it from other forms of compression.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "Does 'reducing memory requirements' imply reducing model size, inference latency, or both?",
+          "assumed_knowledge": "The reader assumes 'memory requirements' refers strictly to storage capacity (VRAM/RAM) but may not realize quantization often impacts compute efficiency as well.",
+          "why_useful": "Clarifying that lower precision allows more models to fit in limited memory and potentially speeds up matrix multiplications helps understand the full scope of 'optimization'.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source defines quantization functionally ('reduces memory') but omits the underlying mechanism (precision reduction) and the dual benefit of compute efficiency. These are standard concepts in ML that the text assumes the reader knows."
+    },
+    "seed_candidate_0010": {
+      "document_coverage": "The source states that retrieval-augmented generation enables a system to use external documents when answering questions.",
+      "gaps": [
+        {
+          "question": "What is the specific workflow for 'using' these documents (e.g., search, retrieval, context injection)?",
+          "assumed_knowledge": "The reader assumes there is a defined pipeline connecting the model to external data sources.",
+          "why_useful": "Explaining that RAG typically involves a retriever fetching relevant text chunks and an LLM generating answers conditioned on those chunks clarifies *how* reasoning is enhanced beyond internal weights.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What constitutes 'enhanced reasoning' in this specific implementation?",
+          "assumed_knowledge": "The reader assumes accessing external documents automatically improves logical deduction or factual accuracy.",
+          "why_useful": "Distinguishing between simple fact retrieval and complex reasoning tasks supported by retrieved context helps clarify the chapter's claim about 'enhanced' capabilities.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source describes RAG as an enabler for using external documents but does not detail the retrieval mechanism or define the nature of the 'enhanced reasoning' achieved. These are assumed to be understood by the reader."
+    },
+    "seed_candidate_0013": {
+      "document_coverage": "The source identifies 'use of external document' as the act of utilizing outside materials when answering questions, enabled by RAG.",
+      "gaps": [
+        {
+          "question": "What specific types of 'external documents' are considered valid inputs for this process?",
+          "assumed_knowledge": "The reader assumes a generic definition of 'documents' (e.g., PDFs, web pages, internal wikis) without knowing the specific format or source constraints.",
+          "why_useful": "Understanding that RAG systems often rely on structured text corpora rather than arbitrary file types clarifies the practical limitations and setup required for this feature.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "How does the system distinguish between relevant and irrelevant external documents during 'use'?",
+          "assumed_knowledge": "The reader assumes the system can automatically filter or select useful information from a pool of documents.",
+          "why_useful": "Explaining the role of retrieval algorithms (e.g., vector search, keyword matching) in selecting relevant context explains *how* the 'use' is effective and not just random access.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source treats 'use of external document' as a black-box outcome of RAG. It assumes the reader understands what constitutes a valid document and how relevance is determined, which are critical for grasping the mechanism."
+    }
+  },
+  "unresolved": {}
+}

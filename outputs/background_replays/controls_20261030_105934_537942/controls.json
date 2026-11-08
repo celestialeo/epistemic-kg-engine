@@ -1,0 +1,597 @@
+[
+  {
+    "case": "false_precision",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "false_precision",
+      "seed_id": "false_precision",
+      "source": "quantization",
+      "target": "numerical precision",
+      "relation": "increases",
+      "relation_definition": "SOURCE increases TARGET.",
+      "conditions": "always",
+      "modality": "assertion",
+      "intended_fact": "Quantization always increases the numerical precision of model parameters.",
+      "link_reading": "The link asserts that 'quantization' always increases 'numerical precision'. The relation is defined as 'SOURCE increases TARGET', with the condition 'always' and modality 'assertion'.",
+      "reason": "Quantization always increases the numerical precision of model parameters.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "numerical precision",
+        "definition": "numerical precision",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'quantization' always increases 'numerical precision'. The relation is defined as 'SOURCE increases TARGET', with the condition 'always' and modality 'assertion'.",
+        "reason": "The intended fact states that quantization always increases numerical precision. The explanation matches this exactly. The link representation captures the same subject (quantization), predicate (increases), object (numerical precision), condition (always), and modality (assertion). There are no concrete representation errors; the link faithfully represents the provided text, even though the factual claim itself is likely incorrect in reality.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that quantization 'always increases numerical precision' is factually incorrect. Quantization reduces the bit-width of model parameters (e.g., from 32-bit floats to 8-bit integers), which inherently decreases or maintains numerical precision rather than increasing it, often introducing rounding errors. The source text states quantization 'reduces memory requirements,' which aligns with reducing precision, contradicting the candidate's claim.",
+        "candidate_id": "false_precision",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Quantization for reducing memory requirements after training",
+        "objections": [
+          "The claim that quantization 'always increases numerical precision' contradicts the fundamental definition of quantization, which involves mapping a large set of values to a smaller set, thereby reducing precision to save memory. The source text explicitly links quantization to 'reducing memory requirements,' a process achieved by lowering precision, not increasing it."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The claim that quantization 'always increases numerical precision' is factually incorrect and contradicts the fundamental definition of quantization. Quantization involves mapping a large set of continuous or high-precision values to a smaller, discrete set (e.g., reducing 32-bit floats to 8-bit integers), which inherently reduces numerical precision to achieve memory savings. The source text explicitly states that quantization 'reduces its memory requirements,' a goal achieved by lowering precision, not increasing it. Therefore, the relation must be corrected from 'increases' to 'decreases' to align with established scientific knowledge and the provided context.",
+        "candidate_id": "false_precision",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The claim that quantization 'always increases numerical precision' is factually incorrect and contradicts the fundamental definition of quantization. Quantization involves mapping a large set of continuous or high-precision values to a smaller, discrete set (e.g., reducing 32-bit floats to 8-bit integers), which inherently reduces numerical precision to achieve memory savings. The source text explicitly states that quantization 'reduces its memory requirements,' a goal achieved by lowering precision, not increasing it. Therefore, the relation must be corrected from 'increases' to 'decreases' to align with established scientific knowledge and the provided context.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "false_guarantee",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "false_guarantee",
+      "seed_id": "false_guarantee",
+      "source": "regularization",
+      "target": "perfect predictions",
+      "relation": "guarantees",
+      "relation_definition": "SOURCE guarantees TARGET.",
+      "conditions": "on all unseen data",
+      "modality": "assertion",
+      "intended_fact": "Regularization guarantees perfect predictions on all unseen data.",
+      "link_reading": "The link faithfully represents the intended fact. It maps 'regularization' as source, 'guarantees' as relation, 'perfect predictions' as target, with conditions 'on all unseen data' and modality 'assertion'. The endpoint definitions align with these terms without adding or omitting meaning.",
+      "reason": "Regularization guarantees perfect predictions on all unseen data.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "regularization",
+        "definition": "A technique applied to machine learning models.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "perfect predictions",
+        "definition": "perfect predictions",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact. It maps 'regularization' as source, 'guarantees' as relation, 'perfect predictions' as target, with conditions 'on all unseen data' and modality 'assertion'. The endpoint definitions align with these terms without adding or omitting meaning.",
+        "reason": "The representation is structurally accurate: the source/target/relation/conditions/modality fields directly mirror the intended fact's components. No semantic drift, missing scope, or directional error exists in the graph encoding.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that regularization guarantees perfect predictions on all unseen data is factually incorrect. Regularization is a technique designed to prevent overfitting and improve generalization, but it cannot guarantee perfect predictions because real-world data contains inherent noise, complexity, and limitations in model capacity. The relation 'guarantees' is too strong for this context; the correct relationship should be 'improves' or 'helps achieve', reflecting that regularization aids generalization without ensuring perfection.",
+        "candidate_id": "false_guarantee",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": false,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Regularization for generalization beyond training examples",
+        "objections": [
+          "The claim that regularization guarantees perfect predictions contradicts established machine learning theory, which states that no model can guarantee perfect performance on unseen data due to noise and complexity.",
+          "The relation 'guarantees' misrepresents the actual function of regularization, which is to mitigate overfitting rather than ensure accuracy."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The claim that regularization guarantees perfect predictions on all unseen data is factually incorrect and contradicts established machine learning theory. Regularization's function is to mitigate overfitting by penalizing model complexity, thereby improving generalization relative to an unregularized model, but it cannot eliminate the inherent noise in data or the fundamental limits of learnability. Therefore, no deterministic guarantee of 'perfect' predictions exists for any model on unseen data. The relation 'guarantees' is inappropriate; a precise predicate would be 'mitigates overfitting' or 'improves generalization relative to baseline', with modality 'qualified possibility' rather than 'assertion'. The assertion must be withdrawn as it represents an unsupported certainty about a probabilistic process.",
+        "candidate_id": "false_guarantee",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The claim that regularization guarantees perfect predictions on all unseen data is factually incorrect and contradicts established machine learning theory. Regularization's function is to mitigate overfitting by penalizing model complexity, thereby improving generalization relative to an unregularized model, but it cannot eliminate the inherent noise in data or the fundamental limits of learnability. Therefore, no deterministic guarantee of 'perfect' predictions exists for any model on unseen data. The relation 'guarantees' is inappropriate; a precise predicate would be 'mitigates overfitting' or 'improves generalization relative to baseline', with modality 'qualified possibility' rather than 'assertion'. The assertion must be withdrawn as it represents an unsupported certainty about a probabilistic process.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "true_chain_rule",
+    "stage": "debate",
+    "expected": true,
+    "actual": true,
+    "passed": true,
+    "candidate": {
+      "id": "true_chain_rule",
+      "seed_id": "true_chain_rule",
+      "source": "backpropagation",
+      "target": "chain rule",
+      "relation": "uses",
+      "relation_definition": "SOURCE employs TARGET.",
+      "conditions": "to compute derivatives of composed functions",
+      "modality": "assertion",
+      "intended_fact": "Backpropagation uses the chain rule to compute derivatives of composed functions.",
+      "link_reading": "The link faithfully represents the intended fact. The source 'backpropagation' employs the target 'chain rule' under the condition 'to compute derivatives of composed functions', with an assertion modality.",
+      "reason": "Backpropagation uses the chain rule to compute derivatives of composed functions.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": true,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "chain rule",
+        "definition": "chain rule",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact. The source 'backpropagation' employs the target 'chain rule' under the condition 'to compute derivatives of composed functions', with an assertion modality.",
+        "reason": "The graph structure (source -> uses -> target) matches the sentence structure exactly. The relation definition 'SOURCE employs TARGET' aligns with 'uses'. The conditions and modality are explicitly stated and match the text. No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that backpropagation uses the chain rule to compute derivatives of composed functions is a fundamental, well-established fact in machine learning theory. The source text defines backpropagation as a mechanism for improving predictions during training, which inherently relies on calculating gradients via the chain rule. No contradictions exist between the general knowledge and the chapter's description of the small transformer's training process.",
+        "candidate_id": "true_chain_rule",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Backpropagation for prediction improvement during training",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The claim that backpropagation uses the chain rule to compute derivatives of composed functions is a fundamental mathematical fact in machine learning, independent of the specific text provided. The text mentions backpropagation but does not explicitly name the 'chain rule'; however, general explanatory knowledge confirms this mechanism. No objections exist; the relation is valid and necessary to explain how the training process works.",
+        "candidate_id": "true_chain_rule",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that backpropagation uses the chain rule is a fundamental mathematical fact in machine learning, independent of the specific text provided. The text mentions backpropagation but does not explicitly name the 'chain rule'; however, general explanatory knowledge confirms this mechanism. No objections exist; the relation is valid and necessary to explain how the training process works.",
+        "candidate_id": "true_chain_rule",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Backpropagation for prediction improvement during training",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true
+      },
+      "score": 1.0,
+      "threshold": null,
+      "decision_reason": "The assertion that backpropagation uses the chain rule is a fundamental mathematical fact in machine learning, independent of the specific text provided. The text mentions backpropagation but does not explicitly name the 'chain rule'; however, general explanatory knowledge confirms this mechanism. No objections exist; the relation is valid and necessary to explain how the training process works.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "unknown_case_choice",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "unknown_case_choice",
+      "seed_id": "unknown_case_choice",
+      "source": "small transformer",
+      "target": "dropout",
+      "relation": "uses",
+      "relation_definition": "SOURCE employs TARGET.",
+      "conditions": "in the supplied chapter",
+      "modality": "assertion",
+      "intended_fact": "The small transformer in the supplied chapter uses dropout.",
+      "link_reading": "The link faithfully represents the intended fact.",
+      "reason": "The small transformer in the supplied chapter uses dropout.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "small transformer",
+        "definition": "A small transformer that uses self-attention to process text and backpropagation to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "dropout",
+        "definition": "dropout",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact.",
+        "reason": "The source 'small transformer', relation 'uses' (defined as SOURCE employs TARGET), and target 'dropout' accurately map to the sentence 'The small transformer in the supplied chapter uses dropout.' The conditions 'in the supplied chapter' and modality 'assertion' are correctly included. No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion claims the small transformer 'uses dropout'. While dropout is a standard regularization technique, the provided source text explicitly lists 'Regularization' as a mechanism that helps generalize. It does not specify 'dropout' by name. In general explanatory knowledge, 'regularization' is the broad category; asserting the specific instance 'dropout' without textual support or explicit general knowledge confirmation for this specific architecture in the context creates an unsupported specificity gap. The text states RAG lets it use external documents, but does not state it uses dropout. Therefore, linking 'small transformer' to 'dropout' via 'uses' is an unjustified inference from the provided text and lacks sufficient grounding in the general knowledge schema unless 'dropout' is universally assumed for all small transformers in this specific context, which is a risky assumption given the instruction to distinguish general knowledge from unstated case choices. The relation is plausible but not strictly supported by the text or required by the gap analysis.",
+        "candidate_id": "unknown_case_choice",
+        "semantics_valid": false,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": false,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 0.85,
+        "chapter_related": true,
+        "related_topic": "Regularization for generalization beyond training examples",
+        "objections": [
+          "The source text mentions 'Regularization' generally but does not specify 'dropout'. Asserting the specific use of 'dropout' introduces an unstated detail about the particular case that is not supported by the provided text or explicitly required by the gap analysis.",
+          "General knowledge allows for various regularization techniques (e.g., weight decay, early stopping). Assuming 'dropout' specifically without textual evidence conflates a general category with a specific implementation, violating the instruction to reject assertions of unstated choices in particular cases."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The source text explicitly mentions 'Regularization' as a general concept helping the model generalize, but does not specify 'dropout' as the implemented technique. Asserting that this specific small transformer 'uses dropout' introduces an unstated detail about the particular case. General knowledge allows for various regularization methods (e.g., weight decay, early stopping); assuming 'dropout' specifically without textual evidence conflates a general category with a specific implementation, violating the instruction to reject assertions of unstated choices in particular cases. Therefore, the relation 'uses' between 'small transformer' and 'dropout' is unsupported by the provided text for this specific instance.",
+        "candidate_id": "unknown_case_choice",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The source text explicitly mentions 'Regularization' as a general concept helping the model generalize, but does not specify 'dropout' as the implemented technique. Asserting that this specific small transformer 'uses dropout' introduces an unstated detail about the particular case. General knowledge allows for various regularization methods (e.g., weight decay, early stopping); assuming 'dropout' specifically without textual evidence conflates a general category with a specific implementation, violating the instruction to reject assertions of unstated choices in particular cases. Therefore, the relation 'uses' between 'small transformer' and 'dropout' is unsupported by the provided text for this specific instance.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "paraphrase_duplicate",
+    "stage": "novelty",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "paraphrase_duplicate",
+      "seed_id": "paraphrase_duplicate",
+      "source": "regularization",
+      "target": "generalization beyond training example",
+      "relation": "enables",
+      "relation_definition": "SOURCE permits TARGET.",
+      "conditions": null,
+      "modality": "assertion",
+      "intended_fact": "Regularization helps models generalize beyond their training examples.",
+      "link_reading": "Regularization helps models generalize beyond their training examples.",
+      "reason": "Regularization helps models generalize beyond their training examples.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "regularization",
+        "definition": "A technique applied to machine learning models.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "generalization beyond training example",
+        "definition": "The ability of a model to perform well on unseen data.",
+        "kind": "property",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "novelty_references": [
+        {
+          "id": "chunk_001_relation_003",
+          "source": "regularization",
+          "target": "generalization beyond training example",
+          "relation": "enables",
+          "relation_definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+          "conditions": "for the small transformer (it)",
+          "modality": "helps"
+        }
+      ],
+      "novelty": {
+        "additional_information": [],
+        "status": "duplicate",
+        "evidence_ids": [
+          "chunk_001_relation_003"
+        ],
+        "related_reference_ids": [],
+        "reason": "The candidate assertion 'Regularization helps models generalize beyond their training examples' is semantically identical to the information in reference chunk_001_relation_003 ('regularization enables generalization beyond training example for the small transformer'). The difference in wording ('helps' vs 'enables') and the explicit mention of 'small transformer' in the reference versus 'models' in the candidate does not constitute new information, as 'models' is a valid paraphrase for 'small transformer' in this context, and 'helps' aligns with the modality 'enables'. No outside subject knowledge is required to see that the core assertion is fully entailed by the reference."
+      }
+    }
+  },
+  {
+    "case": "inverse_duplicate",
+    "stage": "novelty",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "inverse_duplicate",
+      "seed_id": "inverse_duplicate",
+      "source": "memory requirement",
+      "target": "quantization",
+      "relation": "is_reduced_by",
+      "relation_definition": "TARGET decreases SOURCE.",
+      "conditions": null,
+      "modality": "assertion",
+      "intended_fact": "Model memory requirements are reduced by quantization.",
+      "link_reading": "Model memory requirements are reduced by quantization.",
+      "reason": "Model memory requirements are reduced by quantization.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "memory requirement",
+        "definition": "the amount of memory needed by a process",
+        "kind": "property",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "novelty_references": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "novelty": {
+        "additional_information": [],
+        "status": "duplicate",
+        "evidence_ids": [
+          "chunk_001"
+        ],
+        "related_reference_ids": [],
+        "reason": "The candidate assertion 'Model memory requirements are reduced by quantization' is directly stated in chunk_001 ('After training, quantization reduces its memory requirements'). The reference explicitly links the subject (small transformer's memory) with the mechanism (quantization) and the outcome (reduction), fully entailing the candidate's fact without adding new information."
+      }
+    }
+  },
+  {
+    "case": "new_mechanism",
+    "stage": "novelty",
+    "expected": true,
+    "actual": true,
+    "passed": true,
+    "candidate": {
+      "id": "new_mechanism",
+      "seed_id": "new_mechanism",
+      "source": "quantization",
+      "target": "memory requirement",
+      "relation": "reduces",
+      "relation_definition": "SOURCE decreases TARGET.",
+      "conditions": "by representing parameters with fewer bits",
+      "modality": "assertion",
+      "intended_fact": "Quantization can reduce storage by representing parameters with fewer bits.",
+      "link_reading": "Quantization can reduce storage by representing parameters with fewer bits.",
+      "reason": "Quantization can reduce storage by representing parameters with fewer bits.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "memory requirement",
+        "definition": "the amount of memory needed by a process",
+        "kind": "property",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_003",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      }
+    }
+  }
+]

@@ -166,9 +166,9 @@ aria-describedby="query-status match-help" placeholder="What would you like to e
     return page.replace("</html>", '<script src="/explorer.js"></script><script src="/quiz.js"></script></html>')
 
 
-def create_app(directories, *, model_factory=make_models):
+def create_app(directories, *, model_factory=make_models, professor_store=None, runs_root=None):
     snapshots = [load_snapshot(directory) for directory in directories]
-    if not snapshots:
+    if not snapshots and professor_store is None:
         raise ValueError("Select at least one completed run")
     sessions = {}
     matchers = {}
@@ -224,6 +224,8 @@ def create_app(directories, *, model_factory=make_models):
 
     @app.get("/", response_class=HTMLResponse)
     def home():
+        if professor_store is not None:
+            return Path(__file__).with_name("professor.html").read_text(encoding="utf-8")
         if len(snapshots) == 1:
             return explorer_page(snapshots[0], 0, 1)
         links = "".join(f'<li><a href="/runs/{i}">{html.escape(s.directory.name)}</a></li>'
@@ -373,6 +375,10 @@ def create_app(directories, *, model_factory=make_models):
         finally:
             lock.release()
 
+    if professor_store is not None:
+        from .professor import install_dashboard
+        install_dashboard(app, snapshots, professor_store, runs_root or ROOT / "outputs/runs", matcher_at,
+                          trace_at, check_origin, lock)
     return app
 
 

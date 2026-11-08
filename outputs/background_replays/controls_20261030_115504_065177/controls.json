@@ -1,0 +1,63 @@
+[
+  {
+    "case": "wrong_named_contract",
+    "stage": "representation",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "wrong_named_contract",
+      "seed_id": "wrong_named_contract",
+      "source": "chain rule",
+      "target": "backpropagation",
+      "relation": "causes",
+      "relation_definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "conditions": null,
+      "modality": "assertion",
+      "intended_fact": "Backpropagation uses the chain rule.",
+      "link_reading": "The link asserts that 'chain rule' causally produces 'backpropagation'.",
+      "reason": "Backpropagation uses the chain rule.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "chain rule",
+        "definition": "chain rule",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'chain rule' causally produces 'backpropagation'.",
+        "reason": "The intended fact states a methodological usage ('Backpropagation uses the chain rule'), implying the chain rule is a tool or mathematical principle applied within backpropagation. The link's relation 'causes' with definition 'SOURCE causally produces... TARGET names the action' incorrectly frames the abstract concept (chain rule) as the causal agent that brings about the process (backpropagation). This reverses the logical dependency and adds a causal necessity absent from the intended fact. Backpropagation is defined by its use of the chain rule, not caused by it in the sense of one event producing another.",
+        "meaning_matches": false,
+        "direction_valid": false,
+        "explanation_matches": false,
+        "scope_preserved": false,
+        "suggested_correction": null
+      }
+    }
+  }
+]

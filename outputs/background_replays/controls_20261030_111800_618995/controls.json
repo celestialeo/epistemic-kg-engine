@@ -1,0 +1,236 @@
+[
+  {
+    "case": "false_invariance",
+    "stage": "debate",
+    "expected": false,
+    "actual": true,
+    "passed": false,
+    "candidate": {
+      "id": "false_invariance",
+      "seed_id": "false_invariance",
+      "source": "self attention",
+      "target": "unchanged outputs",
+      "relation": "produces",
+      "relation_definition": "SOURCE produces TARGET.",
+      "conditions": "without positional information, when input tokens are permuted",
+      "modality": "assertion",
+      "intended_fact": "Self-attention without positional information produces unchanged outputs when its input tokens are permuted.",
+      "link_reading": "The link asserts that 'self attention' produces 'unchanged outputs' under the specific condition that there is 'without positional information' and 'when input tokens are permuted'. The modality is an assertion.",
+      "reason": "Self-attention without positional information produces unchanged outputs when its input tokens are permuted.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": true,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "unchanged outputs",
+        "definition": "unchanged outputs",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'self attention' produces 'unchanged outputs' under the specific condition that there is 'without positional information' and 'when input tokens are permuted'. The modality is an assertion.",
+        "reason": "The intended fact states: 'Self-attention without positional information produces unchanged outputs when its input tokens are permuted.' The link captures this exactly. The source ('self attention') matches the subject. The target ('unchanged outputs') matches the result. The conditions ('without positional information', 'when input tokens are permuted') match the qualifiers in the intended fact. The relation 'produces' aligns with the verb in the fact. There is no added property, necessity, or extra premise; the link does not guarantee anything beyond the stated condition. The explanation provided in the data is identical to the intended fact, so it agrees perfectly.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion correctly identifies a fundamental limitation of the self-attention mechanism: without explicit positional encoding, permuting input tokens results in identical outputs due to the permutation equivariance property. The relation 'produces' accurately describes this causal link under the specified conditions (no positional info, permuted inputs). The definitions provided are precise and align with established transformer architecture theory. No flaws or unsupported claims were found.",
+        "candidate_id": "false_invariance",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The claim that self-attention produces unchanged outputs when input tokens are permuted is a well-established general principle of the mechanism itself, specifically under the condition of lacking positional information. This represents a fundamental limitation (invariance) rather than an error in the specific case described in the chapter overview. The assertion correctly identifies 'unchanged outputs' as the target concept and 'self attention' as the source, with precise conditions ('without positional information', 'when input tokens are permuted'). No external evidence is needed to validate this general definition; it is intrinsic knowledge about the architecture. The claim addresses the gap regarding limitations of the mechanism.",
+        "candidate_id": "false_invariance",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion correctly identifies a fundamental property of standard self-attention mechanisms: without explicit positional encodings, permuting input tokens results in identical outputs. This is a well-established theoretical limitation (invariance to permutation) rather than an error specific to the chapter's case. The conditions ('without positional information', 'when input tokens are permuted') precisely qualify the claim, and the relation 'produces' accurately describes the causal link between the mechanism's lack of positionality and the resulting output behavior. No substantive objections remain as this is general explanatory knowledge about transformer architecture.",
+        "candidate_id": "false_invariance",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true
+      },
+      "score": 1.0,
+      "threshold": null,
+      "decision_reason": "The assertion correctly identifies a fundamental property of standard self-attention mechanisms: without explicit positional encodings, permuting input tokens results in identical outputs. This is a well-established theoretical limitation (invariance to permutation) rather than an error specific to the chapter's case. The conditions ('without positional information', 'when input tokens are permuted') precisely qualify the claim, and the relation 'produces' accurately describes the causal link between the mechanism's lack of positionality and the resulting output behavior. No substantive objections remain as this is general explanatory knowledge about transformer architecture.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "true_chain_rule",
+    "stage": "debate",
+    "expected": true,
+    "actual": true,
+    "passed": true,
+    "candidate": {
+      "id": "true_chain_rule",
+      "seed_id": "true_chain_rule",
+      "source": "backpropagation",
+      "target": "chain rule",
+      "relation": "uses",
+      "relation_definition": "SOURCE employs TARGET.",
+      "conditions": "to compute derivatives of composed functions",
+      "modality": "assertion",
+      "intended_fact": "Backpropagation uses the chain rule to compute derivatives of composed functions.",
+      "link_reading": "The link asserts that 'backpropagation' employs 'chain rule' specifically for the purpose of computing derivatives of composed functions, with a modality of assertion.",
+      "reason": "Backpropagation uses the chain rule to compute derivatives of composed functions.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": true,
+      "review_status": "pending",
+      "source_mention": {
+        "name": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "chain rule",
+        "definition": "chain rule",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'backpropagation' employs 'chain rule' specifically for the purpose of computing derivatives of composed functions, with a modality of assertion.",
+        "reason": "The intended fact states: 'Backpropagation uses the chain rule to compute derivatives of composed functions.' The link's source is 'backpropagation', relation is 'uses', target is 'chain rule', and conditions match exactly. The explanation repeats the intended fact verbatim. There are no added properties, necessities, or scope changes. Representation is faithful.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that backpropagation uses the chain rule to compute derivatives of composed functions is scientifically accurate and aligns with standard definitions in machine learning. The source text establishes backpropagation as a training mechanism for improving predictions, and the added knowledge correctly identifies the mathematical foundation (chain rule) required for this process without introducing unsupported constraints or contradictions.",
+        "candidate_id": "true_chain_rule",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Backpropagation for prediction improvement during training",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The claim that backpropagation uses the chain rule to compute derivatives of composed functions is a fundamental mathematical fact in machine learning, independent of the specific text provided. The text mentions backpropagation for improving predictions but does not explicitly detail the internal mechanism (the chain rule). However, general explanatory knowledge confirms this mechanism exists and applies here. No objections exist; thus, the relation 'uses' with modality 'assertion' is valid and fills the gap regarding 'how this mechanism works'.",
+        "candidate_id": "true_chain_rule",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that backpropagation uses the chain rule to compute derivatives of composed functions is a fundamental mathematical fact in machine learning. The provided text mentions backpropagation for improving predictions but does not explicitly detail the internal mechanism. However, general explanatory knowledge confirms this mechanism exists and applies here. No objections exist; thus, the relation 'uses' with modality 'assertion' is valid and fills the gap regarding 'how this mechanism works'.",
+        "candidate_id": "true_chain_rule",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Backpropagation for prediction improvement during training",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true
+      },
+      "score": 1.0,
+      "threshold": null,
+      "decision_reason": "The assertion that backpropagation uses the chain rule to compute derivatives of composed functions is a fundamental mathematical fact in machine learning. The provided text mentions backpropagation for improving predictions but does not explicitly detail the internal mechanism. However, general explanatory knowledge confirms this mechanism exists and applies here. No objections exist; thus, the relation 'uses' with modality 'assertion' is valid and fills the gap regarding 'how this mechanism works'.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  }
+]

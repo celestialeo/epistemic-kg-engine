@@ -188,7 +188,8 @@ def collect_seeds(extractions, chunks, concepts, trace, limit=0, similarity_thre
         "word choice, or frequency. Closely related concepts can require different explanations: "
         "overlapping definitions never make distinct concepts interchangeable. Do not assume that a "
         "concept is fully understood merely because the chapter states its function. Set expand=false "
-        "when further background would add no useful understanding. Scores describe relative importance "
+        "when further background would add no useful understanding. Scores are fractions from 0 to 1, "
+        "not percentages. Scores describe relative importance "
         "and relevance for budget ordering, not pass/fail cutoffs. For an expansion target copy its exact "
         "chapter_topic from the supplied topic list. Give a concise reason.",
         items, TopicAssessment, "seed_topics", shared={"chapter": chapter},
@@ -206,6 +207,8 @@ def collect_seeds(extractions, chunks, concepts, trace, limit=0, similarity_thre
 
     plans = ask_keyed(models, "background_gap_planner",
         "Identify what useful knowledge the chapter assumes but does not explain for each concept. "
+        "Only the supplied source_chunks establish what the document actually claims. Do not attribute "
+        "information from summaries, concept definitions or your general knowledge to the document. "
         "First summarize what the source already supplies in document_coverage. Then identify distinct "
         "unanswered questions using your own general understanding of the subject. For each gap state "
         "the assumed_knowledge, why explaining it would help understand the actual source statement, "

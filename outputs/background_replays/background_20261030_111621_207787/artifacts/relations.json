@@ -1,0 +1,218 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_via_dot_products",
+      "definition": "The source entity calculates the target entity by performing dot product operations between query vectors and key vectors derived from input embeddings.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "computes_via_dot_products",
+        "definition": "The source entity calculates the target entity by performing dot product operations between query vectors and key vectors derived from input embeddings.",
+        "source": "self attention",
+        "target": "attention weight",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+              "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+              "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+          "explanation": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_via_dot_products",
+      "reason": "The new relation 'computes_via_dot_products' accurately reflects the source assertion that self-attention calculates attention weights via dot products between query and key vectors. The definition is specific and matches the intended fact without adding extra restrictions. Symmetry is correctly set to false because computing attention weights via dot products is not a symmetric relationship (the operation flows from query/key to weight, not vice versa in this context). The inverse is null, which is valid as there is no defined inverse relation for this specific computational step in the provided data."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

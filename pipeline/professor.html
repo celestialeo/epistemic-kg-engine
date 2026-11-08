@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Professor · Learning dashboard</title><link rel="stylesheet" href="/professor.css"></head>
+<body>
+<aside class="sidebar"><a class="brand" href="/professor">◈ <span>Professor<small>Knowledge into understanding</small></span></a>
+<p class="eyebrow">CLASSROOM</p><button id="class-view" class="nav active">Class overview</button>
+<div class="roster-heading"><h2>Students</h2><span id="student-count" class="badge">0</span></div>
+<label class="sr-only" for="student-search">Find a student</label><input id="student-search" placeholder="Find a student…" type="search">
+<div id="roster" class="roster"></div>
+<form id="student-form"><label for="student-name">Add a student</label><div class="inline"><input id="student-name" maxlength="120" required placeholder="Full name"><button type="submit" aria-label="Add student">+</button></div></form>
+<p class="sidebar-note">Local professor workspace<br>History is saved on this computer.</p></aside>
+<main>
+<header class="page-heading"><div><p class="eyebrow" id="view-label">CLASS OVERVIEW</p><h1 id="view-title">Learning, made visible.</h1><p id="view-description">See what has been assessed and where to go next.</p></div><button id="refresh" class="secondary">Refresh topics</button></header>
+<p id="status" role="status" aria-live="polite"></p><p id="warnings" class="notice" hidden></p>
+<section class="card run-navigation"><label for="topic">Input topic / saved run</label><select id="topic"></select><p id="topic-info" class="fine"></p>
+<nav class="actions" aria-label="Run views"><button id="professor-tab" aria-pressed="true">Professor</button><button id="results-tab" class="secondary" aria-pressed="false">Run Results</button></nav></section>
+<section id="run-results" hidden aria-label="Run Results"><h2>Run Results</h2><p id="results-meta"></p><div id="run-cards" class="metrics"></div>
+<section class="card"><h2>Pipeline steps</h2><div id="step-chart"></div><div class="table-scroll"><table><thead><tr><th>Step</th><th>Status</th><th>Duration</th><th>Main outputs</th></tr></thead><tbody id="run-steps"></tbody></table></div></section>
+<section class="card"><h2>Graph reconstruction</h2><div id="reconstruction-scores" class="metrics"></div><p id="score-definition" class="fine"></p><div class="text-comparison"><article><h3>Original text</h3><p id="original-text"></p></article><article><h3>Reconstructed text</h3><p id="reconstructed-text"></p></article></div></section></section>
+<div id="professor-view">
+<section id="assessment-area" class="card" hidden>
+<div class="section-heading"><div><p class="eyebrow">PERSONALIZED PRACTICE</p><h2>Start an assessment</h2></div><span class="badge">Up to 5 questions · saved automatically</span></div>
+<div class="assessment-selectors"><div><label for="focus">Starting concept</label><select id="focus"></select></div><label class="check"><input id="review-mode" type="checkbox"> Review independently mastered facts</label><button id="start">Start quiz</button></div>
+<p id="recommendation"></p>
+<div id="quiz" hidden><div class="quiz-heading"><span class="eyebrow" id="quiz-progress"></span><span id="quiz-run" class="fine"></span></div><h3 id="question"></h3>
+<form id="answer-form"><label for="answer">Student’s answer</label><textarea id="answer" maxlength="1500" rows="4" required placeholder="Explain in your own words. Name both things in each statement."></textarea>
+<div class="actions"><button id="submit-answer">Submit answer</button><button id="hint" type="button" class="secondary">Hint</button><button id="reveal" type="button" class="secondary">Reveal answer</button><button id="next" type="button" class="secondary">Next question</button></div></form>
+<p id="feedback" aria-live="polite"></p><p id="help" class="notice" hidden></p><p id="quiz-complete" hidden></p></div>
+<button id="retry" class="secondary" hidden>Retry pending request</button>
+</section>
+<section class="metrics" aria-label="Assessment overview" id="metrics"></section>
+<section class="card"><h2 id="knowledge-title">Class Overview</h2><p id="version-note"></p><div id="knowledge-metrics" class="metrics"></div>
+<div class="table-scroll" id="comparison-wrap"><table><thead><tr><th>Student</th><th>Knowledge / assessment coverage</th><th>Independent / assisted score</th><th>Connected understanding</th><th>Components / isolates</th><th>Topic concentration</th></tr></thead><tbody id="student-comparison"></tbody></table></div>
+<h3>Topic coverage</h3><p id="topic-ranking"></p><div id="community-coverage"></div><h3>Coverage and performance over time</h3><div id="knowledge-progress"></div>
+<details><summary>Metric definitions</summary><dl id="metric-definitions"></dl></details></section>
+<details class="card"><summary>Latest versions across input topics</summary>
+<section class="card"><div class="section-heading"><div><h2>Understanding across topics</h2><p>Scores reflect assessed answers. Unassessed material is not a weakness.</p></div></div>
+<div id="insights" class="insights"></div><div class="table-scroll"><table><thead><tr><th>Input topic</th><th>Latest score</th><th>Assessments / answers</th><th>Coverage in latest run</th><th>Next step</th></tr></thead><tbody id="topic-analytics"></tbody></table></div>
+<p class="fine">Correct = 1, partial = ½, contradicted or not demonstrated = 0 per requested fact. Each question is weighted equally; its latest answer counts. Assisted answers are marked. Class scores give each assessed student equal weight. Rankings are relative, not pass/fail.</p></section>
+<section class="card"><div class="section-heading"><div><h2>Progress over time</h2><p>Every point retains its student and source run. Different graph versions may assess different material.</p></div></div><div id="trends"></div></section>
+</details>
+<section id="history-area" class="card" hidden><h2>Assessment history</h2><p>Resume an assessment or inspect its answers and grading.</p><div id="history"></div></section>
+<section id="review" class="card" hidden><div class="section-heading"><div><p class="eyebrow">PROFESSOR REVIEW</p><h2>Answers &amp; grading</h2><p id="review-meta"></p></div><button id="close-review" class="secondary">Close</button></div><div id="answers"></div></section>
+<section id="graph-details" class="graph-workspace card" aria-labelledby="graph-title">
+<div class="section-heading"><div><h2 id="graph-title">Knowledge graph</h2><p id="graph-context"></p></div><button id="graph-return" class="secondary" hidden>Return to current graph</button></div>
+<label for="graph-mode">Graph display</label><select id="graph-mode"><option value="explore">Explore freely (temporary highlights)</option><option value="knowledge">Selected student knowledge</option><option value="class">Class knowledge overlay</option></select>
+<p class="fine">Student knowledge: green = independently correct; amber = partial or assisted; red = incorrect or not demonstrated; gray = unassessed. Class overlay: brighter and thicker = higher independent knowledge. Hover over a relationship for counts.</p>
+<iframe id="graph" title="Interactive knowledge graph"></iframe>
+<details id="overlay-details" hidden><summary>Class relationship counts</summary><div id="overlay-counts"></div></details>
+</section></div>
+</main>
+<dialog id="quiz-student-dialog" aria-labelledby="quiz-student-title">
+<form id="quiz-student-form">
+<h2 id="quiz-student-title">Who is taking this quiz?</h2>
+<p>Choose the student whose answers, scores, and progress should be saved.</p>
+<label for="quiz-student">Student taking this quiz</label><select id="quiz-student" required></select>
+<p id="quiz-student-note" class="fine"></p>
+<div class="actions"><button id="confirm-quiz-student" type="submit">Begin quiz</button><button id="cancel-quiz-student" type="button" class="secondary">Cancel</button></div>
+</form></dialog>
+<script src="/professor.js"></script></body></html>

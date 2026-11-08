@@ -1,0 +1,272 @@
+[
+  {
+    "case": "false_precision",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "false_precision",
+      "seed_id": "false_precision",
+      "source": "quantization",
+      "target": "numerical precision",
+      "relation": "increases",
+      "relation_definition": "SOURCE increases TARGET.",
+      "conditions": "always",
+      "modality": "assertion",
+      "intended_fact": "Quantization always increases the numerical precision of model parameters.",
+      "link_reading": "The link asserts that 'quantization' always increases 'numerical precision'. The relation is defined as 'SOURCE increases TARGET', with modality 'assertion' and condition 'always'.",
+      "reason": "Quantization always increases the numerical precision of model parameters.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "quantization",
+        "definition": "a process that reduces memory requirements after training",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "numerical precision",
+        "definition": "numerical precision",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'quantization' always increases 'numerical precision'. The relation is defined as 'SOURCE increases TARGET', with modality 'assertion' and condition 'always'.",
+        "reason": "The intended fact states that quantization always increases numerical precision. The link representation matches this exactly: source='quantization', target='numerical precision', relation='increases', conditions='always', modality='assertion'. There are no added properties, necessities, or extra premises in the link. The explanation provided ('Quantization always increases the numerical precision of model parameters.') agrees with the link and the intended fact.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that quantization 'always increases numerical precision' is factually incorrect. Quantization reduces the bit-width of model parameters (e.g., from 32-bit floats to 8-bit integers), which inherently decreases or maintains numerical precision but never increases it, in exchange for reduced memory requirements.",
+        "candidate_id": "false_precision",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Quantization for reducing memory requirements after training",
+        "objections": [
+          "The claim that quantization 'always increases numerical precision' contradicts the fundamental definition of quantization, which involves mapping a large range of continuous values to a smaller set of discrete values, thereby reducing precision to save memory."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The claim that 'quantization always increases numerical precision' is factually incorrect and contradicts the fundamental definition of quantization. Quantization maps a large range of continuous floating-point values to a smaller set of discrete levels (e.g., integers), which inherently reduces the resolution and thus decreases numerical precision to achieve memory compression. The provided objection correctly identifies this contradiction; therefore, the assertion must be withdrawn as it describes an impossible outcome for the defined process.",
+        "candidate_id": "false_precision",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The claim that 'quantization always increases numerical precision' is factually incorrect and contradicts the fundamental definition of quantization. Quantization maps a large range of continuous floating-point values to a smaller set of discrete levels (e.g., integers), which inherently reduces the resolution and thus decreases numerical precision to achieve memory compression. The provided objection correctly identifies this contradiction; therefore, the assertion must be withdrawn as it describes an impossible outcome for the defined process.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "false_guarantee",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "false_guarantee",
+      "seed_id": "false_guarantee",
+      "source": "regularization",
+      "target": "perfect predictions",
+      "relation": "guarantees",
+      "relation_definition": "SOURCE guarantees TARGET.",
+      "conditions": "on all unseen data",
+      "modality": "assertion",
+      "intended_fact": "Regularization guarantees perfect predictions on all unseen data.",
+      "link_reading": "The link asserts that 'regularization' guarantees 'perfect predictions' under the condition 'on all unseen data'. The modality is an assertion.",
+      "reason": "Regularization guarantees perfect predictions on all unseen data.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "regularization",
+        "definition": "A technique applied to machine learning models.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "perfect predictions",
+        "definition": "perfect predictions",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'regularization' guarantees 'perfect predictions' under the condition 'on all unseen data'. The modality is an assertion.",
+        "reason": "The intended fact states: 'Regularization guarantees perfect predictions on all unseen data.' The link represents this exactly with source='regularization', relation='guarantees', target='perfect predictions', and conditions='on all unseen data'. There are no added properties, unnecessary modalities, or scope changes. The explanation matches the link text verbatim. No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion that regularization guarantees perfect predictions on all unseen data is factually incorrect. Regularization is a technique designed to prevent overfitting and improve generalization by constraining model complexity, but it cannot guarantee perfect predictions. Perfect predictions on unseen data would imply zero error, which is impossible for most real-world tasks due to inherent noise, limited data, and model limitations. The source text states that regularization 'helps' generalize, not that it guarantees perfection. Therefore, the relation 'guarantees' between 'regularization' and 'perfect predictions' is unsupported by general knowledge and contradicts established machine learning principles.",
+        "candidate_id": "false_guarantee",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Regularization for generalization beyond training examples",
+        "objections": [
+          "The claim that regularization guarantees perfect predictions on all unseen data is false; regularization reduces overfitting but does not ensure zero error or perfect accuracy on new data."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The claim that 'regularization guarantees perfect predictions on all unseen data' is factually incorrect. Regularization is a technique designed to reduce overfitting and improve generalization by penalizing model complexity, but it does not eliminate error or guarantee perfection. Unseen data may still contain noise, distribution shifts, or inherent unpredictability that no amount of regularization can resolve. Therefore, the relation 'guarantees' between 'regularization' and 'perfect predictions' is invalid under the condition 'on all unseen data'. The assertion must be withdrawn as it contradicts established machine learning theory regarding the limits of generalization.",
+        "candidate_id": "false_guarantee",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The claim that 'regularization guarantees perfect predictions on all unseen data' is factually incorrect. Regularization is a technique designed to reduce overfitting and improve generalization by penalizing model complexity, but it does not eliminate error or guarantee perfection. Unseen data may still contain noise, distribution shifts, or inherent unpredictability that no amount of regularization can resolve. Therefore, the relation 'guarantees' between 'regularization' and 'perfect predictions' is invalid under the condition 'on all unseen data'. The assertion must be withdrawn as it contradicts established machine learning theory regarding the limits of generalization.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  },
+  {
+    "case": "unknown_case_choice",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "unknown_case_choice",
+      "seed_id": "unknown_case_choice",
+      "source": "small transformer",
+      "target": "dropout",
+      "relation": "uses",
+      "relation_definition": "SOURCE employs TARGET.",
+      "conditions": "in the supplied chapter",
+      "modality": "assertion",
+      "intended_fact": "The small transformer in the supplied chapter uses dropout.",
+      "link_reading": "The small transformer in the supplied chapter uses dropout.",
+      "reason": "The small transformer in the supplied chapter uses dropout.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "small transformer",
+        "definition": "A small transformer that uses self-attention to process text and backpropagation to improve its predictions during training.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "dropout",
+        "definition": "dropout",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The small transformer in the supplied chapter uses dropout.",
+        "reason": "The link faithfully represents the intended fact without adding extra properties, necessity, or scope. The source 'small transformer', relation 'uses', target 'dropout', and condition 'in the supplied chapter' align exactly with the intended sentence. No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion claims the specific 'small transformer' in the chapter 'uses dropout'. The source text states: 'Regularization helps it generalize beyond its training examples.' While dropout is a common form of regularization, the text does not explicitly state that this specific instance uses dropout. It could use weight decay, early stopping, or other methods. Asserting a specific technique (dropout) as a fact when only the general category (regularization) is mentioned constitutes an unsupported inference about a particular case's unstated choice. The gap analysis asks 'How does this mechanism work...', implying the text might not detail every specific implementation. Therefore, asserting 'uses dropout' without explicit textual support violates the instruction to reject assertions of a particular case's unstated choice.",
+        "candidate_id": "unknown_case_choice",
+        "semantics_valid": false,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": false,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Regularization for generalization beyond training examples",
+        "objections": [
+          "The source text explicitly mentions 'Regularization' as the mechanism for generalization but does not specify 'dropout'. Asserting that this specific transformer 'uses dropout' infers a particular implementation detail not present in the text. This violates the constraint to reject assertions of a particular case's unstated choice or measurement as unsupported uncertainty."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The source text explicitly attributes generalization to 'Regularization' without specifying 'dropout'. Asserting that this specific transformer 'uses dropout' infers a particular implementation detail not present in the text. This violates the constraint to reject assertions of a particular case's unstated choice or measurement as unsupported uncertainty.",
+        "candidate_id": "unknown_case_choice",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The source text explicitly attributes generalization to 'Regularization' without specifying 'dropout'. Asserting that this specific transformer 'uses dropout' infers a particular implementation detail not present in the text. This violates the constraint to reject assertions of a particular case's unstated choice or measurement as unsupported uncertainty.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  }
+]

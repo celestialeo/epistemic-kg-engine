@@ -1,0 +1,509 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self-attention computes a similarity score between every pair of tokens in the input sequence using dot products of their query and key vectors.",
+      "confidence": 0.95,
+      "reason": "This explains the 'how' of relationship computation mentioned in the gap analysis, introducing necessary concepts (query, key) without contradicting the source.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "dot product similarity calculation between query and key vectors for token pairs.",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "similarity score",
+      "relation": "computes_similarity_score_via_dot_product",
+      "relation_definition": "The process where a mechanism calculates a specific metric (similarity score) for a pair of entities using a defined mathematical operation (dot product).",
+      "conditions": "The calculation applies to every pair of tokens in the input sequence.",
+      "modality": "algorithmic",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+          "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+          "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally (processing text) but leaves the internal mechanism opaque. The gap is the specific algorithmic steps: computing query/key similarity, applying softmax for normalization, and generating weighted sums of values.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "The self-attention mechanism described in the context of text processing.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "similarity score",
+          "definition": "A numerical value representing the relationship strength between two tokens.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes_similarity_score_via_dot_product",
+        "relation_definition": "The process where a mechanism calculates a specific metric (similarity score) for a pair of entities using a defined mathematical operation (dot product).",
+        "conditions": "The calculation applies to every pair of tokens in the input sequence.",
+        "modality": "algorithmic",
+        "intended_fact": "Self-attention computes a similarity score between every pair of tokens in the input sequence using dot products of their query and key vectors.",
+        "confidence": 0.95,
+        "reason": "This explains the 'how' of relationship computation mentioned in the gap analysis, introducing necessary concepts (query, key) without contradicting the source.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "dot product similarity calculation between query and key vectors for token pairs."
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "The self-attention mechanism described in the context of text processing.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "similarity score",
+        "definition": "A numerical value representing the relationship strength between two tokens.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "computes_similarity_score_via_dot_product",
+      "surface_target": "similarity score",
+      "representation_check": {
+        "link_reading": "faithful",
+        "reason": "The link accurately represents the intended fact. The source 'self attention' and target 'similarity score' align with the text. The relation 'computes_similarity_score_via_dot_product' correctly captures the mechanism described. The condition 'every pair of tokens' matches the scope in the intended fact. The modality 'algorithmic' is appropriate for a computational process. No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "faithful"
+    },
+    {
+      "intended_fact": "The computed similarity scores are passed through a softmax function to produce normalized attention weights that sum to one.",
+      "confidence": 0.95,
+      "reason": "This step is essential to explain how the model determines the 'importance' of tokens relative to each other, addressing the gap regarding weighting importance.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "softmax normalization applied to attention scores.",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "similarity score",
+      "target": "normalized attention weight",
+      "relation": "converts_to_normalized_distribution",
+      "relation_definition": "The process of applying the softmax function to transform raw similarity scores into a normalized attention weight distribution.",
+      "conditions": "The transformation ensures the resulting weights sum to one, facilitating weighted averaging.",
+      "modality": "algorithmic",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+          "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+          "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally (processing text) but leaves the internal mechanism opaque. The gap is the specific algorithmic steps: computing query/key similarity, applying softmax for normalization, and generating weighted sums of values.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "similarity score",
+          "definition": "The raw output from the dot product operation between query and key vectors.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "normalized attention weight",
+          "definition": "A probability distribution value derived from similarity scores that sums to one.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "transforms_via_softmax",
+        "relation_definition": "The process of applying the softmax function to convert raw scores into a normalized distribution.",
+        "conditions": "The transformation ensures the resulting weights sum to one, facilitating weighted averaging.",
+        "modality": "algorithmic",
+        "intended_fact": "The computed similarity scores are passed through a softmax function to produce normalized attention weights that sum to one.",
+        "confidence": 0.95,
+        "reason": "This step is essential to explain how the model determines the 'importance' of tokens relative to each other, addressing the gap regarding weighting importance.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "softmax normalization applied to attention scores."
+      },
+      "source_mention": {
+        "name": "similarity score",
+        "definition": "The raw output from the dot product operation between query and key vectors.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "normalized attention weight",
+        "definition": "A probability distribution value derived from similarity scores that sums to one.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "transforms_via_softmax",
+      "surface_target": "normalized attention weight",
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact. It correctly identifies 'similarity score' as the source and 'normalized attention weight' as the target, with the relation 'converts_to_normalized_distribution' accurately describing the application of the softmax function. The conditions explicitly state that the resulting weights sum to one, matching the intended fact's claim about normalization. The modality is correctly identified as algorithmic.",
+        "reason": "The representation aligns perfectly with the intended fact in terms of direction (similarity score -> normalized attention weight), meaning (softmax transformation ensuring summation to one), and scope (algorithmic process). No concrete representation errors are present.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link faithfully represents the intended fact. It correctly identifies 'similarity score' as the source and 'normalized attention weight' as the target, with the relation 'converts_to_normalized_distribution' accurately describing the application of the softmax function. The conditions explicitly state that the resulting weights sum to one, matching the intended fact's claim about normalization. The modality is correctly identified as algorithmic."
+    },
+    {
+      "intended_fact": "The model generates a context vector for each token by taking the weighted sum of all value vectors using the normalized attention weights.",
+      "confidence": 0.95,
+      "reason": "This completes the mechanism description, showing how processed information (context) is derived from the input tokens.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "weighted summation of value vectors to form context representations.",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "normalized attention weight",
+      "target": "context vector",
+      "relation": "generates_via_weighted_sum",
+      "relation_definition": "The process of creating a new entity (context vector) by summing other entities (value vectors) weighted by the source probabilities.",
+      "conditions": "The summation includes all value vectors in the sequence, weighted by their respective attention weights.",
+      "modality": "algorithmic",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+          "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+          "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally (processing text) but leaves the internal mechanism opaque. The gap is the specific algorithmic steps: computing query/key similarity, applying softmax for normalization, and generating weighted sums of values.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "normalized attention weight",
+          "definition": "The probability distribution values derived from softmax.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "context vector",
+          "definition": "The aggregated representation of information for a specific token.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "generates_via_weighted_sum",
+        "relation_definition": "The process of creating a new entity (context vector) by summing other entities (value vectors) weighted by the source probabilities.",
+        "conditions": "The summation includes all value vectors in the sequence, weighted by their respective attention weights.",
+        "modality": "algorithmic",
+        "intended_fact": "The model generates a context vector for each token by taking the weighted sum of all value vectors using the normalized attention weights.",
+        "confidence": 0.95,
+        "reason": "This completes the mechanism description, showing how processed information (context) is derived from the input tokens.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "weighted summation of value vectors to form context representations."
+      },
+      "source_mention": {
+        "name": "normalized attention weight",
+        "definition": "The probability distribution values derived from softmax.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "context vector",
+        "definition": "The aggregated representation of information for a specific token.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "generates_via_weighted_sum",
+      "surface_target": "context vector",
+      "representation_check": {
+        "link_reading": "The graph link faithfully represents the intended fact. It correctly identifies 'normalized attention weight' as the source and 'context vector' as the target, with the relation 'generates_via_weighted_sum' accurately describing the mechanism of taking a weighted sum of value vectors. The conditions specify that all value vectors in the sequence are included, matching the scope of the intended fact. The modality is correctly identified as algorithmic.",
+        "reason": "The representation aligns perfectly with the intended fact regarding direction (source to target), meaning (weighted sum generation), and scope (all value vectors). No concrete representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The graph link faithfully represents the intended fact. It correctly identifies 'normalized attention weight' as the source and 'context vector' as the target, with the relation 'generates_via_weighted_sum' accurately describing the mechanism of taking a weighted sum of value vectors. The conditions specify that all value vectors in the sequence are included, matching the scope of the intended fact. The modality is correctly identified as algorithmic."
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source only claims the function (processing text) but omits the operational basis (computing token relationships). This is a general explanatory gap regarding the mechanism's internal logic.",
+        "chapter_topic": "Self-attention mechanism for text processing",
+        "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+            "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+            "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0002_gap_001",
+            "seed_candidate_id": "seed_candidate_0002",
+            "concept": "self attention",
+            "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+          }
+        ],
+        "background_question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text defines 'self attention' functionally (processing text) but leaves the internal mechanism opaque. The gap is the specific algorithmic steps: computing query/key similarity, applying softmax for normalization, and generating weighted sums of values.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "The self-attention mechanism described in the context of text processing.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "similarity score",
+              "definition": "A numerical value representing the relationship strength between two tokens.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "computes_similarity_score_via_dot_product",
+            "relation_definition": "The process where a mechanism calculates a specific metric (similarity score) for a pair of entities using a defined mathematical operation (dot product).",
+            "conditions": "The calculation applies to every pair of tokens in the input sequence.",
+            "modality": "algorithmic",
+            "intended_fact": "Self-attention computes a similarity score between every pair of tokens in the input sequence using dot products of their query and key vectors.",
+            "confidence": 0.95,
+            "reason": "This explains the 'how' of relationship computation mentioned in the gap analysis, introducing necessary concepts (query, key) without contradicting the source.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "dot product similarity calculation between query and key vectors for token pairs."
+          },
+          {
+            "source": {
+              "name": "similarity score",
+              "definition": "The raw output from the dot product operation between query and key vectors.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "normalized attention weight",
+              "definition": "A probability distribution value derived from similarity scores that sums to one.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "transforms_via_softmax",
+            "relation_definition": "The process of applying the softmax function to convert raw scores into a normalized distribution.",
+            "conditions": "The transformation ensures the resulting weights sum to one, facilitating weighted averaging.",
+            "modality": "algorithmic",
+            "intended_fact": "The computed similarity scores are passed through a softmax function to produce normalized attention weights that sum to one.",
+            "confidence": 0.95,
+            "reason": "This step is essential to explain how the model determines the 'importance' of tokens relative to each other, addressing the gap regarding weighting importance.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax normalization applied to attention scores."
+          },
+          {
+            "source": {
+              "name": "normalized attention weight",
+              "definition": "The probability distribution values derived from softmax.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "context vector",
+              "definition": "The aggregated representation of information for a specific token.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "generates_via_weighted_sum",
+            "relation_definition": "The process of creating a new entity (context vector) by summing other entities (value vectors) weighted by the source probabilities.",
+            "conditions": "The summation includes all value vectors in the sequence, weighted by their respective attention weights.",
+            "modality": "algorithmic",
+            "intended_fact": "The model generates a context vector for each token by taking the weighted sum of all value vectors using the normalized attention weights.",
+            "confidence": 0.95,
+            "reason": "This completes the mechanism description, showing how processed information (context) is derived from the input tokens.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "weighted summation of value vectors to form context representations."
+          }
+        ],
+        "reason": "The explanation fills the black box of 'self-attention' by detailing the three standard steps: similarity calculation (Q*K), normalization (softmax), and aggregation (V). These are general explanatory facts required to understand the mechanism described in the chapter overview, distinct from the specific case of a 'small transformer' which is just the application context."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text defines 'self attention' functionally (processing text) but leaves the internal mechanism opaque. The gap is the specific algorithmic steps: computing query/key similarity, applying softmax for normalization, and generating weighted sums of values.",
+        "facts": [
+          {
+            "intended_fact": "Self-attention computes a similarity score between every pair of tokens in the input sequence using dot products of their query and key vectors.",
+            "confidence": 0.95,
+            "reason": "This explains the 'how' of relationship computation mentioned in the gap analysis, introducing necessary concepts (query, key) without contradicting the source.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "dot product similarity calculation between query and key vectors for token pairs."
+          },
+          {
+            "intended_fact": "The computed similarity scores are passed through a softmax function to produce normalized attention weights that sum to one.",
+            "confidence": 0.95,
+            "reason": "This step is essential to explain how the model determines the 'importance' of tokens relative to each other, addressing the gap regarding weighting importance.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax normalization applied to attention scores."
+          },
+          {
+            "intended_fact": "The model generates a context vector for each token by taking the weighted sum of all value vectors using the normalized attention weights.",
+            "confidence": 0.95,
+            "reason": "This completes the mechanism description, showing how processed information (context) is derived from the input tokens.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "weighted summation of value vectors to form context representations."
+          }
+        ],
+        "reason": "The explanation fills the black box of 'self-attention' by detailing the three standard steps: similarity calculation (Q*K), normalization (softmax), and aggregation (V). These are general explanatory facts required to understand the mechanism described in the chapter overview, distinct from the specific case of a 'small transformer' which is just the application context."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003"
+      ],
+      "repairs": []
+    }
+  ]
+}

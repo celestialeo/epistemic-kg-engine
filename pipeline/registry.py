@@ -46,6 +46,13 @@ class ConceptIdentity(Record):
     reason: str = Field(min_length=1)
 
 
+class BackgroundIdentity(Record):
+    reason: str = Field(min_length=1)
+    distinction: str | None = Field(description="A difference in what the concepts refer to, if any. Relatedness, measurement, cause or explanation does not make two things identical. Null only for interchangeable names of the same referent.")
+    same_concept: bool
+    same_scope: bool
+
+
 class NewRelation(Record):
     key: str = Field(pattern=r"^[a-z][a-z0-9_]{0,63}$")
     definition: str = Field(min_length=1, max_length=400)
@@ -143,6 +150,19 @@ class RelationRegistry:
         self.trace.emit("registry.relation_added", entity_id=entity_id, relation=new.model_dump())
         return self._record(entity_id, original, new.key, check.reason)
 
+    def resolve_background(self, relation, definition, source, target, context, entity_id):
+        """Use a named contract as written; the sentence/link check validates use.
+
+        A concrete draft description need not be globally equivalent to a
+        reusable predicate definition. Never redefine the existing contract to
+        fit it: the canonical assertion must still preserve the intended fact.
+        """
+        if relation in self.entries:
+            original = dict(label=relation, definition=definition, source=source, target=target, context=context)
+            return self._record(entity_id, original, relation,
+                "Existing named contract retained; background representation review must validate its literal use")
+        return self.resolve(relation, definition, source, target, context, entity_id)
+
     def fact_key(self, source, relation, target):
         spec = self.entries[relation]
         keys = [(source, relation, target)]
@@ -166,7 +186,7 @@ class ConceptRegistry:
         self.trace.save("artifacts/concepts.json", dict(concepts=list(self.entries.values()),
             mentions=self.mentions, aliases=dict(self.aliases)))
 
-    def _semantic_match(self, mention, available, context, entity_id):
+    def _semantic_match(self, mention, available, context, entity_id, *, background=False):
         """Similarity alone never merges concepts; verify identity and scope."""
         for page in batches(available.values(), self.models.batch_size):
             def validate(result):
@@ -186,12 +206,15 @@ class ConceptRegistry:
                 "Independently decide whether these names refer to the same concept at the same scope "
                 "in this context. Check whether substituting the canonical name preserves the reference. "
                 "Overlap, association, or an explanatory relationship is insufficient. Definition wording "
-                "and inferred kind labels are fallible descriptions, not identity constraints.",
+                "and inferred kind labels are fallible descriptions, not identity constraints." +
+                (" Identify any difference in referents in distinction. A property and its measure, a "
+                 "process and its input, or a category and its member remain distinct. Only aliases "
+                 "with no referential distinction can merge." if background else ""),
                 {"occurrence": mention, "existing_concept": available[match.canonical_name],
-                 "context": context}, ConceptIdentity, entity_id)
+                 "context": context}, BackgroundIdentity if background else ConceptIdentity, entity_id)
             self.trace.emit("registry.concept_alias_checked", entity_id=entity_id,
                             occurrence=mention, canonical=match.canonical_name, result=check.model_dump())
-            if check.same_concept and check.same_scope:
+            if check.same_concept and check.same_scope and not getattr(check, "distinction", None):
                 return match.canonical_name
         return None
 
@@ -200,7 +223,7 @@ class ConceptRegistry:
         value = Concept.model_validate(mention).model_dump()
         name = concept_key(value["name"])
         if name not in self.entries and name not in self.aliases:
-            canonical = self._semantic_match(value, self.entries, context, entity_id)
+            canonical = self._semantic_match(value, self.entries, context, entity_id, background=True)
             if canonical is not None:
                 self.aliases[name] = canonical
                 self.trace.emit("registry.concepts_merged", entity_id=entity_id,

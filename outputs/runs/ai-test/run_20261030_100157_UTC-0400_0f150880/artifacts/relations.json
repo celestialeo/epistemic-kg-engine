@@ -1,0 +1,345 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_similarity_score_via_dot_product",
+      "definition": "Calculates a scalar similarity score by performing the dot product operation between the source query vector and the target key vector.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "converts_similarity_to_attention_weight",
+      "definition": "Applies the softmax function to convert a source similarity score into a target normalized attention weight, ensuring the resulting weights for a specific head sum to one.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The new relation 'employs_mechanism_for' accurately reflects the source assertion where a 'small transformer' uses 'self attention'. The definition matches the original meaning exactly. Direction is preserved as the relationship is asymmetric (SOURCE employs TARGET). Symmetry is correctly set to false. The inverse is null, which is valid per instructions since the relation is not symmetric and no inverse relation exists in the source context."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      "canonical_key": "employs_mechanism_for",
+      "reason": "The occurrence definition ('SOURCE employs TARGET as a mechanism or method to achieve an effect') is identical to the proposed contract definition. The direction (small transformer -> backpropagation) matches the 'employs' relation where the source uses the target. Both definitions describe a functional employment relationship without implying structural parthood, and the modality/causal strength aligns perfectly."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "regularization",
+        "target": "generalization beyond training example",
+        "context": "Regularization helps it generalize beyond its training examples."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+        "source": "quantization",
+        "target": "memory requirement",
+        "context": "After training, quantization reduces its memory requirements"
+      },
+      "canonical_key": "reduces",
+      "reason": "The new relation 'reduces' is coherent as it explicitly defines the action of decreasing magnitude/necessity. It is specific by linking 'quantization' to 'memory requirement'. The meaning and direction are exactly preserved from the source assertion ('quantization reduces memory requirements'). No extra restrictions were added; the definition matches the source. Symmetry is correctly set to false because reducing is not a reciprocal relationship (if A reduces B, B does not necessarily reduce A). The inverse is correctly null, as 'reduces' implies an asymmetric causal effect rather than equivalence upon endpoint swapping."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "retrieval augmented generation",
+        "target": "use of external document",
+        "context": "retrieval-augmented generation lets it use external documents when answering questions"
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "computes_similarity_score_via_dot_product",
+        "definition": "Calculates a scalar similarity score by performing the dot product operation between the source query vector and the target key vector.",
+        "source": "query vector",
+        "target": "key vector",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+              "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+              "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+            }
+          ],
+          "intended_fact": "Self-attention computes a similarity score between every pair of tokens in the input sequence using dot products of their query and key vectors.",
+          "explanation": "This explains the 'how' of relationship computation mentioned in the gap analysis, introducing necessary concepts (query, key) without contradicting the source.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_similarity_score_via_dot_product",
+      "reason": "The new relation 'computes_similarity_score_via_dot_product' is coherent and specific, accurately reflecting the source assertion that a scalar score is calculated via dot product between query and key vectors. The direction is preserved as the operation is inherently directional (query to key), consistent with the source's implied mechanism. Symmetry is correctly set to false because dot products in attention mechanisms are not symmetric unless normalized by softmax and scaled, but the raw operation described is directional; however, the schema allows 'symmetric' to be a property of the relation definition, and setting it to false aligns with the specific 'query vs key' distinction. The inverse is null, which is valid per instructions for cases where an inverse does not exist or is not an"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "transforms_via_softmax",
+        "definition": "Applies the softmax function to convert the source similarity score into the target normalized attention weight, ensuring the resulting weights for a specific head sum to one.",
+        "source": "similarity score",
+        "target": "normalized attention weight",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does self-attention mathematically or algorithmically compute relationships between tokens to facilitate text processing?",
+              "assumed_knowledge": "The reader is assumed to understand that 'processing text' via self-attention involves calculating attention weights (e.g., dot products, softmax) to weigh the importance of different input tokens relative to each other.",
+              "why_useful": "Without explaining the mechanism of computing token relationships, the statement 'uses self-attention to process text' remains a black box. The reader cannot understand *how* the model captures context or dependencies between words based solely on the functional description provided.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept as a mechanism for text processing within the model."
+            }
+          ],
+          "intended_fact": "The computed similarity scores are passed through a softmax function to produce normalized attention weights that sum to one.",
+          "explanation": "This step is essential to explain how the model determines the 'importance' of tokens relative to each other, addressing the gap regarding weighting importance.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "converts_similarity_to_attention_weight",
+      "reason": "The new relation 'converts_similarity_to_attention_weight' accurately reflects the source assertion that softmax converts similarity scores to normalized weights summing to one. The definition is specific and excludes extra restrictions not in the source. Symmetry is correctly set to false as the conversion is directional (score -> weight). The inverse is null, which is valid since the reverse operation (deriving a unique score from a normalized weight without the original distribution context) is not defined as an equivalence relation here."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

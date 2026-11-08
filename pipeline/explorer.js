@@ -33,7 +33,7 @@ setInterval(()=>flushInteractions(),500);
 const originalDetails=details;
 details=function(item,isEdge=false){
  originalDetails(item,isEdge);
- if(quizMode){
+ if(quizMode&&!quizFinished){
   $('detail-title').textContent=isEdge?'Quiz':item.label;$('details').replaceChildren();
   $('hint').hidden=false;$('hint').textContent='Use Hint or Reveal for help. The examiner view contains the stored facts and grading details.';
  }
@@ -78,7 +78,7 @@ window.addEventListener('pagehide',event=>{logInteraction('page_hide',{persisted
 window.addEventListener('pageshow',event=>{logInteraction('page_show',{persisted:event.persisted});flushInteractions()});
 logInteraction('page_open',{run_id:data.run_id,...viewState()});
 flushInteractions();
-const matchColors={match:'#54d99a',related:'#f3bf62',conflict:'#ff7e8b'};
+const matchColors={match:'#54d99a',related:'#f3bf62',conflict:'#ff7e8b',not_demonstrated:'#ff7e8b'};
 const matchNames={match:'Match',related:'Related',conflict:'Conflict'};
 const nodeMatches=new Map(),edgeMatches=new Map();
 let queryGeneration=0;

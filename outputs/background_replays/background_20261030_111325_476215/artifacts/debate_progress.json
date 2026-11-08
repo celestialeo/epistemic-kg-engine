@@ -1,0 +1,1419 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+      "confidence": 0.95,
+      "reason": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "query_vector, key_vector, dot_product_operation",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "dot product operation",
+      "relation": "computes_raw_scores_via",
+      "relation_definition": "A self-attention mechanism computes raw attention scores by performing a dot product operation between query and key vectors.",
+      "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+          "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+          "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": true,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "completed",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The assertion that self-attention computes raw scores via dot products between query and key vectors is a fundamental, well-established fact in transformer architecture. It directly addresses the identified gap regarding the mathematical interaction of vectors. The relation 'computes_raw_scores_via' is precise, distinguishing raw scores from final normalized weights (which require softmax). No substantive objections exist; the claim relies on general explanatory knowledge rather than specific text evidence, which is permitted for background concepts.",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "dot product operation",
+          "definition": "The mathematical operation used to calculate raw attention scores between query and key vectors.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "uses",
+        "relation_definition": "A self-attention mechanism uses a dot product operation to compute raw attention scores.",
+        "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+        "modality": null,
+        "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+        "confidence": 0.95,
+        "reason": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "query_vector, key_vector, dot_product_operation"
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "dot product operation",
+        "definition": "The mathematical operation used to calculate raw attention scores between query and key vectors.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "uses",
+      "surface_target": "dot product operation",
+      "representation_check": {
+        "link_reading": "faithful",
+        "reason": "The link faithfully represents the intended fact. The source 'self attention' and target 'dot product operation' correctly map to the entities in the intended fact. The relation 'computes_raw_scores_via' accurately reflects the process described ('calculates dot products'). The relation_definition explicitly states the mechanism computes scores via dot products between query and key vectors, matching the intended fact's scope and direction. No representation errors exist; the link captures the specific linear algebra operation mentioned in the explanation without adding or omitting critical details.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "faithful",
+      "explanation_context": [],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_003",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "entity",
+        "target": "process"
+      },
+      "critic": {
+        "reason": "The assertion that a self-attention mechanism computes raw attention scores via dot products between query and key vectors is a fundamental, well-established fact in deep learning theory. It correctly identifies the specific linear algebra operation (dot product) that generates the unnormalized scores before the softmax function is applied. This relation precisely fills the knowledge gap regarding the mathematical interaction of Q, K, and V vectors without contradicting the source text's functional description.",
+        "candidate_id": "candidate_0001",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that a self-attention mechanism computes raw scores via dot products between query and key vectors is standard general knowledge in transformer architecture. It directly addresses the identified gap regarding the mathematical interaction of vectors. The relation 'computes_raw_scores_via' precisely captures this functional dependency without overclaiming (e.g., it computes *raw* scores, not final weights, which require softmax). No contradictions exist with the chapter's overview or other candidates.",
+        "candidate_id": "candidate_0001",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that self-attention computes raw scores via dot products between query and key vectors is a fundamental, well-established fact in transformer architecture. It directly addresses the identified gap regarding the mathematical interaction of vectors. The relation 'computes_raw_scores_via' is precise, distinguishing raw scores from final normalized weights (which require softmax). No substantive objections exist; the claim relies on general explanatory knowledge rather than specific text evidence, which is permitted for background concepts.",
+        "candidate_id": "candidate_0001",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "connected_to_seed": true
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "peer_novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      }
+    },
+    {
+      "intended_fact": "The resulting attention weights are normalized using the softmax function to produce a probability distribution over the input sequence.",
+      "confidence": 0.95,
+      "reason": "Completes the mathematical description of gap_001 by specifying the normalization step required to derive valid attention distributions from raw scores.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "softmax_function, probability_distribution",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "raw attention score",
+      "target": "softmax function",
+      "relation": "normalizes_to_distribution_via",
+      "relation_definition": "The source assertion specifies that the softmax function is applied to raw attention scores to produce normalized weights, establishing a direct transformation where the target (softmax) acts upon the source (raw scores) to yield a specific output state.",
+      "conditions": "The source represents the input to the normalization step; the target is the specific function mentioned.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+          "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+          "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "raw attention scores",
+          "definition": "Unnormalized scores derived from dot products between query and key vectors.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "softmax function",
+          "definition": "The normalization function that converts raw scores into a probability distribution.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "applies_to",
+        "relation_definition": "The softmax function is applied to raw attention scores to produce normalized weights.",
+        "conditions": "The source represents the input to the normalization step; the target is the specific function mentioned.",
+        "modality": null,
+        "intended_fact": "The resulting attention weights are normalized using the softmax function to produce a probability distribution over the input sequence.",
+        "confidence": 0.95,
+        "reason": "Completes the mathematical description of gap_001 by specifying the normalization step required to derive valid attention distributions from raw scores.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "softmax_function, probability_distribution"
+      },
+      "source_mention": {
+        "name": "raw attention scores",
+        "definition": "Unnormalized scores derived from dot products between query and key vectors.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "softmax function",
+        "definition": "The normalization function that converts raw scores into a probability distribution.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "applies_to",
+      "surface_target": "softmax function",
+      "representation_check": {
+        "link_reading": "The graph link faithfully represents the intended fact. The source 'raw attention score' corresponds to the input, the relation 'normalizes_to_distribution_via' captures the transformation process, and the target 'softmax function' matches the specific mechanism described in the intended fact. The endpoint definitions correctly identify the source as unnormalized scores and the target as the normalization function producing a probability distribution.",
+        "reason": "The graph structure accurately maps the semantic components of the sentence: 'raw attention score' is the subject, 'softmax function' is the agent/method, and the relation implies the action of normalization resulting in a distribution. No representation errors exist; the scope (attention weights/scores), direction (source to target via function), and meaning are preserved.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The graph link faithfully represents the intended fact. The source 'raw attention score' corresponds to the input, the relation 'normalizes_to_distribution_via' captures the transformation process, and the target 'softmax function' matches the specific mechanism described in the intended fact. The endpoint definitions correctly identify the source as unnormalized scores and the target as the normalization function producing a probability distribution.",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'raw attention scores'). A sound correction exists: insert the intermediate concept 'query key vectors' or directly link 'self attention' to 'dot product operation' which produces 'raw attention scores'. The intended fact describes a standard mathematical step. Corrected Fact: 'A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.'",
+        "corrected_fact": {
+          "intended_fact": "A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.",
+          "confidence": 0.98,
+          "reason": "This fact is a fundamental definition of the self-attention mechanism's first computational step. It connects the seed 'self attention' to the mathematical operation 'dot product', establishing the existence of 'raw attention scores'. This bridges the gap between the high-level concept and its specific linear algebra implementation, allowing subsequent links (like normalization via softmax) to be connected.",
+          "gap_ids": [
+            "seed_candidate_0002_gap_001"
+          ],
+          "added_knowledge": "query key vectors, raw attention scores"
+        }
+      },
+      "repair_candidate_id": "candidate_0006"
+    },
+    {
+      "intended_fact": "The final output of the self-attention mechanism is a weighted sum of value vectors, where the weights are the normalized attention distributions.",
+      "confidence": 0.95,
+      "reason": "Finishes the explanation of gap_001 by describing how the computed weights are applied to the value vectors to generate the context-aware representation.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "value_vector, weighted_sum",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "normalized attention distribution",
+      "target": "value vector",
+      "relation": "applies_weights_from",
+      "relation_definition": "The final output is a weighted sum where the weights are provided by the normalized attention distribution applied to the value vectors.",
+      "conditions": "The source provides the weights; the target provides the values being summed.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+          "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+          "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "normalized attention distribution",
+          "definition": "The probability distribution over the input sequence resulting from softmax normalization.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "value vectors",
+          "definition": "The vector representations of input tokens used to generate the final output.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "weights_sum_of",
+        "relation_definition": "The final output is a weighted sum where the weights are provided by the normalized attention distribution applied to the value vectors.",
+        "conditions": "The source provides the weights; the target provides the values being summed.",
+        "modality": null,
+        "intended_fact": "The final output of the self-attention mechanism is a weighted sum of value vectors, where the weights are the normalized attention distributions.",
+        "confidence": 0.95,
+        "reason": "Finishes the explanation of gap_001 by describing how the computed weights are applied to the value vectors to generate the context-aware representation.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "value_vector, weighted_sum"
+      },
+      "source_mention": {
+        "name": "normalized attention distribution",
+        "definition": "The probability distribution over the input sequence resulting from softmax normalization.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "value vectors",
+        "definition": "The vector representations of input tokens used to generate the final output.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "weights_sum_of",
+      "surface_target": "value vectors",
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact. It correctly identifies 'normalized attention distribution' as the source providing weights and 'value vector' as the target providing values, with the relation 'applies_weights_from' accurately describing the weighted sum operation defined in the relation_definition.",
+        "reason": "The graph structure (source -> applies_weights_from -> target) combined with the specific definitions matches the mathematical description of self-attention output (weighted sum of value vectors using normalized attention weights). No representation errors exist.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link faithfully represents the intended fact. It correctly identifies 'normalized attention distribution' as the source providing weights and 'value vector' as the target providing values, with the relation 'applies_weights_from' accurately describing the weighted sum operation defined in the relation_definition.",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'normalized attention distribution'). A sound correction exists: link the output of the normalization step (from candidate_0002's corrected fact) to the value vectors. The intended fact describes the final aggregation step. Corrected Fact: 'The normalized attention distribution is applied to value vectors via a weighted sum to produce the context representation.'",
+        "corrected_fact": {
+          "intended_fact": "The normalized attention distribution is applied to value vectors via a weighted sum to produce the context representation.",
+          "confidence": 0.98,
+          "reason": "This fact completes the mathematical description of the self-attention output mechanism. It connects the 'normalized attention distribution' (output of softmax) to 'value vectors', explaining how the final hidden state is generated. This fills the gap regarding how context weighting results in a new representation.",
+          "gap_ids": [
+            "seed_candidate_0002_gap_001"
+          ],
+          "added_knowledge": "weighted sum, context representation"
+        }
+      },
+      "repair_candidate_id": "candidate_0007"
+    },
+    {
+      "intended_fact": "Standard self-attention mechanisms are permutation invariant and cannot inherently distinguish the order of tokens in a sequence.",
+      "confidence": 0.95,
+      "reason": "Addresses gap_002 by stating the fundamental limitation of the core attention mechanism regarding word order, which is essential context for understanding why additional inputs are needed.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_002"
+      ],
+      "added_knowledge": "permutation_invariance, token_order_limitation",
+      "id": "candidate_0004",
+      "seed_id": "seed_001",
+      "source": "standard self attention mechanism",
+      "target": "permutation invariant property",
+      "relation": "exhibits_permutation_invariance",
+      "relation_definition": "A standard self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order.",
+      "conditions": "The source is the entity possessing the property; the target describes the specific limitation.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the role of positional encodings in self-attention mechanisms?",
+          "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+          "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_002",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "standard self-attention mechanism",
+          "definition": "The core attention mechanism without additional inputs like positional encodings.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "permutation invariant property",
+          "definition": "The characteristic where the output remains unchanged regardless of token order.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "exhibits",
+        "relation_definition": "A standard self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order.",
+        "conditions": "The source is the entity possessing the property; the target describes the specific limitation.",
+        "modality": null,
+        "intended_fact": "Standard self-attention mechanisms are permutation invariant and cannot inherently distinguish the order of tokens in a sequence.",
+        "confidence": 0.95,
+        "reason": "Addresses gap_002 by stating the fundamental limitation of the core attention mechanism regarding word order, which is essential context for understanding why additional inputs are needed.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_002"
+        ],
+        "added_knowledge": "permutation_invariance, token_order_limitation"
+      },
+      "source_mention": {
+        "name": "standard self-attention mechanism",
+        "definition": "The core attention mechanism without additional inputs like positional encodings.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "permutation invariant property",
+        "definition": "The characteristic where the output remains unchanged regardless of token order.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "exhibits",
+      "surface_target": "permutation invariant property",
+      "representation_check": {
+        "link_reading": "faithful",
+        "reason": "The link accurately represents the intended fact: 'standard self-attention mechanism' (source) exhibits 'permutation invariant property' (target), with the relation definition explicitly stating it cannot distinguish token order. The explanation aligns by addressing the limitation regarding word order. No representation errors exist; the scope, direction, and meaning are preserved.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "faithful",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'permutation invariant property'). A sound correction exists: link the seed 'self attention' directly to its inherent limitation. The intended fact defines a core theoretical property of the mechanism. Corrected Fact: 'A self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order without additional inputs.'",
+        "corrected_fact": {
+          "intended_fact": "A self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order without additional inputs.",
+          "confidence": 0.98,
+          "reason": "This fact establishes the critical limitation of the core mechanism that necessitates positional encodings (as seen in candidate_0005). It connects 'self attention' to the property 'permutation invariance', explaining why the model cannot process text correctly without order information. This is essential general knowledge for understanding transformer architecture.",
+          "gap_ids": [
+            "seed_candidate_0002_gap_002"
+          ],
+          "added_knowledge": "permutation invariance, token order limitation"
+        }
+      },
+      "repair_candidate_id": "candidate_0008"
+    },
+    {
+      "intended_fact": "Positional encodings are added to the input embeddings to provide the self-attention mechanism with information about the relative or absolute position of tokens.",
+      "confidence": 0.95,
+      "reason": "Directly answers gap_002 by introducing the specific solution (positional encodings) that allows the model to process text sequences correctly despite the permutation invariance of attention.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_002"
+      ],
+      "added_knowledge": "positional_encoding, token_position_information",
+      "id": "candidate_0005",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "positional encoding",
+      "relation": "overcomes_permutation_invariance_via",
+      "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+      "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+      "modality": "additive_integration",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the role of positional encodings in self-attention mechanisms?",
+          "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+          "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_002",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": true,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "completed",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The assertion that self-attention relies on positional encodings to overcome permutation invariance is a core principle of transformer mechanics. The relation 'overcomes_permutation_invariance_via' accurately captures the causal necessity of this component for processing ordered sequences. The modality 'additive_integration' correctly reflects the standard implementation (RoPE/ALiBi are variations, but additive is the canonical general knowledge baseline). This fills the gap regarding how word order is preserved, which is implied by 'processes text' but not explicit in the source. No contradictions exist.",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "The core mechanism in transformers that computes relationships between tokens, inherently permutation invariant without additional context.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "positional encodings",
+          "definition": "Information added to input embeddings to indicate the relative or absolute position of tokens within a sequence.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "provides_positional_information_to",
+        "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+        "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+        "modality": "additive_integration",
+        "intended_fact": "Positional encodings are added to the input embeddings to provide the self-attention mechanism with information about the relative or absolute position of tokens.",
+        "confidence": 0.95,
+        "reason": "Directly answers gap_002 by introducing the specific solution (positional encodings) that allows the model to process text sequences correctly despite the permutation invariance of attention.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_002"
+        ],
+        "added_knowledge": "positional_encoding, token_position_information"
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "The core mechanism in transformers that computes relationships between tokens, inherently permutation invariant without additional context.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "positional encodings",
+        "definition": "Information added to input embeddings to indicate the relative or absolute position of tokens within a sequence.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "provides_positional_information_to",
+      "surface_target": "positional encodings",
+      "representation_check": {
+        "link_reading": "faithful",
+        "reason": "The link accurately represents the intended fact: 'self attention' is the source, 'positional encoding' is the target, and the relation 'overcomes_permutation_invariance_via' correctly describes how the mechanism relies on the target to solve its inherent limitation. The condition specifies adding encodings before processing (matching the fact), and the modality 'additive_integration' aligns with standard transformer architecture where encodings are added to embeddings. No representation errors exist; the graph faithfully maps the text.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "faithful",
+      "explanation_context": [],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_003",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "entity",
+        "target": "entity"
+      },
+      "critic": {
+        "reason": "The assertion that self-attention relies on positional encoding to overcome permutation invariance is a correct and necessary explanation of how transformers process ordered text. The relation 'overcomes_permutation_invariance_via' accurately describes the causal mechanism by which the model distinguishes between different word orders (e.g., 'cat sat' vs 'sat cat'). This addresses the identified gap regarding sequence order preservation without introducing unsupported claims.",
+        "candidate_id": "candidate_0005",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that self-attention relies on positional encodings to overcome permutation invariance is a fundamental truth of transformer mechanics. The relation 'overcomes_permutation_invariance_via' accurately describes the causal necessity of this component for processing ordered text. This fills the gap regarding how word order is preserved, which is implied by the functional claim 'processes text' but not explicitly detailed in the source chunk. The modality 'additive_integration' correctly reflects the standard method (though learnable alternatives exist, additive is the canonical general knowledge example).",
+        "candidate_id": "candidate_0005",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that self-attention relies on positional encodings to overcome permutation invariance is a core principle of transformer mechanics. The relation 'overcomes_permutation_invariance_via' accurately captures the causal necessity of this component for processing ordered sequences. The modality 'additive_integration' correctly reflects the standard implementation (RoPE/ALiBi are variations, but additive is the canonical general knowledge baseline). This fills the gap regarding how word order is preserved, which is implied by 'processes text' but not explicit in the source. No contradictions exist.",
+        "candidate_id": "candidate_0005",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "connected_to_seed": true
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "peer_novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "candidate_0001"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      }
+    },
+    {
+      "intended_fact": "A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.",
+      "confidence": 0.98,
+      "reason": "This fact is a fundamental definition of the self-attention mechanism's first computational step. It connects the seed 'self attention' to the mathematical operation 'dot product', establishing the existence of 'raw attention scores'. This bridges the gap between the high-level concept and its specific linear algebra implementation, allowing subsequent links (like normalization via softmax) to be connected.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "query key vectors, raw attention scores",
+      "id": "candidate_0006",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "raw attention score",
+      "relation": "computes_raw_scores_via_dot_product",
+      "relation_definition": "The source mechanism calculates the target entity by performing a linear algebraic dot product operation between corresponding query and key vectors.",
+      "conditions": "This relation holds when the self-attention mechanism is in its initial computation phase before normalization.",
+      "modality": "computational_step",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+          "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+          "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        },
+        {
+          "id": "candidate_0001",
+          "source": "self attention",
+          "relation": "computes_raw_scores_via",
+          "target": "dot product operation",
+          "relation_definition": "A self-attention mechanism computes raw attention scores by performing a dot product operation between query and key vectors.",
+          "origin": "background",
+          "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+          "modality": null
+        },
+        {
+          "id": "candidate_0005",
+          "source": "self attention",
+          "relation": "overcomes_permutation_invariance_via",
+          "target": "positional encoding",
+          "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+          "origin": "background",
+          "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+          "modality": "additive_integration"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": "candidate_0002",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0002",
+        "rejection_stage": "connectivity",
+        "reason": "No path connects this proposed explanation to the seed through proposed or known links",
+        "representation_check": {
+          "link_reading": "The graph link faithfully represents the intended fact. The source 'raw attention score' corresponds to the input, the relation 'normalizes_to_distribution_via' captures the transformation process, and the target 'softmax function' matches the specific mechanism described in the intended fact. The endpoint definitions correctly identify the source as unnormalized scores and the target as the normalization function producing a probability distribution.",
+          "reason": "The graph structure accurately maps the semantic components of the sentence: 'raw attention score' is the subject, 'softmax function' is the agent/method, and the relation implies the action of normalization resulting in a distribution. No representation errors exist; the scope (attention weights/scores), direction (source to target via function), and meaning are preserved.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      },
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism within transformer models that processes input sequences by computing relationships between tokens.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "raw attention score",
+          "definition": "An unnormalized scalar value computed as the dot product of a query vector and a key vector.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes_via_dot_product",
+        "relation_definition": "The source mechanism calculates the target entity by performing a linear algebraic dot product operation between corresponding query and key vectors.",
+        "conditions": "This relation holds when the self-attention mechanism is in its initial computation phase before normalization.",
+        "modality": "computational_step",
+        "intended_fact": "A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.",
+        "confidence": 0.98,
+        "reason": "This fact is a fundamental definition of the self-attention mechanism's first computational step. It connects the seed 'self attention' to the mathematical operation 'dot product', establishing the existence of 'raw attention scores'. This bridges the gap between the high-level concept and its specific linear algebra implementation, allowing subsequent links (like normalization via softmax) to be connected.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "query key vectors, raw attention scores"
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism within transformer models that processes input sequences by computing relationships between tokens.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "raw attention score",
+        "definition": "An unnormalized scalar value computed as the dot product of a query vector and a key vector.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "computes_via_dot_product",
+      "surface_target": "raw attention score",
+      "representation_check": {
+        "link_reading": "faithful",
+        "reason": "The link accurately represents the intended fact. The source 'self attention' and target 'raw attention score' match the entities in the fact. The relation 'computes_raw_scores_via_dot_product' and its definition correctly describe the dot product operation between query and key vectors as the method of computation. The conditions specify the initial phase before normalization, aligning with the 'raw' aspect of the scores. The modality 'computational_step' appropriately categorizes this as a process step. No representation errors exist; the graph faithfully encodes the mathematical definition provided in the text.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "faithful"
+    },
+    {
+      "intended_fact": "The normalized attention distribution is applied to value vectors via a weighted sum to produce the context representation.",
+      "confidence": 0.98,
+      "reason": "This fact completes the mathematical description of the self-attention output mechanism. It connects the 'normalized attention distribution' (output of softmax) to 'value vectors', explaining how the final hidden state is generated. This fills the gap regarding how context weighting results in a new representation.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "weighted sum, context representation",
+      "id": "candidate_0007",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+          "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+          "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        },
+        {
+          "id": "candidate_0001",
+          "source": "self attention",
+          "relation": "computes_raw_scores_via",
+          "target": "dot product operation",
+          "relation_definition": "A self-attention mechanism computes raw attention scores by performing a dot product operation between query and key vectors.",
+          "origin": "background",
+          "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+          "modality": null
+        },
+        {
+          "id": "candidate_0005",
+          "source": "self attention",
+          "relation": "overcomes_permutation_invariance_via",
+          "target": "positional encoding",
+          "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+          "origin": "background",
+          "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+          "modality": "additive_integration"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": "candidate_0003",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0003",
+        "rejection_stage": "connectivity",
+        "reason": "No path connects this proposed explanation to the seed through proposed or known links",
+        "representation_check": {
+          "link_reading": "The link faithfully represents the intended fact. It correctly identifies 'normalized attention distribution' as the source providing weights and 'value vector' as the target providing values, with the relation 'applies_weights_from' accurately describing the weighted sum operation defined in the relation_definition.",
+          "reason": "The graph structure (source -> applies_weights_from -> target) combined with the specific definitions matches the mathematical description of self-attention output (weighted sum of value vectors using normalized attention weights). No representation errors exist.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      }
+    },
+    {
+      "intended_fact": "A self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order without additional inputs.",
+      "confidence": 0.98,
+      "reason": "This fact establishes the critical limitation of the core mechanism that necessitates positional encodings (as seen in candidate_0005). It connects 'self attention' to the property 'permutation invariance', explaining why the model cannot process text correctly without order information. This is essential general knowledge for understanding transformer architecture.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_002"
+      ],
+      "added_knowledge": "permutation invariance, token order limitation",
+      "id": "candidate_0008",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the role of positional encodings in self-attention mechanisms?",
+          "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+          "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_002",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+        }
+      ],
+      "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        },
+        {
+          "id": "candidate_0001",
+          "source": "self attention",
+          "relation": "computes_raw_scores_via",
+          "target": "dot product operation",
+          "relation_definition": "A self-attention mechanism computes raw attention scores by performing a dot product operation between query and key vectors.",
+          "origin": "background",
+          "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+          "modality": null
+        },
+        {
+          "id": "candidate_0005",
+          "source": "self attention",
+          "relation": "overcomes_permutation_invariance_via",
+          "target": "positional encoding",
+          "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+          "origin": "background",
+          "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+          "modality": "additive_integration"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": "candidate_0004",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0004",
+        "rejection_stage": "connectivity",
+        "reason": "No path connects this proposed explanation to the seed through proposed or known links",
+        "representation_check": {
+          "link_reading": "faithful",
+          "reason": "The link accurately represents the intended fact: 'standard self-attention mechanism' (source) exhibits 'permutation invariant property' (target), with the relation definition explicitly stating it cannot distinguish token order. The explanation aligns by addressing the limitation regarding word order. No representation errors exist; the scope, direction, and meaning are preserved.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      }
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source text only claims the existence of the mechanism for text processing. It does not explain the internal mathematical operations (dot products, softmax) or the necessity of positional encodings required for the mechanism to function as described.",
+        "chapter_topic": "Self-attention mechanism for text processing",
+        "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+            "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+            "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0002_gap_001",
+            "seed_candidate_id": "seed_candidate_0002",
+            "concept": "self attention",
+            "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+          },
+          {
+            "question": "What is the role of positional encodings in self-attention mechanisms?",
+            "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+            "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0002_gap_002",
+            "seed_candidate_id": "seed_candidate_0002",
+            "concept": "self attention",
+            "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+          }
+        ],
+        "background_question": "How do query, key, and value vectors interact mathematically to compute attention weights?\nWhat is the role of positional encodings in self-attention mechanisms?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "dot product operation",
+              "definition": "The mathematical operation used to calculate raw attention scores between query and key vectors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "uses",
+            "relation_definition": "A self-attention mechanism uses a dot product operation to compute raw attention scores.",
+            "conditions": "The source is the mechanism itself; the target is the specific linear algebra operation described in the intended fact.",
+            "modality": null,
+            "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+            "confidence": 0.95,
+            "reason": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "query_vector, key_vector, dot_product_operation"
+          },
+          {
+            "source": {
+              "name": "raw attention scores",
+              "definition": "Unnormalized scores derived from dot products between query and key vectors.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "softmax function",
+              "definition": "The normalization function that converts raw scores into a probability distribution.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "applies_to",
+            "relation_definition": "The softmax function is applied to raw attention scores to produce normalized weights.",
+            "conditions": "The source represents the input to the normalization step; the target is the specific function mentioned.",
+            "modality": null,
+            "intended_fact": "The resulting attention weights are normalized using the softmax function to produce a probability distribution over the input sequence.",
+            "confidence": 0.95,
+            "reason": "Completes the mathematical description of gap_001 by specifying the normalization step required to derive valid attention distributions from raw scores.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax_function, probability_distribution"
+          },
+          {
+            "source": {
+              "name": "normalized attention distribution",
+              "definition": "The probability distribution over the input sequence resulting from softmax normalization.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "value vectors",
+              "definition": "The vector representations of input tokens used to generate the final output.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "weights_sum_of",
+            "relation_definition": "The final output is a weighted sum where the weights are provided by the normalized attention distribution applied to the value vectors.",
+            "conditions": "The source provides the weights; the target provides the values being summed.",
+            "modality": null,
+            "intended_fact": "The final output of the self-attention mechanism is a weighted sum of value vectors, where the weights are the normalized attention distributions.",
+            "confidence": 0.95,
+            "reason": "Finishes the explanation of gap_001 by describing how the computed weights are applied to the value vectors to generate the context-aware representation.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "value_vector, weighted_sum"
+          },
+          {
+            "source": {
+              "name": "standard self-attention mechanism",
+              "definition": "The core attention mechanism without additional inputs like positional encodings.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "permutation invariant property",
+              "definition": "The characteristic where the output remains unchanged regardless of token order.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "exhibits",
+            "relation_definition": "A standard self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order.",
+            "conditions": "The source is the entity possessing the property; the target describes the specific limitation.",
+            "modality": null,
+            "intended_fact": "Standard self-attention mechanisms are permutation invariant and cannot inherently distinguish the order of tokens in a sequence.",
+            "confidence": 0.95,
+            "reason": "Addresses gap_002 by stating the fundamental limitation of the core attention mechanism regarding word order, which is essential context for understanding why additional inputs are needed.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_002"
+            ],
+            "added_knowledge": "permutation_invariance, token_order_limitation"
+          },
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "The core mechanism in transformers that computes relationships between tokens, inherently permutation invariant without additional context.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "positional encodings",
+              "definition": "Information added to input embeddings to indicate the relative or absolute position of tokens within a sequence.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "provides_positional_information_to",
+            "relation_definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+            "conditions": "The relation holds when positional encodings are added to input embeddings before being processed by the self-attention mechanism.",
+            "modality": "additive_integration",
+            "intended_fact": "Positional encodings are added to the input embeddings to provide the self-attention mechanism with information about the relative or absolute position of tokens.",
+            "confidence": 0.95,
+            "reason": "Directly answers gap_002 by introducing the specific solution (positional encodings) that allows the model to process text sequences correctly despite the permutation invariance of attention.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_002"
+            ],
+            "added_knowledge": "positional_encoding, token_position_information"
+          }
+        ],
+        "reason": "The generated facts bridge the gap between the high-level functional definition in the source text and the specific operational details required to explain 'how' text processing occurs. The first three facts detail the mathematical mechanism (Query-Key-Value interaction), while the last two facts address the structural necessity of positional encodings for sequence order, ensuring a complete explanation without contradicting the source."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text defines 'self attention' functionally but omits the specific mathematical interactions (query/key/value dot products and softmax) and the necessity of positional encodings for sequence order. The explanation must introduce these missing mechanisms to fully answer the identified gaps regarding how context weighting works and how word order is preserved.",
+        "facts": [
+          {
+            "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+            "confidence": 0.95,
+            "reason": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "query_vector, key_vector, dot_product_operation"
+          },
+          {
+            "intended_fact": "The resulting attention weights are normalized using the softmax function to produce a probability distribution over the input sequence.",
+            "confidence": 0.95,
+            "reason": "Completes the mathematical description of gap_001 by specifying the normalization step required to derive valid attention distributions from raw scores.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax_function, probability_distribution"
+          },
+          {
+            "intended_fact": "The final output of the self-attention mechanism is a weighted sum of value vectors, where the weights are the normalized attention distributions.",
+            "confidence": 0.95,
+            "reason": "Finishes the explanation of gap_001 by describing how the computed weights are applied to the value vectors to generate the context-aware representation.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "value_vector, weighted_sum"
+          },
+          {
+            "intended_fact": "Standard self-attention mechanisms are permutation invariant and cannot inherently distinguish the order of tokens in a sequence.",
+            "confidence": 0.95,
+            "reason": "Addresses gap_002 by stating the fundamental limitation of the core attention mechanism regarding word order, which is essential context for understanding why additional inputs are needed.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_002"
+            ],
+            "added_knowledge": "permutation_invariance, token_order_limitation"
+          },
+          {
+            "intended_fact": "Positional encodings are added to the input embeddings to provide the self-attention mechanism with information about the relative or absolute position of tokens.",
+            "confidence": 0.95,
+            "reason": "Directly answers gap_002 by introducing the specific solution (positional encodings) that allows the model to process text sequences correctly despite the permutation invariance of attention.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_002"
+            ],
+            "added_knowledge": "positional_encoding, token_position_information"
+          }
+        ],
+        "reason": "The generated facts bridge the gap between the high-level functional definition in the source text and the specific operational details required to explain 'how' text processing occurs. The first three facts detail the mathematical mechanism (Query-Key-Value interaction), while the last two facts address the structural necessity of positional encodings for sequence order, ensuring a complete explanation without contradicting the source."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006",
+        "candidate_0007",
+        "candidate_0008"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0002",
+          "response": {
+            "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'raw attention scores'). A sound correction exists: insert the intermediate concept 'query key vectors' or directly link 'self attention' to 'dot product operation' which produces 'raw attention scores'. The intended fact describes a standard mathematical step. Corrected Fact: 'A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.'",
+            "corrected_fact": {
+              "intended_fact": "A self-attention mechanism computes raw attention scores by performing dot products between query and key vectors.",
+              "confidence": 0.98,
+              "reason": "This fact is a fundamental definition of the self-attention mechanism's first computational step. It connects the seed 'self attention' to the mathematical operation 'dot product', establishing the existence of 'raw attention scores'. This bridges the gap between the high-level concept and its specific linear algebra implementation, allowing subsequent links (like normalization via softmax) to be connected.",
+              "gap_ids": [
+                "seed_candidate_0002_gap_001"
+              ],
+              "added_knowledge": "query key vectors, raw attention scores"
+            }
+          },
+          "corrected_candidate_id": "candidate_0006"
+        },
+        {
+          "original_candidate_id": "candidate_0003",
+          "response": {
+            "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'normalized attention distribution'). A sound correction exists: link the output of the normalization step (from candidate_0002's corrected fact) to the value vectors. The intended fact describes the final aggregation step. Corrected Fact: 'The normalized attention distribution is applied to value vectors via a weighted sum to produce the context representation.'",
+            "corrected_fact": {
+              "intended_fact": "The normalized attention distribution is applied to value vectors via a weighted sum to produce the context representation.",
+              "confidence": 0.98,
+              "reason": "This fact completes the mathematical description of the self-attention output mechanism. It connects the 'normalized attention distribution' (output of softmax) to 'value vectors', explaining how the final hidden state is generated. This fills the gap regarding how context weighting results in a new representation.",
+              "gap_ids": [
+                "seed_candidate_0002_gap_001"
+              ],
+              "added_knowledge": "weighted sum, context representation"
+            }
+          },
+          "corrected_candidate_id": "candidate_0007"
+        },
+        {
+          "original_candidate_id": "candidate_0004",
+          "response": {
+            "reason": "The rejection was due to a connectivity gap (no path from 'self attention' to 'permutation invariant property'). A sound correction exists: link the seed 'self attention' directly to its inherent limitation. The intended fact defines a core theoretical property of the mechanism. Corrected Fact: 'A self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order without additional inputs.'",
+            "corrected_fact": {
+              "intended_fact": "A self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order without additional inputs.",
+              "confidence": 0.98,
+              "reason": "This fact establishes the critical limitation of the core mechanism that necessitates positional encodings (as seen in candidate_0005). It connects 'self attention' to the property 'permutation invariance', explaining why the model cannot process text correctly without order information. This is essential general knowledge for understanding transformer architecture.",
+              "gap_ids": [
+                "seed_candidate_0002_gap_002"
+              ],
+              "added_knowledge": "permutation invariance, token order limitation"
+            }
+          },
+          "corrected_candidate_id": "candidate_0008"
+        }
+      ]
+    }
+  ]
+}

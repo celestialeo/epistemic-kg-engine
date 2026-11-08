@@ -1,0 +1,553 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_raw_scores_via",
+      "definition": "A self-attention mechanism computes raw attention scores by performing a dot product operation between query and key vectors.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "normalizes_to_distribution_via",
+      "definition": "The source assertion specifies that the softmax function is applied to raw attention scores to produce normalized weights, establishing a direct transformation where the target (softmax) acts upon the source (raw scores) to yield a specific output state.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "applies_weights_from",
+      "definition": "The final output is a weighted sum where the weights are provided by the normalized attention distribution applied to the value vectors.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "exhibits_permutation_invariance",
+      "definition": "A standard self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "overcomes_permutation_invariance_via",
+      "definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_gradient_of_loss_with_respect_to_weight",
+      "definition": "Calculates the value of the target using the source.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "uses",
+        "definition": "A self-attention mechanism uses a dot product operation to compute raw attention scores.",
+        "source": "self attention",
+        "target": "dot product operation",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+              "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+              "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "A self-attention mechanism computes attention weights by calculating dot products between query vectors and key vectors from input embeddings.",
+          "explanation": "Addresses gap_001 by introducing the specific linear algebra operation (dot product) that generates raw attention scores, which is standard general knowledge for this mechanism.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_raw_scores_via",
+      "reason": "The new relation 'computes_raw_scores_via' is coherent and specific, accurately reflecting the source assertion that self-attention uses dot products for raw scores. It preserves meaning by specifying the operation (dot product) between query and key vectors without adding extra restrictions. Symmetry is correctly set to false because the relationship is directional (mechanism performs operation on vectors). The inverse is null, which is valid as there is no defined reverse process in the source context."
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "applies_to",
+        "definition": "The softmax function is applied to raw attention scores to produce normalized weights.",
+        "source": "raw attention score",
+        "target": "softmax function",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+              "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+              "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "The resulting attention weights are normalized using the softmax function to produce a probability distribution over the input sequence.",
+          "explanation": "Completes the mathematical description of gap_001 by specifying the normalization step required to derive valid attention distributions from raw scores.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "normalizes_to_distribution_via",
+      "reason": "The new relation 'normalizes_to_distribution_via' accurately reflects the source assertion where the softmax function transforms raw attention scores into normalized weights. The direction is preserved (source: raw scores -> target: softmax -> result: distribution). Symmetry is correctly set to false because the transformation is directional (scores do not transform back into softmax via normalization). The inverse is null, which is valid as there is no defined reverse process in the source text where a distribution transforms back into raw scores via an inverse operation. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "weights_sum_of",
+        "definition": "The final output is a weighted sum where the weights are provided by the normalized attention distribution applied to the value vectors.",
+        "source": "normalized attention distribution",
+        "target": "value vector",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How do query, key, and value vectors interact mathematically to compute attention weights?",
+              "assumed_knowledge": "The reader is assumed to understand linear algebra operations (dot products, matrix multiplication) and the softmax function used to derive attention distributions.",
+              "why_useful": "Explaining these interactions clarifies *how* the model weighs different parts of the input text relative to each other, moving beyond the functional claim that it 'processes text' to explain the specific mechanism of context weighting.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "The final output of the self-attention mechanism is a weighted sum of value vectors, where the weights are the normalized attention distributions.",
+          "explanation": "Finishes the explanation of gap_001 by describing how the computed weights are applied to the value vectors to generate the context-aware representation.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "applies_weights_from",
+      "reason": "The new relation 'applies_weights_from' accurately reflects the source assertion that attention distributions (weights) are applied to value vectors. The definition is specific and matches the source exactly without adding extra restrictions. Symmetry is correctly set to false because applying weights from a distribution to a vector is not inherently reversible in this context. The inverse is null, which is valid as there is no defined inverse relationship for this asymmetric operation."
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "exhibits",
+        "definition": "A standard self-attention mechanism exhibits permutation invariance, meaning it cannot inherently distinguish token order.",
+        "source": "standard self attention mechanism",
+        "target": "permutation invariant property",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What is the role of positional encodings in self-attention mechanisms?",
+              "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+              "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_002",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "Standard self-attention mechanisms are permutation invariant and cannot inherently distinguish the order of tokens in a sequence.",
+          "explanation": "Addresses gap_002 by stating the fundamental limitation of the core attention mechanism regarding word order, which is essential context for understanding why additional inputs are needed.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "exhibits_permutation_invariance",
+      "reason": "The new relation 'exhibits_permutation_invariance' is coherent and specific, directly mapping the source assertion that standard self-attention cannot distinguish token order. The meaning and direction are exactly preserved without adding extra restrictions. Symmetry is correctly set to false because if A exhibits permutation invariance, it does not imply B (the property itself) exhibits invariance in a reciprocal entity sense; the relation is directional from mechanism to property. The inverse is null, which is valid as there is no distinct inverse relation defined or implied by the source text."
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "provides_positional_information_to",
+        "definition": "The source mechanism relies on the target entity to overcome its inherent permutation invariance and correctly process ordered text sequences.",
+        "source": "self attention",
+        "target": "positional encoding",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What is the role of positional encodings in self-attention mechanisms?",
+              "assumed_knowledge": "The reader is assumed to know that standard self-attention is permutation invariant and requires external signals (positional encodings) to understand word order.",
+              "why_useful": "Without this knowledge, the claim that the model 'processes text' is incomplete, as the mechanism alone cannot distinguish between sequences like 'cat sat' and 'sat cat' without positional information.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_002",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source text states that a small transformer uses self-attention to process text. It defines the concept functionally as a mechanism for text processing within the model's operational structure."
+            }
+          ],
+          "intended_fact": "Positional encodings are added to the input embeddings to provide the self-attention mechanism with information about the relative or absolute position of tokens.",
+          "explanation": "Directly answers gap_002 by introducing the specific solution (positional encodings) that allows the model to process text sequences correctly despite the permutation invariance of attention.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "overcomes_permutation_invariance_via",
+      "reason": "The new relation 'overcomes_permutation_invariance_via' accurately reflects the source assertion that self-attention relies on positional encoding to handle ordered sequences. The definition is specific and matches the source text exactly without adding extra restrictions. Symmetry is correctly set to false because the relationship is directional (mechanism relies on entity, not vice versa). The inverse is null, which is valid as there is no natural inverse relation where an entity 'overcomes' a mechanism's invariance in the same structural sense."
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "computes",
+        "definition": "Calculates the value of the target using the source.",
+        "source": "backpropagation",
+        "target": "gradient of a loss function with respect to model weight",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How are gradients computed and propagated through layers to update weights?",
+              "assumed_knowledge": "The reader is assumed to understand the chain rule of calculus and the concept of gradient descent optimization.",
+              "why_useful": "The statement 'improve its predictions' implies a learning process. Explaining the computation of gradients via backpropagation reveals *how* errors are attributed to specific parameters, which is the basis of the improvement claimed.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0004_gap_001",
+              "seed_candidate_id": "seed_candidate_0004",
+              "concept": "backpropagation",
+              "document_coverage": "The source text states that a small transformer uses backpropagation to improve its predictions during training. It defines the concept functionally as a method for prediction improvement."
+            }
+          ],
+          "intended_fact": "Backpropagation computes gradients of a loss function with respect to model weights using the chain rule of calculus.",
+          "explanation": "This addresses gap_001 by explaining the 'how' of prediction improvement mentioned in the text, introducing the missing prerequisite of gradient computation.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_gradient_of_loss_with_respect_to_weight",
+      "reason": "The new relation 'computes_gradient_of_loss_with_respect_to_weight' accurately reflects the source assertion that backpropagation calculates gradients of a loss function with respect to model weights. The definition is specific and matches the intended fact. Symmetry is correctly set to false as gradient computation is directional (source to target). The inverse is null, which is valid since the relation is not symmetric and no inverse process is defined in the source context. No extra restrictions or vague predicates are introduced."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

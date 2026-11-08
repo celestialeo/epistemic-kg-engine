@@ -287,11 +287,13 @@ class ExplorerDispatchTests(unittest.TestCase):
             order.append(args.chapter)
             args.completed_run_directory = Path(args.chapter)
             return 2 if args.chapter == "water-cycle" else 0
-        def serve(runs, **kwargs):
+        def serve(**kwargs):
             self.assertEqual(order, ["neuroscience", "water-cycle"])
-            self.assertEqual(runs, [Path("neuroscience"), Path("water-cycle")])
-            self.assertEqual(kwargs, dict(port=8765, open_browser=False))
-        with patch("pipeline.cli.run_chapter", side_effect=run), patch("pipeline.explorer.serve", side_effect=serve) as server:
+            self.assertEqual(kwargs["selected_run"], Path("water-cycle"))
+            self.assertEqual(kwargs["runs_root"].name, "runs")
+            self.assertEqual(kwargs["port"], 8765)
+            self.assertFalse(kwargs["open_browser"])
+        with patch("pipeline.cli.run_chapter", side_effect=run), patch("pipeline.professor.serve", side_effect=serve) as server:
             self.assertEqual(main(["--chapter", "both", "--no-open", "--explorer-port", "8765"]), 2)
             server.assert_called_once()
 
@@ -299,10 +301,10 @@ class ExplorerDispatchTests(unittest.TestCase):
         def run(args):
             args.completed_run_directory = Path("run")
             return 0
-        with patch("pipeline.cli.run_chapter", side_effect=run), patch("pipeline.explorer.serve") as server:
+        with patch("pipeline.cli.run_chapter", side_effect=run), patch("pipeline.professor.serve") as server:
             self.assertEqual(main(["--no-explorer"]), 0)
             server.assert_not_called()
-        with patch("pipeline.cli.run_chapter", return_value=1), patch("pipeline.explorer.serve") as server:
+        with patch("pipeline.cli.run_chapter", return_value=1), patch("pipeline.professor.serve") as server:
             self.assertEqual(main([]), 1)
             server.assert_not_called()
 

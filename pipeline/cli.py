@@ -82,12 +82,35 @@ def main(argv=None):
     parser.add_argument("--neo4j", action="store_true", help="Also export the final graph to Neo4j")
     parser.add_argument("--start-neo4j", action="store_true", help="Start bundled Neo4j using Docker Compose and export the graph")
     parser.add_argument("--no-open", action="store_true", help="Do not open the results page automatically")
-    parser.add_argument("--no-explorer", action="store_true", help="Stop after evaluation/reporting without starting the interactive graph console")
+    parser.add_argument("--interact", action="store_true",
+                        help="Interacting with graph: open the saved graph, quiz and professor dashboard without rerunning the pipeline")
+    parser.add_argument("--no-explorer", action="store_true", help="Stop after evaluation/reporting without starting the graph and professor dashboard")
     parser.add_argument("--explorer-port", type=int, default=0, help="Local graph explorer port; 0 selects a free port (default)")
     parser.add_argument("--new", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if not 0 <= args.explorer_port <= 65535:
         parser.error("explorer-port must be between 0 and 65535")
+    if args.interact:
+        if args.no_explorer or args.resume or args.neo4j or args.start_neo4j:
+            parser.error("--interact opens saved results; do not combine it with --no-explorer, --resume or database export flags")
+        from .professor import discover_latest, serve
+        snapshots, warnings = discover_latest(args.output_root)
+        for warning in warnings:
+            print(warning, file=sys.stderr)
+        if args.input:
+            snapshots = [s for s in snapshots if Path(s.manifest.get("config", {}).get("input", "")).resolve() == args.input.resolve()]
+        elif args.chapter and args.chapter != "both":
+            snapshots = [s for s in snapshots if s.manifest.get("config", {}).get("chapter") == args.chapter]
+        elif args.chapter == "both":
+            snapshots = [s for s in snapshots if s.manifest.get("config", {}).get("chapter") in {"neuroscience", "water-cycle"}]
+        if not snapshots:
+            parser.error("No completed run found for this input. Run the pipeline first, or check --output-root.")
+        latest = max(snapshots, key=lambda s: (
+            datetime.fromisoformat((s.manifest.get("started_at_utc") or s.manifest["started_at"]).replace("Z", "+00:00")).timestamp(),
+            s.directory.name))
+        serve(runs_root=args.output_root, selected_run=latest.directory,
+              port=args.explorer_port, open_browser=not args.no_open)
+        return 0
     if args.chunk_words < 1 or args.seed_limit < 0 or args.background_proposal_limit < 0:
         parser.error("chunk-words must be positive; seed-limit and background-proposal-limit must be nonnegative")
     if args.batch_size < 1 or not 1 <= args.health_min_samples <= args.health_window:
@@ -122,13 +145,14 @@ def main(argv=None):
             completed_runs.append(config.completed_run_directory)
     if completed_runs and not args.no_explorer:
         try:
-            from .explorer import serve
-            serve(completed_runs, port=args.explorer_port, open_browser=not args.no_open)
+            from .professor import serve
+            serve(runs_root=args.output_root, selected_run=completed_runs[-1],
+                  port=args.explorer_port, open_browser=not args.no_open)
         except KeyboardInterrupt:
             pass
         except Exception as exc:
-            print(f"Graph explorer could not start: {exc}. Completed pipeline results are saved. "
-                  "Reopen them with python -m pipeline.explorer RUN_DIRECTORY.", file=sys.stderr)
+            print(f"Graph and professor dashboard could not start: {exc}. Completed pipeline results are saved. "
+                  "Reopen them with python run_pipeline.py --interact.", file=sys.stderr)
             return max(code, 1)
     return code
 
@@ -259,7 +283,7 @@ def run_chapter(args):
                 if evaluation["final_score"] is not None:
                     print(f"\nReconstruction score: {evaluation['final_score']:.2f} / 100", flush=True)
                 print(f"\n{label}: {out / 'index.html'}", flush=True)
-                if not args.no_open:
+                if not args.no_open and args.no_explorer:
                     opened = webbrowser.open((out / "index.html").as_uri())
                     trace.emit("presentation.browser_requested", path="index.html", opened=opened)
             except BaseException as exc:

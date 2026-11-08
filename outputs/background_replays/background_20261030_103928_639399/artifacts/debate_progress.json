@@ -1,0 +1,896 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self attention computes relationships between words by calculating similarity scores using query and key vectors.",
+      "confidence": 0.95,
+      "reason": "General knowledge fills the gap regarding the specific mechanism (Q/K interaction) implied by 'processing text' but not detailed in the source.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "query vector, key vector, similarity score calculation",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "similarity score",
+      "relation": "computes_similarity_via_self_attention",
+      "relation_definition": "A self-attention mechanism computes a similarity score by calculating relationships between words in a sequence using query and key vectors.",
+      "conditions": "The computation involves calculating similarity scores using query and key vectors.",
+      "modality": "mechanism_of_action",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+          "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+          "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+        }
+      ],
+      "gap_analysis": "The source text states that self-attention processes text but does not explain the internal mechanism (Q, K, V vectors and softmax) used to compute relationships. The gap is the specific mathematical process of generating contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The link reading 'Self attention computes similarity scores using query and key vectors' matches the intended fact exactly. The direction (self attention -> similarity score) is valid as per the source-to-target relation. The explanation correctly identifies that general knowledge fills the gap regarding the specific mechanism implied by 'processing text'. No reversal, scope change, or disagreement exists between the intended sentence, explanation, and represented assertion. The case-specific claim is not supported because the source context discusses general transformer training and quantization, not the specific internal mechanics of self-attention in this instance; however, since the intended fact is a general statement about the mechanism itself rather than a specific case observation from the text, the lack of direct textual support for the 'Q/K interaction' detail does not constitute an error in representation but rather a reliance on general knowledge as noted in the explanation. No concrete representation errors are found.",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "The mechanism used by a small transformer to process text.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "similarity scores",
+          "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes_via",
+        "relation_definition": "A process computes a specific entity using defined mathematical operations.",
+        "conditions": "The computation involves calculating similarity scores using query and key vectors.",
+        "modality": "mechanism_of_action",
+        "intended_fact": "Self attention computes relationships between words by calculating similarity scores using query and key vectors.",
+        "confidence": 0.95,
+        "reason": "General knowledge fills the gap regarding the specific mechanism (Q/K interaction) implied by 'processing text' but not detailed in the source.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "query vector, key vector, similarity score calculation"
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "The mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "similarity scores",
+        "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "computes_via",
+      "surface_target": "similarity scores",
+      "representation_check": {
+        "link_reading": "Self attention computes similarity scores using query and key vectors.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": false,
+        "reason": "The link reading 'Self attention computes similarity scores using query and key vectors' matches the intended fact exactly. The direction (self attention -> similarity score) is valid as per the source-to-target relation. The explanation correctly identifies that general knowledge fills the gap regarding the specific mechanism implied by 'processing text'. No reversal, scope change, or disagreement exists between the intended sentence, explanation, and represented assertion. The case-specific claim is not supported because the source context discusses general transformer training and quantization, not the specific internal mechanics of self-attention in this instance; however, since the intended fact is a general statement about the mechanism itself rather than a specific case observation from the text, the lack of direct textual support for the 'Q/K interaction' detail does not constitute an error in representation but rather a reliance on general knowledge as noted in the explanation. No concrete representation errors are found.",
+        "suggested_correction": null
+      },
+      "link_reading": "Self attention computes similarity scores using query and key vectors.",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The intended fact describes the internal mathematical mechanism of self-attention (Q/K vectors). While this is valid general knowledge, the rejection reason correctly identifies that the source context only states 'self attention' is used to 'process text' without detailing the Q/K mechanics. The gap exists because the text does not support the specific claim. Since the instruction is to distinguish general explanatory knowledge from unknown case-specific information, and the text provides no evidence for the Q/K mechanism in this specific instance, a correction cannot be made that bridges the gap between the text's assertion ('processes text') and the detailed fact ('computes via Q/K'). The link represents an over-specification relative to the provided text support. No responsible correction exists that validates the detailed claim against the sparse text."
+      }
+    },
+    {
+      "intended_fact": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+      "confidence": 0.95,
+      "reason": "General knowledge fills the gap regarding the normalization step required to convert raw scores into probabilities for context generation.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "softmax function, attention weights",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "similarity score",
+      "target": "attention weight",
+      "relation": "normalizes_scores_to_weights",
+      "relation_definition": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+      "conditions": "The transformation uses a softmax function to convert raw scores into probabilities.",
+      "modality": "transformation_step",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+          "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+          "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+        }
+      ],
+      "gap_analysis": "The source text states that self-attention processes text but does not explain the internal mechanism (Q, K, V vectors and softmax) used to compute relationships. The gap is the specific mathematical process of generating contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "similarity scores",
+          "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "attention weights",
+          "definition": "Probabilistic values produced after normalization for context generation.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "normalized_by",
+        "relation_definition": "An entity is transformed into a probabilistic distribution using a specific function.",
+        "conditions": "The transformation uses a softmax function to convert raw scores into probabilities.",
+        "modality": "transformation_step",
+        "intended_fact": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+        "confidence": 0.95,
+        "reason": "General knowledge fills the gap regarding the normalization step required to convert raw scores into probabilities for context generation.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "softmax function, attention weights"
+      },
+      "source_mention": {
+        "name": "similarity scores",
+        "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "attention weights",
+        "definition": "Probabilistic values produced after normalization for context generation.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "normalized_by",
+      "surface_target": "attention weights",
+      "representation_check": {
+        "link_reading": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link ('similarity score' -> 'attention weight' via 'normalizes_scores_to_weights') matches the intended_fact exactly. The explanation relies on general knowledge about softmax normalization, which is consistent with the source_context describing transformer training and does not invent missing facts. No reversal, scope change, or disagreement exists between the components.",
+        "suggested_correction": null
+      },
+      "link_reading": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "The rejection reason states 'No path connects this proposed explanation to the seed through proposed or known links'. The previous candidate (0001) was rejected because it lacked textual support for the specific Q/K detail. Candidate 0002 relies on the output of candidate 0001 ('similarity score'). Since candidate 0001 is not accepted as a valid link from the seed due to lack of text support, there is no valid path from 'self attention' (seed) to 'attention weight'. The chain is broken at the first step. A correction cannot fix connectivity if the preceding node is invalid."
+      }
+    },
+    {
+      "intended_fact": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+      "confidence": 0.95,
+      "reason": "General knowledge explains the role of the 'value' vector and the weighted summation process that creates the output context.",
+      "gap_ids": [
+        "seed_candidate_0002_gap_001"
+      ],
+      "added_knowledge": "value vector, weighted summation, contextual representation",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "attention weight",
+      "target": "contextual representation",
+      "relation": "determines_contribution_to",
+      "relation_definition": "An entity dictates the magnitude of another entity's contribution to a composite result.",
+      "conditions": "The determination is based on how much each word's value vector contributes via weighted summation.",
+      "modality": "aggregation_logic",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+          "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+          "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0002_gap_001",
+          "seed_candidate_id": "seed_candidate_0002",
+          "concept": "self attention",
+          "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+        }
+      ],
+      "gap_analysis": "The source text states that self-attention processes text but does not explain the internal mechanism (Q, K, V vectors and softmax) used to compute relationships. The gap is the specific mathematical process of generating contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "self attention",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to process text",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No path connects this proposed explanation to the seed through proposed or known links",
+      "original_proposal": {
+        "source": {
+          "name": "attention weights",
+          "definition": "Probabilistic values produced after normalization for context generation.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "contextual representation",
+          "definition": "The final output generated by weighted summation of value vectors.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "determines_contribution_to",
+        "relation_definition": "An entity dictates the magnitude of another entity's contribution to a composite result.",
+        "conditions": "The determination is based on how much each word's value vector contributes via weighted summation.",
+        "modality": "aggregation_logic",
+        "intended_fact": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+        "confidence": 0.95,
+        "reason": "General knowledge explains the role of the 'value' vector and the weighted summation process that creates the output context.",
+        "gap_ids": [
+          "seed_candidate_0002_gap_001"
+        ],
+        "added_knowledge": "value vector, weighted summation, contextual representation"
+      },
+      "source_mention": {
+        "name": "attention weights",
+        "definition": "Probabilistic values produced after normalization for context generation.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "contextual representation",
+        "definition": "The final output generated by weighted summation of value vectors.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "determines_contribution_to",
+      "surface_target": "contextual representation",
+      "representation_check": {
+        "link_reading": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link ('Attention weights determine how much each word's value vector contributes to the final contextual representation') matches the intended_fact exactly. The direction (source-to-target) is correct without reversal. The explanation provides general knowledge about the mechanism which aligns with the assertion. No scope changes or disagreements are present. The source_context discusses transformer mechanics generally, supporting the validity of the claim as a standard description of attention mechanisms without inventing missing facts.",
+        "suggested_correction": null
+      },
+      "link_reading": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+      "rejection_stage": "connectivity",
+      "repair_attempted": true,
+      "repair_result": {
+        "corrected_fact": null,
+        "reason": "Similar to candidate 0002, this link depends on 'attention weights' which are not established as a valid concept in the current graph because the path from the seed ('self attention') was severed at candidate 0001. The rejection is due to connectivity failure (no path to seed), not necessarily a false fact. However, since the upstream node is invalid, this link cannot be accepted or corrected independently to connect to the seed."
+      }
+    },
+    {
+      "intended_fact": "Backpropagation computes partial derivatives (gradients) to determine the direction and magnitude of weight updates.",
+      "confidence": 0.95,
+      "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to calculate gradients for optimization.",
+      "gap_ids": [
+        "seed_candidate_0004_gap_001"
+      ],
+      "added_knowledge": "gradients compute partial derivatives for weight updates",
+      "id": "candidate_0004",
+      "seed_id": "seed_002",
+      "source": "backpropagation",
+      "target": "partial derivative gradient",
+      "relation": "computes_gradient_via_backpropagation",
+      "relation_definition": "The source process generates or calculates the target entity (partial derivative gradient) to determine weight update directions.",
+      "conditions": "During the training phase to determine update directions and magnitudes.",
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+          "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+          "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0004_gap_001",
+          "seed_candidate_id": "seed_candidate_0004",
+          "concept": "backpropagation",
+          "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism of weight adjustment via gradients. The gap is the specific role of gradients in minimizing loss by indicating update directions.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "backpropagation",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to improve its predictions during training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "Backpropagation",
+          "definition": "A method defined by its use of the chain rule to calculate gradients for optimization.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "Partial Derivatives (Gradients)",
+          "definition": "Values indicating the direction and magnitude of weight updates to minimize loss.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes",
+        "relation_definition": "The source process generates or calculates the target entity.",
+        "conditions": "During the training phase to determine update directions and magnitudes.",
+        "modality": null,
+        "intended_fact": "Backpropagation computes partial derivatives (gradients) to determine the direction and magnitude of weight updates.",
+        "confidence": 0.95,
+        "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to calculate gradients for optimization.",
+        "gap_ids": [
+          "seed_candidate_0004_gap_001"
+        ],
+        "added_knowledge": "gradients compute partial derivatives for weight updates"
+      },
+      "source_mention": {
+        "name": "Backpropagation",
+        "definition": "A method defined by its use of the chain rule to calculate gradients for optimization.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "Partial Derivatives (Gradients)",
+        "definition": "Values indicating the direction and magnitude of weight updates to minimize loss.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "computes",
+      "surface_target": "Partial Derivatives (Gradients)",
+      "representation_check": {
+        "link_reading": "The process 'backpropagation' computes the entity 'partial derivative gradient'.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "case_specific_claim_supported": true,
+        "reason": "The literal reading of the link ('backpropagation' computes 'partial derivative gradient') aligns perfectly with the intended fact and the proposer's explanation. The direction is correct (process to entity), the scope matches the training phase context provided in source_context without inventing facts, and no reversal or scope change occurred.",
+        "suggested_correction": null
+      },
+      "link_reading": "The process 'backpropagation' computes the entity 'partial derivative gradient'."
+    },
+    {
+      "intended_fact": "Gradients indicate the direction in which model weights must change to reduce prediction error.",
+      "confidence": 0.95,
+      "reason": "General knowledge: In gradient descent, the negative gradient points toward the minimum of the loss function.",
+      "gap_ids": [
+        "seed_candidate_0004_gap_001"
+      ],
+      "added_knowledge": "gradients indicate direction for error reduction",
+      "id": "candidate_0005",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+          "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+          "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0004_gap_001",
+          "seed_candidate_id": "seed_candidate_0004",
+          "concept": "backpropagation",
+          "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism of weight adjustment via gradients. The gap is the specific role of gradients in minimizing loss by indicating update directions.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "backpropagation",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to improve its predictions during training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    },
+    {
+      "intended_fact": "The magnitude of gradients determines the step size for adjusting weights during training.",
+      "confidence": 0.95,
+      "reason": "General knowledge: The norm of the gradient vector scales the update step in optimization algorithms.",
+      "gap_ids": [
+        "seed_candidate_0004_gap_001"
+      ],
+      "added_knowledge": "gradient magnitude determines update step size",
+      "id": "candidate_0006",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+          "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+          "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0004_gap_001",
+          "seed_candidate_id": "seed_candidate_0004",
+          "concept": "backpropagation",
+          "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism of weight adjustment via gradients. The gap is the specific role of gradients in minimizing loss by indicating update directions.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for",
+          "target": "backpropagation",
+          "relation_definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+          "origin": "document",
+          "conditions": "to improve its predictions during training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source mentions the function (processing text) but omits the internal computational steps required to understand that function.",
+        "chapter_topic": "Self-attention mechanism for text processing",
+        "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+            "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+            "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0002_gap_001",
+            "seed_candidate_id": "seed_candidate_0002",
+            "concept": "self attention",
+            "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that self-attention processes text but does not explain the internal mechanism (Q, K, V vectors and softmax) used to compute relationships. The gap is the specific mathematical process of generating contextual representations.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "The mechanism used by a small transformer to process text.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "similarity scores",
+              "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "computes_via",
+            "relation_definition": "A process computes a specific entity using defined mathematical operations.",
+            "conditions": "The computation involves calculating similarity scores using query and key vectors.",
+            "modality": "mechanism_of_action",
+            "intended_fact": "Self attention computes relationships between words by calculating similarity scores using query and key vectors.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the specific mechanism (Q/K interaction) implied by 'processing text' but not detailed in the source.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "query vector, key vector, similarity score calculation"
+          },
+          {
+            "source": {
+              "name": "similarity scores",
+              "definition": "Scores calculated via matrix multiplication of query and key vectors.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "attention weights",
+              "definition": "Probabilistic values produced after normalization for context generation.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "normalized_by",
+            "relation_definition": "An entity is transformed into a probabilistic distribution using a specific function.",
+            "conditions": "The transformation uses a softmax function to convert raw scores into probabilities.",
+            "modality": "transformation_step",
+            "intended_fact": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the normalization step required to convert raw scores into probabilities for context generation.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax function, attention weights"
+          },
+          {
+            "source": {
+              "name": "attention weights",
+              "definition": "Probabilistic values produced after normalization for context generation.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "contextual representation",
+              "definition": "The final output generated by weighted summation of value vectors.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "determines_contribution_to",
+            "relation_definition": "An entity dictates the magnitude of another entity's contribution to a composite result.",
+            "conditions": "The determination is based on how much each word's value vector contributes via weighted summation.",
+            "modality": "aggregation_logic",
+            "intended_fact": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+            "confidence": 0.95,
+            "reason": "General knowledge explains the role of the 'value' vector and the weighted summation process that creates the output context.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "value vector, weighted summation, contextual representation"
+          }
+        ],
+        "reason": "The source text identifies self-attention as the mechanism for processing text but lacks detail on the 'how'. The generated facts introduce the standard Q-K-V architecture and softmax normalization to explain the computation of relationships and generation of context, directly addressing the identified gap without contradicting the source."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that self-attention processes text but does not explain the internal mechanism (Q, K, V vectors and softmax) used to compute relationships. The gap is the specific mathematical process of generating contextual representations.",
+        "facts": [
+          {
+            "intended_fact": "Self attention computes relationships between words by calculating similarity scores using query and key vectors.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the specific mechanism (Q/K interaction) implied by 'processing text' but not detailed in the source.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "query vector, key vector, similarity score calculation"
+          },
+          {
+            "intended_fact": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap regarding the normalization step required to convert raw scores into probabilities for context generation.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "softmax function, attention weights"
+          },
+          {
+            "intended_fact": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+            "confidence": 0.95,
+            "reason": "General knowledge explains the role of the 'value' vector and the weighted summation process that creates the output context.",
+            "gap_ids": [
+              "seed_candidate_0002_gap_001"
+            ],
+            "added_knowledge": "value vector, weighted summation, contextual representation"
+          }
+        ],
+        "reason": "The source text identifies self-attention as the mechanism for processing text but lacks detail on the 'how'. The generated facts introduce the standard Q-K-V architecture and softmax normalization to explain the computation of relationships and generation of context, directly addressing the identified gap without contradicting the source."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003"
+      ],
+      "repairs": [
+        {
+          "original_candidate_id": "candidate_0001",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The intended fact describes the internal mathematical mechanism of self-attention (Q/K vectors). While this is valid general knowledge, the rejection reason correctly identifies that the source context only states 'self attention' is used to 'process text' without detailing the Q/K mechanics. The gap exists because the text does not support the specific claim. Since the instruction is to distinguish general explanatory knowledge from unknown case-specific information, and the text provides no evidence for the Q/K mechanism in this specific instance, a correction cannot be made that bridges the gap between the text's assertion ('processes text') and the detailed fact ('computes via Q/K'). The link represents an over-specification relative to the provided text support. No responsible correction exists that validates the detailed claim against the sparse text."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0002",
+          "response": {
+            "corrected_fact": null,
+            "reason": "The rejection reason states 'No path connects this proposed explanation to the seed through proposed or known links'. The previous candidate (0001) was rejected because it lacked textual support for the specific Q/K detail. Candidate 0002 relies on the output of candidate 0001 ('similarity score'). Since candidate 0001 is not accepted as a valid link from the seed due to lack of text support, there is no valid path from 'self attention' (seed) to 'attention weight'. The chain is broken at the first step. A correction cannot fix connectivity if the preceding node is invalid."
+          }
+        },
+        {
+          "original_candidate_id": "candidate_0003",
+          "response": {
+            "corrected_fact": null,
+            "reason": "Similar to candidate 0002, this link depends on 'attention weights' which are not established as a valid concept in the current graph because the path from the seed ('self attention') was severed at candidate 0001. The rejection is due to connectivity failure (no path to seed), not necessarily a false fact. However, since the upstream node is invalid, this link cannot be accepted or corrected independently to connect to the seed."
+          }
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_002",
+        "concept": "backpropagation",
+        "definition": "A mechanism used by a small transformer to improve its predictions during training.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source describes the goal (improving predictions) but assumes knowledge of the optimization algorithm (gradient descent) that achieves this.",
+        "chapter_topic": "Backpropagation for prediction improvement during training",
+        "document_coverage": "The source states that backpropagation is used to improve predictions during training.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+            "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+            "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "seed_candidate_0004_gap_001",
+            "seed_candidate_id": "seed_candidate_0004",
+            "concept": "backpropagation",
+            "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+          }
+        ],
+        "background_question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism of weight adjustment via gradients. The gap is the specific role of gradients in minimizing loss by indicating update directions.",
+        "proposals": [
+          {
+            "source": {
+              "name": "Backpropagation",
+              "definition": "A method defined by its use of the chain rule to calculate gradients for optimization.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "Partial Derivatives (Gradients)",
+              "definition": "Values indicating the direction and magnitude of weight updates to minimize loss.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "computes",
+            "relation_definition": "The source process generates or calculates the target entity.",
+            "conditions": "During the training phase to determine update directions and magnitudes.",
+            "modality": null,
+            "intended_fact": "Backpropagation computes partial derivatives (gradients) to determine the direction and magnitude of weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to calculate gradients for optimization.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "gradients compute partial derivatives for weight updates"
+          }
+        ],
+        "reason": "The source text mentions backpropagation improves predictions but lacks detail on the 'how'. General knowledge fills this by defining backpropagation's reliance on gradients to compute partial derivatives, which specify both the direction and magnitude necessary to minimize loss. These facts directly address the gap regarding the specific role of gradients without contradicting the source or inventing case-specific details."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism of weight adjustment via gradients. The gap is the specific role of gradients in minimizing loss by indicating update directions.",
+        "facts": [
+          {
+            "intended_fact": "Backpropagation computes partial derivatives (gradients) to determine the direction and magnitude of weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to calculate gradients for optimization.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "gradients compute partial derivatives for weight updates"
+          },
+          {
+            "intended_fact": "Gradients indicate the direction in which model weights must change to reduce prediction error.",
+            "confidence": 0.95,
+            "reason": "General knowledge: In gradient descent, the negative gradient points toward the minimum of the loss function.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "gradients indicate direction for error reduction"
+          },
+          {
+            "intended_fact": "The magnitude of gradients determines the step size for adjusting weights during training.",
+            "confidence": 0.95,
+            "reason": "General knowledge: The norm of the gradient vector scales the update step in optimization algorithms.",
+            "gap_ids": [
+              "seed_candidate_0004_gap_001"
+            ],
+            "added_knowledge": "gradient magnitude determines update step size"
+          }
+        ],
+        "reason": "The source text mentions backpropagation improves predictions but lacks detail on the 'how'. General knowledge fills this by defining backpropagation's reliance on gradients to compute partial derivatives, which specify both the direction and magnitude necessary to minimize loss. These facts directly address the gap regarding the specific role of gradients without contradicting the source or inventing case-specific details."
+      },
+      "candidate_ids": [
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006"
+      ],
+      "repairs": []
+    }
+  ]
+}

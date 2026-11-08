@@ -30,8 +30,10 @@ class GraphLink(Record):
     source: Concept
     target: Concept
     relation: str = Field(min_length=1, max_length=80)
-    relation_definition: str = Field(min_length=1, max_length=400)
-    conditions: str | None = None
+    relation_definition: str = Field(min_length=1, max_length=400,
+        description="Reusable SOURCE-to-TARGET meaning, without additional subject-matter premises")
+    conditions: str | None = Field(default=None,
+        description="Factual circumstances or qualifications stated in the sentence, never commentary about graph construction")
     modality: str | None = None
 
 
@@ -46,8 +48,8 @@ class FactPlan(Record):
 
 
 class FactRepair(Record):
-    corrected_fact: IntendedFact | None
     reason: str = Field(min_length=1)
+    corrected_fact: IntendedFact | None
 
 
 def reject_background(row, stage, reason, trace):
@@ -65,27 +67,23 @@ class Expansion(Record):
 class RepresentationCheck(Record):
     link_reading: str = Field(min_length=1,
         description="Read SOURCE relation TARGET literally using the supplied relation contract and qualifications")
+    reason: str = Field(min_length=1,
+        description="Briefly compare the link reading to the intended sentence before deciding the fields below")
     meaning_matches: bool = Field(description="Whether the literal graph assertion expresses the intended factual sentence")
     direction_valid: bool = Field(description="Whether the endpoint roles and relation direction preserve the intended sentence")
-    explanation_matches: bool = Field(description="Whether the proposer's explanation agrees with the LITERAL GRAPH ASSERTION, not merely with the intended sentence")
+    explanation_matches: bool = Field(description="Whether the explanation is consistent with the literal graph assertion. A justification of usefulness need not repeat the fact; fail only for an actual disagreement.")
     scope_preserved: bool = Field(description="Whether conditions, quantifiers, modality and level of generality are preserved; this does not assess endpoint direction")
-    case_specific_claim_supported: bool = Field(description="Whether any asserted case-specific detail is supported; true when the claim is wholly general and makes no such attribution")
-    reason: str = Field(min_length=1)
     suggested_correction: str | None
 
 
-class ReviewConflict(Record):
-    field_name: str = Field(min_length=1)
-    reason_quote: str = Field(min_length=1,
-        description="Exact quote from the review's own reason or objections that directly disagrees with this field")
-    explanation: str = Field(min_length=1,
-        description="Why that quote contradicts the named field under its supplied definition")
+class ReasonedBoolean(Record):
+    reason_quote: str | None = Field(description="Exact short quote explicitly deciding this check, otherwise null")
+    implied_value: bool | None = Field(description="Value explicitly concluded by that quote; null if not decided")
 
 
-class ReviewConsistency(Record):
-    consistent: bool
-    inconsistencies: list[ReviewConflict]
-    reason: str = Field(min_length=1)
+class ReasonedPosition(Record):
+    reason_quote: str | None
+    implied_value: Literal["defend", "withdraw"] | None
 
 
 def validate_review_consistency(result, models, entity_id):
@@ -95,73 +93,62 @@ def validate_review_consistency(result, models, entity_id):
     raises a validation error, so that reviewer must resolve it through the
     existing bounded response-retry mechanism before its result can be used.
     """
-    fields = type(result).model_fields
     written_reasons = [result.reason, *getattr(result, "objections", [])]
+    fields = {name: field for name, field in type(result).model_fields.items()
+              if isinstance(getattr(result, name), bool) or name == "position"}
+    schema = create_model("ReviewConclusions", __base__=Record, **{
+        name: (ReasonedPosition if name == "position" else ReasonedBoolean, ...) for name in fields})
 
     def validate_audit(audit):
-        if audit.consistent != (not audit.inconsistencies):
-            raise ValueError("Consistency flag and listed inconsistencies disagree")
-        for issue in audit.inconsistencies:
-            if issue.field_name not in fields:
-                raise ValueError("A consistency issue must name an actual review field")
-            if not any(issue.reason_quote in reason for reason in written_reasons):
-                raise ValueError("A consistency issue must quote the review's own reasoning exactly")
+        for name in fields:
+            finding = getattr(audit, name)
+            # Only a claimed disagreement needs quoted evidence. An agreeing
+            # auditor's imperfect quotation must not block a valid review.
+            if finding.implied_value is not None and finding.implied_value != getattr(result, name) and (
+                not finding.reason_quote or not any(finding.reason_quote in reason for reason in written_reasons)
+            ):
+                raise ValueError("An explicit conclusion needs an exact quote from the review")
 
+    # Extract conclusions without showing the existing flags. Compare values in
+    # code: an auditor cannot call matching values an inconsistency.
     audit = models.ask("background_review_consistency",
-        "Check only internal agreement between this review's structured fields and its written reasons or "
-        "objections. Use the supplied field_meanings as the authoritative interpretation of each field. "
-        "Do not rejudge the underlying subject-matter claim or invent dependencies between separate checks. "
-        "A direction error can coexist with preserved scope, conditions and modality. A false overall "
-        "meaning check does not force every narrower check to be false. explanation_matches compares "
-        "the explanation with the literal graph assertion: agreement between explanation and intended "
-        "sentence does not imply agreement with an incorrectly represented link. "
-        "Interpret the reasoning semantically rather than matching keywords: a reported objection may "
-        "be quoted and then explicitly resolved. Identify a conflict only when the review's own final "
-        "reasoning disagrees with its fields or other conclusions. Check direction, meaning, type, scope, "
-        "certainty, relevance, evidence, gap coverage and acceptance when those fields are present. "
-        "For a rebuttal, check that defend/withdraw agrees with its actual conclusion. "
-        "Return consistent=true and an empty list unless you can identify a direct, unambiguous conflict "
-        "with the review's own final conclusion. For each conflict name the actual field, quote the exact "
-        "conflicting text from reason or objections, and explain the conflict using that field's definition. "
-        "Do not flag a conflict based solely on a different field's value or on speculation about what "
-        "a field might mean. Do not supply a replacement verdict; "
-        "the original reviewer must resolve its own inconsistency.",
-        {"review_type": type(result).__name__, "review": result.model_dump(),
-         "field_meanings": {name: field.description for name, field in fields.items() if field.description}},
-        ReviewConsistency, entity_id, validator=validate_audit)
-    if not audit.consistent:
-        raise ValueError("Resolve your review's internal inconsistency without blindly flipping flags: " +
-                         "; ".join(f"{issue.field_name}: {issue.explanation} (quote: {issue.reason_quote})"
-                                   for issue in audit.inconsistencies))
+        "Read only the reviewer's written conclusions. For each field, extract an explicit final "
+        "conclusion and its exact short quote. Use null when the reasoning does not decide that field. "
+        "Do not assess the underlying claim or infer one check from another. Wrong direction does not "
+        "imply changed scope or incompatible types. A rejection does not imply every check failed. "
+        "A resolved objection is not the final conclusion. Return no commentary beyond the quotes.",
+        {"reason": result.reason, "objections": getattr(result, "objections", []),
+         "field_meanings": {name: field.description or name for name, field in fields.items()}},
+        schema, entity_id, validator=validate_audit)
+    conflicts = [f"{name}={getattr(result, name)} disagrees with: {getattr(audit, name).reason_quote}"
+                 for name in fields if getattr(audit, name).implied_value is not None
+                 and getattr(audit, name).implied_value != getattr(result, name)]
+    if conflicts:
+        raise ValueError("Resolve disagreement between your fields and final reasoning: " + "; ".join(conflicts))
 
 
 def check_representation(row, models, trace):
     """Check the canonical graph assertion against its independently written fact."""
     result = models.ask("background_representation_checker",
-        "Check representation before factual debate. First read the graph link as a simple sentence in "
-        "link_reading, using the literal SOURCE-to-TARGET relation definition, conditions and modality. "
-        "Then compare it with intended_fact and the proposer's explanation. Do not silently swap endpoints "
-        "or repair the link while reading it. Check direction from the actual meaning, including which "
-        "concept is the narrower category when the assertion expresses category membership. Do not rely "
-        "on predicate names or a fixed vocabulary. Flag reversal, changed scope, and disagreement between "
-        "the intended sentence, explanation and represented assertion. General background must not "
-        "invent a missing fact about the particular case: check any case-specific attribution against "
-        "source_context and case_specific_unknowns. General qualified explanations do not require source "
-        "support. This check does not replace debate about the truth or usefulness of the general claim. "
-        "Explain concrete representation errors and optionally suggest a correction as untrusted advice. "
-        "Never modify the submitted assertion or treat a suggestion as accepted knowledge.",
+        "Read the literal graph link, including relation definition, conditions and modality, in link_reading. "
+        "Does it express the intended fact with the same direction, meaning and scope? Does the explanation "
+        "agree with that link? Do not repair or reinterpret it. Check representation only: even a false "
+        "sentence can be represented faithfully. Check entailment in BOTH directions: the link must not "
+        "add a property, necessity, guarantee or other premise absent from the intended sentence. The "
+        "proposer's explanation cannot authorize such extra assertions. "
+        "Truth, relevance and support for case-specific details "
+        "are judged later in debate. Briefly explain concrete representation errors, if any. "
+        "suggested_correction is optional untrusted advice, never an accepted replacement.",
         {"intended_fact": row["intended_fact"], "explanation": row["reason"],
          "link": {key: row.get(key) for key in
                   ("source", "relation", "relation_definition", "target", "conditions", "modality")},
-         "endpoint_descriptions": {"source": row["source_mention"], "target": row["target_mention"]},
-         "source_context": row["source_context"],
-         "case_specific_unknowns": row.get("case_specific_unknowns", [])},
+         "endpoint_descriptions": {"source": row["source_mention"], "target": row["target_mention"]}},
         RepresentationCheck, row["id"],
         validator=lambda result: validate_review_consistency(result, models, row["id"] + "_representation"))
     row["representation_check"] = result.model_dump()
     row["link_reading"] = result.link_reading
     passed = all((result.meaning_matches, result.direction_valid, result.explanation_matches,
-                  result.scope_preserved, result.case_specific_claim_supported))
+                  result.scope_preserved))
     trace.emit("debate.representation_checked", entity_id=row["id"], passed=passed,
                result=result.model_dump())
     return passed
@@ -198,8 +185,18 @@ class DocumentVerdict(Verdict):
         description="Empty for acceptance; otherwise all applicable causes. quote_too_short means a longer source span supports the claim.")
 
 
-class BackgroundReview(Review):
+class BackgroundReview(Record):
+    # Reason first: the small model previously emitted flags before evaluating
+    # the claim, then contradicted those flags in its own explanation.
+    reason: str = Field(min_length=1, max_length=1200)
+    candidate_id: str
+    semantics_valid: bool = Review.model_fields["semantics_valid"]
+    direction_valid: bool = Review.model_fields["direction_valid"]
+    types_valid: bool = Review.model_fields["types_valid"]
+    no_contradiction: bool = Review.model_fields["no_contradiction"]
+    certain: bool = Review.model_fields["certain"]
     evidence_status: Literal["not_applicable"]
+    domain_relevance: float = Field(ge=0, le=1)
     chapter_related: bool
     related_topic: str | None = Field(description="Copy one exact chapter topic when related, otherwise null")
 
@@ -214,12 +211,20 @@ class BackgroundVerdict(BackgroundReview):
     gap_addressed: bool
 
 
+class BackgroundResponse(Record):
+    reason: str = Field(min_length=1, max_length=1200)
+    candidate_id: str
+    position: Literal["defend", "withdraw"]
+
+
 class Novelty(Record):
+    reason: str = Field(min_length=1, max_length=800,
+        description="Compare the complete assertion with the references before deciding what is additional or duplicate")
+    additional_information: list[str] = Field(description="Parts of the assertion NOT supplied by the references, including explanatory mechanisms and conditions; empty only when all information is already supplied")
     status: Literal["new", "duplicate", "uncertain"]
     evidence_ids: list[str]
     related_reference_ids: list[str] = Field(default_factory=list,
         description="References containing part of the assertion; retained for comparison across batches")
-    reason: str = Field(min_length=1, max_length=800)
 
 
 COMMON_POLICY = (
@@ -241,7 +246,9 @@ DOCUMENT_POLICY = EVENT_POLICY + COMMON_POLICY + (
     "A quote may span multiple adjacent sentences. Judge entailment, not whether it literally contains the "
     "relation key. Mark quote_too_short only if the supplied source context contains the missing support. "
 )
-BACKGROUND_POLICY = COMMON_POLICY + (
+BACKGROUND_POLICY = (
+    "Represent general explanatory knowledge as standalone concepts joined by precise directed relations. "
+    "Read conditions and modality as part of the assertion. Preserve qualifications and causal strength. "
     "Use a precise predicate appropriate to the asserted meaning; new predicates require schema validation. "
     "These are BACKGROUND candidates. Use well-established general knowledge. Accept a true, correctly directed "
     "relation with compatible endpoint kinds when it answers a useful knowledge gap for the WHOLE chapter. "
@@ -249,6 +256,8 @@ BACKGROUND_POLICY = COMMON_POLICY + (
     "Use your own general understanding; no external texts or citations are requested. "
     "New concepts and predicates are permitted. A chapter's mention of a function does not fully explain it. "
     "Distinguish general explanatory knowledge from unknown choices or measurements in the particular case. "
+    "Reject an assertion of a particular case's unstated choice or measurement as unsupported uncertainty; "
+    "that restriction does not apply to general definitions, mechanisms or qualified possibilities. "
     "Do not turn a possible approach into an assertion that this case actually uses it. "
     "A supporting link may join other concepts when it directly contributes to answering the seed's "
     "original gap through a connected explanation. The seed need not be an endpoint of every link. "
@@ -264,6 +273,9 @@ BACKGROUND_POLICY = COMMON_POLICY + (
     "Background evidence_status must be not_applicable. A model judgment is not external factual verification. "
 )
 NOVELTY_POLICY = (
+    "First list additional_information: what the FULL candidate explains that the references do not. "
+    "An explanation of how or why a known outcome happens adds information. A specific mechanism is "
+    "not entailed by a general outcome. Include information carried in conditions, not just the triple. "
     "Your only task is informational novelty: is the candidate assertion already stated or implied by the "
     "supplied references without adding outside subject knowledge? Do not judge truth, plausibility, "
     "chapter relevance, usefulness, or contradiction. A false or conflicting assertion may still be new; "
@@ -574,10 +586,14 @@ def check_novelty_many(rows, chunks, facts, models, trace):
                 raise ValueError("Novelty references must identify supplied information")
             if result.status == "duplicate" and not result.evidence_ids:
                 raise ValueError("An already known assertion requires supporting reference IDs")
+            if result.status == "duplicate" and result.additional_information:
+                raise ValueError("A claim with additional information is not wholly duplicate")
+            if result.status == "new" and not result.additional_information:
+                raise ValueError("Identify what information the references do not already supply")
 
         items = [dict(id=row["id"],
                       candidate={key: row.get(key) for key in
-                                 ("source", "target", "relation", "relation_definition", "conditions", "modality")},
+                                 ("intended_fact", "link_reading", "source", "target", "relation", "relation_definition", "conditions", "modality")},
                       earlier_references=list(related[row["id"]].values()))
                  for row in pending]
         errors = {}
@@ -638,6 +654,9 @@ def review_background_many(rows, by_chunk, outline, concepts, models, trace):
         validate_review_consistency(result, models, item["id"] + "_" + type(result).__name__)
 
     reviews = ask_keyed(models, "critic", BACKGROUND_POLICY +
+        "Use precise definitions of technical terms. Before deciding, check for confusion between "
+        "related concepts and for a counterexample to any asserted generalization. A familiar informal "
+        "description does not establish the literal technical claim. Report a flaw only if you find one. "
         "Act as a fair critic of EACH actual assertion, not as an opponent required to reject it. "
         "List only substantive objections supported by a specific flaw or concrete uncertainty. "
         "Return objections=[] when you find none, and explain why the assertion is sound. "
@@ -665,7 +684,7 @@ def review_background_many(rows, by_chunk, outline, concepts, models, trace):
               original_proposal={key: value for key, value in by_id[item["id"]].get("original_proposal", {}).items()
                                  if key != "confidence"})
          for item in items],
-        Response, rows[0]["id"], shared={"chapter": chapter}, validate=validate, on_error=on_error)
+        BackgroundResponse, rows[0]["id"], shared={"chapter": chapter}, validate=validate, on_error=on_error)
     for identifier, response in replies.items():
         row = by_id[identifier]
         row["rebuttal"] = response
@@ -676,6 +695,9 @@ def review_background_many(rows, by_chunk, outline, concepts, models, trace):
     # scores/checks, confidence, or a proposer position to follow.
     items = [item for item in items if item["id"] in replies and replies[item["id"]]["position"] == "defend"]
     verdicts = ask_keyed(models, "judge", BACKGROUND_POLICY +
+        "Check the literal technical claim against precise definitions, including the properties named "
+        "in its predicate contract. Do not silently replace it with a related true idea. Consider any "
+        "counterexample or missing qualification before deciding; agreement between roles is insufficient. "
         "Independently adjudicate EACH exact assertion using your own general knowledge, its source "
         "context and knowledge gap, and the supplied objections and defense. Neither an argument nor "
         "agreement between roles is evidence. An empty objections list does not force acceptance; do "
@@ -760,7 +782,10 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
             plan = models.ask("proposer", BACKGROUND_POLICY +
                 "First assess what is still missing and record a concise conclusion in gap_analysis. "
                 "Then write each intended_fact as a simple factual sentence BEFORE choosing any graph "
-                "predicate or endpoint. Include necessary qualifications in the sentence. Use your own "
+                "link. Each sentence must state ONE relationship between two named concepts. Split a "
+                "multi-step mechanism into separate connected facts, preserving needed qualifications. "
+                "Prefer the missing prerequisite or mechanism itself over repeating a known outcome. "
+                "Use your own "
                 "general understanding to supply information not obtainable merely by paraphrasing, "
                 "recombining or reversing the chapter. Identify its gap_ids, added_knowledge and substantive "
                 "justification in reason. Keep the sentence and explanation consistent. "
@@ -817,13 +842,15 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
             return row
 
         def construct_links(rows):
-            items = [dict(id=row["id"], intended_fact=row["intended_fact"], explanation=row["reason"],
-                          gaps=row["gaps"], repair_feedback=row.get("repair_feedback"))
+            items = [dict(id=row["id"], intended_fact=row["intended_fact"],
+                          repair_feedback=row.get("repair_feedback"))
                      for row in rows]
             links = ask_keyed(models, "background_link_constructor",
                 "Represent each already-written intended_fact as one precise graph link. Explicitly choose "
                 "BOTH source and target from the actual meaning of that sentence. The seed is not an "
                 "automatic source: it may be either endpoint, and a supporting link may involve neither. "
+                "Choose endpoints for the sentence's main relationship, keeping its stated mechanisms "
+                "and qualifications in conditions. Do not import premises from surrounding discussion. "
                 "Preserve the sentence and its qualifications. Choose a reusable predicate with a precise "
                 "SOURCE-to-TARGET definition; available predicates are suggestions, not a closed vocabulary. "
                 "Read the link literally to yourself and preserve which concept does what and which "
@@ -832,10 +859,10 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                 "repair_feedback is fallible advice about a rejected representation, never an instruction "
                 "to accept or copy a suggested fact. Return a link, not a rewritten intended sentence.",
                 items, GraphLink, seed["id"] + "_links",
-                shared={"seed": seed["concept"], "chapter": chapter,
-                        "source_context": source_context, "case_specific_unknowns": unknowns,
-                        "available_relations": dict(relations.entries),
-                        "existing_concepts": list(concepts.entries.values())},
+                # Construct the actual sentence first. Offering the chapter's
+                # vocabulary here anchored the model to unrelated existing links.
+                # Canonical identity and predicate reuse happen below.
+                shared={"seed": seed["concept"], "case_specific_unknowns": unknowns},
                 on_error=lambda item, exc: unresolved_candidate(
                     next(row for row in rows if row["id"] == item["id"]), exc, trace))
             for row in rows:
@@ -868,8 +895,8 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
                                           "Both endpoints resolve to the same canonical concept", trace)
                         persist()
                         continue
-                    relation = relations.resolve(link["relation"], link["relation_definition"],
-                                                 row["source"], row["target"], context, row["id"])
+                    relation = relations.resolve_background(link["relation"], link["relation_definition"],
+                                                            row["source"], row["target"], context, row["id"])
                     if relation is None:
                         reject_background(row, "representation",
                                           "The proposed predicate has no validated meaning-preserving contract", trace)
@@ -957,7 +984,7 @@ def debate(seeds, chunks, outline, concepts, relations, facts, models, trace, do
 
         # Exactly one semantic repair opportunity per original candidate.
         # Response-format retries remain the model boundary's separate concern.
-        rejected = [row for row in originals if not row["accepted"] and row["review_status"] != "unresolved"]
+        rejected = [row for row in originals if not row["accepted"]]
         repair_items = []
         for row in rejected:
             row["repair_attempted"] = True

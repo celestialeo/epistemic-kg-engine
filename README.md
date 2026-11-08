@@ -11,6 +11,41 @@ into one default-sized chunk; background prerequisites are inferred by the pipel
 
 ## Run
 
+**Interacting with graph** opens **Professor** and **Run Results**, with a shared
+saved-run picker and navigation between the two views. This command selects the latest completed AI-test run without rerunning
+extraction or background expansion:
+
+```powershell
+& .\.venv\Scripts\python.exe .\run_pipeline.py --interact --chapter ai-test
+```
+
+Add students, select an input topic and starting concept, then click **Start quiz**.
+Choose who is taking it from the student picker and click **Begin quiz** to link
+the assessment (up to five questions) to that student. The picker includes the latest completed run per input text and saved historical versions. Questions
+and grading use that run's graph. Students can resume unfinished assessments after
+a server restart. The professor can inspect every answer and override fact grades
+with feedback and an audit reason. Original grades are retained.
+
+Run Results shows saved stage statuses, timings, output counts, background decisions,
+unresolved counts, reconstruction scores and the original/reconstructed texts.
+Missing measurements are shown as unavailable; detailed logs stay out of this view.
+
+Professor keeps the full graph at the bottom. Choose temporary exploration,
+saved student knowledge, or the class knowledge overlay. Starting a quiz clears
+exploration and restores that student's evidence. Independently correct facts are
+green, partial or assisted facts amber, incorrect/not-demonstrated facts red,
+and unassessed facts gray. Questions skip independent mastery unless review mode
+is enabled; hints/reveals alone never establish mastery.
+
+Class Overview compares coverage, independent/assisted performance, topic coverage,
+connected understanding, fragmentation, concentration and progress, with definitions
+and sample sizes. Comparisons use the selected graph version. Exact, unique semantic
+fact matches may transfer from earlier versions; changed facts stay unassessed.
+Original histories are retained. Unassessed topics stay separate from demonstrated gaps.
+History is stored in `outputs/professor/students.sqlite3`; back up this file while
+the dashboard is stopped. This is a local professor workstation, not a student
+login service. See [dashboard usage and scoring](docs/professor.md) for details.
+
 Start a current version of [Ollama for Windows](https://ollama.com/download/windows)
 with `qwen3.5:9b` installed, then run:
 
@@ -24,12 +59,12 @@ with `qwen3.5:9b` installed, then run:
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter both
 ```
 
-After evaluation and reporting finish, a local **graph explorer** starts and opens
-in your browser. Enter a concept, statement, or question in its text console to
-highlight matching concepts and relationships. Keep the terminal open while using
-the explorer; press Ctrl+C to stop it. Extraction, debate, graph construction, and
-evaluation use the same logic as before. With `--chapter both`, both runs finish
-before the explorer opens a page where you can choose either graph.
+After evaluation and reporting finish, **Interacting with graph** opens one local
+page with the graph, student picker, quiz and professor dashboard. The completed
+run is selected and its embedded graph is expanded. Enter a concept, statement or
+question in the graph's text console to highlight matches. Keep the terminal open;
+press Ctrl+C to stop the dashboard. With `--chapter both`, both runs finish before
+the combined page opens; either input topic can be selected there.
 
 To run only the pipeline through reconstruction evaluation and reporting:
 
@@ -37,11 +72,17 @@ To run only the pipeline through reconstruction evaluation and reporting:
 & .\.venv\Scripts\python.exe .\run_pipeline.py --chapter neuroscience --no-explorer
 ```
 
-To reopen a completed graph without running the pipeline again:
+To reopen the combined view without running the pipeline again:
 
 ```powershell
-& .\.venv\Scripts\python.exe -m pipeline.explorer "outputs/runs/neuroscience/YOUR_RUN_DIRECTORY"
+& .\.venv\Scripts\python.exe .\run_pipeline.py --interact --chapter neuroscience
 ```
+
+Omit `--chapter` to select the latest completed input run across topics. Use
+`--input path/to/document.txt` for a custom input or `--output-root PATH` for a
+different run library. The standalone `python -m pipeline.professor` command also
+opens the combined dashboard. The legacy `python -m pipeline.explorer RUN_DIRECTORY`
+opens an anonymous graph explorer; its quizzes are not linked to student records.
 
 The viewer opens the full final saved graph, including background knowledge and
 disconnected concepts, fitted to the canvas. Search and **Focus on selected** let
@@ -165,6 +206,7 @@ Options:
 | `--document-output-tokens` | 8192 | Minimum output budget for the final full-document claim alignment |
 | `--model-timeout` | 600 | Ollama request timeout in seconds |
 | `--no-open` | off | Save results without opening a browser |
+| `--interact` | off | Open the saved graph, student quiz and professor view together; skip pipeline processing |
 | `--no-explorer` | off | Stop after evaluation/reporting; do not start the local graph console |
 | `--explorer-port` | 0 | Explorer port; 0 selects a free local port |
 | `--output-root` | outputs/runs | Parent directory for isolated run folders |

@@ -1,0 +1,94 @@
+[
+  {
+    "case": "false_invariance",
+    "stage": "debate",
+    "expected": false,
+    "actual": false,
+    "passed": true,
+    "candidate": {
+      "id": "false_invariance",
+      "seed_id": "false_invariance",
+      "source": "self attention",
+      "target": "numerically identical ordered output sequence",
+      "relation": "produces",
+      "relation_definition": "SOURCE produces TARGET.",
+      "conditions": "without positional information, when input tokens are permuted",
+      "modality": "assertion",
+      "intended_fact": "Permuting input tokens leaves the entire ordered sequence of self-attention outputs numerically identical, without positional information.",
+      "link_reading": "The link asserts that 'self attention' produces a 'numerically identical ordered output sequence' under the condition that input tokens are permuted and positional information is absent. The modality is an assertion.",
+      "reason": "Permuting input tokens leaves the entire ordered sequence of self-attention outputs numerically identical, without positional information.",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "accepted": false,
+      "review_status": "withdrawn",
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism used by a small transformer to process text.",
+        "kind": "process",
+        "form": "concept"
+      },
+      "target_mention": {
+        "name": "numerically identical ordered output sequence",
+        "definition": "numerically identical ordered output sequence",
+        "kind": "abstract",
+        "form": "concept"
+      },
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap",
+          "question": "How does this mechanism work, and what are its limitations?"
+        }
+      ],
+      "case_specific_unknowns": [],
+      "gap_ids": [
+        "gap"
+      ],
+      "representation_check": {
+        "link_reading": "The link asserts that 'self attention' produces a 'numerically identical ordered output sequence' under the condition that input tokens are permuted and positional information is absent. The modality is an assertion.",
+        "reason": "The intended fact states that permuting inputs leaves outputs numerically identical without positional info. The link captures this: source='self attention', target='numerically identical ordered output sequence', conditions='without positional information, when input tokens are permuted'. However, the link's target description 'numerically identical ordered output sequence' is slightly ambiguous as a standalone concept; it describes the *result* rather than the *property of the result*. More critically, the intended fact implies the outputs remain identical to the original unpermuted sequence (or each other in a way that preserves order relative to values), but the link's target phrasing could be misread as just 'a sequence that is numerically identical' without explicitly tying it back to the specific permutation operation preserving the sequence structure. Yet, strictly checking representation: the link does not add extra properties or guarantee necessity beyond the intended fact. The explanation matches the link text exactly. No concrete representation errors exist in the strict sense of adding premises; the phrasing is faithful to the intended meaning.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "abstract"
+      },
+      "critic": {
+        "reason": "The assertion contains a fundamental technical error regarding the properties of self-attention mechanisms. Self-attention is explicitly designed to be permutation-equivariant (or invariant depending on the specific output definition), meaning that permuting input tokens results in a corresponding permutation of the output sequence, not an identical ordered sequence. The claim that the 'entire ordered sequence' remains 'numerically identical' without positional information contradicts the core function of transformers, which rely on positional encodings (either learned or absolute) to distinguish token order. Without these encodings, the model cannot process sequential text correctly; it would indeed fail to distinguish order, but the output would not be an 'identical ordered sequence' in a way that preserves meaning, nor is this described as a standard 'limitation' of self-attention itself, but rather a failure condition if positional information is absent. The relation 'produces' implies a functional capability that does not exist under the stated conditions (permutation without position). Therefore, the assertion misrepresents the mathematical property of self-attention and conf",
+        "candidate_id": "false_invariance",
+        "semantics_valid": false,
+        "direction_valid": false,
+        "types_valid": true,
+        "no_contradiction": false,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Self-attention mechanism for text processing",
+        "objections": [
+          "The assertion claims that permuting input tokens leaves the 'entire ordered sequence of self-attention outputs numerically identical'. This is mathematically incorrect for standard self-attention mechanisms. Self-attention is permutation-equivariant: if inputs are permuted, the outputs are permuted accordingly, not kept identical in their original order. The only way to get an identical output sequence upon permutation is if the model lacks positional information entirely and treats all positions as indistinguishable, which would render it unable to process sequential text (the primary use case). The assertion conflates 'invariance of the set of outputs' with 'identity of the ordered sequence'.",
+          "The condition 'without positional information' describes a failure mode or a specific architectural choice (like using relative position biases that are zeroed out), not a standard operating condition where self-attention 'produces' an identical sequence. Standard transformers include positional encodings precisely to prevent this exact scenario (where order is lost). Asserting this as a general property of the mechanism misrepresents its design.",
+          "The definition of 'numerically identical ordered output sequence' implies that $f(\text{perm}(X)) = f(X)$, which defines permutation invariance. While self-attention layers can be invariant to input permutation if combined with positional encodings that are also permuted (making the whole system equivariant), the raw attention mechanism without explicit positional encoding is not invariant. The assertion incorrectly states the output sequence remains identical, ignoring the necessary role of positional encodings in maintaining order."
+        ]
+      },
+      "rebuttal": {
+        "reason": "The original assertion that self-attention produces a 'numerically identical ordered output sequence' upon input permutation is mathematically incorrect for standard architectures; the correct property is permutation equivariance where outputs are permuted accordingly. The claim conflates set invariance with sequence identity, ignoring the necessity of positional encodings to preserve order. Therefore, the assertion must be withdrawn as it misrepresents the fundamental behavior of self-attention mechanisms which rely on positional information to process sequential text correctly.",
+        "candidate_id": "false_invariance",
+        "position": "withdraw"
+      },
+      "score": null,
+      "decision_reason": "Proposer withdrew: The original assertion that self-attention produces a 'numerically identical ordered output sequence' upon input permutation is mathematically incorrect for standard architectures; the correct property is permutation equivariance where outputs are permuted accordingly. The claim conflates set invariance with sequence identity, ignoring the necessity of positional encodings to preserve order. Therefore, the assertion must be withdrawn as it misrepresents the fundamental behavior of self-attention mechanisms which rely on positional information to process sequential text correctly.",
+      "verification_basis": "model_knowledge",
+      "representation_passed": true
+    }
+  }
+]

@@ -1,0 +1,419 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "employs_mechanism_for",
+      "definition": "SOURCE employs TARGET as a mechanism or method to achieve an effect.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "SOURCE decreases the magnitude or necessity of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_similarity_via_self_attention",
+      "definition": "A self-attention mechanism computes a similarity score by calculating relationships between words in a sequence using query and key vectors.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "normalizes_scores_to_weights",
+      "definition": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "determines_contribution_to",
+      "definition": "An entity dictates the magnitude of another entity's contribution to a composite result.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_gradient_via_backpropagation",
+      "definition": "The source process generates or calculates the target entity (partial derivative gradient) to determine weight update directions.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "computes_via",
+        "definition": "A process computes a specific entity using defined mathematical operations.",
+        "source": "self attention",
+        "target": "similarity score",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+              "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+              "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+            }
+          ],
+          "intended_fact": "Self attention computes relationships between words by calculating similarity scores using query and key vectors.",
+          "explanation": "General knowledge fills the gap regarding the specific mechanism (Q/K interaction) implied by 'processing text' but not detailed in the source.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_similarity_via_self_attention",
+      "reason": "The new relation 'computes_similarity_via_self_attention' is coherent and specific, directly mapping the source's intended fact about self-attention computing relationships via Q/K vectors to a similarity score. It exactly preserves the source assertion's meaning without adding extra restrictions (e.g., it does not invent constraints on vector dimensions or specific normalization steps beyond what is implied by 'calculating relationships'). The direction is preserved as a process from mechanism to output. Symmetry is correctly set to false because computing a similarity score via self-attention is a directed computational step, not an equivalence relation. The inverse is null, which is valid per the instructions for non-equivalence relations where swapping endpoints does not yield a valid,"
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "normalized_by",
+        "definition": "An entity is transformed into a probabilistic distribution using a specific function.",
+        "source": "similarity score",
+        "target": "attention weight",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+              "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+              "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+            }
+          ],
+          "intended_fact": "The calculated similarity scores are normalized using a softmax function to produce attention weights.",
+          "explanation": "General knowledge fills the gap regarding the normalization step required to convert raw scores into probabilities for context generation.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "normalizes_scores_to_weights",
+      "reason": "The new relation 'normalizes_scores_to_weights' accurately reflects the source assertion that similarity scores are normalized via softmax to produce attention weights. The definition is specific and matches the intended fact without adding extra restrictions. Symmetry is correctly set to false because normalization is a directional process (scores -> weights), not an equivalence. The inverse is null, which is valid as there is no defined reverse relationship in the source data."
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "determines_contribution_to",
+        "definition": "An entity dictates the magnitude of another entity's contribution to a composite result.",
+        "source": "attention weight",
+        "target": "contextual representation",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically compute relationships between words in a sequence to generate contextual representations?",
+              "assumed_knowledge": "The mathematical operations of matrix multiplication involving query, key, and value vectors, followed by softmax normalization.",
+              "why_useful": "Understanding these operations explains *how* the model attends to relevant parts of the input text rather than just knowing it 'processes' text.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0002_gap_001",
+              "seed_candidate_id": "seed_candidate_0002",
+              "concept": "self attention",
+              "document_coverage": "The source states that self-attention is the mechanism used by the small transformer to process text."
+            }
+          ],
+          "intended_fact": "Attention weights determine how much each word's value vector contributes to the final contextual representation.",
+          "explanation": "General knowledge explains the role of the 'value' vector and the weighted summation process that creates the output context.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "determines_contribution_to",
+      "reason": "The new relation 'determines_contribution_to' is coherent as it accurately reflects the source assertion where attention weights dictate the magnitude of value vector contributions. The definition exactly preserves the source meaning without adding extra restrictions. The direction is preserved by setting 'symmetric' to false, correctly indicating that if A determines B's contribution, B does not necessarily determine A's. The inverse is set to null, which is valid per instructions since no specific inverse relation was defined in the source data; an inverse would only be required if explicitly derived from a symmetric relationship or a defined inverse contract, neither of which applies here."
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "computes",
+        "definition": "The source process generates or calculates the target entity.",
+        "source": "backpropagation",
+        "target": "partial derivative gradient",
+        "context": {
+          "chapter": {
+            "overview": "This chapter details the operational mechanisms of a small transformer, encompassing its training processes (self-attention and backpropagation), generalization strategies via regularization, post-training memory optimization through quantization, and enhanced reasoning capabilities utilizing retrieval-augmented generation.",
+            "topics": [
+              "Self-attention mechanism for text processing",
+              "Backpropagation for prediction improvement during training",
+              "Regularization for generalization beyond training examples",
+              "Quantization for reducing memory requirements after training",
+              "Retrieval-augmented generation for enhanced reasoning"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external document",
+              "generalization beyond training example",
+              "memory requirement",
+              "prediction",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "use of external document"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "What is the specific role of gradients in adjusting the model's weights to reduce prediction error?",
+              "assumed_knowledge": "The concept of gradient descent, where partial derivatives indicate the direction and magnitude of weight updates to minimize loss.",
+              "why_useful": "Knowing about gradients clarifies *how* predictions are improved (by moving parameters in a specific direction) rather than just stating the outcome.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0004_gap_001",
+              "seed_candidate_id": "seed_candidate_0004",
+              "concept": "backpropagation",
+              "document_coverage": "The source states that backpropagation is used to improve predictions during training."
+            }
+          ],
+          "intended_fact": "Backpropagation computes partial derivatives (gradients) to determine the direction and magnitude of weight updates.",
+          "explanation": "General knowledge: Backpropagation is defined by its use of the chain rule to calculate gradients for optimization.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_gradient_via_backpropagation",
+      "reason": "The new relation 'computes_gradient_via_backpropagation' accurately reflects the source assertion that backpropagation generates partial derivative gradients. The definition explicitly includes the purpose ('determine weight update directions') found in the intended fact, preserving meaning without adding extra restrictions. Symmetry is correctly set to false because computing a gradient via backpropagation is not inherently symmetric (the process flows from error to weights). The inverse is null, which is valid as there is no defined reverse process where 'partial derivative gradients' generate 'backpropagation' in this context; the inverse definition requires swapping endpoints and checking if the relation holds, which it does not here."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

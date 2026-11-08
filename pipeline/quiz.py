@@ -3,13 +3,14 @@ from collections import Counter
 import uuid
 
 from .quiz_examiner import QuizExaminer
-from .quiz_grading import learner_result
+from .quiz_grading import assess_rubric, learner_result
 
 
 class QuizSession:
     LIMIT = 5
 
-    def __init__(self, graph, page_id, models):
+    def __init__(self, graph, page_id, models, *, focus_id=None, prior_status=None,
+                 prior_knowledge=None, adaptive=False, review_mode=False):
         self.graph = graph
         self.examiner = QuizExaminer(models, graph)
         self.questions = []
@@ -26,11 +27,19 @@ class QuizSession:
         self.root = min(self.nodes, key=lambda n: (
             -sum(e["origin"] == "document" for e in self.adjacent[n]),
             self.nodes[n]["label"], n))
+        if focus_id is not None:
+            if focus_id not in self.nodes:
+                raise ValueError("The selected topic is not in this graph")
+            self.root = focus_id
         self.focus = self.root
         self.round = 1
         self.number = 1
         self.completed = False
-        self.edge_status = {}
+        self.adaptive = adaptive
+        self.review_mode = review_mode
+        self.completion_reason = None
+        self.edge_status = {k: v for k, v in (prior_status or {}).items()
+                            if k in self.edges and v in {"match", "related", "conflict"}}
         self.independent = set()
         self.assisted = set()
         self.revealed = set()
@@ -38,7 +47,51 @@ class QuizSession:
         self.history = []
         self.last_result = None
         self.round_start_matches = set()
+        if prior_knowledge is not None:
+            self.edge_status = {k: ('related' if v['mark'] == 'match' and v['helped'] else v['mark'])
+                                for k, v in prior_knowledge.items() if k in self.edges}
+            self.independent = {k for k, v in prior_knowledge.items()
+                                if k in self.edges and v['mark'] == 'match' and not v['helped']}
+            self.assisted = {k for k, v in prior_knowledge.items()
+                             if k in self.edges and v['mark'] == 'match' and v['helped']}
+            self.round_start_matches = set(self.independent)
+        if adaptive and not self._eligible():
+            raise ValueError('All eligible facts are covered. Enable review mode or choose another topic.')
         self.question = self._question()
+
+    def checkpoint(self):
+        """JSON-safe runtime state; restored without asking a new question."""
+        keys = ("id", "page_id", "questions", "root", "focus", "round", "number",
+                "completed", "edge_status", "history", "last_result", "question",
+                "adaptive", "review_mode", "completion_reason")
+        return {**{key: getattr(self, key) for key in keys},
+                **{key: sorted(getattr(self, key)) for key in
+                   ("independent", "assisted", "revealed", "asked", "round_start_matches")}}
+
+    @classmethod
+    def restore(cls, graph, models, checkpoint):
+        session = cls.__new__(cls)
+        session.graph = graph
+        session.examiner = QuizExaminer(models, graph)
+        session.nodes = {n["id"]: n for n in graph["nodes"]}
+        session.edges = {e["id"]: e for e in graph["edges"]}
+        session.adjacent = {identifier: [] for identifier in session.nodes}
+        for edge in session.edges.values():
+            for identifier in {edge["source"], edge["target"]}:
+                session.adjacent[identifier].append(edge)
+        for key in ("id", "page_id", "questions", "root", "focus", "round", "number",
+                    "completed", "edge_status", "history", "last_result", "question"):
+            setattr(session, key, checkpoint[key])
+        for key in ("independent", "assisted", "revealed", "asked", "round_start_matches"):
+            setattr(session, key, set(checkpoint[key]))
+        session.adaptive = checkpoint.get('adaptive', False)
+        session.review_mode = checkpoint.get('review_mode', False)
+        session.completion_reason = checkpoint.get('completion_reason')
+        return session
+
+    def _eligible(self):
+        return [e for e in self.edges.values() if self.review_mode or
+                (e['id'] not in self.asked and e['id'] not in self.independent)]
 
     def _unmapped(self, node):
         return [e for e in self.adjacent[node] if self.edge_status.get(e["id"]) != "match"]
@@ -48,7 +101,7 @@ class QuizSession:
 
     def _node_status(self):
         # Green endpoints are earned by a matched relationship, not a name mention.
-        rank = {"related": 1, "conflict": 2, "match": 3}
+        rank = {"not_demonstrated": 1, "related": 2, "conflict": 3, "match": 4}
         statuses = {}
         for identifier, status in self.edge_status.items():
             for node in (self.edges[identifier]["source"], self.edges[identifier]["target"]):
@@ -59,7 +112,23 @@ class QuizSession:
     def _question(self, number=None):
         number = self.number if number is None else number
         focus, fallback, targets = self.focus, None, []
-        if number == 1:
+        if self.adaptive:
+            candidates = self._eligible()
+            if not candidates:
+                raise ValueError('All eligible facts are covered. Enable review mode or choose another topic.')
+            known_nodes = {n for key in self.independent for n in
+                           (self.edges[key]['source'], self.edges[key]['target'])}
+            edge = min(candidates, key=lambda e: (
+                e['id'] in self.independent,
+                e['id'] in self.asked,
+                e['id'] in self.edge_status,
+                self.focus not in (e['source'], e['target']),
+                not bool({e['source'], e['target']} & known_nodes)))
+            focus = self.focus if self.focus in (edge['source'], edge['target']) else (
+                edge['source'] if edge['source'] in known_nodes else edge['target'])
+            targets = [edge]
+            fallback = 'independent_review' if edge['id'] in self.independent else 'assess_unmastered_fact'
+        elif number == 1:
             focus = self.root
             targets = list(self.adjacent[self.root])
         elif number in (2, 3):
@@ -97,7 +166,7 @@ class QuizSession:
             self.questions, "quiz:" + self.id + ":" + question_id, fallback)
         self.focus = focus
         self.questions.append(generated["text"])
-        if number in (2, 3):
+        if self.adaptive or number in (2, 3):
             self.asked.update(e["id"] for e in targets)
         return dict(id=question_id, number=number, focus_id=focus,
                     target_ids=[e["id"] for e in targets], fallback=fallback,
@@ -114,6 +183,7 @@ class QuizSession:
         self._require_active(question_id)
         # Only mutate progress after the entire model result passes validation.
         result = matcher.match(text, question=self.question["text"])
+        result["rubric"] = assess_rubric(matcher.models, self.question, result)
         helped = bool(self.question["hints"] or self.question["revealed"])
         # Preserve every statement citation, then combine this answer's verdicts.
         # An explicit contradiction cannot be hidden by another agreeing statement.
@@ -123,8 +193,14 @@ class QuizSession:
             identifier, status = match["id"], match["status"]
             if rank[status] > rank.get(assessed.get(identifier), 0):
                 assessed[identifier] = status
+        if self.adaptive:
+            from .quiz_grading import RUBRIC_MARKS
+            assessed.update({item['fact_id']: RUBRIC_MARKS[item['status']] for item in result['rubric']})
         for identifier, status in assessed.items():
-            self.edge_status[identifier] = status
+            self.edge_status[identifier] = 'related' if self.adaptive and helped and status == 'match' else status
+            if self.adaptive:
+                self.independent.discard(identifier)
+                self.assisted.discard(identifier)
             if status == "match":
                 if helped:
                     self.assisted.add(identifier)
@@ -135,10 +211,14 @@ class QuizSession:
                 self.assisted.discard(identifier)
         self.question["attempts"] += 1
         counts = Counter(assessed.values())
-        self.question["feedback"] = (
-            f"This answer correctly explains {counts['match']} facts, partly explains "
-            f"{counts['related']}, and contradicts {counts['conflict']}."
-            if counts else "No credit yet. Write complete statements naming both things you are describing.")
+        mapping = (f"Graph matches: {counts['match']} supported, {counts['related']} related, "
+                   f"{counts['conflict']} contradicted.")
+        labels = {"complete": "Complete", "partial": "Partly answered",
+                  "contradiction": "Contradiction", "not_demonstrated": "Not demonstrated"}
+        feedback = [labels[item["status"]] + ": " + item["demonstrated"] +
+                    (" Still missing: " + item["missing"] if item["missing"] else "")
+                    for item in result["rubric"]]
+        self.question["feedback"] = mapping + "\n" + "\n".join(feedback)
         self.history.append(dict(action="answer", round=self.round, question_id=self.question["id"],
                                  number=self.number, text=text, helped=helped, result=result))
         self.last_result = result
@@ -173,8 +253,10 @@ class QuizSession:
         if not self.question["attempts"] and not self.question["revealed"]:
             raise ValueError("Answer or reveal this question before continuing")
         previous = dict(self.question)
-        if self.number == self.LIMIT:
+        if self.number == self.LIMIT or (self.adaptive and not self._eligible()):
             self.completed = True
+            if self.adaptive:
+                self.completion_reason = 'Round covered. Enable review mode, choose another topic, or start another quiz for remaining gaps.'
         else:
             question = self._question(self.number + 1)
             self.number += 1
@@ -214,6 +296,7 @@ class QuizSession:
 
     def public(self):
         return dict(quiz_id=self.id, round=self.round, limit=self.LIMIT, completed=self.completed,
+                    completion_reason=self.completion_reason,
                     question={k: self.question[k] for k in
                         ("id", "number", "text", "attempts", "hints", "revealed", "feedback", "help_text")},
                     edge_status=dict(self.edge_status), node_status=self._node_status(),
