@@ -4,7 +4,9 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
 const path=require('node:path');
-const source=fs.readFileSync(path.join(__dirname,'../pipeline/explorer.js'),'utf8').split('const matchColors=')[0];
+const notebook=JSON.parse(fs.readFileSync(path.join(__dirname,'../261273237.ipynb'),'utf8'));
+const asset=notebook.cells.find(cell=>cell.metadata.asset==='pipeline/explorer.js');
+const source=asset.source.join('').split('\n').slice(1).join('\n').split('const matchColors=')[0];
 
 function harness(){
  const requests=[],elements=new Map(),timers=[];

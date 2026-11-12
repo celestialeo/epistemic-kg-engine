@@ -239,10 +239,11 @@ class QuizGradingTests(unittest.TestCase):
             QuizGrader(self.graph, models).match(text, "Explain the conversion.")
 
     def test_nonassertions_do_not_map_edges(self):
-        models = models_with(statements("PV cells?", assertion=False))
+        models = models_with(statements("PV cells?", assertion=False),
+            dict(statement_id="statement_1", kind="question", reason="Asks about cells rather than explaining conversion."))
         result = QuizGrader(self.graph, models).match("PV cells?", "Explain the conversion.")
         self.assertEqual(result["matches"], [])
-        self.assertEqual(models.client.chat.call_count, 1)
+        self.assertEqual(models.client.chat.call_count, 2)
 
     def test_partial_and_contradictory_meanings_are_preserved(self):
         for meaning, status in [("similar", "related"), ("contradiction", "conflict")]:

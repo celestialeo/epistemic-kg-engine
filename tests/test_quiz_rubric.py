@@ -77,7 +77,8 @@ class QuizRubricTests(unittest.TestCase):
             with self.subTest(identifier=identifier, assertion=assertion):
                 self.result["statements"][0]["is_assertion"] = assertion
                 invalid = rubric_judgment(evidence=[dict(statement_id=identifier, quote=self.result["input"])])
-                with self.assertRaisesRegex(ModelResponseError, "verbatim"):
+                message = "Unknown statement_id" if identifier == "statement_99" else "classified as a non-assertion"
+                with self.assertRaisesRegex(ModelResponseError, message):
                     self.assess(invalid, invalid, invalid)
 
     def test_unrequested_fact_is_rejected_and_not_scored(self):

@@ -15,6 +15,11 @@ from pipeline.cli import main as pipeline_main
 from pipeline.models import ModelResponseError
 
 
+def assessment_spec(facts, scope='full_relationship'):
+    return [dict(fact_id=f['id'],scope=scope,requested='Explain the process.',given='',
+                 criteria=['Explain the connection, orientation and applicable qualifications.']) for f in facts]
+
+
 class TeachingModels:
     options = {"num_ctx": 8192, "num_predict": 4096}
 
@@ -29,12 +34,20 @@ class TeachingModels:
         if role == "quiz_question":
             value = dict(question="Explain " + payload["material"]["subject"]["label"] + ".",
                          expected_answer="Water enters soil.",
-                         assessed_fact_ids=[f["id"] for f in payload["material"]["facts"]])
+                         assessed_fact_ids=[f["id"] for f in payload["material"]["facts"]],
+                         assessment_spec=assessment_spec(payload["material"]["facts"]))
         elif role == "quiz_question_review":
-            value = dict(plain_exam_language=True, open_question=True, grounded_in_material=True,
+            value = dict(plain_exam_language=True, open_question=True, grounded_in_material=True, specification_aligned=True,
                          reveals_answer=False, answer_leak_quote="", reason="Open and grounded.")
+        elif role == 'quiz_legacy_spec':
+            value=dict(question=payload['question'],expected_answer=payload['expected_answer'],
+                       assessed_fact_ids=[f['id'] for f in payload['material']['facts']],
+                       assessment_spec=assessment_spec(payload['material']['facts']))
         elif role in {"quiz_hint", "quiz_reveal"}:
             value = dict(text="Think about where water goes." if role == "quiz_hint" else "Water enters soil.")
+        elif role == "quiz_hint_review":
+            value = dict(grounded_in_material=True, reveals_answer=False,
+                         answer_leak_quote="", reason="A thinking clue without the answer.")
         elif role == "quiz_statements":
             value = dict(statements=[dict(text=payload["learner_answer"], is_assertion=True)])
         elif role == "quiz_meaning":
@@ -197,7 +210,7 @@ class ProfessorTests(unittest.TestCase):
         pending = detail["pending_answers"]
         self.assertEqual(len(pending), 1)
         self.assertEqual(pending[0]["text"], body["text"])
-        self.assertEqual(pending[0]["grading_status"], "pending")
+        self.assertEqual(pending[0]["grading_status"], "unresolved")
         self.assertIsNone(pending[0]["score"])
         report = self.analytics()
         self.assertEqual(report["assessment_count"], 0)
@@ -234,7 +247,7 @@ class ProfessorTests(unittest.TestCase):
         for failure in [ModelResponseError("Invalid citation after retries"),
                         ValueError("Context too small"), KeyError("Missing model configuration")]:
             with self.subTest(failure=type(failure).__name__):
-                with patch("pipeline.quiz_grading.QuizGrader.match", side_effect=failure):
+                with patch("pipeline.quiz_grading.QuizGrader.statements", side_effect=failure):
                     self.post("quiz", body, 503)
         self.assertIsNone(self.analytics()["topics"][0]["score"])
         self.assertEqual(StudentStore(self.db).answers(), [])
@@ -256,7 +269,8 @@ class ProfessorTests(unittest.TestCase):
         def respond(role, instruction, payload, schema, entity_id, validator=None):
             if role == 'quiz_question':
                 result = schema.model_validate(dict(question='Explain how water infiltrates soil.',
-                    expected_answer='Water enters soil.', assessed_fact_ids=['entry']))
+                    expected_answer='Water enters soil.', assessed_fact_ids=['entry'],
+                    assessment_spec=assessment_spec([dict(id='entry')])))
                 if validator:
                     validator(result)
                 return result
@@ -269,23 +283,28 @@ class ProfessorTests(unittest.TestCase):
             before = StudentStore(self.db).session(state['id'])
             body = dict(action='answer', request_id=str(uuid.uuid4()), session_id=state['id'],
                         question_id=state['state']['question']['id'], text='Water enters soil.')
-            failure = self.post('quiz', body, 503)
-            self.assertIn('relation_span', failure['detail'])
-            self.assertIn('learner token indices', failure['detail'])
+            graded = self.post('quiz', body)
+            self.assertEqual(graded['answer_score'], 100)
+            failure=graded['state']['last_result']['graph_assessment']
+            self.assertEqual(failure['status'],'unresolved')
+            self.assertIn('relation_span', failure['error'])
+            self.assertIn('learner token indices', failure['error'])
             store = StudentStore(self.db)
-            self.assertEqual(store.session(state['id']), before)
-            self.assertEqual(store.answers(), [])
+            self.assertEqual(len(store.answers()), 1)
             self.assertEqual(store.knowledge(self.student, self.topic['id']), {})
-            self.assertEqual(len(store.pending_answers(state['id'])), 1)
+            self.assertEqual(store.pending_answers(state['id']), [])
             self.client = self.new_client()
             saved = self.client.get('/api/professor/sessions/'+state['id']).json()
-            self.assertEqual(saved['pending_answers'][0]['request']['request_id'], body['request_id'])
-            self.post('quiz', dict(body, request_id=str(uuid.uuid4())), 409)
+            self.assertEqual(saved['answers'][0]['id'], body['request_id'])
+            self.assertEqual(saved['answers'][0]['text'], body['text'])
             grader_models = models_with(invalid, corrected)
-            result = self.post('quiz', saved['pending_answers'][0]['request'])
-            self.assertEqual(result['answer_score'], 100)
+            result = self.post('answers/'+body['request_id']+'/retry-matching', {})
+            self.assertEqual(result['status'], 'resolved')
+            self.assertEqual(store.answers()[0]['score'], 100)
+            self.assertEqual(store.knowledge(self.student,self.topic['id'])['entry']['mark'],'match')
             calls = grader_models.client.chat.call_count
-            self.assertEqual(self.post('quiz', body), result)
+            self.assertTrue(self.post('answers/'+body['request_id']+'/retry-matching', {})['already_resolved'])
+            self.assertEqual(self.post('quiz', body), graded)
             self.assertEqual(grader_models.client.chat.call_count, calls)
             self.assertEqual(len(store.answers()), 1)
             self.assertEqual(store.answers()[0]['id'], body['request_id'])
@@ -341,7 +360,8 @@ class ProfessorTests(unittest.TestCase):
         def respond(role, instruction, payload, schema, entity_id, validator=None):
             if role == "quiz_question":
                 value = dict(question="Explain how water reaches the inside of soil.",
-                             expected_answer="Water enters soil.", assessed_fact_ids=["entry"])
+                             expected_answer="Water enters soil.", assessed_fact_ids=[f['id'] for f in payload['material']['facts']],
+                             assessment_spec=assessment_spec(payload['material']['facts']))
             elif role == "quiz_meaning":
                 value = dict(judgments=[dict(statement_id=payload["statement"]["id"], edge_id="approach",
                     meaning="equivalent", asserts_relation=True, source_identified=True, target_identified=True,
@@ -361,7 +381,7 @@ class ProfessorTests(unittest.TestCase):
             state = self.command("start")
             result = self.command("answer", state, text="Water moves toward soil.")
             self.assertEqual(result["answer_score"], 50)
-            self.assertEqual(result["state"]["edge_status"], {"approach": "match", "entry": "related"})
+            self.assertEqual(result["state"]["edge_status"], {"entry": "related"})
             self.assertIn("Partly answered", result["state"]["question"]["feedback"])
             self.assertIn("Entry into the soil is not stated", result["state"]["question"]["feedback"])
             stored = StudentStore(self.db).answers()[0]
@@ -369,11 +389,11 @@ class ProfessorTests(unittest.TestCase):
             self.assertEqual([m["id"] for m in stored["result"]["matches"]], ["approach"])
             self.client = self.new_client()
             restored = self.client.get("/api/professor/sessions/"+state["id"]).json()
-            self.assertEqual(restored["state"]["edge_status"], {"approach": "match", "entry": "related"})
+            self.assertEqual(restored["state"]["edge_status"], {"entry": "related"})
             another = self.command("start")
-            self.assertEqual(another["state"]["edge_status"], {"approach": "match", "entry": "related"})
+            self.assertEqual(another["state"]["edge_status"], {"entry": "related"})
             coverage = self.analytics()["topics"][0]["coverage"][0]
-            self.assertEqual((coverage["assessed"], coverage["independent"], coverage["unassessed"]), (2, 1, 0))
+            self.assertEqual((coverage["assessed"], coverage["independent"], coverage["unassessed"]), (1, 0, 1))
 
     def test_blank_and_stale_submissions_are_not_staged(self):
         state = self.command("start")
