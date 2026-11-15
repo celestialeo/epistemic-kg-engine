@@ -14,9 +14,11 @@ facts, and failed question drafts can recover through another eligible fact. Hin
 validation permits ordinary vocabulary; unsafe hints are withheld, while failed
 reveals can use a display-checked, saved expected answer with assistance marking. See [workflow and metric definitions](docs/professor.md).
 
-Questions now carry a shared, reviewed assessment specification. Question scores
-are independent of whole-graph matching: failed matching retains a valid grade and
-can be retried from answer history without changing mastery until resolved. Correct
+Questions carry a shared, reviewed assessment specification. New quizzes use scoped,
+question-aware semantic grading: clear paraphrases, pronouns and short contextual
+answers count without requiring the graph's exact wording. Criterion checks and
+verbatim learner evidence govern green/yellow/red states; unrelated answers do not
+earn credit. Older questions retain their whole-graph matching/retry workflow. Correct
 component answers do not establish full-relationship mastery. Background facts
 require professor approval under Run Insights before quiz use. See the workflow
 documentation for evidence requirements, corrections and unresolved retries.
@@ -176,7 +178,7 @@ python tools/validate_submission.py
 python -m unittest discover -s tests -p test_submission.py -v
 python -m unittest discover -s tests -q
 node --test tests/explorer_logging.test.cjs
-python -m unittest tests.test_assessment_contract tests.test_quiz_statement_review tests.test_quiz_help tests.test_adaptive_quiz tests.test_professor_scope tests.test_professor tests.test_learning_views tests.test_explorer tests.test_quiz_rubric tests.test_quiz_grading tests.test_submission -q
+python -m unittest tests.test_contextual_grading tests.test_graph_metrics tests.test_assessment_contract tests.test_quiz_statement_review tests.test_quiz_help tests.test_adaptive_quiz tests.test_professor_scope tests.test_professor tests.test_learning_views tests.test_explorer tests.test_quiz_rubric tests.test_quiz_grading tests.test_submission -q
 python -m tests.browser_professor_workspace
 python -m tests.browser_assessment_contract
 ```
@@ -207,7 +209,7 @@ Validation performed on November 8, 2026:
   and a real reconstruction score were not verified.** The normal CLI timeout remains
   600 seconds. Logs are in `outputs/submission-*.log`; the failed smoke run is under
   `outputs/submission_validation/` and is not embedded as an experimental result.
-- The professor-interface and adaptive-quiz regression set passed 149 tests; all four JavaScript
+- The professor-interface, graph-metric and adaptive-quiz regression set passed 169 tests; all four JavaScript
   logging checks passed using Playwright's bundled Node runtime. A real Chrome workflow
   passed navigation, student/topic/version switching, quiz resumption, pending-answer
   retry after browser/server restart, grading corrections, statement comparison and
