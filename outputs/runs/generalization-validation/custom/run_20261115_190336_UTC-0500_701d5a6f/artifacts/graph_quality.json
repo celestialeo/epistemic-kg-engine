@@ -1,0 +1,1460 @@
+{
+  "version": 2,
+  "policy": {
+    "node_batch_size": 4,
+    "repair_attempts": 2,
+    "candidate_limit": 8,
+    "alias_similarity": 0.7,
+    "edge_batch_size": 12
+  },
+  "status": "blocked",
+  "nodes": [
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_3e1f3c07272bb4fd",
+            "label": "supervised classifier",
+            "definition": "A model that learns a mapping from inputs to labels using labeled training examples.",
+            "merge_into": null,
+            "reason": "Definition expanded to include the learning process described in source text."
+          },
+          {
+            "id": "concept_94799f2b07b4600e",
+            "label": "mapping from inputs to labels",
+            "definition": "The function learned by a supervised classifier.",
+            "merge_into": null,
+            "reason": "Definition refined to specify the origin of the mapping within the learning context."
+          },
+          {
+            "id": "concept_39ed4e85b168b2ae",
+            "label": "labeled training examples",
+            "definition": "Data instances used during training to guide parameter updates.",
+            "merge_into": null,
+            "reason": "Definition contextualized by their role in the training process described in source."
+          },
+          {
+            "id": "concept_9ba81b9975b979b0",
+            "label": "optimization algorithm",
+            "definition": "A method that adjusts model parameters to reduce loss function disagreement.",
+            "merge_into": null,
+            "reason": "Definition updated to reflect the specific mechanism of parameter adjustment described."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_3e1f3c07272bb4fd",
+            "valid": false,
+            "reason": "The proposed definition expands the scope beyond the original concise label 'A supervised classifier' by embedding the learning process description; this violates the requirement to preserve the same referent without adding unsupported facts or merging distinct concepts (the agent vs. the action)."
+          },
+          {
+            "id": "concept_94799f2b07b4600e",
+            "valid": false,
+            "reason": "The proposed definition adds the specific origin 'learned by a supervised classifier', which is an external context not present in the original concise definition 'a mapping from inputs to labels'; this alters the referent's scope rather than preserving it."
+          },
+          {
+            "id": "concept_39ed4e85b168b2ae",
+            "valid": false,
+            "reason": "The proposed definition introduces specific functional details ('used during training to guide parameter updates') not contained in the original concise definition 'labeled training examples', thereby adding unsupported facts and altering the concept's scope."
+          },
+          {
+            "id": "concept_9ba81b9975b979b0",
+            "valid": false,
+            "reason": "The proposed definition adds specific mechanism details ('adjusts model parameters to reduce loss function disagreement') absent from the original concise definition 'an optimization algorithm', violating the constraint against adding unsupported facts."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_3e1f3c07272bb4fd",
+            "label": "supervised classifier",
+            "definition": "A supervised classifier",
+            "merge_into": null,
+            "reason": "Restored concise label; removed embedded learning process description to preserve original referent scope."
+          },
+          {
+            "id": "concept_94799f2b07b4600e",
+            "label": "mapping from inputs to labels",
+            "definition": "a mapping from inputs to labels",
+            "merge_into": null,
+            "reason": "Restored concise definition; removed external context 'learned by a supervised classifier' to preserve original scope."
+          },
+          {
+            "id": "concept_39ed4e85b168b2ae",
+            "label": "labeled training examples",
+            "definition": "labeled training examples",
+            "merge_into": null,
+            "reason": "Restored concise definition; removed functional details about parameter updates to avoid adding unsupported facts."
+          },
+          {
+            "id": "concept_9ba81b9975b979b0",
+            "label": "optimization algorithm",
+            "definition": "an optimization algorithm",
+            "merge_into": null,
+            "reason": "Restored concise definition; removed specific mechanism details about parameter adjustment to preserve original scope."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_3e1f3c07272bb4fd",
+            "valid": true,
+            "reason": "The concept 'supervised classifier' is distinct from the learning process or its components; preserving it as a separate entity without merging into process descriptions maintains referent scope."
+          },
+          {
+            "id": "concept_94799f2b07b4600e",
+            "valid": true,
+            "reason": "The concept 'mapping from inputs to labels' represents a functional abstraction distinct from the classifier itself; keeping it separate avoids conflating the model with its output function."
+          },
+          {
+            "id": "concept_39ed4e85b168b2ae",
+            "valid": true,
+            "reason": "'Labeled training examples' are data inputs distinct from the algorithm or the resulting model; they must remain separate to avoid treating data as a component of the learning mechanism."
+          },
+          {
+            "id": "concept_9ba81b9975b979b0",
+            "valid": true,
+            "reason": "An 'optimization algorithm' is a distinct methodological entity; separating it from the specific parameter adjustment details preserves its general definition without adding unsupported facts."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_a470999c047352b8",
+            "label": "model parameters",
+            "definition": "adjustable values within a model that are updated during training to minimize loss",
+            "merge_into": null,
+            "reason": "Source text describes these as the specific entities being adjusted by an algorithm; existing concepts do not cover this specific role."
+          },
+          {
+            "id": "concept_2f0b4053abf14cdb",
+            "label": "loss function",
+            "definition": "a metric measuring disagreement between model predictions and training labels to guide updates",
+            "merge_into": null,
+            "reason": "The definition in the source text is more specific than the generic existing concept; merging would lose the 'disagreement' context."
+          },
+          {
+            "id": "concept_5df57ea85e027cfd",
+            "label": "disagreement",
+            "definition": "the difference between model predictions and training labels",
+            "merge_into": null,
+            "reason": "This is a distinct concept representing the error metric itself, not identical to the function measuring it or the parameters."
+          },
+          {
+            "id": "concept_5eef4278ecb49c22",
+            "label": "models predictions",
+            "definition": "outputs generated by the model used in loss calculation",
+            "merge_into": null,
+            "reason": "The source text defines these specifically as outputs compared against labels; existing concepts do not match this scope."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_a470999c047352b8",
+            "valid": false,
+            "reason": "The proposed definition adds unsupported functional details ('adjustable values', 'updated during training') not present in the source text's label-only definition; existing concepts do not cover this specific role is incorrect as no existing concept matches, but the merge decision should reflect that the definition expansion violates the constraint against adding unsupported facts."
+          },
+          {
+            "id": "concept_2f0b4053abf14cdb",
+            "valid": false,
+            "reason": "The proposed definition adds the phrase 'to guide updates', which is an unsupported functional claim not found in the source text's label-only definition; merging would incorrectly conflate the metric with its usage."
+          },
+          {
+            "id": "concept_5df57ea85e027cfd",
+            "valid": true,
+            "reason": "The proposed definition matches the source text exactly ('the difference between model predictions and training labels'); no existing concept covers this specific semantic scope, so merge_into=null is correct."
+          },
+          {
+            "id": "concept_5eef4278ecb49c22",
+            "valid": false,
+            "reason": "The proposed definition adds the phrase 'used in loss calculation', which is an unsupported functional claim not found in the source text's label-only definition; merging would incorrectly conflate the output with its usage."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_a470999c047352b8",
+            "label": "model parameters",
+            "definition": "model parameters",
+            "merge_into": null,
+            "reason": "Definition expansion adds unsupported functional details not in source; no existing concept matches this specific role."
+          },
+          {
+            "id": "concept_2f0b4053abf14cdb",
+            "label": "loss function",
+            "definition": "a loss function",
+            "merge_into": null,
+            "reason": "Definition expansion adds unsupported functional claim regarding updates; merging conflates metric with usage."
+          },
+          {
+            "id": "concept_5df57ea85e027cfd",
+            "label": "disagreement",
+            "definition": "the difference between model predictions and training labels",
+            "merge_into": null,
+            "reason": "This is a distinct concept representing the error metric itself, not identical to the function measuring it or the parameters."
+          },
+          {
+            "id": "concept_5eef4278ecb49c22",
+            "label": "models predictions",
+            "definition": "outputs generated by the model",
+            "merge_into": null,
+            "reason": "Definition expansion adds unsupported functional claim regarding loss calculation; merging conflates output with usage."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_a470999c047352b8",
+            "valid": true,
+            "reason": "The concept 'model parameters' is distinct from existing nodes like 'supervised classifier' or 'optimization algorithm'; the source describes their relationship but does not define them as identical."
+          },
+          {
+            "id": "concept_2f0b4053abf14cdb",
+            "valid": true,
+            "reason": "The concept 'loss function' is distinct from 'disagreement' or 'optimization algorithm'; the source defines it as a measure of disagreement that signals updates, but this does not make it identical to the parameters or the algorithm itself."
+          },
+          {
+            "id": "concept_5df57ea85e027cfd",
+            "valid": true,
+            "reason": "The concept 'disagreement' is distinct from 'loss function'; while the source states the loss function measures disagreement, they represent different entities (the metric vs. the measuring tool)."
+          },
+          {
+            "id": "concept_5eef4278ecb49c22",
+            "valid": true,
+            "reason": "The concept 'models predictions' is distinct from existing nodes; it represents the output of the model, which is used to calculate disagreement, but is not identical to the loss function or training labels."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_663146d1d48d9e36",
+            "label": "training labels",
+            "definition": "ground truth data used for evaluation",
+            "merge_into": null,
+            "reason": "Distinct from 'labeled training examples' as it specifies the role in evaluation rather than the input set."
+          },
+          {
+            "id": "concept_d041924c15885af6",
+            "label": "signal",
+            "definition": "information provided to guide parameter updates",
+            "merge_into": "concept_5df57ea85e027cfd",
+            "reason": "The source text defines the loss function's output as a signal for updates; 'disagreement' is the specific information content of that signal."
+          },
+          {
+            "id": "concept_2224a450d02eca2d",
+            "label": "parameter updates",
+            "definition": "adjustments made to model parameters",
+            "merge_into": null,
+            "reason": "Distinct from 'model parameters' as it represents the action/change rather than the state."
+          },
+          {
+            "id": "concept_736acc8661cbaa3a",
+            "label": "validation set",
+            "definition": "A collection of examples used for validation.",
+            "merge_into": null,
+            "reason": "No existing concept matches the definition or scope of a validation set."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_663146d1d48d9e36",
+            "valid": true,
+            "reason": "Distinct from 'labeled training examples' because the former refers to ground truth used for evaluation while the latter refers to input data used for learning."
+          },
+          {
+            "id": "concept_d041924c15885af6",
+            "valid": false,
+            "reason": "The 'signal' is a functional role of the loss function's output, not identical to the 'disagreement' itself; merging conflates the information content with its purpose."
+          },
+          {
+            "id": "concept_2224a450d02eca2d",
+            "valid": true,
+            "reason": "Distinct from 'model parameters' as it represents the action of adjustment rather than the state of the parameters themselves."
+          },
+          {
+            "id": "concept_736acc8661cbaa3a",
+            "valid": true,
+            "reason": "No existing concept matches the definition or scope of a validation set; it is a distinct entity separate from training data."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_663146d1d48d9e36",
+            "label": "training labels",
+            "definition": "ground truth data used for evaluation",
+            "merge_into": null,
+            "reason": "Distinct from 'labeled training examples' as it specifies the role in evaluation rather than the input set."
+          },
+          {
+            "id": "concept_d041924c15885af6",
+            "label": "signal",
+            "definition": "information provided to guide parameter updates",
+            "merge_into": "concept_5df57ea85e027cfd",
+            "reason": "The 'signal' is a functional role of the loss function's output, not identical to the 'disagreement' itself; merging conflates the information content with its purpose."
+          },
+          {
+            "id": "concept_2224a450d02eca2d",
+            "label": "parameter updates",
+            "definition": "adjustments made to model parameters",
+            "merge_into": null,
+            "reason": "Distinct from 'model parameters' as it represents the action/change rather than the state."
+          },
+          {
+            "id": "concept_736acc8661cbaa3a",
+            "label": "validation set",
+            "definition": "A collection of examples used for validation.",
+            "merge_into": null,
+            "reason": "No existing concept matches the definition or scope of a validation set."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_663146d1d48d9e36",
+            "valid": true,
+            "reason": "Distinct from 'labeled training examples' because the former specifies ground truth for evaluation while the latter refers to input data used for learning."
+          },
+          {
+            "id": "concept_d041924c15885af6",
+            "valid": true,
+            "reason": "Distinct from 'disagreement' because the signal is the informational output guiding updates, whereas disagreement is the specific metric value measuring prediction error."
+          },
+          {
+            "id": "concept_2224a450d02eca2d",
+            "valid": true,
+            "reason": "Distinct from 'model parameters' because parameter updates represent the action of adjustment, not the static state of the parameters themselves."
+          },
+          {
+            "id": "concept_736acc8661cbaa3a",
+            "valid": true,
+            "reason": "No existing concept matches the definition or scope of a validation set; it is a distinct data collection separate from training sets."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_c590b3c924c35c2f",
+            "label": "examples",
+            "definition": "Individual data points within the validation set.",
+            "merge_into": null,
+            "reason": "Specific to validation context; distinct from generic 'labeled training examples' or 'training labels' in existing."
+          },
+          {
+            "id": "concept_e5e33babc94f5d3b",
+            "label": "training set",
+            "definition": "A collection of examples used for training.",
+            "merge_into": null,
+            "reason": "Distinct concept from 'validation set'; no existing ID represents the training set specifically."
+          },
+          {
+            "id": "concept_a9a2b274b205770c",
+            "label": "validation results",
+            "definition": "results of validation",
+            "merge_into": null,
+            "reason": "Refers to outcomes/outputs of the validation process, distinct from 'models predictions' which are outputs generated by the model."
+          },
+          {
+            "id": "concept_e420f41c75874917",
+            "label": "model settings",
+            "definition": "configurations for a model",
+            "merge_into": null,
+            "reason": "Refers to hyperparameters or configuration choices, distinct from 'model parameters' which are learned weights."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_c590b3c924c35c2f",
+            "valid": true,
+            "reason": "The concept 'examples' is distinct from existing nodes like 'labeled training examples' or 'training labels' due to its specific context within the validation set and lack of a generic 'example' node in the existing graph."
+          },
+          {
+            "id": "concept_e5e33babc94f5d3b",
+            "valid": true,
+            "reason": "The concept 'training set' is semantically distinct from the existing 'validation set'; no existing node represents the training set specifically."
+          },
+          {
+            "id": "concept_a9a2b274b205770c",
+            "valid": true,
+            "reason": "The concept 'validation results' refers to outcomes of the validation process, which is distinct from 'models predictions' that are outputs generated by the model."
+          },
+          {
+            "id": "concept_e420f41c75874917",
+            "valid": true,
+            "reason": "The concept 'model settings' refers to hyperparameters or configuration choices, which is distinct from 'model parameters' that are learned weights."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_4870cf971434e681",
+            "label": "chosen model",
+            "definition": "a specific model selected for evaluation",
+            "merge_into": null,
+            "reason": "Distinct from generic 'models predictions' or other existing concepts; represents a specific instance chosen by developers."
+          },
+          {
+            "id": "concept_240b48b3bf27794c",
+            "label": "held out test set",
+            "definition": "data set reserved for testing",
+            "merge_into": null,
+            "reason": "Distinct from 'validation set' and 'training set'; serves a different purpose (final testing vs validation/tuning)."
+          },
+          {
+            "id": "concept_81f76f4f5d58e5c1",
+            "label": "select model settings",
+            "definition": "action of choosing model configurations",
+            "merge_into": null,
+            "reason": "Represents an action/process, whereas 'model settings' is the object; actions and objects are not identical."
+          },
+          {
+            "id": "concept_4f130c7d70eca302",
+            "label": "evaluating the chosen model on a held out test set",
+            "definition": "action of assessing the selected model using reserved data",
+            "merge_into": null,
+            "reason": "Represents a complex process/action involving multiple components (model, test set, assessment); distinct from individual concepts."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_4870cf971434e681",
+            "valid": true,
+            "reason": "The concept 'chosen model' refers to a specific instance selected for evaluation, which is distinct from generic concepts like 'models predictions' or existing nodes lacking the 'selected' qualifier; no merge exists."
+          },
+          {
+            "id": "concept_240b48b3bf27794c",
+            "valid": true,
+            "reason": "The concept 'held out test set' is reserved for final testing, whereas the existing 'validation set' is used for tuning; they serve different purposes and are not identical."
+          },
+          {
+            "id": "concept_81f76f4f5d58e5c1",
+            "valid": true,
+            "reason": "The concept 'select model settings' describes an action/process, while the existing 'model settings' describes the object/configuration; actions and objects are distinct entities."
+          },
+          {
+            "id": "concept_4f130c7d70eca302",
+            "valid": true,
+            "reason": "The concept 'evaluating the chosen model on a held out test set' represents a complex process involving multiple components, distinct from individual concepts like 'validation set' or 'model settings'."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_e6aeb48acc5ea0f5",
+            "label": "good performance on the training examples alone",
+            "definition": "Success limited to known data points.",
+            "merge_into": null,
+            "reason": "Distinct concept from general success; specificity preserved."
+          },
+          {
+            "id": "concept_65617d4e094d7ebc",
+            "label": "good performance on previously unseen examples from the intended application",
+            "definition": "Success achieved on new, out-of-distribution data.",
+            "merge_into": null,
+            "reason": "Distinct concept referring to generalization; no existing match."
+          },
+          {
+            "id": "concept_2696fbf2de496321",
+            "label": "regularization",
+            "definition": "A technique applied to models.",
+            "merge_into": null,
+            "reason": "Distinct concept; definition too broad for existing entries."
+          },
+          {
+            "id": "concept_a1f32f577f69843e",
+            "label": "overfitting",
+            "definition": "The tendency of a model to fit incidental details of training data.",
+            "merge_into": null,
+            "reason": "Distinct concept; definition aligns with source but no existing ID matches."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_e6aeb48acc5ea0f5",
+            "valid": true,
+            "reason": "Distinct concept from general success; specificity preserved."
+          },
+          {
+            "id": "concept_65617d4e094d7ebc",
+            "valid": true,
+            "reason": "Distinct concept referring to generalization; no existing match."
+          },
+          {
+            "id": "concept_2696fbf2de496321",
+            "valid": true,
+            "reason": "Distinct concept; definition too broad for existing entries."
+          },
+          {
+            "id": "concept_a1f32f577f69843e",
+            "valid": true,
+            "reason": "Distinct concept; definition aligns with source but no existing ID matches."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_9372c470eeadd5ec",
+            "label": "model",
+            "definition": "An entity with a tendency to fit incidental details.",
+            "merge_into": null,
+            "reason": "Distinct concept from existing 'overfitting' and 'training set'; definition describes model behavior rather than the phenomenon itself."
+          },
+          {
+            "id": "concept_56eabe5e6f9e24db",
+            "label": "training data",
+            "definition": "Data used for training models.",
+            "merge_into": null,
+            "reason": "Distinct from 'training set' which is defined as a collection of examples; 'training data' is the raw input concept."
+          },
+          {
+            "id": "concept_00337646bb399b2a",
+            "label": "quantization",
+            "definition": "process representing model parameters with fewer bits after training",
+            "merge_into": null,
+            "reason": "No existing concept matches this specific process definition; distinct from 'model settings' or 'parameter updates'."
+          },
+          {
+            "id": "concept_ab52f13bb55226cf",
+            "label": "fewer bits",
+            "definition": "representation state achieved by quantization",
+            "merge_into": null,
+            "reason": "Distinct concept representing a state or property, not an action like 'quantization' or a configuration like 'model settings'."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_9372c470eeadd5ec",
+            "valid": true,
+            "reason": "The concept 'model' is distinct from 'overfitting' (a phenomenon) and 'training set' (data); the definition describes an entity's behavior, not the phenomenon or data itself."
+          },
+          {
+            "id": "concept_56eabe5e6f9e24db",
+            "valid": true,
+            "reason": "'Training data' refers to raw input used for training, whereas 'training set' is defined as a specific collection of examples; they represent distinct scopes (input vs. dataset instance)."
+          },
+          {
+            "id": "concept_00337646bb399b2a",
+            "valid": true,
+            "reason": "'Quantization' is a specific process defined by parameter representation with fewer bits; it does not match 'model settings' (configurations) or 'parameter updates' (adjustments)."
+          },
+          {
+            "id": "concept_ab52f13bb55226cf",
+            "valid": true,
+            "reason": "'Fewer bits' represents a state achieved by quantization, distinct from the action of 'quantization', the configuration of 'model settings', or the adjustments of 'parameter updates'."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_a8004d688677e6e4",
+            "label": "memory needed to store model parameters",
+            "definition": "resource reduced by quantization",
+            "merge_into": null,
+            "reason": "Distinct from the process of quantization; represents a specific resource metric affected by it."
+          },
+          {
+            "id": "concept_908bc11d975d3f93",
+            "label": "lower numerical precision",
+            "definition": "A state of having reduced numerical precision in a model.",
+            "merge_into": null,
+            "reason": "Describes a specific state or condition, distinct from the general process of quantization."
+          },
+          {
+            "id": "concept_27248bc04a54437e",
+            "label": "prediction accuracy",
+            "definition": "The degree to which predictions match actual outcomes.",
+            "merge_into": null,
+            "reason": "Represents a performance metric, distinct from the concept of disagreement or quantization effects."
+          },
+          {
+            "id": "concept_b3551b269ae1d6b4",
+            "label": "quantized model",
+            "definition": "A model where parameters are represented with fewer bits.",
+            "merge_into": null,
+            "reason": "Refers to the resulting object (the model instance), distinct from the process of quantization itself."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_a8004d688677e6e4",
+            "valid": true,
+            "reason": "The concept represents a specific resource metric (memory) affected by quantization, which is distinct from the process of quantization itself or the state of lower precision."
+          },
+          {
+            "id": "concept_908bc11d975d3f93",
+            "valid": true,
+            "reason": "This concept describes a specific state (reduced numerical precision) rather than the general process of quantization or the resulting model instance."
+          },
+          {
+            "id": "concept_27248bc04a54437e",
+            "valid": true,
+            "reason": "This concept defines a performance metric (degree of match between predictions and outcomes), which is semantically distinct from disagreement or quantization effects."
+          },
+          {
+            "id": "concept_b3551b269ae1d6b4",
+            "valid": true,
+            "reason": "This concept refers to the resulting object (the model instance after quantization), which is distinct from the process of quantization or the representation state."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_efe77b201dc216c0",
+            "label": "evaluation",
+            "definition": "assessing model performance",
+            "merge_into": null,
+            "reason": "Distinct from specific evaluation actions; retains general concept scope."
+          },
+          {
+            "id": "concept_7f3cc0adfe8959f6",
+            "label": "memorizing training examples",
+            "definition": "learning non-generalizable rules",
+            "merge_into": null,
+            "reason": "Distinct concept not present in existing list; no identity match found."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_efe77b201dc216c0",
+            "valid": true,
+            "reason": "The concept 'evaluation' is a general process distinct from specific existing instances like 'evaluating the chosen model on a held out test set'; merging would conflate the abstract action with a concrete instance."
+          },
+          {
+            "id": "concept_7f3cc0adfe8959f6",
+            "valid": true,
+            "reason": "The concept 'memorizing training examples' is not present in the existing list and has no semantic overlap with other nodes; it remains distinct."
+          }
+        ]
+      }
+    }
+  ],
+  "aliases": [
+    {
+      "pair": [
+        "concept_736acc8661cbaa3a",
+        "concept_e5e33babc94f5d3b"
+      ],
+      "reviews": [
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept refers to a specific subset of data reserved for evaluating model performance (validation), while the second refers to a different subset used for learning model parameters (training). They are distinct functional roles within the machine learning workflow and cannot be used interchangeably.",
+          "reason": "The definitions denote two separate subsets of data with mutually exclusive purposes: one for training the model and the other for validating it. Using a validation set for training would lead to overfitting, and using a training set for validation would result in biased performance estimates. Therefore, they are not redundant nor interchangeable."
+        },
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept refers to a dataset subset reserved for evaluating model performance (validation), while the second refers to a dataset subset used for adjusting model parameters during the learning process (training). These are distinct functional roles within the machine learning pipeline; swapping them would alter the intended purpose of the data usage.",
+          "reason": "The definitions denote different stages in a machine learning workflow: one is for 'validation' and the other for 'training'. A validation set is used to tune hyperparameters or select models, whereas a training set is used to fit the model. They are not interchangeable because using a validation set for training leads to overfitting on that specific data, and using a training set for validation provides an overly optimistic performance estimate."
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "edge_00001",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "supervised classifier",
+              "definition": "A supervised classifier"
+            },
+            "relation": "learns_mapping",
+            "definition": "SOURCE acquires or establishes TARGET through a process of learning, utilizing specific resources.",
+            "target": {
+              "label": "mapping from inputs to labels",
+              "definition": "a mapping from inputs to labels"
+            },
+            "conditions": "using labeled training examples",
+            "modality": null,
+            "evidence": "A supervised classifier learns a mapping from inputs to labels using labeled training examples."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The source 'supervised classifier' acquires or establishes the target 'mapping from inputs to labels' through a process of learning, utilizing specific resources (using labeled training examples).",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'learns_mapping' between 'supervised classifier' and 'mapping from inputs to labels' is fully supported by the evidence quote. The literal meaning of the arrow matches the contract definition exactly, including the condition 'using labeled training examples'. No reduction, negation, or unstated participant was inserted. The direction (classifier learns mapping) and endpoints are correct according to the ordinary meaning and the provided definitions."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is fully retained in the proposed assertion without any loss of information or alteration of meaning. All conditions and modality from the source contract are preserved."
+      }
+    },
+    {
+      "id": "edge_00002",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "loss function",
+              "definition": "a loss function"
+            },
+            "relation": "quantifies",
+            "definition": "SOURCE quantifies the extent of TARGET",
+            "target": {
+              "label": "disagreement",
+              "definition": "the difference between model predictions and training labels"
+            },
+            "conditions": "between the model's predictions and the training labels",
+            "modality": null,
+            "evidence": "The loss function measures disagreement between the model's predictions and the training labels"
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The loss function quantifies the extent of disagreement between the model's predictions and the training labels.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'quantifies' between 'loss function' and 'disagreement' is fully supported by the evidence quote: 'The loss function measures disagreement...'. The definition of 'quantifies' ('SOURCE quantifies the extent of TARGET') aligns with 'measures'. No reduction, negation, or unstated participants are inserted. The conditions ('between the model's predictions and the training labels') and modality (null) are preserved exactly as in the source. The endpoint definitions match the co-"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed assertion is a faithful extraction of the source evidence without adding constraints or altering meaning. The label 'quantifies' correctly reflects the action described in the evidence ('measures'). All qualifications and conditions from the original document are retained."
+      }
+    },
+    {
+      "id": "edge_00003",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "loss function",
+              "definition": "a loss function"
+            },
+            "relation": "supplies_signal_for",
+            "definition": "SOURCE provides TARGET for a specific purpose",
+            "target": {
+              "label": "disagreement",
+              "definition": "the difference between model predictions and training labels"
+            },
+            "conditions": "for these parameter updates",
+            "modality": null,
+            "evidence": "providing a signal for these parameter updates"
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The loss function provides the disagreement (difference between model predictions and training labels) specifically for the purpose of parameter updates.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'supplies_signal_for' between 'loss function' and 'disagreement' with the condition 'for these parameter updates' is a direct literal reading of the evidence 'providing a signal for these parameter updates'. The definition of the label matches its contract (SOURCE provides TARGET for a specific purpose). No reduction, negation, or unstated participants are inserted. The direction (loss function -> disagreement) and endpoints are correct according to the provided definitions"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is fully retained in the proposed assertion without any loss of meaning, qualification, or factual content."
+      }
+    },
+    {
+      "id": "edge_00004",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "validation set",
+              "definition": "A collection of examples used for validation."
+            },
+            "relation": "contains",
+            "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+            "target": {
+              "label": "examples",
+              "definition": "Individual data points within the validation set."
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "A validation set contains examples that are separate from the training set."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The 'validation set' spatially contains the 'examples'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'contains' between 'validation set' and 'examples' is a direct restatement of the original evidence quote ('A validation set contains examples...'). The label matches its definition (spatial/structural containment), endpoints are correctly identified as defined in the source data, and no conditions or modality were altered. The claim is fully retained without reduction or negation."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed assertion is a literal transcription of the provided evidence quote. No facts are omitted, reduced, or contradicted. The relation label 'contains' accurately reflects the ordinary meaning and contract defined in the source data for this specific context."
+      }
+    },
+    {
+      "id": "edge_00005",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "validation results",
+              "definition": "results of validation"
+            },
+            "relation": "enables",
+            "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+            "target": {
+              "label": "select model settings",
+              "definition": "action of choosing model configurations"
+            },
+            "conditions": "before evaluating the chosen model on a held-out test set",
+            "modality": null,
+            "evidence": "Developers use validation results to select model settings before evaluating the chosen model on a held-out test set."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The document states that developers 'use validation results to select model settings'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'enables' accurately reflects the document's statement that validation results provide the capacity/conditions for selecting model settings. The direction (validation results -> select model settings) matches the text 'use validation results to select'. The definition of 'enables' ('provides conditions or capacity permitting... without claiming it produces') correctly captures the nuance of using results as a basis for selection rather than automatically producing the final"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is fully retained in the proposed relation. The evidence 'Developers use validation results to select model settings...' entails that validation results enable the action of selecting model settings. No reduction, negation, or unstated participant was inserted. The label 'enables' matches its contract and the ordinary meaning of the text."
+      }
+    },
+    {
+      "id": "edge_00006",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "select model settings",
+              "definition": "action of choosing model configurations"
+            },
+            "relation": "precedes",
+            "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+            "target": {
+              "label": "evaluating the chosen model on a held out test set",
+              "definition": "action of assessing the selected model using reserved data"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "Developers use validation results to select model settings before evaluating the chosen model on a held-out test set."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The action of choosing model configurations happens temporally before the action of assessing the selected model using reserved data.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The evidence quote explicitly states 'before evaluating', which directly supports the 'precedes' relation. The source and target labels match the definitions provided in the original data without role reversal or meaning change. No conditions or modality are omitted; the temporal sequence is accurately represented."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed assertion fully retains the original claim's complete source text and qualifications. The direction (precedes), endpoints (select model settings -> evaluating...), and label contract are all strictly adhered to by the provided evidence."
+      }
+    },
+    {
+      "id": "edge_00007",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "regularization",
+              "definition": "A technique applied to models."
+            },
+            "relation": "inhibits",
+            "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+            "target": {
+              "label": "overfitting",
+              "definition": "The tendency of a model to fit incidental details of training data."
+            },
+            "conditions": "by limiting a model's tendency to fit incidental details of the training data",
+            "modality": "can",
+            "evidence": "Regularization can reduce overfitting by limiting a model's tendency to fit incidental details of the training data."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The text states that regularization can reduce overfitting by limiting a model's tendency to fit incidental details of the training data.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'inhibits' with modality 'can' and the specific condition 'by limiting a model's tendency to fit incidental details of the training data' exactly matches the evidence quote. The source 'regularization' and target 'overfitting' are correctly identified as per their definitions. No reduction, negation, or unstated participants were inserted; the ordinary meaning of 'inhibits' aligns with 'reduces'. All qualifications from the original claim are preserved."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed assertion is a faithful extraction of the provided evidence. The label 'inhibits' accurately reflects the action described in the quote ('reduce'). The modality 'can' and the specific mechanism (condition) are explicitly present in the source text. No discrepancies exist between the literal meaning of the quote and the structured claim."
+      }
+    },
+    {
+      "id": "edge_00008",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "quantization",
+              "definition": "process representing model parameters with fewer bits after training"
+            },
+            "relation": "represents",
+            "definition": "SOURCE represents TARGET in a specific manner or state.",
+            "target": {
+              "label": "model parameters",
+              "definition": "model parameters"
+            },
+            "conditions": "after training",
+            "modality": null,
+            "evidence": "After training, quantization represents model parameters with fewer bits and can reduce the memory needed to store them."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The source 'quantization' represents the target 'model parameters' after training.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'represents' between 'quantization' and 'model parameters' under the condition 'after training' is fully supported by the evidence quote: 'After training, quantization represents model parameters with fewer bits...'. The direction (quantization -> model parameters), label ('represents'), endpoints ('quantization', 'model parameters'), and qualification ('after training') all match the original source claim exactly. No reduction, negation, or unstated participant was added;"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is fully retained in the proposed assertion without any omissions of conditions, modality, or participants."
+      }
+    },
+    {
+      "id": "edge_00009",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "quantization",
+              "definition": "process representing model parameters with fewer bits after training"
+            },
+            "relation": "reduces_memory",
+            "definition": "SOURCE reduces the quantity or extent of TARGET.",
+            "target": {
+              "label": "memory needed to store model parameters",
+              "definition": "resource reduced by quantization"
+            },
+            "conditions": null,
+            "modality": "can",
+            "evidence": "After training, quantization represents model parameters with fewer bits and can reduce the memory needed to store them."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The source 'quantization' can reduce the quantity or extent of the target 'memory needed to store model parameters'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'reduces_memory' with modality 'can' directly mirrors the evidence text: 'quantization... can reduce the memory needed to store them'. The source and target labels match their definitions in the data. No reduction of meaning, negation, or role reversal occurred. The claim is fully retained without substitution."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original assertion is preserved exactly as stated in the evidence, including the modal qualifier 'can'. The direction (quantization -> memory reduction) and endpoints are accurate according to the provided definitions. No discrepancies exist between the literal meaning of the claim and the supporting text."
+      }
+    },
+    {
+      "id": "edge_00010",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "lower numerical precision",
+              "definition": "A state of having reduced numerical precision in a model."
+            },
+            "relation": "lowers_accuracy",
+            "definition": "SOURCE reduces the quantity or extent of TARGET.",
+            "target": {
+              "label": "prediction accuracy",
+              "definition": "The degree to which predictions match actual outcomes."
+            },
+            "conditions": "can",
+            "modality": "can",
+            "evidence": "Lower numerical precision can also reduce prediction accuracy"
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The source concept 'lower numerical precision' can reduce the quantity or extent of the target concept 'prediction accuracy'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'lowers_accuracy' with modality 'can' directly entails the evidence quote 'Lower numerical precision can also reduce prediction accuracy'. The source and target labels match their definitions without role reversal or strength change. All conditions and qualifications are preserved exactly as in the original document evidence."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed assertion fully retains the original claim including its modality ('can'), endpoints, and definition. No information is omitted or altered; the literal meaning of the relation matches the provided evidence exactly."
+      }
+    },
+    {
+      "id": "edge_00011",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "quantized model",
+              "definition": "A model where parameters are represented with fewer bits."
+            },
+            "relation": "needs_re_evaluation",
+            "definition": "The entity SOURCE is recommended to undergo the process TARGET again due to prior changes.",
+            "target": {
+              "label": "evaluation",
+              "definition": "assessing model performance"
+            },
+            "conditions": "due to reduction in prediction accuracy",
+            "modality": "should",
+            "evidence": "the quantized model should be evaluated again"
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The quantized model is recommended to undergo evaluation again due to reduction in prediction accuracy.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'needs_re_evaluation' from 'quantized model' to 'evaluation' with conditions 'due to reduction in prediction accuracy' and modality 'should' exactly matches the original document evidence 'the quantized model should be evaluated again'. No silent reductions, negations, or role reversals were introduced. The definition of the label aligns with the contract provided in the source data."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is fully retained without substitution or omission of qualifications. The proposed JSON structure faithfully represents the exact quote and its constraints."
+      }
+    },
+    {
+      "id": "edge_00012",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "loss function",
+              "definition": "a loss function"
+            },
+            "relation": "computes_gradients_for",
+            "definition": "Calculates partial derivatives indicating the direction and magnitude of change needed to reduce error.",
+            "target": {
+              "label": "model parameters",
+              "definition": "model parameters"
+            },
+            "conditions": null,
+            "modality": "always",
+            "evidence": null
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "A loss function always computes gradients for model parameters.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed triple accurately reflects the standard definition of a loss function in machine learning: it calculates partial derivatives (gradients) with respect to model parameters to indicate how to reduce error. The label 'computes_gradients_for' correctly identifies the operation and its target. The modality 'always' is appropriate here because, by definition, a differentiable loss function's primary mathematical role is to provide these gradients for optimization; stating it as an absolute"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original fact is sound and does not require omission. The proposed triple faithfully preserves the intended process (gradient computation), direction (loss function -> parameters), and meaning without introducing errors or unjustified constraints."
+      }
+    },
+    {
+      "id": "edge_00013",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "optimization algorithm",
+              "definition": "an optimization algorithm"
+            },
+            "relation": "uses_gradient_to",
+            "definition": "An optimization algorithm utilizes computed gradients to determine the direction and magnitude of adjustments applied to model parameters.",
+            "target": {
+              "label": "model parameters",
+              "definition": "model parameters"
+            },
+            "conditions": null,
+            "modality": "always",
+            "evidence": null
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "An optimization algorithm always utilizes computed gradients to determine the direction and magnitude of adjustments applied to model parameters.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed triple faithfully represents the intended fact: an optimization algorithm uses gradients to update parameters. The label 'uses_gradient_to' correctly describes the mechanism (using gradients) and the target of that usage (adjusting model parameters). The modality 'always' aligns with the standard definition of gradient-based optimization where gradients are the fundamental input for parameter adjustment direction and magnitude. No reduction, negation, or unstated participants were插入"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim is sound and does not require omission; it accurately describes a core mechanism of gradient-based optimization without overclaiming or introducing errors."
+      }
+    },
+    {
+      "id": "edge_00014",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "overfitting",
+              "definition": "The tendency of a model to fit incidental details of training data."
+            },
+            "relation": "memorizes",
+            "definition": "exhibits behaviorally as memorizing training examples",
+            "target": {
+              "label": "memorizing training examples",
+              "definition": "learning non-generalizable rules"
+            },
+            "conditions": "rather than learning generalizable rules",
+            "modality": "always",
+            "evidence": null
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The concept 'overfitting' always exhibits the behavior of memorizing training examples rather than learning generalizable rules.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed triple faithfully represents the intended fact. The label 'memorizes' correctly describes the behavioral manifestation defined in the target concept ('learning non-generalizable rules'). The source concept 'overfitting' is accurately linked to this behavior. Crucially, the conditions ('rather than learning generalizable rules') and modality ('always') are explicitly preserved from the original fact, preventing an unjustified overclaim that overfitting *only* memorizes or that it *gu"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The single proposed triple is a faithful extraction of the provided background fact. It preserves all necessary qualifications (conditions and modality) which prevent the claim from being an absolute guarantee without context. The direction, endpoints, and definitions align with their contracts. No stylistic alternatives or erroneous reductions were introduced."
+      }
+    }
+  ],
+  "role_checks": [],
+  "mentions": [
+    {
+      "id": "concept_39ed4e85b168b2ae",
+      "label": "labeled training examples",
+      "kind": "concept",
+      "definition": "labeled training examples",
+      "origin": "document"
+    },
+    {
+      "id": "concept_5eef4278ecb49c22",
+      "label": "models predictions",
+      "kind": "concept",
+      "definition": "outputs generated by the model",
+      "origin": "document"
+    },
+    {
+      "id": "concept_663146d1d48d9e36",
+      "label": "training labels",
+      "kind": "concept",
+      "definition": "ground truth data used for evaluation",
+      "origin": "document"
+    },
+    {
+      "id": "concept_2224a450d02eca2d",
+      "label": "parameter updates",
+      "kind": "concept",
+      "definition": "adjustments made to model parameters",
+      "origin": "document"
+    },
+    {
+      "id": "concept_e5e33babc94f5d3b",
+      "label": "training set",
+      "kind": "concept",
+      "definition": "A collection of examples used for training.",
+      "origin": "document"
+    },
+    {
+      "id": "concept_e420f41c75874917",
+      "label": "model settings",
+      "kind": "concept",
+      "definition": "configurations for a model",
+      "origin": "document"
+    },
+    {
+      "id": "concept_4870cf971434e681",
+      "label": "chosen model",
+      "kind": "concept",
+      "definition": "a specific model selected for evaluation",
+      "origin": "document"
+    },
+    {
+      "id": "concept_240b48b3bf27794c",
+      "label": "held out test set",
+      "kind": "concept",
+      "definition": "data set reserved for testing",
+      "origin": "document"
+    },
+    {
+      "id": "concept_e6aeb48acc5ea0f5",
+      "label": "good performance on the training examples alone",
+      "kind": "concept",
+      "definition": "Success limited to known data points.",
+      "origin": "document"
+    },
+    {
+      "id": "concept_65617d4e094d7ebc",
+      "label": "good performance on previously unseen examples from the intended application",
+      "kind": "concept",
+      "definition": "Success achieved on new, out-of-distribution data.",
+      "origin": "document"
+    },
+    {
+      "id": "concept_9372c470eeadd5ec",
+      "label": "model",
+      "kind": "concept",
+      "definition": "An entity with a tendency to fit incidental details.",
+      "origin": "document"
+    },
+    {
+      "id": "concept_56eabe5e6f9e24db",
+      "label": "training data",
+      "kind": "concept",
+      "definition": "Data used for training models.",
+      "origin": "document"
+    },
+    {
+      "id": "concept_ab52f13bb55226cf",
+      "label": "fewer bits",
+      "kind": "concept",
+      "definition": "representation state achieved by quantization",
+      "origin": "document"
+    }
+  ],
+  "source_repairs": [],
+  "excluded_background": [],
+  "unresolved_attachments": [],
+  "errors": [
+    "Final graph review unresolved: {'consistent': False, 'concepts_distinct': True, 'issues': [\"Edge edge_00012 (loss function -> model parameters) uses predicate 'computes_gradients_for' with modality 'always'. While loss functions define gradients mathematically, the *act* of computing them is performed by an optimization algorithm or a computational graph, not the loss function concept itself acting as an agent. This violates the principle that a mechanism (the mathematical definition) is not its use (the computational action). The predicate implies agency ('computes') where only a relationship exists.\", \"Edge edge_00013 (optimization algorithm -> model parameters) uses predicate 'uses_gradient_to'. While semantically plausible, combined with edge_00012, this creates a redundancy in the causal chain. More critically, edge_00012 attributes the action of computation to the loss function, which is a static mathematical object, not an active agent capable of 'computing' in the literal sense used elsewhere (e.g., 'select model settings').\", \"Edge edge_00014 (overfitting -> memorizing training examples) uses predicate 'memorizes'. The source node 'overfitting' is defined as a 'tendency', not an agent. A tendency cannot 'memorize'; the model exhibits the behavior of memorizing. The predicate label must agree with its contract: only agents (models, algorithms) perform actions like 'memorizing'.\", \"Edge edge_00010 (lower numerical precision -> prediction accuracy) uses predicate 'lowers_accuracy' with modality 'can'. This is semantically acceptable as a potential effect. However, the definition provided ('SOURCE reduces the quantity or extent of TARGET') is generic and does not explicitly capture the nuance that lower precision often introduces noise rather than strictly reducing the 'quantity' of accuracy in a linear fashion, though this is minor compared to the agency errors above.\", \"Edge edge_00011 (quantized model -> evaluation) uses predicate 'needs_re_evaluation'. The definition states 'The entity SOURCE is recommended to undergo the process TARGET again'. This implies a normative recommendation ('should') rather than a direct causal link or property. While the modality field captures 'should', the predicate 'needs' is acceptable, but the definition's phrasing 'recommended to undergo' slightly shifts from a direct state to an advisory action, which is consistent with the modality.\"], 'source_claims_preserved': True, 'checks': [{'edge_ids': ['edge_00001', 'edge_00002', 'edge_00003', 'edge_00004', 'edge_00005', 'edge_00006', 'edge_00007', 'edge_00008', 'edge_00009', 'edge_00010', 'edge_00011', 'edge_00012', 'edge_00013', 'edge_00014'], 'consistent': False, 'concepts_distinct': True, 'issues': [\"Edge edge_00012 (loss function -> model parameters) uses predicate 'computes_gradients_for' with modality 'always'. While loss functions define gradients mathematically, the *act* of computing them is performed by an optimization algorithm or a computational graph, not the loss function concept itself acting as an agent. This violates the principle that a mechanism (the mathematical definition) is not its use (the computational action). The predicate implies agency ('computes') where only a relationship exists.\", \"Edge edge_00013 (optimization algorithm -> model parameters) uses predicate 'uses_gradient_to'. While semantically plausible, combined with edge_00012, this creates a redundancy in the causal chain. More critically, edge_00012 attributes the action of computation to the loss function, which is a static mathematical object, not an active agent capable of 'computing' in the literal sense used elsewhere (e.g., 'select model settings').\", \"Edge edge_00014 (overfitting -> memorizing training examples) uses predicate 'memorizes'. The source node 'overfitting' is defined as a 'tendency', not an agent. A tendency cannot 'memorize'; the model exhibits the behavior of memorizing. The predicate label must agree with its contract: only agents (models, algorithms) perform actions like 'memorizing'.\", \"Edge edge_00010 (lower numerical precision -> prediction accuracy) uses predicate 'lowers_accuracy' with modality 'can'. This is semantically acceptable as a potential effect. However, the definition provided ('SOURCE reduces the quantity or extent of TARGET') is generic and does not explicitly capture the nuance that lower precision often introduces noise rather than strictly reducing the 'quantity' of accuracy in a linear fashion, though this is minor compared to the agency errors above.\", \"Edge edge_00011 (quantized model -> evaluation) uses predicate 'needs_re_evaluation'. The definition states 'The entity SOURCE is recommended to undergo the process TARGET again'. This implies a normative recommendation ('should') rather than a direct causal link or property. While the modality field captures 'should', the predicate 'needs' is acceptable, but the definition's phrasing 'recommended to undergo' slightly shifts from a direct state to an advisory action, which is consistent with the modality.\"]}, {'edge_ids': ['edge_00013', 'edge_00014', 'edge_00007', 'edge_00008', 'edge_00012'], 'consistent': True, 'concepts_distinct': True, 'issues': []}], 'scope': 'Bounded edge batches with shared-endpoint context; not an exhaustive proof of global consistency'}{'complete': True, 'issues': [], 'checks': [{'id': 'chunk_001', 'complete': True, 'issues': []}, {'id': 'chunk_002', 'complete': True, 'issues': []}, {'id': 'chunk_003', 'complete': True, 'issues': []}]}"
+  ],
+  "scope": "Source fidelity and model semantic review; not independent factual verification",
+  "excluded_concepts": [],
+  "source_coverage": {
+    "complete": true,
+    "issues": [],
+    "checks": [
+      {
+        "id": "chunk_001",
+        "complete": true,
+        "issues": []
+      },
+      {
+        "id": "chunk_002",
+        "complete": true,
+        "issues": []
+      },
+      {
+        "id": "chunk_003",
+        "complete": true,
+        "issues": []
+      }
+    ]
+  },
+  "final_review": {
+    "consistent": false,
+    "concepts_distinct": true,
+    "issues": [
+      "Edge edge_00012 (loss function -> model parameters) uses predicate 'computes_gradients_for' with modality 'always'. While loss functions define gradients mathematically, the *act* of computing them is performed by an optimization algorithm or a computational graph, not the loss function concept itself acting as an agent. This violates the principle that a mechanism (the mathematical definition) is not its use (the computational action). The predicate implies agency ('computes') where only a relationship exists.",
+      "Edge edge_00013 (optimization algorithm -> model parameters) uses predicate 'uses_gradient_to'. While semantically plausible, combined with edge_00012, this creates a redundancy in the causal chain. More critically, edge_00012 attributes the action of computation to the loss function, which is a static mathematical object, not an active agent capable of 'computing' in the literal sense used elsewhere (e.g., 'select model settings').",
+      "Edge edge_00014 (overfitting -> memorizing training examples) uses predicate 'memorizes'. The source node 'overfitting' is defined as a 'tendency', not an agent. A tendency cannot 'memorize'; the model exhibits the behavior of memorizing. The predicate label must agree with its contract: only agents (models, algorithms) perform actions like 'memorizing'.",
+      "Edge edge_00010 (lower numerical precision -> prediction accuracy) uses predicate 'lowers_accuracy' with modality 'can'. This is semantically acceptable as a potential effect. However, the definition provided ('SOURCE reduces the quantity or extent of TARGET') is generic and does not explicitly capture the nuance that lower precision often introduces noise rather than strictly reducing the 'quantity' of accuracy in a linear fashion, though this is minor compared to the agency errors above.",
+      "Edge edge_00011 (quantized model -> evaluation) uses predicate 'needs_re_evaluation'. The definition states 'The entity SOURCE is recommended to undergo the process TARGET again'. This implies a normative recommendation ('should') rather than a direct causal link or property. While the modality field captures 'should', the predicate 'needs' is acceptable, but the definition's phrasing 'recommended to undergo' slightly shifts from a direct state to an advisory action, which is consistent with the modality."
+    ],
+    "source_claims_preserved": true,
+    "checks": [
+      {
+        "edge_ids": [
+          "edge_00001",
+          "edge_00002",
+          "edge_00003",
+          "edge_00004",
+          "edge_00005",
+          "edge_00006",
+          "edge_00007",
+          "edge_00008",
+          "edge_00009",
+          "edge_00010",
+          "edge_00011",
+          "edge_00012",
+          "edge_00013",
+          "edge_00014"
+        ],
+        "consistent": false,
+        "concepts_distinct": true,
+        "issues": [
+          "Edge edge_00012 (loss function -> model parameters) uses predicate 'computes_gradients_for' with modality 'always'. While loss functions define gradients mathematically, the *act* of computing them is performed by an optimization algorithm or a computational graph, not the loss function concept itself acting as an agent. This violates the principle that a mechanism (the mathematical definition) is not its use (the computational action). The predicate implies agency ('computes') where only a relationship exists.",
+          "Edge edge_00013 (optimization algorithm -> model parameters) uses predicate 'uses_gradient_to'. While semantically plausible, combined with edge_00012, this creates a redundancy in the causal chain. More critically, edge_00012 attributes the action of computation to the loss function, which is a static mathematical object, not an active agent capable of 'computing' in the literal sense used elsewhere (e.g., 'select model settings').",
+          "Edge edge_00014 (overfitting -> memorizing training examples) uses predicate 'memorizes'. The source node 'overfitting' is defined as a 'tendency', not an agent. A tendency cannot 'memorize'; the model exhibits the behavior of memorizing. The predicate label must agree with its contract: only agents (models, algorithms) perform actions like 'memorizing'.",
+          "Edge edge_00010 (lower numerical precision -> prediction accuracy) uses predicate 'lowers_accuracy' with modality 'can'. This is semantically acceptable as a potential effect. However, the definition provided ('SOURCE reduces the quantity or extent of TARGET') is generic and does not explicitly capture the nuance that lower precision often introduces noise rather than strictly reducing the 'quantity' of accuracy in a linear fashion, though this is minor compared to the agency errors above.",
+          "Edge edge_00011 (quantized model -> evaluation) uses predicate 'needs_re_evaluation'. The definition states 'The entity SOURCE is recommended to undergo the process TARGET again'. This implies a normative recommendation ('should') rather than a direct causal link or property. While the modality field captures 'should', the predicate 'needs' is acceptable, but the definition's phrasing 'recommended to undergo' slightly shifts from a direct state to an advisory action, which is consistent with the modality."
+        ]
+      },
+      {
+        "edge_ids": [
+          "edge_00013",
+          "edge_00014",
+          "edge_00007",
+          "edge_00008",
+          "edge_00012"
+        ],
+        "consistent": true,
+        "concepts_distinct": true,
+        "issues": []
+      }
+    ],
+    "scope": "Bounded edge batches with shared-endpoint context; not an exhaustive proof of global consistency"
+  }
+}

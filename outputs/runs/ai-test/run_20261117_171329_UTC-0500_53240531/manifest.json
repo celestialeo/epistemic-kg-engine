@@ -1,0 +1,362 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261117_171329_UTC-0500_53240531",
+  "status": "completed_with_issues",
+  "config": {
+    "input": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\data\\ai_test.txt",
+    "chapter": "ai-test",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\ai-test",
+    "chunk_words": null,
+    "seed_limit": 0,
+    "background_proposal_limit": 0,
+    "seed_similarity_threshold": null,
+    "seed_threshold": null,
+    "seed_max_words": null,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": null,
+    "identity_candidates": null,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 8192,
+    "document_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": "outputs\\generic_pipeline_work\\semantic_scoped_cache",
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": true,
+    "interact": false,
+    "no_explorer": true,
+    "explorer_port": 0,
+    "new": false,
+    "resolved_settings": {
+      "model": {
+        "context_tokens": 8192,
+        "max_output_tokens": 4096,
+        "timeout_seconds": 600,
+        "validation_retries": 2,
+        "temperature": 0,
+        "seed": 7,
+        "estimated_bytes_per_token": 3,
+        "prompt_reserve_tokens": 1024
+      },
+      "workload": {
+        "chunk_words": null,
+        "batch_size": null,
+        "identity_candidates": null,
+        "seed_limit": null,
+        "background_proposal_limit": null
+      },
+      "review": {
+        "repair_attempts": 2,
+        "reasoning": false,
+        "reasoning_fallback": true,
+        "alias_similarity": 0.7
+      },
+      "health": {
+        "window": 10,
+        "minimum": 5,
+        "max_failure_rate": 0.5
+      },
+      "text": {
+        "name_chars": 400,
+        "definition_chars": 400,
+        "detail_chars": 120,
+        "explanation_chars": 800,
+        "short_explanation_chars": 500,
+        "question_chars": 600,
+        "long_explanation_chars": 1200,
+        "summary_chars": 1800,
+        "display_definition_chars": 240,
+        "graph_label_chars": 90,
+        "graph_definition_chars": 160,
+        "modality_chars": 80,
+        "raw_predicate_chars": 80,
+        "identifier_chars": 300,
+        "feedback_chars": 3000
+      },
+      "labels": {
+        "predicate_words": 3,
+        "predicate_chars": 32
+      },
+      "evaluation_weights": {
+        "claim_fidelity_f1": 0.55,
+        "idea_order_agreement": 0.25,
+        "rouge_l_f1": 0.1,
+        "length_similarity": 0.1
+      },
+      "assessment_weights": {
+        "match": 1.0,
+        "related": 0.5,
+        "conflict": 0.0,
+        "not_demonstrated": 0.0
+      },
+      "ui": {
+        "input_chars": 1500,
+        "professor_summary_items": 5,
+        "quiz_recent_questions": 5,
+        "quiz_neighbor_facts": null,
+        "quiz_round_questions": null,
+        "quiz_duplicate_similarity": 0.85,
+        "quiz_generation_attempts": 3,
+        "graph_simulation_ticks": 240,
+        "graph_edge_length": 230,
+        "graph_label_offset": 224,
+        "graph_node_wrap_chars": 27,
+        "graph_fit_zoom": 1.6,
+        "graph_min_zoom": 0.06,
+        "graph_max_zoom": 5,
+        "graph_zoom_sensitivity": 0.001,
+        "graph_velocity_limit": 12,
+        "graph_damping": 0.7,
+        "graph_repulsion": 1400,
+        "graph_centering": 0.0004,
+        "graph_min_cooling": 0.08,
+        "graph_spring_strength": 0.006,
+        "graph_participant_distance": 190,
+        "graph_participant_strength": 0.003,
+        "graph_collision_strength": 0.12,
+        "graph_collision_speed": 8,
+        "student_name_chars": 120,
+        "timestamp_chars": 64,
+        "run_id_chars": 10,
+        "student_id_chars": 6,
+        "thumbnail_nodes": null,
+        "thumbnail_edges": null,
+        "interaction_batch_events": 50,
+        "interaction_batch_bytes": 48000,
+        "interaction_details_bytes": 32000,
+        "interaction_flush_ms": 500,
+        "quiz_focus_questions": 2
+      },
+      "operations": {
+        "server_start_seconds": 10,
+        "server_stop_seconds": 10,
+        "server_poll_seconds": 0.05,
+        "database_start_seconds": 120,
+        "database_poll_seconds": 3,
+        "database_timeout_seconds": 30,
+        "database_connect_seconds": 5,
+        "definition_cache_entries": 32768,
+        "community_passes": 30,
+        "server_backlog": 128,
+        "browser_open_delay_seconds": 0.3
+      },
+      "metrics": {
+        "shared_knowledge_fraction": 0.8
+      }
+    },
+    "effective_chunk_words": 42
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-11-17T17:13:29.417217-05:00",
+  "started_at_utc": "2026-11-17T22:13:29.417217+00:00",
+  "time_zone": "Eastern Standard Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [],
+  "graph_quality_required": false,
+  "graph_quality_status": "not_run",
+  "graph_acceptance_policy": "document_review_and_background_debate",
+  "evaluation_status": "completed",
+  "reconstruction_score": 15.879551820728294,
+  "unresolved_items": [
+    {
+      "step": "background_candidate",
+      "id": "candidate_0005",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0005 after 3 attempts: background_review_consistency failed for candidate_0005_representation after 3 attempts: An explicit conclusion needs an exact quote from the review"
+    }
+  ],
+  "finished_at": "2026-11-17T17:30:41.319667-05:00",
+  "finished_at_utc": "2026-11-17T22:30:41.319667+00:00",
+  "duration_seconds": 1031.890999999945,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "1f083c8d7b08dd0a0f35a63a770f04e63be2fe01bcd912d9c206fdd92e3612c1",
+      "bytes": 341
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "3dab6e9a50a92810964c45a3f7f84596ee18e1caffe494c4a51ed85e0c535785",
+      "bytes": 442
+    },
+    "artifacts/chunks.json": {
+      "sha256": "f0895cd64106d68c6c7af79e4af3aeaa04a9e22a0668162d31179f78e7b7a6f2",
+      "bytes": 522
+    },
+    "artifacts/environment.json": {
+      "sha256": "73e79ded2a51097e67da1aed1fe0ab2d31a48efe918bd4e1a11c234264c8252a",
+      "bytes": 31607
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "a00ebcefdfa8e4df8e21e4a269f3d0173bdba91b68491028448e0d1cdecc577b",
+      "bytes": 381
+    },
+    "artifacts/relations.json": {
+      "sha256": "5c8afb32337c70550c9a444b6d89b7ea5259efc850e5bc5318b668bdac298e91",
+      "bytes": 102014
+    },
+    "artifacts/concepts.json": {
+      "sha256": "2e483c7be8968e397df76e0ce12aa1951fd13990641e38cf5d070bb8737bc52b",
+      "bytes": 28869
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "997412abb2b7a86e1ebc0b881f5de145669a086f514aa56be36deb2f02248b48",
+      "bytes": 11303
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "11b53342583b2a050bf0e44b728678b879d586675eedf419a585f13981c2cf57",
+      "bytes": 593
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "a04d7a30ed3cc62c728ae533ed620bba8809b128de7b3daee554066e0c2428b9",
+      "bytes": 1179
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "1dfde702103e003c7d4a8da0a8c0b0446e10eedf74287f0fa599d7e2f84005b3",
+      "bytes": 609
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "e262772e53845e8e63483a639e518de7553b945633a3b1912e1a69f257c4d95a",
+      "bytes": 13282
+    },
+    "artifacts/extractions.json": {
+      "sha256": "9ecd77189a5dfd3e03045adf92e20df7452b07c99f70dc28f866652b91cb90b8",
+      "bytes": 32845
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "103356aec6378ba7fd8bec3109696b5c9eb6805e881618e7ced7ca1d804bc848",
+      "bytes": 118
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "976dbbdb0dc1aefb7dfad5fe06844a79248f270bac1c576c39c55d3f26d1b361",
+      "bytes": 102
+    },
+    "artifacts/seeds.json": {
+      "sha256": "de11481f2db906234c2456986b5af49a15d998bbc82b4c5337df0172245e51a1",
+      "bytes": 47258
+    },
+    "artifacts/seed_progress.json": {
+      "sha256": "57e94ed29dcdb1112ccf0cac27af35f27e3acdb332523a4891c6041f4936b06a",
+      "bytes": 12544
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "1d2ea92937cbb610d27e8d3b0d9df9f32f6f4bdad922f196fa7598d0781f47bc",
+      "bytes": 295711
+    },
+    "artifacts/debate.json": {
+      "sha256": "94ec14d59445f6ebbfa2308004592fb34edb39f9bd06d25611a693b5a1445c37",
+      "bytes": 324669
+    },
+    "artifacts/graph.json": {
+      "sha256": "01c6b7bb412a007de36018caed2b5f0a6b5ac0008f736bff45be9617002d319b",
+      "bytes": 31200
+    },
+    "knowledge_graph.html": {
+      "sha256": "d9e99e25d541388affc2e2da1e3bf1c0026f20aae7db63c3aeef9676a0bea914",
+      "bytes": 50683
+    },
+    "artifacts/evaluation_progress.json": {
+      "sha256": "c4213bc36fc5c4eb54d098743b04a571992cc11cdea568441bd8bb72fbb692f8",
+      "bytes": 8404
+    },
+    "artifacts/evaluation.json": {
+      "sha256": "14598f127c13f247688ac7e33c590a9642007dbe5593e57179be3eff41d91fab",
+      "bytes": 17396
+    },
+    "reconstruction.txt": {
+      "sha256": "d61153249fb58142cafdf44a1c528dd0fdb70f4de7d3b1bcc98a715c308fb304",
+      "bytes": 324
+    },
+    "statistics.json": {
+      "sha256": "c8ae6e15f92d4152e8ca6b4fa7f9a26a824b8653fe5b372193398e1de2c46773",
+      "bytes": 3307
+    },
+    "index.html": {
+      "sha256": "d39faf0508bf4df6b8278743db615c2376a600e1255ec1896c0c5300640cd30c",
+      "bytes": 78487
+    },
+    "report.md": {
+      "sha256": "924d2cead4a0dd93b1eab8f3d6c448841aa248b6b45ccef698d06ee93a526312",
+      "bytes": 1626
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 251,
+    "stage.started": 6,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "workload.resolved": 1,
+    "input.paragraph_parsed": 1,
+    "input.sentences_parsed": 1,
+    "input.chunk_created": 1,
+    "input.coverage_validated": 1,
+    "stage.completed": 6,
+    "settings.resolved": 1,
+    "service.request": 2,
+    "service.response": 2,
+    "cache.metadata_parsed": 1,
+    "cache.read": 1,
+    "cache.parsed": 1,
+    "database.export_disabled": 1,
+    "model.request": 260,
+    "model.response": 260,
+    "parse.started": 260,
+    "parse.completed": 260,
+    "validation.started": 260,
+    "validation.completed": 254,
+    "extraction.evidence_checked": 8,
+    "registry.concept_resolved": 67,
+    "registry.identity_reused": 34,
+    "registry.relation_added": 18,
+    "registry.relation_resolved": 29,
+    "extraction.record_rejected": 1,
+    "extraction.reference_resolved": 1,
+    "extraction.normalized": 1,
+    "item.completed": 94,
+    "outline.segment": 1,
+    "registry.identity_candidates": 33,
+    "registry.concept_alias_checked": 2,
+    "debate.adjudicated": 11,
+    "debate.decision": 28,
+    "extraction.chunk_review_summary": 1,
+    "seed.gap_coverage_checked": 11,
+    "seed.filtered": 5,
+    "seed.selected": 5,
+    "seed.selection_completed": 1,
+    "debate.fact_written": 24,
+    "debate.proposed": 24,
+    "debate.representation_checked": 22,
+    "debate.rejected": 16,
+    "debate.novelty_checked": 9,
+    "debate.repair_created": 8,
+    "validation.failed": 6,
+    "model.attempt_failed": 6,
+    "model.retry": 4,
+    "debate.unresolved": 1,
+    "item.unresolved": 1,
+    "graph.node_added": 17,
+    "graph.edge_added": 11,
+    "graph.canonicalized": 1,
+    "graph.validated": 1,
+    "graph.review_policy": 1,
+    "evaluation.context_built": 1,
+    "evaluation.metrics_computed": 2,
+    "cache.hit": 6,
+    "evaluation.summary_computed": 1
+  }
+}

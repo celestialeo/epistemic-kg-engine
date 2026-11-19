@@ -90,6 +90,12 @@ def write_run(root, topic="water", name="run_01", timestamp="2026-10-29T12:00:00
 
 class ProfessorTests(unittest.TestCase):
     def setUp(self):
+        # These legacy interaction scenarios intentionally exercise five rounds;
+        # production defaults now derive the round size from eligible facts.
+        from pipeline.settings import SETTINGS
+        policy = patch.dict(SETTINGS['ui'], quiz_round_questions=5)
+        policy.start()
+        self.addCleanup(policy.stop)
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)

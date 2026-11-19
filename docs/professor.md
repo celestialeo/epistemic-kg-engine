@@ -332,6 +332,122 @@ can need professor review. No controlled learning-benefit claims are made.
 
 ## Verification
 
+### Graph admission and optional refinement
+
+Full generation and background replay publish the existing source-review and
+background-debate decisions directly. The additional graph-quality review and repair
+stage has been removed from both pipelines. New manifests explicitly record that
+it did not run; the dashboard can load these completed runs without a quality
+certificate. Background facts still require professor approval for quiz use.
+Evaluation measures reconstruction quality separately and does not certify facts.
+
+The following behavior belongs only to the explicitly invoked graph-refinement
+command and historical runs that required it. In that optional workflow, concepts
+receive explicit identity and definition reviews; relationships receive literal
+direction, evidence, endpoint, and qualification checks. An edit and its verification
+are separate model requests. A separate reading of the displayed edge excludes its
+source quotation and predicate contract; verification must compare that reading
+with the source and contract rather than silently supply missing meaning.
+Verified corrections to conditions and modality replace inherited values; omitted
+values retain the previous scope for verification. `ReviewPolicy` controls bounded retries, batch sizes,
+and candidate retrieval. Source coverage is checked per chunk. Missing or
+misrepresented assertions can receive a proposed repair, a separate evidence and
+meaning check, and a new source-coverage check before acceptance. Healthy records
+survive a failed neighboring record. An already concise assertion is verified before
+any rewrite; accepted node decisions remain fixed while failed neighbors are repaired.
+Node edits update their existing IDs. Identity merges cannot collapse the participants
+of a source relationship into a self-link. Source recovery receives the specific missing
+claims, protects healthy assertions, and must demonstrate progress before application.
+Recovered assertions are verified individually before checking the revision's scope
+and progress. Scope verification receives the complete resulting assertions after
+removals and replacements, with removed assertions marked as historical context.
+Node review includes other source mentions as well as incident evidence
+within its context budget. Verification receives the proposed content without the
+editor's explanation, keeping the two decisions separate.
+Recovered concepts use their verified definitions rather than stale descriptions from
+unlinked mentions; mention-only provenance retains names and IDs without such definitions.
+Final consistency review uses bounded edge
+batches with shared-endpoint context, rather than one unbounded graph prompt.
+These checks are not an exhaustive proof of global consistency.
+Within each chunk, the coverage reviewer checks one sentence per request, with the
+paragraph as context. It enumerates that sentence's assertions
+and maps them to graph edges. Evidence quotations are omitted from this comparison
+so a quoted but unrepresented assertion cannot masquerade as graph content.
+Source coverage, background challenges, final consistency and source recovery use
+reasoning mode by default, recorded in the review policy
+and model requests, and restores the caller's setting afterward. Failed node
+batches can receive bounded individual repairs with merging disabled; each still
+requires independent verification. Background facts receive a separate attempt to
+find counterexamples, incompatible participant roles, or missing qualifications.
+Reasoning checks have a separate bounded output budget, reduced using an input-size
+estimate. Exhausting the budget for optional background knowledge withholds that
+candidate. Required source and consistency checks can retry once as direct structured
+checks with unchanged criteria; the audit records these in `direct_fallbacks`.
+Later checks of the exhausted role use direct mode for the rest of that review,
+avoiding repeated budget exhaustion while still requiring each verdict.
+A rejected verdict or failed retry still blocks publication. Disable this retry with
+`ReviewPolicy.reasoning_fallback=False` for reasoning-only checks.
+Resume can replay an identical recorded output-limit failure without repeating
+inference. It remains rejected, and changes to the request or model invalidate reuse.
+Unresolved source claims, node reviews, service failures, and final
+consistency failures stop publication. Rejected optional background enrichment is
+excluded and recorded in the audit. Isolated nouns do not trigger attachment generation:
+source-coverage recovery adds only missing assertions, while mere mentions remain in provenance.
+
+Relation keys contain at most three words and 32 characters. Detailed definitions,
+evidence, conditions and modality remain available separately. A property is not
+interchangeable with its reduction: that distinction must appear in the actual
+endpoints and predicate. Source-only mentions receive a supported connection where
+one is explicitly stated; otherwise they remain in provenance as unlinked mentions,
+outside the assessable concept count. No edge is invented just to increase connectivity.
+
+The graph carries a content fingerprint. The loader rejects a reviewed graph whose
+content changed after review, or a new run missing its required quality result.
+Older runs remain inspectable; they do not acquire a quality certification by loading.
+Model review is not independent factual verification, and background-fact approval
+for quizzes is still required.
+
+`python -m pipeline.graph_quality <saved-run>` creates a new version beside the source
+run. The original graph and student records are preserved, and no old reconstruction
+score is attached to the changed graph. `--resume-review <review-run>` reuses exact
+validated responses after an interrupted review. The notebook exposes the same action
+as `MODE = "refine"`. Inspect `artifacts/graph_quality.json` for all decisions and
+`artifacts/graph_before_review.json` for the input graph.
+
+```powershell
+python -m unittest tests.test_graph_quality tests.test_submission -q
+python tools/verify_graph_quality.py outputs/runs/ai-test/<reviewed-run-id>
+python -m unittest tests.test_topic_independence -q
+```
+
+The browser check uses an isolated student database, verifies that background facts
+still require approval, and checks graph rendering, details, reload, and JavaScript
+errors in Chrome. It never modifies the live student roster.
+
+Custom subjects use `--input path/to/text.txt` with the same extraction, background,
+review, evaluation, and professor workflows. The implementation contains no examples
+about the validation topics in its inference/grading prompts. English sentence-pattern
+repairs specific to the earlier AI-test issues have been removed; participant repairs
+use the assertion's meaning and require verification. Built-in chapter names remain
+optional file-selection shortcuts. General schema limits and semantic relation
+contracts remain explicit; they are not a closed topic vocabulary.
+
+The two three-paragraph validation inputs and their independent source-claim checklist
+are in `data/validation`. The checklist is evaluation data and is never read by the
+pipeline. `tools/validate_topic_runs.py RUN_A RUN_B --output REPORT.json` checks that
+saved runs used identical code/model settings, passed review/evaluation, retain valid
+quotes and artifact hashes, and emits their assertions for a separate meaning audit.
+Reconstruction scores are model estimates, not independent accuracy percentages.
+
+The graph's relationship list follows source order and exposes participant roles,
+intended purpose, timing and other qualifications. Select a card or an arrow for its
+source quote and predicate meaning. Dotted connectors attach additional participants
+to an assertion; they are not independently asserted causal or ownership arrows.
+Search and quiz material include those participants. A purpose remains an intention,
+not evidence of an achieved result. Background budget exhaustion can use one recorded
+direct verification fallback with the same criteria; counterexamples and uncertain
+claims still prevent acceptance, and professor approval is still required for quizzes.
+
 ### Synthetic AI-test class
 
 `tools/seed_ai_class.py` creates ten named synthetic learners, with four

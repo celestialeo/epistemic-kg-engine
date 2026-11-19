@@ -1,0 +1,811 @@
+{
+  "version": 2,
+  "policy": {
+    "node_batch_size": 4,
+    "repair_attempts": 2,
+    "candidate_limit": 8,
+    "alias_similarity": 0.7,
+    "edge_batch_size": 12
+  },
+  "status": "running",
+  "nodes": [
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_f18ca2ba847a5186",
+            "label": "typical neuron",
+            "definition": "A standard nerve cell structure",
+            "merge_into": null,
+            "reason": "Retained as a distinct concept representing the whole entity."
+          },
+          {
+            "id": "concept_a715def547b4211a",
+            "label": "cell body",
+            "definition": "The central part of a neuron containing the nucleus",
+            "merge_into": null,
+            "reason": "Retained as a distinct component; definition refined for specificity."
+          },
+          {
+            "id": "concept_53474ef3442f7d1b",
+            "label": "dendrites",
+            "definition": "Branch-like structures receiving signals from other neurons",
+            "merge_into": null,
+            "reason": "Retained as a distinct component; definition refined to reflect function."
+          },
+          {
+            "id": "concept_99a2ac41d64f86af",
+            "label": "axon",
+            "definition": "The structure conducting action potentials toward terminals",
+            "merge_into": null,
+            "reason": "Retained as a distinct component; definition refined to reflect function."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_f18ca2ba847a5186",
+            "valid": true,
+            "reason": "The concept 'typical neuron' is distinct from its components; retaining it as a whole entity with a refined definition preserves scope without merging into parts."
+          },
+          {
+            "id": "concept_a715def547b4211a",
+            "valid": true,
+            "reason": "The concept 'cell body' is a distinct component of the neuron; retaining it with a refined definition that specifies its contents is valid and does not imply identity with the whole."
+          },
+          {
+            "id": "concept_53474ef3442f7d1b",
+            "valid": true,
+            "reason": "The concept 'dendrites' is a distinct component; retaining it with a definition reflecting its specific function is valid and does not conflate it with the neuron or other parts."
+          },
+          {
+            "id": "concept_99a2ac41d64f86af",
+            "valid": true,
+            "reason": "The concept 'axon' is a distinct component; retaining it with a definition reflecting its specific function is valid and does not conflate it with the neuron or other parts."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "label": "nucleus",
+            "definition": "The central part of a neuron containing the nucleus",
+            "merge_into": "concept_a715def547b4211a",
+            "reason": "The source defines the cell body as containing the nucleus; merging aligns with the existing 'cell body' definition which explicitly includes this component."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "label": "signals",
+            "definition": "Information transmitted between neurons",
+            "merge_into": null,
+            "reason": "Distinct concept from 'receiving of signals'; retains specific definition regarding transmission."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "label": "neurons",
+            "definition": "Cells that transmit signals",
+            "merge_into": null,
+            "reason": "Distinct from 'typical neuron'; represents the general class rather than a specific structural instance."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "label": "receiving of signals arriving from other neurons",
+            "definition": "The process of dendrites taking in information transmitted between neurons",
+            "merge_into": null,
+            "reason": "Represents an action/process distinct from the object 'dendrites'; retains specificity regarding the receiving function."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "valid": false,
+            "reason": "The proposed merge is invalid because the 'nucleus' is a distinct structural component contained within the 'cell body', not synonymous with it; merging them conflates a part with its whole."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "valid": true,
+            "reason": "The concept 'signals' (transmission) is distinct from the process of receiving signals; no merge is required as they represent different functional aspects."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "valid": true,
+            "reason": "The general concept 'neurons' is distinct from the specific instance 'typical neuron'; they differ in scope (class vs. standard structure) and should not be merged."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "valid": true,
+            "reason": "The concept describes the action/process of receiving signals, whereas 'dendrites' is the anatomical object performing that function; an action is not identical to its affected object or agent."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "label": "nucleus",
+            "definition": "a structural component contained within the cell body",
+            "merge_into": null,
+            "reason": "The nucleus is a distinct part of the cell body; merging conflates a component with its whole."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "label": "signals",
+            "definition": "Information transmitted between neurons",
+            "merge_into": null,
+            "reason": "Distinct concept from 'receiving of signals'; retains specific definition regarding transmission."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "label": "neurons",
+            "definition": "Cells that transmit signals",
+            "merge_into": null,
+            "reason": "Distinct from 'typical neuron'; represents the general class rather than a specific structural instance."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "label": "receiving of signals arriving from other neurons",
+            "definition": "The process of dendrites taking in information transmitted between neurons",
+            "merge_into": null,
+            "reason": "Represents an action/process distinct from the object 'dendrites'; retains specificity regarding the receiving function."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "valid": true,
+            "reason": "The nucleus is a component contained within the cell body; merging conflates a part with its whole."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "valid": true,
+            "reason": "Signals represent the information transmitted, whereas 'receiving of signals' represents the process; these are distinct concepts."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "valid": true,
+            "reason": "'Neurons' denotes the general class of cells, while 'typical neuron' refers to a specific structural instance; they are not identical."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "valid": true,
+            "reason": "This concept describes the action/process of receiving signals, which is distinct from 'dendrites', the object performing that function."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_fefc34ae8768d860",
+            "label": "action potential",
+            "definition": "an electrical signal conducted by the axon toward terminals",
+            "merge_into": null,
+            "reason": "Distinct concept from 'axon'; describes a signal, not the structure."
+          },
+          {
+            "id": "concept_4e686af7bdcc5ae0",
+            "label": "terminal",
+            "definition": "the endpoint of an axon where communication with other cells occurs",
+            "merge_into": null,
+            "reason": "Distinct component; defines a specific location, not the general 'axon' or 'neuron'."
+          },
+          {
+            "id": "concept_daf9b0302f9fa204",
+            "label": "axon conducting action potentials toward terminals",
+            "definition": "the process of the axon conducting action potentials toward its terminals",
+            "merge_into": null,
+            "reason": "Describes a specific functional process distinct from the structural concept 'axon' (concept_99a2ac41d64f86af)."
+          },
+          {
+            "id": "concept_3f8de9fcfb18e58a",
+            "label": "communication with other cells",
+            "definition": "the process enabled by the neuron conducting action potentials toward its terminals",
+            "merge_into": null,
+            "reason": "Describes a functional outcome/process distinct from the structural entities like 'neurons' or 'axon'."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_fefc34ae8768d860",
+            "valid": true,
+            "reason": "The concept defines an electrical signal, whereas existing 'axon' defines a structural component; they are distinct referents."
+          },
+          {
+            "id": "concept_4e686af7bdcc5ae0",
+            "valid": true,
+            "reason": "The concept defines a specific endpoint location, which is distinct from the general structural concepts of 'axon' or 'neuron'."
+          },
+          {
+            "id": "concept_daf9b0302f9fa204",
+            "valid": true,
+            "reason": "The concept describes a functional process (conducting), whereas existing 'axon' describes the physical structure; properties are distinct."
+          },
+          {
+            "id": "concept_3f8de9fcfb18e58a",
+            "valid": true,
+            "reason": "The concept defines a functional outcome/process enabled by conduction, which is distinct from the structural entities 'neurons' or 'axon'."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_881a8aa358b04c88",
+            "label": "other cells",
+            "definition": "Cells receiving communication from a neuron via axon terminals",
+            "merge_into": null,
+            "reason": "Distinct concept representing the target of communication, not identical to existing 'communication with other cells' or 'dendrites'."
+          },
+          {
+            "id": "concept_4d499a63b5147849",
+            "label": "rapid change in the voltage across the neurons membrane",
+            "definition": "A rapid change in the voltage across the neuron's membrane",
+            "merge_into": null,
+            "reason": "Describes the event of depolarization but is not identical to the concept 'depolarization' itself; distinct process vs state."
+          },
+          {
+            "id": "concept_e2272bcd46540038",
+            "label": "opening voltage gated sodium channels",
+            "definition": "The process of opening voltage-gated sodium channels",
+            "merge_into": null,
+            "reason": "Specific action distinct from 'depolarization' (the state) and other concepts; no interchangeable existing ID found."
+          },
+          {
+            "id": "concept_24cd022393c442ba",
+            "label": "depolarization",
+            "definition": "The state or event of depolarization in a neuron",
+            "merge_into": null,
+            "reason": "Core concept distinct from the specific action of opening channels or the general voltage change; no existing ID matches this scope."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_881a8aa358b04c88",
+            "valid": true,
+            "reason": "The concept 'other cells' refers to the target recipients of communication, which is distinct from the process of communication itself ('communication with other cells') or the specific structures receiving signals ('dendrites'). No existing node matches this referent."
+          },
+          {
+            "id": "concept_4d499a63b5147849",
+            "valid": true,
+            "reason": "This concept describes the physical event of voltage change. While related to 'depolarization', it is not identical to the state/event concept itself or the specific mechanism ('opening channels'). No existing node captures this exact phrasing and scope."
+          },
+          {
+            "id": "concept_e2272bcd46540038",
+            "valid": true,
+            "reason": "This represents a specific physiological action (opening channels). It is distinct from the resulting state ('depolarization') or the general voltage change. No existing node defines this specific process."
+          },
+          {
+            "id": "concept_24cd022393c442ba",
+            "valid": true,
+            "reason": "This concept defines the state or event of depolarization. It is distinct from the action causing it ('opening channels') or the raw voltage change description. No existing node matches this specific definition."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_ebaf8cc233225272",
+            "label": "sodium ions entering the neuron",
+            "definition": "The influx of sodium ions into a neuron during depolarization.",
+            "merge_into": null,
+            "reason": "Distinct from the action of opening channels; represents the ionic movement itself."
+          },
+          {
+            "id": "concept_c80edc7cd5a087da",
+            "label": "subsequent opening of voltage gated potassium channels",
+            "definition": "The activation of voltage-gated potassium channels following depolarization.",
+            "merge_into": null,
+            "reason": "Specific to potassium channel activation; distinct from sodium channel events."
+          },
+          {
+            "id": "concept_d05775ab7b7c2261",
+            "label": "repolarization",
+            "definition": "The return of the membrane potential toward resting levels.",
+            "merge_into": null,
+            "reason": "Represents the physiological state change; distinct from the specific ion movements causing it."
+          },
+          {
+            "id": "concept_2063308dc0d849c3",
+            "label": "potassium ions leaving",
+            "definition": "The efflux of potassium ions out of the neuron.",
+            "merge_into": null,
+            "reason": "Describes the ionic movement; distinct from the channel opening mechanism."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_ebaf8cc233225272",
+            "valid": true,
+            "reason": "The concept describes the specific ionic movement (sodium influx), which is distinct from the mechanism of channel opening or the general state of depolarization."
+          },
+          {
+            "id": "concept_c80edc7cd5a087da",
+            "valid": true,
+            "reason": "The concept refers specifically to potassium channel activation events, which are distinct from sodium channel opening or the resulting repolarization state."
+          },
+          {
+            "id": "concept_d05775ab7b7c2261",
+            "valid": true,
+            "reason": "Repolarization is defined as a change in membrane potential (a state), distinct from the specific ion fluxes that cause it."
+          },
+          {
+            "id": "concept_2063308dc0d849c3",
+            "valid": true,
+            "reason": "The concept describes potassium efflux (ionic movement), which is distinct from the mechanism of channel opening or the resulting repolarization."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_cd1035ba1ab96b93",
+            "label": "myelin",
+            "definition": "A biological structure or substance.",
+            "merge_into": null,
+            "reason": "No existing node represents myelin; definition is generic and does not match specific axon properties."
+          },
+          {
+            "id": "concept_cdd50c9e13d215cd",
+            "label": "speed of action potential conduction along an axon",
+            "definition": "The rate at which electrical signals travel down a nerve fiber.",
+            "merge_into": null,
+            "reason": "Distinct concept from 'action potential' itself; represents a property (rate) rather than the signal entity."
+          },
+          {
+            "id": "concept_6c3dc09fa2f2541f",
+            "label": "chemical synapse",
+            "definition": "a junction between neurons where neurotransmission occurs",
+            "merge_into": null,
+            "reason": "No existing node covers the specific junction concept; 'signals' is too broad."
+          },
+          {
+            "id": "concept_43ba94ffa7b84115",
+            "label": "calcium channel",
+            "definition": "a protein structure that allows calcium ions to pass through a membrane",
+            "merge_into": null,
+            "reason": "No existing node represents the channel protein; 'terminal' and 'axon' are distinct structural entities."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_cd1035ba1ab96b93",
+            "valid": true,
+            "reason": "No existing node represents 'myelin'; generic definition does not match specific axon properties."
+          },
+          {
+            "id": "concept_cdd50c9e13d215cd",
+            "valid": true,
+            "reason": "Distinct concept from 'action potential' itself; represents a property (rate) rather than the signal entity."
+          },
+          {
+            "id": "concept_6c3dc09fa2f2541f",
+            "valid": true,
+            "reason": "No existing node covers the specific junction concept; 'signals' is too broad."
+          },
+          {
+            "id": "concept_43ba94ffa7b84115",
+            "valid": true,
+            "reason": "No existing node represents the channel protein; 'terminal' and 'axon' are distinct structural entities."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_a475b6179b31e3ac",
+            "label": "presynaptic terminal",
+            "definition": "the end of the axon at a synapse containing neurotransmitter vesicles",
+            "merge_into": null,
+            "reason": "Distinct from generic 'terminal' due to specific synaptic context and vesicle content."
+          },
+          {
+            "id": "concept_32d59dcf8f8294e2",
+            "label": "calcium entry",
+            "definition": "The process of calcium entering the cell.",
+            "merge_into": null,
+            "reason": "Specific to synaptic vesicle release context; distinct from general 'calcium channel' concept."
+          },
+          {
+            "id": "concept_6846b2920dc9951b",
+            "label": "release of neurotransmitter from synaptic vesicles into the synaptic cleft",
+            "definition": "The movement of neurotransmitters from vesicles to the cleft.",
+            "merge_into": null,
+            "reason": "Describes a specific biological process/event, distinct from structural components or other processes."
+          },
+          {
+            "id": "concept_c03110a20a4a36aa",
+            "label": "postsynaptic cell",
+            "definition": "The cell receiving the signal via its receptors.",
+            "merge_into": null,
+            "reason": "Specific functional role in synaptic transmission; distinct from generic 'other cells'."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_a475b6179b31e3ac",
+            "valid": true,
+            "reason": "The concept is distinct from the generic 'terminal' due to its specific definition involving synaptic vesicles and axonal endings at a synapse."
+          },
+          {
+            "id": "concept_32d59dcf8f8294e2",
+            "valid": true,
+            "reason": "The concept describes the process of calcium entering the cell, which is distinct from the structural 'calcium channel'."
+          },
+          {
+            "id": "concept_6846b2920dc9951b",
+            "valid": true,
+            "reason": "The concept defines a specific biological process (neurotransmitter movement), distinct from structural components or other processes."
+          },
+          {
+            "id": "concept_c03110a20a4a36aa",
+            "valid": true,
+            "reason": "The concept specifies the functional role of receiving signals via receptors, distinguishing it from the generic term 'other cells'."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_23ebe61c2e21d15b",
+            "label": "receptor",
+            "definition": "A protein structure on the postsynaptic cell that binds neurotransmitters.",
+            "merge_into": null,
+            "reason": "Distinct concept; no existing ID matches this specific definition."
+          },
+          {
+            "id": "concept_1b6c2ad5a1c09c3c",
+            "label": "neurotransmitter binding event",
+            "definition": "The process where a neurotransmitter binds to receptors on the postsynaptic cell.",
+            "merge_into": null,
+            "reason": "Distinct concept; no existing ID matches this specific definition."
+          },
+          {
+            "id": "concept_c2276be5d975214a",
+            "label": "likelihood of a postsynaptic action potential",
+            "definition": "The probability that an action potential occurs in the postsynaptic cell.",
+            "merge_into": null,
+            "reason": "Distinct concept; no existing ID matches this specific definition."
+          },
+          {
+            "id": "concept_e4f69f5e1d7f7c83",
+            "label": "membrane voltage",
+            "definition": "membrane voltage",
+            "merge_into": null,
+            "reason": "Distinct concept; no existing ID matches this specific definition."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_23ebe61c2e21d15b",
+            "valid": true,
+            "reason": "The concept 'receptor' is distinct from existing nodes; no existing definition matches the specific protein structure description."
+          },
+          {
+            "id": "concept_1b6c2ad5a1c09c3c",
+            "valid": true,
+            "reason": "The concept 'neurotransmitter binding event' is distinct from existing nodes; no existing definition matches the specific process description."
+          },
+          {
+            "id": "concept_c2276be5d975214a",
+            "valid": true,
+            "reason": "The concept 'likelihood of a postsynaptic action potential' is distinct from existing nodes; no existing definition matches the specific probability description."
+          },
+          {
+            "id": "concept_e4f69f5e1d7f7c83",
+            "valid": true,
+            "reason": "The concept 'membrane voltage' is distinct from existing nodes; no existing definition matches the specific term description."
+          }
+        ]
+      }
+    }
+  ],
+  "aliases": [
+    {
+      "pair": [
+        "concept_99a2ac41d64f86af",
+        "concept_daf9b0302f9fa204"
+      ],
+      "reviews": [
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first definition refers to the physical biological structure (the axon) itself. The second definition explicitly frames the referent as a 'process' of conducting action potentials, which denotes an event or function rather than the static anatomical entity.",
+          "reason": "The first concept defines a noun representing a specific anatomical part ('The structure...'). The second concept defines a process ('the process of...'). While they are closely related, one is the object and the other is the activity performed by that object. They are not interchangeable because an axon exists even when it is not conducting action potentials, whereas the 'process' does not exist without the activity occurring."
+        },
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first definition denotes a static anatomical structure (the axon itself), whereas the second definition explicitly denotes a dynamic process or event (the act of conducting action potentials). A biological structure is not equivalent to the physiological process it facilitates.",
+          "reason": "The referents differ because one identifies an entity (the axon) and the other identifies an activity (conducting). The word 'axon' in the first label refers to the physical part, while the second label and definition shift the focus to the functional event occurring within that part. Therefore, they are not interchangeable."
+        }
+      ]
+    },
+    {
+      "pair": [
+        "concept_daf9b0302f9fa204",
+        "concept_3f8de9fcfb18e58a"
+      ],
+      "reviews": [
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept refers specifically to the physiological mechanism of signal propagation within the axon (conducting action potentials), whereas the second concept refers to the functional outcome or purpose of that mechanism (communication with other cells). The first is a process description; the second is a functional capability enabled by that process.",
+          "reason": "The definitions describe different referents: one is the specific biological event (conduction), and the other is the resulting interaction (communication). They are not interchangeable because the first can occur without successful communication (e.g., if the terminal fails to release neurotransmitters), while the second implies the successful completion of the communicative function."
+        },
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept refers strictly to the physiological mechanism of signal propagation within the axon (conducting action potentials), whereas the second concept refers to the functional outcome or purpose of that mechanism (communication with other cells). The referent of the first is the internal process itself; the referent of the second is the inter-cellular interaction enabled by that process. They are not interchangeable because one describes the 'how' (conduction) and the other describes the 'what for' (communication), representing a distinction between a biological process and its functional result.",
+          "reason": "The first definition denotes the specific action of conducting potentials along the axon. The second definition denotes the capability to communicate with other cells, which is enabled by the first but is not identical to it. A process (conduction) is distinct from its outcome or function (communication). Therefore, a concrete referential difference exists between the internal mechanism and the external functional result."
+        }
+      ]
+    },
+    {
+      "pair": [
+        "concept_99a2ac41d64f86af",
+        "concept_3f8de9fcfb18e58a"
+      ],
+      "reviews": [
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept refers to a specific anatomical structure (the axon), whereas the second concept refers to a functional process or capability (communication) that is enabled by that structure. A physical part is not equivalent to the function it facilitates.",
+          "reason": "The first definition identifies 'axon' as a structural entity ('The structure...'). The second definition identifies 'communication with other cells' as a process ('the process enabled by...'). While the axon enables this communication, the axon itself is the input/substrate for the process, not the process. Therefore, they are distinct concepts: one denotes a biological component, the other denotes a physiological function."
+        },
+        {
+          "same_concept": false,
+          "same_scope": false,
+          "distinction": "The first concept ('axon') refers to a specific anatomical structure (a part of the neuron), whereas the second concept ('communication with other cells') refers to a functional process or outcome enabled by that structure. A physical component is not equivalent to the biological function it facilitates.",
+          "reason": "The referents are distinct: one denotes a static biological entity (the axon itself), while the other denotes a dynamic event or capability (the act of communicating). The definition of the second concept explicitly frames the term as 'the process enabled by' the first, establishing a clear property-to-process distinction rather than synonymy."
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "edge_00001",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "typical neuron",
+              "definition": "A standard nerve cell structure"
+            },
+            "relation": "has_part",
+            "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+            "target": {
+              "label": "cell body",
+              "definition": "The central part of a neuron containing the nucleus"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "A typical neuron has a cell body, dendrites, and an axon."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The relation 'has_part' asserts that the 'cell body' is a structural component of the 'typical neuron'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'has_part' between 'typical neuron' (SOURCE) and 'cell body' (TARGET) is fully supported by the evidence 'A typical neuron has a cell body, dendrites, and an axon.' The direction is correct (neuron contains cell body), the label matches its definition (structural component vs. mere location), and no conditions or modality were altered. The original claim is retained without omission."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed fact is a faithful representation of the original document evidence. No reduction, negation, or role reversal occurred. The structural relationship described by 'has_part' is accurately reflected in the provided text."
+      }
+    },
+    {
+      "id": "edge_00002",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "typical neuron",
+              "definition": "A standard nerve cell structure"
+            },
+            "relation": "has_part",
+            "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+            "target": {
+              "label": "dendrites",
+              "definition": "Branch-like structures receiving signals from other neurons"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "A typical neuron has a cell body, dendrites, and an axon."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The source 'typical neuron' structurally contains the target 'dendrites'.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The evidence quote 'A typical neuron has a cell body, dendrites, and an axon' explicitly asserts that dendrites are components of a typical neuron. The proposed relation 'has_part' with the definition 'TARGET is a structural component of SOURCE' accurately reflects this literal meaning without adding constraints or reversing roles. The endpoints ('typical neuron', 'dendrites') match the quote exactly, and no qualifications are omitted."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed fact is a direct entailment of the provided evidence quote. The label 'has_part' correctly describes the structural relationship defined in the contract. No discrepancies exist between the literal meaning of the quote and the proposed assertion."
+      }
+    },
+    {
+      "id": "edge_00003",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "typical neuron",
+              "definition": "A standard nerve cell structure"
+            },
+            "relation": "has_part",
+            "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+            "target": {
+              "label": "axon",
+              "definition": "The structure conducting action potentials toward terminals"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "A typical neuron has a cell body, dendrites, and an axon."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The text 'A typical neuron has a cell body, dendrites, and an axon' asserts that the axon is a structural component of the typical neuron.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The evidence quote explicitly states 'A typical neuron has... an axon', which directly entails the claim that a typical neuron has_part an axon. The label 'has_part' correctly reflects the structural component relationship defined in the contract. No conditions or modality are omitted; the original assertion is fully retained without reduction or stylistic alteration."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed relation accurately reflects the literal meaning of the provided evidence quote. The direction (neuron -> axon), endpoints (typical neuron, axon), and label ('has_part') all align with the contract definition and the specific wording of the evidence. No discrepancies exist between the claim and the source text."
+      }
+    },
+    {
+      "id": "edge_00004",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "cell body",
+              "definition": "The central part of a neuron containing the nucleus"
+            },
+            "relation": "contains",
+            "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+            "target": {
+              "label": "nucleus",
+              "definition": "a structural component contained within the cell body"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "The cell body contains the nucleus, while dendrites receive many of the signals arriving from other neurons."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "The cell body spatially contains the nucleus.",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The evidence quote 'The cell body contains the nucleus' directly entails the proposed claim. The label 'contains' matches its definition (spatial containment). The source ('cell body') and target ('nucleus') align with the definitions provided in the document. No conditions or modality are present in the original or proposed text, so qualifications are preserved. There is no discrepancy between the literal meaning of the quote and the assertion."
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The proposed relation fully retains the original claim without omission, substitution, or alteration of facts, labels, or definitions."
+      }
+    },
+    {
+      "id": "edge_00005",
+      "attempt": 0,
+      "proposal": {
+        "facts": [
+          {
+            "source": {
+              "label": "dendrites",
+              "definition": "Branch-like structures receiving signals from other neurons"
+            },
+            "relation": "participates_in",
+            "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+            "target": {
+              "label": "receiving of signals arriving from other neurons",
+              "definition": "The process of dendrites taking in information transmitted between neurons"
+            },
+            "conditions": null,
+            "modality": null,
+            "evidence": "The cell body contains the nucleus, while dendrites receive many of the signals arriving from other neurons."
+          }
+        ],
+        "reason": "Verify the existing concise assertion before rewriting."
+      },
+      "review": {
+        "facts": [
+          {
+            "index": 0,
+            "literal_meaning": "dendrites participate in receiving of signals arriving from other neurons",
+            "faithful": true,
+            "supported": true,
+            "direction_valid": true,
+            "label_matches_contract": true,
+            "endpoints_valid": true,
+            "qualifications_preserved": true,
+            "reason": "The proposed relation 'participates_in' between 'dendrites' and 'receiving of signals arriving from other neurons' is fully supported by the evidence sentence: 'while dendrites receive many of the signals arriving from other neurons.' The literal meaning matches the contract definition (entity participates in event/process without being structural part). Direction is correct (dendrites -> receiving process). Endpoints are valid as per definitions. No conditions or modality were omitted; the text"
+          }
+        ],
+        "omission_valid": true,
+        "reason": "The original claim and its qualifications are fully retained in the proposed assertion. The evidence directly entails the claim without requiring silent insertion of constraints or negation. The label 'participates_in' accurately reflects the causal/functional relationship described in the text."
+      }
+    }
+  ],
+  "role_checks": [],
+  "mentions": [],
+  "source_repairs": [],
+  "excluded_background": [],
+  "unresolved_attachments": [],
+  "errors": [],
+  "scope": "Source fidelity and model semantic review; not independent factual verification"
+}

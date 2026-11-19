@@ -1,0 +1,312 @@
+{
+  "version": 2,
+  "policy": {
+    "node_batch_size": 4,
+    "repair_attempts": 2,
+    "candidate_limit": 8,
+    "alias_similarity": 0.7,
+    "edge_batch_size": 12
+  },
+  "status": "running",
+  "nodes": [
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_f18ca2ba847a5186",
+            "label": "typical neuron",
+            "definition": "A standard nerve cell structure",
+            "merge_into": null,
+            "reason": "Retained as a distinct concept representing the whole entity."
+          },
+          {
+            "id": "concept_a715def547b4211a",
+            "label": "cell body",
+            "definition": "The central part of a neuron containing the nucleus",
+            "merge_into": null,
+            "reason": "Refined definition to specify its internal composition without narrowing scope."
+          },
+          {
+            "id": "concept_53474ef3442f7d1b",
+            "label": "dendrites",
+            "definition": "Branch-like structures receiving signals from other neurons",
+            "merge_into": null,
+            "reason": "Updated definition to reflect their functional role in signal reception."
+          },
+          {
+            "id": "concept_99a2ac41d64f86af",
+            "label": "axon",
+            "definition": "A process conducting action potentials toward terminals",
+            "merge_into": null,
+            "reason": "Clarified definition to emphasize its function in transmitting signals."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_f18ca2ba847a5186",
+            "valid": true,
+            "reason": "The concept 'typical neuron' is distinct from its components; retaining it as a separate node correctly represents the whole entity without merging into or with its parts."
+          },
+          {
+            "id": "concept_a715def547b4211a",
+            "valid": true,
+            "reason": "The concept 'cell body' is distinct from the neuron and its other parts; refining its definition to include the nucleus aligns with the source without creating a semantic defect."
+          },
+          {
+            "id": "concept_53474ef3442f7d1b",
+            "valid": true,
+            "reason": "The concept 'dendrites' is distinct from the neuron and other parts; updating its definition to specify signal reception matches the source information without excluding valid cases."
+          },
+          {
+            "id": "concept_99a2ac41d64f86af",
+            "valid": true,
+            "reason": "The concept 'axon' is distinct from the neuron and other parts; clarifying its definition to emphasize action potential conduction aligns with the source without narrowing scope."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "label": "nucleus",
+            "definition": "The central part of a neuron containing the nucleus",
+            "merge_into": "concept_a715def547b4211a",
+            "reason": "The source defines the cell body as containing the nucleus; merging aligns with the existing 'cell body' definition which explicitly includes this component, avoiding redundancy."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "label": "signals",
+            "definition": "Information transmitted between neurons",
+            "merge_into": null,
+            "reason": "The existing concepts are structural parts (axon, dendrites) or a whole cell (typical neuron); 'signals' is an abstract concept distinct from these physical entities."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "label": "neurons",
+            "definition": "Cells that transmit signals",
+            "merge_into": null,
+            "reason": "While related to 'typical neuron', the existing definition is specific to a standard structure, whereas this node defines the general cell type; they are not truly interchangeable."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "label": "receiving of signals arriving from other neurons",
+            "definition": "The process of dendrites taking in information transmitted between neurons",
+            "merge_into": null,
+            "reason": "This describes a functional process involving dendrites. The existing 'dendrites' node defines the structure itself, not the action of receiving signals; they remain distinct."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "valid": false,
+            "reason": "The proposed merge incorrectly equates the 'nucleus' (a specific organelle) with the 'cell body' (the entire central part containing the nucleus). The source explicitly distinguishes them by stating the cell body 'contains' the nucleus; merging a component into its container violates the rule that a component is not its containing whole."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "valid": true,
+            "reason": "The concept 'signals' refers to abstract information transmission, whereas existing nodes describe physical structures (axon, dendrites) or the whole cell. These are distinct entities with different scopes."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "valid": true,
+            "reason": "The concept 'neurons' defines the general cell type, while 'typical neuron' defines a specific standard structure. Although related, they represent different levels of abstraction and are not interchangeable."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "valid": true,
+            "reason": "The concept describes the functional process of receiving signals, while 'dendrites' defines the physical structure performing that function. A shared role does not prove identity; the action is distinct from the affected object."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "label": "nucleus",
+            "definition": "a structural component contained within the cell body",
+            "merge_into": null,
+            "reason": "The nucleus is a specific organelle distinct from the cell body which contains it; merging violates the whole-part distinction."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "label": "signals",
+            "definition": "Information transmitted between neurons",
+            "merge_into": null,
+            "reason": "The existing concepts are structural parts (axon, dendrites) or a whole cell (typical neuron); 'signals' is an abstract concept distinct from these physical entities."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "label": "neurons",
+            "definition": "Cells that transmit signals",
+            "merge_into": null,
+            "reason": "While related to 'typical neuron', the existing definition is specific to a standard structure, whereas this node defines the general cell type; they are not truly interchangeable."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "label": "receiving of signals arriving from other neurons",
+            "definition": "The process of dendrites taking in information transmitted between neurons",
+            "merge_into": null,
+            "reason": "This describes a functional process involving dendrites. The existing 'dendrites' node defines the structure itself, not the action of receiving signals; they remain distinct."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_b933ef6f1f8c0d87",
+            "valid": true,
+            "reason": "The nucleus is a distinct organelle contained within the cell body; merging violates the whole-part distinction where a component is not its containing whole."
+          },
+          {
+            "id": "concept_c1d2c1df9eabd696",
+            "valid": true,
+            "reason": "'Signals' refers to abstract information transmitted between neurons, whereas existing nodes define physical structures (axon, dendrites) or the whole cell (typical neuron); they are distinct entities."
+          },
+          {
+            "id": "concept_ad523424f063161f",
+            "valid": true,
+            "reason": "The proposed node defines 'neurons' as a general cell type transmitting signals, while the existing 'typical neuron' defines a specific standard structure; they are not interchangeable due to scope differences."
+          },
+          {
+            "id": "concept_f1b9271bb0b4df96",
+            "valid": true,
+            "reason": "The proposed node describes the functional process of receiving signals, while the existing 'dendrites' node defines the physical structure itself; a function is not its output or the structure performing it."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_fefc34ae8768d860",
+            "label": "action potential",
+            "definition": "an electrical signal conducted by the axon toward terminals",
+            "merge_into": null,
+            "reason": "Distinct from 'axon' (the conductor) and 'communication' (the outcome); retains specific definition regarding voltage change context."
+          },
+          {
+            "id": "concept_4e686af7bdcc5ae0",
+            "label": "terminal",
+            "definition": "the endpoint of an axon where communication with other cells occurs",
+            "merge_into": null,
+            "reason": "Specific anatomical location distinct from 'axon' or general 'signals'; no existing equivalent found."
+          },
+          {
+            "id": "concept_daf9b0302f9fa204",
+            "label": "axon conducting action potentials toward terminals",
+            "definition": "the process of the axon conducting action potentials toward its terminals",
+            "merge_into": "concept_99a2ac41d64f86af",
+            "reason": "Conceptually identical to existing 'axon' definition which describes it as a process conducting action potentials; scope and meaning match."
+          },
+          {
+            "id": "concept_3f8de9fcfb18e58a",
+            "label": "communication with other cells",
+            "definition": "the process enabled by the neuron conducting action potentials toward its terminals",
+            "merge_into": null,
+            "reason": "Represents a functional outcome distinct from the physical 'axon' or the signal itself; no existing ID captures this specific enabling process."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_fefc34ae8768d860",
+            "valid": true,
+            "reason": "The concept 'action potential' is distinct from the physical structure 'axon' and the functional outcome 'communication'; no existing node captures the specific definition involving voltage changes or the signal itself."
+          },
+          {
+            "id": "concept_4e686af7bdcc5ae0",
+            "valid": true,
+            "reason": "The concept 'terminal' represents a specific anatomical endpoint distinct from the axon or general signals; no existing node matches this specific definition."
+          },
+          {
+            "id": "concept_daf9b0302f9fa204",
+            "valid": true,
+            "reason": "The concept 'axon conducting action potentials toward terminals' is semantically identical to the existing 'axon' node, which defines it as a process conducting action potentials; merging preserves the referent and scope."
+          },
+          {
+            "id": "concept_3f8de9fcfb18e58a",
+            "valid": true,
+            "reason": "The concept 'communication with other cells' describes a functional outcome enabled by the axon's activity; it is distinct from the physical axon or the signal itself, and no existing node captures this specific enabling process."
+          }
+        ]
+      }
+    },
+    {
+      "proposal": {
+        "nodes": [
+          {
+            "id": "concept_881a8aa358b04c88",
+            "label": "other cells",
+            "definition": "Cells receiving communication from a neuron via its axon terminals",
+            "merge_into": null,
+            "reason": "Distinct concept from 'communication with other cells'; represents the target of signaling rather than the process."
+          },
+          {
+            "id": "concept_4d499a63b5147849",
+            "label": "rapid change in the voltage across the neurons membrane",
+            "definition": "A rapid change in the voltage across the neuron's membrane",
+            "merge_into": "concept_fefc34ae8768d860",
+            "reason": "Describes the defining characteristic of an action potential; semantically identical to existing definition."
+          },
+          {
+            "id": "concept_e2272bcd46540038",
+            "label": "opening voltage gated sodium channels",
+            "definition": "The process of opening voltage-gated sodium channels",
+            "merge_into": null,
+            "reason": "Represents a specific physiological action/process, distinct from the state of depolarization."
+          },
+          {
+            "id": "concept_24cd022393c442ba",
+            "label": "depolarization",
+            "definition": "The state or event of depolarization in a neuron",
+            "merge_into": null,
+            "reason": "Refers to the membrane potential state/event; distinct from the specific ion channel action."
+          }
+        ]
+      },
+      "review": {
+        "nodes": [
+          {
+            "id": "concept_881a8aa358b04c88",
+            "valid": true,
+            "reason": "The concept 'other cells' refers to the target recipients of signals, whereas 'communication with other cells' refers to the process enabled by the axon. These are distinct entities (object vs. process) and should not be merged."
+          },
+          {
+            "id": "concept_4d499a63b5147849",
+            "valid": true,
+            "reason": "The definition 'A rapid change in the voltage across the neuron's membrane' is semantically identical to the existing concept 'action potential', which is defined as an electrical signal characterized by this specific voltage change. The merge preserves the referent."
+          },
+          {
+            "id": "concept_e2272bcd46540038",
+            "valid": true,
+            "reason": "'Opening voltage gated sodium channels' describes a specific physiological action/process. While related to depolarization, it is not identical to the state of depolarization itself or the broader process of communication. It remains distinct."
+          },
+          {
+            "id": "concept_24cd022393c442ba",
+            "valid": true,
+            "reason": "'Depolarization' refers to the state or event of membrane potential change. This is distinct from the specific action of opening channels (concept_e2272bcd46540038) and distinct from the general process of communication. No merge is required."
+          }
+        ]
+      }
+    }
+  ],
+  "aliases": [],
+  "relationships": [],
+  "role_checks": [],
+  "mentions": [],
+  "source_repairs": [],
+  "excluded_background": [],
+  "unresolved_attachments": [],
+  "errors": [],
+  "scope": "Source fidelity and model semantic review; not independent factual verification"
+}

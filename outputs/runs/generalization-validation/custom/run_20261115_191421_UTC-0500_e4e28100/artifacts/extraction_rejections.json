@@ -1,0 +1,51 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "unsupported_claim": 3,
+    "wrong_kind": 3,
+    "meaning_changed": 3,
+    "wrong_direction": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_001_relation_007",
+      "chunk_id": "chunk_001",
+      "source": "axon conducting action potentials toward terminals",
+      "relation": "enables",
+      "target": "communication with other cells",
+      "decision_reason": "The candidate source 'axon conducting action potentials toward terminals' is a complex process phrase not explicitly named as an entity in the quote; the quote attributes the action to 'The axon'. Furthermore, the relation definition for 'enables' requires that SOURCE provides capacity without producing TARGET. The quote states 'allowing the neuron to communicate', implying the axon's activity enables communication. However, the candidate source is a process description ('axon conducting...') rather than the entity 'axon' or a distinct enabling event as defined by strict node separation rules. More critically, the candidate target 'communication with other cells' is an abstract outcome; the quote supports 'neuron to communicate'. The mismatch in endpoint specificity (process vs entity/event distinction) and the derivation of the source phrase from the predicate rather than a standalone concept violates the instruction to keep endpoints as standalone concepts. Failed gates: semantics_valid, types_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_008",
+      "chunk_id": "chunk_001",
+      "source": "neurons",
+      "relation": "communicates_with",
+      "target": "other cells",
+      "decision_reason": "The quote explicitly states 'allowing the neuron to communicate with other cells'. The candidate source is 'neurons' (plural/general) while the quote refers to a specific 'neuron' (singular). While generalization might be acceptable in some contexts, the strict instruction requires preserving specificity and not broadening concepts. More importantly, the relation 'communicates_with' implies an active engagement between two entities. The quote describes the axon's function enabling communication, not necessarily stating that 'neurons' as a class engage in 'communication with other cells' as a direct event in this specific instance without further context. The endpoint 'other cells' is inferred from 'other neurons' in the previous sentence of the source chunk, but the specific quote provided does not mention 'other cells', only 'other neurons' in the prior sentence. The quote alone ('The axon conducts... allowing the neuron to communicate with other cells') entails communication with 'other cells'. However, the source node 'neurons' is plural while the quote instance is singular 'neuron'. This specificity mismatch and the reliance on the previous sentence for the object 'other cells' Failed gates: semantics_valid, types_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_004",
+      "chunk_id": "chunk_003",
+      "source": "neurotransmitter binding event",
+      "relation": "acts_on",
+      "target": "receptor",
+      "decision_reason": "The relation 'acts_on' requires the source (event) to act upon or change the state of the target (object). The quote states 'The neurotransmitter binds to receptors'. Here, the 'neurotransmitter binding event' is the process of binding itself; it does not act *on* the receptor in a way that changes the receptor's state/position as an external agent would. More critically, the relation definition specifies TARGET must be an object/entity, not another event or process. While 'receptor' is an entity, the causal direction described ('binding to') implies the neurotransmitter interacts with the receptor, but the specific claim of the event 'acting on' the receptor to change its state is semantically distinct from the simple description of binding occurring. However, the primary failure is often in strict extraction: the quote describes the interaction (binding), not necessarily an external action changing the receptor's state independent of the binding definition. A stricter reading suggests the relation should be 'binds_to' or similar if available, but given 'acts_on', the evidence supports the interaction but may lack the specific 'change state/position' nuance required by the strict Failed gates: semantics_valid, direction_valid, types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    }
+  ]
+}

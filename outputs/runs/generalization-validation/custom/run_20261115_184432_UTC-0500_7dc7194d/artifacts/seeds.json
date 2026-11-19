@@ -1,0 +1,1579 @@
+{
+  "policy": "chapter_importance_and_knowledge_gaps",
+  "limit": 3,
+  "assessments": [
+    {
+      "concept": "supervised classifier",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.95,
+        "relevance": 0.95,
+        "reason": "The concept defines the core entity driving the chapter's primary process; expanding it clarifies how labeled data and optimization interact to form the fundamental supervised learning loop described in segment_001."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states that a supervised classifier learns input-to-label mappings using labeled examples, where an optimization algorithm adjusts parameters to minimize loss by reducing disagreement with training labels.",
+        "gaps": [
+          {
+            "question": "What specific mathematical or procedural mechanisms constitute the 'optimization algorithm' mentioned?",
+            "assumed_knowledge": "The existence and function of iterative methods (e.g., gradient descent) that use gradients derived from loss functions to update parameters.",
+            "why_useful": "The source claims an algorithm adjusts parameters but does not explain *how* it calculates the direction or magnitude of adjustment, leaving the mechanism of parameter updates opaque.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ]
+          },
+          {
+            "question": "How is 'disagreement' between predictions and labels formally quantified to drive updates?",
+            "assumed_knowledge": "The concept of a differentiable error metric (like cross-entropy or MSE) that produces gradients.",
+            "why_useful": "The source states the loss function measures disagreement but does not explain the nature of this measurement, which is essential for understanding how the 'signal' for updates is generated.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The source explicitly mentions 'optimization algorithm' and 'loss function' as active agents without defining their internal workings. Explaining the assumed knowledge of gradient-based optimization clarifies the 'how' implied by 'adjusts parameters' and 'providing a signal'. These are general explanatory gaps, not case-specific unknowns."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What specific mathematical or procedural mechanisms constitute the 'optimization algorithm' mentioned?",
+          "assumed_knowledge": "The existence and function of iterative methods (e.g., gradient descent) that use gradients derived from loss functions to update parameters.",
+          "why_useful": "The source claims an algorithm adjusts parameters but does not explain *how* it calculates the direction or magnitude of adjustment, leaving the mechanism of parameter updates opaque.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0001_gap_001",
+          "seed_candidate_id": "seed_candidate_0001",
+          "concept": "supervised classifier",
+          "document_coverage": "The source text states that a supervised classifier learns input-to-label mappings using labeled examples, where an optimization algorithm adjusts parameters to minimize loss by reducing disagreement with training labels."
+        },
+        {
+          "question": "How is 'disagreement' between predictions and labels formally quantified to drive updates?",
+          "assumed_knowledge": "The concept of a differentiable error metric (like cross-entropy or MSE) that produces gradients.",
+          "why_useful": "The source states the loss function measures disagreement but does not explain the nature of this measurement, which is essential for understanding how the 'signal' for updates is generated.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0001_gap_002",
+          "seed_candidate_id": "seed_candidate_0001",
+          "concept": "supervised classifier",
+          "document_coverage": "The source text states that a supervised classifier learns input-to-label mappings using labeled examples, where an optimization algorithm adjusts parameters to minimize loss by reducing disagreement with training labels."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The source explicitly mentions 'optimization algorithm' and 'loss function' as active agents without defining their internal workings. Explaining the assumed knowledge of gradient-based optimization clarifies the 'how' implied by 'adjusts parameters' and 'providing a signal'. These are general explanatory gaps, not case-specific unknowns."
+    },
+    {
+      "concept": "mapping from inputs to labels",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.4,
+        "relevance": 0.85,
+        "reason": "This is a functional description of the classifier's output rather than a distinct conceptual mechanism; its meaning is fully subsumed by the explanation of the supervised learning process itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This is a functional description of the classifier's output rather than a distinct conceptual mechanism; its meaning is fully subsumed by the explanation of the supervised learning process itself."
+    },
+    {
+      "concept": "labeled training examples",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.85,
+        "relevance": 0.9,
+        "reason": "Understanding the specific nature of 'labeled training examples' is essential to grasp how the optimization algorithm receives signals for parameter updates, distinguishing them from validation or test data mentioned later."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text identifies 'labeled training examples' as the resource used for learning mappings, distinguishing them implicitly from validation/test sets mentioned in other segments.",
+        "gaps": [
+          {
+            "question": "What constitutes a 'label' in this context?",
+            "assumed_knowledge": "The definition of a ground-truth target variable corresponding to an input instance.",
+            "why_useful": "The source mentions 'labels' and 'training labels' but does not define what they represent, which is fundamental to understanding how the model learns the mapping.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The term 'labels' is used without definition. Explaining that a label is the target truth value helps understand the 'disagreement' metric mentioned in chunk_001."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What constitutes a 'label' in this context?",
+          "assumed_knowledge": "The definition of a ground-truth target variable corresponding to an input instance.",
+          "why_useful": "The source mentions 'labels' and 'training labels' but does not define what they represent, which is fundamental to understanding how the model learns the mapping.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0003_gap_001",
+          "seed_candidate_id": "seed_candidate_0003",
+          "concept": "labeled training examples",
+          "document_coverage": "The source text identifies 'labeled training examples' as the resource used for learning mappings, distinguishing them implicitly from validation/test sets mentioned in other segments."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The term 'labels' is used without definition. Explaining that a label is the target truth value helps understand the 'disagreement' metric mentioned in chunk_001."
+    },
+    {
+      "concept": "optimization algorithm",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Optimization algorithms in training",
+        "importance": 0.9,
+        "relevance": 0.95,
+        "reason": "The optimization algorithm is the active agent minimizing loss; expanding this concept explains the 'how' of parameter adjustment and connects directly to the loss function's role in guiding the learning process."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text describes an 'optimization algorithm' as the entity that adjusts model parameters to reduce a loss function during training.",
+        "gaps": [
+          {
+            "question": "What is the relationship between the loss value and the parameter update step?",
+            "assumed_knowledge": "The concept of gradients (partial derivatives) indicating how to change parameters to decrease loss.",
+            "why_useful": "The source says the algorithm adjusts parameters to reduce loss but does not explain the mechanism linking the loss value to the specific adjustment, assuming knowledge of gradient descent or similar calculus-based methods.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The source implies a causal link between loss reduction and parameter adjustment without explaining the mathematical basis (gradients). This is a general explanatory gap regarding the mechanism of optimization."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What is the relationship between the loss value and the parameter update step?",
+          "assumed_knowledge": "The concept of gradients (partial derivatives) indicating how to change parameters to decrease loss.",
+          "why_useful": "The source says the algorithm adjusts parameters to reduce loss but does not explain the mechanism linking the loss value to the specific adjustment, assuming knowledge of gradient descent or similar calculus-based methods.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0004_gap_001",
+          "seed_candidate_id": "seed_candidate_0004",
+          "concept": "optimization algorithm",
+          "document_coverage": "The source text describes an 'optimization algorithm' as the entity that adjusts model parameters to reduce a loss function during training."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The source implies a causal link between loss reduction and parameter adjustment without explaining the mathematical basis (gradients). This is a general explanatory gap regarding the mechanism of optimization."
+    },
+    {
+      "concept": "model parameters",
+      "chunk_ids": [
+        "chunk_001",
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.2,
+        "relevance": 0.1,
+        "reason": "The term 'model parameters' is a generic entity mentioned in the context of optimization but lacks specific explanatory depth required for this chapter; its function (adjustment via algorithms) is already implied by the surrounding concepts of loss and optimization."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'model parameters' is a generic entity mentioned in the context of optimization but lacks specific explanatory depth required for this chapter; its function (adjustment via algorithms) is already implied by the surrounding concepts of loss and optimization."
+    },
+    {
+      "concept": "loss function",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Loss function role in parameter updates",
+        "importance": 0.95,
+        "relevance": 1.0,
+        "reason": "The loss function is the central mechanism driving supervised learning here; expanding on how it quantifies prediction error and supplies the gradient signal for optimization is essential to understanding the training loop described."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates.",
+        "gaps": [
+          {
+            "question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?",
+            "assumed_knowledge": "The concept of gradients derived from the loss function which indicate the steepest descent direction.",
+            "why_useful": "The source states the loss provides a 'signal' but does not explain that this signal is typically a gradient vector used by the optimizer. Without this, the nature of the 'signal' remains undefined.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The source mentions the loss function provides a 'signal' for updates but does not specify that this signal is a gradient. Explaining the assumed knowledge of gradients clarifies how the abstract 'signal' drives the concrete action of parameter adjustment."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?",
+          "assumed_knowledge": "The concept of gradients derived from the loss function which indicate the steepest descent direction.",
+          "why_useful": "The source states the loss provides a 'signal' but does not explain that this signal is typically a gradient vector used by the optimizer. Without this, the nature of the 'signal' remains undefined.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0006_gap_001",
+          "seed_candidate_id": "seed_candidate_0006",
+          "concept": "loss function",
+          "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The source mentions the loss function provides a 'signal' for updates but does not specify that this signal is a gradient. Explaining the assumed knowledge of gradients clarifies how the abstract 'signal' drives the concrete action of parameter adjustment."
+    },
+    {
+      "concept": "disagreement",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.3,
+        "relevance": 0.4,
+        "reason": "'Disagreement' is merely a descriptive property of the loss function's output rather than a distinct concept with independent explanatory value; it adds no new understanding beyond defining what the loss function measures."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Disagreement' is merely a descriptive property of the loss function's output rather than a distinct concept with independent explanatory value; it adds no new understanding beyond defining what the loss function measures."
+    },
+    {
+      "concept": "models predictions",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.15,
+        "relevance": 0.2,
+        "reason": "'Models predictions' is a standard output term that does not require expansion as the chapter focuses on the optimization process and error measurement rather than the specific nature of the prediction outputs themselves."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Models predictions' is a standard output term that does not require expansion as the chapter focuses on the optimization process and error measurement rather than the specific nature of the prediction outputs themselves."
+    },
+    {
+      "concept": "training labels",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.2,
+        "relevance": 0.1,
+        "reason": "The term 'training labels' is a generic reference to ground truth data already fully explained by the context of 'labeled training examples'; expanding it adds no substantive understanding of the optimization mechanism."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'training labels' is a generic reference to ground truth data already fully explained by the context of 'labeled training examples'; expanding it adds no substantive understanding of the optimization mechanism."
+    },
+    {
+      "concept": "signal",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Loss function role in parameter updates",
+        "importance": 0.3,
+        "relevance": 0.2,
+        "reason": "'Signal' is a vague metaphor for the gradient or error metric; the chapter's focus is on the specific mechanism of loss minimization, making this generic property unnecessary to expand."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Signal' is a vague metaphor for the gradient or error metric; the chapter's focus is on the specific mechanism of loss minimization, making this generic property unnecessary to expand."
+    },
+    {
+      "concept": "parameter updates",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Optimization algorithms in training",
+        "importance": 0.4,
+        "relevance": 0.3,
+        "reason": "'Parameter updates' describes the outcome of optimization rather than the algorithm itself; since the chapter emphasizes the role of loss functions and validation sets over specific update rules, this concept lacks explanatory depth here."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Parameter updates' describes the outcome of optimization rather than the algorithm itself; since the chapter emphasizes the role of loss functions and validation sets over specific update rules, this concept lacks explanatory depth here."
+    },
+    {
+      "concept": "validation set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Definition and purpose of a validation set",
+        "importance": 0.95,
+        "relevance": 0.98,
+        "reason": "The concept of the 'validation set' is central to the chapter's distinction between training performance and generalization; expanding its definition to clarify its role in model selection versus final evaluation prevents critical misunderstandings about overfitting."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples.",
+        "gaps": [
+          {
+            "question": "What specific criteria or metrics are typically derived from validation results to guide the selection of model settings (e.g., hyperparameters, architecture choices)?",
+            "assumed_knowledge": "The reader assumes a mechanism exists where validation performance translates into concrete decisions for model configuration.",
+            "why_useful": "Clarifying that validation is an iterative feedback loop for tuning specific parameters helps distinguish it from the single-shot evaluation of the test set.",
+            "source_chunk_ids": [
+              "chunk_002"
+            ]
+          },
+          {
+            "question": "How does the concept of 'incidental details' in the context of overfitting relate to the specific patterns a model might learn from the training set that generalize poorly?",
+            "assumed_knowledge": "The reader assumes an understanding of what constitutes noise versus signal in data without explicitly defining incidental features.",
+            "why_useful": "Understanding that 'incidental details' refers to spurious correlations or noise specific to the training distribution explains why validation on unseen data is necessary.",
+            "source_chunk_ids": [
+              "chunk_002"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The text states validation guides selection but does not specify the nature of that guidance (metrics, thresholds). It mentions 'incidental details' without defining them, assuming prior knowledge of noise vs. signal."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What specific criteria or metrics are typically derived from validation results to guide the selection of model settings (e.g., hyperparameters, architecture choices)?",
+          "assumed_knowledge": "The reader assumes a mechanism exists where validation performance translates into concrete decisions for model configuration.",
+          "why_useful": "Clarifying that validation is an iterative feedback loop for tuning specific parameters helps distinguish it from the single-shot evaluation of the test set.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "seed_candidate_0012_gap_001",
+          "seed_candidate_id": "seed_candidate_0012",
+          "concept": "validation set",
+          "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples."
+        },
+        {
+          "question": "How does the concept of 'incidental details' in the context of overfitting relate to the specific patterns a model might learn from the training set that generalize poorly?",
+          "assumed_knowledge": "The reader assumes an understanding of what constitutes noise versus signal in data without explicitly defining incidental features.",
+          "why_useful": "Understanding that 'incidental details' refers to spurious correlations or noise specific to the training distribution explains why validation on unseen data is necessary.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "seed_candidate_0012_gap_002",
+          "seed_candidate_id": "seed_candidate_0012",
+          "concept": "validation set",
+          "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The text states validation guides selection but does not specify the nature of that guidance (metrics, thresholds). It mentions 'incidental details' without defining them, assuming prior knowledge of noise vs. signal."
+    },
+    {
+      "concept": "examples",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "The term 'examples' is a generic entity reference already fully explained by the definition of the validation set; expanding it adds no substantive conceptual value."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'examples' is a generic entity reference already fully explained by the definition of the validation set; expanding it adds no substantive conceptual value."
+    },
+    {
+      "concept": "training set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Training set' is a standard term whose function (used for training) is explicitly stated in the overview and segment summaries; no further background is needed."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Training set' is a standard term whose function (used for training) is explicitly stated in the overview and segment summaries; no further background is needed."
+    },
+    {
+      "concept": "validation results",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Validation results' are functionally defined by their role in selecting model settings; the concept does not require separate expansion beyond its stated utility."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Validation results' are functionally defined by their role in selecting model settings; the concept does not require separate expansion beyond its stated utility."
+    },
+    {
+      "concept": "model settings",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Model settings' is a generic term for configurations; the chapter explains their selection process without needing to expand on the definition of the settings themselves."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Model settings' is a generic term for configurations; the chapter explains their selection process without needing to expand on the definition of the settings themselves."
+    },
+    {
+      "concept": "chosen model",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "chosen model",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "The term 'chosen model' is a generic reference to the output of the selection process; it lacks specific technical depth or explanatory value beyond what is already covered by the broader concepts of validation and test set evaluation."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'chosen model' is a generic reference to the output of the selection process; it lacks specific technical depth or explanatory value beyond what is already covered by the broader concepts of validation and test set evaluation."
+    },
+    {
+      "concept": "held out test set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "held out test set",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "This concept is a standard definition of a held-out dataset; the chapter's main idea regarding generalization error is better explained by the relationship between training performance and unseen examples rather than defining the test set itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This concept is a standard definition of a held-out dataset; the chapter's main idea regarding generalization error is better explained by the relationship between training performance and unseen examples rather than defining the test set itself."
+    },
+    {
+      "concept": "select model settings",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "select model settings",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "The action of selecting settings is a procedural step; the substantive understanding comes from *why* this step uses validation data and *what* it prevents (over-reliance on training performance), which are covered by other concepts."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The action of selecting settings is a procedural step; the substantive understanding comes from *why* this step uses validation data and *what* it prevents (over-reliance on training performance), which are covered by other concepts."
+    },
+    {
+      "concept": "evaluating the chosen model on a held out test set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "evaluating the chosen model on a held out test set",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "This describes the final evaluation step; its significance is derived from the contrast with validation results and training performance, making it a peripheral mention rather than a core concept needing expansion."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This describes the final evaluation step; its significance is derived from the contrast with validation results and training performance, making it a peripheral mention rather than a core concept needing expansion."
+    },
+    {
+      "concept": "good performance on the training examples alone",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "This concept is a negative condition (failure to generalize) rather than a substantive mechanism; it lacks explanatory depth and serves only as a contrast to the validation set's purpose."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This concept is a negative condition (failure to generalize) rather than a substantive mechanism; it lacks explanatory depth and serves only as a contrast to the validation set's purpose."
+    },
+    {
+      "concept": "good performance on previously unseen examples from the intended application",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "This describes the desired outcome (generalization) but does not explain the underlying mechanism or process; it is a result state rather than a concept requiring expansion for understanding."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This describes the desired outcome (generalization) but does not explain the underlying mechanism or process; it is a result state rather than a concept requiring expansion for understanding."
+    },
+    {
+      "concept": "regularization",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Regularization and overfitting reduction",
+        "importance": 0.9,
+        "relevance": 1.0,
+        "reason": "Regularization is a core mechanism for managing model complexity; expanding on how it limits focus on incidental details materially helps readers understand the trade-off between fit and generalization."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states regularization reduces overfitting by limiting a model's tendency to fit incidental details of the training data.",
+        "gaps": [
+          {
+            "question": "What are the common mathematical or algorithmic mechanisms (e.g., L1/L2 penalties, dropout) that constitute 'limiting focus on incidental details'?",
+            "assumed_knowledge": "The reader assumes familiarity with specific regularization techniques without listing them.",
+            "why_useful": "Explaining that regularization often works by adding constraints or noise to the learning process clarifies *how* it limits focus on incidental details.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          },
+          {
+            "question": "What is the relationship between model complexity (capacity) and the likelihood of fitting incidental details?",
+            "assumed_knowledge": "The reader assumes a link between high capacity models and overfitting without explicit definition.",
+            "why_useful": "Understanding that regularization often targets complex models helps contextualize why it is needed to prevent fitting noise.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The text describes the effect (reducing overfitting) and the mechanism in abstract terms (limiting focus), assuming the reader knows specific techniques like weight decay or dropout that achieve this."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What are the common mathematical or algorithmic mechanisms (e.g., L1/L2 penalties, dropout) that constitute 'limiting focus on incidental details'?",
+          "assumed_knowledge": "The reader assumes familiarity with specific regularization techniques without listing them.",
+          "why_useful": "Explaining that regularization often works by adding constraints or noise to the learning process clarifies *how* it limits focus on incidental details.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0023_gap_001",
+          "seed_candidate_id": "seed_candidate_0023",
+          "concept": "regularization",
+          "document_coverage": "The source text states regularization reduces overfitting by limiting a model's tendency to fit incidental details of the training data."
+        },
+        {
+          "question": "What is the relationship between model complexity (capacity) and the likelihood of fitting incidental details?",
+          "assumed_knowledge": "The reader assumes a link between high capacity models and overfitting without explicit definition.",
+          "why_useful": "Understanding that regularization often targets complex models helps contextualize why it is needed to prevent fitting noise.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0023_gap_002",
+          "seed_candidate_id": "seed_candidate_0023",
+          "concept": "regularization",
+          "document_coverage": "The source text states regularization reduces overfitting by limiting a model's tendency to fit incidental details of the training data."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The text describes the effect (reducing overfitting) and the mechanism in abstract terms (limiting focus), assuming the reader knows specific techniques like weight decay or dropout that achieve this."
+    },
+    {
+      "concept": "overfitting",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Regularization and overfitting reduction",
+        "importance": 0.95,
+        "relevance": 1.0,
+        "reason": "Overfitting is the primary problem addressed in this chapter segment; defining it as fitting incidental details is essential for understanding why regularization and validation sets are necessary."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data.",
+        "gaps": [
+          {
+            "question": "What distinguishes 'incidental details' (noise) from the underlying patterns that constitute the true target function?",
+            "assumed_knowledge": "The reader assumes an ability to distinguish signal from noise in a dataset without defining these terms.",
+            "why_useful": "Clarifying that incidental details are non-generalizable patterns specific to the training sample explains why fitting them leads to poor performance on new data.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          },
+          {
+            "question": "How does the process of 'fitting' these incidental details manifest in the model's behavior (e.g., memorization vs. generalization)?",
+            "assumed_knowledge": "The reader assumes an understanding of what it means for a model to 'memorize' training data versus learning general rules.",
+            "why_useful": "Describing overfitting as memorization helps visualize why validation on unseen data is required to detect this failure mode.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The definition relies on the term 'incidental details' which assumes a distinction between noise and signal. It also assumes the reader understands the behavioral consequence of fitting such details."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What distinguishes 'incidental details' (noise) from the underlying patterns that constitute the true target function?",
+          "assumed_knowledge": "The reader assumes an ability to distinguish signal from noise in a dataset without defining these terms.",
+          "why_useful": "Clarifying that incidental details are non-generalizable patterns specific to the training sample explains why fitting them leads to poor performance on new data.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0024_gap_001",
+          "seed_candidate_id": "seed_candidate_0024",
+          "concept": "overfitting",
+          "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data."
+        },
+        {
+          "question": "How does the process of 'fitting' these incidental details manifest in the model's behavior (e.g., memorization vs. generalization)?",
+          "assumed_knowledge": "The reader assumes an understanding of what it means for a model to 'memorize' training data versus learning general rules.",
+          "why_useful": "Describing overfitting as memorization helps visualize why validation on unseen data is required to detect this failure mode.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0024_gap_002",
+          "seed_candidate_id": "seed_candidate_0024",
+          "concept": "overfitting",
+          "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The definition relies on the term 'incidental details' which assumes a distinction between noise and signal. It also assumes the reader understands the behavioral consequence of fitting such details."
+    },
+    {
+      "concept": "model",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "The term 'model' is used generically here to describe an entity fitting details; it lacks specific explanatory depth regarding the chapter's core mechanisms of optimization or regularization and serves only as a placeholder for the concepts that actually require expansion."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'model' is used generically here to describe an entity fitting details; it lacks specific explanatory depth regarding the chapter's core mechanisms of optimization or regularization and serves only as a placeholder for the concepts that actually require expansion."
+    },
+    {
+      "concept": "training data",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Training data' is a standard term mentioned in the context of incidental details but does not require expansion as its role is already clearly defined by the surrounding discussion on overfitting and validation sets."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Training data' is a standard term mentioned in the context of incidental details but does not require expansion as its role is already clearly defined by the surrounding discussion on overfitting and validation sets."
+    },
+    {
+      "concept": "quantization",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Quantization for memory efficiency",
+        "importance": 0.9,
+        "relevance": 1.0,
+        "reason": "This concept is central to the chapter's discussion on resource management; expanding it clarifies the trade-off between memory reduction and accuracy loss, which is a key substantive point requiring reader understanding."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text describes quantization as representing model parameters with fewer bits after training, which reduces memory but may decrease accuracy, requiring re-evaluation.",
+        "gaps": [
+          {
+            "question": "What is the theoretical relationship between bit-width (precision) and numerical error in floating-point or fixed-point arithmetic?",
+            "assumed_knowledge": "The reader assumes knowledge of how reducing bits introduces rounding errors that affect computation.",
+            "why_useful": "Explaining that lower precision leads to larger quantization errors clarifies the mechanism behind the potential accuracy loss mentioned in the text.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          },
+          {
+            "question": "Why is re-evaluation specifically necessary after quantization rather than just accepting the memory savings?",
+            "assumed_knowledge": "The reader assumes that changing numerical representation inherently alters model behavior without specifying the direction or magnitude of change.",
+            "why_useful": "Clarifying that quantization errors can be catastrophic for certain architectures or tasks explains why a simple 'memory vs. speed' trade-off is insufficient and accuracy must be checked.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The text states quantization reduces memory but may decrease accuracy, assuming the reader understands *why* (numerical precision effects) and *when* this happens. It assumes the necessity of re-evaluation without explaining that quantization errors are non-linear and task-dependent."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What is the theoretical relationship between bit-width (precision) and numerical error in floating-point or fixed-point arithmetic?",
+          "assumed_knowledge": "The reader assumes knowledge of how reducing bits introduces rounding errors that affect computation.",
+          "why_useful": "Explaining that lower precision leads to larger quantization errors clarifies the mechanism behind the potential accuracy loss mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0027_gap_001",
+          "seed_candidate_id": "seed_candidate_0027",
+          "concept": "quantization",
+          "document_coverage": "The source text describes quantization as representing model parameters with fewer bits after training, which reduces memory but may decrease accuracy, requiring re-evaluation."
+        },
+        {
+          "question": "Why is re-evaluation specifically necessary after quantization rather than just accepting the memory savings?",
+          "assumed_knowledge": "The reader assumes that changing numerical representation inherently alters model behavior without specifying the direction or magnitude of change.",
+          "why_useful": "Clarifying that quantization errors can be catastrophic for certain architectures or tasks explains why a simple 'memory vs. speed' trade-off is insufficient and accuracy must be checked.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0027_gap_002",
+          "seed_candidate_id": "seed_candidate_0027",
+          "concept": "quantization",
+          "document_coverage": "The source text describes quantization as representing model parameters with fewer bits after training, which reduces memory but may decrease accuracy, requiring re-evaluation."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The text states quantization reduces memory but may decrease accuracy, assuming the reader understands *why* (numerical precision effects) and *when* this happens. It assumes the necessity of re-evaluation without explaining that quantization errors are non-linear and task-dependent."
+    },
+    {
+      "concept": "fewer bits",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.1,
+        "relevance": 0.3,
+        "reason": "'Fewer bits' is a descriptive property of the quantization process rather than a distinct concept with its own explanatory role; it adds no new understanding beyond what is conveyed by explaining quantization itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Fewer bits' is a descriptive property of the quantization process rather than a distinct concept with its own explanatory role; it adds no new understanding beyond what is conveyed by explaining quantization itself."
+    },
+    {
+      "concept": "memory needed to store model parameters",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Quantization for memory efficiency",
+        "importance": 0.85,
+        "relevance": 0.9,
+        "reason": "This concept directly explains the mechanism (fewer bits) and trade-off (memory vs. accuracy) of quantization, which is a core technical detail required to understand the chapter's discussion on resource management."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states that quantization represents model parameters with fewer bits, which can reduce the memory needed to store them. It also notes that lower numerical precision may reduce prediction accuracy.",
+        "gaps": [
+          {
+            "question": "What is the relationship between bit-width reduction and memory consumption in neural network storage?",
+            "assumed_knowledge": "That reducing the number of bits per parameter (e.g., from 32-bit floating point to 8-bit integers) linearly reduces the total storage footprint required for model weights.",
+            "why_useful": "The source claims memory is reduced by using fewer bits but does not explain the underlying mechanism of how bit-width maps to storage size, which is a fundamental concept in computer architecture relevant to understanding 'memory efficiency'.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          },
+          {
+            "question": "What specific types of incidental details does regularization prevent the model from fitting?",
+            "assumed_knowledge": "That 'incidental details' refer to noise, outliers, or random fluctuations in the training data that do not generalize to new examples.",
+            "why_useful": "The source mentions limiting focus on 'incidental details' but does not define what constitutes such details. Understanding this helps clarify why overfitting occurs and how regularization mitigates it.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The first gap addresses the technical mechanism of memory reduction via bit-width, which is assumed but not explained. The second gap clarifies the nature of 'incidental details' mentioned in the regularization context."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What is the relationship between bit-width reduction and memory consumption in neural network storage?",
+          "assumed_knowledge": "That reducing the number of bits per parameter (e.g., from 32-bit floating point to 8-bit integers) linearly reduces the total storage footprint required for model weights.",
+          "why_useful": "The source claims memory is reduced by using fewer bits but does not explain the underlying mechanism of how bit-width maps to storage size, which is a fundamental concept in computer architecture relevant to understanding 'memory efficiency'.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0029_gap_001",
+          "seed_candidate_id": "seed_candidate_0029",
+          "concept": "memory needed to store model parameters",
+          "document_coverage": "The source text states that quantization represents model parameters with fewer bits, which can reduce the memory needed to store them. It also notes that lower numerical precision may reduce prediction accuracy."
+        },
+        {
+          "question": "What specific types of incidental details does regularization prevent the model from fitting?",
+          "assumed_knowledge": "That 'incidental details' refer to noise, outliers, or random fluctuations in the training data that do not generalize to new examples.",
+          "why_useful": "The source mentions limiting focus on 'incidental details' but does not define what constitutes such details. Understanding this helps clarify why overfitting occurs and how regularization mitigates it.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0029_gap_002",
+          "seed_candidate_id": "seed_candidate_0029",
+          "concept": "memory needed to store model parameters",
+          "document_coverage": "The source text states that quantization represents model parameters with fewer bits, which can reduce the memory needed to store them. It also notes that lower numerical precision may reduce prediction accuracy."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The first gap addresses the technical mechanism of memory reduction via bit-width, which is assumed but not explained. The second gap clarifies the nature of 'incidental details' mentioned in the regularization context."
+    },
+    {
+      "concept": "lower numerical precision",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Impact of numerical precision on accuracy",
+        "importance": 0.75,
+        "relevance": 0.85,
+        "reason": "Explaining 'lower numerical precision' clarifies the specific cause of potential accuracy loss during quantization, distinguishing it from other sources of error and addressing the chapter's warning about re-evaluation."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states that lower numerical precision can reduce prediction accuracy and necessitates re-evaluation.",
+        "gaps": [
+          {
+            "question": "What are the mechanisms by which reduced numerical precision leads to accuracy loss?",
+            "assumed_knowledge": "That quantization introduces rounding errors, truncation of information, and potential accumulation of these errors during inference, which degrade model performance.",
+            "why_useful": "The source states that lower precision reduces accuracy but does not explain the mathematical or computational reasons (e.g., loss of gradient information, saturation of activation functions) behind this degradation.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The gap focuses on the mechanism of accuracy loss due to precision reduction, which is a general technical concept assumed by the claim that 'lower numerical precision can also reduce prediction accuracy'."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What are the mechanisms by which reduced numerical precision leads to accuracy loss?",
+          "assumed_knowledge": "That quantization introduces rounding errors, truncation of information, and potential accumulation of these errors during inference, which degrade model performance.",
+          "why_useful": "The source states that lower precision reduces accuracy but does not explain the mathematical or computational reasons (e.g., loss of gradient information, saturation of activation functions) behind this degradation.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0030_gap_001",
+          "seed_candidate_id": "seed_candidate_0030",
+          "concept": "lower numerical precision",
+          "document_coverage": "The source text states that lower numerical precision can reduce prediction accuracy and necessitates re-evaluation."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The gap focuses on the mechanism of accuracy loss due to precision reduction, which is a general technical concept assumed by the claim that 'lower numerical precision can also reduce prediction accuracy'."
+    },
+    {
+      "concept": "prediction accuracy",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.2,
+        "relevance": 0.5,
+        "reason": "'Prediction accuracy' is a generic metric mentioned as an outcome; the chapter's substantive contribution lies in explaining *how* quantization affects it (via precision loss), not in defining accuracy itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Prediction accuracy' is a generic metric mentioned as an outcome; the chapter's substantive contribution lies in explaining *how* quantization affects it (via precision loss), not in defining accuracy itself."
+    },
+    {
+      "concept": "quantized model",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Re-evaluation of quantized models",
+        "importance": 0.8,
+        "relevance": 0.95,
+        "reason": "This concept captures the critical procedural step mandated by the chapter: that a model must be re-tested after quantization because memory savings come at the cost of potential accuracy degradation."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states that after training, quantization represents model parameters with fewer bits and that the resulting quantized model should be evaluated again due to potential accuracy reduction.",
+        "gaps": [
+          {
+            "question": "What criteria determine when a quantized model requires re-evaluation versus acceptance?",
+            "assumed_knowledge": "That there are specific thresholds or metrics (e.g., acceptable drop in F1 score, latency gains outweighing accuracy loss) used to decide if the trade-off is worthwhile.",
+            "why_useful": "The source mandates re-evaluation but does not specify the decision-making process or criteria for accepting the quantized model. Understanding these considerations clarifies the practical application of the 're-evaluation' step.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The gap addresses the implicit criteria for deciding whether to use a quantized model, which is assumed when the text says the model 'should be evaluated again' without specifying what constitutes a successful outcome."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What criteria determine when a quantized model requires re-evaluation versus acceptance?",
+          "assumed_knowledge": "That there are specific thresholds or metrics (e.g., acceptable drop in F1 score, latency gains outweighing accuracy loss) used to decide if the trade-off is worthwhile.",
+          "why_useful": "The source mandates re-evaluation but does not specify the decision-making process or criteria for accepting the quantized model. Understanding these considerations clarifies the practical application of the 're-evaluation' step.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0032_gap_001",
+          "seed_candidate_id": "seed_candidate_0032",
+          "concept": "quantized model",
+          "document_coverage": "The source text states that after training, quantization represents model parameters with fewer bits and that the resulting quantized model should be evaluated again due to potential accuracy reduction."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The gap addresses the implicit criteria for deciding whether to use a quantized model, which is assumed when the text says the model 'should be evaluated again' without specifying what constitutes a successful outcome."
+    },
+    {
+      "concept": "evaluation",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": true,
+      "topic_assessment": {
+        "expand": true,
+        "chapter_topic": "Evaluation process using a held-out test set",
+        "importance": 0.85,
+        "relevance": 0.92,
+        "reason": "The concept of 'evaluation' is central to the chapter's distinction between validation (for selection) and testing (for final assessment). The specific context of re-evaluating quantized models due to accuracy loss provides a critical practical example of why evaluation must be rigorous and iterative, directly supporting the main idea that training performance does not guarantee unseen example performance."
+      },
+      "gap_assessment": {
+        "document_coverage": "The source text states that evaluation assesses a model's performance and that quantized models should undergo this process again after quantization.",
+        "gaps": [
+          {
+            "question": "What specific metrics or methods are used to evaluate the impact of quantization on accuracy?",
+            "assumed_knowledge": "That evaluation involves comparing pre-quantization and post-quantization performance using standard metrics like accuracy, precision, recall, or loss on a held-out test set.",
+            "why_useful": "The source mentions 'evaluation' but does not detail the specific procedures or metrics used to quantify the 'reduction in prediction accuracy'. Understanding these methods is essential for interpreting the results of re-evaluation.",
+            "source_chunk_ids": [
+              "chunk_003"
+            ]
+          }
+        ],
+        "case_specific_unknowns": [],
+        "reason": "The gap focuses on the specific metrics and methods used in the evaluation process, which are assumed when the text refers to evaluating the quantized model without specifying how accuracy loss is measured."
+      },
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "gaps": [
+        {
+          "question": "What specific metrics or methods are used to evaluate the impact of quantization on accuracy?",
+          "assumed_knowledge": "That evaluation involves comparing pre-quantization and post-quantization performance using standard metrics like accuracy, precision, recall, or loss on a held-out test set.",
+          "why_useful": "The source mentions 'evaluation' but does not detail the specific procedures or metrics used to quantify the 'reduction in prediction accuracy'. Understanding these methods is essential for interpreting the results of re-evaluation.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0033_gap_001",
+          "seed_candidate_id": "seed_candidate_0033",
+          "concept": "evaluation",
+          "document_coverage": "The source text states that evaluation assesses a model's performance and that quantized models should undergo this process again after quantization."
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": [],
+      "reason": "The gap focuses on the specific metrics and methods used in the evaluation process, which are assumed when the text refers to evaluating the quantized model without specifying how accuracy loss is measured."
+    }
+  ],
+  "selected": [
+    {
+      "id": "seed_001",
+      "concept": "loss function",
+      "definition": "a loss function",
+      "kind": "property",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "reason": "The source mentions the loss function provides a 'signal' for updates but does not specify that this signal is a gradient. Explaining the assumed knowledge of gradients clarifies how the abstract 'signal' drives the concrete action of parameter adjustment.",
+      "chapter_topic": "Loss function role in parameter updates",
+      "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?",
+          "assumed_knowledge": "The concept of gradients derived from the loss function which indicate the steepest descent direction.",
+          "why_useful": "The source states the loss provides a 'signal' but does not explain that this signal is typically a gradient vector used by the optimizer. Without this, the nature of the 'signal' remains undefined.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "seed_candidate_0006_gap_001",
+          "seed_candidate_id": "seed_candidate_0006",
+          "concept": "loss function",
+          "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates."
+        }
+      ],
+      "background_question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?"
+    },
+    {
+      "id": "seed_002",
+      "concept": "overfitting",
+      "definition": "The tendency of a model to fit incidental details of training data.",
+      "kind": "property",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The definition relies on the term 'incidental details' which assumes a distinction between noise and signal. It also assumes the reader understands the behavioral consequence of fitting such details.",
+      "chapter_topic": "Regularization and overfitting reduction",
+      "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What distinguishes 'incidental details' (noise) from the underlying patterns that constitute the true target function?",
+          "assumed_knowledge": "The reader assumes an ability to distinguish signal from noise in a dataset without defining these terms.",
+          "why_useful": "Clarifying that incidental details are non-generalizable patterns specific to the training sample explains why fitting them leads to poor performance on new data.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0024_gap_001",
+          "seed_candidate_id": "seed_candidate_0024",
+          "concept": "overfitting",
+          "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data."
+        },
+        {
+          "question": "How does the process of 'fitting' these incidental details manifest in the model's behavior (e.g., memorization vs. generalization)?",
+          "assumed_knowledge": "The reader assumes an understanding of what it means for a model to 'memorize' training data versus learning general rules.",
+          "why_useful": "Describing overfitting as memorization helps visualize why validation on unseen data is required to detect this failure mode.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "seed_candidate_0024_gap_002",
+          "seed_candidate_id": "seed_candidate_0024",
+          "concept": "overfitting",
+          "document_coverage": "The source text defines overfitting as a model's tendency to fit incidental details of the training data."
+        }
+      ],
+      "background_question": "What distinguishes 'incidental details' (noise) from the underlying patterns that constitute the true target function?\nHow does the process of 'fitting' these incidental details manifest in the model's behavior (e.g., memorization vs. generalization)?"
+    },
+    {
+      "id": "seed_003",
+      "concept": "validation set",
+      "definition": "A collection of examples used for validation.",
+      "kind": "entity",
+      "chunk_id": "chunk_002",
+      "paragraph_id": "paragraph_002",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "reason": "The text states validation guides selection but does not specify the nature of that guidance (metrics, thresholds). It mentions 'incidental details' without defining them, assuming prior knowledge of noise vs. signal.",
+      "chapter_topic": "Definition and purpose of a validation set",
+      "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What specific criteria or metrics are typically derived from validation results to guide the selection of model settings (e.g., hyperparameters, architecture choices)?",
+          "assumed_knowledge": "The reader assumes a mechanism exists where validation performance translates into concrete decisions for model configuration.",
+          "why_useful": "Clarifying that validation is an iterative feedback loop for tuning specific parameters helps distinguish it from the single-shot evaluation of the test set.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "seed_candidate_0012_gap_001",
+          "seed_candidate_id": "seed_candidate_0012",
+          "concept": "validation set",
+          "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples."
+        },
+        {
+          "question": "How does the concept of 'incidental details' in the context of overfitting relate to the specific patterns a model might learn from the training set that generalize poorly?",
+          "assumed_knowledge": "The reader assumes an understanding of what constitutes noise versus signal in data without explicitly defining incidental features.",
+          "why_useful": "Understanding that 'incidental details' refers to spurious correlations or noise specific to the training distribution explains why validation on unseen data is necessary.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "seed_candidate_0012_gap_002",
+          "seed_candidate_id": "seed_candidate_0012",
+          "concept": "validation set",
+          "document_coverage": "The source text defines a validation set as examples separate from the training set, used by developers to select model settings before final evaluation on a held-out test set. It notes that strong training performance does not guarantee good performance on unseen examples."
+        }
+      ],
+      "background_question": "What specific criteria or metrics are typically derived from validation results to guide the selection of model settings (e.g., hyperparameters, architecture choices)?\nHow does the concept of 'incidental details' in the context of overfitting relate to the specific patterns a model might learn from the training set that generalize poorly?"
+    }
+  ],
+  "excluded": [
+    {
+      "concept": "mapping from inputs to labels",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.4,
+        "relevance": 0.85,
+        "reason": "This is a functional description of the classifier's output rather than a distinct conceptual mechanism; its meaning is fully subsumed by the explanation of the supervised learning process itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This is a functional description of the classifier's output rather than a distinct conceptual mechanism; its meaning is fully subsumed by the explanation of the supervised learning process itself."
+    },
+    {
+      "concept": "model parameters",
+      "chunk_ids": [
+        "chunk_001",
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.2,
+        "relevance": 0.1,
+        "reason": "The term 'model parameters' is a generic entity mentioned in the context of optimization but lacks specific explanatory depth required for this chapter; its function (adjustment via algorithms) is already implied by the surrounding concepts of loss and optimization."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'model parameters' is a generic entity mentioned in the context of optimization but lacks specific explanatory depth required for this chapter; its function (adjustment via algorithms) is already implied by the surrounding concepts of loss and optimization."
+    },
+    {
+      "concept": "disagreement",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.3,
+        "relevance": 0.4,
+        "reason": "'Disagreement' is merely a descriptive property of the loss function's output rather than a distinct concept with independent explanatory value; it adds no new understanding beyond defining what the loss function measures."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Disagreement' is merely a descriptive property of the loss function's output rather than a distinct concept with independent explanatory value; it adds no new understanding beyond defining what the loss function measures."
+    },
+    {
+      "concept": "models predictions",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.15,
+        "relevance": 0.2,
+        "reason": "'Models predictions' is a standard output term that does not require expansion as the chapter focuses on the optimization process and error measurement rather than the specific nature of the prediction outputs themselves."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Models predictions' is a standard output term that does not require expansion as the chapter focuses on the optimization process and error measurement rather than the specific nature of the prediction outputs themselves."
+    },
+    {
+      "concept": "training labels",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Supervised learning mechanism",
+        "importance": 0.2,
+        "relevance": 0.1,
+        "reason": "The term 'training labels' is a generic reference to ground truth data already fully explained by the context of 'labeled training examples'; expanding it adds no substantive understanding of the optimization mechanism."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'training labels' is a generic reference to ground truth data already fully explained by the context of 'labeled training examples'; expanding it adds no substantive understanding of the optimization mechanism."
+    },
+    {
+      "concept": "signal",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Loss function role in parameter updates",
+        "importance": 0.3,
+        "relevance": 0.2,
+        "reason": "'Signal' is a vague metaphor for the gradient or error metric; the chapter's focus is on the specific mechanism of loss minimization, making this generic property unnecessary to expand."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Signal' is a vague metaphor for the gradient or error metric; the chapter's focus is on the specific mechanism of loss minimization, making this generic property unnecessary to expand."
+    },
+    {
+      "concept": "parameter updates",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "Optimization algorithms in training",
+        "importance": 0.4,
+        "relevance": 0.3,
+        "reason": "'Parameter updates' describes the outcome of optimization rather than the algorithm itself; since the chapter emphasizes the role of loss functions and validation sets over specific update rules, this concept lacks explanatory depth here."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Parameter updates' describes the outcome of optimization rather than the algorithm itself; since the chapter emphasizes the role of loss functions and validation sets over specific update rules, this concept lacks explanatory depth here."
+    },
+    {
+      "concept": "examples",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "The term 'examples' is a generic entity reference already fully explained by the definition of the validation set; expanding it adds no substantive conceptual value."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'examples' is a generic entity reference already fully explained by the definition of the validation set; expanding it adds no substantive conceptual value."
+    },
+    {
+      "concept": "training set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Training set' is a standard term whose function (used for training) is explicitly stated in the overview and segment summaries; no further background is needed."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Training set' is a standard term whose function (used for training) is explicitly stated in the overview and segment summaries; no further background is needed."
+    },
+    {
+      "concept": "validation results",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Validation results' are functionally defined by their role in selecting model settings; the concept does not require separate expansion beyond its stated utility."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Validation results' are functionally defined by their role in selecting model settings; the concept does not require separate expansion beyond its stated utility."
+    },
+    {
+      "concept": "model settings",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Model settings' is a generic term for configurations; the chapter explains their selection process without needing to expand on the definition of the settings themselves."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Model settings' is a generic term for configurations; the chapter explains their selection process without needing to expand on the definition of the settings themselves."
+    },
+    {
+      "concept": "chosen model",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "chosen model",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "The term 'chosen model' is a generic reference to the output of the selection process; it lacks specific technical depth or explanatory value beyond what is already covered by the broader concepts of validation and test set evaluation."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'chosen model' is a generic reference to the output of the selection process; it lacks specific technical depth or explanatory value beyond what is already covered by the broader concepts of validation and test set evaluation."
+    },
+    {
+      "concept": "held out test set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "held out test set",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "This concept is a standard definition of a held-out dataset; the chapter's main idea regarding generalization error is better explained by the relationship between training performance and unseen examples rather than defining the test set itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This concept is a standard definition of a held-out dataset; the chapter's main idea regarding generalization error is better explained by the relationship between training performance and unseen examples rather than defining the test set itself."
+    },
+    {
+      "concept": "select model settings",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "select model settings",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "The action of selecting settings is a procedural step; the substantive understanding comes from *why* this step uses validation data and *what* it prevents (over-reliance on training performance), which are covered by other concepts."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The action of selecting settings is a procedural step; the substantive understanding comes from *why* this step uses validation data and *what* it prevents (over-reliance on training performance), which are covered by other concepts."
+    },
+    {
+      "concept": "evaluating the chosen model on a held out test set",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": "evaluating the chosen model on a held out test set",
+        "importance": 0.2,
+        "relevance": 0.3,
+        "reason": "This describes the final evaluation step; its significance is derived from the contrast with validation results and training performance, making it a peripheral mention rather than a core concept needing expansion."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This describes the final evaluation step; its significance is derived from the contrast with validation results and training performance, making it a peripheral mention rather than a core concept needing expansion."
+    },
+    {
+      "concept": "good performance on the training examples alone",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "This concept is a negative condition (failure to generalize) rather than a substantive mechanism; it lacks explanatory depth and serves only as a contrast to the validation set's purpose."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This concept is a negative condition (failure to generalize) rather than a substantive mechanism; it lacks explanatory depth and serves only as a contrast to the validation set's purpose."
+    },
+    {
+      "concept": "good performance on previously unseen examples from the intended application",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "This describes the desired outcome (generalization) but does not explain the underlying mechanism or process; it is a result state rather than a concept requiring expansion for understanding."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "This describes the desired outcome (generalization) but does not explain the underlying mechanism or process; it is a result state rather than a concept requiring expansion for understanding."
+    },
+    {
+      "concept": "model",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "The term 'model' is used generically here to describe an entity fitting details; it lacks specific explanatory depth regarding the chapter's core mechanisms of optimization or regularization and serves only as a placeholder for the concepts that actually require expansion."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "The term 'model' is used generically here to describe an entity fitting details; it lacks specific explanatory depth regarding the chapter's core mechanisms of optimization or regularization and serves only as a placeholder for the concepts that actually require expansion."
+    },
+    {
+      "concept": "training data",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.0,
+        "relevance": 0.0,
+        "reason": "'Training data' is a standard term mentioned in the context of incidental details but does not require expansion as its role is already clearly defined by the surrounding discussion on overfitting and validation sets."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Training data' is a standard term mentioned in the context of incidental details but does not require expansion as its role is already clearly defined by the surrounding discussion on overfitting and validation sets."
+    },
+    {
+      "concept": "fewer bits",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.1,
+        "relevance": 0.3,
+        "reason": "'Fewer bits' is a descriptive property of the quantization process rather than a distinct concept with its own explanatory role; it adds no new understanding beyond what is conveyed by explaining quantization itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Fewer bits' is a descriptive property of the quantization process rather than a distinct concept with its own explanatory role; it adds no new understanding beyond what is conveyed by explaining quantization itself."
+    },
+    {
+      "concept": "prediction accuracy",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "eligible": false,
+      "topic_assessment": {
+        "expand": false,
+        "chapter_topic": null,
+        "importance": 0.2,
+        "relevance": 0.5,
+        "reason": "'Prediction accuracy' is a generic metric mentioned as an outcome; the chapter's substantive contribution lies in explaining *how* quantization affects it (via precision loss), not in defining accuracy itself."
+      },
+      "gap_assessment": null,
+      "case_specific_unknowns": [],
+      "specified_case_details": [],
+      "reason": "'Prediction accuracy' is a generic metric mentioned as an outcome; the chapter's substantive contribution lies in explaining *how* quantization affects it (via precision loss), not in defining accuracy itself."
+    }
+  ],
+  "omitted_by_limit": 9
+}

@@ -43,6 +43,33 @@ class SubmissionTests(unittest.TestCase):
         with patch("pipeline.evaluate_saved_run.main", return_value=0) as evaluate:
             self.assertEqual(execute("evaluate", saved_run="saved", stage_args=["--resume-evaluation", "cache"])["exit_code"], 0)
             evaluate.assert_called_once_with(["saved", "--resume-evaluation", "cache"])
+        with patch("pipeline.graph_quality.main", return_value=0) as refine:
+            self.assertEqual(execute("refine", saved_run="saved")["exit_code"], 0)
+            refine.assert_called_once_with(["saved"])
+
+    def test_graph_build_failure_stops_publication_and_professor_launch(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'input.txt'
+            source.write_text('Synthetic source.', encoding='utf-8')
+            with patch('pipeline.models.Models') as models, \
+                 patch('pipeline.extraction.extract', return_value=[]), \
+                 patch('pipeline.seeds.build_outline', return_value={'topics': []}), \
+                 patch('pipeline.debate.review_extractions', return_value=[]), \
+                 patch('pipeline.debate.debate', return_value={'candidates': []}), \
+                 patch('pipeline.graph_view.build_graph', side_effect=ValueError('Dangling graph relationship')), \
+                 patch('pipeline.evaluation.evaluate') as evaluate, \
+                 patch('pipeline.professor.serve') as serve, \
+                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                from pipeline.cli import main
+                models.return_value.details = {}
+                result = main(['--input', str(source), '--output-root', str(root/'runs'), '--no-open'])
+                self.assertEqual(result, 1)
+                evaluate.assert_not_called()
+                serve.assert_not_called()
+            run = next((root/'runs/custom').iterdir())
+            self.assertEqual(json.loads((run/'manifest.json').read_text())['status'], 'failed')
+            self.assertFalse((run/'artifacts/graph.json').exists())
 
     def test_full_orchestration_and_resume_write_notebook_provenance(self):
         # Exercise real orchestration/file publication with synthetic stage boundaries.
@@ -57,6 +84,7 @@ class SubmissionTests(unittest.TestCase):
                  patch("pipeline.debate.review_extractions", return_value=[]), \
                  patch("pipeline.debate.debate", return_value={"candidates": []}), \
                  patch("pipeline.graph_view.build_graph", return_value=dict(run_id="fixture", nodes=[], edges=[])), \
+                 patch("pipeline.graph_quality.refine_graph", side_effect=lambda graph, models, trace: graph) as quality, \
                  patch("pipeline.evaluation.evaluate", return_value=dict(status="completed", final_score=100., results=[])), \
                  patch("pipeline.report.statistics_for", return_value={}), \
                  patch("pipeline.report.render_report", return_value=("<html>Synthetic</html>", "Synthetic test")), \
@@ -67,11 +95,13 @@ class SubmissionTests(unittest.TestCase):
                 first = next((root / "runs/custom").iterdir())
                 self.assertEqual(execute("full", pipeline_args=[*args, "--resume", str(first)])["exit_code"], 0)
                 model.return_value.load_cache.assert_called_once_with(first)
+                quality.assert_not_called()
             runs = list((root / "runs/custom").iterdir())
             self.assertEqual(len(runs), 2)
             for run in runs:
                 saved = load_saved(run)
                 self.assertEqual(saved["artifacts"]["manifest.json"]["status"], "completed")
+                self.assertEqual(saved["artifacts"]["manifest.json"]["graph_quality_status"], "not_run")
                 self.assertEqual(saved["warnings"], [])
                 hashes = saved["artifacts"]["artifacts/environment.json"]["code_sha256"]
                 self.assertEqual(hashes["pipeline/cli.py"], runtime.source_hashes()["pipeline/cli.py"])
@@ -93,9 +123,11 @@ class SubmissionTests(unittest.TestCase):
             original = {p.relative_to(source): p.read_bytes() for p in source.rglob("*") if p.is_file()}
             with patch("pipeline.replay_background.Models") as model, \
                  patch("pipeline.replay_background.debate", return_value={"candidates": []}), \
+                 patch("pipeline.graph_quality.refine_graph", side_effect=lambda graph, models, trace: graph) as quality, \
                  contextlib.redirect_stdout(io.StringIO()):
                 model.return_value.calls = model.return_value.retries = 0
                 execute("background", saved_run=source, stage_args=["--reuse-seeds", "--output-root", str(root / "replay")])
+                quality.assert_not_called()
             run = next((root / "replay").iterdir())
             replay = json.loads((run / "manifest.json").read_text())
             self.assertTrue(replay["source_unchanged"])
@@ -104,7 +136,7 @@ class SubmissionTests(unittest.TestCase):
             self.assertEqual(original, {p.relative_to(source): p.read_bytes() for p in source.rglob("*") if p.is_file()})
 
     def test_invalid_selection_fails_before_model_work(self):
-        for mode in ("background", "evaluate", "render", "graph"):
+        for mode in ("background", "refine", "evaluate", "render", "graph"):
             with self.subTest(mode=mode), self.assertRaisesRegex(ValueError, "requires SAVED_RUN"):
                 execute(mode)
         with self.assertRaisesRegex(ValueError, "Unknown"):

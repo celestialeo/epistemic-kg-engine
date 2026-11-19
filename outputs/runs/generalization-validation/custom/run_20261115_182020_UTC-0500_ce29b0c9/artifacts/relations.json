@@ -1,0 +1,535 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "learns_mapping",
+      "definition": "SOURCE acquires or establishes TARGET through a process of learning, utilizing specific resources.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "quantifies",
+      "definition": "SOURCE quantifies the extent of TARGET",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "supplies_signal_for",
+      "definition": "SOURCE provides TARGET for a specific purpose",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "represents",
+      "definition": "SOURCE represents TARGET in a specific manner or state.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces_memory",
+      "definition": "SOURCE reduces the quantity or extent of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "lowers_accuracy",
+      "definition": "SOURCE reduces the quantity or extent of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "needs_re_evaluation",
+      "definition": "The entity SOURCE is recommended to undergo the process TARGET again due to prior changes.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_gradients_for",
+      "definition": "Calculates partial derivatives indicating the direction and magnitude of change needed to reduce error.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "uses_gradient_to",
+      "definition": "An optimization algorithm utilizes computed gradients to determine the direction and magnitude of adjustments applied to model parameters.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "learns",
+        "definition": "SOURCE acquires or establishes TARGET through a process of learning, utilizing specific resources.",
+        "source": "supervised classifier",
+        "target": "mapping from inputs to labels",
+        "context": "A supervised classifier learns a mapping from inputs to labels using labeled training examples."
+      },
+      "canonical_key": "learns_mapping",
+      "reason": "The new relation 'learns_mapping' accurately reflects the source assertion: a supervised classifier (SOURCE) acquires a mapping from inputs to labels (TARGET) via learning. The definition is specific and matches the source exactly without adding extra restrictions. Symmetry is correctly set to false because learning is directional (classifier learns, not vice versa). The inverse is null, which is valid since there is no natural inverse process described where the mapping acquires the classifier. No vague predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "optimization algorithm",
+        "target": "model parameters",
+        "context": "During training, an optimization algorithm adjusts the model parameters to reduce a loss function."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "acts_on",
+        "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+        "source": "optimization algorithm",
+        "target": "loss function",
+        "context": "During training, an optimization algorithm adjusts the model parameters to reduce a loss function."
+      },
+      "canonical_key": "acts_on",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "measures",
+        "definition": "SOURCE quantifies the extent of TARGET",
+        "source": "loss function",
+        "target": "disagreement",
+        "context": "The loss function measures disagreement between the model's predictions and the training labels"
+      },
+      "canonical_key": "quantifies",
+      "reason": "The new relation 'quantifies' correctly reflects the source assertion where 'loss function' measures 'disagreement'. The definition matches exactly. Symmetry is false as measuring disagreement is directional (source acts on target). The inverse is null, which is valid since there is no reciprocal relationship defined in the source. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "provides",
+        "definition": "SOURCE supplies TARGET for a specific purpose",
+        "source": "loss function",
+        "target": "signal",
+        "context": "providing a signal for these parameter updates"
+      },
+      "canonical_key": "supplies_signal_for",
+      "reason": "The new relation 'supplies_signal_for' is coherent and specific, directly mapping the source 'loss function' to the target 'signal' with the purpose of parameter updates, exactly preserving the original assertion. The direction is maintained as non-symmetric (false), which aligns with the logical flow from loss to signal. The inverse is correctly set to null, adhering to the rule that an inverse requires equivalence after swapping endpoints rather than simple relatedness, and no extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "contains",
+        "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+        "source": "validation set",
+        "target": "examples",
+        "context": "A validation set contains examples that are separate from the training set."
+      },
+      "canonical_key": "contains",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "associated_with",
+        "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+        "source": "validation set",
+        "target": "training set",
+        "context": "A validation set contains examples that are separate from the training set."
+      },
+      "canonical_key": "associated_with",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "enables",
+        "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+        "source": "validation results",
+        "target": "select model settings",
+        "context": "Developers use validation results to select model settings before evaluating the chosen model on a held-out test set."
+      },
+      "canonical_key": "enables",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "precedes",
+        "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+        "source": "select model settings",
+        "target": "evaluating the chosen model on a held out test set",
+        "context": "Developers use validation results to select model settings before evaluating the chosen model on a held-out test set."
+      },
+      "canonical_key": "precedes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "inhibits",
+        "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+        "source": "regularization",
+        "target": "overfitting",
+        "context": "Regularization can reduce overfitting by limiting a model's tendency to fit incidental details of the training data."
+      },
+      "canonical_key": "inhibits",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "represents",
+        "definition": "SOURCE represents TARGET in a specific manner or state.",
+        "source": "quantization",
+        "target": "model parameters",
+        "context": "After training, quantization represents model parameters with fewer bits and can reduce the memory needed to store them."
+      },
+      "canonical_key": "represents",
+      "reason": "The new relation 'represents' is coherent as it maps a source (quantization) to a target (model parameters) in a specific state. The meaning and direction are exactly preserved from the source assertion: quantization represents model parameters with fewer bits. No extra restrictions were added; the definition remains identical to the source. Symmetry is correctly set to false because 'A represents B' does not imply 'B represents A'. The inverse is correctly null, as there is no standard inverse relation for 'represents' that fits the definition of equivalence after swapping endpoints in this context."
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE reduces the quantity or extent of TARGET.",
+        "source": "quantization",
+        "target": "memory needed to store model parameters",
+        "context": "After training, quantization represents model parameters with fewer bits and can reduce the memory needed to store them."
+      },
+      "canonical_key": "reduces_memory",
+      "reason": "The new relation 'reduces_memory' correctly preserves the source assertion's meaning: quantization reduces memory needed. The definition matches the source exactly without adding extra restrictions. Symmetry is false, which is correct because reducing memory is not a symmetric relationship (if A reduces B, B does not reduce A). The inverse is null, which is valid as per instructions for asymmetric relations where no inverse relation exists. No vague predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "reduces",
+        "definition": "SOURCE reduces the quantity or extent of TARGET.",
+        "source": "lower numerical precision",
+        "target": "prediction accuracy",
+        "context": "Lower numerical precision can also reduce prediction accuracy"
+      },
+      "canonical_key": "lowers_accuracy",
+      "reason": "The new relation 'lowers_accuracy' correctly maps the source 'lower numerical precision' to the target 'prediction accuracy' using the definition 'reduces'. The direction is preserved (source reduces target). Symmetry is false as reduction is not inherently reciprocal. The inverse is null, which is valid since the inverse of a specific reduction relation is not defined as an equivalence swap in this context but rather remains null per the schema's allowance for non-reciprocal processes. No extra restrictions or vague predicates were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_005",
+      "original": {
+        "label": "should_be_evaluated_again",
+        "definition": "The entity SOURCE is recommended to undergo the process TARGET again due to prior changes.",
+        "source": "quantized model",
+        "target": "evaluation",
+        "context": "the quantized model should be evaluated again"
+      },
+      "canonical_key": "needs_re_evaluation",
+      "reason": "The new relation 'needs_re_evaluation' accurately reflects the source assertion that an entity should undergo a process again due to prior changes. The definition is identical to the source, preserving meaning and direction without adding extra restrictions. Symmetry is correctly set to false because re-evaluation is not inherently symmetric (if A needs re-evaluation after B's change, B does not necessarily need it after A's change). The inverse is correctly null, as there is no defined inverse relationship where swapping endpoints creates an equivalent statement in this context."
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "computes gradients for",
+        "definition": "Calculates partial derivatives indicating the direction and magnitude of change needed to reduce error.",
+        "source": "loss function",
+        "target": "model parameters",
+        "context": {
+          "chapter": {
+            "overview": "This chapter segment details supervised learning mechanisms where optimization algorithms minimize loss to map inputs to labels. It distinguishes the roles of training, validation, and test sets, emphasizing that validation data guides model selection while preventing over-reliance on training performance for unseen examples. Finally, it addresses techniques to manage model complexity and resources, specifically how regularization reduces overfitting by limiting focus on incidental details, and how post-training quantization improves memory efficiency at the potential cost of accuracy, requiring subsequent re-evaluation.",
+            "topics": [
+              "Supervised learning mechanism",
+              "Optimization algorithms in training",
+              "Loss function role in parameter updates",
+              "Definition and purpose of a validation set",
+              "Role of validation results in selecting model settings",
+              "Evaluation process using a held-out test set",
+              "Limitation of training set performance regarding unseen examples",
+              "Regularization and overfitting reduction",
+              "Quantization for memory efficiency",
+              "Impact of numerical precision on accuracy",
+              "Re-evaluation of quantized models"
+            ],
+            "concepts": [
+              "chosen model",
+              "disagreement",
+              "evaluating the chosen model on a held out test set",
+              "evaluation",
+              "examples",
+              "fewer bits",
+              "good performance on previously unseen examples from the intended application",
+              "good performance on the training examples alone",
+              "held out test set",
+              "labeled training examples",
+              "loss function",
+              "lower numerical precision",
+              "mapping from inputs to labels",
+              "memory needed to store model parameters",
+              "model",
+              "model parameters",
+              "model settings",
+              "models predictions",
+              "optimization algorithm",
+              "overfitting",
+              "parameter updates",
+              "prediction accuracy",
+              "quantization",
+              "quantized model",
+              "regularization",
+              "select model settings",
+              "signal",
+              "supervised classifier",
+              "training data",
+              "training labels",
+              "training set",
+              "validation results",
+              "validation set"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A supervised classifier learns a mapping from inputs to labels using labeled training examples. During training, an optimization algorithm adjusts the model parameters to reduce a loss function. The loss function measures disagreement between the model's predictions and the training labels, providing a signal for these parameter updates."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?",
+              "assumed_knowledge": "The concept of gradients derived from the loss function which indicate the steepest descent direction.",
+              "why_useful": "The source states the loss provides a 'signal' but does not explain that this signal is typically a gradient vector used by the optimizer. Without this, the nature of the 'signal' remains undefined.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0006_gap_001",
+              "seed_candidate_id": "seed_candidate_0006",
+              "concept": "loss function",
+              "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates."
+            }
+          ],
+          "intended_fact": "A loss function computes gradients with respect to model parameters.",
+          "explanation": "General knowledge in supervised learning states that the 'signal' for optimization is mathematically represented as the gradient vector of the loss function.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "computes_gradients_for",
+      "reason": "The new relation 'computes_gradients_for' is coherent and specific, accurately reflecting the source assertion that a loss function provides a signal (gradients) for parameter updates. The definition preserves the meaning of calculating partial derivatives to reduce error without adding extra restrictions. Symmetry is correctly set to false because the relationship is directional (loss -> parameters), not reciprocal. The inverse is null, which is valid as there is no standard 'inverse' operation where parameters compute gradients for a loss function in this context; the definition explicitly states the direction is from loss to parameters."
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "updates based on gradients",
+        "definition": "Adjusts parameter values using gradient information to minimize the loss function.",
+        "source": "optimization algorithm",
+        "target": "model parameters",
+        "context": {
+          "chapter": {
+            "overview": "This chapter segment details supervised learning mechanisms where optimization algorithms minimize loss to map inputs to labels. It distinguishes the roles of training, validation, and test sets, emphasizing that validation data guides model selection while preventing over-reliance on training performance for unseen examples. Finally, it addresses techniques to manage model complexity and resources, specifically how regularization reduces overfitting by limiting focus on incidental details, and how post-training quantization improves memory efficiency at the potential cost of accuracy, requiring subsequent re-evaluation.",
+            "topics": [
+              "Supervised learning mechanism",
+              "Optimization algorithms in training",
+              "Loss function role in parameter updates",
+              "Definition and purpose of a validation set",
+              "Role of validation results in selecting model settings",
+              "Evaluation process using a held-out test set",
+              "Limitation of training set performance regarding unseen examples",
+              "Regularization and overfitting reduction",
+              "Quantization for memory efficiency",
+              "Impact of numerical precision on accuracy",
+              "Re-evaluation of quantized models"
+            ],
+            "concepts": [
+              "chosen model",
+              "disagreement",
+              "evaluating the chosen model on a held out test set",
+              "evaluation",
+              "examples",
+              "fewer bits",
+              "good performance on previously unseen examples from the intended application",
+              "good performance on the training examples alone",
+              "held out test set",
+              "labeled training examples",
+              "loss function",
+              "lower numerical precision",
+              "mapping from inputs to labels",
+              "memory needed to store model parameters",
+              "model",
+              "model parameters",
+              "model settings",
+              "models predictions",
+              "optimization algorithm",
+              "overfitting",
+              "parameter updates",
+              "prediction accuracy",
+              "quantization",
+              "quantized model",
+              "regularization",
+              "select model settings",
+              "signal",
+              "supervised classifier",
+              "training data",
+              "training labels",
+              "training set",
+              "validation results",
+              "validation set"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A supervised classifier learns a mapping from inputs to labels using labeled training examples. During training, an optimization algorithm adjusts the model parameters to reduce a loss function. The loss function measures disagreement between the model's predictions and the training labels, providing a signal for these parameter updates."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the loss function's output translate into a specific direction or magnitude for parameter changes?",
+              "assumed_knowledge": "The concept of gradients derived from the loss function which indicate the steepest descent direction.",
+              "why_useful": "The source states the loss provides a 'signal' but does not explain that this signal is typically a gradient vector used by the optimizer. Without this, the nature of the 'signal' remains undefined.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "seed_candidate_0006_gap_001",
+              "seed_candidate_id": "seed_candidate_0006",
+              "concept": "loss function",
+              "document_coverage": "The source text defines a 'loss function' as something that measures disagreement between predictions and labels, providing a signal for parameter updates."
+            }
+          ],
+          "intended_fact": "An optimization algorithm uses the computed gradients to determine the direction and magnitude of parameter updates.",
+          "explanation": "This connects the general mechanism (gradients) to the specific action (parameter updates) mentioned in the source text, filling the gap on how the signal is utilized.",
+          "case_specific_unknowns": []
+        }
+      },
+      "canonical_key": "uses_gradient_to",
+      "reason": "The new relation 'uses_gradient_to' is coherent and specific, accurately reflecting the source assertion that optimization algorithms use gradients for parameter updates. It exactly preserves the meaning and direction of the intended fact without adding extra restrictions. Symmetry is correctly set to false as the relationship is directional (algorithm uses gradient), and the inverse is null, which is valid since there is no reciprocal 'gradient uses algorithm' relationship defined in the source context."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

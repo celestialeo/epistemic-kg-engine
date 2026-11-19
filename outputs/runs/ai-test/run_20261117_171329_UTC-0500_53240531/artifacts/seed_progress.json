@@ -1,0 +1,202 @@
+{
+  "topics": {
+    "seed_candidate_0001": {
+      "expand": false,
+      "chapter_topic": "small transformer",
+      "importance": 0.2,
+      "relevance": 0.5,
+      "reason": "The term 'small transformer' is a generic system descriptor rather than a distinct technical concept; its function is fully explained by the combination of self-attention, backpropagation, and post-training strategies mentioned in the text."
+    },
+    "seed_candidate_0002": {
+      "expand": true,
+      "chapter_topic": "Self-attention mechanism",
+      "importance": 0.9,
+      "relevance": 1.0,
+      "reason": "This is a core architectural component; expanding on how self-attention processes text sequences is essential for understanding the model's primary function described in the chapter."
+    },
+    "seed_candidate_0003": {
+      "expand": true,
+      "chapter_topic": "Backpropagation",
+      "importance": 0.9,
+      "relevance": 1.0,
+      "reason": "As the fundamental optimization method for training neural networks, explaining backpropagation is critical to understanding how the model improves its predictions as stated."
+    },
+    "seed_candidate_0004": {
+      "expand": false,
+      "chapter_topic": "training",
+      "importance": 0.1,
+      "relevance": 0.3,
+      "reason": "'Training' is a generic temporal context or event phase rather than a specific technical mechanism; the chapter focuses on the methods (backpropagation) used during this phase, not the phase itself."
+    },
+    "seed_candidate_0005": {
+      "expand": true,
+      "chapter_topic": "Regularization",
+      "importance": 0.8,
+      "relevance": 1.0,
+      "reason": "This concept addresses a specific challenge (overfitting) and its solution; explaining how regularization aids generalization is vital for understanding model robustness."
+    },
+    "seed_candidate_0006": {
+      "expand": false,
+      "chapter_topic": "generalization beyond training examples",
+      "importance": 0.4,
+      "relevance": 0.7,
+      "reason": "While important as an outcome, this is better understood as the goal enabled by regularization rather than a distinct mechanism requiring its own expansion separate from the technique itself."
+    },
+    "seed_candidate_0007": {
+      "expand": true,
+      "chapter_topic": "Quantization",
+      "importance": 0.85,
+      "relevance": 1.0,
+      "reason": "This post-training strategy addresses a practical constraint (memory efficiency); explaining the mechanism of quantization is necessary to understand how deployment costs are managed."
+    },
+    "seed_candidate_0008": {
+      "expand": true,
+      "chapter_topic": "Retrieval-augmented generation",
+      "importance": 0.9,
+      "relevance": 1.0,
+      "reason": "This represents a distinct paradigm shift in model capability (integrating external knowledge); expanding on this concept is essential to understand how the model answers questions using documents."
+    },
+    "seed_candidate_0009": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.0,
+      "relevance": 0.0,
+      "reason": "The concept 'reduction in memory requirements' is a direct outcome (effect) of the primary technique 'quantization'. Since 'quantization' is already listed as a core topic requiring expansion to explain the mechanism itself, this peripheral result adds no substantive explanatory value on its own and should be excluded."
+    },
+    "seed_candidate_0010": {
+      "expand": false,
+      "chapter_topic": null,
+      "importance": 0.0,
+      "relevance": 0.0,
+      "reason": "The concept 'use of external documents' describes the functional outcome or application enabled by 'retrieval-augmented generation'. As a generic description of the capability rather than the underlying mechanism (RAG), it lacks substantive explanatory depth compared to the core topic and should be excluded."
+    }
+  },
+  "plans": {
+    "seed_candidate_0002": {
+      "document_coverage": "The source states that a small transformer uses self-attention to process text.",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism mathematically or architecturally compute relationships between tokens in a sequence?",
+          "assumed_knowledge": "Understanding of attention scores, query/key/value vectors, and softmax normalization.",
+          "why_useful": "The source claims 'processing text' but does not explain the internal computation; without knowing how attention weights are derived, the claim remains abstract.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What specific types of information (e.g., syntactic, semantic) does self-attention extract from text sequences?",
+          "assumed_knowledge": "Distinction between local and global dependencies in language models.",
+          "why_useful": "The source mentions 'processing text' generally; explaining the nature of extracted features clarifies the mechanism's utility.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "General mechanisms of self-attention are assumed to be known for the claim 'processes text' to have meaning. No specific implementation details (e.g., number of heads) are mentioned in the source."
+    },
+    "seed_candidate_0003": {
+      "document_coverage": "The source states that backpropagation is used to improve predictions during training.",
+      "gaps": [
+        {
+          "question": "What is the mathematical basis for computing gradients in backpropagation (e.g., chain rule application)?",
+          "assumed_knowledge": "Calculus, specifically the chain rule applied to differentiable computational graphs.",
+          "why_useful": "The source claims 'improving predictions' via backpropagation; without explaining gradient computation, the mechanism of improvement is opaque.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "How does backpropagation specifically update model parameters to reduce loss?",
+          "assumed_knowledge": "Concept of parameter updates via optimization algorithms (e.g., SGD) driven by gradients.",
+          "why_useful": "The source links backpropagation to prediction improvement; explaining the update rule connects the process to the outcome.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "Backpropagation is a standard term, but the source only describes its effect ('improve predictions') without detailing the gradient descent process or chain rule application."
+    },
+    "seed_candidate_0005": {
+      "document_coverage": "The source states that regularization helps the model generalize beyond training examples.",
+      "gaps": [
+        {
+          "question": "What are the common techniques for regularization (e.g., dropout, weight decay) and how do they function?",
+          "assumed_knowledge": "Mechanisms like random neuron deactivation or penalty terms in loss functions.",
+          "why_useful": "The source claims 'helps generalize' but does not specify the method; explaining techniques clarifies *how* generalization is achieved.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What is the relationship between overfitting and the need for regularization?",
+          "assumed_knowledge": "Definition of overfitting as poor performance on unseen data due to memorization.",
+          "why_useful": "The source mentions generalizing 'beyond training examples'; understanding overfitting provides context for why regularization is needed.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "Regularization is a broad category; the source assumes the reader knows specific methods and their link to overfitting without defining them."
+    },
+    "seed_candidate_0007": {
+      "document_coverage": "The source states that quantization reduces memory requirements after training.",
+      "gaps": [
+        {
+          "question": "How does quantization technically reduce memory usage (e.g., reducing precision from float32 to int8)?",
+          "assumed_knowledge": "Concept of numerical precision and bit-width reduction in model weights/activations.",
+          "why_useful": "The source claims 'reduces memory requirements'; explaining the precision reduction mechanism makes this claim concrete.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What are the potential trade-offs of quantization (e.g., accuracy loss) that must be considered?",
+          "assumed_knowledge": "Impact of lower precision on model performance and calibration needs.",
+          "why_useful": "The source focuses only on memory efficiency; understanding trade-offs provides a complete picture of the technique's application.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "Quantization is described by its outcome ('reduces memory') but assumes knowledge of the underlying precision reduction process and associated risks."
+    },
+    "seed_candidate_0008": {
+      "document_coverage": "The source text defines Retrieval-Augmented Generation (RAG) as a post-training technique that allows a small transformer to utilize external documents when answering questions. It positions this alongside other techniques like quantization and regularization, noting its role in integrating external knowledge.",
+      "gaps": [
+        {
+          "question": "What is the retrieval mechanism?",
+          "assumed_knowledge": "The existence of a specific search or indexing algorithm (e.g., vector similarity search, keyword matching) that retrieves relevant documents from an external corpus before they are fed to the model.",
+          "why_useful": "The source states RAG 'lets it use external documents' but does not explain *how* those documents are selected. Understanding the retrieval mechanism is necessary to comprehend the flow of information from the external database to the transformer's input layer.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "How is retrieved information integrated into the generation process?",
+          "assumed_knowledge": "The architectural method for combining retrieved text with the model's internal processing, such as concatenating text tokens to the input sequence or using a separate retrieval module that outputs embeddings concatenated with the model's hidden states.",
+          "why_useful": "The source mentions 'using external documents' but omits the technical interface between the retrieval system and the transformer. Explaining this integration clarifies whether the model sees raw text, embeddings, or a hybrid representation.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        },
+        {
+          "question": "What is the distinction between 'training' and 'post-training' in this context?",
+          "assumed_knowledge": "The concept that RAG is implemented as a system architecture added after the base model weights are fixed, rather than a parameter learned during the standard backpropagation phase described earlier in the chapter.",
+          "why_useful": "The source lists RAG under 'post-training strategies' but does not define what makes a strategy 'post-training.' Clarifying that this involves adding external components without retraining the core weights helps distinguish it from techniques like fine-tuning or regularization mentioned in the same text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ]
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text provides high-level functional descriptions ('uses self-attention', 'lets it use external documents') but assumes the reader understands the underlying mechanisms of retrieval algorithms, input integration architectures, and the specific definition of post-training augmentation versus inductive learning. These are standard concepts in NLP that the chapter treats as known rather than explaining them."
+    }
+  },
+  "covered_gaps": {},
+  "unresolved": {},
+  "unresolved_gaps": {}
+}

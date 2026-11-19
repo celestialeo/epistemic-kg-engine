@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261115_185517_UTC-0500_9a7db956",
+  "status": "failed",
+  "config": {
+    "input": "data\\validation\\ai_three_paragraphs.txt",
+    "chapter": "custom",
+    "output_root": "outputs\\runs\\generalization-validation\\custom",
+    "chunk_words": 85,
+    "seed_limit": 3,
+    "background_proposal_limit": 2,
+    "seed_similarity_threshold": null,
+    "seed_threshold": null,
+    "seed_max_words": null,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": 4,
+    "identity_candidates": 8,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 8192,
+    "document_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": "outputs\\runs\\generalization-validation\\custom\\run_20261115_184432_UTC-0500_7dc7194d",
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": true,
+    "interact": false,
+    "no_explorer": true,
+    "explorer_port": 0,
+    "new": false
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-11-15T18:55:17.382740-05:00",
+  "started_at_utc": "2026-11-15T23:55:17.382740+00:00",
+  "time_zone": "Eastern Standard Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [],
+  "graph_quality_required": true,
+  "error": "edge_00001: semantic review unresolved after repair: {'facts': [{'index': 0, 'literal_meaning': \"The source 'supervised classifier' acquires or establishes the target 'mapping from inputs to labels' using labeled training examples.\", 'faithful': False, 'supported': False, 'direction_valid': False, 'label_matches_contract': False, 'endpoints_valid': False, 'qualifications_preserved': False, 'reason': \"The original claim states the classifier 'learns a mapping' (acquires/establishes), whereas the proposed relation is 'uses'. The predicate 'uses' implies utilizing an existing resource or mechanism, failing to capture the generative process of 'learning' and 'establishing' defined in the contract. Furthermore, the target endpoint changes from 'mapping from inputs to labels' (the result of learning) to 'labeled training examples' (the resource). The original evidence explicitly links the action '\"}], 'omission_valid': False, 'reason': 'The proposed relation alters both the causal nature of the interaction (from acquiring/establishing via learning to merely using) and the target participant (from the resulting mapping to the training data). This constitutes a substantive change to the assertion rather than an omission or stylistic variation.'}",
+  "error_type": "ValueError",
+  "finished_at": "2026-11-15T19:01:05.394962-05:00",
+  "unresolved_items": [],
+  "finished_at_utc": "2026-11-16T00:01:05.394962+00:00",
+  "duration_seconds": 348.0,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "fa5739c03bca8fdd43acd745bcd6a175d78417c4e8475f2b6e2a8fc562c3e4b8",
+      "bytes": 1032
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "492094a0718bafa043c6febb98a38e35da2d60d69ba5af64fcb2e2011ad4faed",
+      "bytes": 1332
+    },
+    "artifacts/chunks.json": {
+      "sha256": "3081cb626f1cc56b95177485168cc6bb0833f5f5a3e00d15b454ff78e8890f93",
+      "bytes": 1586
+    },
+    "artifacts/environment.json": {
+      "sha256": "aa138c88a0c69b68d30a004cd532518dcfc63b54eaf0438da6a33bee03ed7eaf",
+      "bytes": 31511
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "artifacts/relations.json": {
+      "sha256": "7125d6d3de116850a2ea8567d1ea245ff5e6ecf417748c492663b2d8182dafa4",
+      "bytes": 45812
+    },
+    "artifacts/concepts.json": {
+      "sha256": "e4d2832013c4b651f4577ac57fff4d5688627f2b032f59209452cc2a9878699e",
+      "bytes": 30052
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "47d74c0576f3beaa3b988f19c18d269e4041f9b9ed9203f01063089205f09e51",
+      "bytes": 35843
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "2cc6ebe8c710b0ada5f1e9c06afb5f9bcdf2ae1f6648b4a8c8f683a8e2a0e61a",
+      "bytes": 1776
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "fb60b0c01544398491f0f88ce68612d628c22d927cad25d8914e9f847c3afc6b",
+      "bytes": 3079
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "c501bb30a8491fddabe176d21957ea90930fb0f1a3721f7501f68c725ec62807",
+      "bytes": 1785
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "27e2b47821b5fcbc4741afaa344f4615bd7ff10e0db10a29256ceadb0530aee9",
+      "bytes": 48079
+    },
+    "artifacts/extractions.json": {
+      "sha256": "429c76ca2ae912734d2e5ebf3950139bcc96b8b1f2c7aa53a1df97518ee8145d",
+      "bytes": 101669
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "3c401d5198c95d49950002f09b27684719dcb0f4f6fde54f27b5f4eb423d5919",
+      "bytes": 348
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "6a3c3b904eb1d76cde0c92b30c7d6e1097bd84b412fe51577986a05f77c13634",
+      "bytes": 3717
+    },
+    "artifacts/seeds.json": {
+      "sha256": "db65be2c2408364958174d5e9a1ffa3268e060730606257f1bdf04867c263918",
+      "bytes": 90393
+    },
+    "artifacts/seed_progress.json": {
+      "sha256": "b8bac57f74ac8b982a4501265e563342e67a41fa8973e34733a9338193a0ed8e",
+      "bytes": 30409
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "2a16ea0aca5f20399b654df11cbedff4b2b749af017e02a4225a2eb34ac70fee",
+      "bytes": 90513
+    },
+    "artifacts/debate.json": {
+      "sha256": "c7d4a8851d9393b7191a2137634038ef81629e2afb2686fabd3e7e3e4d59c225",
+      "bytes": 149001
+    },
+    "artifacts/graph_before_review.json": {
+      "sha256": "515a4804ddd2e9be7333d6d3115f9943daa0afddc3688b93d376db97931c3c83",
+      "bytes": 38597
+    },
+    "artifacts/graph_quality.json": {
+      "sha256": "9085c806762e871738837f683988178c79be3b56176c91d053c4cc64cc4d7259",
+      "bytes": 40424
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 245,
+    "stage.started": 5,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "input.paragraph_parsed": 3,
+    "input.sentences_parsed": 3,
+    "input.chunk_created": 3,
+    "input.coverage_validated": 1,
+    "stage.completed": 4,
+    "service.request": 2,
+    "service.response": 2,
+    "cache.metadata_parsed": 1,
+    "cache.read": 1,
+    "cache.parsed": 1,
+    "database.export_disabled": 1,
+    "model.request": 262,
+    "cache.hit": 229,
+    "model.response": 262,
+    "parse.started": 262,
+    "parse.completed": 262,
+    "validation.started": 262,
+    "validation.completed": 258,
+    "extraction.evidence_checked": 23,
+    "registry.concept_resolved": 71,
+    "registry.identity_reused": 36,
+    "registry.relation_added": 12,
+    "registry.relation_resolved": 19,
+    "extraction.normalized": 3,
+    "item.completed": 168,
+    "outline.segment": 3,
+    "registry.identity_candidates": 36,
+    "registry.concept_alias_checked": 5,
+    "debate.adjudicated": 17,
+    "debate.decision": 20,
+    "extraction.chunk_review_summary": 3,
+    "validation.failed": 4,
+    "model.attempt_failed": 4,
+    "model.retry": 4,
+    "seed.gap_coverage_checked": 18,
+    "seed.filtered": 21,
+    "seed.selected": 3,
+    "seed.selection_completed": 1,
+    "debate.fact_written": 6,
+    "debate.proposed": 6,
+    "debate.representation_checked": 5,
+    "debate.novelty_checked": 14,
+    "registry.concepts_merged": 1,
+    "debate.rejected": 3,
+    "graph.node_added": 34,
+    "graph.edge_added": 14,
+    "graph.canonicalized": 1,
+    "graph.validated": 1,
+    "stage.failed": 1,
+    "run.failed": 1
+  }
+}

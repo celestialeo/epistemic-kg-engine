@@ -23,6 +23,161 @@ component answers do not establish full-relationship mastery. Background facts
 require professor approval under Run Insights before quiz use. See the workflow
 documentation for evidence requirements, corrections and unresolved retries.
 
+Full generation and background replay build the graph directly from the existing
+source-extraction reviews and background debate decisions. The added post-graph
+review and repair process is no longer part of either pipeline. Runs record
+`graph_acceptance_policy=document_review_and_background_debate` and
+`graph_quality_status=not_run`; they do not claim that the extra review passed.
+Reconstruction evaluation remains a measurement stage, and background quiz approval
+remains a separate professor control. Custom texts use the same logic via `--input`.
+
+The existing graph-refinement command is an explicitly invoked diagnostic tool.
+The review and repair behavior described below applies only when that command (or
+notebook `MODE="refine"`) is requested. It is not a prerequisite for normal runs.
+In that optional workflow, each concept and relationship receives an edit and
+verification, followed by a
+consistency review over bounded groups of relationships and their neighbors.
+Source coverage is checked chunk by chunk. Predicate labels use at most three words and 32
+characters. Included facts must pass review; unresolved source claims stop publication.
+Document assertions receive a context-preserving edit even when their labels are
+already short. Concise background assertions are verified before rewriting. Missing assertions are
+recovered from source passages, rather than inventing links for isolated nouns.
+Each proposed edge is first read without its source quotation or predicate contract;
+verification then compares that displayed meaning with the evidence and contract.
+This helps expose labels or missing qualifiers that a reviewer might otherwise
+silently repair by reading the source.
+A rejected assertion must change in graph content before it can count as a repair;
+changing only its explanation or quotation is insufficient.
+Rejected background enrichment is excluded and recorded. The audit is saved as
+`artifacts/graph_quality.json`. This checks source fidelity and model judgments,
+not independent factual truth. Existing graphs can be refined into a new version
+without changing historical student records:
+
+```powershell
+python -m pipeline.graph_quality outputs/runs/ai-test/<saved-run-id>
+```
+
+Use `--resume-review <interrupted-review-directory>` to reuse exact validated model
+responses. The new completed version is discovered by the professor workspace.
+Legacy versions remain available for inspection and their original assessment history.
+Resume also preserves recorded output-limit failures for identical requests. They
+remain failures; changing the prompt, model digest or budget requires a fresh call.
+
+Inference and grading prompts do not embed facts from the bundled topics. Custom
+topics use the same pipeline through `--input`; adding a text does not require
+adding a chapter alias or changing prompts. Semantic repairs infer participants
+from the supplied assertion rather than matching a list of sentence patterns.
+The graph review's `ReviewPolicy` exposes batch sizes, repair attempts, and
+candidate-retrieval limits. Retrieval similarity proposes candidates only; it
+never establishes equivalence. These resource and schema constraints are general
+processing rules, not topic knowledge. The paged reviews are checks, not an
+exhaustive proof of global consistency or external factual truth.
+Review calls default to direct structured output (`review.reasoning=false`) to avoid
+spending the output budget on hidden reasoning before producing a decision. Enable
+reasoning in configuration when the selected model and budget support it. Its output
+ceiling follows the configured model output budget and available input headroom.
+When enabled, `review.reasoning_fallback` permits a direct retry after reasoning
+exhaustion, using the same verification criteria. Failed checks never become approval.
+Source rejection blocks publication; rejected or failed background checks withhold
+the addition. Debate acceptance alone is never sufficient for publication.
+Coverage checks one sentence per request, retaining its paragraph as context,
+and maps its assertions to actual edge IDs without treating an
+edge's quotation as graph content. Background assertions also face a separate
+counterexample and qualification check.
+Node review retrieves other source mentions as well as incident quotations, so a
+shared concept is not defined only by one use. Recovered assertions are verified
+one at a time, followed by a check that the revision closes a reported gap without
+losing existing source claims.
+
+Reviewed graph schema 4 records additional participants as node references with a
+semantic role and scope, plus separate `purpose` and `timing` fields. Ownership,
+pronouns and shared actors are resolved from source context; unresolved ambiguity
+must remain qualified. Participants are added only when needed for an assertion,
+not to meet a node quota. The graph view shows these roles and qualifications in
+selectable relationship cards; dotted connectors denote roles, not extra assertions.
+Predicate definitions cannot supply a missing participant or reverse an arrow.
+Local verification checks one focused assertion; the separate mandatory coverage
+gate checks every source sentence, including other assertions sharing its quotation.
+Before relationship editing, source-role analysis focuses on one existing entity
+at a time. Two independent readings select its source-attributed owner or actor
+from runtime canonical names, which code maps to existing node IDs. Disagreement
+requires a separate source-based adjudication within the configured repair budget.
+The exact supplied source is retained as provenance. Agreement is model evidence,
+not a guarantee of correctness; the subsequent fact and source-coverage gates still
+check the actual graph. Ambiguous references cannot acquire invented participants.
+Bindings identify the referent and its property/action by existing node IDs. A
+programmatic check requires the bound owner or actor on the corresponding assertion
+with the correct participant scope; a positive model verdict cannot override a
+missing identity link. Properties/actions cannot be bound to their actor's own ID.
+This analysis guides editing but is not graph content and is never supplied to the
+reconstructor. Goal and temporal scope are checked on the actual graph assertions,
+both individually and by source coverage. Background objections are also checked independently for applicability
+to the actual qualified claim. Dismissing an invalid objection never replaces the
+subsequent factual and literal-direction verification.
+Background falsification receives named identities and their definitions to preserve
+the intended meaning. A contextual description does not redefine every member of
+a named class.
+Counterexamples must be instances of that subject and satisfy the stated scope.
+
+Reconstruction uses source occurrence order and only structured document facts,
+including participant roles, goals and timing; it never receives evidence quotations.
+Evaluation version `reconstruction_fidelity_v2_context` independently reviews each
+candidate claim match for participant identity, ownership, purpose versus outcome,
+temporal scope, direction, and qualifications. A failed dimension removes that match
+before scoring. Scores from the previous metric version are not directly comparable.
+`python tools/render_saved_graph.py RUN` refreshes a completed run's portable view
+without inference or changing graph facts; it records the renderer revision and new
+HTML hash in the manifest.
+
+Concept names retain their spelling and number; automatic singularization is not
+used to decide identity. Singular/plural variants and synonyms can merge only
+after contextual checks. `--identity-candidates` bounds model comparisons per
+concept when explicitly configured; by default all candidates are considered,
+including background concepts. Retrieval can miss an alias;
+unmatched concepts remain separate instead of being silently discarded or merged.
+
+Runtime policy is centralized in [`pipeline_settings.json`](pipeline_settings.json),
+with the same defaults embedded in the portable notebook. Set `EKG_SETTINGS` to a
+partial JSON override file before starting a process; unknown keys and invalid
+budgets fail early. Existing CLI options override their corresponding settings.
+
+- `workload`: null defaults derive chunk/page sizes from input density and model
+  budgets; identity candidates, seeds and background proposals have no default
+  content quota. Explicit limits remain available as deliberate operating choices.
+- `model`, `review`, `health`, `operations`: token, time, retry and service budgets.
+  These are explicit configured resource policies, not automatic hardware detection.
+- `evaluation_weights`, `assessment_weights`: normalized evaluation weights and
+  rubric credit. Saved answer weights preserve historical grading.
+- `metrics`: class-level shared-knowledge threshold.
+- `ui`, `text`, `labels`: display, transport and field limits. Quiz round size
+  derives from eligible facts unless overridden; thumbnails default to all items.
+
+Paged processing visits all input items. An indivisible request that cannot fit the
+configured context fails explicitly; it is neither truncated nor treated as verified.
+Necessary mathematical constants, schema/protocol values and historical format
+compatibility values remain explicit. Configuration is recorded in run artifacts.
+
+Only the original AI test is being validated for this change. The larger fixtures
+below are available for separate testing; they are not evidence of current live-model
+accuracy across topics.
+
+Two three-paragraph validation inputs are under `data/validation`. When testing
+these separately, use the same configured resource policy:
+
+```powershell
+python run_pipeline.py --input data/validation/ai_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python run_pipeline.py --input data/validation/neuron_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python -m unittest tests.test_topic_independence tests.test_graph_quality -q
+```
+
+Optional CLI content limits apply only when explicitly requested. The neuron fixture was checked against OpenStax's
+[neuron anatomy](https://openstax.org/books/biology-2e/pages/35-1-neurons-and-glial-cells)
+and [neural communication](https://openstax.org/books/biology-2e/pages/35-2-how-neurons-communicate)
+chapters. Fixtures are evaluation data and are never inserted into inference
+prompts as examples for another input. The topic-independence tests include a
+third-topic endpoint repair, prompt checks, and bounded source-review coverage;
+these deterministic tests do not measure live-model accuracy.
+
 [261273237.ipynb](261273237.ipynb) is the submission and the single source of the
 implementation for student **261273237**. It contains
 problem/background discussion, setup and embedded data, methodology and implementation,
@@ -76,6 +231,7 @@ cells. `SAVED_RUN` must identify the exact run directory, not its parent.
 | `ingest` | Split embedded AI-test text into paragraphs/chunks; `execute(..., input_path=...)` accepts a custom file |
 | `full` | Run all pipeline stages with `PIPELINE_ARGS`; server startup is deferred to the graph controls |
 | `background` | Replay background expansion from `SAVED_RUN`; `STAGE_ARGS` accepts `--reuse-seeds` and `--output-root` |
+| `refine` | Review and repair `SAVED_RUN` into a new graph version, preserving the source run and student history |
 | `evaluate` | Evaluate the saved graph and update that run's report; `STAGE_ARGS` accepts evaluation options |
 | `render` | Display saved `artifacts/graph.json` in an isolated static viewer; no inference |
 | `graph` | Start an interactive console for exactly `SAVED_RUN`; never reruns extraction |
