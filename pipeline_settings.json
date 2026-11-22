@@ -2,19 +2,24 @@
   "model": {
     "context_tokens": 8192,
     "max_output_tokens": 4096,
+    "repair_output_tokens": 1536,
     "timeout_seconds": 600,
     "validation_retries": 2,
     "temperature": 0,
     "seed": 7,
     "estimated_bytes_per_token": 3,
-    "prompt_reserve_tokens": 1024
+    "prompt_reserve_tokens": 1024,
+    "registry_output_tokens": 768,
+    "service_retries": 2,
+    "service_retry_seconds": 3
   },
   "workload": {
     "chunk_words": null,
     "batch_size": null,
     "identity_candidates": null,
     "seed_limit": null,
-    "background_proposal_limit": null
+    "background_proposal_limit": null,
+    "retrieval_candidates": 16
   },
   "review": {
     "repair_attempts": 2,
@@ -45,8 +50,8 @@
     "feedback_chars": 3000
   },
   "labels": {
-    "predicate_words": 3,
-    "predicate_chars": 32
+    "predicate_words": 6,
+    "predicate_chars": 80
   },
   "evaluation_weights": {
     "claim_fidelity_f1": 0.55,

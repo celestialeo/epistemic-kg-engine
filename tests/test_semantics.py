@@ -54,6 +54,8 @@ def reviewer(role, payload, **overrides):
     row.update(overrides)
     if role == "extraction_reviewer" or (role == "judge" and payload["candidate"].get("origin") == "document"):
         row.setdefault("rejection_categories", [] if row.get("accept") else ["unsupported_claim"])
+    if role == "extraction_reviewer" and 'literal_candidate_reading' in payload:
+        row['qualified_reading'] = payload['literal_candidate_reading']
     return {identifier: row}
 
 
@@ -81,11 +83,16 @@ class SemanticTests(unittest.TestCase):
         self.assertNotIn("has-a", relations.entries)
 
     def test_established_enables_cannot_be_collapsed_into_causes(self):
-        model, _, relations = self.registry(lambda role, p: dict(
-            key="causes", exact_meaning=True, same_direction=True, reason="Faulty model says similar"))
+        def respond(role, payload):
+            if role == 'relation_match_verifier':
+                return dict(exact_meaning=False, same_direction=True, compatible_types=True,
+                            reason='The direct contract was not verified for this fixture')
+            return dict(key="causes", exact_meaning=True, same_direction=True, reason="Faulty model says similar")
+        model, _, relations = self.registry(respond)
         self.assertIsNone(relations.resolve("enables", "Permits something", "sunlight", "evaporation", "", "one"))
         self.assertEqual(relations.entries["enables"]["inverse"], None)
-        self.assertTrue(all(role == "relation_resolver" for role, _, _ in model.requests))
+        self.assertEqual([role for role, _, _ in model.requests],
+                         ['relation_match_verifier', 'relation_resolver'])
 
     def test_inverse_direction_is_not_an_alias(self):
         def respond(role, p):
@@ -111,9 +118,10 @@ class SemanticTests(unittest.TestCase):
                         symmetry_correct=True, inverse_correct=True, reason="Precise transport relation")
         model, _, relations = self.registry(respond)
         key = relations.resolve("carries_to", "SOURCE transports water to TARGET", "river", "ocean", "", "one")
-        self.assertEqual(key, "transports_to")
-        self.assertIn("transports_to", relations.entries)
-        self.assertNotIn("transports_to", RelationRegistry(model, self.trace).entries)
+        self.assertEqual(key, "carries_to")
+        self.assertIn("carries_to", relations.entries)
+        self.assertNotIn("carries_to", RelationRegistry(model, self.trace).entries)
+        self.assertNotIn("relation_definition", [r[0] for r in model.requests])
         self.assertIn("relation_definition_verifier", [r[0] for r in model.requests])
 
     def test_plural_identity_merges_without_merging_subtype(self):

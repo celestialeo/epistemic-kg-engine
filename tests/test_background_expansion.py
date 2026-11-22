@@ -8,9 +8,11 @@ from unittest.mock import Mock, patch
 
 from pipeline.debate import (RepresentationCheck, validate_review_consistency,
                              check_novelty_many, check_novelty, apply_verdict,
-                             review_background_many, connected_explanation)
+                             review_background_many, connected_explanation,
+                             check_representation, literal_assertion, check_background_counterexamples)
 from pipeline.registry import ConceptRegistry, RelationRegistry, FactIndex
 from pipeline.replay_background import load_document
+from pipeline.models import ModelResponseError
 
 
 class FixtureModel:
@@ -29,6 +31,56 @@ class FixtureModel:
 class BackgroundExpansionTests(unittest.TestCase):
     def setUp(self):
         self.trace = Mock()
+
+    def background_row(self, **updates):
+        return dict(id='fixture', source='thermometer', relation='measures', target='distance',
+                    intended_fact='A thermometer measures temperature.', reason='Measurement',
+                    relation_definition='SOURCE measures TARGET', source_mention={}, target_mention={},
+                    accepted=True, review_status='completed', **updates)
+
+    def test_representation_cannot_rewrite_wrong_endpoint(self):
+        row = self.background_row()
+        answer = self.representation(link_reading='A thermometer measures temperature.').model_dump()
+        with patch('pipeline.debate.validate_review_consistency'), self.assertRaises(ValueError):
+            check_representation(row, FixtureModel(lambda role, payload: answer), self.trace)
+
+    def test_literal_representation_keeps_all_qualifications(self):
+        row = self.background_row(modality='may', conditions='when calibrated',
+                                  argument_qualifiers=['at the sensor'])
+        answer = self.representation(link_reading=literal_assertion(row)).model_dump()
+        with patch('pipeline.debate.validate_review_consistency'):
+            self.assertFalse(check_representation(row, FixtureModel(lambda role, payload: answer), self.trace))
+        self.assertIn('distance', row['link_reading'])
+        self.assertIn('when calibrated', row['link_reading'])
+        self.assertIn('at the sensor', row['link_reading'])
+
+    def test_counterexample_quarantines_only_previously_accepted_rows(self):
+        row = self.background_row()
+        rejected = dict(row, id='rejected', accepted=False)
+        def answer(role, payload):
+            self.assertEqual([item['id'] for item in payload['items']], ['fixture'])
+            return {'fixture': dict(reason='Wrong measured quantity.',
+                                    counterexample='A thermometer measures temperature.', sound_as_stated=False)}
+        check_background_counterexamples([row, rejected], FixtureModel(answer), self.trace)
+        self.assertFalse(row['accepted'])
+        self.assertEqual(row['rejection_stage'], 'counterexample')
+        self.assertNotIn('counterexample_check', rejected)
+
+    def test_counterexample_check_preserves_sound_candidate(self):
+        row = self.background_row()
+        model = FixtureModel(lambda role, payload: {'fixture': dict(reason='No refuting case.',
+                                                counterexample=None, sound_as_stated=True)})
+        check_background_counterexamples([row], model, self.trace)
+        self.assertTrue(row['accepted'])
+        self.assertTrue(row['gates']['counterexample_check'])
+
+    def test_failed_counterexample_check_cannot_leave_candidate_accepted(self):
+        row = self.background_row()
+        model = Mock(options={}, batch_size=4)
+        model.ask.side_effect = ModelResponseError('Service unavailable')
+        check_background_counterexamples([row], model, self.trace)
+        self.assertFalse(row['accepted'])
+        self.assertEqual(row['review_status'], 'unresolved')
 
     def representation(self, **kwargs):
         return RepresentationCheck(**(dict(link_reading="A acts on B", meaning_matches=False,

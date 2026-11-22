@@ -197,6 +197,8 @@ class RecoveryTests(unittest.TestCase):
                     value = dict(overview="Water", topics=["water"])
                 elif role == "extractor":
                     raise ModelResponseError("Unusable fixture output")
+                elif role == "source_coverage":
+                    raise ModelResponseError("Coverage audit also unavailable in this fixture")
                 elif role == "evaluation_claims":
                     value = dict(claims=[dict(text=payload["text"], evidence=payload["text"])])
                 else:

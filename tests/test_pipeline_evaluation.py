@@ -68,6 +68,8 @@ class PipelineEvaluationTests(unittest.TestCase):
                      provenance=dict(text="PRIVATE source prose"))
         with patch("pipeline.cli.CHAPTERS", {"water-cycle-simplified": source}), \
              patch("pipeline.models.Models", FixtureModels), \
+             patch("pipeline.qualifiers.complete_arguments"), \
+             patch("pipeline.source_recovery.recover_source", side_effect=lambda *args: args[-1]), \
              patch("pipeline.graph_view.build_graph", return_value=graph):
             code = main(["--chapter", "water-cycle-simplified", "--output-root", str(destination), "--no-open", "--no-explorer"])
         directory = next((destination / "water-cycle-simplified").iterdir())

@@ -36,6 +36,65 @@ replay and saved-run evaluation commands retain their existing flags.
 
 ## Three workflows
 
+### Manual graph editing
+
+In **Run Insights**, choose a saved run and use **Edit this knowledge graph**.
+Add, edit, or delete concepts and relationships. Relationship endpoints can be any
+concept in that run, including a concept just added. Conditions, modality, purpose,
+timing, evidence, and contextual participants are editable. Names must be unique
+within the graph. Deleting a concept also removes relationships that reference it,
+including references through contextual participants, in one reversible action.
+
+Each successful save takes effect immediately for that run's visualization,
+statement comparison, new quizzes, and learning metrics, including All Topics.
+Purple identifies manually added or edited relationships and added concepts.
+The original `artifacts/graph.json` is never overwritten. Manual versions and their
+audit trail live in `manual_graph.sqlite3` alongside that run's manifest; keep this
+file when copying or backing up the run. Other runs and future pipeline generation
+do not read or inherit this sidecar.
+
+After the first save, **View original graph** opens a read-only comparison.
+**View edited graph** returns to the saved working version. Switching views does
+not undo edits or change the graph used for quizzes and learning metrics. Saved
+pipeline quality and reconstruction scores still describe the generated graph;
+they are not recomputed or presented as validation of manual assertions.
+
+**View manual changes** lists each action with affected IDs and labels, full before
+and after records, UTC timestamp displayed in the browser's local timezone, optional
+reason, and professor identity when supplied. This local workspace has no login;
+an entered professor name is explicitly labelled **self-reported**, and an omitted
+name is recorded as unavailable. An authenticated identity is used if the hosting
+application supplies one.
+
+**Revert change** appends a compensating action and keeps the original history.
+Reverting a concept deletion restores its removed relationships together. A later
+edit to the same record must be reverted first; new dependent relationships must
+also be removed before reverting creation of their concept. Reversions themselves
+can be reverted. Concurrent edits use revision checks: if a browser is stale,
+use **Reload saved graph**, inspect the latest changes, and retry.
+
+Questions retain the graph meaning they were created against. A change to a
+relationship's direction, definition, qualifications, or endpoint/participant
+meaning flags affected historical answers. Their questions, answers, grades,
+corrections, and assistance history remain intact, while obsolete evidence no
+longer counts as mastery of the changed meaning. Exact restoration of the old
+meaning makes its valid evidence applicable again. Source-reference-only changes
+do not invalidate mastery. Historical answer performance remains a historical
+score; current coverage uses the edited graph.
+
+Start a new quiz after a semantic graph change. An affected unanswered question
+cannot be graded against the new meaning. An answer already saved as pending can
+still be retried against its pinned historical graph, without awarding mastery of
+the changed fact. Older questions without a pinned snapshot use the preserved
+generated graph. No model call is needed to edit, compare versions, or revert.
+
+Validation commands (isolated fixture data; no changes to saved experimental runs):
+
+```powershell
+& .\.venv\Scripts\python.exe -m unittest tests.test_manual_graph -q
+& .\.venv\Scripts\python.exe -m tests.browser_manual_graph
+```
+
 **Quiz:** Select a student, inspect their learning graph, and start a quiz from a
 source run. The starting concept can be recommended from progress or chosen.
 Each quiz belongs to exactly one student and one run. In All Topics, suggested sources

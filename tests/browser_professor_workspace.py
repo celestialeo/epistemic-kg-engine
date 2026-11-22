@@ -121,7 +121,8 @@ def main():
             page.locator('#answer').fill('Water enters soil.');page.locator('#submit-answer').click()
             expect(page.locator('#feedback')).to_contain_text('100%')
             page.screenshot(path=str(root/'quiz.png'),full_page=True)
-            page.locator('#next').click();expect(page.locator('#quiz-complete')).to_be_visible()
+            # A one-fact graph now finishes its input-sized round on submission.
+            expect(page.locator('#quiz-complete')).to_be_visible()
             page.locator('#quiz-source').select_option(rain['id']);start()
             # A failed answer must stay attached to this student/run across restart.
             model.fail=True
@@ -201,7 +202,6 @@ def main():
             page.locator('#submit-answer').click()
             expect(page.locator('#feedback')).to_contain_text('100%')
             expect(page.locator('#submit-answer')).to_be_disabled()
-            page.locator('#next').click()
             expect(page.locator('#quiz-complete')).to_be_visible()
             expect(page.locator('#start')).to_be_disabled()
             page.reload()

@@ -52,7 +52,11 @@ class DebateGraphPublicationTests(unittest.TestCase):
             stack.enter_context(patch('pipeline.seeds.build_outline', return_value=outline))
             stack.enter_context(patch.object(ConceptRegistry, 'reconcile'))
             document_review = stack.enter_context(patch('pipeline.debate.review_extractions', return_value=[]))
-            stack.enter_context(patch('pipeline.seeds.collect_seeds', return_value=[]))
+            # This test isolates publication; source-audit semantics have their
+            # own tests and must not invoke inference through NoInference.
+            stack.enter_context(patch('pipeline.qualifiers.complete_arguments'))
+            stack.enter_context(patch('pipeline.source_recovery.recover_source', side_effect=lambda *args: args[-1]))
+            stack.enter_context(patch('pipeline.gaps.collect_seeds', return_value=[]))
             debate = stack.enter_context(patch('pipeline.debate.debate', return_value=result))
             evaluation = stack.enter_context(patch('pipeline.evaluation.evaluate', return_value=dict(
                 status='completed', final_score=None, results=[dict(reconstruction=text)])))

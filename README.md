@@ -14,6 +14,13 @@ facts, and failed question drafts can recover through another eligible fact. Hin
 validation permits ordinary vocabulary; unsafe hints are withheld, while failed
 reveals can use a display-checked, saved expected answer with assistance marking. See [workflow and metric definitions](docs/professor.md).
 
+**Run Insights → Edit this knowledge graph** supports adding, editing, and deleting
+concepts and relationships, with run-local persistence, an untouched original view,
+and reversible audit history. Quizzes and learning metrics use the edited graph.
+Historical grades are preserved; evidence for changed relationship meanings is
+flagged and excluded from current mastery. New pipeline runs stay independent.
+See [manual graph editing](docs/professor.md#manual-graph-editing) for details.
+
 Questions carry a shared, reviewed assessment specification. New quizzes use scoped,
 question-aware semantic grading: clear paraphrases, pronouns and short contextual
 answers count without requiring the graph's exact wording. Criterion checks and
@@ -31,14 +38,27 @@ review and repair process is no longer part of either pipeline. Runs record
 Reconstruction evaluation remains a measurement stage, and background quiz approval
 remains a separate professor control. Custom texts use the same logic via `--input`.
 
+Background proposal repair sends one rejected candidate with its original gaps,
+anchored source passages, qualifications, uncertainty, rejection feedback, and
+relevant comparison facts. Before every attempt, including validation retries,
+the request budget counts instructions, serialized context, schema, retry feedback,
+the safety margin, and `model.repair_output_tokens` (default 1536, capped by
+`--max-output-tokens`). Exact repeated text can use JSON-pointer references;
+supplemental context is removed progressively without clipping required evidence.
+If the essential request cannot fit, the repair remains unresolved and counts
+toward the unchanged health threshold. Per-attempt estimates and reductions are
+saved in `artifacts/repair_budgets/<candidate_id>.json`. Corrections still pass
+the existing representation, novelty, connectivity, and debate admission checks.
+
 The existing graph-refinement command is an explicitly invoked diagnostic tool.
 The review and repair behavior described below applies only when that command (or
 notebook `MODE="refine"`) is requested. It is not a prerequisite for normal runs.
 In that optional workflow, each concept and relationship receives an edit and
 verification, followed by a
 consistency review over bounded groups of relationships and their neighbors.
-Source coverage is checked chunk by chunk. Predicate labels use at most three words and 32
-characters. Included facts must pass review; unresolved source claims stop publication.
+Source coverage is checked chunk by chunk. Predicate labels preferably use one to three
+words; the configurable safety limits allow six words and 80 characters when needed
+to preserve meaning. Included facts must pass review; unresolved source claims stop publication.
 Document assertions receive a context-preserving edit even when their labels are
 already short. Concise background assertions are verified before rewriting. Missing assertions are
 recovered from source passages, rather than inventing links for isolated nouns.
@@ -132,8 +152,8 @@ HTML hash in the manifest.
 Concept names retain their spelling and number; automatic singularization is not
 used to decide identity. Singular/plural variants and synonyms can merge only
 after contextual checks. `--identity-candidates` bounds model comparisons per
-concept when explicitly configured; by default all candidates are considered,
-including background concepts. Retrieval can miss an alias;
+concept when explicitly configured; otherwise the configured retrieval shortlist
+is used, including for background concepts. Retrieval can miss an alias;
 unmatched concepts remain separate instead of being silently discarded or merged.
 
 Runtime policy is centralized in [`pipeline_settings.json`](pipeline_settings.json),
@@ -142,8 +162,9 @@ partial JSON override file before starting a process; unknown keys and invalid
 budgets fail early. Existing CLI options override their corresponding settings.
 
 - `workload`: null defaults derive chunk/page sizes from input density and model
-  budgets; identity candidates, seeds and background proposals have no default
-  content quota. Explicit limits remain available as deliberate operating choices.
+  budgets. Identity retrieval defaults to 16 candidates; source facts, seeds and
+  background proposals have no default content quota. Explicit limits remain
+  available as deliberate operating choices.
 - `model`, `review`, `health`, `operations`: token, time, retry and service budgets.
   These are explicit configured resource policies, not automatic hardware detection.
 - `evaluation_weights`, `assessment_weights`: normalized evaluation weights and
@@ -277,6 +298,11 @@ python -m pipeline.replay_background RUN_DIRECTORY --reuse-seeds
 python -m pipeline.evaluate_saved_run RUN_DIRECTORY
 python -m pipeline.evaluate_saved_run RUN_DIRECTORY --resume-evaluation EVALUATION_TRACE_DIRECTORY
 
+# Profile saved traces without model calls (the report destination must be new)
+python tools/profile_run.py RUN_DIRECTORY --output outputs/diagnostics/run-profile.json
+# Compare multiple traces; compare equivalent completed work before judging speed
+python tools/profile_run.py RUN_DIRECTORY OTHER_RUN_DIRECTORY --top 12
+
 # Optional database export (Docker required only for --start-neo4j)
 python run_pipeline.py --chapter ai-test --start-neo4j --no-open --no-explorer
 ```
@@ -295,8 +321,13 @@ Each command retains `--help`. Full-run flags include:
 
 Document token budgets default to the configured regular context/output budgets.
 Legacy hidden seed flags and `--new` remain accepted as before. There is no general
-`--stage` or extraction-only CLI. `--resume` revalidates matching cached responses and
-makes new model calls on misses; it does not skip to an arbitrary checkpoint.
+`--stage` or extraction-only CLI. `--resume` restores completed extraction, source-review,
+seed-selection and background-item checkpoints when input, code, settings and model
+identities match. Otherwise it revalidates matching cached responses and makes new
+model calls on misses. Checkpoints and validated response files are published atomically;
+an incomplete final event after a crash is ignored, but malformed complete events fail.
+Graph-view HTML changes are rendered after checkpoint restoration and do not discard
+saved inference; logic, prompts, settings, input and model changes still invalidate it.
 `--no-open` alone does not disable the server. The normal full terminal command still
 launches the combined dashboard unless `--no-explorer` is specified.
 
@@ -307,6 +338,79 @@ produce a complete full-run report. Evaluation requires a completed/partial-comp
 manifest, graph, chunks, paragraphs, debate, input, statistics and prior report files.
 It updates evaluation/report outputs while preserving the graph and original event log.
 Existing evaluation trace/provenance behavior is retained.
+
+Registry retrieval ranks names and definitions and checks a configurable shortlist
+(`workload.retrieval_candidates`, default 16). Retrieval never authorizes a merge:
+identity/scope and relation equivalence checks still apply. Relation verification
+checks an exact named built-in contract before searching for alternatives. It
+compares complete qualified assertions; a context-specific draft definition need
+not use identical wording to a general reusable contract. Unmatched concepts stay
+separate, so retrieval can leave duplicate aliases. A surface predicate with a
+different meaning can receive a separately named, verified contract; existing
+contracts are never overwritten to make a new occurrence fit. Source extraction uses open
+predicates. Source and background generation explicitly preserve additional
+actions, results and participants in argument_qualifiers, separately from if/when
+conditions. These fields remain visible through review, deduplication, graph display
+and reconstruction. A bounded quoted-argument completion is available for legacy records.
+Up to two model-generated coverage-repair passes then account for each source
+assertion against cited graph edges. The audit cites sentence IDs resolved to exact
+source spans; an objection must address the affected edge's own evidence. It can
+quarantine unsupported accepted edges while preserving their history. Edges with
+potentially lost conditions, timing, negation, contrasts, action complements or
+renamed directional prepositions also receive two short checks with the same model:
+a source reading made without the candidate, followed by a comparison with the
+literal qualified edge. Short evidence quotes expand to their complete enclosing
+source sentences, preserving exact occurrence offsets; repaired assertions receive
+this check too. A related edge cannot supply a missing condition for an unqualified
+occurrence claim. These requests disable extended thinking and cap output at
+1,536 tokens. An unchanged failed check is not repeated during the same run.
+Its objections are checked against the other accepted edges so a valid partial
+assertion is not rejected for meaning already represented elsewhere. Failed checks remain explicit unresolved items. `artifacts/source_coverage.json` records remaining gaps; model agreement is
+not independent accuracy verification. Gap planning processes every source passage
+with its concept anchors, organizing missing explanations across the passage instead
+of commissioning questions separately for every concept. Questions are checked
+against the whole source; case-specific unknowns and exclusions remain recorded.
+Later background questions are checked against already admitted facts before
+proposing another explanation. Ambiguous double-encoded negation receives a targeted
+model correction, followed by the same semantic admission checks.
+
+Background link construction receives the intended sentence without a seed endpoint
+hint. Representation reviewers must copy the saved literal link, including qualifiers,
+so they cannot silently replace an incorrect target with the intended one. Otherwise
+accepted additions receive a concise counterexample check before publication; a
+failure enters the existing bounded repair process. These are model checks, not
+independent evidence that a background assertion is true.
+
+Keyed batches budget their complete prompt and response schema, retain semantically
+valid siblings when one item needs repair, and split oversized requests without
+discarding items. Exact repeated evidence is referenced losslessly in prompts.
+Registry decisions use `model.registry_output_tokens` (default 768). Transient Ollama
+5xx/429 and transport failures receive at most `model.service_retries` retries
+(default 2), with bounded backoff; permanent request errors stop immediately.
+Run manifests record new model calls, cache hits, restored checkpoints and resume
+provenance. Cached/resumed timings must not be presented as fresh-run performance.
+
+Evaluation preserves exact quotation evidence and identifies conflicting quote
+assignments in retry feedback. Claim alignment sends indexed claim text without
+duplicating quotations, then independently checks proposed pairs against both full
+passages. Code selects a maximum one-to-one set from verified pairs; competing
+alternatives remain in the audit instead of causing repeated index-bookkeeping
+requests or inflating match counts. This policy is recorded as
+`reconstruction_fidelity_v3_verified_matching`.
+Each context review assesses its selected pair only: an unrelated reconstruction
+error must not reject otherwise equivalent claims elsewhere in the document.
+
+Validation on 2026-11-20: the full `data/AI Chapter.txt` workflow finished with
+`qwen3.5:9b`, including all five chunks and document evaluation. It published 62
+source edges and three background additions, with remaining gaps reported explicitly.
+The final cache-assisted pass took 497.7 seconds (164 new model requests, 1,129 cache
+hits). A same-code resume took 14.2 seconds, restored four checkpoints, and reproduced
+the identical graph with one new evaluation request and 117 cache hits. These are
+not fresh-run benchmarks. All 112 focused tests passed; the broader comparison kept
+the same 22 baseline failures/errors and introduced none. Chrome checks confirmed
+that all saved qualifications appear in the 65 relationship captions. See
+[the final audit and remaining issues](outputs/diagnostics/optimization_results.json)
+and [per-role costs](outputs/diagnostics/optimization-final-profile.json).
 
 ## Outputs and interpretation
 

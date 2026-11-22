@@ -30,7 +30,8 @@ class SentenceRecoveryTests(unittest.TestCase):
             lambda role, p: fixtures.extraction(p["CURRENT_SENTENCE"]))
         requests = [r["payload"] for r in model.requests if r["role"] == "extractor"]
         for index, payload in enumerate(requests):
-            self.assertEqual(set(payload), {"CURRENT_SENTENCE", "PREVIOUS_SENTENCE", "available_relations"})
+            self.assertEqual(set(payload), {"CURRENT_SENTENCE", "PREVIOUS_SENTENCE", "predicate_policy"})
+            self.assertIn('Open vocabulary', payload['predicate_policy'])
             self.assertEqual(payload["CURRENT_SENTENCE"].strip(), sentences[index])
             self.assertEqual(payload["PREVIOUS_SENTENCE"], sentences[index - 1] if index else "")
 
