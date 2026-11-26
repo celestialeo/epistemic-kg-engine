@@ -1,0 +1,995 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "A language model adjusts its parameters via gradient descent during training.",
+      "confidence": 0.95,
+      "reason": "General knowledge fills the gap on 'how' parameters are adjusted; the source implies adjustment but not the mechanism.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "gradient descent",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "language model",
+      "target": "parameters",
+      "relation": "adjusts_via_gradient_descent_during_training",
+      "relation_definition": "The process of modifying internal values using optimization algorithms specifically in a training context.",
+      "conditions": "during training",
+      "modality": "process",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+          "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+          "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The explanation claims the source implies adjustment but not the mechanism, yet the link explicitly includes 'gradient descent' in both the relation name and definition. This contradicts the explanation's assertion that the mechanism is missing or implied rather than stated. The link faithfully represents the intended fact including the specific mechanism (gradient descent). Therefore, the explanation does not agree with the link.",
+      "original_proposal": {
+        "source": {
+          "name": "language model",
+          "definition": "A language model is an artificial intelligence system designed to generate text or predict sequences.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "parameters",
+          "definition": "Adjustable weights and biases within the model architecture that determine its behavior.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "adjusts via gradient descent during training",
+        "relation_definition": "The process of modifying internal values using optimization algorithms specifically in a training context.",
+        "conditions": "during training",
+        "modality": "process",
+        "intended_fact": "A language model adjusts its parameters via gradient descent during training.",
+        "confidence": 0.95,
+        "reason": "General knowledge fills the gap on 'how' parameters are adjusted; the source implies adjustment but not the mechanism.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "gradient descent"
+      },
+      "source_mention": {
+        "name": "language model",
+        "definition": "A language model is an artificial intelligence system designed to generate text or predict sequences.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "parameters",
+        "definition": "Adjustable weights and biases within the model architecture that determine its behavior.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "adjusts via gradient descent during training",
+      "surface_target": "parameters",
+      "representation_check": {
+        "link_reading": "The link explicitly defines the relation as 'adjusts_via_gradient_descent_during_training' with a definition stating 'modifying internal values using optimization algorithms specifically in a training context.' The modality is 'process', and conditions are 'during training'.",
+        "reason": "The explanation claims the source implies adjustment but not the mechanism, yet the link explicitly includes 'gradient descent' in both the relation name and definition. This contradicts the explanation's assertion that the mechanism is missing or implied rather than stated. The link faithfully represents the intended fact including the specific mechanism (gradient descent). Therefore, the explanation does not agree with the link.",
+        "meaning_matches": false,
+        "direction_valid": true,
+        "explanation_matches": false,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link explicitly defines the relation as 'adjusts_via_gradient_descent_during_training' with a definition stating 'modifying internal values using optimization algorithms specifically in a training context.' The modality is 'process', and conditions are 'during training'.",
+      "rejection_stage": "representation"
+    },
+    {
+      "intended_fact": "Gradient descent updates model parameters by computing gradients of the loss function with respect to those parameters.",
+      "confidence": 0.95,
+      "reason": "Explains the 'how' of parameter adjustment; necessary prerequisite for understanding training mechanics mentioned in the chapter overview.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "loss function",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "gradient descent",
+      "target": "model parameters",
+      "relation": "updates_via_gradient_descent",
+      "relation_definition": "Modifies target values by computing derivatives of an error metric relative to them.",
+      "conditions": null,
+      "modality": "process",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+          "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+          "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "gradient descent",
+          "definition": "An iterative optimization algorithm used to minimize error functions.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "model parameters",
+          "definition": "The specific weights and biases being optimized by the algorithm.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "updates by computing gradients of loss function with respect to those parameters",
+        "relation_definition": "Modifying target values based on calculated derivatives of an error metric relative to them.",
+        "conditions": null,
+        "modality": "process",
+        "intended_fact": "Gradient descent updates model parameters by computing gradients of the loss function with respect to those parameters.",
+        "confidence": 0.95,
+        "reason": "Explains the 'how' of parameter adjustment; necessary prerequisite for understanding training mechanics mentioned in the chapter overview.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "loss function"
+      },
+      "source_mention": {
+        "name": "gradient descent",
+        "definition": "An iterative optimization algorithm used to minimize error functions.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "model parameters",
+        "definition": "The specific weights and biases being optimized by the algorithm.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "updates by computing gradients of loss function with respect to those parameters",
+      "surface_target": "model parameters",
+      "representation_check": {
+        "link_reading": "The link represents 'gradient descent' (source) as a process that modifies 'model parameters' (target) via the relation 'updates_via_gradient_descent'. The definition states this modification occurs by computing derivatives of an error metric relative to the target values. The modality is 'process', indicating an ongoing action or mechanism.",
+        "reason": "The link faithfully represents the intended fact: gradient descent updates parameters by computing gradients (derivatives) of the loss function (error metric). The direction (updates via computation), meaning (computing derivatives relative to parameters), and scope (model parameters) align perfectly. No properties are added, nor is the identity of endpoints changed. The explanation supports this as a necessary prerequisite for understanding training mechanics.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link represents 'gradient descent' (source) as a process that modifies 'model parameters' (target) via the relation 'updates_via_gradient_descent'. The definition states this modification occurs by computing derivatives of an error metric relative to the target values. The modality is 'process', indicating an ongoing action or mechanism."
+    },
+    {
+      "intended_fact": "If passages from the same source appear in both training and testing datasets, the model may memorize specific answers rather than learning generalizable patterns.",
+      "confidence": 0.95,
+      "reason": "Explains the mechanism of 'overstatement of performance' (data leakage) implied by the source text; connects to the concept of overfitting.",
+      "gap_ids": [
+        "question_0003"
+      ],
+      "added_knowledge": "memorization",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "model",
+      "target": "specific answers",
+      "relation": "memorizes_instead_of_learning_patterns",
+      "relation_definition": "The failure to abstract concepts, resulting in the retention of exact input-output pairs.",
+      "conditions": "if passages from same source appear in both training and testing datasets",
+      "modality": "process",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+          "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+          "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0003",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "model",
+          "definition": "The trained artificial intelligence system.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "specific answers",
+          "definition": "Exact responses derived from memorized training data rather than general knowledge.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "may memorize instead of learning generalizable patterns",
+        "relation_definition": "The failure to abstract concepts, resulting in the retention of exact input-output pairs.",
+        "conditions": "if passages from same source appear in both training and testing datasets",
+        "modality": "process",
+        "intended_fact": "If passages from the same source appear in both training and testing datasets, the model may memorize specific answers rather than learning generalizable patterns.",
+        "confidence": 0.95,
+        "reason": "Explains the mechanism of 'overstatement of performance' (data leakage) implied by the source text; connects to the concept of overfitting.",
+        "gap_ids": [
+          "question_0003"
+        ],
+        "added_knowledge": "memorization"
+      },
+      "source_mention": {
+        "name": "model",
+        "definition": "The trained artificial intelligence system.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "specific answers",
+        "definition": "Exact responses derived from memorized training data rather than general knowledge.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "may memorize instead of learning generalizable patterns",
+      "surface_target": "specific answers",
+      "representation_check": {
+        "link_reading": "The link faithfully represents the intended fact without adding, removing, or altering properties. The source 'model' and target 'specific answers' are correctly identified as entities. The relation 'memorizes_instead_of_learning_patterns' accurately captures the failure to generalize. The condition 'if passages from same source appear in both training and testing datasets' is explicitly stated and matches the intended fact's scope. The modality 'process' appropriately describes the mechanism of memorization occurring under these conditions.",
+        "reason": "The representation aligns perfectly with the intended sentence. No silent actions were inserted, no properties were added or constrained incorrectly, and the direction of the relationship (model -> memorizes -> specific answers) is preserved. The condition matches exactly. There are no concrete representation errors.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link faithfully represents the intended fact without adding, removing, or altering properties. The source 'model' and target 'specific answers' are correctly identified as entities. The relation 'memorizes_instead_of_learning_patterns' accurately captures the failure to generalize. The condition 'if passages from same source appear in both training and testing datasets' is explicitly stated and matches the intended fact's scope. The modality 'process' appropriately describes the mechanism of memorization occurring under these conditions."
+    },
+    {
+      "intended_fact": "Memorizing training examples instead of learning general patterns leads to poor performance on unseen examples (overfitting).",
+      "confidence": 0.95,
+      "reason": "Connects the specific case of data leakage to the general concept of overfitting and its consequence on unseen data.",
+      "gap_ids": [
+        "question_0003"
+      ],
+      "added_knowledge": "overfitting",
+      "id": "candidate_0004",
+      "seed_id": "seed_001",
+      "source": "memorizing training examples",
+      "target": "performance on unseen examples",
+      "relation": "overfits_on",
+      "relation_definition": "Causes significant degradation in capability when applied to novel situations due to memorizing training examples.",
+      "conditions": null,
+      "modality": "process",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+          "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+          "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0003",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "memorizing training examples",
+          "definition": "The act of retaining exact data points without abstraction.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "performance on unseen examples",
+          "definition": "The model's ability to handle new, previously unencountered inputs.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "leads to poor performance due to overfitting",
+        "relation_definition": "Causes a significant degradation in capability when applied to novel situations.",
+        "conditions": null,
+        "modality": "process",
+        "intended_fact": "Memorizing training examples instead of learning general patterns leads to poor performance on unseen examples (overfitting).",
+        "confidence": 0.95,
+        "reason": "Connects the specific case of data leakage to the general concept of overfitting and its consequence on unseen data.",
+        "gap_ids": [
+          "question_0003"
+        ],
+        "added_knowledge": "overfitting"
+      },
+      "source_mention": {
+        "name": "memorizing training examples",
+        "definition": "The act of retaining exact data points without abstraction.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "performance on unseen examples",
+        "definition": "The model's ability to handle new, previously unencountered inputs.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "surface_relation": "leads to poor performance due to overfitting",
+      "surface_target": "performance on unseen examples",
+      "representation_check": {
+        "link_reading": "The link represents 'memorizing training examples' as a process that 'overfits_on' 'performance on unseen examples'. The relation definition states this causes degradation in capability due to memorization. The modality is 'process', and there are no conditions.",
+        "reason": "The representation is faithful to the intended fact. The source 'memorizing training examples' correctly maps to the cause, the target 'performance on unseen examples' maps to the effect (capability degradation), and the relation 'overfits_on' with the provided definition accurately captures the causal mechanism described in the intended fact without adding extra properties or changing direction.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "The link represents 'memorizing training examples' as a process that 'overfits_on' 'performance on unseen examples'. The relation definition states this causes degradation in capability due to memorization. The modality is 'process', and there are no conditions."
+    },
+    {
+      "intended_fact": "A large dataset size does not guarantee high quality if the dataset contains significant noise, bias, or redundancy.",
+      "confidence": 0.95,
+      "reason": "Explains the mechanism by which 'dataset size' fails to establish 'dataset quality' as stated in the source text.",
+      "gap_ids": [
+        "question_0004"
+      ],
+      "added_knowledge": "dataset noise",
+      "id": "candidate_0005",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+          "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+          "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0004",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    },
+    {
+      "intended_fact": "Dataset bias or redundancy can cause a model to learn spurious correlations that do not generalize to new contexts.",
+      "confidence": 0.95,
+      "reason": "Elaborates on 'dataset quality' issues beyond mere size; connects noise/bias to the failure of generalization.",
+      "gap_ids": [
+        "question_0004"
+      ],
+      "added_knowledge": "dataset bias",
+      "id": "candidate_0006",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+          "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+          "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0004",
+          "concept": "language model"
+        }
+      ],
+      "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "tutor",
+          "relation": "uses",
+          "target": "language model",
+          "relation_definition": "employs a tool or method to perform an action",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_003",
+          "source": "language model",
+          "relation": "generates",
+          "target": "explanations",
+          "relation_definition": "produces specific content or output",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_005",
+          "source": "language model",
+          "relation": "adjusts",
+          "target": "parameters",
+          "relation_definition": "The source modifies the values of the target properties.",
+          "origin": "document",
+          "conditions": "during training; participant/scope: using examples from a training dataset",
+          "modality": null
+        },
+        {
+          "id": "chunk_001_relation_006",
+          "source": "language model",
+          "relation": "employs_for_function",
+          "target": "examples from a training dataset",
+          "relation_definition": "The source utilizes the target specifically to execute its operational function.",
+          "origin": "document",
+          "conditions": "participant/scope: During training",
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "language model",
+        "definition": "A tool used by the tutor to generate explanations.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source text lists components (datasets, parameters, model) and their interactions but assumes the reader understands the internal mechanics (how parameters adjust, how leakage occurs, why size != quality). These are substantive gaps at the chapter's implied level regarding training mechanisms and limitations.",
+        "chapter_topic": "Language model training mechanisms: parameter adjustment, dataset roles (training/validation/test), and separation to a{",
+        "topic_id": "chapter_7e9c731256176746a509",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that an AI tutor uses a language model to generate explanations, noting that fluent wording does not guarantee factual accuracy. It details the training process where parameters are adjusted using examples from a training dataset. It specifies the roles of separate validation datasets for model selection and training settings, and held-out test datasets for measuring performance. Crucially, it warns against data leakage (passages from the same source in both training and testing) causing overstatement of ability to handle unfamiliar material, and states that dataset size alone does not establish quality.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+            "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+            "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0001",
+            "concept": "language model"
+          },
+          {
+            "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+            "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+            "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0003",
+            "concept": "language model"
+          },
+          {
+            "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+            "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+            "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0004",
+            "concept": "language model"
+          }
+        ],
+        "background_question": "How does the language model internally adjust its parameters using examples from a training dataset?\nHow does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?\nIn what ways does 'dataset size' fail to establish 'dataset quality'?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+        "proposals": [
+          {
+            "source": {
+              "name": "language model",
+              "definition": "A language model is an artificial intelligence system designed to generate text or predict sequences.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "parameters",
+              "definition": "Adjustable weights and biases within the model architecture that determine its behavior.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "adjusts via gradient descent during training",
+            "relation_definition": "The process of modifying internal values using optimization algorithms specifically in a training context.",
+            "conditions": "during training",
+            "modality": "process",
+            "intended_fact": "A language model adjusts its parameters via gradient descent during training.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap on 'how' parameters are adjusted; the source implies adjustment but not the mechanism.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "gradient descent"
+          },
+          {
+            "source": {
+              "name": "gradient descent",
+              "definition": "An iterative optimization algorithm used to minimize error functions.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "model parameters",
+              "definition": "The specific weights and biases being optimized by the algorithm.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "updates by computing gradients of loss function with respect to those parameters",
+            "relation_definition": "Modifying target values based on calculated derivatives of an error metric relative to them.",
+            "conditions": null,
+            "modality": "process",
+            "intended_fact": "Gradient descent updates model parameters by computing gradients of the loss function with respect to those parameters.",
+            "confidence": 0.95,
+            "reason": "Explains the 'how' of parameter adjustment; necessary prerequisite for understanding training mechanics mentioned in the chapter overview.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "loss function"
+          },
+          {
+            "source": {
+              "name": "model",
+              "definition": "The trained artificial intelligence system.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "specific answers",
+              "definition": "Exact responses derived from memorized training data rather than general knowledge.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "may memorize instead of learning generalizable patterns",
+            "relation_definition": "The failure to abstract concepts, resulting in the retention of exact input-output pairs.",
+            "conditions": "if passages from same source appear in both training and testing datasets",
+            "modality": "process",
+            "intended_fact": "If passages from the same source appear in both training and testing datasets, the model may memorize specific answers rather than learning generalizable patterns.",
+            "confidence": 0.95,
+            "reason": "Explains the mechanism of 'overstatement of performance' (data leakage) implied by the source text; connects to the concept of overfitting.",
+            "gap_ids": [
+              "question_0003"
+            ],
+            "added_knowledge": "memorization"
+          },
+          {
+            "source": {
+              "name": "memorizing training examples",
+              "definition": "The act of retaining exact data points without abstraction.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "performance on unseen examples",
+              "definition": "The model's ability to handle new, previously unencountered inputs.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "leads to poor performance due to overfitting",
+            "relation_definition": "Causes a significant degradation in capability when applied to novel situations.",
+            "conditions": null,
+            "modality": "process",
+            "intended_fact": "Memorizing training examples instead of learning general patterns leads to poor performance on unseen examples (overfitting).",
+            "confidence": 0.95,
+            "reason": "Connects the specific case of data leakage to the general concept of overfitting and its consequence on unseen data.",
+            "gap_ids": [
+              "question_0003"
+            ],
+            "added_knowledge": "overfitting"
+          }
+        ],
+        "reason": "I identified three gaps: (1) the mechanism of parameter adjustment, (2) why data leakage causes overstatement, and (3) why dataset size doesn't equal quality. I filled these by introducing general concepts (gradient descent, memorization, overfitting, noise, bias) and linking them to the seed facts about training and dataset separation. These additions are consistent with the chapter's focus on training mechanics and limitations."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that the language model adjusts parameters using training examples but does not explain the internal mechanism (gradient descent/backpropagation) or why data leakage causes overstatement. It also mentions dataset size vs. quality without explaining the mechanisms (noise, bias). I will fill these gaps by introducing general explanatory concepts: 'gradient descent', 'backpropagation', 'overfitting', 'memorization', and 'dataset noise/bias', linking them to the seed facts.",
+        "facts": [
+          {
+            "intended_fact": "A language model adjusts its parameters via gradient descent during training.",
+            "confidence": 0.95,
+            "reason": "General knowledge fills the gap on 'how' parameters are adjusted; the source implies adjustment but not the mechanism.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "gradient descent"
+          },
+          {
+            "intended_fact": "Gradient descent updates model parameters by computing gradients of the loss function with respect to those parameters.",
+            "confidence": 0.95,
+            "reason": "Explains the 'how' of parameter adjustment; necessary prerequisite for understanding training mechanics mentioned in the chapter overview.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "loss function"
+          },
+          {
+            "intended_fact": "If passages from the same source appear in both training and testing datasets, the model may memorize specific answers rather than learning generalizable patterns.",
+            "confidence": 0.95,
+            "reason": "Explains the mechanism of 'overstatement of performance' (data leakage) implied by the source text; connects to the concept of overfitting.",
+            "gap_ids": [
+              "question_0003"
+            ],
+            "added_knowledge": "memorization"
+          },
+          {
+            "intended_fact": "Memorizing training examples instead of learning general patterns leads to poor performance on unseen examples (overfitting).",
+            "confidence": 0.95,
+            "reason": "Connects the specific case of data leakage to the general concept of overfitting and its consequence on unseen data.",
+            "gap_ids": [
+              "question_0003"
+            ],
+            "added_knowledge": "overfitting"
+          },
+          {
+            "intended_fact": "A large dataset size does not guarantee high quality if the dataset contains significant noise, bias, or redundancy.",
+            "confidence": 0.95,
+            "reason": "Explains the mechanism by which 'dataset size' fails to establish 'dataset quality' as stated in the source text.",
+            "gap_ids": [
+              "question_0004"
+            ],
+            "added_knowledge": "dataset noise"
+          },
+          {
+            "intended_fact": "Dataset bias or redundancy can cause a model to learn spurious correlations that do not generalize to new contexts.",
+            "confidence": 0.95,
+            "reason": "Elaborates on 'dataset quality' issues beyond mere size; connects noise/bias to the failure of generalization.",
+            "gap_ids": [
+              "question_0004"
+            ],
+            "added_knowledge": "dataset bias"
+          }
+        ],
+        "reason": "I identified three gaps: (1) the mechanism of parameter adjustment, (2) why data leakage causes overstatement, and (3) why dataset size doesn't equal quality. I filled these by introducing general concepts (gradient descent, memorization, overfitting, noise, bias) and linking them to the seed facts about training and dataset separation. These additions are consistent with the chapter's focus on training mechanics and limitations."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006"
+      ],
+      "repairs": [],
+      "reused_gap_answers": {}
+    }
+  ]
+}

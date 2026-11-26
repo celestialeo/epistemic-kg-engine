@@ -1,0 +1,28 @@
+{
+  "key": "eb6f2c3f13ecf26afc9a20c403dc5cac5cba69ec037fff16550616b4a24d8fef",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:30:06.826938Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 15427545400,
+    "load_duration": 4243800,
+    "prompt_eval_count": 542,
+    "prompt_eval_duration": 284496000,
+    "eval_count": 596,
+    "eval_duration": 15075503000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"self_attention\",\n      \"definition\": \"A mechanism for processing text sequences by attending to relevant parts.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_self_attention\"\n    },\n    {\n      \"name\": \"token_relationship_computation\",\n      \"definition\": \"The act of computing relationships between tokens in an input sequence.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_token_rel_comp\"\n    },\n    {\n      \"name\": \"attention_weight_calculation\",\n      \"definition\": \"Calculating attention weights based on query-key interactions.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_att_weight_calc\"\n    },\n    {\n      \"name\": \"token_contribution_determination\",\n      \"definition\": \"Determining how much each token contributes to the final representation of every other token.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_token_contrib_det\"\n    },\n    {\n      \"name\": \"context_aware_hidden_state_production\",\n      \"definition\": \"Producing context-aware hidden state representations for each input token.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_context_state_prod\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0001\": {\n      \"source_id\": \"n_self_attention\",\n      \"target_id\": \"n_token_rel_comp\",\n      \"relation\": \"performs\",\n      \"relation_definition\": \"SOURCE performs TARGET\",\n      \"argument_qualifiers\": [\n        \"based on attention weights calculated via query-key interactions\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0002\": {\n      \"source_id\": \"n_att_weight_calc\",\n      \"target_id\": \"n_token_contrib_det\",\n      \"relation\": \"results_in\",\n      \"relation_definition\": \"SOURCE results in TARGET\",\n      \"argument_qualifiers\": [\n        \"for every other token in the sequence\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0003\": {\n      \"source_id\": \"n_token_contrib_det\",\n      \"target_id\": \"n_context_state_prod\",\n      \"relation\": \"results_in\",\n      \"relation_definition\": \"SOURCE results in TARGET\",\n      \"argument_qualifiers\": [\n        \"weighted by attention scores\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000002",
+  "source_run": "constructor_schema_check",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

@@ -1,0 +1,61 @@
+{
+  "step": "extraction_record",
+  "error": "Stopped early: extraction_record failed 6/10 recent items (limit 50%). Latest reason: Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence (text_1) defines 'Offline inference' but does not overlap with the CURRENT_SENTENCE which makes claims about saving resources and enabling larger LLMs. Per instructions, a claim without an overlapping quote is unsupported.. Inspect the health diagnostic and events.jsonl.",
+  "fatal": true,
+  "measurement": "final_item_outcome",
+  "window": 10,
+  "minimum": 5,
+  "max_failure_rate": 0.5,
+  "recent": [
+    {
+      "passed": false,
+      "reason": "Quote is not an exact continuous source substring; The claim 'Bulk inference is another name for offline inference' cannot be formed from an exact continuous source substring. The source text contains the phrase 'Offline inference, also called bulk inference...', which defines offline inference as having that name, but does not contain the specific string 'Bulk inference is another name for offline inference'. Per instructions, unsupported claims must return record=null.",
+      "entity_id": "chunk_006_sentence_004_claims_1"
+    },
+    {
+      "passed": false,
+      "reason": "Quote is not an exact continuous source substring; The claim 'Static inference is another name for offline inference' cannot be formed from an exact continuous source substring. The source text contains the phrase 'Offline inference, also called bulk inference or static inference...', which defines offline inference as having that name, but does not contain the specific string 'Static inference is another name for offline inference'. Per instructions, unsupported claims must return record=null.",
+      "entity_id": "chunk_006_sentence_004_claims_2"
+    },
+    {
+      "passed": false,
+      "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry",
+      "entity_id": "chunk_006_relation_004"
+    },
+    {
+      "passed": false,
+      "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry",
+      "entity_id": "chunk_006_relation_005"
+    },
+    {
+      "passed": false,
+      "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry",
+      "entity_id": "chunk_006_relation_006"
+    },
+    {
+      "passed": true,
+      "reason": "Validated item completed",
+      "entity_id": "chunk_006_sentence_004_concept_1"
+    },
+    {
+      "passed": true,
+      "reason": "Validated item completed",
+      "entity_id": "chunk_006_sentence_004_concept_2"
+    },
+    {
+      "passed": true,
+      "reason": "Validated item completed",
+      "entity_id": "chunk_006_sentence_004_concept_3"
+    },
+    {
+      "passed": true,
+      "reason": "Validated item completed",
+      "entity_id": "chunk_006_sentence_005_claims_0"
+    },
+    {
+      "passed": false,
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence (text_1) defines 'Offline inference' but does not overlap with the CURRENT_SENTENCE which makes claims about saving resources and enabling larger LLMs. Per instructions, a claim without an overlapping quote is unsupported.",
+      "entity_id": "chunk_006_sentence_005_claims_1"
+    }
+  ]
+}

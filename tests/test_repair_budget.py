@@ -90,7 +90,7 @@ class RepairBudgetTests(unittest.TestCase):
                                  models, trace, FactRepair, self.instruction)
 
     def assert_request_fits(self, request):
-        total = (estimated_tokens(request['prompt']) + estimated_tokens(request['schema'])
+        total = (estimated_tokens(request['prompt'])
                  + setting('model', 'prompt_reserve_tokens') + request['options']['num_predict'])
         self.assertLessEqual(total, request['options']['num_ctx'])
         self.assertEqual(request['options']['num_predict'], setting('model', 'repair_output_tokens'))

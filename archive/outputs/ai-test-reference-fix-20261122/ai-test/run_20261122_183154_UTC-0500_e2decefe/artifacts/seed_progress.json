@@ -1,0 +1,93 @@
+{
+  "plans": [
+    {
+      "chunk_id": "chunk_001",
+      "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation (RAG) to utilize external documents when answering questions.",
+      "seeds": [
+        {
+          "concept": "self attention",
+          "topic_id": "chapter_6e40558057d192365ef2",
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source states the function (processing text) but omits the mechanism (how attention weights are calculated or applied), which is a substantive gap for understanding the architecture."
+        },
+        {
+          "concept": "backpropagation",
+          "topic_id": "chapter_a66ae8f0ce58f8f29e89",
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, specifically how this applies to improving prediction accuracy in this context.",
+              "why_useful": "The source claims it improves predictions but does not explain the mechanism of weight adjustment or error propagation that enables this improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "Similar to self-attention, the source states the outcome (improving predictions) without explaining the underlying mechanism of backpropagation required to achieve that outcome."
+        },
+        {
+          "concept": "regularization",
+          "topic_id": "chapter_a7ddd3f95e480c548968",
+          "gaps": [
+            {
+              "question": "How does regularization enable the small transformer to generalize beyond its training examples?",
+              "assumed_knowledge": "The specific techniques (e.g., dropout, weight decay) or mechanisms by which regularization prevents overfitting and enhances generalization.",
+              "why_useful": "The source links regularization to generalization but does not explain the causal link or mechanism between the two.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The text asserts a benefit (generalization) derived from a technique (regularization) without explaining the mechanism that connects them."
+        },
+        {
+          "concept": "quantization",
+          "topic_id": "chapter_093bc4d4a96e92c4c832",
+          "gaps": [
+            {
+              "question": "By what mechanism does quantization reduce the memory requirements of the small transformer?",
+              "assumed_knowledge": "The process of reducing numerical precision (e.g., float32 to int8) and how this compression directly lowers memory footprint.",
+              "why_useful": "The source states the result (reduced memory) but assumes knowledge of the compression mechanism that achieves it.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The claim that quantization reduces memory requires an explanation of the data representation change involved, which is not provided in the source."
+        },
+        {
+          "concept": "retrieval augmented generation",
+          "topic_id": "chapter_df32e3e82b99eeeebba8",
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The workflow of retrieving relevant documents from a corpus and integrating them into the model's context window or generation process.",
+              "why_useful": "The source states the capability (using external docs) but does not explain the integration mechanism required to make this possible.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The text describes a functional capability (using external docs) without explaining the architectural or procedural steps that enable this interaction."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text lists five distinct components (self-attention, backpropagation, regularization, quantization, RAG) and their stated functions/outcomes. For each, the 'how' or 'mechanism' is assumed but not explained. These are substantive gaps because understanding the mechanism is necessary to fully comprehend how the stated function is achieved, rather than just knowing that it happens. No incidental textbook tangents were included; questions focus strictly on the link between the technique and its effect as described in the source."
+    }
+  ],
+  "unresolved": {}
+}

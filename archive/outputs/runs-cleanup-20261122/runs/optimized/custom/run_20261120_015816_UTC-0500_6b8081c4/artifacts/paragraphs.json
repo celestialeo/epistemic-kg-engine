@@ -1,0 +1,37 @@
+[
+  {
+    "id": "paragraph_001",
+    "order": 0,
+    "start": 0,
+    "end": 735,
+    "text": "An artificial intelligence tutor answers questions about a collection of course documents. The tutor uses a language model to generate explanations, but fluent wording does not guarantee factual accuracy. During training, the language model adjusts its parameters using examples from a training dataset. A separate validation dataset supports model selection and the choice of training settings. A held-out test dataset measures performance after those choices have been made. These datasets must be separated carefully: if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability to handle unfamiliar material. Dataset size alone does not establish dataset quality."
+  },
+  {
+    "id": "paragraph_002",
+    "order": 1,
+    "start": 737,
+    "end": 1530,
+    "text": "The tutor's language model uses a decoder-only transformer to process text. A tokenizer divides an input passage into tokens, and an embedding layer maps those tokens to numerical vectors. Positional information helps the transformer distinguish sequences containing the same tokens in different orders. In each attention layer, self-attention combines information from token representations. A causal attention mask prevents a position from attending to later positions when the model predicts the next token. This restriction applies during both training and generation. Attention can connect information across a passage, but the model's finite context window limits the amount of text available in a single request. An attention weight does not establish that the associated claim is true."
+  },
+  {
+    "id": "paragraph_003",
+    "order": 2,
+    "start": 1532,
+    "end": 2369,
+    "text": "Training compares the model's predicted token probabilities with the next tokens in the training examples. A loss function measures prediction error, and backpropagation computes gradients used by an optimizer to update model parameters. The learning rate controls the size of those updates. A learning rate that is too large can make training unstable, whereas a very small learning rate can slow improvement. Overfitting occurs when improved training performance fails to translate into performance on unseen examples. Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling. Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results."
+  },
+  {
+    "id": "paragraph_004",
+    "order": 3,
+    "start": 2371,
+    "end": 3217,
+    "text": "After training, the tutor uses quantization and retrieval-augmented generation for different purposes. Weight quantization stores model parameters with fewer bits, reducing the memory required to store those parameters, although an aggressive reduction in precision can degrade answer quality. Retrieval-augmented generation supplies relevant course passages when the tutor answers a question. A retrieval encoder maps the question and document passages into embeddings, and a similarity search selects candidate passages from an index. The selected passages are added to the language model's context. Updating this document index can make revised course material available without retraining the language model. Retrieval does not itself change the model's parameters, and a highly ranked passage can still be irrelevant, outdated, or incorrect."
+  },
+  {
+    "id": "paragraph_005",
+    "order": 4,
+    "start": 3219,
+    "end": 4036,
+    "text": "Evaluation must distinguish the quality of retrieval from the quality of the generated answer. Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant. Neither measure alone shows whether the tutor uses the retrieved evidence correctly. An answer can cite a real passage while making a claim that the passage does not support. The tutor is therefore evaluated for factual correctness, support from the supplied documents, and appropriate handling of uncertainty. When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion. A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false."
+  }
+]

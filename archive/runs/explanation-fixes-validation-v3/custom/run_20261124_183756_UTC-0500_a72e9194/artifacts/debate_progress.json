@@ -1,0 +1,669 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+      "confidence": 0.95,
+      "reason": "Bridge fact connecting the seed concept 'self attention' to the mechanism component 'attention weights'.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "Explicitly names the intermediate variable (attention weights) computed by the process.",
+      "source_concept": "self attention",
+      "target_concept": "attention weights",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "attention weights",
+      "relation": "computes",
+      "relation_definition": "SOURCE generates or calculates TARGET.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed connects 'small transformer' to 'self attention'. The gap asks for the specific mechanism of text processing. The previous attempt failed because it introduced 'attention weights' and 'relevant input parts' as endpoints without establishing a bridge fact connecting them to the existing graph (e.g., linking 'self attention' to 'attention weights'). I must explicitly state that self-attention computes attention weights over input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The literal_candidate_reading is copied exactly. The independent reading confirms the link asserts a direct functional relationship without conditions or modality. The intended_fact adds specific qualifiers ('for each token in the input text sequence') and implies a universal quantification over tokens, which are absent from the literal reading. According to the instructions, we must not replace endpoints with words from the intended_fact nor silently insert actions/conditions. The link lacks the 'for each token' constraint present in the intended_fact. Therefore, the link does not express the intended fact with the same scope; it is a more general statement than the specific intended fact. No representation error exists in the literal copy, but there is a mismatch in scope between the link and the intended fact.",
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "attention weights",
+          "definition": "Computed values representing the importance of tokens.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes",
+        "relation_definition": "SOURCE generates or calculates TARGET.",
+        "argument_qualifiers": [],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+        "confidence": 0.95,
+        "reason": "Bridge fact connecting the seed concept 'self attention' to the mechanism component 'attention weights'.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "Explicitly names the intermediate variable (attention weights) computed by the process."
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "attention weights",
+        "definition": "Computed values representing the importance of tokens.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [],
+      "surface_relation": "computes",
+      "surface_target": "attention weights",
+      "independent_link_reading": {
+        "subject": "self attention",
+        "object": "attention weights",
+        "assertion": "The entity 'self attention' computes the entity 'attention weights'. This link asserts that the process or mechanism of self-attention performs the action of computing, resulting in attention weights. No conditions, modality, or additional arguments are specified; the assertion is a direct statement of function without qualification regarding certainty, timing, or context. The assertion is coherent under ordinary language interpretation where 'computes' describes the functional output of a mechanism like self-attention in neural network contexts, even if the specific graph theory definition of 'computes' might differ from standard mathematical computation; however, per instructions, no external definitions are applied to judge validity beyond literal meaning. The link is not nonsensical as it describes a recognized operational relationship in its domain of discourse (machine learning architectures), thus requiring no repair or coherence flagging based on the constraint to retain conditions and modality as null."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (self attention --[computes]--> attention weights)",
+        "reason": "The literal_candidate_reading is copied exactly. The independent reading confirms the link asserts a direct functional relationship without conditions or modality. The intended_fact adds specific qualifiers ('for each token in the input text sequence') and implies a universal quantification over tokens, which are absent from the literal reading. According to the instructions, we must not replace endpoints with words from the intended_fact nor silently insert actions/conditions. The link lacks the 'for each token' constraint present in the intended_fact. Therefore, the link does not express the intended fact with the same scope; it is a more general statement than the specific intended fact. No representation error exists in the literal copy, but there is a mismatch in scope between the link and the intended fact.",
+        "meaning_matches": false,
+        "direction_valid": true,
+        "explanation_matches": false,
+        "scope_preserved": false,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (self attention --[computes]--> attention weights)",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0003",
+      "repair_result": {
+        "reason": "The original link 'self attention --[computes]--> attention weights' lacks the specific scope qualifier 'for each token in the input text sequence' found in the intended fact. The literal reading is too general. To repair this, I must introduce an intermediate concept representing the quantification over tokens and explicitly state that self-attention computes these weights for every token individually.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+            "confidence": 0.95,
+            "reason": "The mechanism of self-attention inherently operates on a per-token basis to generate the full set of attention weights required for the layer's output representation.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Clarifies that the computation is universal over the input sequence, not just a single aggregate value.",
+            "source_concept": "self attention",
+            "target_concept": "attention weights for each token in the input text sequence"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003"
+      ]
+    },
+    {
+      "intended_fact": "Attention weights determine the contribution of relevant input parts to the representation of each token.",
+      "confidence": 0.95,
+      "reason": "Bridge fact connecting 'attention weights' to 'relevant input parts', completing the mechanism description requested in the gap.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "Defines the functional role of attention weights regarding input tokens.",
+      "source_concept": "attention weights",
+      "target_concept": "relevant input parts",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "attention weights",
+      "target": "relevant input parts",
+      "relation": "determines_contribution_of",
+      "relation_definition": "SOURCE dictates the extent to which TARGET influences the representation.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed connects 'small transformer' to 'self attention'. The gap asks for the specific mechanism of text processing. The previous attempt failed because it introduced 'attention weights' and 'relevant input parts' as endpoints without establishing a bridge fact connecting them to the existing graph (e.g., linking 'self attention' to 'attention weights'). I must explicitly state that self-attention computes attention weights over input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think",
+      "original_proposal": {
+        "source": {
+          "name": "attention weights",
+          "definition": "Computed values representing the importance of tokens.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "relevant input parts",
+          "definition": "Specific segments of the input text sequence selected for processing.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "determines_contribution_of",
+        "relation_definition": "SOURCE dictates the extent to which TARGET influences the representation.",
+        "argument_qualifiers": [
+          "to_representation_of_each_token"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Attention weights determine the contribution of relevant input parts to the representation of each token.",
+        "confidence": 0.95,
+        "reason": "Bridge fact connecting 'attention weights' to 'relevant input parts', completing the mechanism description requested in the gap.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "Defines the functional role of attention weights regarding input tokens."
+      },
+      "source_mention": {
+        "name": "attention weights",
+        "definition": "Computed values representing the importance of tokens.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "relevant input parts",
+        "definition": "Specific segments of the input text sequence selected for processing.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "to_representation_of_each_token"
+      ],
+      "surface_relation": "determines_contribution_of",
+      "surface_target": "relevant input parts",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The original link 'self attention --[computes]--> attention weights' lacks the specific scope qualifier 'for each token in the input text sequence' found in the intended fact. The literal reading is too general. To repair this, I must introduce an intermediate concept representing the quantification over tokens and explicitly state that self-attention computes these weights for every token individually.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+            "confidence": 0.95,
+            "reason": "The mechanism of self-attention inherently operates on a per-token basis to generate the full set of attention weights required for the layer's output representation.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Clarifies that the computation is universal over the input sequence, not just a single aggregate value.",
+            "source_concept": "self attention",
+            "target_concept": "attention weights for each token in the input text sequence"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003"
+      ]
+    },
+    {
+      "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+      "confidence": 0.95,
+      "reason": "The mechanism of self-attention inherently operates on a per-token basis to generate the full set of attention weights required for the layer's output representation.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "Clarifies that the computation is universal over the input sequence, not just a single aggregate value.",
+      "source_concept": "self attention",
+      "target_concept": "attention weights for each token in the input text sequence",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "attention weights for each token in the input text sequence",
+      "relation": "computes_per_token",
+      "relation_definition": "TARGET is the specific output generated by SOURCE for every individual token within an input sequence.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed connects 'small transformer' to 'self attention'. The gap asks for the specific mechanism of text processing. The previous attempt failed because it introduced 'attention weights' and 'relevant input parts' as endpoints without establishing a bridge fact connecting them to the existing graph (e.g., linking 'self attention' to 'attention weights'). I must explicitly state that self-attention computes attention weights over input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": "representation",
+        "reason": "The literal_candidate_reading is copied exactly. The independent reading confirms the link asserts a direct functional relationship without conditions or modality. The intended_fact adds specific qualifiers ('for each token in the input text sequence') and implies a universal quantification over tokens, which are absent from the literal reading. According to the instructions, we must not replace endpoints with words from the intended_fact nor silently insert actions/conditions. The link lacks the 'for each token' constraint present in the intended_fact. Therefore, the link does not express the intended fact with the same scope; it is a more general statement than the specific intended fact. No representation error exists in the literal copy, but there is a mismatch in scope between the link and the intended fact.",
+        "representation_check": {
+          "link_reading": "ASSERTED (self attention --[computes]--> attention weights)",
+          "reason": "The literal_candidate_reading is copied exactly. The independent reading confirms the link asserts a direct functional relationship without conditions or modality. The intended_fact adds specific qualifiers ('for each token in the input text sequence') and implies a universal quantification over tokens, which are absent from the literal reading. According to the instructions, we must not replace endpoints with words from the intended_fact nor silently insert actions/conditions. The link lacks the 'for each token' constraint present in the intended_fact. Therefore, the link does not express the intended fact with the same scope; it is a more general statement than the specific intended fact. No representation error exists in the literal copy, but there is a mismatch in scope between the link and the intended fact.",
+          "meaning_matches": false,
+          "direction_valid": true,
+          "explanation_matches": false,
+          "scope_preserved": false,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "attention weights for each token in the input text sequence",
+          "definition": "The specific output generated for every individual token within an input sequence.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes",
+        "relation_definition": "TARGET is the specific output generated by SOURCE for every individual token within an input sequence.",
+        "argument_qualifiers": [
+          "for each token in the input text sequence"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+        "confidence": 0.95,
+        "reason": "The mechanism of self-attention inherently operates on a per-token basis to generate the full set of attention weights required for the layer's output representation.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "Clarifies that the computation is universal over the input sequence, not just a single aggregate value."
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "attention weights for each token in the input text sequence",
+        "definition": "The specific output generated for every individual token within an input sequence.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "for each token in the input text sequence"
+      ],
+      "surface_relation": "computes",
+      "surface_target": "attention weights for each token in the input text sequence",
+      "independent_link_reading": {
+        "subject": "self attention",
+        "object": "attention weights for each token in the input text sequence",
+        "assertion": "The self attention mechanism computes attention weights for each token in the input text sequence per token, with no additional conditions or modalities specified beyond the qualifier 'for each token in the input text sequence'. The assertion is coherent as it describes a standard operation in transformer architectures where self-attention calculates weight distributions for every token based on the input sequence context at that specific step (per-token computation). No incoherence is present; the phrasing aligns with typical technical descriptions of attention mechanisms operating sequentially or in parallel over tokens within a sequence, treating 'computes_per_token' as indicating the granularity of the operation rather than implying sequential causality between tokens unless explicitly stated otherwise by external knowledge (which is not used here). The qualifier clarifies that the computation applies individually to each token in the sequence, which is consistent with the definition of self-attention outputs per position in a sequence. Thus, the link asserts that for every token in the input text sequence, the self attention mechanism produces corresponding attention weights as its output for that token's processing step within the sequence context implied by 'self attention' without needing external definitions or repairs. The assertion remains logically sound under ordinary interpretation of graph predicates in technical domains where such relations denote functional mappings per instance (token) rather than global batch operations unless specified otherwise. No hidden assumptions violate coherence since the qualifier explicitly bounds the scope to 'each token', avoiding ambiguity about whether the operation is global or local. Therefore, the statement is internally consistent and accurately reflects a common pattern in machine learning graph representations without requiring invented definitions or endpoint adjustments. The only potential nuance is that 'computes_per_token' might be misread as implying sequential dependency if not contextualized, but given the qualifier 'for each token', it correctly denotes independent computations per token within the same layer/step, which is standard and thus not incoherent. Hence, no repair or reversal is needed, and the assertion stands valid as written."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (self attention --[computes per token]--> attention weights for each token in the input text sequence); additional arguments: for each token in the input text sequence",
+        "reason": "The link reading is copied exactly from the literal_candidate_reading. The independent reading correctly identifies the subject, object, and assertion without adding external conditions or modalities. The intended fact matches the core assertion of the link. The explanation supports the per-token nature of the operation. No representation errors exist; the link faithfully represents the intended fact with the same direction, meaning, and scope. The endpoint 'attention weights for each token in the input text sequence' is a property/output, not reduced or altered. The relation 'computes_per_token' accurately reflects the functional mapping per instance as defined in the link structure.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (self attention --[computes per token]--> attention weights for each token in the input text sequence); additional arguments: for each token in the input text sequence"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source states the function (processing text) but omits the mechanism. Explaining how self-attention works materially helps understand the architecture's operation.",
+        "chapter_topic": "self-attention mechanism",
+        "topic_id": "chapter_6e40558057d192365ef2",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation (RAG) to use external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+            "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+            "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0001",
+            "concept": "self attention"
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically process text within this small transformer architecture?"
+      },
+      "proposal": {
+        "gap_analysis": "The seed connects 'small transformer' to 'self attention'. The gap asks for the specific mechanism of text processing. The previous attempt failed because it introduced 'attention weights' and 'relevant input parts' as endpoints without establishing a bridge fact connecting them to the existing graph (e.g., linking 'self attention' to 'attention weights'). I must explicitly state that self-attention computes attention weights over input tokens.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "attention weights",
+              "definition": "Computed values representing the importance of tokens.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "computes",
+            "relation_definition": "SOURCE generates or calculates TARGET.",
+            "argument_qualifiers": [],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+            "confidence": 0.95,
+            "reason": "Bridge fact connecting the seed concept 'self attention' to the mechanism component 'attention weights'.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Explicitly names the intermediate variable (attention weights) computed by the process."
+          },
+          {
+            "source": {
+              "name": "attention weights",
+              "definition": "Computed values representing the importance of tokens.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "relevant input parts",
+              "definition": "Specific segments of the input text sequence selected for processing.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "determines_contribution_of",
+            "relation_definition": "SOURCE dictates the extent to which TARGET influences the representation.",
+            "argument_qualifiers": [
+              "to_representation_of_each_token"
+            ],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "Attention weights determine the contribution of relevant input parts to the representation of each token.",
+            "confidence": 0.95,
+            "reason": "Bridge fact connecting 'attention weights' to 'relevant input parts', completing the mechanism description requested in the gap.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Defines the functional role of attention weights regarding input tokens."
+          }
+        ],
+        "reason": "The seed is 'small transformer' -> 'self attention'. The gap asks 'How does self-attention process text?'. To answer this, I must explain the internal operation. Step 1: Connect 'self attention' to 'attention weights' (it computes them). Step 2: Connect 'attention weights' to 'relevant input parts' (they determine their contribution). This forms a connected chain: small transformer -> self attention -> attention weights -> relevant input parts. The previous error was leaving 'attention weights' and 'relevant input parts' unconnected to the seed or each other in the graph structure."
+      },
+      "fact_plan": {
+        "gap_analysis": "The seed connects 'small transformer' to 'self attention'. The gap asks for the specific mechanism of text processing. The previous attempt failed because it introduced 'attention weights' and 'relevant input parts' as endpoints without establishing a bridge fact connecting them to the existing graph (e.g., linking 'self attention' to 'attention weights'). I must explicitly state that self-attention computes attention weights over input tokens.",
+        "facts": [
+          {
+            "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+            "confidence": 0.95,
+            "reason": "Bridge fact connecting the seed concept 'self attention' to the mechanism component 'attention weights'.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Explicitly names the intermediate variable (attention weights) computed by the process.",
+            "source_concept": "self attention",
+            "target_concept": "attention weights"
+          },
+          {
+            "intended_fact": "Attention weights determine the contribution of relevant input parts to the representation of each token.",
+            "confidence": 0.95,
+            "reason": "Bridge fact connecting 'attention weights' to 'relevant input parts', completing the mechanism description requested in the gap.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Defines the functional role of attention weights regarding input tokens.",
+            "source_concept": "attention weights",
+            "target_concept": "relevant input parts"
+          }
+        ],
+        "reason": "The seed is 'small transformer' -> 'self attention'. The gap asks 'How does self-attention process text?'. To answer this, I must explain the internal operation. Step 1: Connect 'self attention' to 'attention weights' (it computes them). Step 2: Connect 'attention weights' to 'relevant input parts' (they determine their contribution). This forms a connected chain: small transformer -> self attention -> attention weights -> relevant input parts. The previous error was leaving 'attention weights' and 'relevant input parts' unconnected to the seed or each other in the graph structure."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003"
+      ],
+      "repairs": [
+        {
+          "original_candidate_ids": [
+            "candidate_0001",
+            "candidate_0002"
+          ],
+          "response": {
+            "reason": "The original link 'self attention --[computes]--> attention weights' lacks the specific scope qualifier 'for each token in the input text sequence' found in the intended fact. The literal reading is too general. To repair this, I must introduce an intermediate concept representing the quantification over tokens and explicitly state that self-attention computes these weights for every token individually.",
+            "corrected_facts": [
+              {
+                "intended_fact": "Self-attention computes attention weights for each token in the input text sequence.",
+                "confidence": 0.95,
+                "reason": "The mechanism of self-attention inherently operates on a per-token basis to generate the full set of attention weights required for the layer's output representation.",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "Clarifies that the computation is universal over the input sequence, not just a single aggregate value.",
+                "source_concept": "self attention",
+                "target_concept": "attention weights for each token in the input text sequence"
+              }
+            ]
+          },
+          "corrected_candidate_ids": [
+            "candidate_0003"
+          ]
+        }
+      ],
+      "reused_gap_answers": {},
+      "explanation_graphs": [
+        {
+          "nodes": [
+            {
+              "name": "self attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_self_attention"
+            },
+            {
+              "name": "attention weights",
+              "definition": "Computed values representing the importance of tokens.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_attention_weights"
+            },
+            {
+              "name": "relevant input parts",
+              "definition": "Specific segments of the input text sequence selected for processing.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_relevant_input_parts"
+            }
+          ],
+          "links": {
+            "candidate_0001": {
+              "source_id": "n_self_attention",
+              "target_id": "n_attention_weights",
+              "relation": "computes",
+              "relation_definition": "SOURCE generates or calculates TARGET.",
+              "argument_qualifiers": [],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0002": {
+              "source_id": "n_attention_weights",
+              "target_id": "n_relevant_input_parts",
+              "relation": "determines_contribution_of",
+              "relation_definition": "SOURCE dictates the extent to which TARGET influences the representation.",
+              "argument_qualifiers": [
+                "to_representation_of_each_token"
+              ],
+              "conditions": null,
+              "modality": null
+            }
+          },
+          "unused_node_ids": []
+        },
+        {
+          "nodes": [
+            {
+              "name": "self attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_self_attention"
+            },
+            {
+              "name": "attention weights for each token in the input text sequence",
+              "definition": "The specific output generated for every individual token within an input sequence.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_attention_weights_per_token"
+            }
+          ],
+          "links": {
+            "candidate_0003": {
+              "source_id": "n_self_attention",
+              "target_id": "n_attention_weights_per_token",
+              "relation": "computes",
+              "relation_definition": "TARGET is the specific output generated by SOURCE for every individual token within an input sequence.",
+              "argument_qualifiers": [
+                "for each token in the input text sequence"
+              ],
+              "conditions": null,
+              "modality": null
+            }
+          },
+          "unused_node_ids": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "key": "13103111c9876dd396f55fe9d3c3a91a54e466248ba3d839c601c4d46efc2103",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T10:48:14.4889872Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 26510559400,
+    "load_duration": 3542200,
+    "prompt_eval_count": 2025,
+    "prompt_eval_duration": 1019014000,
+    "eval_count": 707,
+    "eval_duration": 25413634000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"teacher model\",\n      \"definition\": \"The teacher model labels a dataset.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"dataset\",\n      \"definition\": \"The labeled dataset is used to train the student model.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"student model\",\n      \"definition\": \"The labeled dataset is used to train the student model.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"The teacher model labels a dataset, and the labeled dataset is used to train the student model.\",\n      \"evidence\": \"The teacher model labels a dataset, and the labeled dataset is used to train the student model.\"\n    },\n    {\n      \"text\": \"The labeled dataset is used to train the student model.\",\n      \"evidence\": \"the labeled dataset is used to train the student model\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"teacher model\",\n        \"definition\": \"The teacher model labels a dataset.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"labels\",\n      \"relation_definition\": \"A process (source) applies labels to an entity (target).\",\n      \"target\": {\n        \"name\": \"dataset\",\n        \"definition\": \"The labeled dataset is used to train the student model.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"a dataset\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"The teacher model labels a dataset, and the labeled dataset is used to train the student model.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"labeled dataset\",\n        \"definition\": \"The labeled dataset is used to train the student model.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"trains\",\n      \"relation_definition\": \"An entity (source) serves as input data to enable a process (target) to learn or improve.\",\n      \"target\": {\n        \"name\": \"student model\",\n        \"definition\": \"The labeled dataset is used to train the student model.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"to train\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"the labeled dataset is used to train the student model\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly states two actions: the teacher model labeling a dataset and the resulting labeled dataset being used to train the student model. These are represented as distinct relationships: 'labels' from teacher model to dataset, and 'trains' (with qualifier 'to train') from labeled dataset to student model. The evidence quotes overlap the current sentence exactly.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_009392",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

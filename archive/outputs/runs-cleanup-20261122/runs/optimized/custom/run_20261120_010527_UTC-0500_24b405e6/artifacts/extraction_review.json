@@ -1,0 +1,154 @@
+[
+  {
+    "source": "retrieval recall",
+    "relation": "quantifies_returned_relevant_passages",
+    "relation_definition": "Quantifies the total number of relevant passages returned by a search operation.",
+    "target": "relevant passages returned by search",
+    "argument_qualifiers": [
+      "returned by search"
+    ],
+    "conditions": null,
+    "modality": null,
+    "evidence": "Retrieval recall measures how many relevant passages the search returns",
+    "evidence_start": 3314,
+    "evidence_end": 3385,
+    "source_mention": {
+      "name": "retrieval recall",
+      "definition": "A metric quantifying the volume of relevant passages identified by a search operation.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "target_mention": {
+      "name": "relevant passages returned by search",
+      "definition": "The subset of search results that satisfy relevance criteria.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "surface_source": "retrieval recall",
+    "surface_target": "relevant passages returned by search",
+    "surface_relation": "measures_count_of",
+    "id": "chunk_005_coverage_1_0_relation_001",
+    "chunk_id": "chunk_005_coverage_1_0",
+    "paragraph_id": "paragraph_005",
+    "origin": "document",
+    "evidence_context": "Evaluation must distinguish the quality of retrieval from the quality of the generated answer. Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant. Neither measure alone shows whether the tutor uses the retrieved evidence correctly.",
+    "extraction_unit_id": "chunk_005_coverage_1_0",
+    "reason": "Quoted extraction proposed for semantic review",
+    "source_role_reading": null,
+    "endpoint_kinds": {
+      "source": "process",
+      "target": "entity"
+    },
+    "gates": {
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "objections_resolved": true,
+      "evidence": true,
+      "relevance": true,
+      "event_contract": true
+    },
+    "score": 1.0,
+    "threshold": 0,
+    "accepted": true,
+    "decision_reason": "The source text explicitly states 'Retrieval recall measures how many relevant passages the search returns'. This entails that the metric 'retrieval recall' quantifies the count of 'relevant passages returned by search'. The direction is correct (metric -> quantity measured), the relation type 'quantifies_returned_relevant_passages' matches the semantic meaning of 'measures how many', and the argument qualifier 'returned by search' is present in the source. No negation, condition, or extra participant is required to make this true.",
+    "verification_basis": "quote_entailment_model_review",
+    "rejection_categories": [],
+    "reviewer": {
+      "qualified_reading": "ASSERTED (retrieval recall --[quantifies returned relevant passages]--> relevant passages returned by search); additional arguments: returned by search",
+      "reason": "The source text explicitly states 'Retrieval recall measures how many relevant passages the search returns'. This entails that the metric 'retrieval recall' quantifies the count of 'relevant passages returned by search'. The direction is correct (metric -> quantity measured), the relation type 'quantifies_returned_relevant_passages' matches the semantic meaning of 'measures how many', and the argument qualifier 'returned by search' is present in the source. No negation, condition, or extra participant is required to make this true.",
+      "candidate_id": "chunk_005_coverage_1_0_relation_001",
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "evidence_status": "supported",
+      "domain_relevance": 1.0,
+      "accept": true,
+      "objections_resolved": true,
+      "rejection_categories": []
+    },
+    "review_status": "completed"
+  },
+  {
+    "source": "retrieval precision",
+    "relation": "counts_returned_relevant_passages_in",
+    "relation_definition": "Quantifies the total number of relevant passages returned by a specific search operation.",
+    "target": "relevant passages returned by search",
+    "argument_qualifiers": [
+      "returned passages"
+    ],
+    "conditions": null,
+    "modality": null,
+    "evidence": "retrieval precision measures how many returned passages are relevant",
+    "evidence_start": 3393,
+    "evidence_end": 3461,
+    "source_mention": {
+      "name": "retrieval precision",
+      "definition": "A metric quantifying the proportion of relevant items within the set of returned passages.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "target_mention": {
+      "name": "relevant passages returned by search",
+      "definition": "The subset of search results that satisfy relevance criteria.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "surface_source": "retrieval precision",
+    "surface_target": "relevant passages returned by search",
+    "surface_relation": "measures_count_of",
+    "id": "chunk_005_coverage_1_0_relation_002",
+    "chunk_id": "chunk_005_coverage_1_0",
+    "paragraph_id": "paragraph_005",
+    "origin": "document",
+    "evidence_context": "Evaluation must distinguish the quality of retrieval from the quality of the generated answer. Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant. Neither measure alone shows whether the tutor uses the retrieved evidence correctly.",
+    "extraction_unit_id": "chunk_005_coverage_1_0",
+    "reason": "Quoted extraction proposed for semantic review",
+    "source_role_reading": null,
+    "endpoint_kinds": {
+      "source": "process",
+      "target": "entity"
+    },
+    "gates": {
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "objections_resolved": true,
+      "evidence": true,
+      "relevance": true,
+      "event_contract": true
+    },
+    "score": 1.0,
+    "threshold": 0,
+    "accepted": true,
+    "decision_reason": "The source text states 'retrieval precision measures how many returned passages are relevant'. This entails that the metric 'retrieval precision' quantifies the count of 'relevant passages returned by search' (specifically those that are relevant). The direction is correct. However, there is a subtle semantic distinction: while 'recall' measures the total number of relevant items found, 'precision' measures the ratio of relevant items to *all* returned items. The candidate relation definition says 'Quantifies the total number...', which aligns with the source's 'how many... are relevant'. While precision is technically a ratio, in the context of extraction from 'measures how many', it quantifies the count of the relevant subset within the returned set. The source supports the claim that it measures/count this specific quantity. No contradiction exists.",
+    "verification_basis": "quote_entailment_model_review",
+    "rejection_categories": [],
+    "reviewer": {
+      "qualified_reading": "ASSERTED (retrieval precision --[counts returned relevant passages in]--> relevant passages returned by search); additional arguments: returned passages",
+      "reason": "The source text states 'retrieval precision measures how many returned passages are relevant'. This entails that the metric 'retrieval precision' quantifies the count of 'relevant passages returned by search' (specifically those that are relevant). The direction is correct. However, there is a subtle semantic distinction: while 'recall' measures the total number of relevant items found, 'precision' measures the ratio of relevant items to *all* returned items. The candidate relation definition says 'Quantifies the total number...', which aligns with the source's 'how many... are relevant'. While precision is technically a ratio, in the context of extraction from 'measures how many', it quantifies the count of the relevant subset within the returned set. The source supports the claim that it measures/count this specific quantity. No contradiction exists.",
+      "candidate_id": "chunk_005_coverage_1_0_relation_002",
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "evidence_status": "supported",
+      "domain_relevance": 1.0,
+      "accept": true,
+      "objections_resolved": true,
+      "rejection_categories": []
+    },
+    "review_status": "completed"
+  }
+]

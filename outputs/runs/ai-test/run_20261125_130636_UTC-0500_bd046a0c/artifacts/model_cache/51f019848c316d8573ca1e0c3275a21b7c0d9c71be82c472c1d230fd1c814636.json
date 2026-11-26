@@ -1,0 +1,28 @@
+{
+  "key": "51f019848c316d8573ca1e0c3275a21b7c0d9c71be82c472c1d230fd1c814636",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T18:28:40.3416716Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 14985350600,
+    "load_duration": 3564100,
+    "prompt_eval_count": 1602,
+    "prompt_eval_duration": 794439000,
+    "eval_count": 420,
+    "eval_duration": 14151255000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"gap_analysis\": \"The seed fact states that regularization helps a small transformer generalize. The gap asks *how* this happens. General explanatory knowledge identifies specific mechanisms (e.g., preventing overfitting via noise injection or weight constraints) that bridge the abstract concept of 'regularization' to the outcome of 'generalization beyond training examples'.\",\n  \"facts\": [\n    {\n      \"source_concept\": \"regularization\",\n      \"target_concept\": \"overfitting\",\n      \"intended_fact\": \"Regularization acts to prevent overfitting in machine learning models.\",\n      \"confidence\": 0.95,\n      \"reason\": \"General knowledge defines regularization's primary function as mitigating overfitting, which is the specific failure mode preventing generalization beyond training data.\",\n      \"gap_ids\": [\n        \"question_0003\"\n      ],\n      \"added_knowledge\": \"overfitting\"\n    },\n    {\n      \"source_concept\": \"overfitting\",\n      \"target_concept\": \"generalization beyond training examples\",\n      \"intended_fact\": \"Preventing overfitting enables a model to generalize beyond its training examples.\",\n      \"confidence\": 0.98,\n      \"reason\": \"This sentence bridges the mechanism (preventing overfitting) to the specific outcome mentioned in the source text (generalization), completing the causal chain requested by the gap.\",\n      \"gap_ids\": [\n        \"question_0003\"\n      ],\n      \"added_knowledge\": \"generalization beyond training examples\"\n    }\n  ],\n  \"reason\": \"The explanation connects 'regularization' to 'overfitting' and then to 'generalization beyond training examples'. This two-step chain explains the 'how' of the seed's claim using established general knowledge about model training dynamics, satisfying the gap without inventing specific implementation details not present in the source.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_001725",
+  "source_run": "run_20261125_130636_UTC-0500_bd046a0c",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

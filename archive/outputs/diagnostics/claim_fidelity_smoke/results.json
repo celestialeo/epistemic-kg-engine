@@ -1,0 +1,226 @@
+{
+  "items": [
+    {
+      "id": "chunk_002_s001_0",
+      "source_assertion": "The tutor's language model uses a decoder-only transformer.",
+      "graph_reading": "ASSERTED (tutors language model --[uses structure]--> decoder only transformer)"
+    },
+    {
+      "id": "chunk_002_s001_1",
+      "source_assertion": "The tutor's language model uses a decoder-only transformer to process text.",
+      "graph_reading": "ASSERTED (tutors language model --[uses structure]--> decoder only transformer) AND ASSERTED (decoder only transformer --[processes]--> text)"
+    },
+    {
+      "id": "chunk_002_s002_0",
+      "source_assertion": "A tokenizer divides an input passage into tokens.",
+      "graph_reading": "ASSERTED (tokenizer --[divides]--> input passage)"
+    },
+    {
+      "id": "chunk_002_s002_1",
+      "source_assertion": "An embedding layer maps those tokens to numerical vectors.",
+      "graph_reading": "ASSERTED (embedding layer --[maps]--> token) AND ASSERTED (token --[is mapped to]--> numerical vector)"
+    },
+    {
+      "id": "chunk_002_s003_0",
+      "source_assertion": "Positional information helps the transformer distinguish sequences containing the same tokens in different orders.",
+      "graph_reading": "ASSERTED (positional information --[helps]--> transformer) AND ASSERTED (transformer --[distinguish]--> sequences containing the same tokens in different orders)"
+    },
+    {
+      "id": "chunk_002_s004_0",
+      "source_assertion": "In each attention layer, self-attention combines information from token representations.",
+      "graph_reading": "ASSERTED (self attention --[combines]--> information) [condition: from token representations]"
+    },
+    {
+      "id": "chunk_002_s005_0",
+      "source_assertion": "A causal attention mask prevents a position from attending to later positions when the model predicts the next token.",
+      "graph_reading": "ASSERTED (causal attention mask --[prevents]--> position) with condition: when the model predicts the next token"
+    },
+    {
+      "id": "chunk_002_s006_0",
+      "source_assertion": "This restriction applies during both training and generation.",
+      "graph_reading": "ASSERTED (restriction --[applies during]--> training)"
+    },
+    {
+      "id": "chunk_002_s007_0",
+      "source_assertion": "Attention can connect information across a passage.",
+      "graph_reading": "can (attention --[connects]--> information) with condition 'across a passage'"
+    },
+    {
+      "id": "chunk_002_s007_1",
+      "source_assertion": "The model's finite context window limits the amount of text available in a single request.",
+      "graph_reading": "ASSERTED (models finite context window --[limits]--> amount of text available) with condition 'in a single request'"
+    },
+    {
+      "id": "chunk_002_s008_0",
+      "source_assertion": "An attention weight does not establish that the associated claim is true.",
+      "graph_reading": "does not (attention weight --[establishes truth of]--> associated claim is true)"
+    },
+    {
+      "id": "chunk_003_s001_0",
+      "source_assertion": "Training compares the model's predicted token probabilities with the next tokens in the training examples.",
+      "graph_reading": "ASSERTED (training --[compares]--> models predicted token probabilities) AND ASSERTED (models predicted token probabilities --[compares with]--> next tokens in the training examples)"
+    },
+    {
+      "id": "chunk_003_s002_1",
+      "source_assertion": "backpropagation computes gradients",
+      "graph_reading": "ASSERTED (backpropagation --[computes]--> gradients)"
+    },
+    {
+      "id": "chunk_003_s002_2",
+      "source_assertion": "gradients are used by an optimizer",
+      "graph_reading": "ASSERTED (gradients --[used by]--> optimizer)"
+    },
+    {
+      "id": "chunk_003_s002_3",
+      "source_assertion": "optimizer updates model parameters",
+      "graph_reading": "ASSERTED (optimizer --[updates]--> model parameters)"
+    },
+    {
+      "id": "chunk_003_s003_0",
+      "source_assertion": "The learning rate controls the size of those updates.",
+      "graph_reading": "ASSERTED (learning rate --[controls]--> size of updates)"
+    },
+    {
+      "id": "chunk_003_s004_0",
+      "source_assertion": "A learning rate that is too large can make training unstable",
+      "graph_reading": "can (learning rate --[makes unstable]--> training stability) [conditions: when learning rate is too large]"
+    },
+    {
+      "id": "chunk_003_s004_1",
+      "source_assertion": "a very small learning rate can slow improvement",
+      "graph_reading": "can (learning rate --[slows improvement]--> improvement speed) [conditions: when learning rate is very small]"
+    },
+    {
+      "id": "chunk_003_s005_0",
+      "source_assertion": "Overfitting occurs when improved training performance fails to translate into performance on unseen examples.",
+      "graph_reading": "ASSERTED (overfitting --[occurs when]--> improved training performance fails to translate into performance on unseen examples)"
+    },
+    {
+      "id": "chunk_003_s006_0",
+      "source_assertion": "Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling.",
+      "graph_reading": "ASSERTED (dropout --[is]--> regularization technique) AND ASSERTED (dropout --[randomly disables]--> some activations [during training]) AND does not (ordinary inference --[performs]--> random disabling)"
+    },
+    {
+      "id": "chunk_003_s007_0",
+      "source_assertion": "Early stopping uses validation performance to decide when to end training.",
+      "graph_reading": "ASSERTED (early stopping --[uses metric to guide]--> validation performance) AND ASSERTED (early stopping --[decides]--> training end time)"
+    },
+    {
+      "id": "chunk_003_s007_1",
+      "source_assertion": "Early stopping does not select a stopping point using held-out test results.",
+      "graph_reading": "does not (early stopping --[relies on]--> held out test results)"
+    }
+  ],
+  "results": {
+    "chunk_002_s001_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading explicitly links 'tutors language model' to 'decoder only transformer' via the relation 'uses structure', which fully captures the source assertion that the model uses this specific architecture."
+    },
+    "chunk_002_s001_1": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading contains two assertions: one linking the model to the transformer structure and another linking the transformer to processing text. This combination fully represents the source assertion that includes both the architecture and its function."
+    },
+    "chunk_002_s002_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts that a tokenizer divides an input passage, which matches the source assertion exactly in terms of entities (tokenizer, input passage) and action (divides)."
+    },
+    "chunk_002_s002_1": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading breaks the mapping into two parts: embedding layer maps to token, and token is mapped to numerical vector. Together these represent the full chain described in the source assertion about mapping tokens to vectors."
+    },
+    "chunk_002_s003_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading connects positional information helping the transformer distinguish sequences with same tokens in different orders. All entities and the causal relationship are present."
+    },
+    "chunk_002_s004_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading states self-attention combines information with the condition 'from token representations'. This preserves the source meaning that the combination happens specifically from token representations."
+    },
+    "chunk_002_s005_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts the causal attention mask prevents a position with the condition 'when the model predicts the next token'. This matches the source assertion regarding the timing/condition of the prevention."
+    },
+    "chunk_002_s006_0": {
+      "missing_meaning": "generation",
+      "complete": false,
+      "reason": "The source assertion states the restriction applies during both training and generation. The graph reading only mentions 'training', missing the 'generation' phase."
+    },
+    "chunk_002_s007_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts that attention connects information with the condition 'across a passage', which is identical to the source assertion."
+    },
+    "chunk_002_s007_1": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts that the finite context window limits text available with the condition 'in a single request', matching the source assertion exactly."
+    },
+    "chunk_002_s008_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading uses negation ('does not') to state that attention weight does not establish truth of associated claim. This matches the source assertion's negative claim."
+    },
+    "chunk_003_s001_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading splits the comparison into two assertions: training compares predicted probabilities, and those probabilities compare with next tokens. This fully represents the source assertion about comparing predictions to actual next tokens."
+    },
+    "chunk_003_s002_1": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts backpropagation computes gradients, which is a direct match to the source assertion."
+    },
+    "chunk_003_s002_2": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts gradients are used by an optimizer, matching the source assertion exactly."
+    },
+    "chunk_003_s002_3": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts optimizer updates model parameters, matching the source assertion exactly."
+    },
+    "chunk_003_s003_0": {
+      "missing_meaning": null,
+      "complete": true,
+      "reason": "The graph reading asserts learning rate controls size of updates, matching the source assertion exactly."
+    },
+    "chunk_003_s004_0": {
+      "missing_meaning": "The graph reading lacks the specific direction of the effect on 'training stability' (it states the relationship exists but does not explicitly capture that stability is compromised or lost, whereas the source says it 'makes training unstable'). However, in causal graphs, an edge labeled 'makes unstable' implies the direction of degradation. The more critical missing element is the explicit negation or state change: the source asserts instability is *caused*, while the graph reading describes a condition where stability is affected. Upon closer inspection of the schema requirements: 'can (learning rate --[makes unstable]--> training stability)'. The predicate 'makes unstable' captures the direction. Is there a missing action? No. Missing argument? No. The source says 'make training unstable'. The graph says 'makes unstable'. This seems preserved. Wait, let's re-read the instruction: 'mentioning the same entity or predicate is not sufficient'. Source: 'makes training unstable'. Graph: 'makes unstable' applied to 'training stability'. This looks equivalent. Let's look at others first.",
+      "complete": true,
+      "reason": "The graph reading explicitly links 'learning rate' to 'training stability' with the predicate 'makes unstable', conditioned on the learning rate being 'too large'. This fully captures the source assertion that a large learning rate causes instability."
+    },
+    "chunk_003_s004_1": {
+      "missing_meaning": "The graph reading states 'slows improvement' leading to 'improvement speed'. The source says 'slow improvement'. These are semantically equivalent. However, the graph reading uses 'can', while the source is a direct statement. In causal graphs, edges often imply possibility or general mechanism. But strictly, does 'can slow' equal 'can slow'? Yes. Is there a missing result? No. The source says 'slow improvement'. Graph: 'slows improvement speed'. This is equivalent.",
+      "complete": true,
+      "reason": "The graph reading connects 'learning rate' (very small) to 'improvement speed' via the action 'slows improvement', which is semantically equivalent to the source assertion that a very small learning rate slows improvement."
+    },
+    "chunk_003_s005_0": {
+      "missing_meaning": "None. The graph reading asserts the exact condition and result described in the source.",
+      "complete": true,
+      "reason": "The graph reading explicitly asserts that 'overfitting' occurs when 'improved training performance fails to translate into performance on unseen examples', which matches the source assertion exactly."
+    },
+    "chunk_003_s006_0": {
+      "missing_meaning": "None. The graph reading captures all three components: dropout is a regularization technique, it randomly disables activations during training, and ordinary inference does not perform this random disabling.",
+      "complete": true,
+      "reason": "The graph reading uses 'AND' to combine three assertions: (1) dropout is a regularization technique, (2) dropout randomly disables some activations during training, and (3) ordinary inference does not perform random disabling. This fully represents the source assertion."
+    },
+    "chunk_003_s007_0": {
+      "missing_meaning": "The source says 'uses validation performance'. The graph says 'uses metric to guide' pointing to 'validation performance'. While 'metric' is a generalization, in this context, the specific metric is identified as 'validation performance' in the node label or condition. However, the predicate 'uses metric to guide' is slightly broader than 'uses validation performance'. But usually, if the target node is 'validation performance', the action implies using it. Let's look closer. Source: 'uses validation performance'. Graph: 'uses metric to guide' -> 'validation performance'. This seems to imply the metric IS the validation performance. Is there a missing specificity? The source specifies *which* metric. The graph reading separates the action ('uses metric') from the object ('validation performance'). This is structurally sound and semantically equivalent.",
+      "complete": true,
+      "reason": "The graph reading asserts that 'early stopping' uses a metric (specifically identified as 'validation performance' in the target of the relationship) to guide the decision on 'training end time', which corresponds to the source's statement about using validation performance to decide when to end."
+    },
+    "chunk_003_s007_1": {
+      "missing_meaning": "The source says 'does not select a stopping point using held-out test results'. The graph says 'does not (early stopping --[relies on]--> held out test results)'. 'Select a stopping point' vs 'relies on'. These are functionally equivalent in this context. The negation is present.",
+      "complete": true,
+      "reason": "The graph reading explicitly states that 'early stopping' does not rely on 'held out test results', which is semantically equivalent to the source assertion that it does not select a stopping point using them."
+    }
+  }
+}

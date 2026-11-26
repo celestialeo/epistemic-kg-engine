@@ -1,0 +1,288 @@
+{
+  "policy": "bounded_model_audit_and_independent_source_review",
+  "independent_accuracy": false,
+  "chunks": [
+    {
+      "chunk_id": "chunk_001",
+      "attempts": [
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 7 of 7 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    },
+    {
+      "chunk_id": "chunk_002",
+      "attempts": [
+        {
+          "missing": [
+            {
+              "evidence": "This restriction applies during both training and generation.",
+              "missing_claim": "The graph omits 'generation' from the target node, failing to capture the full scope of the restriction asserted in the source text.",
+              "reason": "The source_quote explicitly states the restriction applies to 'both training and generation'. The graph edge targets only 'training' while retaining the qualifier 'both training and generation', which creates a logical contradiction (a single target cannot satisfy a 'both' condition). Additionally,",
+              "evidence_start": 1248
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "This restriction applies during both training and generation.",
+              "missing_claim": "The graph omits 'generation' from the target node, failing to capture the full scope of the restriction asserted in the source text.",
+              "reason": "The source_quote explicitly states the restriction applies to 'both training and generation'. The graph edge targets only 'training' while retaining the qualifier 'both training and generation', which creates a logical contradiction (a single target cannot satisfy a 'both' condition). Additionally,",
+              "evidence_start": 1248,
+              "id": "chunk_002_relation_007"
+            }
+          ],
+          "reason": "Audited 8 of 8 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [
+            {
+              "evidence": "This restriction applies during both training and generation.",
+              "missing_claim": "The graph excludes 'training' as a target for the restriction, contradicting the source_quote which mandates applicability during 'both training and generation'. The argument_qualifiers list contains the phrase but does not structurally enforce the inclusion of both phases in the target entity.",
+              "reason": "The source_quote explicitly states the restriction applies during 'both training and generation'. The objection correctly identifies that the graph edge targets only 'generation', omitting 'training'. Since the argument_qualifiers list contains the phrase 'during both training and generation' but is",
+              "evidence_start": 1248
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "This restriction applies during both training and generation.",
+              "missing_claim": "The graph excludes 'training' as a target for the restriction, contradicting the source_quote which mandates applicability during 'both training and generation'. The argument_qualifiers list contains the phrase but does not structurally enforce the inclusion of both phases in the target entity.",
+              "reason": "The source_quote explicitly states the restriction applies during 'both training and generation'. The objection correctly identifies that the graph edge targets only 'generation', omitting 'training'. Since the argument_qualifiers list contains the phrase 'during both training and generation' but is",
+              "evidence_start": 1248,
+              "id": "chunk_002_coverage_0_0_relation_002"
+            }
+          ],
+          "reason": "Audited 8 of 8 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 8 of 8 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    },
+    {
+      "chunk_id": "chunk_003",
+      "attempts": [
+        {
+          "missing": [
+            {
+              "evidence": "A learning rate that is too large can make training unstable, whereas a very small learning rate can slow improvement.",
+              "missing_claim": "A learning rate that is too large can make training unstable.",
+              "reason": "Source assertion is not preserved by graph reading: can (learning rate --[slows]--> improvement speed); additional arguments: that is very small",
+              "evidence_start": 1824
+            },
+            {
+              "evidence": "A learning rate that is too large can make training unstable, whereas a very small learning rate can slow improvement.",
+              "missing_claim": "A learning rate that is too large can make training unstable.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 1824
+            },
+            {
+              "evidence": "A learning rate that is too large can make training unstable, whereas a very small learning rate can slow improvement.",
+              "missing_claim": "A learning rate that is too large can make training unstable.",
+              "reason": "The graph does not contain an assertion that 'a large learning rate can make training unstable'. The existing edge chunk_003_relation_008 only addresses small learning rates slowing improvement.",
+              "evidence_start": 1824
+            },
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "Early stopping does not use held-out test results to select a stopping point.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 2223
+            },
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "Early stopping does not select a stopping point using held-out test results.",
+              "reason": "The graph lacks an assertion that early stopping does not use held-out test results for stopping decisions.",
+              "evidence_start": 2223
+            },
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "The graph asserts a positive reliance on 'held out test results', whereas the source_quote explicitly negates this by stating early stopping uses validation performance 'rather than' held-out test results. The graph fails to capture the exclusionary nature of the relationship defined in the source.",
+              "reason": "The source_quote explicitly states that early stopping uses validation performance 'rather than' held-out test results, indicating an exclusionary relationship. The graph edge asserts a positive reliance ('relies_on_metrics_for') from early stopping to held-out test results, which directly contradic",
+              "evidence_start": 2223
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "The graph asserts a positive reliance on 'held out test results', whereas the source_quote explicitly negates this by stating early stopping uses validation performance 'rather than' held-out test results. The graph fails to capture the exclusionary nature of the relationship defined in the source.",
+              "reason": "The source_quote explicitly states that early stopping uses validation performance 'rather than' held-out test results, indicating an exclusionary relationship. The graph edge asserts a positive reliance ('relies_on_metrics_for') from early stopping to held-out test results, which directly contradic",
+              "evidence_start": 2223,
+              "id": "chunk_003_relation_014"
+            }
+          ],
+          "reason": "Audited 7 of 7 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "Early stopping does NOT select a stopping point using held-out test results.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 2223
+            },
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "Early stopping does not select a stopping point using held-out test results.",
+              "reason": "The graph lacks an explicit assertion or negation regarding the use (or non-use) of held-out test results for selecting a stopping point.",
+              "evidence_start": 2223
+            },
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "The graph claims early stopping uses held-out test results as the metric for stopping. The source_quote explicitly states that early stopping uses validation performance and contrasts this with selecting a stopping point using held-out test results ('rather than'). The graph fails to capture the exclusionary nature of the relationship and incorrectly identifies the target metric.",
+              "reason": "The graph edge asserts that early stopping 'employs_metric_for_stopping' using 'held out test results'. The source_quote explicitly states that early stopping uses 'validation performance' and does so 'rather than' using 'held-out test results'. The objection correctly identifies that the graph misp",
+              "evidence_start": 2223
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.",
+              "missing_claim": "The graph claims early stopping uses held-out test results as the metric for stopping. The source_quote explicitly states that early stopping uses validation performance and contrasts this with selecting a stopping point using held-out test results ('rather than'). The graph fails to capture the exclusionary nature of the relationship and incorrectly identifies the target metric.",
+              "reason": "The graph edge asserts that early stopping 'employs_metric_for_stopping' using 'held out test results'. The source_quote explicitly states that early stopping uses 'validation performance' and does so 'rather than' using 'held-out test results'. The objection correctly identifies that the graph misp",
+              "evidence_start": 2223,
+              "id": "chunk_003_coverage_0_1_relation_003"
+            }
+          ],
+          "reason": "Audited 6 of 7 source sentences; judgments are model estimates",
+          "errors": {
+            "chunk_003_s004": "source_coverage failed for chunk_003_coverage_1 after 3 attempts: An edge cannot be faithfully representing a claim and also unsupported. Missing source meaning alone does not invalidate another existing edge."
+          }
+        },
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 6 of 7 source sentences; judgments are model estimates",
+          "errors": {
+            "chunk_003_s004": "source_coverage failed for chunk_003_coverage_2 after 3 attempts: An edge cannot be faithfully representing a claim and also unsupported. Missing source meaning alone does not invalidate another existing edge."
+          }
+        }
+      ],
+      "status": "unresolved",
+      "errors": {
+        "chunk_003_s004": "source_coverage failed for chunk_003_coverage_2 after 3 attempts: An edge cannot be faithfully representing a claim and also unsupported. Missing source meaning alone does not invalidate another existing edge."
+      }
+    },
+    {
+      "chunk_id": "chunk_004",
+      "attempts": [
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 7 of 7 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    },
+    {
+      "chunk_id": "chunk_005",
+      "attempts": [
+        {
+          "missing": [
+            {
+              "evidence": "Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.",
+              "missing_claim": "Retrieval recall measures how many relevant passages the search returns.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 3314
+            },
+            {
+              "evidence": "Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.",
+              "missing_claim": "Retrieval recall measures how many relevant passages the search returns.",
+              "reason": "Graph lacks an edge asserting that 'retrieval recall measure' measures 'count of relevant passages returned'.",
+              "evidence_start": 3314
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "A failure to retrieve supporting evidence means that support was not found.",
+              "reason": "Source assertion is not preserved by graph reading: tutor --[is evaluated for]--> factual accuracy; support from the supplied documents",
+              "evidence_start": 3909
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "A failure to retrieve supporting evidence means that support was not found.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 3909
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "it does not prove that the proposed claim is false.",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 3909
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "A failure to retrieve supporting evidence means that support was not found.",
+              "reason": "The graph lacks an edge asserting that 'failure to retrieve supporting evidence' implies 'support was not found'. The existing edge (chunk_005_relation_013) discusses evaluation criteria, not the logical consequence of retrieval failure.",
+              "evidence_start": 3909
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "A failure to retrieve supporting evidence does not prove that the proposed claim is false.",
+              "reason": "The graph lacks an edge asserting that a failure to retrieve does not prove a claim is false. The existing edges do not address the logical status of the proposed claim when evidence is missing.",
+              "evidence_start": 3909
+            },
+            {
+              "evidence": "Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.",
+              "missing_claim": "The target entity should be 'relevant passages returned by search' as per the source_quote, but the graph incorrectly sets the target to 'retrieval recall', failing to capture the object being measured.",
+              "reason": "The source_quote explicitly defines retrieval recall as measuring 'how many relevant passages the search returns'. The graph edge asserts that retrieval recall measures 'retrieval recall' (a self-referential loop), whereas the source text indicates it should measure 'relevant passages'. This is a 'm",
+              "evidence_start": 3314
+            },
+            {
+              "evidence": "When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.",
+              "missing_claim": "The graph incorrectly includes 'disagreement between two course passages' as a condition qualifier for the relation. The source_quote states this is the scenario ('When...') in which the prohibition applies, not a condition that must be present for the action to exist or be defined. By listing it as a condition on the edge, the graph implies the relation only exists if there is a disagreement, whereas the source defines the tutor's required behavior specifically within that scenario. More critically, the graph uses 'merges_into' while the source says 'combine them into'. While semantically similar, the strict adherence to the source text requires checking if the specific phrasing 'combine' vs 'merge' alters the meaning in this context; however, the primary failure is the handling of the scenario as a condition rather than the context for the instruction. The graph structure implies the relation is conditional on the disagreement existing, whereas the source presents it as an imperative rule for that specific case.",
+              "reason": "The objection correctly identifies that the graph edge includes 'two course passages' and 'disagreement between two course passages' as conditions/qualifiers. The source text presents these elements as the specific scenario ('When...') in which the prohibition applies, not as pre-requisites for the",
+              "evidence_start": 3774
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "The graph incorrectly equates the condition with itself as the outcome, omitting the source's distinction between 'support was not found' and 'the claim is not proven false'. The target should represent 'support was not found' or 'claim truth status remains unproven', not repeat the source condition.",
+              "reason": "The graph edge asserts that 'failure to retrieve supporting evidence' means 'failure to retrieve supporting evidence', creating a tautology where source and target are identical. The source quote explicitly distinguishes between two distinct outcomes: 'support was not found' and 'the proposed claim'",
+              "evidence_start": 3909
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.",
+              "missing_claim": "The target entity should be 'relevant passages returned by search' as per the source_quote, but the graph incorrectly sets the target to 'retrieval recall', failing to capture the object being measured.",
+              "reason": "The source_quote explicitly defines retrieval recall as measuring 'how many relevant passages the search returns'. The graph edge asserts that retrieval recall measures 'retrieval recall' (a self-referential loop), whereas the source text indicates it should measure 'relevant passages'. This is a 'm",
+              "evidence_start": 3314,
+              "id": "chunk_005_relation_006"
+            },
+            {
+              "evidence": "When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.",
+              "missing_claim": "The graph incorrectly includes 'disagreement between two course passages' as a condition qualifier for the relation. The source_quote states this is the scenario ('When...') in which the prohibition applies, not a condition that must be present for the action to exist or be defined. By listing it as a condition on the edge, the graph implies the relation only exists if there is a disagreement, whereas the source defines the tutor's required behavior specifically within that scenario. More critically, the graph uses 'merges_into' while the source says 'combine them into'. While semantically similar, the strict adherence to the source text requires checking if the specific phrasing 'combine' vs 'merge' alters the meaning in this context; however, the primary failure is the handling of the scenario as a condition rather than the context for the instruction. The graph structure implies the relation is conditional on the disagreement existing, whereas the source presents it as an imperative rule for that specific case.",
+              "reason": "The objection correctly identifies that the graph edge includes 'two course passages' and 'disagreement between two course passages' as conditions/qualifiers. The source text presents these elements as the specific scenario ('When...') in which the prohibition applies, not as pre-requisites for the",
+              "evidence_start": 3774,
+              "id": "chunk_005_relation_015"
+            },
+            {
+              "evidence": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false.",
+              "missing_claim": "The graph incorrectly equates the condition with itself as the outcome, omitting the source's distinction between 'support was not found' and 'the claim is not proven false'. The target should represent 'support was not found' or 'claim truth status remains unproven', not repeat the source condition.",
+              "reason": "The graph edge asserts that 'failure to retrieve supporting evidence' means 'failure to retrieve supporting evidence', creating a tautology where source and target are identical. The source quote explicitly distinguishes between two distinct outcomes: 'support was not found' and 'the proposed claim'",
+              "evidence_start": 3909,
+              "id": "chunk_005_relation_016"
+            }
+          ],
+          "reason": "Audited 7 of 7 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 7 of 7 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "policy": "bounded_model_audit_and_independent_source_review",
+  "independent_accuracy": false,
+  "chunks": [
+    {
+      "chunk_id": "chunk_001",
+      "attempts": [
+        {
+          "missing": [
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "...during training",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 0
+            },
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "during training",
+              "reason": "The phrase 'during training' qualifies the time of the operations but no graph edge includes this temporal condition in its qualifiers or source_sentence_ids.",
+              "evidence_start": 0
+            },
+            {
+              "evidence": "Regularization helps it generalize beyond its training examples.",
+              "missing_claim": "Regularization helps it generalize beyond its training examples",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 120
+            },
+            {
+              "evidence": "After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions.",
+              "missing_claim": "while retrieval-augmented generation lets it use external documents when answering questions",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 185
+            },
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "The graph incorrectly attributes the action 'to improve its predictions' directly to the relation between the transformer and 'training'. The source specifies that 'backpropagation' is the agent used during training for this purpose. The graph omits 'backpropagation' as the subject of the action, implying the transformer operates on 'training' itself to achieve the result, which misrepresents the causal mechanism described in the quote.",
+              "reason": "The source quote explicitly links the action 'to improve its predictions' to the mechanism 'backpropagation', not directly to the phase 'training'. The graph edge asserts that the transformer 'operates' on 'training' with the qualifier 'to improve its predictions', which incorrectly attributes the C",
+              "evidence_start": 0
+            }
+          ],
+          "unsupported": [
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "The graph incorrectly attributes the action 'to improve its predictions' directly to the relation between the transformer and 'training'. The source specifies that 'backpropagation' is the agent used during training for this purpose. The graph omits 'backpropagation' as the subject of the action, implying the transformer operates on 'training' itself to achieve the result, which misrepresents the causal mechanism described in the quote.",
+              "reason": "The source quote explicitly links the action 'to improve its predictions' to the mechanism 'backpropagation', not directly to the phase 'training'. The graph edge asserts that the transformer 'operates' on 'training' with the qualifier 'to improve its predictions', which incorrectly attributes the C",
+              "evidence_start": 0,
+              "id": "chunk_001_relation_005"
+            }
+          ],
+          "reason": "Audited 3 of 3 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 3 of 3 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    }
+  ]
+}

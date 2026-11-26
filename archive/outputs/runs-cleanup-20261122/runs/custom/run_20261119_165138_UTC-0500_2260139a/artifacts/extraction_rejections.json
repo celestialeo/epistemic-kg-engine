@@ -1,0 +1,252 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "meaning_changed": 16,
+    "wrong_direction": 11,
+    "wrong_kind": 10,
+    "unsupported_claim": 4
+  },
+  "rejected": [
+    {
+      "id": "chunk_001_relation_007",
+      "chunk_id": "chunk_001",
+      "source": "passages from same source",
+      "relation": "participates_in",
+      "target": "training data",
+      "decision_reason": "The relation 'participates_in' implies an active involvement of the source in the target process. The provided quote states that if passages from the same source appear in both training and testing, performance is overstated. This describes a condition for data leakage (a negative outcome) rather than the source actively participating in the training process itself. Furthermore, the relation definition requires the entity to participate without being a structural part; here, the 'passages' are instances of data used, but the specific causal claim in the text is about the *consequence* of overlap (overstatement of ability), not the participation act. The quote supports a conditional warning about leakage, not the affirmative relation that the source participates in training. Failed gates: semantics_valid, direction_valid, no_contradiction, certain, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_001_relation_008",
+      "chunk_id": "chunk_001",
+      "source": "passages from same source",
+      "relation": "participates_in",
+      "target": "testing data",
+      "decision_reason": "The supplied quote states that 'if passages from the same source appear in both training and testing, the measured performance can overstate the model's ability'. This describes a conditional consequence (data leakage leading to overstatement) rather than an active participation event. The relation 'participates_in' implies an ongoing involvement or contribution of the entity ('passages') into the process ('testing data'). The text treats the appearance of passages as a static condition for evaluation failure, not as an active participation in the testing process itself. Furthermore, the quote frames the scenario as a hypothetical risk ('if... then...'), whereas the relation asserts a factual occurrence of participation. The semantic mismatch between 'conditional risk of leakage' and 'active participation' invalidates the entailment. Failed gates: evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_001",
+      "chunk_id": "chunk_002",
+      "source": "tutors language model",
+      "relation": "employs_tool",
+      "target": "decoder only transformer",
+      "decision_reason": "The relation 'employs_tool' implies a causal or functional dependency where the source actively uses the target as an instrument to achieve an outcome. The quote states 'The tutor's language model uses a decoder-only transformer', which superficially matches. However, in the context of AI architecture described, the 'decoder-only transformer' is not a separate tool employed by the 'tutor's language model'; rather, the 'tutor's language model' IS the 'decoder-only transformer'. The text describes the internal mechanics (tokenization, attention masks) OF that specific model type. Asserting that Model A employs Model B as a tool misrepresents the architectural identity where they are the same entity. This constitutes a 'meaning_changed' objection: the relation implies distinct entities (Tool vs User), while the source describes an intrinsic composition/identity. Additionally, the quote does not support the functional outcome aspect required for 'employs_tool' in this specific architectural context, leading to 'unsupported_claim'. Failed gates: semantics_valid, direction_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_002",
+      "chunk_id": "chunk_002",
+      "source": "tutors language model",
+      "relation": "employs_tool",
+      "target": "decoder only transformer",
+      "decision_reason": "The relation 'employs_tool' implies a causal or functional dependency where the source actively uses the target as an instrument to achieve an outcome. The quote states 'The tutor's language model uses a decoder-only transformer to process text.' While this describes usage, the provided schema instructions strictly require that 'A process and its defining transformation are not two causally connected events' and forbid inventing extra nodes or upgrading 'helps'/'uses' to 'primary' unless evidence supports a distinct causal chain. More critically, in many knowledge graph ontologies for AI systems, the relationship between a model instance (tutor's language model) and its underlying architecture (decoder-only transformer) is often treated as an instantiation or composition ('is_a', 'has_component') rather than a tool-usage relation ('employs_tool'), which typically applies to external instruments. However, the primary rejection here stems from the instruction: 'Check that all participants... survive in the relation and its conditions.' The quote supports the usage, but the specific predicate 'employs_tool' might be semantically distinct from the architectural composition described. A Failed gates: semantics_valid, direction_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_003",
+      "chunk_id": "chunk_002",
+      "source": "tokenizer",
+      "relation": "divides_into",
+      "target": "input passage",
+      "decision_reason": "The relation 'divides_into' implies a causal or structural splitting where the source (tokenizer) splits the target (input passage). The quote states 'A tokenizer divides an input passage into tokens', which changes the meaning of the target from 'input passage' to 'tokens'. The target in the candidate is 'input passage', but the relation definition requires SOURCE splits TARGET. Here, the tokenizer splits the input passage into tokens, not into the input passage itself. Thus, the direction and endpoint types are mismatched relative to the strict definition provided. Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_005",
+      "chunk_id": "chunk_002",
+      "source": "embedding layer",
+      "relation": "maps_to",
+      "target": "token",
+      "decision_reason": "The relation 'maps_to' is defined as 'SOURCE performs the action of mapping TARGET to a different representation.' The supplied quote states that an embedding layer maps tokens to numerical vectors. However, the target in the candidate is 'token', whereas the quote explicitly describes the mapping being performed *on* tokens (where tokens are the input/source of the mapping action) to produce vectors. The relation direction is inverted: the layer maps tokens, it does not map itself to a token. Additionally, the definition requires the SOURCE (embedding layer) to map the TARGET; here the quote says the layer maps 'those tokens' (the target concept in the sentence structure, but the candidate defines 'token' as the entity being mapped *to* the layer's output, which contradicts the causal flow where the token is the input). The candidate claims the embedding layer maps the token to a different representation, but the quote clarifies the layer maps tokens (plural) to vectors. The specific relation 'maps_to' implies SOURCE -> TARGET is the mapping action. If SOURCE=embedding_layer and TARGET=token, the statement 'embedding layer maps token' is semantically incorrect based on the quote; Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_008",
+      "chunk_id": "chunk_002",
+      "source": "self attention",
+      "relation": "merges_info",
+      "target": "information",
+      "decision_reason": "The relation 'merges_info' implies a causal integration where the source (self-attention) actively merges the content of the target (information). The quote states that self-attention 'combines information from token representations'. While 'combines' is semantically close to 'merges', the directionality in the relation definition requires SOURCE to merge TARGET. Here, the subject 'self-attention' performs the action on 'token representations' (which are instances of information). However, the critical failure is the interpretation of 'information' as a distinct entity being merged versus 'token representations' being the source material. More importantly, the quote describes an internal mechanism ('combines information from token representations') rather than establishing that 'self attention' merges the abstract concept of 'information'. The relation definition requires SOURCE to merge TARGET. The quote says self-attention combines info FROM token representations. This matches the direction if 'information' maps to 'token representations'. However, the strict constraint is that the exact quote must entail the relation including endpoints. The endpoint 'information' is defined as Failed gates: semantics_valid, direction_valid, no_contradiction, certain, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_009",
+      "chunk_id": "chunk_002",
+      "source": "self attention",
+      "relation": "occurs_in",
+      "target": "attention layer",
+      "decision_reason": "The relation 'occurs_in' requires the SOURCE (self-attention) to be an event or process taking place in the physical location TARGET (attention layer). The provided text states that self-attention is a mechanism *within* an attention layer that combines information, but the schema definition for 'occurs_in' specifies a 'physical location'. In this context, 'attention layer' is defined as a structural component (structure), not a physical location in the sense of a container where a process physically resides; rather, it is a logical or architectural unit containing the mechanism. Furthermore, the text describes self-attention as a functional operation ('combines information') occurring *inside* the layer's logic, but the strict definition of 'occurs_in' here implies a spatial containment that conflicts with the abstract nature of neural network layers versus their internal mechanisms. The concepts are mismatched: 'self attention' is a process, 'attention layer' is a structure, but the relation 'occurs_in' typically links an event to a location, whereas the text describes a component hierarchy (mechanism inside structure) which maps better to 'is_part_of' or similar, not 'occurs_in' Failed gates: semantics_valid, direction_valid, types_valid, evidence",
+      "categories": [
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_013",
+      "chunk_id": "chunk_002",
+      "source": "attention",
+      "relation": "links",
+      "target": "information",
+      "decision_reason": "The quote states 'Attention can connect information across a passage', which supports the relation 'links' between 'attention' and 'information'. However, the direction is reversed: the text describes attention as the mechanism that connects information (Source=Information, Target=Attention in terms of flow), whereas the candidate defines Source='attention' connecting to Target='information'. The definition says 'SOURCE connects... TARGET', implying Attention (Source) connects Information (Target). The quote supports this. Wait, re-evaluating direction: Relation 'links' usually implies A links B. Quote: 'Attention can connect information'. Subject=Attention, Object=Information. This matches Source=Attention, Target=Information. Why did I mark false? Let's check the definition again: 'SOURCE connects or joins SOURCE and TARGET'. This phrasing is ambiguous. Usually 'A links B' means A is the connector, B is the connected thing. The quote says 'Attention can connect information'. So Attention is the connector, Information is the thing connected. Candidate Source=attention, Target=information. This seems valid. But wait, the instruction says 'Evaluate the literal SOURCE relation TARGET Failed gates: semantics_valid, direction_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_014",
+      "chunk_id": "chunk_002",
+      "source": "model",
+      "relation": "has_finite_window",
+      "target": "finite context window",
+      "decision_reason": "The relation 'has_finite_window' implies the SOURCE (model) possesses the TARGET as an attribute. The quote states the model's finite context window 'limits the amount of text available', establishing a causal restriction or functional limitation rather than simple possession of an attribute. Furthermore, the quote explicitly frames the 'finite context window' as a constraint on availability ('limits'), not merely a possessed property. The directionality is inverted: the window limits the text, whereas the relation claims the model has the window as a defining characteristic in a way that doesn't capture the limiting action described. Additionally, the TARGET in the candidate is defined as a 'property', but the quote treats it as an active constraint mechanism. The semantic meaning of 'limits' does not entail 'possesses attribute' without loss of specificity regarding the limitation aspect. Failed gates: semantics_valid, direction_valid, types_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_006",
+      "chunk_id": "chunk_003",
+      "source": "optimizer",
+      "relation": "acts_on",
+      "target": "model parameter",
+      "decision_reason": "The supplied quote states that an optimizer 'uses' gradients to 'update' model parameters. The relation definition requires the SOURCE (optimizer) to 'act on or change the state... of the object TARGET'. While 'update' implies a state change, the specific predicate 'acts_on' in this schema often denotes a direct physical or immediate causal intervention distinct from the abstract computational process described ('uses gradients'). More critically, the quote describes the *mechanism* (using gradients) rather than asserting the event 'optimizer acts on model parameter' as a standalone happening. The relation claims a direct action; the text describes a functional dependency where the optimizer utilizes an intermediate (gradients) to effect change. Strict adherence to 'acts_on' requires the text to explicitly frame the interaction as the optimizer acting directly on the parameters, which the quote frames instead as the optimizer using gradients for the purpose of updating. Thus, the exact entailment is missing due to the mediating concept of 'gradients' and the phrasing 'uses... to update' vs 'acts on'. Failed gates: semantics_valid, no_contradiction, certain, evidence, event_contract acts_on requires an event/process source and a non-event object target",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_008",
+      "chunk_id": "chunk_003",
+      "source": "learning rate too large",
+      "relation": "inhibits",
+      "target": "training improvement",
+      "decision_reason": "The supplied quote states that a large learning rate 'can make training unstable'. The target concept is 'training improvement'. While instability generally prevents improvement, the text explicitly contrasts this with a small learning rate that 'can slow improvement'. The quote does not explicitly state that a large learning rate reduces or suppresses 'improvement' itself; it only states it causes 'instability'. Therefore, the specific causal link to 'training improvement' is not directly entailed by the exact quote provided, failing the strict entailment requirement for the relation 'inhibits' targeting 'training improvement'. Failed gates: certain, evidence",
+      "categories": [
+        "unsupported_claim"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_012",
+      "chunk_id": "chunk_003",
+      "source": "dropout",
+      "relation": "acts_on",
+      "target": "activations during training",
+      "decision_reason": "The relation 'acts_on' requires the SOURCE (dropout) to act on or change the state of TARGET (activations). The quote states dropout 'randomly disables some activations', which implies a causal action. However, the candidate definition for TARGET ('activations during training') is an entity, while the relation definition explicitly forbids TARGET from being another event or process if SOURCE acts on it in a way that implies a process-target dynamic where the target is not an event. More critically, the quote describes dropout as a technique that disables activations; this is a description of the mechanism's effect, but the relation 'acts_on' typically implies a direct causal link between two distinct entities or processes. The primary failure here is the type constraint: the candidate defines TARGET ('activations during training') as an 'entity', but the quote describes 'activations' being disabled by the process 'dropout'. While 'acts_on' can take an entity as target, the specific phrasing 'randomly disables some activations' suggests the target is the set of activations. The real issue is the candidate's own definition: 'activations during training' are defined as 'neuron activat Failed gates: semantics_valid, direction_valid, types_valid, no_contradiction, certain, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_014",
+      "chunk_id": "chunk_004",
+      "source": "highly ranked passage",
+      "relation": "can_be_irrelevant",
+      "target": "irrelevant information",
+      "decision_reason": "The relation defines 'irrelevant information' as a property (kind: property), but the source text treats it as an entity state ('can still be irrelevant'). The quote supports that a passage can possess the quality of being irrelevant, but the schema requires the target to be a property node, not an entity instance. Additionally, the relation definition 'SOURCE is capable of being in the state TARGET' implies TARGET is a state or condition, whereas the candidate treats TARGET as a distinct concept 'irrelevant information'. The quote supports the capability of being irrelevant, but the type mismatch (property vs entity) and the specific phrasing of the relation definition versus the text's usage create a semantic gap regarding the exact relation structure required. Failed gates: types_valid, evidence",
+      "categories": [
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_015",
+      "chunk_id": "chunk_004",
+      "source": "highly ranked passage",
+      "relation": "can_be_irrelevant",
+      "target": "outdated information",
+      "decision_reason": "The relation definition requires SOURCE to be 'capable of being in the state TARGET'. The quote states a highly ranked passage 'can still be irrelevant, outdated, or incorrect', which supports the modal capability. However, the target concept is defined as 'outdated information' (a property), while the source text treats 'irrelevant, outdated, or incorrect' as a list of distinct states/properties. The relation implies a single state transition or equivalence ('being in the state'), whereas the text presents them as alternative possibilities. More critically, the target node 'outdated information' is defined as a 'property', but the relation structure expects both endpoints to be entities capable of standing in that relation (or the source being an entity and target being a state). The definition says 'SOURCE is capable of being in the state TARGET'. If TARGET is a property, this phrasing is semantically awkward unless interpreted loosely. However, the strict instruction 'Concept names identify shared nodes... infer their contextual meaning' suggests we must check if the specific node 'outdated information' matches the text's usage. The text uses 'outdated' as an adjective in a list Failed gates: types_valid, evidence",
+      "categories": [
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_004_relation_016",
+      "chunk_id": "chunk_004",
+      "source": "highly ranked passage",
+      "relation": "is_incorrect_state",
+      "target": "incorrect information",
+      "decision_reason": "The relation 'is_incorrect_state' requires the SOURCE to be capable of being in the state TARGET (where TARGET is a property). The quote states that a 'highly ranked passage' can be 'incorrect'. While 'incorrect' describes the content, the relation definition implies the SOURCE (passage) enters the state of being 'incorrect information'. However, the critical failure is the type mismatch: 'incorrect information' is defined in the candidate as a 'property', not an entity or state that a passage can 'be' in the sense of the relation 'is_incorrect_state' which typically links an entity to a property value or a specific incorrect fact. More importantly, the quote says a passage *can be* irrelevant, outdated, or incorrect. The relation targets 'incorrect information'. If we treat 'incorrect information' as the state/property, the direction is SOURCE (passage) -> TARGET (incorrect). But the candidate defines TARGET as a 'property' kind, while the relation 'is_incorrect_state' usually implies an entity having a property. The schema requires TARGET to be the state itself or the property value. Here, 'incorrect information' is defined as a property in the concepts list, but used as the 'is' Failed gates: semantics_valid, direction_valid, types_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_010",
+      "chunk_id": "chunk_005",
+      "source": "evaluation of tutor",
+      "relation": "acts_on",
+      "target": "artificial intelligence tutor",
+      "decision_reason": "The supplied quote describes the criteria for evaluating a tutor (factual correctness, support, uncertainty handling) but does not state that the 'evaluation of tutor' process acts on or changes the state/availability of the 'artificial intelligence tutor'. The relation 'acts_on' implies a causal mechanism where the evaluation modifies the tutor itself, whereas the text treats evaluation as an external metric applied to the tutor's output/performance. No evidence supports the claim that the evaluation event alters the tutor entity. Failed gates: evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_012",
+      "chunk_id": "chunk_005",
+      "source": "evaluation of tutor",
+      "relation": "measures",
+      "target": "support from documents",
+      "decision_reason": "The relation 'measures' requires the SOURCE ('evaluation of tutor') to quantify the magnitude or nature of TARGET ('support from documents'). The quote states the tutor is evaluated *for* support, indicating a criterion for assessment rather than a quantification of the support's magnitude by the evaluation process itself. Furthermore, the concept types are mismatched: 'evaluation of tutor' is defined as a 'process', while 'support from documents' is defined as a 'property'. The relation definition implies SOURCE (a process) measures TARGET (a property), but the quote frames 'support' as an attribute being checked for presence/validity, not a magnitude being quantified by the evaluation action. Additionally, the quote lists 'factual correctness', 'support', and 'uncertainty' as parallel items in a list of evaluation criteria, suggesting they are distinct aspects rather than one measuring the other. Failed gates: types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_013",
+      "chunk_id": "chunk_005",
+      "source": "evaluation of tutor",
+      "relation": "measures",
+      "target": "handling of uncertainty",
+      "decision_reason": "The relation 'measures' requires the SOURCE (evaluation of tutor) to quantify the magnitude or nature of the TARGET (handling of uncertainty). The quote states the tutor is evaluated for 'appropriate handling of uncertainty', which describes a criterion or attribute being assessed, not an act where the evaluation process quantifies the magnitude/nature of the handling itself. Furthermore, the TARGET concept 'handling of uncertainty' is defined as a 'property' in the data, whereas the relation definition implies a dynamic interaction between two processes or a process and a property's value; however, the primary failure is that the text lists 'handling of uncertainty' as an item on the evaluation checklist alongside 'factual correctness', rather than stating that the evaluation measures the extent/nature of the handling. The quote supports that handling is a dimension of evaluation, not that the evaluation quantifies the handling's nature. Failed gates: types_valid, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_017",
+      "chunk_id": "chunk_005",
+      "source": "failure to retrieve supporting evidence",
+      "relation": "fails_to_prove",
+      "target": "proposed claim is false",
+      "decision_reason": "The supplied quote explicitly states that a 'failure to retrieve supporting evidence' 'does not prove that the proposed claim is false'. The candidate relation asserts a 'fails_to_prove' connection where the source lacks evidence to establish the target's truth. However, the text clarifies that the failure to find evidence is distinct from proving falsity; it merely indicates lack of support. The quote negates the causal strength implied by the relation (that the failure constitutes proof of falsehood or establishes the claim as false via lack of evidence). Therefore, the exact entailment fails because the source denies the specific logical implication required by the 'fails_to_prove' definition in this context. Failed gates: certain, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    }
+  ]
+}

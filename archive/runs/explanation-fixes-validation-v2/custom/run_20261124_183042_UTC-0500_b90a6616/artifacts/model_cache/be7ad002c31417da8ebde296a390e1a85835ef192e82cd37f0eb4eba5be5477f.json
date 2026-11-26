@@ -1,0 +1,28 @@
+{
+  "key": "be7ad002c31417da8ebde296a390e1a85835ef192e82cd37f0eb4eba5be5477f",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:34:09.2431567Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 14692186200,
+    "load_duration": 3539900,
+    "prompt_eval_count": 998,
+    "prompt_eval_duration": 461942000,
+    "eval_count": 563,
+    "eval_duration": 14158048000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"self attention\",\n      \"definition\": \"A mechanism for processing text sequences by attending to relevant parts.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_self_attention\"\n    },\n    {\n      \"name\": \"token relationship computation\",\n      \"definition\": \"The computational task performed by self-attention.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_token_relationship_computation\"\n    },\n    {\n      \"name\": \"attention weight calculation\",\n      \"definition\": \"Executing attention weight calculation based on query-key interactions.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_attention_weight_calculation\"\n    },\n    {\n      \"name\": \"token contribution determination\",\n      \"definition\": \"The result of attention weight calculation.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_token_contribution_determination\"\n    },\n    {\n      \"name\": \"context aware hidden state production\",\n      \"definition\": \"The final output resulting from token contribution determination.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_context_aware_hidden_state_production\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0004\": {\n      \"source_id\": \"node_self_attention\",\n      \"target_id\": \"node_token_relationship_computation\",\n      \"relation\": \"performs\",\n      \"relation_definition\": \"SOURCE performs TARGET\",\n      \"argument_qualifiers\": [],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0005\": {\n      \"source_id\": \"node_attention_weight_calculation\",\n      \"target_id\": \"node_token_contribution_determination\",\n      \"relation\": \"results_in\",\n      \"relation_definition\": \"SOURCE results in TARGET\",\n      \"argument_qualifiers\": [\n        \"for every other token in the sequence\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0006\": {\n      \"source_id\": \"node_token_contribution_determination\",\n      \"target_id\": \"node_context_aware_hidden_state_production\",\n      \"relation\": \"results_in\",\n      \"relation_definition\": \"SOURCE results in TARGET\",\n      \"argument_qualifiers\": [],\n      \"conditions\": null,\n      \"modality\": null\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_001282",
+  "source_run": "run_20261124_183042_UTC-0500_b90a6616",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

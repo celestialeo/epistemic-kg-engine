@@ -1,0 +1,28 @@
+{
+  "key": "323a7c8adbb7589fe587314bfe2447c9f28dc5dd603b96ccd1074d427779b45c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-22T02:54:21.5444492Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12111434500,
+    "load_duration": 3483100,
+    "prompt_eval_count": 1892,
+    "prompt_eval_duration": 803244000,
+    "eval_count": 648,
+    "eval_duration": 11246637000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_002_relation_011\": {\n    \"qualified_reading\": \"ASSERTED (rainfall intensity --[affects]--> how quickly infiltration occurs); additional arguments: Soil structure; existing moisture; vegetation\",\n    \"reason\": \"The quote 'Soil structure, existing moisture, vegetation, and rainfall intensity affect how quickly infiltration occurs' explicitly lists 'rainfall intensity' as a factor affecting the rate of infiltration. The relation direction (rainfall intensity -> affects -> how quickly infiltration occurs) matches the text. The modality is positive (no negation). The argument qualifiers (Soil structure, existing moisture, vegetation) are present in the quote alongside the source and target. No conditions or restrictions are violated.\",\n    \"candidate_id\": \"chunk_002_relation_011\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_002_relation_012\": {\n    \"qualified_reading\": \"may (water in soil --[absorbs water from soil by roots]--> roots); additional arguments: by roots\",\n    \"reason\": \"The quote 'Water in soil may be absorbed by roots' supports the relation. However, the candidate's target is 'roots', while the action described is 'absorbed by roots'. The relation definition is 'Biological uptake of water from soil by roots.' In the quote, 'water in soil' is the patient (being absorbed), and 'roots' are the agent performing the absorption. The candidate structure implies 'water in soil' absorbs 'roots', which reverses the biological reality described in the text and the relation definition. The correct semantic mapping should be: Source='water in soil', Target='roots', Relation='absorbed_by' (or similar passive construction) OR Source='roots', Target='water in soil', Relation='absorbs'. The current candidate structure 'water in soil --[absorbs...]--> roots' asserts that water absorbs roots, which contradicts the text where roots absorb water. Therefore, the direction/semantic roles are invalid.\",\n    \"candidate_id\": \"chunk_002_relation_012\",\n    \"semantics_valid\": false,\n    \"direction_valid\": false,\n    \"types_valid\": true,\n    \"no_contradiction\": false,\n    \"certain\": true,\n    \"evidence_status\": \"unsupported\",\n    \"domain_relevance\": 0.0,\n    \"accept\": false,\n    \"objections_resolved\": true,\n    \"rejection_categories\": [ \"meaning_changed\" ]\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_004888",
+  "source_run": "run_20261121_212546_UTC-0500_b495a0f1",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

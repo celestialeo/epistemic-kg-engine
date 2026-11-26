@@ -1,0 +1,125 @@
+{
+  "run_id": "run_20261122_183755_UTC-0500_05aa42e5",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_concept_3",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0013",
+      "status": "unresolved",
+      "reason": "No validated background decision: proposer_rebuttal failed for candidate_0013 after 3 attempts: Resolve disagreement between your fields and final reasoning: position=defend disagrees with: The assertion that quantization reduces numerical precision is a well-established general fact in machine learning. The mechanism involves mapping high-bit representations (e.g., float32) to lower-bit ones (e.g., int8), directly lowering the bit-width and thus storage size. This addresses the gap regarding the specific mechanism of memory reduction without contradicting the source text or introducing unsupported claims."
+    }
+  ],
+  "input": {
+    "paragraphs": 1,
+    "chunks": 1,
+    "words": 42,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 4,
+    "incomplete_chunks": [
+      "chunk_001"
+    ],
+    "unresolved_records": 1,
+    "relations": 7,
+    "reviewed": 9,
+    "review_attempted": 9,
+    "semantic_rejections": 2,
+    "rejection_categories": {
+      "unsupported_claim": 1,
+      "meaning_changed": 1
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 1
+  },
+  "debate": {
+    "seeds": 5,
+    "proposed": 19,
+    "accepted": 3,
+    "rejected": 15,
+    "unresolved": 1,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 16,
+    "edges": 10,
+    "domain_nodes": 16,
+    "domain_edges": 10,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 5,
+    "node_kinds": {
+      "concept": 16
+    },
+    "edge_origins": {
+      "document": 7,
+      "background": 3
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 222,
+    "retries": 5,
+    "cache_hits": 68,
+    "embedding_calls": 0,
+    "prompt_tokens": 206893,
+    "output_tokens": 47129
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "idea_order_agreement": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "rouge_l_f1": {
+      "n": 1,
+      "mean": 0.6464646464646465,
+      "median": 0.6464646464646465,
+      "min": 0.6464646464646465,
+      "max": 0.6464646464646465,
+      "sample_stddev": null
+    },
+    "length_similarity": {
+      "n": 1,
+      "mean": 0.7636363636363637,
+      "median": 0.7636363636363637,
+      "min": 0.7636363636363637,
+      "max": 0.7636363636363637,
+      "sample_stddev": null
+    },
+    "final_score": {
+      "n": 1,
+      "mean": 94.1010101010101,
+      "median": 94.1010101010101,
+      "min": 94.1010101010101,
+      "max": 94.1010101010101,
+      "sample_stddev": null
+    }
+  },
+  "reconstruction_score": 94.1010101010101,
+  "evaluation_status": "completed",
+  "evaluation_metric_version": "reconstruction_fidelity_v3_verified_matching",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

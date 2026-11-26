@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "name": "self_attention",
+      "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null,
+      "node_id": "n_self_attention"
+    },
+    {
+      "name": "token_relationship_computation",
+      "definition": "The act of computing relationships between tokens in an input sequence.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null,
+      "node_id": "n_token_rel_comp"
+    },
+    {
+      "name": "attention_weight_calculation",
+      "definition": "Calculating attention weights based on query-key interactions.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null,
+      "node_id": "n_att_weight_calc"
+    },
+    {
+      "name": "token_contribution_determination",
+      "definition": "Determining how much each token contributes to the final representation of every other token.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null,
+      "node_id": "n_token_contrib_det"
+    },
+    {
+      "name": "context_aware_hidden_state_production",
+      "definition": "Producing context-aware hidden state representations for each input token.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null,
+      "node_id": "n_context_state_prod"
+    }
+  ],
+  "links": {
+    "candidate_0001": {
+      "source_id": "n_self_attention",
+      "target_id": "n_token_rel_comp",
+      "relation": "performs",
+      "relation_definition": "SOURCE performs TARGET",
+      "argument_qualifiers": [
+        "based on attention weights calculated via query-key interactions"
+      ],
+      "conditions": null,
+      "modality": null
+    },
+    "candidate_0002": {
+      "source_id": "n_att_weight_calc",
+      "target_id": "n_token_contrib_det",
+      "relation": "results_in",
+      "relation_definition": "SOURCE results in TARGET",
+      "argument_qualifiers": [
+        "for every other token in the sequence"
+      ],
+      "conditions": null,
+      "modality": null
+    },
+    "candidate_0003": {
+      "source_id": "n_token_contrib_det",
+      "target_id": "n_context_state_prod",
+      "relation": "results_in",
+      "relation_definition": "SOURCE results in TARGET",
+      "argument_qualifiers": [
+        "weighted by attention scores"
+      ],
+      "conditions": null,
+      "modality": null
+    }
+  }
+}

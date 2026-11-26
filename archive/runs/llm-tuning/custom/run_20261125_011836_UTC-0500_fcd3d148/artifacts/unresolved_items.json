@@ -1,0 +1,92 @@
+[
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_008",
+    "status": "unresolved",
+    "reason": "Relation endpoint metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_003_concept_2",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_005_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'A foundation LLM is not a complete solution...' appears in PREVIOUS_SENTENCE but lacks direct textual support in CURRENT_SENTENCE. The instruction requires every claim to have an exact continuous source quote overlapping CURRENT_SENTENCE. While CURRENT_SENTENCE contains the same semantic idea ('...rather than a complete solution'), it does not contain the full phrase 'not a complete solution for machine learning tasks such as classification or regression' required by the failed record's evidence text."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_012",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation uses an evidence quote from PREVIOUS_SENTENCE ('However, a foundation LLM is not...') which does not overlap with CURRENT_SENTENCE. The instruction mandates that every relationship must have an exact continuous source quote overlapping CURRENT_SENTENCE. Although CURRENT_SENTENCE supports the concept ('serves as a platform rather than a complete solution'), it does not contain the specific qualifier 'for machine learning tasks such as classification or regression' found in the failed record's evidence, making the specific relation unsupported by the current sentence's text."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_006_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim in the failed record originates from PREVIOUS_SENTENCE and does not overlap with CURRENT_SENTENCE. Per instructions, only claims supported by text overlapping CURRENT_SENTENCE are extracted."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_014",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'serves as' is derived from PREVIOUS_SENTENCE. No substantive assertion regarding this specific relationship exists in CURRENT_SENTENCE; therefore, no record can be generated for this index based on the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_015",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The negative relation 'does not serve as' is derived from PREVIOUS_SENTENCE. No substantive assertion regarding this specific relationship exists in CURRENT_SENTENCE; therefore, no record can be generated for this index based on the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_sentence_006_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'Standard fine-tuning is computationally expensive' relies entirely on evidence from text_1 (PREVIOUS_SENTENCE). The CURRENT_SENTENCE does not contain the phrase 'computationally expensive' nor does it assert this property for standard fine-tuning; it only contrasts parameter-efficient tuning against it. Extracting this claim would violate the requirement that every claim needs an exact continuous source quote overlapping CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_relation_010",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'standard fine-tuning -> is_computationally_expensive' uses evidence from text_1. The CURRENT_SENTENCE does not mention 'computationally expensive' or explicitly state that standard fine-tuning possesses this property; it only implies a cost difference by calling parameter-efficient tuning 'less expensive'. Therefore, the specific assertion of high expense for standard fine-tuning is not supported by a quote overlapping CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_relation_015",
+    "status": "unresolved",
+    "reason": "Relation endpoint metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_sentence_009_concept_1",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_sentence_009_concept_2",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_sentence_001_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The claim text refers to the PREVIOUS_SENTENCE content ('For example...'), but the instruction requires extracting claims from CURRENT_SENTENCE. The CURRENT_SENTENCE contains a new assertion about fine-tuned LLMs having many parameters, not the specific example of parameter count preservation. Therefore, no valid claim can be extracted for this index from the CURRENT_SENTENCE alone without violating the 'extract only from CURRENT_SENTENCE' rule."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_relation_002",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The evidence quote provided in the failed record is from PREVIOUS_SENTENCE. The instruction mandates that every claim and relation needs an exact continuous source quote overlapping CURRENT_SENTENCE. Since the CURRENT_SENTENCE ('Fine-tuned LLMs usually have a very large number of parameters.') does not contain the text 'fine-tuning a foundation LLM that has ten billion parameters produces a fine-tuned LLM that also has ten billion parameters', this record cannot be repaired using only the CURRENT_SENTENCE. The specific example relation exists in PREVIOUS_SENTENCE, but we must extract from CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_relation_003",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; Similar to index 1, the evidence quote is from PREVIOUS_SENTENCE. The CURRENT_SENTENCE does not contain the specific phrase 'foundation LLM that has ten billion parameters'. Extracting this relation requires text present in PREVIOUS_SENTENCE, which violates the constraint to extract only from CURRENT_SENTENCE for new assertions."
+  }
+]

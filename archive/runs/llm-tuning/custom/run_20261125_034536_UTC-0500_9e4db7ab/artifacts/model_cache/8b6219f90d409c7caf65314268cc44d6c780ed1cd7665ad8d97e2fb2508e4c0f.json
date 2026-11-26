@@ -1,0 +1,28 @@
+{
+  "key": "8b6219f90d409c7caf65314268cc44d6c780ed1cd7665ad8d97e2fb2508e4c0f",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T11:19:52.6817206Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 32672218700,
+    "load_duration": 3706600,
+    "prompt_eval_count": 3520,
+    "prompt_eval_duration": 412968000,
+    "eval_count": 882,
+    "eval_duration": 32239848000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_005_s010\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"A zero-shot prompt mentioning only 'apple' might return information about the technology company Apple instead of the fruit.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_016\"],\n        \"graph_reading\": \"might (zero shot prompt that mentions only the word apple --[gives]--> information about the technology company apple); additional arguments: instead of the fruit\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence asserts a specific conditional outcome ('might return') regarding a zero-shot prompt with 'apple'. Graph edge chunk_005_relation_016 explicitly captures this exact scenario, modality ('might'), and the alternative output ('information about the technology company apple instead of the fruit'). No assertions are missing or unsupported.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_005_s011\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Prompt engineering does not add parameters of an LLM.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_017\"],\n        \"graph_reading\": \"does not (prompt engineering --[adds]--> parameters); additional arguments: of an LLM\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"Prompt engineering does not remove parameters of an LLM.\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"No graph edge explicitly asserts 'does not remove'. Edge chunk_005_relation_017 covers 'adds' but not 'remove'.\",\n        \"preserves_meaning\": false\n      },\n      {\n        \"source_assertion\": \"Prompt engineering does not change parameters of an LLM.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_019\"],\n        \"graph_reading\": \"does not (prompt engineering --[changes]--> parameters); additional arguments: of an LLM\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence contains a compound negative claim: 'does not add, remove or change'. The graph supports 'adds' (chunk_005_relation_017) and 'changes' (chunk_005_relation_019). However, there is no graph edge asserting that prompt engineering does not 'remove' parameters. According to instructions, if a substantive claim ('does not remove') lacks a supporting edge, it must be flagged as missing\",\n    \"missing\": [\n      {\n        \"reason\": \"The focus sentence claims prompt engineering does not 'remove' parameters. No graph edge exists with predicate 'removes' or a negation thereof covering this specific action.\",\n        \"missing_claim\": \"Prompt engineering does not remove parameters of an LLM\",\n        \"source_sentence_ids\": [\"chunk_005_s011\"]\n      }\n    ],\n    \"unsupported\": []\n  },\n  \"chunk_005_s012\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Prompt engineering relies on the existing pattern-recognition ability of the LLM.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_020\"],\n        \"graph_reading\": \"ASSERTED (prompt engineering --[relies on]--> existing pattern recognition ability); additional arguments: of the LLM\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence states that prompt engineering 'relies on' the existing pattern-recognition ability. Graph edge chunk_005_relation_020 asserts exactly this relationship ('prompt engineering --[relies on]--> existing pattern recognition ability') with the qualifier 'of the LLM'. The meaning is fully preserved.\",\n    \"missing\": [],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_011352",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

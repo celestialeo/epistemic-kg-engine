@@ -1,0 +1,28 @@
+{
+  "key": "6d386972c81922d8233d881c97475d2411aa7b20733282f80a9018e4d4072d67",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T14:43:33.2539138Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 37018933100,
+    "load_duration": 3278300,
+    "prompt_eval_count": 1991,
+    "prompt_eval_duration": 962809000,
+    "eval_count": 1022,
+    "eval_duration": 35987432000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"team\",\n      \"definition\": \"The group of people performing the actions.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"run a large toxicity-scoring model offline\",\n      \"definition\": \"The action of executing an offline model to generate labels.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"label training data\",\n      \"definition\": \"The result of the labeling process.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"use the labeled data\",\n      \"definition\": \"The action of utilizing previously generated labels.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"distill a student model small enough to score live comments\",\n      \"definition\": \"The result of creating a smaller model for live scoring.\",\n      \"kind\": \"entity\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data\",\n      \"evidence\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data\"\n    },\n    {\n      \"text\": \"and then use the labeled data to distill a student model small enough to score live comments.\",\n      \"evidence\": \"and then use the labeled data to distill a student model small enough to score live comments.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"team\",\n        \"definition\": \"The group of people performing the actions.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"could_run\",\n      \"relation_definition\": \"A subject performs an action with possibility or hypothetical modality.\",\n      \"target\": {\n        \"name\": \"run a large toxicity-scoring model offline\",\n        \"definition\": \"The action of executing an offline model to generate labels.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"to label training data\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"could\",\n      \"evidence\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data\"\n    },\n    {\n      \"source\": {\n        \"name\": \"team\",\n        \"definition\": \"The group of people performing the actions.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"could_run\",\n      \"relation_definition\": \"A subject performs an action with possibility or hypothetical modality.\",\n      \"target\": {\n        \"name\": \"use the labeled data\",\n        \"definition\": \"The action of utilizing previously generated labels.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"to distill a student model small enough to score live comments\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"could\",\n      \"evidence\": \"and then use the labeled data to distill a student model small enough to score live comments.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"use the labeled data\",\n        \"definition\": \"The action of utilizing previously generated labels.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"creates\",\n      \"relation_definition\": \"An action results in a new entity or state.\",\n      \"target\": {\n        \"name\": \"distill a student model small enough to score live comments\",\n        \"definition\": \"The result of creating a smaller model for live scoring.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"small enough to score live comments\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"and then use the labeled data to distill a student model small enough to score live comments.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The CURRENT_SENTENCE explicitly uses 'could' to frame the actions as hypothetical capabilities rather than factual occurrences. The extracted relations preserve this modality ('could_run') and separate the sequential steps (running the model, using data) into distinct processes leading to the final distilled model.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_009663",
+  "source_run": "run_20261125_093508_UTC-0500_278cac3f",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

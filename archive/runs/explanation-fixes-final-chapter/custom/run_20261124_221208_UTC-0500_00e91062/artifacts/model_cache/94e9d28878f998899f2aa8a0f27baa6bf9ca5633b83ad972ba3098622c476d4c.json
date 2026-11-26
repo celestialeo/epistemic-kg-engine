@@ -1,0 +1,28 @@
+{
+  "key": "94e9d28878f998899f2aa8a0f27baa6bf9ca5633b83ad972ba3098622c476d4c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T03:37:33.559043Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 29587540200,
+    "load_duration": 3576400,
+    "prompt_eval_count": 898,
+    "prompt_eval_duration": 323808000,
+    "eval_count": 889,
+    "eval_duration": 29219249000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"answer\",\n      \"definition\": \"A generated response that may cite a real passage while making an unsupported claim.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"real passage\",\n      \"definition\": \"An actual excerpt or text segment retrieved from a source.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"claim\",\n      \"definition\": \"A statement asserting something about the content of a passage.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"passage\",\n      \"definition\": \"The specific text segment being cited or evaluated.\",\n      \"kind\": \"entity\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"An answer can cite a real passage while making a claim that the passage does not support.\",\n      \"evidence\": \"An answer can cite a real passage while making a claim that the passage does not support.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"answer\",\n        \"definition\": \"A generated response that may cite a real passage while making an unsupported claim.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"cites\",\n      \"relation_definition\": \"To reference or quote a specific text segment as evidence within a larger response.\",\n      \"target\": {\n        \"name\": \"real passage\",\n        \"definition\": \"An actual excerpt or text segment retrieved from a source.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"while making a claim that the passage does not support\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"can\",\n      \"evidence\": \"An answer can cite a real passage while making a claim that the passage does not support.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"answer\",\n        \"definition\": \"A generated response that may cite a real passage while making an unsupported claim.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"makes\",\n      \"relation_definition\": \"To assert or state a proposition regarding the content of a cited text.\",\n      \"target\": {\n        \"name\": \"claim\",\n        \"definition\": \"A statement asserting something about the content of a passage.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"that the passage does not support\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"can\",\n      \"evidence\": \"An answer can cite a real passage while making a claim that the passage does not support.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"claim\",\n        \"definition\": \"A statement asserting something about the content of a passage.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"does not support\",\n      \"relation_definition\": \"To fail to provide factual backing or evidence for a specific assertion.\",\n      \"target\": {\n        \"name\": \"passage\",\n        \"definition\": \"The specific text segment being cited or evaluated.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"by the answer making the claim\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"does not\",\n      \"evidence\": \"An answer can cite a real passage while making a claim that the passage does not support.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly describes an answer's ability to perform two actions simultaneously: citing a passage and making an unsupported claim. These actions are modeled as distinct relationships with appropriate qualifiers capturing the 'while' clause and the nature of the unsupported claim.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_002247",
+  "source_run": "run_20261124_221208_UTC-0500_00e91062",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

@@ -1,0 +1,2187 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self-attention computes relationships between input tokens by calculating attention weights based on similarity between query and key vectors.",
+      "confidence": 0.95,
+      "reason": "This fact explains the 'how' of text processing mentioned in the gap, introducing necessary intermediate concepts (query, key, value) without contradicting the source text.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "internal mechanics of self-attention (Q/K/V vectors and weight calculation), substantive justification: standard definition of the mechanism required to explain 'processing' beyond mere function.",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "attention weights",
+      "relation": "computes_via_similarity",
+      "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "While similarity between query and key vectors is a standard mechanism for computing attention weights in Transformer architectures, this is not the only possible implementation (e.g., learned projection matrices or non-similarity-based weighting schemes exist). The assertion treats a common pattern as a universal guarantee. A counterexample exists in sparse attention mechanisms or routing-based R Counterexample: A system using sparse attention routing or learned gating functions that assigns weights without direct similarity calculation between query and key vectors.",
+      "original_proposal": {
+        "source": {
+          "name": "self_attention",
+          "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "attention_weights",
+          "definition": "Values representing the computed relationships between input tokens based on similarity.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes_via_similarity",
+        "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+        "argument_qualifiers": [
+          "based_on_query_key_vectors"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Self-attention computes relationships between input tokens by calculating attention weights based on similarity between query and key vectors.",
+        "confidence": 0.95,
+        "reason": "This fact explains the 'how' of text processing mentioned in the gap, introducing necessary intermediate concepts (query, key, value) without contradicting the source text.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "internal mechanics of self-attention (Q/K/V vectors and weight calculation), substantive justification: standard definition of the mechanism required to explain 'processing' beyond mere function."
+      },
+      "source_mention": {
+        "name": "self_attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "attention_weights",
+        "definition": "Values representing the computed relationships between input tokens based on similarity.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "based_on_query_key_vectors"
+      ],
+      "surface_relation": "computes_via_similarity",
+      "surface_target": "attention_weights",
+      "independent_link_reading": {
+        "subject": "self attention",
+        "object": "attention weights",
+        "assertion": "The self attention process computes the attention weights via similarity calculations based on query and key vectors."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (self attention --[computes via similarity]--> attention weights); additional arguments: based_on_query_key_vectors",
+        "reason": "The literal_candidate_reading was copied exactly into link_reading. The independent reading accurately reflects the intended fact without adding properties or changing direction. No representation errors exist; the endpoints and qualifiers match the source data.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (self attention --[computes via similarity]--> attention weights); additional arguments: based_on_query_key_vectors",
+      "explanation_context": [
+        {
+          "id": "candidate_0002",
+          "intended_fact": "The computed attention weights determine how much each input token contributes to the final representation for a specific position.",
+          "source": "attention weights",
+          "relation": "determines_contribution_to",
+          "relation_definition": "The source property dictates the magnitude of contribution from input tokens to the target entity.",
+          "target": "final representation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "for_specific_position"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_005",
+          "chunk_001_coverage_0_0_relation_002",
+          "chunk_001_coverage_0_0_relation_003",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_001_coverage_0_2_relation_002"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "property"
+      },
+      "critic": {
+        "reason": "The assertion that 'self attention' computes 'attention weights' via similarity between query and key vectors is a standard, well-established definition in deep learning. It directly addresses the knowledge gap regarding the specific mechanism of text processing mentioned in the source text without contradicting it or introducing unsupported case-specific claims. The relation is precise, the concepts are correctly defined, and the modality (general explanatory knowledge) is appropriate.",
+        "candidate_id": "candidate_0001",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that self-attention computes attention weights via similarity between query and key vectors is a standard, well-established definition in deep learning. It directly addresses the gap regarding the 'how' of text processing by specifying the internal mechanics (Q/K/V interaction) without contradicting the source text's functional description. The relation 'computes_via_similarity' accurately captures the mathematical operation underlying the mechanism.",
+        "candidate_id": "candidate_0001",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that self-attention computes attention weights via similarity between query and key vectors is a standard, well-established definition in deep learning. It directly addresses the gap regarding the 'how' of text processing by specifying the internal mechanics (Q/K/V interaction) without contradicting the source text's functional description. The relation 'computes_via_similarity' accurately captures the mathematical operation underlying the mechanism.",
+        "candidate_id": "candidate_0001",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "While similarity between query and key vectors is a standard mechanism for computing attention weights in Transformer architectures, this is not the only possible implementation (e.g., learned projection matrices or non-similarity-based weighting schemes exist). The assertion treats a common pattern as a universal guarantee. A counterexample exists in sparse attention mechanisms or routing-based R",
+        "counterexample": "A system using sparse attention routing or learned gating functions that assigns weights without direct similarity calculation between query and key vectors.",
+        "sound_as_stated": false
+      },
+      "rejection_stage": "counterexample",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0005",
+      "repair_result": {
+        "reason": "The original assertions were rejected due to over-generalization (treating a common pattern as universal) and conflation of influence with strict determination. The repair introduces intermediate concepts ('similarity_score', 'value_vectors', 'linear_combination') to precisely qualify the causal chain: self-attention computes similarity scores, which are normalized into weights; these weights modulate the contribution of value vectors via linear combination to form the final representation.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+            "confidence": 0.95,
+            "reason": "text_3",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          },
+          {
+            "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+            "confidence": 0.95,
+            "reason": "text_3",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          },
+          {
+            "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+            "confidence": 0.95,
+            "reason": "text_6",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005"
+      ]
+    },
+    {
+      "intended_fact": "The computed attention weights determine how much each input token contributes to the final representation for a specific position.",
+      "confidence": 0.95,
+      "reason": "This connects the calculation of weights to the generation of representations, completing the causal chain of 'processing text' described in the gap.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "role of attention weights in generating context-aware representations, substantive justification: essential step in the self-attention mechanism to explain the output generation process.",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": "attention weights",
+      "target": "final representation",
+      "relation": "determines_contribution_to",
+      "relation_definition": "The source property dictates the magnitude of contribution from input tokens to the target entity.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Attention weights determine the *relative* contribution of tokens to a position's representation, but they do not strictly 'determine' the final representation in isolation; the value vectors and the summation operation are equally necessary. Furthermore, other factors like positional encodings or residual connections also dictate the final state. The assertion conflates influence (weights affect) Counterexample: A scenario where attention weights are uniform (all tokens contribute equally), yet the final representation is still determined by the specific value vectors and the linear combination operation, showing weights alone do not uniquely determine the output without the values.",
+      "original_proposal": {
+        "source": {
+          "name": "attention_weights",
+          "definition": "Values representing the computed relationships between input tokens based on similarity.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "final_representation",
+          "definition": "The resulting representation for a specific position after weighting contributions.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "determines_contribution_to",
+        "relation_definition": "The source property dictates the magnitude of contribution from input tokens to the target entity.",
+        "argument_qualifiers": [
+          "for_specific_position"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "The computed attention weights determine how much each input token contributes to the final representation for a specific position.",
+        "confidence": 0.95,
+        "reason": "This connects the calculation of weights to the generation of representations, completing the causal chain of 'processing text' described in the gap.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "role of attention weights in generating context-aware representations, substantive justification: essential step in the self-attention mechanism to explain the output generation process."
+      },
+      "source_mention": {
+        "name": "attention_weights",
+        "definition": "Values representing the computed relationships between input tokens based on similarity.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "final_representation",
+        "definition": "The resulting representation for a specific position after weighting contributions.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "for_specific_position"
+      ],
+      "surface_relation": "determines_contribution_to",
+      "surface_target": "final_representation",
+      "independent_link_reading": {
+        "subject": "attention weights",
+        "object": "final representation",
+        "assertion": "The attention weights literally assert that they determine the contribution of input tokens to the final representation for a specific position, with no additional conditions or modal qualifiers applied beyond this positional constraint."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (attention weights --[determines contribution to]--> final representation); additional arguments: for_specific_position",
+        "reason": "The literal_candidate_reading was copied exactly into link_reading as required. The endpoints (attention weights, final representation) and qualifiers (for_specific_position) match the intended_fact without silent insertion of actions or reinterpretation. The direction (determines contribution to) and scope (specific position) are preserved. No extra properties or modalities were added; the representation is faithful to the data provided.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (attention weights --[determines contribution to]--> final representation); additional arguments: for_specific_position",
+      "explanation_context": [
+        {
+          "id": "candidate_0001",
+          "intended_fact": "Self-attention computes relationships between input tokens by calculating attention weights based on similarity between query and key vectors.",
+          "source": "self attention",
+          "relation": "computes_via_similarity",
+          "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+          "target": "attention weights",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "based_on_query_key_vectors"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_005",
+          "chunk_001_coverage_0_0_relation_002",
+          "chunk_001_coverage_0_0_relation_003",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_001_coverage_0_2_relation_002"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "property",
+        "target": "entity"
+      },
+      "critic": {
+        "reason": "The assertion that 'attention weights' determine the contribution of input tokens to the 'final representation' accurately describes the functional role of attention weights in transformer architectures. This completes the causal chain initiated by the self-attention mechanism, explaining how the computed weights translate into context-aware representations. The relation is precise and aligns with general explanatory knowledge regarding transformer operations.",
+        "candidate_id": "candidate_0002",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that attention weights determine the contribution of input tokens to the final representation is a precise description of the causal role of these weights in the transformer architecture. This completes the explanatory chain from mechanism (self-attention) to output (representation). The relation 'determines_contribution_to' correctly models this dependency, and the qualifier 'for_specific_position' appropriately scopes the claim to the local context of a specific token position.",
+        "candidate_id": "candidate_0002",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that attention weights determine the contribution of input tokens to the final representation is a precise description of the causal role of these weights in the transformer architecture. This completes the explanatory chain from mechanism (self-attention) to output (representation). The relation 'determines_contribution_to' correctly models this dependency, and the qualifier 'for_specific_position' appropriately scopes the claim to the local context of a specific token position.",
+        "candidate_id": "candidate_0002",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "Attention weights determine the *relative* contribution of tokens to a position's representation, but they do not strictly 'determine' the final representation in isolation; the value vectors and the summation operation are equally necessary. Furthermore, other factors like positional encodings or residual connections also dictate the final state. The assertion conflates influence (weights affect)",
+        "counterexample": "A scenario where attention weights are uniform (all tokens contribute equally), yet the final representation is still determined by the specific value vectors and the linear combination operation, showing weights alone do not uniquely determine the output without the values.",
+        "sound_as_stated": false
+      },
+      "rejection_stage": "counterexample",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The original assertions were rejected due to over-generalization (treating a common pattern as universal) and conflation of influence with strict determination. The repair introduces intermediate concepts ('similarity_score', 'value_vectors', 'linear_combination') to precisely qualify the causal chain: self-attention computes similarity scores, which are normalized into weights; these weights modulate the contribution of value vectors via linear combination to form the final representation.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+            "confidence": 0.95,
+            "reason": "text_3",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          },
+          {
+            "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+            "confidence": 0.95,
+            "reason": "text_3",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          },
+          {
+            "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+            "confidence": 0.95,
+            "reason": "text_6",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "text_2"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005"
+      ]
+    },
+    {
+      "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+      "confidence": 0.95,
+      "reason": "text_3",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "text_2",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "similarity score",
+      "relation": "computes_via_similarity",
+      "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "While self-attention typically uses dot-product similarity (cosine or scaled dot product), the literal assertion implies this is the sole mechanism. Counterexample: Additive attention mechanisms (e.g., Bahdanau) compute similarity via a learned linear transformation and non-linear activation rather than direct vector similarity. Furthermore, sparse attention patterns may bypass global similarity. Counterexample: A model using additive attention where similarity = tanh(W_q x + W_k y), not dot-product similarity.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": "counterexample",
+        "reason": "While similarity between query and key vectors is a standard mechanism for computing attention weights in Transformer architectures, this is not the only possible implementation (e.g., learned projection matrices or non-similarity-based weighting schemes exist). The assertion treats a common pattern as a universal guarantee. A counterexample exists in sparse attention mechanisms or routing-based R Counterexample: A system using sparse attention routing or learned gating functions that assigns weights without direct similarity calculation between query and key vectors.",
+        "representation_check": {
+          "link_reading": "ASSERTED (self attention --[computes via similarity]--> attention weights); additional arguments: based_on_query_key_vectors",
+          "reason": "The literal_candidate_reading was copied exactly into link_reading. The independent reading accurately reflects the intended fact without adding properties or changing direction. No representation errors exist; the endpoints and qualifiers match the source data.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "similarity score",
+          "definition": "A metric computed between query and key vectors.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "computes via similarity",
+        "relation_definition": "The process of self-attention generates a similarity score based on query and key vectors.",
+        "argument_qualifiers": [
+          "based_on_query_key_vectors"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+        "confidence": 0.95,
+        "reason": "text_3",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "text_2"
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "similarity score",
+        "definition": "A metric computed between query and key vectors.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "based_on_query_key_vectors"
+      ],
+      "surface_relation": "computes via similarity",
+      "surface_target": "similarity score",
+      "independent_link_reading": {
+        "subject": "self attention",
+        "object": "similarity score",
+        "assertion": "The self attention process computes the similarity score via similarity calculation based on query key vectors."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (self attention --[computes via similarity]--> similarity score); additional arguments: based_on_query_key_vectors",
+        "reason": "The literal_candidate_reading was copied exactly into link_reading without modification. The representation aligns with the intended fact in terms of direction (computes), meaning (similarity score via similarity calculation), and scope (based on query key vectors). No properties were added, nor were conditions inserted that alter identity. The explanation 'text_3' is treated as data; no reinterpretation occurred.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (self attention --[computes via similarity]--> similarity score); additional arguments: based_on_query_key_vectors",
+      "explanation_context": [
+        {
+          "id": "candidate_0004",
+          "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+          "source": "similarity score",
+          "relation": "normalized_to_produce",
+          "relation_definition": "The similarity scores are normalized to yield attention weights.",
+          "target": "attention weights",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "modulate_contribution_of_value_vectors"
+          ],
+          "status": "unverified_companion"
+        },
+        {
+          "id": "candidate_0005",
+          "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+          "source": "attention weights",
+          "relation": "linear_combination_of",
+          "relation_definition": "The final representation is generated by combining value vectors weighted by attention weights.",
+          "target": "final representation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "weighted_by_attention_weights"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_005",
+          "chunk_001_coverage_0_0_relation_002",
+          "chunk_001_coverage_0_0_relation_003",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_001_coverage_0_2_relation_002"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "property"
+      },
+      "critic": {
+        "reason": "The assertion that self-attention computes a similarity score via query and key vectors is a standard, well-established definition in deep learning. It correctly fills the knowledge gap regarding the specific mechanism of text processing without contradicting the chapter's high-level description. The relation 'computes_via_similarity' precisely captures this operational step.",
+        "candidate_id": "candidate_0003",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that self-attention computes a similarity score via query and key vectors is a fundamental, well-established definition of the mechanism. It directly addresses the gap regarding 'how' text is processed by defining the operational mechanics (calculating relationships) rather than just stating the function. The claim is general explanatory knowledge, not a particular case measurement, and requires no external citation as it relies on standard architectural definitions.",
+        "candidate_id": "candidate_0003",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that self-attention computes a similarity score via query and key vectors is a fundamental, well-established definition in deep learning. It directly addresses the gap by explaining the 'how' of text processing (calculating relationships) rather than just stating the function. The claim relies on standard architectural definitions and general explanatory knowledge, requiring no external citation or case-specific evidence.",
+        "candidate_id": "candidate_0003",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "While self-attention typically uses dot-product similarity (cosine or scaled dot product), the literal assertion implies this is the sole mechanism. Counterexample: Additive attention mechanisms (e.g., Bahdanau) compute similarity via a learned linear transformation and non-linear activation rather than direct vector similarity. Furthermore, sparse attention patterns may bypass global similarity.",
+        "counterexample": "A model using additive attention where similarity = tanh(W_q x + W_k y), not dot-product similarity.",
+        "sound_as_stated": false
+      },
+      "rejection_stage": "counterexample"
+    },
+    {
+      "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+      "confidence": 0.95,
+      "reason": "text_3",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "text_2",
+      "id": "candidate_0004",
+      "seed_id": "seed_001",
+      "source": "similarity score",
+      "target": "attention weights",
+      "relation": "normalized_to_produce",
+      "relation_definition": "The similarity scores are normalized to yield attention weights.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "Normalization is necessary for softmax attention but not sufficient to define the weights; the specific normalization function (softmax vs. sigmoid) and temperature scaling are case-specific unknowns. Additionally, some architectures use unnormalized scores directly in gating mechanisms. Counterexample: A system using a custom normalization function like 'log-sum-exp' with a learnable temperature parameter, or a gated attention mechanism that does not normalize before weighting.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": "counterexample",
+        "reason": "While similarity between query and key vectors is a standard mechanism for computing attention weights in Transformer architectures, this is not the only possible implementation (e.g., learned projection matrices or non-similarity-based weighting schemes exist). The assertion treats a common pattern as a universal guarantee. A counterexample exists in sparse attention mechanisms or routing-based R Counterexample: A system using sparse attention routing or learned gating functions that assigns weights without direct similarity calculation between query and key vectors.",
+        "representation_check": {
+          "link_reading": "ASSERTED (self attention --[computes via similarity]--> attention weights); additional arguments: based_on_query_key_vectors",
+          "reason": "The literal_candidate_reading was copied exactly into link_reading. The independent reading accurately reflects the intended fact without adding properties or changing direction. No representation errors exist; the endpoints and qualifiers match the source data.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "similarity score",
+          "definition": "A metric computed between query and key vectors.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "attention weights",
+          "definition": "Weights used to modulate value vector contributions.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "normalized to produce",
+        "relation_definition": "The similarity scores are normalized to yield attention weights.",
+        "argument_qualifiers": [
+          "modulate_contribution_of_value_vectors"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+        "confidence": 0.95,
+        "reason": "text_3",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "text_2"
+      },
+      "source_mention": {
+        "name": "similarity score",
+        "definition": "A metric computed between query and key vectors.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "attention weights",
+        "definition": "Weights used to modulate value vector contributions.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "modulate_contribution_of_value_vectors"
+      ],
+      "surface_relation": "normalized to produce",
+      "surface_target": "attention weights",
+      "independent_link_reading": {
+        "subject": "similarity score",
+        "object": "attention weights",
+        "assertion": "The similarity score is normalized to produce attention weights, modulating the contribution of value vectors."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (similarity score --[normalized to produce]--> attention weights); additional arguments: modulate_contribution_of_value_vectors",
+        "reason": "The link_reading is an exact copy of the literal_candidate_reading. The representation faithfully captures the intended fact without adding, removing, or reinterpreting properties. The direction (similarity score -> attention weights), meaning (normalization produces weights which modulate contributions), and scope are preserved. No silent actions or condition-based identity changes were introduced.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (similarity score --[normalized to produce]--> attention weights); additional arguments: modulate_contribution_of_value_vectors",
+      "explanation_context": [
+        {
+          "id": "candidate_0003",
+          "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+          "source": "self attention",
+          "relation": "computes_via_similarity",
+          "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+          "target": "similarity score",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "based_on_query_key_vectors"
+          ],
+          "status": "unverified_companion"
+        },
+        {
+          "id": "candidate_0005",
+          "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+          "source": "attention weights",
+          "relation": "linear_combination_of",
+          "relation_definition": "The final representation is generated by combining value vectors weighted by attention weights.",
+          "target": "final representation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "weighted_by_attention_weights"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_005",
+          "chunk_001_coverage_0_0_relation_002",
+          "chunk_001_coverage_0_0_relation_003",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_001_coverage_0_2_relation_002"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "property",
+        "target": "property"
+      },
+      "critic": {
+        "reason": "The assertion that similarity scores are normalized to produce attention weights is technically accurate and represents a necessary step in the self-attention mechanism (typically via softmax). This general knowledge fills the gap by explaining how raw similarities become usable weights. The relation 'normalized_to_produce' is appropriate.",
+        "candidate_id": "candidate_0004",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that similarity scores are normalized to produce attention weights is a precise description of the standard softmax operation inherent to self-attention mechanisms. This step is necessary to convert raw similarities into valid probability distributions (weights) that modulate value vectors. The claim preserves the causal strength and conditions of the mechanism without inventing evidence, serving as a valid background concept explaining the transition from similarity calculation to weighted aggregation.",
+        "candidate_id": "candidate_0004",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that similarity scores are normalized to produce attention weights accurately describes the standard softmax operation inherent to self-attention mechanisms. This step is necessary to convert raw similarities into valid probability distributions (weights) that modulate value vectors. The claim preserves causal strength and conditions without inventing evidence, serving as valid background knowledge explaining the transition from similarity calculation to weighted aggregation.",
+        "candidate_id": "candidate_0004",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "Normalization is necessary for softmax attention but not sufficient to define the weights; the specific normalization function (softmax vs. sigmoid) and temperature scaling are case-specific unknowns. Additionally, some architectures use unnormalized scores directly in gating mechanisms.",
+        "counterexample": "A system using a custom normalization function like 'log-sum-exp' with a learnable temperature parameter, or a gated attention mechanism that does not normalize before weighting.",
+        "sound_as_stated": false
+      },
+      "rejection_stage": "counterexample"
+    },
+    {
+      "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+      "confidence": 0.95,
+      "reason": "text_6",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "text_2",
+      "id": "candidate_0005",
+      "seed_id": "seed_001",
+      "source": "attention weights",
+      "target": "final representation",
+      "relation": "linear_combination_of",
+      "relation_definition": "The final representation is generated by combining value vectors weighted by attention weights.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": 1.0,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "The assertion conflates the mathematical definition of the operation with the architectural guarantee. Counterexample: In multi-head attention, the 'final representation' for a position is often a concatenation of heads followed by a projection, not a single linear combination of all value vectors weighted by a single set of weights. Also, residual connections add the input directly, meaning the ' Counterexample: A transformer layer where output = LayerNorm(x + Concat(heads) * W_out), making the final representation a sum of residuals and weighted values, not just the weighted combination.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": "counterexample",
+        "reason": "While similarity between query and key vectors is a standard mechanism for computing attention weights in Transformer architectures, this is not the only possible implementation (e.g., learned projection matrices or non-similarity-based weighting schemes exist). The assertion treats a common pattern as a universal guarantee. A counterexample exists in sparse attention mechanisms or routing-based R Counterexample: A system using sparse attention routing or learned gating functions that assigns weights without direct similarity calculation between query and key vectors.",
+        "representation_check": {
+          "link_reading": "ASSERTED (self attention --[computes via similarity]--> attention weights); additional arguments: based_on_query_key_vectors",
+          "reason": "The literal_candidate_reading was copied exactly into link_reading. The independent reading accurately reflects the intended fact without adding properties or changing direction. No representation errors exist; the endpoints and qualifiers match the source data.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "attention weights",
+          "definition": "Weights used to modulate value vector contributions.",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "final representation",
+          "definition": "The output vector for a specific position.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "linear combination of",
+        "relation_definition": "The final representation is generated by combining value vectors weighted by attention weights.",
+        "argument_qualifiers": [
+          "weighted_by_attention_weights"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+        "confidence": 0.95,
+        "reason": "text_6",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "text_2"
+      },
+      "source_mention": {
+        "name": "attention weights",
+        "definition": "Weights used to modulate value vector contributions.",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "final representation",
+        "definition": "The output vector for a specific position.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "weighted_by_attention_weights"
+      ],
+      "surface_relation": "linear combination of",
+      "surface_target": "final representation",
+      "independent_link_reading": {
+        "subject": "attention weights",
+        "object": "final representation",
+        "assertion": "The final representation is generated by combining value vectors weighted by attention weights, with the combination being a linear combination of those vectors under the qualifier that it is weighted by attention weights."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (attention weights --[linear combination of]--> final representation); additional arguments: weighted_by_attention_weights",
+        "reason": "The literal_candidate_reading is copied exactly into link_reading. The independent reading and intended fact align in direction, meaning, and scope regarding the linear combination of value vectors weighted by attention weights generating the final representation. No silent actions or condition changes were introduced; endpoints remain consistent with their definitions.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (attention weights --[linear combination of]--> final representation); additional arguments: weighted_by_attention_weights",
+      "explanation_context": [
+        {
+          "id": "candidate_0003",
+          "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+          "source": "self attention",
+          "relation": "computes_via_similarity",
+          "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+          "target": "similarity score",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "based_on_query_key_vectors"
+          ],
+          "status": "unverified_companion"
+        },
+        {
+          "id": "candidate_0004",
+          "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+          "source": "similarity score",
+          "relation": "normalized_to_produce",
+          "relation_definition": "The similarity scores are normalized to yield attention weights.",
+          "target": "attention weights",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "modulate_contribution_of_value_vectors"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_001_relation_001",
+          "chunk_001_relation_002",
+          "chunk_001_relation_005",
+          "chunk_001_coverage_0_0_relation_002",
+          "chunk_001_coverage_0_0_relation_003",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_001_coverage_0_2_relation_002"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "property",
+        "target": "entity"
+      },
+      "critic": {
+        "reason": "The assertion that attention weights are used to linearly combine value vectors to generate the final representation is the core definition of the output projection in self-attention. This accurately explains how context-aware representations are formed. The relation 'linear_combination_of' correctly describes this weighted sum operation.",
+        "candidate_id": "candidate_0005",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion that attention weights are used in a linear combination of value vectors to generate the final representation accurately describes the output projection step of self-attention. This is general explanatory knowledge defining how context-aware representations are constructed. The claim correctly distinguishes the mechanism (linear combination weighted by attention) from unstated case-specific choices, and it directly fills the gap by explaining the generation of the token's new representation.",
+        "candidate_id": "candidate_0005",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion that attention weights are used in a linear combination of value vectors to generate the final representation accurately describes the output projection step of self-attention. This is general explanatory knowledge defining how context-aware representations are constructed. The claim correctly distinguishes the mechanism from unstated case-specific choices and directly fills the gap by explaining the generation of the token's new representation.",
+        "candidate_id": "candidate_0005",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "self-attention mechanism",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "The assertion conflates the mathematical definition of the operation with the architectural guarantee. Counterexample: In multi-head attention, the 'final representation' for a position is often a concatenation of heads followed by a projection, not a single linear combination of all value vectors weighted by a single set of weights. Also, residual connections add the input directly, meaning the '",
+        "counterexample": "A transformer layer where output = LayerNorm(x + Concat(heads) * W_out), making the final representation a sum of residuals and weighted values, not just the weighted combination.",
+        "sound_as_stated": false
+      },
+      "rejection_stage": "counterexample"
+    },
+    {
+      "intended_fact": "Backpropagation calculates gradients of the loss function with respect to model parameters.",
+      "confidence": 0.95,
+      "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to compute gradients.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "mechanism_of_backpropagation",
+      "id": "candidate_0006",
+      "seed_id": "seed_002",
+      "source": "backpropagation",
+      "target": "gradients of the loss function with respect to model parameters",
+      "relation": "calculates",
+      "relation_definition": "The process of computing derivatives.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved predictions.",
+          "why_useful": "The source claims improvement but does not explain the causal link between backpropagation and prediction improvement.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "backpropagation",
+          "relation": "enhances_during_training",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the quality or accuracy of a target property specifically during the training phase.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "original_proposal": {
+        "source": {
+          "name": "backpropagation",
+          "definition": "An algorithm for updating model parameters based on prediction errors.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "gradients of the loss function with respect to model parameters",
+          "definition": "The calculated gradients indicating direction and magnitude of parameter adjustments.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "calculates",
+        "relation_definition": "The process of computing derivatives.",
+        "argument_qualifiers": [],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Backpropagation calculates gradients of the loss function with respect to model parameters.",
+        "confidence": 0.95,
+        "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to compute gradients.",
+        "gap_ids": [
+          "question_0002"
+        ],
+        "added_knowledge": "mechanism_of_backpropagation"
+      },
+      "source_mention": {
+        "name": "backpropagation",
+        "definition": "An algorithm for updating model parameters based on prediction errors.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "gradients of the loss function with respect to model parameters",
+        "definition": "The calculated gradients indicating direction and magnitude of parameter adjustments.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [],
+      "surface_relation": "calculates",
+      "surface_target": "gradients of the loss function with respect to model parameters",
+      "independent_link_reading": {
+        "subject": "backpropagation",
+        "object": "gradients of the loss function with respect to model parameters",
+        "assertion": "The process of computing derivatives calculates gradients of the loss function with respect to model parameters."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of the loss function with respect to model parameters)",
+        "reason": "The literal_candidate_reading was copied exactly into link_reading. The endpoints (backpropagation, gradients...) and qualifiers match the intended_fact without silent insertion or reinterpretation. The direction (calculates) and scope are identical. No representation errors exist; the link faithfully represents the intended fact.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of the loss function with respect to model parameters)"
+    },
+    {
+      "intended_fact": "The calculated gradients indicate the direction and magnitude of parameter adjustments needed to minimize prediction error.",
+      "confidence": 0.95,
+      "reason": "General knowledge: Gradients represent the slope of the loss landscape; moving against them reduces error.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "function_of_gradients",
+      "id": "candidate_0007",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved predictions.",
+          "why_useful": "The source claims improvement but does not explain the causal link between backpropagation and prediction improvement.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "backpropagation",
+          "relation": "enhances_during_training",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the quality or accuracy of a target property specifically during the training phase.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    },
+    {
+      "intended_fact": "Updating model parameters based on these gradients reduces the difference between predictions and actual labels.",
+      "confidence": 0.95,
+      "reason": "General knowledge: Parameter updates driven by negative gradients directly lower loss.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "effect_of_parameter_update",
+      "id": "candidate_0008",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved predictions.",
+          "why_useful": "The source claims improvement but does not explain the causal link between backpropagation and prediction improvement.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "backpropagation",
+          "relation": "enhances_during_training",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the quality or accuracy of a target property specifically during the training phase.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    },
+    {
+      "intended_fact": "Reduced prediction error corresponds to improved quality and accuracy of the small transformer's predictions.",
+      "confidence": 0.95,
+      "reason": "General knowledge: Lower loss function values equate to better predictive performance.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "equivalence_of_loss_and_quality",
+      "id": "candidate_0009",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved predictions.",
+          "why_useful": "The source claims improvement but does not explain the causal link between backpropagation and prediction improvement.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "backpropagation",
+          "relation": "enhances_during_training",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the quality or accuracy of a target property specifically during the training phase.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source states the function (processing text) but omits the mechanism. Explaining how self-attention works materially helps understand the architecture's operation.",
+        "chapter_topic": "self-attention mechanism",
+        "topic_id": "chapter_6e40558057d192365ef2",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation (RAG) to use external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+            "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+            "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0001",
+            "concept": "self attention"
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically process text within this small transformer architecture?"
+      },
+      "proposal": {
+        "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+        "proposals": [
+          {
+            "source": {
+              "name": "self_attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "attention_weights",
+              "definition": "Values representing the computed relationships between input tokens based on similarity.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "computes_via_similarity",
+            "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+            "argument_qualifiers": [
+              "based_on_query_key_vectors"
+            ],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "Self-attention computes relationships between input tokens by calculating attention weights based on similarity between query and key vectors.",
+            "confidence": 0.95,
+            "reason": "This fact explains the 'how' of text processing mentioned in the gap, introducing necessary intermediate concepts (query, key, value) without contradicting the source text.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "internal mechanics of self-attention (Q/K/V vectors and weight calculation), substantive justification: standard definition of the mechanism required to explain 'processing' beyond mere function."
+          },
+          {
+            "source": {
+              "name": "attention_weights",
+              "definition": "Values representing the computed relationships between input tokens based on similarity.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "final_representation",
+              "definition": "The resulting representation for a specific position after weighting contributions.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "determines_contribution_to",
+            "relation_definition": "The source property dictates the magnitude of contribution from input tokens to the target entity.",
+            "argument_qualifiers": [
+              "for_specific_position"
+            ],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "The computed attention weights determine how much each input token contributes to the final representation for a specific position.",
+            "confidence": 0.95,
+            "reason": "This connects the calculation of weights to the generation of representations, completing the causal chain of 'processing text' described in the gap.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "role of attention weights in generating context-aware representations, substantive justification: essential step in the self-attention mechanism to explain the output generation process."
+          }
+        ],
+        "reason": "The source text claims the small transformer uses self-attention to process text. The gap asks for the specific mechanism. General knowledge defines this mechanism as computing attention weights via Q/K/V vectors to generate token representations. These two facts bridge the high-level function ('process text') with the operational mechanism (weight calculation and representation generation), directly answering the 'how' without inventing case-specific details."
+      },
+      "fact_plan": {
+        "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations from input tokens.",
+        "facts": [
+          {
+            "intended_fact": "Self-attention computes relationships between input tokens by calculating attention weights based on similarity between query and key vectors.",
+            "confidence": 0.95,
+            "reason": "This fact explains the 'how' of text processing mentioned in the gap, introducing necessary intermediate concepts (query, key, value) without contradicting the source text.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "internal mechanics of self-attention (Q/K/V vectors and weight calculation), substantive justification: standard definition of the mechanism required to explain 'processing' beyond mere function."
+          },
+          {
+            "intended_fact": "The computed attention weights determine how much each input token contributes to the final representation for a specific position.",
+            "confidence": 0.95,
+            "reason": "This connects the calculation of weights to the generation of representations, completing the causal chain of 'processing text' described in the gap.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "role of attention weights in generating context-aware representations, substantive justification: essential step in the self-attention mechanism to explain the output generation process."
+          }
+        ],
+        "reason": "The source text claims the small transformer uses self-attention to process text. The gap asks for the specific mechanism. General knowledge defines this mechanism as computing attention weights via Q/K/V vectors to generate token representations. These two facts bridge the high-level function ('process text') with the operational mechanism (weight calculation and representation generation), directly answering the 'how' without inventing case-specific details."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003",
+        "candidate_0004",
+        "candidate_0005"
+      ],
+      "repairs": [
+        {
+          "original_candidate_ids": [
+            "candidate_0001",
+            "candidate_0002"
+          ],
+          "response": {
+            "reason": "The original assertions were rejected due to over-generalization (treating a common pattern as universal) and conflation of influence with strict determination. The repair introduces intermediate concepts ('similarity_score', 'value_vectors', 'linear_combination') to precisely qualify the causal chain: self-attention computes similarity scores, which are normalized into weights; these weights modulate the contribution of value vectors via linear combination to form the final representation.",
+            "corrected_facts": [
+              {
+                "intended_fact": "Self-attention computes a similarity score between query and key vectors for each token pair.",
+                "confidence": 0.95,
+                "reason": "text_3",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "text_2"
+              },
+              {
+                "intended_fact": "The computed similarity scores are normalized to produce attention weights that modulate the contribution of value vectors.",
+                "confidence": 0.95,
+                "reason": "text_3",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "text_2"
+              },
+              {
+                "intended_fact": "The final representation for a specific position is generated by the linear combination of value vectors weighted by these attention weights.",
+                "confidence": 0.95,
+                "reason": "text_6",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "text_2"
+              }
+            ]
+          },
+          "corrected_candidate_ids": [
+            "candidate_0003",
+            "candidate_0004",
+            "candidate_0005"
+          ]
+        }
+      ],
+      "reused_gap_answers": {},
+      "explanation_graphs": [
+        {
+          "nodes": [
+            {
+              "name": "self_attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_self_attention"
+            },
+            {
+              "name": "input_tokens",
+              "definition": "The sequence of tokens provided as input to the mechanism.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_input_tokens"
+            },
+            {
+              "name": "attention_weights",
+              "definition": "Values representing the computed relationships between input tokens based on similarity.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_attention_weights"
+            },
+            {
+              "name": "query_key_vectors",
+              "definition": "Vectors derived from input tokens used to calculate similarity for attention weights.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_query_key_vectors"
+            },
+            {
+              "name": "final_representation",
+              "definition": "The resulting representation for a specific position after weighting contributions.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_final_representation"
+            }
+          ],
+          "links": {
+            "candidate_0001": {
+              "source_id": "n_self_attention",
+              "target_id": "n_attention_weights",
+              "relation": "computes_via_similarity",
+              "relation_definition": "The source process generates the target property by calculating similarity between query and key vectors.",
+              "argument_qualifiers": [
+                "based_on_query_key_vectors"
+              ],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0002": {
+              "source_id": "n_attention_weights",
+              "target_id": "n_final_representation",
+              "relation": "determines_contribution_to",
+              "relation_definition": "The source property dictates the magnitude of contribution from input tokens to the target entity.",
+              "argument_qualifiers": [
+                "for_specific_position"
+              ],
+              "conditions": null,
+              "modality": null
+            }
+          },
+          "unused_node_ids": [
+            "n_input_tokens",
+            "n_query_key_vectors"
+          ]
+        },
+        {
+          "nodes": [
+            {
+              "name": "self attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_self_attention"
+            },
+            {
+              "name": "similarity score",
+              "definition": "A metric computed between query and key vectors.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_similarity_score"
+            },
+            {
+              "name": "attention weights",
+              "definition": "Weights used to modulate value vector contributions.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_attention_weights"
+            },
+            {
+              "name": "value vectors",
+              "definition": "Vectors representing the content of tokens.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_value_vectors"
+            },
+            {
+              "name": "final representation",
+              "definition": "The output vector for a specific position.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_final_representation"
+            }
+          ],
+          "links": {
+            "candidate_0003": {
+              "source_id": "n_self_attention",
+              "target_id": "n_similarity_score",
+              "relation": "computes via similarity",
+              "relation_definition": "The process of self-attention generates a similarity score based on query and key vectors.",
+              "argument_qualifiers": [
+                "based_on_query_key_vectors"
+              ],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0004": {
+              "source_id": "n_similarity_score",
+              "target_id": "n_attention_weights",
+              "relation": "normalized to produce",
+              "relation_definition": "The similarity scores are normalized to yield attention weights.",
+              "argument_qualifiers": [
+                "modulate_contribution_of_value_vectors"
+              ],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0005": {
+              "source_id": "n_attention_weights",
+              "target_id": "n_final_representation",
+              "relation": "linear combination of",
+              "relation_definition": "The final representation is generated by combining value vectors weighted by attention weights.",
+              "argument_qualifiers": [
+                "weighted_by_attention_weights"
+              ],
+              "conditions": null,
+              "modality": null
+            }
+          },
+          "unused_node_ids": [
+            "n_value_vectors"
+          ]
+        }
+      ]
+    },
+    {
+      "seed": {
+        "id": "seed_002",
+        "concept": "backpropagation",
+        "definition": "An algorithm for updating model parameters based on prediction errors.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "Similar to self-attention, the function is stated without the mechanism. Explaining the gradient descent process clarifies how predictions are improved.",
+        "chapter_topic": "backpropagation",
+        "topic_id": "chapter_a66ae8f0ce58f8f29e89",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation (RAG) to use external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+            "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved predictions.",
+            "why_useful": "The source claims improvement but does not explain the causal link between backpropagation and prediction improvement.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0002",
+            "concept": "backpropagation"
+          }
+        ],
+        "background_question": "In what specific way does backpropagation improve the predictions of the small transformer during training?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+        "proposals": [
+          {
+            "source": {
+              "name": "backpropagation",
+              "definition": "An algorithm for updating model parameters based on prediction errors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "gradients of the loss function with respect to model parameters",
+              "definition": "The calculated gradients indicating direction and magnitude of parameter adjustments.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "calculates",
+            "relation_definition": "The process of computing derivatives.",
+            "argument_qualifiers": [],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "Backpropagation calculates gradients of the loss function with respect to model parameters.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to compute gradients.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "mechanism_of_backpropagation"
+          }
+        ],
+        "reason": "The explanation fills the gap by explicitly detailing the mechanism (gradient calculation), the intermediate step (parameter adjustment via gradients), and the final outcome (reduced error/improved predictions), connecting these general concepts to explain how backpropagation functions as described in the chapter."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not explain the mechanism (gradient calculation and weight updates). The gap is the missing causal link between the algorithm's operation and the improvement in prediction quality.",
+        "facts": [
+          {
+            "intended_fact": "Backpropagation calculates gradients of the loss function with respect to model parameters.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Backpropagation is defined by its use of the chain rule to compute gradients.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "mechanism_of_backpropagation"
+          },
+          {
+            "intended_fact": "The calculated gradients indicate the direction and magnitude of parameter adjustments needed to minimize prediction error.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Gradients represent the slope of the loss landscape; moving against them reduces error.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "function_of_gradients"
+          },
+          {
+            "intended_fact": "Updating model parameters based on these gradients reduces the difference between predictions and actual labels.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Parameter updates driven by negative gradients directly lower loss.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "effect_of_parameter_update"
+          },
+          {
+            "intended_fact": "Reduced prediction error corresponds to improved quality and accuracy of the small transformer's predictions.",
+            "confidence": 0.95,
+            "reason": "General knowledge: Lower loss function values equate to better predictive performance.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "equivalence_of_loss_and_quality"
+          }
+        ],
+        "reason": "The explanation fills the gap by explicitly detailing the mechanism (gradient calculation), the intermediate step (parameter adjustment via gradients), and the final outcome (reduced error/improved predictions), connecting these general concepts to explain how backpropagation functions as described in the chapter."
+      },
+      "candidate_ids": [
+        "candidate_0006",
+        "candidate_0007",
+        "candidate_0008",
+        "candidate_0009"
+      ],
+      "repairs": [],
+      "reused_gap_answers": {},
+      "explanation_graphs": [
+        {
+          "nodes": [
+            {
+              "name": "backpropagation",
+              "definition": "An algorithm for updating model parameters based on prediction errors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_backpropagation"
+            },
+            {
+              "name": "gradients of the loss function with respect to model parameters",
+              "definition": "The calculated gradients indicating direction and magnitude of parameter adjustments.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_gradients"
+            },
+            {
+              "name": "model parameters",
+              "definition": "Adjustable weights in the neural network.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_model_parameters"
+            },
+            {
+              "name": "prediction error",
+              "definition": "The difference between predictions and actual labels.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_prediction_error"
+            },
+            {
+              "name": "small transformer's predictions",
+              "definition": "Output generated by the small transformer model.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "n_predictions"
+            }
+          ],
+          "links": {
+            "candidate_0006": {
+              "source_id": "n_backpropagation",
+              "target_id": "n_gradients",
+              "relation": "calculates",
+              "relation_definition": "The process of computing derivatives.",
+              "argument_qualifiers": [],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0007": {
+              "source_id": "n_gradients",
+              "target_id": "n_model_parameters",
+              "relation": "indicates_adjustment_direction",
+              "relation_definition": "Shows how parameters should change to minimize error.",
+              "argument_qualifiers": [
+                "direction and magnitude"
+              ],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0008": {
+              "source_id": "n_backpropagation",
+              "target_id": "n_prediction_error",
+              "relation": "reduces",
+              "relation_definition": "Decreases the value of the error metric.",
+              "argument_qualifiers": [
+                "based on gradients"
+              ],
+              "conditions": null,
+              "modality": null
+            },
+            "candidate_0009": {
+              "source_id": "n_prediction_error",
+              "target_id": "n_predictions",
+              "relation": "corresponds_to_improved_quality",
+              "relation_definition": "Lower error implies better prediction accuracy.",
+              "argument_qualifiers": [
+                "quality and accuracy"
+              ],
+              "conditions": null,
+              "modality": null
+            }
+          },
+          "unused_node_ids": []
+        }
+      ]
+    }
+  ]
+}

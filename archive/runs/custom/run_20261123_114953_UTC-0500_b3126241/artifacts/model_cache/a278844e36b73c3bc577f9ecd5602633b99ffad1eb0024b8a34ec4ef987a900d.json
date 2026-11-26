@@ -1,0 +1,28 @@
+{
+  "key": "a278844e36b73c3bc577f9ecd5602633b99ffad1eb0024b8a34ec4ef987a900d",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-23T17:26:05.0026129Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12334783400,
+    "load_duration": 3541300,
+    "prompt_eval_count": 2223,
+    "prompt_eval_duration": 348507000,
+    "eval_count": 707,
+    "eval_duration": 11931242000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_005_s001\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Evaluation must distinguish the quality of retrieval from the quality of the generated answer.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_001\"],\n        \"graph_reading\": \"must (evaluation --[distinguishes]--> quality of retrieval); additional arguments: from the quality of the generated answer\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The source sentence asserts a mandatory distinction between two qualities. Graph edge chunk_005_relation_001 captures this exact assertion with the correct modality ('must'), subjects, and the specific argument qualifier 'from the quality of the generated answer'. No meaning is missing.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_005_s002\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Retrieval recall measures how many relevant passages the search returns.\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      },\n      {\n        \"source_assertion\": \"Retrieval precision measures how many returned passages are relevant.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_005\"],\n        \"graph_reading\": \"ASSERTED (retrieval precision --[measures_precision_of]--> count of relevant returned passages); additional arguments: among returned passages\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The compound sentence contains two assertions. The first regarding 'Retrieval recall' is not supported by any graph edge; the graph only defines precision (chunk_005_relation_005) and includes a coverage edge for recall that explicitly negates its ability to show tutor use (chunk_005_coverage_0_0_relation_002), which does not cover the definition of recall itself. The second assertion regarding 'p\",\"missing\": [\n      {\n        \"reason\": \"The graph lacks an edge defining 'retrieval recall' as measuring relevant passages returned. Existing edges either define precision or negate recall's ability to show tutor use, but none affirm the basic definition of recall found in the source sentence.\",\n        \"missing_claim\": \"Retrieval recall measures how many relevant passages the search returns.\",\"source_sentence_ids\": [\"chunk_005_s002\"]\n      }\n    ],\n    \"unsupported\": [\n      {\n        \"reason\": \"The graph edge chunk_005_coverage_0_0_relation_002 is unsupported because it addresses a different claim (recall showing tutor use) rather than the definition of recall itself. The source sentence does not assert that recall shows tutor use, so this edge's negation is irrelevant to the specific claims in the focus sentence.\",\n        \"missing_claim\": \"Retrieval recall measures how many relevant passages the search returns.\",\"source_sentence_ids\": [\"chunk_005_s002\"],\"id\": \"chunk_005_coverage_0_0_relation_002\"\n      }\n    ]\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006160",
+  "source_run": "run_20261123_114953_UTC-0500_b3126241",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

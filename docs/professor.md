@@ -492,7 +492,7 @@ optional file-selection shortcuts. General schema limits and semantic relation
 contracts remain explicit; they are not a closed topic vocabulary.
 
 The two three-paragraph validation inputs and their independent source-claim checklist
-are in `data/validation`. The checklist is evaluation data and is never read by the
+are in `archive/inputs/validation`. The checklist is evaluation data and is never read by the
 pipeline. `tools/validate_topic_runs.py RUN_A RUN_B --output REPORT.json` checks that
 saved runs used identical code/model settings, passed review/evaluation, retain valid
 quotes and artifact hashes, and emits their assertions for a separate meaning audit.
@@ -563,3 +563,14 @@ precise retries, ordinary language, internal formatting, withheld unsafe hints,
 reveal fallback, model startup failure, restart persistence and standalone routes.
 Screenshots/logs remain under ignored outputs.
 See README for broader pre-existing suite failures and inference limitations.
+## Student-contributed knowledge
+
+After an answer's grade is saved, the workspace checks its factual claims in a separate request. Extraction processes short passages with the full answer as reference context, preserves exact quotes, and proposes subject–predicate–object relationships. Each candidate receives a factual review and a second challenge covering correctness, relevance, semantic novelty, educational value, and fidelity to the quote. The application checks connection to existing concepts directly. The complete current graph participates in novelty review, compacted into context-sized pages with bounded review responses.
+
+Accepted contributions appear in **pink** in the regular **Explore** graph. The Student contributions panel shows the student, original answer, exact quote, model decisions, publication status, and professor review history. These are model knowledge reviews, not external source verification. Uncertain or disputed candidates stay outside the graph for professor review. Duplicates and rejected claims remain inspectable.
+
+Contribution checking never changes a quiz grade or grants mastery. Existing quizzes keep their original graph snapshot. Added relationships need separate professor approval under **Run Insights → Review background and student facts for quizzes** before future quizzes can assess them.
+
+Use **Undo graph addition** with a professor name and reason to remove a published contribution. Undo preserves concepts used by later relationships and refuses to overwrite later edits to the relationship itself. Grades remain unchanged. Student records and pending checks persist in `outputs/professor/students.sqlite3`; graph additions and their edit history persist in each run's `manual_graph.sqlite3`. Back up both to preserve a complete workspace. A failed or interrupted check can be retried from the contributions panel after restart.
+
+The generic runtime lives in the notebook's `pipeline.contributions` module and extends the existing student store, graph edit log, and professor routes. AI-specific answer examples exist only in `tools/demo_student_contributions.py`, a resumable demo utility that backs up and clears student records on its first invocation. It uses real quiz grading and contribution checks; its scenario labels do not determine scores.

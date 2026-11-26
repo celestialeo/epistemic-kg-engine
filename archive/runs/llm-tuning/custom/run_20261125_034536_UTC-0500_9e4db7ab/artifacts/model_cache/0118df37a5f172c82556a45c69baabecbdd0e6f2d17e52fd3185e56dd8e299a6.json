@@ -1,0 +1,28 @@
+{
+  "key": "0118df37a5f172c82556a45c69baabecbdd0e6f2d17e52fd3185e56dd8e299a6",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T11:03:15.6684813Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 34469994100,
+    "load_duration": 3770900,
+    "prompt_eval_count": 2130,
+    "prompt_eval_duration": 1114578000,
+    "eval_count": 906,
+    "eval_duration": 33283052000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"team\",\n      \"definition\": \"The group of people performing the actions.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"run a large toxicity-scoring model offline\",\n      \"definition\": \"The action of executing an offline model to generate labels.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"label training data\",\n      \"definition\": \"The result or purpose of running the toxicity model.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"use the labeled data\",\n      \"definition\": \"The action of applying previously generated labels to a new task.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"distill a student model small enough to score live comments\",\n      \"definition\": \"The process of creating a smaller model using labeled data for real-time scoring.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data, and then use the labeled data to distill a student model small enough to score live comments.\",\n      \"evidence\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data, and then use the labeled data to distill a student model small enough to score live comments.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"team\",\n        \"definition\": \"The group of people performing the actions.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"could_run\",\n      \"relation_definition\": \"A subject performs an action with possibility or hypothetical modality.\",\n      \"target\": {\n        \"name\": \"run a large toxicity-scoring model offline\",\n        \"definition\": \"The action of executing an offline model to generate labels.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"to label training data\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"could\",\n      \"evidence\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data, and then use the labeled data to distill a student model small enough to score live comments.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"team\",\n        \"definition\": \"The group of people performing the actions.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"could_run\",\n      \"relation_definition\": \"A subject performs an action with possibility or hypothetical modality.\",\n      \"target\": {\n        \"name\": \"distill a student model small enough to score live comments\",\n        \"definition\": \"The process of creating a smaller model using labeled data for real-time scoring.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"to distill a student model small enough to score live comments\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"could\",\n      \"evidence\": \"For example, to moderate comments in real time, a team could run a large toxicity-scoring model offline to label training data, and then use the labeled data to distill a student model small enough to score live comments.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence describes a hypothetical sequence of actions ('could run', 'use') initiated by a 'team'. The first action is running an offline model to label data. The second action involves using that labeled data to distill a student model. Both are processes described as potential steps in a strategy, hence the modality 'could' and open-vocabulary predicates describing the specific actions.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_010468",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

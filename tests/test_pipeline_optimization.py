@@ -35,6 +35,31 @@ class OptimizationTests(unittest.TestCase):
     def events(self):
         return [json.loads(line) for line in (self.trace.directory / 'events.jsonl').read_text().splitlines()]
 
+    @patch('pipeline.models.Client')
+    def test_cache_disabled_makes_identical_requests_fresh(self, client):
+        client.return_value.chat.return_value = ChatResponse(
+            message=dict(role='assistant', content='{"value": 1}'), done_reason='stop')
+        models = Models(self.trace, 'fixture', 'embed', 'http://localhost')
+        models.cache_enabled = False
+        for _ in range(2):
+            self.assertEqual(models.ask('fixture', 'Return a value.', {}, Answer, 'same').value, 1)
+        self.assertEqual(client.return_value.chat.call_count, 2)
+        self.assertEqual(models.cache_hits, 0)
+
+    @patch('pipeline.models.Client')
+    def test_group_repair_uses_full_output_budget_while_single_repair_stays_bounded(self, client):
+        from pipeline.debate import ExplanationRepair, FactRepair
+        models = Models(self.trace, 'fixture', 'embed', 'http://localhost',
+                        context_tokens=16384, max_output_tokens=4096)
+        for schema, value, expected in (
+            (ExplanationRepair, dict(reason='No sound group repair.', corrected_facts=[]), 4096),
+            (FactRepair, dict(reason='No sound repair.', corrected_fact=None), 1536),
+        ):
+            client.return_value.chat.return_value = ChatResponse(
+                message=dict(role='assistant', content=json.dumps(value)), done_reason='stop')
+            models.ask('background_proposal_repair', 'Repair responsibly.', {}, schema, schema.__name__)
+            self.assertEqual(client.return_value.chat.call_args.kwargs['options']['num_predict'], expected)
+
     def test_atomic_artifact_retries_windows_lock_without_losing_previous_file(self):
         path=self.trace.text('artifacts/state.json','old')
         error=PermissionError('Sharing denied');error.winerror=32
@@ -232,6 +257,29 @@ class OptimizationTests(unittest.TestCase):
         self.assertEqual(precise_source_check(chunk,[row],model,self.trace)['errors'],result['errors'])
         self.assertEqual(failed_calls,['source_scope_reader'])
 
+    def test_reference_context_reaches_fidelity_and_objection_review(self):
+        from pipeline.source_precision import precise_source_check
+        quote = 'Calibration helps it adapt.'
+        text = 'Device A processes signals. ' + quote
+        row = dict(id='edge', source='calibration', relation='helps', target='device a',
+                   argument_qualifiers=['adapt'], evidence=quote, evidence_start=text.index(quote),
+                   accepted=True, source_coverage_repair=True)
+        calls = []
+        def ask(role, instruction, payload, schema, entity_id, validator=None):
+            calls.append(role)
+            self.assertEqual(payload['source_context'], text)
+            self.assertEqual(payload['source_quote'], quote)
+            if role == 'source_scope_reader':
+                return schema(reason='Resolve it from earlier text', statements=['Calibration helps Device A adapt.'])
+            if role == 'source_fidelity_check':
+                return schema(reason='Trial objection', faithful=False, missing_or_changed_meaning='Check the actor')
+            self.assertEqual(role, 'source_objection_applicability')
+            return schema.model_validate({'edge': dict(reason='Actor is supported by the antecedent', unsupported=False)})
+        model = SimpleNamespace(ask=ask, think=False, options=dict(num_ctx=8192, num_predict=4096), model='fixture')
+        result = precise_source_check(dict(id='chunk', text=text, start=0), [row], model, self.trace)
+        self.assertEqual(calls, ['source_scope_reader', 'source_fidelity_check', 'source_objection_applicability'])
+        self.assertEqual(result, dict(missing=[], unsupported=[], errors={}))
+
     def test_short_evidence_cannot_remove_conditional_scope_or_borrow_another_edges_scope(self):
         from pipeline.source_precision import enclosing_evidence,precise_source_check,conditional_premise_without_scope
         text='A valve opens. If water enters a chamber, pressure can rise.'
@@ -415,6 +463,9 @@ class OptimizationTests(unittest.TestCase):
             calls.append(role)
             if role == 'relation_resolver':
                 value = dict(key=None, exact_meaning=False, same_direction=False, reason='Different sense')
+            elif role == 'relation_match_verifier':
+                value = dict(exact_meaning=False, same_direction=True, compatible_types=True,
+                             reason='Operating an instrument differs from consuming a resource')
             elif role == 'relation_definition':
                 with self.assertRaisesRegex(ValueError, 'already has a different'):
                     validator(schema.model_validate(dict(key='uses', definition='A different sense', symmetric=False, inverse=None)))
@@ -491,6 +542,18 @@ class OptimizationTests(unittest.TestCase):
                 models = Models(self.trace, 'test', 'embed', 'http://localhost')
                 with self.assertRaises(ModelServiceError): models.ask('test', 'Generate', {}, Reconstruction, 'one')
                 self.assertEqual(client.return_value.chat.call_count, count)
+
+    def test_token_repetition_abort_is_an_unaccepted_generation_failure(self):
+        from pipeline.models import OutputLimitError
+        with patch('pipeline.models.Client') as client:
+            client.return_value.chat.side_effect = ResponseError(
+                'prediction aborted, token repeat limit reached', 500)
+            models = Models(self.trace, 'test', 'embed', 'http://localhost')
+            with self.assertRaises(OutputLimitError):
+                models.ask('test', 'Generate', {}, Reconstruction, 'one')
+        self.assertEqual(client.return_value.chat.call_count, 1)
+        self.assertEqual(models.service_retries, 0)
+        self.assertEqual(models.cache, {})
 
     def test_durable_cache_survives_incomplete_event_tail_and_revalidates(self):
         details = {'installed_models': {'models': [{'model': 'test', 'digest': 'unchanged'}]}}
@@ -751,6 +814,57 @@ class OptimizationTests(unittest.TestCase):
         self.assertEqual(extraction['relation_proposals'][0]['id'], 'bad')
         report = json.loads((self.trace.directory/'artifacts/source_coverage.json').read_text())
         self.assertEqual(report['chunks'][0]['status'], 'remaining_gaps')
+
+    def test_source_repair_retries_same_gap_only_with_new_failure_feedback(self):
+        from pipeline.source_recovery import Coverage, recover_source
+        text = 'Calibration helps it adapt.'
+        source = dict(id='chunk', paragraph_id='paragraph', text=text, start=0, end=len(text))
+        audit = Coverage(missing=[dict(evidence=text, evidence_start=0,
+            missing_claim='Calibration helps the controller adapt', reason='Missing actor')], reason='Missing')
+        for succeeds in (False, True):
+            with self.subTest(succeeds=succeeds):
+                payloads = []
+                model = SimpleNamespace(ask=lambda role, instruction, payload, *a, **kw: payloads.append(payload))
+                extraction = dict(chunk_id='chunk', concepts=[], relations=[], relation_proposals=[])
+                error = 'Reference endpoint could not be resolved'
+                row = dict(id='repaired', chunk_id='temporary', accepted=True, source='calibration',
+                    relation='helps', target='controller', argument_qualifiers=['adapt'])
+                def generate(chunks, paragraphs, models, *args):
+                    models.ask('extractor', '', {}, None, 'repair')
+                    accepted = succeeds and len(payloads) == 2
+                    return [dict(concepts=[], relation_proposals=[row] if accepted else [],
+                        relations=[row] if accepted else [], issues=[] if accepted else [dict(reason=error)])]
+                audits = [audit, audit, Coverage(missing=[], reason='Covered') if succeeds else audit]
+                with patch('pipeline.source_precision.precise_source_check', return_value=dict(missing=[], unsupported=[], errors={})), \
+                     patch('pipeline.source_recovery.audit_source', side_effect=audits), \
+                     patch('pipeline.extraction.extract', side_effect=generate), \
+                     patch('pipeline.qualifiers.complete_arguments'), \
+                     patch('pipeline.debate.review_extractions', side_effect=[[], [row] if succeeds else []]):
+                    recover_source([extraction], [source], [], {}, SimpleNamespace(), None,
+                        SimpleNamespace(rows=[]), model, self.trace, [])
+                self.assertEqual(len(payloads), 2)
+                self.assertEqual(payloads[0]['previous_repair_failures'], [])
+                self.assertEqual(payloads[1]['previous_repair_failures'], [error])
+                self.assertEqual(len(extraction['relations']), int(succeeds))
+                report = json.loads((self.trace.directory/'artifacts/source_coverage.json').read_text())
+                self.assertEqual(report['chunks'][0]['status'], 'covered_by_model_review' if succeeds else 'remaining_gaps')
+
+    def test_repair_cannot_drop_resolved_actor_or_hide_it_in_an_unrelated_edge(self):
+        from pipeline.source_recovery import preserve_resolved_participants
+        bindings = [dict(mention='it', concept='device a', anchor='process p')]
+        def relation(source, target, arguments=()):
+            return SimpleNamespace(source=SimpleNamespace(name=source), target=SimpleNamespace(name=target),
+                                   argument_qualifiers=list(arguments))
+        missing = relation('process p', 'capability')
+        with self.assertRaisesRegex(ValueError, 'Preserve resolved participant'):
+            preserve_resolved_participants(SimpleNamespace(relations=[missing]), bindings)
+        with self.assertRaisesRegex(ValueError, 'Preserve resolved participant'):
+            preserve_resolved_participants(SimpleNamespace(relations=[missing,
+                relation('device a', 'unrelated property')]), bindings)
+        for repaired in (relation('process p', 'device a', ['to perform the action']),
+                         relation('process p', 'capability of device a'),
+                         relation('process p', 'capability', ['of device a'])):
+            preserve_resolved_participants(SimpleNamespace(relations=[repaired]), bindings)
 
 
 if __name__ == '__main__':

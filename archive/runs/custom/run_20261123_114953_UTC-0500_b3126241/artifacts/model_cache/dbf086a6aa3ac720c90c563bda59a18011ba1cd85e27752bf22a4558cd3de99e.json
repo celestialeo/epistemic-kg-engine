@@ -1,0 +1,28 @@
+{
+  "key": "dbf086a6aa3ac720c90c563bda59a18011ba1cd85e27752bf22a4558cd3de99e",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-23T17:28:01.9765417Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 16222908300,
+    "load_duration": 3540000,
+    "prompt_eval_count": 2353,
+    "prompt_eval_duration": 926390000,
+    "eval_count": 910,
+    "eval_duration": 15236070000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"document_coverage\": \"The source text explicitly states that an AI tutor uses a language model to generate explanations, noting that fluent wording does not guarantee factual accuracy. It details the training process where parameters are adjusted using a training dataset, with separate validation and held-out test datasets used for model selection, setting choices, and performance measurement. Crucially, it warns against data leakage (passages in both train/test) causing overstatement of ability to handle unfamiliar material and clarifies that dataset size does not equal quality.\",\n  \"seeds\": [\n    {\n      \"concept\": \"language model\",\n      \"topic_id\": \"chapter_7e9c731256176746a509\",\n      \"gaps\": [\n        {\n          \"question\": \"How does the language model internally adjust its parameters using examples from the training dataset?\",\n          \"assumed_knowledge\": \"The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.\",\n          \"why_useful\": \"Understanding *how* parameters are adjusted explains why the model learns patterns and improves accuracy over time, which is central to the 'training dataset' anchor.\",\n          \"source_chunk_ids\": [\"chunk_001\"]\n        },\n        {\n          \"question\": \"What specific role does the validation dataset play in supporting model selection and the choice of training settings?\",\n          \"assumed_knowledge\": \"The source mentions the validation dataset supports these choices but does not explain *how* (e.g., monitoring loss curves, selecting checkpoints).\",\n          \"why_useful\": \"Clarifying the mechanism prevents confusion between training performance and generalization capability.\",\n          \"source_chunk_ids\": [\"chunk_001\"]\n        },\n        {\n          \"question\": \"How does the held-out test dataset measure performance after model selection and setting choices have been made?\",\n          \"assumed_knowledge\": \"The source states it measures performance but omits the specific metrics or comparison process used.\",\n          \"why_useful\": \"Defining 'measures performance' is necessary to understand how final capability is quantified without bias.\",\n          \"source_chunk_ids\": [\"chunk_001\"]\n        },\n        {\n          \"question\": \"Why does the presence of passages from the same source in both training and testing datasets cause measured performance to overstate the model's ability?\",\n          \"assumed_knowledge\": \"The concept of 'data leakage' or 'overfitting to specific examples' is implied but not mechanistically defined.\",\n          \"why_useful\": \"Explaining *why* this happens (memorization vs. generalization) clarifies the distinction between handling familiar and unfamiliar material.\",\n          \"source_chunk_ids\": [\"chunk_001\"]\n        },\n        {\n          \"question\": \"In what ways does dataset size fail to establish dataset quality?\",\n          \"assumed_knowledge\": \"The source asserts this relationship but does not explain the underlying factors (e.g., redundancy, noise, diversity) that decouple size from quality.\",\n          \"why_useful\": \"This distinction is critical for selecting appropriate training data beyond just volume.\",\n          \"source_chunk_ids\": [\"chunk_001\"]\n        }\n      ],\n      \"priority\": \"high\",\n      \"reason\": \"The source text lists datasets and their roles but assumes the reader understands the internal mechanics of parameter adjustment, the specific utility of validation sets for stopping/selection, and the nature of data leakage. These are substantive gaps requiring explanation from allowed topics regarding training mechanisms and dataset roles.\"\n    }\n  ],\n  \"case_specific_unknowns\": [],\n  \"reason\": \"The source text provides a high-level overview of the AI tutor's training pipeline but assumes knowledge of the specific mechanisms (gradient updates, validation monitoring, leakage effects) that drive these processes. The gaps identified focus on *how* these assumed mechanisms function to produce the stated outcomes (parameter adjustment, model selection, performance measurement), rather than asking for incidental details like specific metric names or bit precision values which are either not relevant to the current text's claims or covered by broader topic definitions.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006524",
+  "source_run": "run_20261123_114953_UTC-0500_b3126241",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

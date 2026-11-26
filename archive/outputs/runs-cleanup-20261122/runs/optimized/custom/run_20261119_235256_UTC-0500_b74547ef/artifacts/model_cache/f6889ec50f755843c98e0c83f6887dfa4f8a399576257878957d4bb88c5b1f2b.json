@@ -1,0 +1,28 @@
+{
+  "key": "f6889ec50f755843c98e0c83f6887dfa4f8a399576257878957d4bb88c5b1f2b",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:06:05.4164391Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 21465986700,
+    "load_duration": 3552500,
+    "prompt_eval_count": 1329,
+    "prompt_eval_duration": 311969000,
+    "eval_count": 665,
+    "eval_duration": 11481444000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"tutor\",\n      \"definition\": \"An entity evaluated for factual correctness, support from documents, and handling of uncertainty.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"disagreement between two course passages\",\n      \"definition\": \"A conflict where two course passages contradict each other.\",\n      \"kind\": \"event\"\n    },\n    {\n      \"name\": \"unsupported conclusion\",\n      \"definition\": \"A conclusion lacking support from the supplied documents.\",\n      \"kind\": \"entity\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"tutor\",\n        \"definition\": \"An entity evaluated for factual correctness, support from documents, and handling of uncertainty.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"should_identify\",\n      \"relation_definition\": \"The source is obligated to recognize a specific event or state.\",\n      \"target\": {\n        \"name\": \"disagreement between two course passages\",\n        \"definition\": \"A conflict where two course passages contradict each other.\",\n        \"kind\": \"event\"\n      },\n      \"conditions\": \"when two course passages disagree\",\n      \"modality\": \"should\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"tutor\",\n        \"definition\": \"An entity evaluated for factual correctness, support from documents, and handling of uncertainty.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"should_not_combine\",\n      \"relation_definition\": \"The source is obligated to avoid merging two entities into a single unsupported result.\",\n      \"target\": {\n        \"name\": \"unsupported conclusion\",\n        \"definition\": \"A conclusion lacking support from the supplied documents.\",\n        \"kind\": \"entity\"\n      },\n      \"conditions\": \"when two course passages disagree\",\n      \"modality\": \"should not\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly states the tutor's obligation to identify disagreements and avoid combining conflicting passages into unsupported conclusions. The predicates 'should_identify' and 'should_not_combine' directly capture these obligations with the appropriate modality and conditions derived from the text.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_005950",
+  "source_run": "run_20261119_235256_UTC-0500_b74547ef",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

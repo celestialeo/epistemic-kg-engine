@@ -1,0 +1,28 @@
+{
+  "key": "4a70b885842b8a559139b7502677692a1b778a0a52e62b6c18bcbef22827572e",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:07:36.4103294Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 15874801700,
+    "load_duration": 3647600,
+    "prompt_eval_count": 1811,
+    "prompt_eval_duration": 760551000,
+    "eval_count": 835,
+    "eval_duration": 13857557000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_004_s001\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"After training, the tutor uses quantization.\",\n        \"graph_edge_ids\": [\"chunk_004_relation_001\"],\n        \"graph_reading\": \"ASSERTED (tutor --[employs technique]--> quantization) with condition 'after training'\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"After training, the tutor uses retrieval-augmented generation.\",\n        \"graph_edge_ids\": [\"chunk_004_relation_002\"],\n        \"graph_reading\": \"ASSERTED (tutor --[employs technique]--> retrieval augmented generation) with condition 'after training'\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"The tutor uses these techniques for different purposes.\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The first two claims are fully supported by edges chunk_004_relation_001 and chunk_004_relation_002 including the 'after training' condition. The third claim regarding 'different purposes' is not expressed in any graph edge; the graph only asserts the employment of techniques, not the distinction of their specific purposes.\",\n    \"missing\": [\n      {\n        \"reason\": \"The phrase 'for different purposes' lacks a corresponding graph edge defining distinct purposes for quantization versus retrieval-augmented generation.\",\n        \"missing_claim\": \"different purposes\",\n        \"source_sentence_ids\": [\"chunk_004_s001\"]\n      }\n    ],\n    \"unsupported\": []\n  },\n  \"chunk_004_s002\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Weight quantization stores model parameters with fewer bits, reducing the memory required to store those parameters.\",\n        \"graph_edge_ids\": [\"chunk_004_relation_004\"],\n        \"graph_reading\": \"ASSERTED (weight quantization --[reduces]--> memory required to store model parameters)\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"An aggressive reduction in precision can degrade answer quality.\",\n        \"graph_edge_ids\": [\"chunk_004_relation_005\"],\n        \"graph_reading\": \"can (aggressive reduction in precision --[degrades]--> answer quality)\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The source text maps directly to graph edges chunk_004_relation_004 and chunk_004_relation_005. The 'fewer bits' concept is implicit in the definition of quantization reducing memory, which is asserted. The modality 'can' matches exactly.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_004_s003\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Retrieval-augmented generation supplies relevant course passages when the tutor answers a question.\",\n        \"graph_edge_ids\": [\"chunk_004_relation_006\"],\n        \"graph_reading\": \"ASSERTED (retrieval augmented generation --[supplies]--> relevant course passages) with condition 'when the tutor answers a question'\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The source sentence is an exact textual match for the assertion in graph edge chunk_004_relation_006, including the specific condition.\",\n    \"missing\": [],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000077",
+  "source_run": "claim_accounting_smoke",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

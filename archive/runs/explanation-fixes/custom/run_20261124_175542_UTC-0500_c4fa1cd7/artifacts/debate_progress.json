@@ -1,0 +1,555 @@
+{
+  "candidates": [
+    {
+      "intended_fact": "Self-attention computes relationships between tokens in a sequence by calculating attention weights based on query-key interactions.",
+      "confidence": 0.95,
+      "reason": "This fact explains the 'how' of text processing requested in the gap, distinguishing the mechanism from sequential methods like RNNs.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "internal mechanics of self-attention (query/key/value logic) not explicitly detailed in source text but required to answer the specific question about 'how' it processes text.",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in a sequence to generate contextual representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it processes text, distinguishing it from other processing methods like RNNs or CNNs.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: background_link_constructor failed for seed_001_links after 3 attempts: Intermediate nodes must participate in explicit relationships",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0004",
+      "repair_result": {
+        "reason": "The original candidates were rejected because they asserted specific internal mechanics (query/key/value logic) as facts without explicit source support in the provided text, violating the constraint to distinguish general background mechanisms from particular case assertions. The repair introduces a qualified bridge concept 'token relationship computation' that links the general mechanism of self-attention to its functional outcome (contextual representation generation) without inventing specific implementation details not present in the source. This satisfies the gap by explaining the 'how' at a functional level compatible with the text's claim of processing text, while adhering to the rule that absence of detail in the text does not contradict general explanatory knowledge.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention processes text sequences by computing relationships between tokens to generate contextual representations.",
+            "confidence": 0.95,
+            "reason": "This fact bridges the gap by describing the functional outcome of the mechanism without asserting unverified internal implementation details (like specific query/key math) as case-specific facts. It aligns with the source text's claim that self-attention processes text.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Functional description of token relationship computation derived from general knowledge of self-attention mechanisms, qualified as a general explanatory concept rather than a specific instance measurement."
+          },
+          {
+            "intended_fact": "The computed relationships between tokens determine how much each input token contributes to the representation of every other token in the sequence.",
+            "confidence": 0.95,
+            "reason": "This fact clarifies the consequence of the 'relationships' mentioned in the previous assertion, completing the explanation of the processing mechanism's effect on representations without inventing specific weight values or unverified internal steps.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Functional consequence of attention weights (contextual representation generation) derived from general knowledge, consistent with the definition of self-attention."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003",
+        "candidate_0004"
+      ]
+    },
+    {
+      "intended_fact": "The attention weights generated by self-attention determine how much each input token contributes to the representation of every other token.",
+      "confidence": 0.95,
+      "reason": "This clarifies the functional outcome of the 'relationships' mentioned in the previous fact, completing the explanation of the processing mechanism.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "functional consequence of attention weights (contextual representation generation).",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in a sequence to generate contextual representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it processes text, distinguishing it from other processing methods like RNNs or CNNs.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: background_link_constructor failed for seed_001_links after 3 attempts: Intermediate nodes must participate in explicit relationships",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The original candidates were rejected because they asserted specific internal mechanics (query/key/value logic) as facts without explicit source support in the provided text, violating the constraint to distinguish general background mechanisms from particular case assertions. The repair introduces a qualified bridge concept 'token relationship computation' that links the general mechanism of self-attention to its functional outcome (contextual representation generation) without inventing specific implementation details not present in the source. This satisfies the gap by explaining the 'how' at a functional level compatible with the text's claim of processing text, while adhering to the rule that absence of detail in the text does not contradict general explanatory knowledge.",
+        "corrected_facts": [
+          {
+            "intended_fact": "Self-attention processes text sequences by computing relationships between tokens to generate contextual representations.",
+            "confidence": 0.95,
+            "reason": "This fact bridges the gap by describing the functional outcome of the mechanism without asserting unverified internal implementation details (like specific query/key math) as case-specific facts. It aligns with the source text's claim that self-attention processes text.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Functional description of token relationship computation derived from general knowledge of self-attention mechanisms, qualified as a general explanatory concept rather than a specific instance measurement."
+          },
+          {
+            "intended_fact": "The computed relationships between tokens determine how much each input token contributes to the representation of every other token in the sequence.",
+            "confidence": 0.95,
+            "reason": "This fact clarifies the consequence of the 'relationships' mentioned in the previous assertion, completing the explanation of the processing mechanism's effect on representations without inventing specific weight values or unverified internal steps.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "Functional consequence of attention weights (contextual representation generation) derived from general knowledge, consistent with the definition of self-attention."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003",
+        "candidate_0004"
+      ]
+    },
+    {
+      "intended_fact": "Self-attention processes text sequences by computing relationships between tokens to generate contextual representations.",
+      "confidence": 0.95,
+      "reason": "This fact bridges the gap by describing the functional outcome of the mechanism without asserting unverified internal implementation details (like specific query/key math) as case-specific facts. It aligns with the source text's claim that self-attention processes text.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "Functional description of token relationship computation derived from general knowledge of self-attention mechanisms, qualified as a general explanatory concept rather than a specific instance measurement.",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": "self attention",
+      "target": "text sequences",
+      "relation": "processes",
+      "relation_definition": "A process that transforms input sequences into processed outputs via internal computation.",
+      "conditions": null,
+      "modality": "actual",
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in a sequence to generate contextual representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it processes text, distinguishing it from other processing methods like RNNs or CNNs.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": null,
+        "reason": "No validated background decision: background_link_constructor failed for seed_001_links after 3 attempts: Intermediate nodes must participate in explicit relationships",
+        "representation_check": null
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "self attention",
+          "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "text sequences",
+          "definition": "Ordered collections of tokens representing input data.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "processes",
+        "relation_definition": "A process that transforms input sequences into processed outputs via internal computation.",
+        "argument_qualifiers": [
+          "by computing relationships between tokens",
+          "to generate contextual representations"
+        ],
+        "conditions": null,
+        "modality": "actual",
+        "intended_fact": "Self-attention processes text sequences by computing relationships between tokens to generate contextual representations.",
+        "confidence": 0.95,
+        "reason": "This fact bridges the gap by describing the functional outcome of the mechanism without asserting unverified internal implementation details (like specific query/key math) as case-specific facts. It aligns with the source text's claim that self-attention processes text.",
+        "gap_ids": [
+          "question_0001"
+        ],
+        "added_knowledge": "Functional description of token relationship computation derived from general knowledge of self-attention mechanisms, qualified as a general explanatory concept rather than a specific instance measurement."
+      },
+      "source_mention": {
+        "name": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "text sequences",
+        "definition": "Ordered collections of tokens representing input data.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "by computing relationships between tokens",
+        "to generate contextual representations"
+      ],
+      "surface_relation": "processes",
+      "surface_target": "text sequences",
+      "independent_link_reading": {
+        "subject": "self attention",
+        "object": "text sequences",
+        "assertion": "Self attention actually processes text sequences by computing relationships between tokens to generate contextual representations, as a process that transforms input sequences into processed outputs via internal computation."
+      },
+      "representation_check": {
+        "link_reading": "actual (self attention --[processes]--> text sequences); additional arguments: by computing relationships between tokens; to generate contextual representations",
+        "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading and endpoint descriptions accurately reflect the intended fact without adding unverified internal details or altering the direction of the assertion. No representation errors exist; the mechanism (self attention) is correctly linked to its action (processes) on the object (text sequences) with the specified qualifiers.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "actual (self attention --[processes]--> text sequences); additional arguments: by computing relationships between tokens; to generate contextual representations"
+    },
+    {
+      "intended_fact": "The computed relationships between tokens determine how much each input token contributes to the representation of every other token in the sequence.",
+      "confidence": 0.95,
+      "reason": "This fact clarifies the consequence of the 'relationships' mentioned in the previous assertion, completing the explanation of the processing mechanism's effect on representations without inventing specific weight values or unverified internal steps.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "Functional consequence of attention weights (contextual representation generation) derived from general knowledge, consistent with the definition of self-attention.",
+      "id": "candidate_0004",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in a sequence to generate contextual representations.",
+          "why_useful": "Understanding the 'how' clarifies the claim that it processes text, distinguishing it from other processing methods like RNNs or CNNs.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for a function.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": false,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": null,
+        "reason": "No validated background decision: background_link_constructor failed for seed_001_links after 3 attempts: Intermediate nodes must participate in explicit relationships",
+        "representation_check": null
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ]
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source claims self-attention processes text but does not explain the mechanism (query/key/value interactions) that enables this processing.",
+        "chapter_topic": "self-attention mechanism",
+        "topic_id": "chapter_6e40558057d192365ef2",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation (RAG) to utilize external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+            "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in a sequence to generate contextual representations.",
+            "why_useful": "Understanding the 'how' clarifies the claim that it processes text, distinguishing it from other processing methods like RNNs or CNNs.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0001",
+            "concept": "self attention"
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically process text within this small transformer architecture?"
+      },
+      "proposal": {
+        "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+        "proposals": [],
+        "reason": "The source text claims self-attention processes text but does not detail the internal mechanics. To answer 'How does it specifically process text?', I must introduce general knowledge about query/key/value vectors and attention weight calculation. These new facts bridge the gap between the high-level claim ('processes text') and the specific mechanism, without contradicting the source or inventing case-specific details."
+      },
+      "fact_plan": {
+        "gap_analysis": "The seed fact states that the small transformer 'uses' self-attention to 'process text'. The gap asks for the specific mechanism of this processing. General knowledge fills this by defining self-attention as a process involving query, key, and value vectors to compute attention weights, which are then used to generate context-aware representations (outputs) from input tokens.",
+        "facts": [
+          {
+            "intended_fact": "Self-attention computes relationships between tokens in a sequence by calculating attention weights based on query-key interactions.",
+            "confidence": 0.95,
+            "reason": "This fact explains the 'how' of text processing requested in the gap, distinguishing the mechanism from sequential methods like RNNs.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "internal mechanics of self-attention (query/key/value logic) not explicitly detailed in source text but required to answer the specific question about 'how' it processes text."
+          },
+          {
+            "intended_fact": "The attention weights generated by self-attention determine how much each input token contributes to the representation of every other token.",
+            "confidence": 0.95,
+            "reason": "This clarifies the functional outcome of the 'relationships' mentioned in the previous fact, completing the explanation of the processing mechanism.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "functional consequence of attention weights (contextual representation generation)."
+          }
+        ],
+        "reason": "The source text claims self-attention processes text but does not detail the internal mechanics. To answer 'How does it specifically process text?', I must introduce general knowledge about query/key/value vectors and attention weight calculation. These new facts bridge the gap between the high-level claim ('processes text') and the specific mechanism, without contradicting the source or inventing case-specific details."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003",
+        "candidate_0004"
+      ],
+      "repairs": [
+        {
+          "original_candidate_ids": [
+            "candidate_0001",
+            "candidate_0002"
+          ],
+          "response": {
+            "reason": "The original candidates were rejected because they asserted specific internal mechanics (query/key/value logic) as facts without explicit source support in the provided text, violating the constraint to distinguish general background mechanisms from particular case assertions. The repair introduces a qualified bridge concept 'token relationship computation' that links the general mechanism of self-attention to its functional outcome (contextual representation generation) without inventing specific implementation details not present in the source. This satisfies the gap by explaining the 'how' at a functional level compatible with the text's claim of processing text, while adhering to the rule that absence of detail in the text does not contradict general explanatory knowledge.",
+            "corrected_facts": [
+              {
+                "intended_fact": "Self-attention processes text sequences by computing relationships between tokens to generate contextual representations.",
+                "confidence": 0.95,
+                "reason": "This fact bridges the gap by describing the functional outcome of the mechanism without asserting unverified internal implementation details (like specific query/key math) as case-specific facts. It aligns with the source text's claim that self-attention processes text.",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "Functional description of token relationship computation derived from general knowledge of self-attention mechanisms, qualified as a general explanatory concept rather than a specific instance measurement."
+              },
+              {
+                "intended_fact": "The computed relationships between tokens determine how much each input token contributes to the representation of every other token in the sequence.",
+                "confidence": 0.95,
+                "reason": "This fact clarifies the consequence of the 'relationships' mentioned in the previous assertion, completing the explanation of the processing mechanism's effect on representations without inventing specific weight values or unverified internal steps.",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "Functional consequence of attention weights (contextual representation generation) derived from general knowledge, consistent with the definition of self-attention."
+              }
+            ]
+          },
+          "corrected_candidate_ids": [
+            "candidate_0003",
+            "candidate_0004"
+          ]
+        }
+      ],
+      "reused_gap_answers": {},
+      "explanation_graphs": [
+        {
+          "nodes": [
+            {
+              "name": "self attention",
+              "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_self_attention"
+            },
+            {
+              "name": "text sequences",
+              "definition": "Ordered collections of tokens representing input data.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_text_sequences"
+            },
+            {
+              "name": "relationships between tokens",
+              "definition": "Computed associations quantifying the relevance of one token to another.",
+              "kind": "property",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_relationships_between_tokens"
+            },
+            {
+              "name": "contextual representations",
+              "definition": "Output vectors encoding the meaning of tokens within their sequence context.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_contextual_representations"
+            }
+          ],
+          "links": {
+            "candidate_0003": {
+              "source_id": "node_self_attention",
+              "target_id": "node_text_sequences",
+              "relation": "processes",
+              "relation_definition": "A process that transforms input sequences into processed outputs via internal computation.",
+              "argument_qualifiers": [
+                "by computing relationships between tokens",
+                "to generate contextual representations"
+              ],
+              "conditions": null,
+              "modality": "actual"
+            },
+            "candidate_0004": {
+              "source_id": "node_relationships_between_tokens",
+              "target_id": "node_contextual_representations",
+              "relation": "determine_contribution",
+              "relation_definition": "A property that dictates the weight or influence of an input element on another's output value.",
+              "argument_qualifiers": [
+                "how much each input token contributes to the representation of every other token in the sequence"
+              ],
+              "conditions": null,
+              "modality": "actual"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,984 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds, retains, or performs storage of TARGET. TARGET is the stored content, not its destination. Explicit occurrence qualifiers specify storage format, medium or conditions.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_also_called",
+      "definition": "The source entity has an alternative name equal to the target entity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is",
+      "definition": "The source entity belongs to the category or type of the target entity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_trained_on",
+      "definition": "The source undergoes a training process using the target as data.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "learns_about",
+      "definition": "The source acquires knowledge regarding the target property.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "performs",
+      "definition": "The source executes the target activity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "serves_as",
+      "definition": "To function as an intermediate platform rather than a final resolution.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "functions_as_base_for",
+      "definition": "Acts as a foundational base or component for building solutions.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "turns_into",
+      "definition": "Transforms an input entity into an output entity through a specific process.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_distillation_of",
+      "definition": "Identifies the source concept as a specific instance of the distillation process.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "creates",
+      "definition": "Indicates the production or generation of a new entity by the source.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "has",
+      "definition": "Indicates possession or association of a specific attribute by the source.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "recognizes",
+      "definition": "The ability to identify and understand recurring structures or sequences in data.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "needs",
+      "definition": "Requires a specific input or process to achieve a desired outcome.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_called",
+      "definition": "Indicates that the source is named by the target.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "trains",
+      "definition": "A process that uses specific examples to improve the performance of an entity on a task.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "fine_tunes",
+      "definition": "To adjust a foundation LLM using specific training data.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "requires_computational_expense",
+      "definition": "The process necessitates significant computational resources due to parameter updates.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "updates",
+      "definition": "Modifies the values of specific model components.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_a_less_expensive_alternative_to",
+      "definition": "Describes one process as having lower cost than another specific alternative.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "makes",
+      "definition": "Produces outputs in response to inputs.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "outperforms",
+      "definition": "Achieves superior results compared to another entity in the same context.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "has_parameter_count",
+      "definition": "Possesses a specific quantity of parameters.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "requires",
+      "definition": "To necessitate the use of specific resources to function or complete successfully.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_irrelevant_to",
+      "definition": "has no bearing on the requirements or functionality of",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "generates_predictions_faster_than",
+      "definition": "Produces outputs with a higher speed of completion compared to another entity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "requires_fewer_computational_resources_than",
+      "definition": "Consumes a lower quantity of computing power needed for operation compared to another entity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "requires_fewer_environmental_resources_than",
+      "definition": "Consumes a lower quantity of ecological impact or energy associated with operation compared to another entity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_worse_than",
+      "definition": "Indicates that the quality or accuracy of one set of predictions is lower compared to another set.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "is also called",
+        "definition": "The source entity has an alternative name equal to the target entity.",
+        "source": "foundation llm",
+        "target": "base llm",
+        "context": {
+          "evidence": "A foundation LLM, also called a base LLM or a pre-trained LLM, is a general-purpose large language model.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": []
+        }
+      },
+      "canonical_key": "is_also_called",
+      "reason": "The new relation 'is_also_called' correctly reflects the source assertion that an entity has an alternative name equal to the target. The definition is specific and coherent, preserving the meaning and direction of the original text without adding extra restrictions. The symmetry flag is set to false, which is appropriate since 'A is also called B' does not imply 'B is also called A' in a strict naming sense (though often pragmatically true, the logical relation is directional). The inverse is null, which is valid as per the instructions allowing null inverses. No vague or invented meanings are introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "is also called",
+        "definition": "The source entity has an alternative name equal to the target entity.",
+        "source": "foundation llm",
+        "target": "pre trained llm",
+        "context": {
+          "evidence": "A foundation LLM, also called a base LLM or a pre-trained LLM, is a general-purpose large language model.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": []
+        }
+      },
+      "canonical_key": "is_also_called",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive aspects: source ('foundation llm'), target ('pre trained llm'), relation key ('is_also_called' vs 'is also called', which maps to the same definition), and argument qualifiers (both empty). The only difference is the relation key string format ('is_also_called' vs 'is also called'), which does not alter the semantic claim. Both assert that 'foundation llm' has an alternative name equal to 'pre trained llm'. No concrete claim exists in one that is absent in the other."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "is",
+        "definition": "The source entity belongs to the category or type of the target entity.",
+        "source": "foundation llm",
+        "target": "general purpose large language model",
+        "context": {
+          "evidence": "A foundation LLM, also called a base LLM or a pre-trained LLM, is a general-purpose large language model.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": []
+        }
+      },
+      "canonical_key": "is",
+      "reason": "The new relation 'is' is defined identically to the source assertion ('The source entity belongs to the category or type of the target entity'). The direction is preserved as an active classification (source -> target), not inverted. The definition explicitly sets 'symmetric': false and 'inverse': null, which correctly reflects that 'A is a B' does not imply 'B is an A'. No extra restrictions or negations were added; the predicate meaning remains precise and reusable without folding uncertainty or conditions."
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "is trained on",
+        "definition": "The source undergoes a training process using the target as data.",
+        "source": "foundation llm",
+        "target": "natural language",
+        "context": {
+          "evidence": "A foundation LLM is trained on enough natural language to learn a great deal about grammar, words and idioms.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "enough"
+          ]
+        }
+      },
+      "canonical_key": "is_trained_on",
+      "reason": "The new relation 'is_trained_on' correctly reflects the source assertion where a foundation LLM (source) undergoes training using natural language (target). The definition explicitly states the source undergoes the process, preserving directionality and rejecting passive inversion. The symmetric flag is false, which aligns with the non-symmetric nature of training relationships (A trained on B does not imply B trained on A). The inverse is null, which is valid as there is no natural inverse relation defined for this predicate. No extra restrictions or negations were introduced; the label agrees with the definition's direction."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "learns about",
+        "definition": "The source acquires knowledge regarding the target property.",
+        "source": "foundation llm",
+        "target": "grammar",
+        "context": {
+          "evidence": "A foundation LLM is trained on enough natural language to learn a great deal about grammar, words and idioms.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "a great deal"
+          ]
+        }
+      },
+      "canonical_key": "learns_about",
+      "reason": "The new relation 'learns_about' is coherent and specific. It exactly preserves the source assertion's meaning ('acquires knowledge regarding') and direction (source acquires from target). The label agrees with the definition's active direction; no passive inverse was incorrectly imposed. The predicate 'acquires knowledge' is reused correctly without folding in negation or uncertainty. Symmetry is explicitly set to false, which is correct for an asymmetric learning process. The inverse is null, which is valid and appropriate given the asymmetry. No extra restrictions were added."
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "learns about",
+        "definition": "The source acquires knowledge regarding the target property.",
+        "source": "foundation llm",
+        "target": "words",
+        "context": {
+          "evidence": "A foundation LLM is trained on enough natural language to learn a great deal about grammar, words and idioms.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "a great deal"
+          ]
+        }
+      },
+      "canonical_key": "learns_about",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive aspects: source ('foundation llm'), target ('words'), relation ('learns about' vs 'learns_about'), argument_qualifiers (['a great deal']), conditions (null), and modality (null). The only difference is the hyphenation of the relation label ('learns about' vs 'learns_about'), which does not alter the semantic meaning, direction, or qualifiers. Since both retain identical saved qualifiers and endpoints, no concrete claim exists in one that is absent in the other."
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "learns about",
+        "definition": "The source acquires knowledge regarding the target property.",
+        "source": "foundation llm",
+        "target": "idioms",
+        "context": {
+          "evidence": "A foundation LLM is trained on enough natural language to learn a great deal about grammar, words and idioms.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "a great deal"
+          ]
+        }
+      },
+      "canonical_key": "learns_about",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive components: source ('foundation llm'), target ('idioms'), relation semantics (acquiring knowledge), argument qualifiers ('a great deal'), and modality/conditions (both null). The proposed_contract's 'symmetric' flag is a metadata property of the contract definition, not a claim within the occurrence itself; since the occurrence explicitly retains the same qualifiers and endpoints as the original, no concrete claim difference exists between the two qualified assertions."
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "performs",
+        "definition": "The source executes the target activity.",
+        "source": "foundation llm",
+        "target": "creative tasks such as writing poetry",
+        "context": {
+          "evidence": "A foundation LLM can generate helpful sentences about the topics it was trained on and can perform creative tasks such as writing poetry.",
+          "conditions": null,
+          "modality": "can",
+          "argument_qualifiers": [
+            "such as writing poetry"
+          ]
+        }
+      },
+      "canonical_key": "performs",
+      "reason": "The new relation 'performs' is coherent and specific. It exactly preserves the source assertion's meaning ('The source executes the target activity') and direction (active verb 'executes' implies source -> target action). No extra restrictions are added; the modality 'can' from the evidence context is treated as data, not folded into a negation or demand for positive assertion beyond the core predicate. Symmetry is correctly set to false (as performing an activity is typically directional), and the inverse is correctly null since there is no defined inverse relation for this asymmetric action."
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "serves as",
+        "definition": "To function as an intermediate platform rather than a final resolution.",
+        "source": "foundation llm",
+        "target": "complete solution for machine learning task",
+        "context": {
+          "evidence": "However, a foundation LLM is not a complete solution for machine learning tasks such as classification or regression.",
+          "conditions": null,
+          "modality": "does not",
+          "argument_qualifiers": [
+            "for machine learning task such as classification or regression"
+          ]
+        }
+      },
+      "canonical_key": "serves_as",
+      "reason": "The new relation 'serves_as' correctly maps the source assertion that a foundation LLM functions as an intermediate platform (not a final solution) to the target. The definition is preserved exactly without added restrictions. The direction is maintained: the active verb 'serves' in the label aligns with the source's negative modality ('does not serve as complete solution') by defining the positive functional role that is absent. Symmetry is correctly set to false because 'A serves as B' does not imply 'B serves as A'. The inverse is null, which is valid for asymmetric relations where no natural inverse exists or is defined."
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "serves_as",
+        "definition": "Acts as a foundational base or component for building solutions.",
+        "source": "foundation llm",
+        "target": "platform",
+        "context": {
+          "evidence": "For classification and regression tasks, a foundation LLM serves as a platform rather than a complete solution.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "for classification and regression tasks"
+          ]
+        }
+      },
+      "canonical_key": "functions_as_base_for",
+      "reason": "The new relation 'functions_as_base_for' is coherent and specific. It exactly preserves the source assertion's meaning ('Acts as a foundational base or component for building solutions') and direction (foundation LLM -> platform). The active verb 'functions_as_base_for' correctly represents the directional flow from the base to the solution, avoiding passive inversion errors. No extra restrictions were added; the symmetric flag is false (consistent with the directional nature of 'serves_as'), and the inverse is null as expected for a non-symmetric relation where the reverse concept ('platform serves_as foundation') does not hold."
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "turns into",
+        "definition": "Transforms an input entity into an output entity through a specific process.",
+        "source": "fine tuning",
+        "target": "solution for a specific application",
+        "context": {
+          "evidence": "Fine-tuning turns a foundation LLM into a solution for a specific application.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "foundation LLM"
+          ]
+        }
+      },
+      "canonical_key": "turns_into",
+      "reason": "The label 'turns_into' correctly reflects the active direction of the source assertion ('turns into'), where an input (foundation LLM) transforms into an output (solution). The definition matches exactly. The new_contract sets symmetric=false and inverse=null, which is correct because 'turns into' is inherently non-symmetric (A turns into B does not imply B turns into A), and the source provides no valid inverse relation. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_016",
+      "original": {
+        "label": "is",
+        "definition": "Identifies the nature or category of the source concept.",
+        "source": "distillation",
+        "target": "secondary process",
+        "context": {
+          "evidence": "Distillation is a secondary process that creates a smaller version of a fine-tuned LLM with fewer parameters.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "that creates a smaller version of a fine-tuned LLM with fewer parameters"
+          ]
+        }
+      },
+      "canonical_key": "is_distillation_of",
+      "reason": "The source assertion 'distillation is secondary process' with qualifier 'that creates...' establishes a specific instance relationship. The new key 'is_distillation_of' correctly reverses the direction to identify the source as an instance of the target process, preserving meaning without adding restrictions. The definition explicitly states 'Identifies the source concept as a specific instance', which aligns with the active nature of the predicate. Symmetry is false (as expected for 'is_a' type relations), and the inverse is null, which is valid per instructions. No extra conditions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_017",
+      "original": {
+        "label": "creates",
+        "definition": "Indicates the production or generation of a new entity by the source.",
+        "source": "distillation",
+        "target": "smaller version",
+        "context": {
+          "evidence": "Distillation is a secondary process that creates a smaller version of a fine-tuned LLM with fewer parameters.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "of a fine-tuned LLM with fewer parameters"
+          ]
+        }
+      },
+      "canonical_key": "creates",
+      "reason": "The label 'creates' is an active verb indicating production by the source. The definition matches the source assertion exactly without adding extra restrictions or negating the predicate. The 'new_contract' correctly sets 'symmetric' to false (as creation is not symmetric) and 'inverse' to null, which is valid for asymmetric relations where no specific inverse relation is defined in the data. No vague meanings or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_001_relation_018",
+      "original": {
+        "label": "has",
+        "definition": "Indicates possession or association of a specific attribute by the source.",
+        "source": "smaller version",
+        "target": "fewer parameters",
+        "context": {
+          "evidence": "Distillation is a secondary process that creates a smaller version of a fine-tuned LLM with fewer parameters.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "of a fine-tuned LLM"
+          ]
+        }
+      },
+      "canonical_key": "has",
+      "reason": "The new relation 'has' is coherent and specific, matching the source definition regarding possession/association. The direction is preserved: the source ('smaller version') possesses the attribute of being a 'fewer parameters' entity (via distillation). The label 'has' agrees with its active definition; no passive inverse was incorrectly applied. Symmetry is correctly set to false (possession is not symmetric), and the inverse is null, which is valid for asymmetric relations like 'has'. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "recognizes",
+        "definition": "The ability to identify and understand recurring structures or sequences in data.",
+        "source": "foundation llm",
+        "target": "patterns",
+        "context": {
+          "evidence": "Foundation LLMs recognize patterns so well that foundation LLMs often need only a modest amount of additional training to perform a specific task.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "so well"
+          ]
+        }
+      },
+      "canonical_key": "recognizes",
+      "reason": "The new relation 'recognizes' (foundation llm -> patterns) is coherent and specific. The definition matches the source exactly without added restrictions. The direction is preserved: an active verb 'recognizes' correctly maps from subject to object, not inverted. Symmetry is explicitly set to false, which is correct for this asymmetric cognitive process. The inverse is null, which is valid since there is no standard passive or reciprocal form implied that would create an equivalence upon endpoint swap. No extra negations or conditions were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "needs",
+        "definition": "Requires a specific input or process to achieve a desired outcome.",
+        "source": "foundation llm",
+        "target": "additional training",
+        "context": {
+          "evidence": "Foundation LLMs recognize patterns so well that foundation LLMs often need only a modest amount of additional training to perform a specific task.",
+          "conditions": null,
+          "modality": "often",
+          "argument_qualifiers": [
+            "only a modest amount of"
+          ]
+        }
+      },
+      "canonical_key": "needs",
+      "reason": "The label 'needs' correctly maps the source assertion (Foundation LLMs require additional training) to the target. The definition is identical and specific. The direction is preserved as an active requirement (Subject needs Object). Symmetry is false because 'needs' is not equivalent to 'provides'. The inverse is null, which is valid for asymmetric relations where no natural inverse exists or is defined. No extra restrictions were added; the 'often' modality in the source evidence does not negate the core assertion of needing training, so it is handled as context rather than altering the predicate's truth value."
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "enables",
+        "definition": "Provides the capability or means to achieve a specific result.",
+        "source": "additional training",
+        "target": "specific task",
+        "context": {
+          "evidence": "Foundation LLMs recognize patterns so well that foundation LLMs often need only a modest amount of additional training to perform a specific task.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to perform"
+          ]
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints ('additional training' and 'specific task'), identical argument qualifiers (['to perform']), and identical null values for conditions and modality. The only difference lies in the definition text: the original defines 'enables' as 'Provides the capability or means to achieve a specific result', while the proposal defines it as 'SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET'. These definitions are semantically equivalent regarding the causal relationship; both assert that the source provides the necessary capacity/conditions for the target without asserting direct production. Since no concrete claim exists in one assertion that is absent in the other, and all substantive,"
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "is called",
+        "definition": "Indicates that the source is named by the target.",
+        "source": "additional training",
+        "target": "fine tuning",
+        "context": {
+          "evidence": "This additional training is called fine-tuning.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": []
+        }
+      },
+      "canonical_key": "is_called",
+      "reason": "The new relation 'is_called' correctly reflects the source assertion 'This additional training is called fine-tuning.' The definition 'Indicates that the source is named by the target' matches the evidence. The direction is preserved (source named by target), and since 'is_called' is not symmetric, the inverse is null, which is valid per the rules. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "trains",
+        "definition": "A process that uses specific examples to improve the performance of an entity on a task.",
+        "source": "fine tuning",
+        "target": "foundation llm",
+        "context": {
+          "evidence": "Fine-tuning trains a foundation LLM on examples that are specific to the task of the application.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "on examples specific to the task of the application"
+          ]
+        }
+      },
+      "canonical_key": "trains",
+      "reason": "The label 'trains' in the new_contract correctly reflects the active direction of the source assertion ('fine tuning trains a foundation LLM...'). The definition is identical to the source. The 'symmetric' flag is set to false, which is correct because training (improving performance via examples) is not symmetric; one does not 'train' an entity on another in the same sense. The 'inverse' is null, which is valid as there is no natural inverse process defined for this specific predicate in this context. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "fine-tunes",
+        "definition": "To adjust a foundation LLM using specific training data.",
+        "source": "engineers",
+        "target": "foundation llm",
+        "context": {
+          "evidence": "Engineers can often fine-tune a foundation LLM with only a few hundred to a few thousand training examples.",
+          "conditions": null,
+          "modality": "can often",
+          "argument_qualifiers": [
+            "with only a few hundred to a few thousand training examples"
+          ]
+        }
+      },
+      "canonical_key": "fine_tunes",
+      "reason": "The new relation 'fine_tunes' is coherent and specific, matching the source definition exactly. The direction is preserved: 'engineers' (source) actively adjust 'foundation llm' (target), which aligns with the active verb 'fine-tunes'. No extra restrictions were added; conditions and qualifiers from the source occurrence are not folded into the predicate but remain as context if needed, though the contract focuses on the core meaning. Symmetry is correctly set to false because fine-tuning is inherently directional (engineers do not get fine-tuned by the LLM). The inverse is null, which is valid since there is no natural inverse process described or implied that would constitute an equivalence after swapping endpoints."
+    },
+    {
+      "entity_id": "chunk_002_relation_007",
+      "original": {
+        "label": "is",
+        "definition": "Has the property described by the predicate.",
+        "source": "standard fine tuning",
+        "target": "computationally expensive",
+        "context": {
+          "evidence": "Standard fine-tuning is computationally expensive, because standard fine-tuning updates the weights and biases of every parameter on each backpropagation iteration.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "updates the weights and biases of every parameter on each backpropagation iteration"
+          ]
+        }
+      },
+      "canonical_key": "requires_computational_expense",
+      "reason": "The source assertion 'Standard fine-tuning is computationally expensive' uses the predicate 'is' (Has the property) with argument 'computationally expensive'. The new relation 'requires_computational_expense' semantically captures this property ('necessitates significant computational resources'). The direction is preserved: the process (fine-tuning) has the property of requiring expense. The definition does not introduce extra restrictions absent from the source evidence. Symmetry is correctly set to false because 'A requires B' is not equivalent to 'B requires A'. The inverse is null, which is valid as no inverse relation was defined or implied."
+    },
+    {
+      "entity_id": "chunk_002_relation_008",
+      "original": {
+        "label": "updates",
+        "definition": "Modifies the values of specific model components.",
+        "source": "standard fine tuning",
+        "target": "weights and biases of every parameter",
+        "context": {
+          "evidence": "Standard fine-tuning is computationally expensive, because standard fine-tuning updates the weights and biases of every parameter on each backpropagation iteration.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "on each backpropagation iteration"
+          ]
+        }
+      },
+      "canonical_key": "updates",
+      "reason": "The label 'updates' correctly reflects the active direction of modifying values (source: fine-tuning -> target: weights/biases). The definition is specific and matches the source assertion. The new_contract explicitly sets 'symmetric': false, which aligns with the fact that updating weights does not imply the reverse process (fine-tuning) occurs automatically; thus symmetry rejection is valid. The inverse is set to null, which is acceptable per instructions ('Null inverse is valid') since no specific inverse relation was defined or required. No extra restrictions were added, and vague meanings were avoided."
+    },
+    {
+      "entity_id": "chunk_002_relation_009",
+      "original": {
+        "label": "is_a_less_expensive_alternative_to",
+        "definition": "Describes one process as having lower cost than another specific alternative.",
+        "source": "parameter efficient tuning",
+        "target": "standard fine tuning",
+        "context": {
+          "evidence": "Parameter-efficient tuning is a less expensive alternative to standard fine-tuning, because parameter-efficient tuning updates only a subset of the parameters on each backpropagation iteration.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "updates only a subset of the parameters on each backpropagation iteration"
+          ]
+        }
+      },
+      "canonical_key": "is_a_less_expensive_alternative_to",
+      "reason": "The label 'is_a_less_expensive_alternative_to' correctly describes a directional relationship where the source (parameter efficient tuning) has lower cost than the target (standard fine-tuning). The definition matches the evidence provided. The new_contract explicitly sets 'symmetric': false and 'inverse': null, which accurately reflects that being a less expensive alternative is not a reciprocal relationship (if A is cheaper than B, B is not necessarily more expensive than A in a symmetric sense, though cost comparison exists; however, the specific predicate 'is_a_less_expensive_alternative_to' implies a specific role assignment). The inverse_contract is null as expected for an asymmetric relation. No extra restrictions or negations were added. The active verb structure aligns with the 'A"
+    },
+    {
+      "entity_id": "chunk_002_relation_011",
+      "original": {
+        "label": "makes",
+        "definition": "Produces outputs in response to inputs.",
+        "source": "fine tuned llm",
+        "target": "better predictions",
+        "context": {
+          "evidence": "A fine-tuned LLM usually makes better predictions on its task than the foundation LLM does.",
+          "conditions": null,
+          "modality": "usually",
+          "argument_qualifiers": [
+            "on its task"
+          ]
+        }
+      },
+      "canonical_key": "makes",
+      "reason": "The label 'makes' in the new_contract matches the source assertion's active direction ('fine tuned llm makes better predictions'). The definition 'Produces outputs in response to inputs' is identical and reusable. The 'symmetric: false' setting correctly reflects that 'A makes B' does not imply 'B makes A'. The 'inverse: null' is valid as no inverse relation was asserted or required by the source text. No extra restrictions or negations were introduced; the active verb 'makes' was not confused with a passive inverse."
+    },
+    {
+      "entity_id": "chunk_002_relation_012",
+      "original": {
+        "label": "makes",
+        "definition": "Produces outputs in response to inputs.",
+        "source": "fine tuned llm",
+        "target": "better predictions",
+        "context": {
+          "evidence": "A fine-tuned LLM usually makes better predictions on its task than the foundation LLM does.",
+          "conditions": null,
+          "modality": "usually",
+          "argument_qualifiers": [
+            "on its task"
+          ]
+        }
+      },
+      "canonical_key": "makes",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive components: source ('fine tuned llm'), target ('better predictions'), relation ('makes'), modality ('usually'), and argument_qualifiers (['on its task']). Both retain the exact same saved qualifiers. There is no concrete claim made by one that is absent in the other, nor any difference in causal strength, scope, or endpoint types. The proposed_contract definition matches the occurrence definition, and since both qualified instances preserve every qualifier explicitly, they are bidirectionally equivalent."
+    },
+    {
+      "entity_id": "chunk_002_relation_013",
+      "original": {
+        "label": "outperforms",
+        "definition": "Achieves superior results compared to another entity in the same context.",
+        "source": "fine tuned llm",
+        "target": "foundation llm",
+        "context": {
+          "evidence": "A fine-tuned LLM usually makes better predictions on its task than the foundation LLM does.",
+          "conditions": null,
+          "modality": "usually",
+          "argument_qualifiers": [
+            "in making predictions on its task"
+          ]
+        }
+      },
+      "canonical_key": "outperforms",
+      "reason": "The new relation 'outperforms' is coherent and specific. It exactly preserves the source assertion's meaning ('Achieves superior results...') and direction (fine tuned llm -> foundation llm). The active verb 'outperforms' correctly implies a non-symmetric relationship where A outperforms B does not mean B outperforms A, so 'symmetric: false' is correct. The inverse is null, which is valid for asymmetric relations. No extra restrictions or negations were added; the predicate meaning remains consistent with the source evidence."
+    },
+    {
+      "entity_id": "chunk_002_relation_014",
+      "original": {
+        "label": "has",
+        "definition": "Possesses a specific attribute or quantity.",
+        "source": "fine tuned llm",
+        "target": "number of parameters",
+        "context": {
+          "evidence": "A fine-tuned LLM has the same number of parameters as the foundation LLM it came from.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "same as foundation LLM it came from"
+          ]
+        }
+      },
+      "canonical_key": "has",
+      "reason": "The qualified_original and qualified_proposal assertions share identical endpoints ('fine tuned llm' and 'number of parameters'), the same relation type ('has'), and identical argument qualifiers ('same as foundation LLM it came from'). The only difference lies in the definition text: 'Possesses a specific attribute or quantity' versus 'Indicates possession or association of a specific attribute by the source'. Since the instructions state that different wording is not sufficient grounds for rejection and that a specific occurrence can use a general contract when endpoints and qualifiers preserve substantive distinctions, these definitions are compatible. No concrete claim exists in one assertion that is absent in the other."
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "has",
+        "definition": "Possesses a specific quantity of parameters.",
+        "source": "fine tuned llm",
+        "target": "parameter count",
+        "context": {
+          "evidence": "Fine-tuned LLMs usually have a very large number of parameters.",
+          "conditions": null,
+          "modality": "usually",
+          "argument_qualifiers": [
+            "very large number"
+          ]
+        }
+      },
+      "canonical_key": "has_parameter_count",
+      "reason": "The new relation 'has_parameter_count' correctly maps the source 'fine tuned llm' to the target 'parameter count' using the predicate 'has', which aligns with the definition 'Possesses a specific quantity of parameters'. The direction is active (LLM possesses parameters), not inverted. The 'symmetric: false' setting accurately reflects that possessing parameters is not a symmetric relationship (if A has parameters, B does not necessarily have them in this context). The 'inverse: null' is valid as there is no natural inverse relation defined for this specific predicate in the source data. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "requires",
+        "definition": "To necessitate the use of specific resources to function or complete successfully.",
+        "source": "generating predictions with a fine tuned llm",
+        "target": "large computational and environmental resources",
+        "context": {
+          "evidence": "As a result, generating predictions with a fine-tuned LLM requires large computational and environmental resources.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "with a fine-tuned LLM"
+          ]
+        }
+      },
+      "canonical_key": "requires",
+      "reason": "The label 'requires' correctly matches the active definition 'To necessitate...'. The source assertion 'generating predictions... requires...' is an active construction where the subject (predictions) necessitates the object (resources). The new_contract defines 'requires' as non-symmetric (symmetric: false), which aligns with the fact that if A requires B, B does not necessarily require A. The inverse is null, which is valid for a non-symmetric relation like 'requires'. No extra restrictions or negations were introduced; the predicate meaning remains exactly as defined in the source evidence."
+    },
+    {
+      "entity_id": "chunk_003_relation_005",
+      "original": {
+        "label": "is irrelevant to",
+        "definition": "has no bearing on the requirements or functionality of",
+        "source": "parameter",
+        "target": "application",
+        "context": {
+          "evidence": "Many of those parameters are typically irrelevant to a specific application.",
+          "conditions": null,
+          "modality": "typically",
+          "argument_qualifiers": [
+            "many",
+            "typically"
+          ]
+        }
+      },
+      "canonical_key": "is_irrelevant_to",
+      "reason": "The label 'is_irrelevant_to' correctly reflects the active direction of the source assertion ('parameters are irrelevant to applications'). The definition 'has no bearing on...' accurately captures the predicate meaning without adding extra restrictions. The 'symmetric' flag is set to false, which is correct because if A is irrelevant to B, it does not logically imply B is irrelevant to A (though in this specific semantic context they might be similar, the logical inverse requires explicit equivalence). Since the source defines a one-way relationship where parameters do not affect applications, the inverse relation (applications affecting parameters) is distinct and null. The 'inverse' field is correctly set to null as no valid inverse definition was provided or implied by the data. No neg"
+    },
+    {
+      "entity_id": "chunk_003_relation_006",
+      "original": {
+        "label": "creates",
+        "definition": "A process that results in the formation or production of a specific entity.",
+        "source": "distillation",
+        "target": "smaller llm",
+        "context": {
+          "evidence": "Distillation creates a smaller LLM from a larger LLM.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "from a larger LLM"
+          ]
+        }
+      },
+      "canonical_key": "creates",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints (source: 'distillation', target: 'smaller llm'), identical argument qualifiers ('from a larger LLM'), and identical directional semantics (symmetric: false). The only difference lies in the definition text of the relation ('creates'). Since both assertions retain the exact same saved qualifiers and endpoint constraints, the general definition provided in qualified_proposal does not alter the substantive claim made by qualified_original. No concrete claim is present in one assertion that is absent in the other; the definitions are compatible descriptions of the same structural relationship."
+    },
+    {
+      "entity_id": "chunk_003_relation_007",
+      "original": {
+        "label": "generates predictions faster than",
+        "definition": "Produces outputs with a higher speed of completion compared to another entity.",
+        "source": "distilled llm",
+        "target": "larger llm",
+        "context": {
+          "evidence": "The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "predictions"
+          ]
+        }
+      },
+      "canonical_key": "generates_predictions_faster_than",
+      "reason": "The new relation 'generates_predictions_faster_than' accurately reflects the source assertion where a distilled LLM produces outputs faster than a larger LLM. The definition is specific and matches the source evidence without adding extra restrictions. The direction is preserved (active verb 'generates' vs passive inverse), symmetry is correctly set to false as speed comparison is directional, and the inverse is null which is valid for asymmetric relations."
+    },
+    {
+      "entity_id": "chunk_003_relation_008",
+      "original": {
+        "label": "requires fewer computational resources than",
+        "definition": "Consumes a lower quantity of computing power needed for operation compared to another entity.",
+        "source": "distilled llm",
+        "target": "larger llm",
+        "context": {
+          "evidence": "The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "computational resources"
+          ]
+        }
+      },
+      "canonical_key": "requires_fewer_computational_resources_than",
+      "reason": "The new relation 'requires_fewer_computational_resources_than' accurately reflects the source assertion where a distilled LLM consumes less computing power than a larger LLM. The definition is specific and matches the source evidence exactly. The direction is preserved (active verb 'requires fewer' vs passive inverse), symmetry is correctly set to false as the relationship is directional, and the inverse is null which is valid for asymmetric relations. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_009",
+      "original": {
+        "label": "requires fewer environmental resources than",
+        "definition": "Consumes a lower quantity of ecological impact or energy associated with operation compared to another entity.",
+        "source": "distilled llm",
+        "target": "larger llm",
+        "context": {
+          "evidence": "The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "environmental resources"
+          ]
+        }
+      },
+      "canonical_key": "requires_fewer_environmental_resources_than",
+      "reason": "The new relation 'requires_fewer_environmental_resources_than' accurately reflects the source assertion where the distilled LLM consumes fewer resources than the larger LLM. The definition is specific and matches the source exactly without adding extra restrictions. The direction is preserved (active verb 'requires' maps to the comparative structure), symmetry is correctly set to false as the relation is inherently directional, and the inverse is null which is valid for asymmetric relations. No negation or uncertainty was introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_010",
+      "original": {
+        "label": "is worse than",
+        "definition": "Indicates that the quality or accuracy of one set of predictions is lower compared to another set.",
+        "source": "predictions of the distilled llm",
+        "target": "predictions of the larger llm",
+        "context": {
+          "evidence": "However, the predictions of the distilled LLM are generally somewhat worse than the predictions of the larger LLM.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "generally somewhat"
+          ]
+        }
+      },
+      "canonical_key": "is_worse_than",
+      "reason": "The new relation 'is_worse_than' correctly maps the source text 'predictions of the distilled llm' to the target 'predictions of the larger llm', preserving the original assertion that the former is lower in quality/accuracy than the latter. The definition remains identical to the source, avoiding any added restrictions or negation folding. The 'symmetric' flag is correctly set to false because 'is worse than' is inherently directional (A is worse than B does not imply B is worse than A). The 'inverse' field is correctly null as there is no provided inverse contract to validate against, and the relation itself does not define an inverse relationship within its own scope. No extra conditions or qualifiers from the source context were folded into the predicate definition."
+    },
+    {
+      "entity_id": "chunk_003_relation_011",
+      "original": {
+        "label": "makes",
+        "definition": "Produces or generates outputs in response to inputs.",
+        "source": "llm with more parameters",
+        "target": "better predictions",
+        "context": {
+          "evidence": "LLMs with more parameters almost always make better predictions than LLMs with fewer parameters.",
+          "conditions": null,
+          "modality": "almost always",
+          "argument_qualifiers": [
+            "than LLM with fewer parameters"
+          ]
+        }
+      },
+      "canonical_key": "outperforms",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints (source: 'llm with more parameters', target: 'better predictions'), identical modality ('almost always'), and identical argument qualifiers ('than LLM with fewer parameters'). The only difference is the relation label ('makes' vs. 'outperforms') and their respective definitions. However, in this specific context, 'makes better predictions' semantically entails 'achieves superior results compared to another entity'. Since both assertions retain the exact same saved qualifiers and explicit conditions, no substantive claim exists in one that is absent in the other. The change from 'makes' to 'outperforms' preserves every substantive distinction while using a more general contract term that fits the specific occurrence."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

@@ -1,0 +1,28 @@
+{
+  "key": "b17fff4fce3bacd8414da6bf896de7d50a97c3b7e9d876774881d74c64f1d5af",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-22T21:41:17.8094191Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13485561200,
+    "load_duration": 3562600,
+    "prompt_eval_count": 1440,
+    "prompt_eval_duration": 680755000,
+    "eval_count": 755,
+    "eval_duration": 12738586000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"retrieval recall\",\n      \"definition\": \"A metric quantifying the volume of relevant search results.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"search\",\n      \"definition\": \"The operation of querying a database for information.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"relevant passages returned by search\",\n      \"definition\": \"Search results that contain information pertinent to the query.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"retrieval precision\",\n      \"definition\": \"A metric quantifying the proportion of relevant items within the search results.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.\",\n      \"evidence\": \"Retrieval recall measures how many relevant passages the search returns, while retrieval precision measures how many returned passages are relevant.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"retrieval recall\",\n        \"definition\": \"A metric quantifying the volume of relevant search results.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"measures_count_of\",\n      \"relation_definition\": \"Quantifies the total number of items satisfying a specific relevance criterion within a set.\",\n      \"target\": {\n        \"name\": \"relevant passages returned by search\",\n        \"definition\": \"Search results that contain information pertinent to the query.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"returned by search\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"Retrieval recall measures how many relevant passages the search returns\"\n    },\n    {\n      \"source\": {\n        \"name\": \"retrieval precision\",\n        \"definition\": \"A metric quantifying the proportion of relevant items within the search results.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"measures_count_of\",\n      \"relation_definition\": \"Quantifies the total number of items satisfying a specific relevance criterion within a set.\",\n      \"target\": {\n        \"name\": \"returned passages that are relevant\",\n        \"definition\": \"Search results that contain information pertinent to the query.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"that are relevant\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"retrieval precision measures how many returned passages are relevant\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly defines two distinct metrics: retrieval recall and retrieval precision. The first metric counts the total number of relevant results found by a search. The second metric counts the subset of those returned results that are actually relevant. These definitions were converted into directed relationships using an open-vocabulary predicate 'measures_count_of' to capture the quantitative nature of both assertions without inferring causation or additional context not present in the text.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006766",
+  "source_run": "run_20261122_160045_UTC-0500_f5d10610",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

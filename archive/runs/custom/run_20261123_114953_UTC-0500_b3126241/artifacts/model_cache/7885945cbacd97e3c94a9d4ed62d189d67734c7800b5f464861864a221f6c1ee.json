@@ -1,0 +1,28 @@
+{
+  "key": "7885945cbacd97e3c94a9d4ed62d189d67734c7800b5f464861864a221f6c1ee",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-23T17:58:36.1389282Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 9819337200,
+    "load_duration": 3543300,
+    "prompt_eval_count": 521,
+    "prompt_eval_duration": 162104000,
+    "eval_count": 583,
+    "eval_duration": 9603840000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"candidate_0046\": {\n    \"source\": {\"name\": \"similarity_search\", \"definition\": \"process of selecting passages via embedding proximity\", \"kind\": \"process\"},\n    \"target\": {\"name\": \"highly_ranked_passage\", \"definition\": \"passage selected by the search process\", \"kind\": \"entity\"},\n    \"relation\": \"selects\",\n    \"relation_definition\": \"chooses a target based on embedding proximity rather than factual verification\",\n    \"argument_qualifiers\": [\"rather_than_factual_verification\"],\n    \"conditions\": null,\n    \"modality\": null\n  },\n  \"candidate_0047\": {\n    \"source\": {\"name\": \"embedding_space\", \"definition\": \"representation capturing current context\", \"kind\": \"entity\"},\n    \"target\": {\"name\": \"passage\", \"definition\": \"textual unit potentially outdated\", \"kind\": \"entity\"},\n    \"relation\": \"can_be_outdated\",\n    \"relation_definition\": \"is outdated because the source captures context but lacks temporal validity encoding\",\n    \"argument_qualifiers\": [\"because_captures_current_context_but_lacks_temporal_validity_encoding\"],\n    \"conditions\": null,\n    \"modality\": \"can\"\n  },\n  \"candidate_0048\": {\n    \"source\": {\"name\": \"retrieval_encoder\", \"definition\": \"component mapping statements to similarity scores\", \"kind\": \"entity\"},\n    \"target\": {\"name\": \"highly_ranked_passage\", \"definition\": \"passage mapped to high similarity despite being incorrect\", \"kind\": \"entity\"},\n    \"relation\": \"can_be_incorrect_due_to\",\n    \"relation_definition\": \"is incorrect because the source maps false statements to high similarity via hallucinations or noise\",\n    \"argument_qualifiers\": [\"via_hallucinations_or_noise\"],\n    \"conditions\": null,\n    \"modality\": \"can\"\n  },\n  \"candidate_0049\": {\n    \"source\": {\"name\": \"model\", \"definition\": \"agent generating answers from context\", \"kind\": \"entity\"},\n    \"target\": {\"name\": \"retrieved_context\", \"definition\": \"information used for generation without truth validation\", \"kind\": \"entity\"},\n    \"relation\": \"generates_answers_without_validating_truth\",\n    \"relation_definition\": \"produces answers based on the target while maintaining distinction between retrieval quality and answer accuracy by not validating truth\",\n    \"argument_qualifiers\": [\"maintaining_distinction_between_retrieval_quality_and_answer_accuracy\"],\n    \"conditions\": null,\n    \"modality\": null\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_010581",
+  "source_run": "run_20261123_114953_UTC-0500_b3126241",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

@@ -1,0 +1,665 @@
+{
+  "schema_version": 1,
+  "run_id": "run_20261119_165138_UTC-0500_2260139a",
+  "status": "failed",
+  "config": {
+    "input": "data\\AI Chapter.txt",
+    "chapter": "custom",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\custom",
+    "chunk_words": null,
+    "seed_limit": 0,
+    "background_proposal_limit": 0,
+    "seed_similarity_threshold": null,
+    "seed_threshold": null,
+    "seed_max_words": null,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": null,
+    "identity_candidates": null,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 8192,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 8192,
+    "document_output_tokens": 4096,
+    "model_timeout": 600,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": false,
+    "interact": false,
+    "no_explorer": false,
+    "explorer_port": 0,
+    "new": false,
+    "resolved_settings": {
+      "model": {
+        "context_tokens": 8192,
+        "max_output_tokens": 4096,
+        "repair_output_tokens": 1536,
+        "timeout_seconds": 600,
+        "validation_retries": 2,
+        "temperature": 0,
+        "seed": 7,
+        "estimated_bytes_per_token": 3,
+        "prompt_reserve_tokens": 1024
+      },
+      "workload": {
+        "chunk_words": null,
+        "batch_size": null,
+        "identity_candidates": null,
+        "seed_limit": null,
+        "background_proposal_limit": null
+      },
+      "review": {
+        "repair_attempts": 2,
+        "reasoning": false,
+        "reasoning_fallback": true,
+        "alias_similarity": 0.7
+      },
+      "health": {
+        "window": 10,
+        "minimum": 5,
+        "max_failure_rate": 0.5
+      },
+      "text": {
+        "name_chars": 400,
+        "definition_chars": 400,
+        "detail_chars": 120,
+        "explanation_chars": 800,
+        "short_explanation_chars": 500,
+        "question_chars": 600,
+        "long_explanation_chars": 1200,
+        "summary_chars": 1800,
+        "display_definition_chars": 240,
+        "graph_label_chars": 90,
+        "graph_definition_chars": 160,
+        "modality_chars": 80,
+        "raw_predicate_chars": 80,
+        "identifier_chars": 300,
+        "feedback_chars": 3000
+      },
+      "labels": {
+        "predicate_words": 3,
+        "predicate_chars": 32
+      },
+      "evaluation_weights": {
+        "claim_fidelity_f1": 0.55,
+        "idea_order_agreement": 0.25,
+        "rouge_l_f1": 0.1,
+        "length_similarity": 0.1
+      },
+      "assessment_weights": {
+        "match": 1.0,
+        "related": 0.5,
+        "conflict": 0.0,
+        "not_demonstrated": 0.0
+      },
+      "ui": {
+        "input_chars": 1500,
+        "professor_summary_items": 5,
+        "quiz_recent_questions": 5,
+        "quiz_neighbor_facts": null,
+        "quiz_round_questions": null,
+        "quiz_duplicate_similarity": 0.85,
+        "quiz_generation_attempts": 3,
+        "graph_simulation_ticks": 240,
+        "graph_edge_length": 230,
+        "graph_label_offset": 224,
+        "graph_node_wrap_chars": 27,
+        "graph_fit_zoom": 1.6,
+        "graph_min_zoom": 0.06,
+        "graph_max_zoom": 5,
+        "graph_zoom_sensitivity": 0.001,
+        "graph_velocity_limit": 12,
+        "graph_damping": 0.7,
+        "graph_repulsion": 1400,
+        "graph_centering": 0.0004,
+        "graph_min_cooling": 0.08,
+        "graph_spring_strength": 0.006,
+        "graph_participant_distance": 190,
+        "graph_participant_strength": 0.003,
+        "graph_collision_strength": 0.12,
+        "graph_collision_speed": 8,
+        "student_name_chars": 120,
+        "timestamp_chars": 64,
+        "run_id_chars": 10,
+        "student_id_chars": 6,
+        "thumbnail_nodes": null,
+        "thumbnail_edges": null,
+        "interaction_batch_events": 50,
+        "interaction_batch_bytes": 48000,
+        "interaction_details_bytes": 32000,
+        "interaction_flush_ms": 500,
+        "quiz_focus_questions": 2
+      },
+      "operations": {
+        "server_start_seconds": 10,
+        "server_stop_seconds": 10,
+        "server_poll_seconds": 0.05,
+        "database_start_seconds": 120,
+        "database_poll_seconds": 3,
+        "database_timeout_seconds": 30,
+        "database_connect_seconds": 5,
+        "definition_cache_entries": 32768,
+        "community_passes": 30,
+        "server_backlog": 128,
+        "browser_open_delay_seconds": 0.3
+      },
+      "metrics": {
+        "shared_knowledge_fraction": 0.8
+      }
+    },
+    "effective_chunk_words": 579
+  },
+  "pipeline_stages": [
+    "extraction",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-11-19T16:51:38.314599-05:00",
+  "started_at_utc": "2026-11-19T21:51:38.314599+00:00",
+  "time_zone": "Eastern Standard Time",
+  "logging_scope": "Application actions, full model requests/responses, explicit rationales, parsing, validation, graph mutations and database queries. Hidden internal thinking is unavailable.",
+  "incomplete_extraction_chunks": [
+    "chunk_005"
+  ],
+  "error": "Model service failed for background_representation_checker/candidate_0111: an error was encountered while running the model: CUDA error: unknown error (status code: 500)",
+  "error_type": "ModelServiceError",
+  "finished_at": "2026-11-19T21:05:46.811587-05:00",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_003_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The assertion in the current sentence ('Neither measure alone shows...') negates a guarantee about correctness. The previous sentence defines 'Retrieval recall' and 'retrieval precision'. No standalone claim exists in the current sentence that can be extracted as a positive fact without violating the overlap constraint or inventing facts not present."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_relation_005",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'measure_retrieval_recall -> measures -> relevant_passages_returned_by_search' is supported by the previous sentence, but the required evidence quote must overlap the current sentence. The current sentence only discusses what these measures fail to show (correctness), not what they measure. Therefore, a faithful triple with overlapping evidence cannot be constructed for this specific relation in the context of the current sentence's constraints."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_relation_006",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'measure_retrieval_precision -> measures -> returned_passages_that_are_relevant' is supported by the previous sentence, but the required evidence quote must overlap the current sentence. The current sentence only discusses what these measures fail to show (correctness), not what they measure. Therefore, a faithful triple with overlapping evidence cannot be constructed for this specific relation in the context of the current sentence's constraints."
+    },
+    {
+      "step": "seed_selection",
+      "id": "artificial intelligence tutor",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "seed_selection",
+      "id": "training",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "background_repair",
+      "id": "candidate_0008",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "background_repair",
+      "id": "candidate_0076",
+      "status": "unresolved",
+      "reason": "background_proposal_repair: minimum required content for candidate_0076 cannot fit: 8205 estimated tokens including 1536 reserved output tokens exceed context 8192. Essential evidence was not truncated; repair remains unresolved. See artifacts/repair_budgets."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0093",
+      "status": "unresolved",
+      "reason": "No validated background decision: concept_alias_resolver failed for candidate_0093 after 3 attempts: A concept alias must select a supplied canonical name"
+    }
+  ],
+  "finished_at_utc": "2026-11-20T02:05:46.811587+00:00",
+  "duration_seconds": 15248.5,
+  "artifacts": {
+    "input.txt": {
+      "sha256": "6eb7a060eb38b7438dd3244290b27fe7b6047a7120a28f33cc3abd84b376ab28",
+      "bytes": 4037
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "2843113843a56dec6e0394c9f411165912eebb577ba2baa455cb525f56773824",
+      "bytes": 4541
+    },
+    "artifacts/chunks.json": {
+      "sha256": "31e68b3e7fcf55444f466162d3ef4508082c471c1724fc4582c797c28e8586ba",
+      "bytes": 4974
+    },
+    "artifacts/environment.json": {
+      "sha256": "5071a72482b67717c77cde353b0c668d7d52207cd3512984e81e10d3369ba56d",
+      "bytes": 31807
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "2d615eefe9337c52102d477edf33624f8f5c517eb173b74d93b1abb645d34665",
+      "bytes": 3190
+    },
+    "artifacts/relations.json": {
+      "sha256": "0e1aeb142967140d312f53181beda19cc675698d4e465c1fb351cc74398f124c",
+      "bytes": 1187163
+    },
+    "artifacts/concepts.json": {
+      "sha256": "f52dae8c80fc6f9a797152d084c24914174f249708c1b65001bd4142106f9b49",
+      "bytes": 201239
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "a6250f965d48b3ed3b365b3f366d2b6eb55d2e864f3a11e90d9cbc3ffd9e8237",
+      "bytes": 201650
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "bd44d70ffc0b67868f5402baa9659bcb0f5d32af02319671a02f8fce5e817555",
+      "bytes": 3927
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "57bca0023d57f0252a315142af83eabe83840b26c2f90a438d7080411faf040e",
+      "bytes": 4831
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "1cc54094d7691a7ce82857f04194fb2908f5325d0e77fd161245ba1c710ab3f4",
+      "bytes": 6739
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "d113dc22a9e3b514e07256e11f43e07f63fd3fc821dff123b1b69dd2a85f76da",
+      "bytes": 6445
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "0d06839c2f8af1976bda4e1835d708df36337bc2d826a8dbdf570c474c7e91e2",
+      "bytes": 296918
+    },
+    "artifacts/extractions.json": {
+      "sha256": "cb28c3cf78ad4b43363b237c5168a34bf3f4dacf2ca5fd53e69729ee8ec2f469",
+      "bytes": 562181
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "bfe115d87e4bb3cce9fde02a43a4f9dc57074cac7d39e030d023d979058877b4",
+      "bytes": 585
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "dec0b8aa529dc492317f21c04e8bf5dd01b1630b57a16159f61ae162966295e2",
+      "bytes": 26960
+    },
+    "artifacts/seeds.json": {
+      "sha256": "f8b165f842d621561d1d51c89c48e1363f7c70ad6ae9f4d70a9b9a15006e8488",
+      "bytes": 945725
+    },
+    "artifacts/seed_progress.json": {
+      "sha256": "4b947e9ce693eb2b7e411550f7b8ac159008bd838eb8a50fc9ff68f88f45e34d",
+      "bytes": 260877
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "6c510c796355d55426f9a9fcb8cbbf69d3b275e7deb04c61bf8aa9f75758bea6",
+      "bytes": 1585992
+    },
+    "artifacts/repair_budgets/candidate_0001.json": {
+      "sha256": "618b744c1754b5d0f8f2eec06ebc8425acc0c7049fc7372f9ef44a81afaaaa8c",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0002.json": {
+      "sha256": "1f50d8e54e82cb37e9f628cddbc8c6469c8672e41654fbd731b942df02797790",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0003.json": {
+      "sha256": "e888778aeda97cc668a847e6a5d9ff63b5a5d45129314f0897ee6c740f5a4a97",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0004.json": {
+      "sha256": "8aa1a926a15f9058ce2af887b81e7d28646deec05c4c47b965d5dd222f9b1eed",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0005.json": {
+      "sha256": "d54e41c833cb6db9128c8d804e6490d1c5eb97d32a99351157ca5fa9b83ad024",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0006.json": {
+      "sha256": "3fdcb2a549900dc1888975fb0dfcb27d91e470982fbc8d0b94a19c83137cf4c2",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0007.json": {
+      "sha256": "bcafe210d6b6071034a77303cccff8fe3719c870700a2cb4815d5f5865a9f22d",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0008.json": {
+      "sha256": "0fe85a5df97c1f96d67a153f512ea2e45c263a29fa66a54ac6d6d4839ddac82a",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0011.json": {
+      "sha256": "35714b19938a65d034518413aad8794ef349430c1c4c414153a170273e96d1e0",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0012.json": {
+      "sha256": "f04a3612d959ce794fe77a37a7114c0a7ddbd297b4edb1631e1d71aa171fd1d2",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0013.json": {
+      "sha256": "446d0d148da8d0bb9ffd4cb96ddbf15c0540498e3eb1b4db04e5db0bd21de51f",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0014.json": {
+      "sha256": "2c059f51201ec54a107d0df7b6341c5947c5d4674dd1482e0328d0fde01a6e01",
+      "bytes": 1588
+    },
+    "artifacts/repair_budgets/candidate_0018.json": {
+      "sha256": "f37020640ca5d3177b675178aa20809e1e853072c1cbd074dedde1162d19382e",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0020.json": {
+      "sha256": "bd78685afdc014471fca7e73d80b191c2cdca62d076fda00057ddb8bb6988ca6",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0021.json": {
+      "sha256": "31fe4a7b06db964732180b5714b88c5fd39a4bfb2c7e67845df39a044ef92cc8",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0022.json": {
+      "sha256": "a6f74e7362c90977c3bdae364e8d9cf6bda36ed4adada8ad566dfdd1984b3604",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0023.json": {
+      "sha256": "b58c108de6a6b7e2152659e3372aa63b8cb2228f5ba87f861983b953e90e8973",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0024.json": {
+      "sha256": "0130108fc0181545e3670526f3d096fcdc35b769a25577d83b961ab5178a0a4f",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0027.json": {
+      "sha256": "7a9287a353d8c465abaa31388a8e35c23c371afcd34f126d5d6f7270fdb7e5aa",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0028.json": {
+      "sha256": "8fbf13ac980283f6ab33ebd9095c5b435d4bdcb0bd93c552ce8878d33143a37d",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0029.json": {
+      "sha256": "674819d4af054ac7c7a7119ef6ee1dd3c4de4a1c89f1b85135ce883b3a1e350f",
+      "bytes": 1588
+    },
+    "artifacts/repair_budgets/candidate_0032.json": {
+      "sha256": "08f150660030120311f04065f4e49815d190f1bf65632310b28901f9275479e7",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0033.json": {
+      "sha256": "be2b71fbc5a038cd0b4d7ad832c275da40038397497c77c67af3c35026777a04",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0034.json": {
+      "sha256": "11afd0164e388160ba6b4d3177358856da68d2d6eadeb8a688d21f21acf2bd9f",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0035.json": {
+      "sha256": "cf6b3268bf85806f23094c07eb662589ed32d5b224b12c1a43fc878c5b83f714",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0041.json": {
+      "sha256": "a0fb5464328825bb344e142e8eb8112be5d2e0ee31627ec3db92bf1497c7959d",
+      "bytes": 1588
+    },
+    "artifacts/repair_budgets/candidate_0043.json": {
+      "sha256": "2fe4ddc781eac0edf9a3bcaf9a1101ef994f2b18351d7fdaad3c5621c0e6c6d9",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0044.json": {
+      "sha256": "0f213e708883ea5bd31fa9879bfae4010e95a8815a574a6e3176b0f13036b9df",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0045.json": {
+      "sha256": "a86b02874d89f638a82a63ada3bae860d0a75bb8d6a0a632b4f05755a8e9f33c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0046.json": {
+      "sha256": "1997133c1b18aa83db98846ea9134b568b23d6344a70001bb929505331c44343",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0047.json": {
+      "sha256": "56a54edafd42fc8e3d2c738db9bac75bb27812b188ae6c2f2d559253e87ec6ff",
+      "bytes": 2015
+    },
+    "artifacts/repair_budgets/candidate_0052.json": {
+      "sha256": "ff438f7edaa8ea5c5db0af811baa43053394fe69ac15f53281618f35175f8c94",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0053.json": {
+      "sha256": "5b1acc7747dce42049e75cb56e88063a47abf6256f292d682d32e12b71fb033a",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0054.json": {
+      "sha256": "ead675ec679439521b32152537c0c2f9e1a31fc56d674abb1bf8ed0096fda0e5",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0055.json": {
+      "sha256": "cedb98c74e7fe8ca39462cd4e7b6128e0a681d319e92a3b505ffd81600309a9c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0056.json": {
+      "sha256": "2aadfa0312a38710cd57b64f0f0e041bc91dbfb1a729e0e87a59e1a1839dda11",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0058.json": {
+      "sha256": "5d2b636b2acada213e4397c9588d68d6aae7d156ab47c5bc4234ea2c48af7982",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0059.json": {
+      "sha256": "ef07252f1c4a4f225be55b4a81dd78244f0e22b6fa7d2f20911378d221ca7c8b",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0060.json": {
+      "sha256": "25e3ebdebf30dffb70b8e1cbbad0142ec057ab99e6e7b98fa5003197bee00174",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0061.json": {
+      "sha256": "d175cc9e15add2b30c967d44faa7ed324d9ccd248ad3f5e89d4581fd43b31604",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0062.json": {
+      "sha256": "e12dfd9daf66a4b9090fd1a55a1d82037d90b4c962632c23c81d4f6803a22418",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0066.json": {
+      "sha256": "1a9fbcbef577659181cb03bc6b34c874ef01c99ff68af1a612aa19358eb39922",
+      "bytes": 2015
+    },
+    "artifacts/repair_budgets/candidate_0067.json": {
+      "sha256": "eb93f64d4552be616d7070d664d52883caaa48e3a48f35eca324da79ccf0728e",
+      "bytes": 1588
+    },
+    "artifacts/repair_budgets/candidate_0070.json": {
+      "sha256": "feed2125c0aaa61455710fd13c727e277ee3b66ef23789425d0e81a7d48737d5",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0071.json": {
+      "sha256": "5c36640590c3ca928f1fcae0939eb78ad5e1a4b81b3b778a5764a52ab9fd978c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0072.json": {
+      "sha256": "e5a38e5134152dbfa6b60801f16c01e0cc198845fc281e43e865a236440a2333",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0075.json": {
+      "sha256": "52c123b7e85be594bd770aa5582a4406830ff60bcd32763c3bce5a232427c89a",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0076.json": {
+      "sha256": "05881cbb47a36e00690b358b7c8faf6cf7e5684ad84b78b25cfe0222908dda7e",
+      "bytes": 2883
+    },
+    "artifacts/repair_budgets/candidate_0077.json": {
+      "sha256": "ac6c0168d7866cf12113231bb89ebd78a8509a0646590de569ac01974f27d768",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0078.json": {
+      "sha256": "2d03c1af22eabb042108b29b3e0662b31083c1e1eb9ba0920f07c669ca515b1d",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0079.json": {
+      "sha256": "0a3b3c6ff06a1478d61f1c7cc60852a6980f0153c7ea05cfaa972902620e9bb5",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0080.json": {
+      "sha256": "b21bbfc012597a0e37404a69939da7160b55338b44216fafef60ad5ce146af37",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0081.json": {
+      "sha256": "361585ee586c2b9b08a2fb7dec306223f080045df16da1037e10974998b49029",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0082.json": {
+      "sha256": "a773f4514485a0fdb97c648ce34942937ccc1f349a7c1bfb0434bd9550966d2c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0083.json": {
+      "sha256": "60fa36fb997f89b932e0da13ec3bf96ed4f1dff8a9519510aba17a7e8fea876c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0084.json": {
+      "sha256": "48f2fff8e3b02dc86fbc095e75a24476778863386288ee77f873b20006ee946d",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0085.json": {
+      "sha256": "bc56afc7b610f4fde2a7eed9934a531097cc8f7446c6b817b58ec1a2a7bd55a0",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0086.json": {
+      "sha256": "7537640368655a42aef7d02809e893ebb277705945be2f96c4fc09d25da253dc",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0087.json": {
+      "sha256": "06680a12cfd50537aa1bf32bed5c1cfaf9265497e068f41469eaf3c885da92a6",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0089.json": {
+      "sha256": "fb1ac268cf4a7184919a0784dd4ab692374334874c0aa63665d15cf912184a0e",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0090.json": {
+      "sha256": "46a6732d84efd43130983e14a409c7b16517b192b7ed594ce521e6d14c859c16",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0091.json": {
+      "sha256": "3e128888cb30ee1773a34c765d1a8078f32b1ca8bd380de1ed2099c5f8b6da72",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0093.json": {
+      "sha256": "f8416f6c921019ac3e75f1bb5379779c1ed167d166dff1c7436bbc3c41e5c36a",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0095.json": {
+      "sha256": "f0f8a03d1608ca2165fe02405f9fd44dac615005620ba4ed9a1052507b65a879",
+      "bytes": 1588
+    },
+    "artifacts/repair_budgets/candidate_0096.json": {
+      "sha256": "f3112fc8f42c8ee7408b028e222f55a736667b6e7523c912f784d1ca3efa88b2",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0097.json": {
+      "sha256": "53adc816a35270b09565b5aaa2f2a6c338a8df9e675cc1fd6c8a7494f25b40b6",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0098.json": {
+      "sha256": "584d6828d16eee9021bb34991611bd48f2b6b5a446fdf6c700487d70a5d54e40",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0099.json": {
+      "sha256": "fc22b13a4e149ea79ec7baa4aa80b2099d2d0e1e864e86ab1db3738a97b27b78",
+      "bytes": 1160
+    },
+    "artifacts/repair_budgets/candidate_0100.json": {
+      "sha256": "f133b78ab66437d39e68c7b368b2e7fe81158365a5c561883e1ade45a96113c6",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0102.json": {
+      "sha256": "7dc659f5aa0f96ede86daee15503ed9a51ce5fbeae1d1961292c9b20e4d1540c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0103.json": {
+      "sha256": "18555b60c83c41891fd7e811b2de0732634f2da097aeb13907259b768b43b83b",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0104.json": {
+      "sha256": "24b78b45ab4e55032ba19ce0d081d70ab9b13964dd25edbfcaf92be90d773e9c",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0106.json": {
+      "sha256": "8bbf115b81fe85c65c7118f668b482ad3cb72a383cf1984680c3fc918efbdc02",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0107.json": {
+      "sha256": "f3b2e0ae2afa93878bc689cbfcf54233c1e93b01c19af4b183f5fe977feb2196",
+      "bytes": 732
+    },
+    "artifacts/repair_budgets/candidate_0108.json": {
+      "sha256": "7c752f19a15489fe56b2146d194740c7bff83273271349e952b4d8ad9f078c42",
+      "bytes": 732
+    }
+  },
+  "event_counts_before_finalization": {
+    "run.started": 1,
+    "artifact.written": 1580,
+    "stage.started": 4,
+    "input.read_requested": 1,
+    "input.read_completed": 1,
+    "workload.resolved": 1,
+    "input.paragraph_parsed": 5,
+    "input.sentences_parsed": 5,
+    "input.chunk_created": 5,
+    "input.coverage_validated": 1,
+    "stage.completed": 3,
+    "settings.resolved": 1,
+    "service.request": 2,
+    "service.response": 2,
+    "database.export_disabled": 1,
+    "model.request": 4818,
+    "model.response": 4817,
+    "parse.started": 4817,
+    "parse.completed": 4814,
+    "validation.started": 4814,
+    "validation.completed": 4797,
+    "extraction.evidence_checked": 114,
+    "registry.concept_resolved": 478,
+    "registry.identity_reused": 257,
+    "registry.relation_added": 96,
+    "registry.relation_resolved": 182,
+    "extraction.normalized": 5,
+    "item.completed": 899,
+    "extraction.quote_retry_requested": 3,
+    "extraction.quote_retry_completed": 3,
+    "extraction.reference_resolved": 2,
+    "extraction.record_rejected": 6,
+    "extraction.unresolved": 3,
+    "item.unresolved": 8,
+    "outline.segment": 5,
+    "registry.identity_candidates": 226,
+    "registry.concept_alias_checked": 84,
+    "registry.concepts_merged": 10,
+    "validation.failed": 17,
+    "model.attempt_failed": 21,
+    "model.retry": 16,
+    "debate.adjudicated": 79,
+    "debate.decision": 178,
+    "extraction.chunk_review_summary": 5,
+    "parse.failed": 3,
+    "seed.gap_coverage_checked": 154,
+    "seed.filtered": 61,
+    "seed.selected": 60,
+    "seed.selection_completed": 1,
+    "debate.fact_written": 113,
+    "debate.proposed": 111,
+    "debate.representation_checked": 94,
+    "debate.rejected": 99,
+    "repair.context_budget": 75,
+    "repair.unresolved": 2,
+    "debate.repair_created": 26,
+    "debate.novelty_checked": 35,
+    "debate.unresolved": 1,
+    "stage.failed": 1,
+    "run.failed": 1
+  }
+}

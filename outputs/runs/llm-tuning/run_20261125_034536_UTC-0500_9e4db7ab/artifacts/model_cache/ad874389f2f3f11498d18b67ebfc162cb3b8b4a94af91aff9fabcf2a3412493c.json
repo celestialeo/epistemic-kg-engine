@@ -1,0 +1,28 @@
+{
+  "key": "ad874389f2f3f11498d18b67ebfc162cb3b8b4a94af91aff9fabcf2a3412493c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T10:43:20.9625062Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 37854609500,
+    "load_duration": 3678600,
+    "prompt_eval_count": 1734,
+    "prompt_eval_duration": 413410000,
+    "eval_count": 1046,
+    "eval_duration": 37426027000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_003_s004\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Distillation creates a smaller LLM from a larger LLM.\",\n        \"graph_edge_ids\": [\"chunk_003_relation_004\"],\n        \"graph_reading\": \"ASSERTED (distillation --[creates]--> smaller llm); additional arguments: from a larger LLM\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence asserts that the process 'Distillation' results in a 'smaller LLM' originating from a 'larger LLM'. Graph edge chunk_003_relation_004 explicitly maps 'distillation' to 'creates' a 'smaller llm' with the qualifier 'from a larger LLM', fully preserving the source meaning.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_003_s005\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM.\",\n        \"graph_edge_ids\": [\"chunk_003_relation_005\", \"chunk_003_relation_002\"],\n        \"graph_reading\": \"Combined reading: (distilled llm --[generates predictions faster than]--> larger llm) AND (generating predictions with a fine tuned llm --[need]--> large computational and environmental resources). Note: The graph edge for resource requirement (chunk_003_relation_002) applies to 'fine tuned llms' generally, while the source sentence specifies 'distilled LLM' requires *fewer* resources. The graph does not contain an edge stating 'distilled llm --[requires fewer]--> resources'.\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The focus sentence makes two claims: 1) Distilled LLM generates predictions faster than larger LLM. This is supported by chunk_003_relation_005. 2) Distilled LLM requires fewer resources than the larger LLM. The graph contains chunk_003_relation_002 which states 'generating predictions with a fine tuned llm' needs 'large computational and environmental resources'. This edge does not support the 'f\",\"missing\": [\n      {\n        \"reason\": \"The source sentence claims the distilled LLM requires *fewer* resources than the larger LLM. The graph only contains an assertion that generating predictions with a fine-tuned LLM (general category) needs large resources (chunk_003_relation_002). There is no edge asserting the comparative 'fewer' relationship or specifically linking the distilled LLM to lower resource requirements.\",\n        \"missing_claim\": \"Distilled LLM requires fewer computational and environmental resources than the larger LLM.\",\"source_sentence_ids\": [\"chunk_003_s005\"]\n      }\n    ],\n    \"unsupported\": [\n      {\n        \"reason\": \"The graph edge chunk_003_relation_002 asserts that 'generating predictions with a fine tuned llm' needs 'large computational and environmental resources'. The source sentence chunk_003_s005 claims the distilled LLM requires *fewer* resources. The graph edge does not support the specific comparative claim of 'fewer' nor does it distinguish between general fine-tuned models and distilled ones in a '\",\"missing_claim\": \"Distilled LLM requires fewer computational and environmental resources than the larger LLM.\",\"source_sentence_ids\": [\"chunk_003_s005\"],\"id\": \"chunk_003_relation_002\"}\n      ]\n    },\"chunk_003_s006\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"However, the predictions of the distilled LLM are generally somewhat worse than the predictions of the larger LLM.\",\n        \"graph_edge_ids\": [\"chunk_003_relation_007\"],\n        \"graph_reading\": \"ASSERTED (predictions of the distilled llm --[is worse than]--> predictions of the larger llm); additional arguments: generally somewhat\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence states that predictions from the distilled LLM are 'generally somewhat worse' than those from the larger LLM. Graph edge chunk_003_relation_007 maps 'predictions of the distilled llm' to 'is worse than' 'predictions of the larger llm' with the qualifier 'generally somewhat'. This fully preserves the source meaning.\",\n    \"missing\": [],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_009205",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

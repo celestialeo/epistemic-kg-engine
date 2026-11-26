@@ -1,0 +1,219 @@
+{
+  "run_id": "run_20261120_064959_UTC-0500_13840304",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_012",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_014",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_005_concept_1",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_016",
+      "status": "unresolved",
+      "reason": "Relation normalization unresolved: relation_definition failed for chunk_001_relation_016 after 3 attempts: Inverse must name an existing contract or be null"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous sentence describes sodium channel opening and depolarization. The current sentence describes subsequent repolarization via inactivation and potassium conductance. No substantive relationship can be extracted from the CURRENT_SENTENCE alone that overlaps with the provided quote of the PREVIOUS_SENTENCE without inventing a causal link not explicitly stated in the current text's scope. The instruction requires extracting relationships from CURRENT_SENTENCE, using previous only for reference resolution. Since the failed record attempts to validate a claim from the PREVIOUS sentence against the CURRENT sentence context where they are distinct sequential events, and no predicate exists in the CURRENT sentence linking back to the specific 'typical axon' or 'sufficient depolarization'"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_002_sentence_006_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The previous sentence describes the all-or-none property of action potentials and does not contain substantive assertions overlapping with or supported by the current sentence regarding stimulation strength and firing frequency. Per instructions, failed records must be repaired using only claims supported by the CURRENT_SENTENCE; no valid relationship can be extracted from the PREVIOUS_SENTENCE alone to satisfy the overlap requirement for this specific claim."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_relation_005",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_004_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided record contains a claim from PREVIOUS_SENTENCE ('this input can excite...') which does not overlap with CURRENT_SENTENCE. Per instructions, only claims substantiated by text overlapping CURRENT_SENTENCE should be returned. The current sentence asserts that 'The resulting pattern helps withdraw the affected limb', but no relationship or claim derived strictly from this sentence was provided in the failed_records list to correct."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_coverage_1_1_relation_002",
+      "status": "unresolved",
+      "reason": "Relation normalization unresolved: relation_definition failed for chunk_001_coverage_1_1_relation_002 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_004",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_005",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "seed_planning",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "seed_planning",
+      "id": "chunk_003",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "seed_planning",
+      "id": "chunk_004",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0016",
+      "status": "unresolved",
+      "reason": "No validated background decision: Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "evaluation",
+      "id": "evaluation:document",
+      "status": "unresolved",
+      "reason": "Document alignment reached its output/context limit; increase --document-context-tokens and --document-output-tokens"
+    }
+  ],
+  "input": {
+    "paragraphs": 5,
+    "chunks": 5,
+    "words": 599,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 46,
+    "incomplete_chunks": [
+      "chunk_001",
+      "chunk_002",
+      "chunk_005"
+    ],
+    "unresolved_records": 8,
+    "relations": 77,
+    "reviewed": 90,
+    "review_attempted": 90,
+    "semantic_rejections": 11,
+    "rejection_categories": {
+      "unsupported_claim": 8,
+      "meaning_changed": 3,
+      "wrong_direction": 1,
+      "contradiction": 1
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 5
+  },
+  "debate": {
+    "seeds": 4,
+    "proposed": 17,
+    "accepted": 1,
+    "rejected": 15,
+    "unresolved": 1,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 140,
+    "edges": 78,
+    "domain_nodes": 140,
+    "domain_edges": 78,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 26,
+    "node_kinds": {
+      "concept": 140
+    },
+    "edge_origins": {
+      "document": 77,
+      "background": 1
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 916,
+    "retries": 21,
+    "cache_hits": 59,
+    "embedding_calls": 0,
+    "prompt_tokens": 1161640,
+    "output_tokens": 214042
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 5,
+      "mean": 0.4429692902573882,
+      "median": 0.45161290322580644,
+      "min": 0.20689655172413793,
+      "max": 0.6153846153846154,
+      "sample_stddev": 0.1605259934754093
+    },
+    "idea_order_agreement": {
+      "n": 5,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": 0.0
+    },
+    "rouge_l_f1": {
+      "n": 5,
+      "mean": 0.6955335713896542,
+      "median": 0.6546762589928058,
+      "min": 0.5912408759124088,
+      "max": 0.8325358851674641,
+      "sample_stddev": 0.09681198136109968
+    },
+    "length_similarity": {
+      "n": 5,
+      "mean": 0.8534735256294961,
+      "median": 0.8407079646017699,
+      "min": 0.7933333333333333,
+      "max": 0.984,
+      "sample_stddev": 0.07588790344911746
+    },
+    "final_score": {
+      "n": 5,
+      "mean": 64.85338193434785,
+      "median": 64.6944503464107,
+      "min": 50.225052437285015,
+      "max": 73.4723866347574,
+      "sample_stddev": 9.51979171582067
+    }
+  },
+  "reconstruction_score": null,
+  "evaluation_status": "incomplete",
+  "evaluation_metric_version": "reconstruction_fidelity_v3_verified_matching",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

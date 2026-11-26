@@ -1,0 +1,1686 @@
+{
+  "policy": "passage_questions_with_whole_source_coverage",
+  "limit": 0,
+  "allowed_topics": [
+    {
+      "id": "chapter_78acd4b6d2f9e9b55af9",
+      "label": "Decoder-only transformer architecture: tokenization, embeddings, positional information, causal attention masks, and the",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_7e9c731256176746a509",
+      "label": "Language model training mechanisms: parameter adjustment, dataset roles (training/validation/test), and separation to a{",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_b3d11d37030c73d06671",
+      "label": "Handling uncertainty, identifying passage disagreements, and distinguishing missing evidence from false claims",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_b66f43ab8c47aedbbfbd",
+      "label": "Post-training techniques: weight quantization for memory reduction and Retrieval-Augmented Generation (RAG) with embedd",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_d5413610974a1067f021",
+      "label": "Evaluation framework: separating retrieval metrics (recall/precision) from answer quality, assessing factual correctness",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_e7c4fcf58c894cc763ef",
+      "label": "Training mechanics: loss functions, backpropagation, optimizers, learning rates, overfitting, dropout, and early stopp",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "chapter_fcf1a31d14319243b55d",
+      "label": "AI tutor system functionality and limitations regarding factual accuracy",
+      "level": "chapter",
+      "segment_ids": []
+    },
+    {
+      "id": "subtopic_068bbf072b8ed6dbd3f5",
+      "label": "Tokenization and embedding layers",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_147018aaef9cccf9787f",
+      "label": "Language model training mechanisms including parameter adjustment",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_001"
+      ]
+    },
+    {
+      "id": "subtopic_1922a903cceb0de2a85f",
+      "label": "Importance of dataset separation to avoid data leakage",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_001"
+      ]
+    },
+    {
+      "id": "subtopic_198e5fb3cc84f9f5baca",
+      "label": "Embedding mapping for questions and documents",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_1e6f621ea6166f117f3b",
+      "label": "Retrieval-augmented generation (RAG)",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_266cc90843bcd1341eb7",
+      "label": "Factual correctness evaluation",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_30875538a9406b04ef9f",
+      "label": "Overfitting definition: training performance not translating to unseen examples",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_34d2b7c05822d39b98d2",
+      "label": "Retrieval recall vs. precision",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_3bce8349fac9f9195e08",
+      "label": "Index updating for revised materials",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_48bd14de43c8a6205502",
+      "label": "Training mechanism: comparing predicted token probabilities with actual next tokens",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_4bf9917ba76cad097a86",
+      "label": "Backpropagation: computing gradients for parameter updates",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_609ec924f74bd30ff764",
+      "label": "Positional information for sequence distinction",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_63b4bce0e6ccc3c15e9f",
+      "label": "Handling of uncertainty",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_688662fd3faeeec04368",
+      "label": "Memory reduction via bit precision",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_6c2425d86983c98eb983",
+      "label": "Disagreement identification between passages",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_6c31d07bd032fc92856c",
+      "label": "Learning rate impact: balancing stability against improvement speed",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_6c9591335b510cd2961d",
+      "label": "AI tutor functionality and limitations regarding factual accuracy",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_001"
+      ]
+    },
+    {
+      "id": "subtopic_6cb339269594382ae3ed",
+      "label": "Limitations of retrieval (irrelevance, outdated info, incorrect data)",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_707a12ad512e78320139",
+      "label": "Distinction between attention weights and claim validity",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_7922287d671b3d72cead",
+      "label": "Roles of training, validation, and held-out test datasets",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_001"
+      ]
+    },
+    {
+      "id": "subtopic_948917a099a4b5071102",
+      "label": "Context augmentation with selected passages",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_9feca0a2ab095a541315",
+      "label": "Answer quality degradation risks",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_af591e27cf9be4ada1e2",
+      "label": "Weight quantization",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_b08a4f4615721259b2f7",
+      "label": "Distinction between dataset size and dataset quality",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_001"
+      ]
+    },
+    {
+      "id": "subtopic_c37385cf2d81f052a969",
+      "label": "Dropout technique: random activation disabling during training versus standard inference",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_c51c8b8a6a5bdb1cbeff",
+      "label": "Loss function: measuring prediction error",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_c532379c4d23d167e948",
+      "label": "Optimizer role: utilizing gradients to update parameters",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_cb967ff6f19573389f05",
+      "label": "Early stopping strategy: using validation performance to determine training termination",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_003"
+      ]
+    },
+    {
+      "id": "subtopic_ccd4994dc0ab260af191",
+      "label": "Causal attention masks restricting future token access",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_ce45ec53cd2f15e95b2d",
+      "label": "Distinction between missing evidence and false claims",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_d808e2892ef1dc83693b",
+      "label": "Context window limitations on text availability",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_e87610ff15d4a4c69cf5",
+      "label": "Similarity search for candidate selection",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_004"
+      ]
+    },
+    {
+      "id": "subtopic_f4f67f8767f9cd138391",
+      "label": "Self-attention mechanisms in layers",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    },
+    {
+      "id": "subtopic_f77bac0f817c03efde81",
+      "label": "Support from supplied documents",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_005"
+      ]
+    },
+    {
+      "id": "subtopic_f86371bb616af7138b2f",
+      "label": "Decoder-only transformer architecture",
+      "level": "subtopic",
+      "segment_ids": [
+        "segment_002"
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "concept": "language model",
+      "eligible": true,
+      "reason": "The source text lists components (datasets, parameters, model) and their interactions but assumes the reader understands the internal mechanics (how parameters adjust, how leakage occurs, why size != quality). These are substantive gaps at the chapter's implied level regarding training mechanisms and limitations.",
+      "gaps": [
+        {
+          "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+          "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+          "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "language model"
+        },
+        {
+          "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+          "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+          "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0003",
+          "concept": "language model"
+        },
+        {
+          "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+          "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+          "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0004",
+          "concept": "language model"
+        }
+      ],
+      "covered_gaps": [
+        {
+          "question": "What is the relationship between 'fluent wording' and 'factual accuracy' in the context of this language model?",
+          "assumed_knowledge": "The source asserts a disconnect but does not explain the underlying mechanism (e.g., hallucination, lack of grounding) causing fluent text to be factually incorrect.",
+          "why_useful": "This explains the specific limitation mentioned ('fluent wording does not guarantee factual accuracy') without inventing new facts.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "language model",
+          "coverage": {
+            "answered": true,
+            "evidence_ids": [
+              "chunk_001"
+            ],
+            "reason": "The source explicitly states: 'fluent wording does not guarantee factual accuracy,' directly answering the relationship between the two concepts."
+          }
+        }
+      ],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "causal attention mask",
+      "eligible": true,
+      "reason": "The source states the restriction exists but does not explain the technical enforcement mechanism (masking values in attention scores), which is a standard architectural detail assumed by the description.",
+      "gaps": [
+        {
+          "question": "How does the causal attention mask technically enforce the restriction that a position cannot attend to later positions?",
+          "assumed_knowledge": "The mechanism of masking (e.g., setting weights to negative infinity or zero) within the softmax operation to physically prevent information flow from future tokens.",
+          "why_useful": "Understanding the implementation ensures one grasps why the model is strictly autoregressive and cannot 'see' the answer it is predicting.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0005",
+          "concept": "causal attention mask"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "attention weight",
+      "eligible": true,
+      "reason": "The source asserts 'Attention can connect information... but an attention weight does not establish that the associated claim is true.' It assumes the reader understands *why* statistical association (attention) differs from factual verification, which requires explanation regarding the nature of probabilistic prediction vs. ground truth.",
+      "gaps": [
+        {
+          "question": "What is the specific logical distinction between an attention weight indicating 'relevance' and a claim being 'factually true'?",
+          "assumed_knowledge": "That high attention weights reflect statistical correlation or semantic similarity in the training data, not verification of truth values.",
+          "why_useful": "This clarifies why the model might attend heavily to hallucinated information that is statistically probable but factually incorrect.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0006",
+          "concept": "attention weight"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "models finite context window",
+      "eligible": true,
+      "reason": "The source mentions the limitation exists but does not explain the mechanism of truncation or the specific capacity constraint that defines 'finite'. This is a standard architectural assumption.",
+      "gaps": [
+        {
+          "question": "How does the finite context window specifically limit the 'amount of text available' in a single request?",
+          "assumed_knowledge": "That the model processes a fixed number of tokens (e.g., 4k, 8k, 128k) and any input exceeding this is truncated or ignored.",
+          "why_useful": "This explains the practical constraint on document length for retrieval-augmented tasks mentioned in the overview.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0007",
+          "concept": "models finite context window"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "embedding layer",
+      "eligible": true,
+      "reason": "The source states tokens are mapped to vectors but assumes the reader understands that this mapping encodes semantic meaning, which is a non-trivial concept requiring explanation of learned similarity.",
+      "gaps": [
+        {
+          "question": "How does the embedding layer map discrete tokens to numerical vectors in a way that preserves semantic relationships?",
+          "assumed_knowledge": "That the mapping is learned via optimization such that semantically similar tokens have vectors with high cosine similarity.",
+          "why_useful": "This explains how the model 'understands' text before attention mechanisms operate, bridging the gap between discrete symbols and continuous vector space.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0008",
+          "concept": "embedding layer"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "backpropagation",
+      "eligible": true,
+      "reason": "The source states backpropagation computes gradients but does not explain the backward pass mechanism itself. This is a fundamental gap in understanding 'how' the optimizer receives information to update parameters.",
+      "gaps": [
+        {
+          "question": "How does backpropagation specifically propagate error signals backward through the network layers to compute gradients for all parameters?",
+          "assumed_knowledge": "The mechanism of chain rule application and gradient flow from output to input layers.",
+          "why_useful": "Understanding the propagation process clarifies how errors in predictions affect parameter updates throughout the entire model architecture.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0009",
+          "concept": "backpropagation"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "optimizer",
+      "eligible": true,
+      "reason": "The source mentions an optimizer uses gradients to update parameters but omits the specific mechanism (the update rule) that performs this action.",
+      "gaps": [
+        {
+          "question": "What specific algorithmic rules or mathematical operations does the optimizer apply to the gradients and learning rate to determine the magnitude and direction of parameter updates?",
+          "assumed_knowledge": "The existence of specific update rules (e.g., stochastic gradient descent variants) that map gradients to weight changes.",
+          "why_useful": "Knowing the update rule explains how the 'size of updates' is concretely calculated from the abstract concept of a gradient.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0010",
+          "concept": "optimizer"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "dropout",
+      "eligible": true,
+      "reason": "The source contrasts training with dropout against ordinary inference but does not explain the underlying reason why this specific mechanism mitigates overfitting.",
+      "gaps": [
+        {
+          "question": "Why does randomly disabling activations during training improve generalization to unseen examples compared to a network without dropout?",
+          "assumed_knowledge": "The theoretical justification for regularization via preventing co-adaptation of neurons.",
+          "why_useful": "The source defines dropout as a technique but does not explain the causal link between random disabling and improved performance on unseen data.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0011",
+          "concept": "dropout"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "early stopping",
+      "eligible": true,
+      "reason": "The source distinguishes early stopping from using test results but does not explain the dynamic of validation performance that triggers the stop.",
+      "gaps": [
+        {
+          "question": "How does monitoring validation performance prevent the model from entering a state where it begins to overfit, necessitating an early stop?",
+          "assumed_knowledge": "The relationship between validation error trends and the onset of overfitting.",
+          "why_useful": "The source says early stopping uses validation performance to decide when to end training but does not explain how that metric signals the transition from learning to overfitting.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0012",
+          "concept": "early stopping"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "overfitting",
+      "eligible": true,
+      "reason": "The source defines overfitting via input/output performance metrics but assumes knowledge of what happens internally to cause this failure.",
+      "gaps": [
+        {
+          "question": "What specific internal changes in the model's learned representations or decision boundaries characterize the state of overfitting?",
+          "assumed_knowledge": "The nature of memorization versus generalization in terms of model complexity and data fit.",
+          "why_useful": "The source defines overfitting by performance discrepancy but does not describe the internal mechanism causing this discrepancy.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0013",
+          "concept": "overfitting"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "retrieval encoder",
+      "eligible": true,
+      "reason": "The source treats 'retrieval encoder' as a black box that produces embeddings. Without explaining the mapping process or captured properties, the mechanism of selecting 'relevant course passages' remains opaque.",
+      "gaps": [
+        {
+          "question": "How does the retrieval encoder specifically map questions and document passages into embeddings?",
+          "assumed_knowledge": "The source assumes the reader understands that an 'encoder' performs a mapping to 'embeddings' but does not explain the internal mechanism (e.g., neural network layers, specific embedding space construction) used by this encoder.",
+          "why_useful": "Understanding the mapping mechanism is necessary to grasp how semantic similarity is computed before the similarity search step mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0014",
+          "concept": "retrieval encoder"
+        },
+        {
+          "question": "What specific properties of questions and passages does the retrieval encoder capture when creating embeddings?",
+          "assumed_knowledge": "The text mentions mapping to embeddings but does not specify whether these embeddings capture syntactic structure, semantic meaning, or both.",
+          "why_useful": "This distinction affects how 'relevant' passages are identified versus irrelevant ones, which is central to the RAG process described.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0015",
+          "concept": "retrieval encoder"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "similarity search",
+      "eligible": true,
+      "reason": "The text mentions 'similarity search' as a step but omits the specific algorithmic implementation, which is a standard explanatory gap in technical descriptions of RAG.",
+      "gaps": [
+        {
+          "question": "What metric or distance function does the similarity search use to select candidate passages?",
+          "assumed_knowledge": "The source states that 'similarity search selects candidate passages' but does not specify the metric (e.g., cosine similarity, Euclidean distance).",
+          "why_useful": "The choice of metric directly influences which passages are deemed 'relevant' and thus added to the context, impacting answer quality.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0016",
+          "concept": "similarity search"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "selected passages",
+      "eligible": true,
+      "reason": "The mechanism of adding context is a critical operational detail that the source assumes but does not explain.",
+      "gaps": [
+        {
+          "question": "How are the 'selected passages' integrated into the language model's context window?",
+          "assumed_knowledge": "The source says passages are 'added to the language model's context' but does not explain the integration method (e.g., concatenation, special tokens, truncation strategies).",
+          "why_useful": "Understanding the integration method is essential to know how the model processes the augmented information versus its original training distribution.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0017",
+          "concept": "selected passages"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "highly ranked passage",
+      "eligible": true,
+      "reason": "The source asserts that retrieval can fail (irrelevant/outdated/incorrect) without explaining the underlying causes or detection mechanisms for these specific failure modes.",
+      "gaps": [
+        {
+          "question": "What criteria determine if a passage is 'irrelevant', 'outdated', or 'incorrect' in the context of retrieval?",
+          "assumed_knowledge": "The source lists these states as possibilities for highly ranked passages but does not define the specific indicators or evaluation metrics used to detect them.",
+          "why_useful": "To understand how the system handles limitations, one must know what features signal irrelevance or incorrectness beyond just the retrieval score.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0018",
+          "concept": "highly ranked passage"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "document index update",
+      "eligible": true,
+      "reason": "While less critical than the core retrieval mechanics, the update process is a functional detail assumed to work without explanation.",
+      "gaps": [
+        {
+          "question": "What is the specific procedure for updating the document index to make revised course material available?",
+          "assumed_knowledge": "The source states that 'Updating this document index can make revised course material available' but does not describe the update process (e.g., re-indexing, version control, incremental updates).",
+          "why_useful": "Understanding the update mechanism is necessary to assess the maintenance overhead and latency of keeping the RAG system current.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0019",
+          "concept": "document index update"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "support from the supplied documents",
+      "eligible": true,
+      "reason": "The source defines the metrics and the binary outcome (supported vs. not supported) but assumes the underlying logic for determining 'support' is known or self-evident. Explaining the criteria for support clarifies the evaluation framework.",
+      "gaps": [
+        {
+          "question": "What specific criteria or methods are used to determine if an answer is 'supported' by a retrieved passage versus merely citing it?",
+          "assumed_knowledge": "The source assumes there is a distinct mechanism for verifying that a claim is actually supported by the text of a passage, beyond just the presence of keywords or citation. It implies a verification step exists but does not explain how the system distinguishes between a relevant citation and an unsupported inference.",
+          "why_useful": "Understanding this distinction is crucial to evaluating the 'support from supplied documents' metric mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0020",
+          "concept": "support from the supplied documents"
+        },
+        {
+          "question": "How does the system differentiate between a passage that is irrelevant, outdated, or incorrect versus one that simply fails to support a specific claim?",
+          "assumed_knowledge": "The text mentions limitations like 'irrelevant, outdated info, incorrect data' in the allowed topics and states that missing evidence doesn't prove falsity. It assumes the system can categorize retrieval failures into these types but does not explain the logic or thresholds used to make this classification.",
+          "why_useful": "This helps understand how the 'failure to retrieve supporting evidence' is processed and why it leads to a specific evaluation outcome rather than a default 'false' verdict.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0021",
+          "concept": "support from the supplied documents"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "appropriate handling of uncertainty",
+      "eligible": true,
+      "reason": "The source treats 'handling uncertainty' as a distinct evaluation dimension alongside factual correctness and support. It assumes the definition of 'appropriate handling' is established elsewhere, creating a gap in understanding how this specific quality is measured or achieved.",
+      "gaps": [
+        {
+          "question": "What specific behaviors or output patterns constitute 'appropriate handling of uncertainty' when the retrieved evidence is insufficient or conflicting?",
+          "assumed_knowledge": "The text lists 'appropriate handling of uncertainty' as a required evaluation criterion. It assumes there are standard ways an AI tutor should express uncertainty (e.g., hedging language, stating limitations) but does not define what those behaviors look like in practice.",
+          "why_useful": "Without knowing the specific manifestations of 'handling uncertainty', one cannot fully assess whether the tutor meets this criterion when it fails to cite evidence or faces disagreement.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0022",
+          "concept": "appropriate handling of uncertainty"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    },
+    {
+      "concept": "disagreement between two course passages",
+      "eligible": true,
+      "reason": "The source mandates a specific action ('identify disagreement') but assumes the mechanism for identification is known. Explaining this gap clarifies the operational mechanics of handling conflicting sources.",
+      "gaps": [
+        {
+          "question": "What is the specific procedure or logic the tutor follows to 'identify' a disagreement between passages before deciding not to combine them?",
+          "assumed_knowledge": "The text instructs the tutor to 'identify the disagreement'. It assumes there is a detection mechanism (e.g., semantic conflict detection, contradiction checking) that triggers this behavior but does not explain how such conflicts are detected or defined.",
+          "why_useful": "Understanding the detection mechanism explains *how* the system avoids combining conflicting information, which is central to the 'evaluation' of the tutor's reasoning capabilities described in the text.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0023",
+          "concept": "disagreement between two course passages"
+        }
+      ],
+      "covered_gaps": [],
+      "unresolved_gaps": []
+    }
+  ],
+  "selected": [
+    {
+      "id": "seed_001",
+      "concept": "language model",
+      "definition": "A tool used by the tutor to generate explanations.",
+      "kind": "process",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "chunk_ids": [
+        "chunk_001"
+      ],
+      "reason": "The source text lists components (datasets, parameters, model) and their interactions but assumes the reader understands the internal mechanics (how parameters adjust, how leakage occurs, why size != quality). These are substantive gaps at the chapter's implied level regarding training mechanisms and limitations.",
+      "chapter_topic": "Language model training mechanisms: parameter adjustment, dataset roles (training/validation/test), and separation to a{",
+      "topic_id": "chapter_7e9c731256176746a509",
+      "topic_level": "chapter",
+      "document_coverage": "The source text explicitly states that an AI tutor uses a language model to generate explanations, noting that fluent wording does not guarantee factual accuracy. It details the training process where parameters are adjusted using examples from a training dataset. It specifies the roles of separate validation datasets for model selection and training settings, and held-out test datasets for measuring performance. Crucially, it warns against data leakage (passages from the same source in both training and testing) causing overstatement of ability to handle unfamiliar material, and states that dataset size alone does not establish quality.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+          "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+          "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "language model"
+        },
+        {
+          "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+          "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+          "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0003",
+          "concept": "language model"
+        },
+        {
+          "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+          "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+          "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0004",
+          "concept": "language model"
+        }
+      ],
+      "background_question": "How does the language model internally adjust its parameters using examples from a training dataset?\nHow does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?\nIn what ways does 'dataset size' fail to establish 'dataset quality'?"
+    },
+    {
+      "id": "seed_002",
+      "concept": "causal attention mask",
+      "definition": "A mechanism that restricts attention flow based on token order.",
+      "kind": "process",
+      "chunk_id": "chunk_002",
+      "paragraph_id": "paragraph_002",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "reason": "The source states the restriction exists but does not explain the technical enforcement mechanism (masking values in attention scores), which is a standard architectural detail assumed by the description.",
+      "chapter_topic": "Causal attention masks restricting future token access",
+      "topic_id": "subtopic_ccd4994dc0ab260af191",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text describes the internal mechanics of a decoder-only transformer language model used as a tutor. It details the flow from tokenization and embedding to positional encoding, self-attention mechanisms, and causal masking during both training and generation. It explicitly states that attention weights do not equate to factual truth and notes the limitation imposed by finite context windows.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the causal attention mask technically enforce the restriction that a position cannot attend to later positions?",
+          "assumed_knowledge": "The mechanism of masking (e.g., setting weights to negative infinity or zero) within the softmax operation to physically prevent information flow from future tokens.",
+          "why_useful": "Understanding the implementation ensures one grasps why the model is strictly autoregressive and cannot 'see' the answer it is predicting.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0005",
+          "concept": "causal attention mask"
+        }
+      ],
+      "background_question": "How does the causal attention mask technically enforce the restriction that a position cannot attend to later positions?"
+    },
+    {
+      "id": "seed_003",
+      "concept": "attention weight",
+      "definition": "A specific attention weight within a model's mechanism.",
+      "kind": "entity",
+      "chunk_id": "chunk_002",
+      "paragraph_id": "paragraph_002",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "reason": "The source asserts 'Attention can connect information... but an attention weight does not establish that the associated claim is true.' It assumes the reader understands *why* statistical association (attention) differs from factual verification, which requires explanation regarding the nature of probabilistic prediction vs. ground truth.",
+      "chapter_topic": "Distinction between attention weights and claim validity",
+      "topic_id": "subtopic_707a12ad512e78320139",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text describes the internal mechanics of a decoder-only transformer language model used as a tutor. It details the flow from tokenization and embedding to positional encoding, self-attention mechanisms, and causal masking during both training and generation. It explicitly states that attention weights do not equate to factual truth and notes the limitation imposed by finite context windows.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What is the specific logical distinction between an attention weight indicating 'relevance' and a claim being 'factually true'?",
+          "assumed_knowledge": "That high attention weights reflect statistical correlation or semantic similarity in the training data, not verification of truth values.",
+          "why_useful": "This clarifies why the model might attend heavily to hallucinated information that is statistically probable but factually incorrect.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0006",
+          "concept": "attention weight"
+        }
+      ],
+      "background_question": "What is the specific logical distinction between an attention weight indicating 'relevance' and a claim being 'factually true'?"
+    },
+    {
+      "id": "seed_004",
+      "concept": "models finite context window",
+      "definition": "The maximum amount of text the model can process in one request, which is limited.",
+      "kind": "property",
+      "chunk_id": "chunk_002",
+      "paragraph_id": "paragraph_002",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "reason": "The source mentions the limitation exists but does not explain the mechanism of truncation or the specific capacity constraint that defines 'finite'. This is a standard architectural assumption.",
+      "chapter_topic": "Context window limitations on text availability",
+      "topic_id": "subtopic_d808e2892ef1dc83693b",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text describes the internal mechanics of a decoder-only transformer language model used as a tutor. It details the flow from tokenization and embedding to positional encoding, self-attention mechanisms, and causal masking during both training and generation. It explicitly states that attention weights do not equate to factual truth and notes the limitation imposed by finite context windows.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the finite context window specifically limit the 'amount of text available' in a single request?",
+          "assumed_knowledge": "That the model processes a fixed number of tokens (e.g., 4k, 8k, 128k) and any input exceeding this is truncated or ignored.",
+          "why_useful": "This explains the practical constraint on document length for retrieval-augmented tasks mentioned in the overview.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0007",
+          "concept": "models finite context window"
+        }
+      ],
+      "background_question": "How does the finite context window specifically limit the 'amount of text available' in a single request?"
+    },
+    {
+      "id": "seed_005",
+      "concept": "embedding layer",
+      "definition": "A component that maps tokens to numerical vectors.",
+      "kind": "process",
+      "chunk_id": "chunk_002",
+      "paragraph_id": "paragraph_002",
+      "chunk_ids": [
+        "chunk_002"
+      ],
+      "reason": "The source states tokens are mapped to vectors but assumes the reader understands that this mapping encodes semantic meaning, which is a non-trivial concept requiring explanation of learned similarity.",
+      "chapter_topic": "Tokenization and embedding layers",
+      "topic_id": "subtopic_068bbf072b8ed6dbd3f5",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text describes the internal mechanics of a decoder-only transformer language model used as a tutor. It details the flow from tokenization and embedding to positional encoding, self-attention mechanisms, and causal masking during both training and generation. It explicitly states that attention weights do not equate to factual truth and notes the limitation imposed by finite context windows.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the embedding layer map discrete tokens to numerical vectors in a way that preserves semantic relationships?",
+          "assumed_knowledge": "That the mapping is learned via optimization such that semantically similar tokens have vectors with high cosine similarity.",
+          "why_useful": "This explains how the model 'understands' text before attention mechanisms operate, bridging the gap between discrete symbols and continuous vector space.",
+          "source_chunk_ids": [
+            "chunk_002"
+          ],
+          "id": "question_0008",
+          "concept": "embedding layer"
+        }
+      ],
+      "background_question": "How does the embedding layer map discrete tokens to numerical vectors in a way that preserves semantic relationships?"
+    },
+    {
+      "id": "seed_006",
+      "concept": "backpropagation",
+      "definition": "A method that computes gradients used by an optimizer to update model parameters.",
+      "kind": "process",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The source states backpropagation computes gradients but does not explain the backward pass mechanism itself. This is a fundamental gap in understanding 'how' the optimizer receives information to update parameters.",
+      "chapter_topic": "Backpropagation: computing gradients for parameter updates",
+      "topic_id": "subtopic_4bf9917ba76cad097a86",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does backpropagation specifically propagate error signals backward through the network layers to compute gradients for all parameters?",
+          "assumed_knowledge": "The mechanism of chain rule application and gradient flow from output to input layers.",
+          "why_useful": "Understanding the propagation process clarifies how errors in predictions affect parameter updates throughout the entire model architecture.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0009",
+          "concept": "backpropagation"
+        }
+      ],
+      "background_question": "How does backpropagation specifically propagate error signals backward through the network layers to compute gradients for all parameters?"
+    },
+    {
+      "id": "seed_007",
+      "concept": "optimizer",
+      "definition": "An agent that uses gradients to update model parameters.",
+      "kind": "process",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The source mentions an optimizer uses gradients to update parameters but omits the specific mechanism (the update rule) that performs this action.",
+      "chapter_topic": "Optimizer role: utilizing gradients to update parameters",
+      "topic_id": "subtopic_c532379c4d23d167e948",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What specific algorithmic rules or mathematical operations does the optimizer apply to the gradients and learning rate to determine the magnitude and direction of parameter updates?",
+          "assumed_knowledge": "The existence of specific update rules (e.g., stochastic gradient descent variants) that map gradients to weight changes.",
+          "why_useful": "Knowing the update rule explains how the 'size of updates' is concretely calculated from the abstract concept of a gradient.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0010",
+          "concept": "optimizer"
+        }
+      ],
+      "background_question": "What specific algorithmic rules or mathematical operations does the optimizer apply to the gradients and learning rate to determine the magnitude and direction of parameter updates?"
+    },
+    {
+      "id": "seed_008",
+      "concept": "dropout",
+      "definition": "A regularization technique that randomly disables some activations during training.",
+      "kind": "process",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The source contrasts training with dropout against ordinary inference but does not explain the underlying reason why this specific mechanism mitigates overfitting.",
+      "chapter_topic": "Dropout technique: random activation disabling during training versus standard inference",
+      "topic_id": "subtopic_c37385cf2d81f052a969",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "Why does randomly disabling activations during training improve generalization to unseen examples compared to a network without dropout?",
+          "assumed_knowledge": "The theoretical justification for regularization via preventing co-adaptation of neurons.",
+          "why_useful": "The source defines dropout as a technique but does not explain the causal link between random disabling and improved performance on unseen data.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0011",
+          "concept": "dropout"
+        }
+      ],
+      "background_question": "Why does randomly disabling activations during training improve generalization to unseen examples compared to a network without dropout?"
+    },
+    {
+      "id": "seed_009",
+      "concept": "early stopping",
+      "definition": "A training termination strategy based on validation performance.",
+      "kind": "process",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The source distinguishes early stopping from using test results but does not explain the dynamic of validation performance that triggers the stop.",
+      "chapter_topic": "Early stopping strategy: using validation performance to determine training termination",
+      "topic_id": "subtopic_cb967ff6f19573389f05",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does monitoring validation performance prevent the model from entering a state where it begins to overfit, necessitating an early stop?",
+          "assumed_knowledge": "The relationship between validation error trends and the onset of overfitting.",
+          "why_useful": "The source says early stopping uses validation performance to decide when to end training but does not explain how that metric signals the transition from learning to overfitting.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0012",
+          "concept": "early stopping"
+        }
+      ],
+      "background_question": "How does monitoring validation performance prevent the model from entering a state where it begins to overfit, necessitating an early stop?"
+    },
+    {
+      "id": "seed_010",
+      "concept": "overfitting",
+      "definition": "A state where improved training performance fails to translate into performance on unseen examples.",
+      "kind": "process",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "chunk_ids": [
+        "chunk_003"
+      ],
+      "reason": "The source defines overfitting via input/output performance metrics but assumes knowledge of what happens internally to cause this failure.",
+      "chapter_topic": "Overfitting definition: training performance not translating to unseen examples",
+      "topic_id": "subtopic_30875538a9406b04ef9f",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What specific internal changes in the model's learned representations or decision boundaries characterize the state of overfitting?",
+          "assumed_knowledge": "The nature of memorization versus generalization in terms of model complexity and data fit.",
+          "why_useful": "The source defines overfitting by performance discrepancy but does not describe the internal mechanism causing this discrepancy.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0013",
+          "concept": "overfitting"
+        }
+      ],
+      "background_question": "What specific internal changes in the model's learned representations or decision boundaries characterize the state of overfitting?"
+    },
+    {
+      "id": "seed_011",
+      "concept": "retrieval encoder",
+      "definition": "A component that maps questions and document passages into embeddings.",
+      "kind": "process",
+      "chunk_id": "chunk_004",
+      "paragraph_id": "paragraph_004",
+      "chunk_ids": [
+        "chunk_004"
+      ],
+      "reason": "The source treats 'retrieval encoder' as a black box that produces embeddings. Without explaining the mapping process or captured properties, the mechanism of selecting 'relevant course passages' remains opaque.",
+      "chapter_topic": "Embedding mapping for questions and documents",
+      "topic_id": "subtopic_198e5fb3cc84f9f5baca",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How does the retrieval encoder specifically map questions and document passages into embeddings?",
+          "assumed_knowledge": "The source assumes the reader understands that an 'encoder' performs a mapping to 'embeddings' but does not explain the internal mechanism (e.g., neural network layers, specific embedding space construction) used by this encoder.",
+          "why_useful": "Understanding the mapping mechanism is necessary to grasp how semantic similarity is computed before the similarity search step mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0014",
+          "concept": "retrieval encoder"
+        },
+        {
+          "question": "What specific properties of questions and passages does the retrieval encoder capture when creating embeddings?",
+          "assumed_knowledge": "The text mentions mapping to embeddings but does not specify whether these embeddings capture syntactic structure, semantic meaning, or both.",
+          "why_useful": "This distinction affects how 'relevant' passages are identified versus irrelevant ones, which is central to the RAG process described.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0015",
+          "concept": "retrieval encoder"
+        }
+      ],
+      "background_question": "How does the retrieval encoder specifically map questions and document passages into embeddings?\nWhat specific properties of questions and passages does the retrieval encoder capture when creating embeddings?"
+    },
+    {
+      "id": "seed_012",
+      "concept": "similarity search",
+      "definition": "A process that selects candidate passages based on embedding similarity.",
+      "kind": "process",
+      "chunk_id": "chunk_004",
+      "paragraph_id": "paragraph_004",
+      "chunk_ids": [
+        "chunk_004"
+      ],
+      "reason": "The text mentions 'similarity search' as a step but omits the specific algorithmic implementation, which is a standard explanatory gap in technical descriptions of RAG.",
+      "chapter_topic": "Similarity search for candidate selection",
+      "topic_id": "subtopic_e87610ff15d4a4c69cf5",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What metric or distance function does the similarity search use to select candidate passages?",
+          "assumed_knowledge": "The source states that 'similarity search selects candidate passages' but does not specify the metric (e.g., cosine similarity, Euclidean distance).",
+          "why_useful": "The choice of metric directly influences which passages are deemed 'relevant' and thus added to the context, impacting answer quality.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0016",
+          "concept": "similarity search"
+        }
+      ],
+      "background_question": "What metric or distance function does the similarity search use to select candidate passages?"
+    },
+    {
+      "id": "seed_013",
+      "concept": "selected passages",
+      "definition": "The specific document segments chosen for inclusion.",
+      "kind": "entity",
+      "chunk_id": "chunk_004",
+      "paragraph_id": "paragraph_004",
+      "chunk_ids": [
+        "chunk_004"
+      ],
+      "reason": "The mechanism of adding context is a critical operational detail that the source assumes but does not explain.",
+      "chapter_topic": "Context augmentation with selected passages",
+      "topic_id": "subtopic_948917a099a4b5071102",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "How are the 'selected passages' integrated into the language model's context window?",
+          "assumed_knowledge": "The source says passages are 'added to the language model's context' but does not explain the integration method (e.g., concatenation, special tokens, truncation strategies).",
+          "why_useful": "Understanding the integration method is essential to know how the model processes the augmented information versus its original training distribution.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0017",
+          "concept": "selected passages"
+        }
+      ],
+      "background_question": "How are the 'selected passages' integrated into the language model's context window?"
+    },
+    {
+      "id": "seed_014",
+      "concept": "highly ranked passage",
+      "definition": "A document segment appearing at the top of search results.",
+      "kind": "entity",
+      "chunk_id": "chunk_004",
+      "paragraph_id": "paragraph_004",
+      "chunk_ids": [
+        "chunk_004"
+      ],
+      "reason": "The source asserts that retrieval can fail (irrelevant/outdated/incorrect) without explaining the underlying causes or detection mechanisms for these specific failure modes.",
+      "chapter_topic": "Limitations of retrieval (irrelevance, outdated info, incorrect data)",
+      "topic_id": "subtopic_6cb339269594382ae3ed",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What criteria determine if a passage is 'irrelevant', 'outdated', or 'incorrect' in the context of retrieval?",
+          "assumed_knowledge": "The source lists these states as possibilities for highly ranked passages but does not define the specific indicators or evaluation metrics used to detect them.",
+          "why_useful": "To understand how the system handles limitations, one must know what features signal irrelevance or incorrectness beyond just the retrieval score.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0018",
+          "concept": "highly ranked passage"
+        }
+      ],
+      "background_question": "What criteria determine if a passage is 'irrelevant', 'outdated', or 'incorrect' in the context of retrieval?"
+    },
+    {
+      "id": "seed_015",
+      "concept": "document index update",
+      "definition": "The action of updating a document index.",
+      "kind": "process",
+      "chunk_id": "chunk_004",
+      "paragraph_id": "paragraph_004",
+      "chunk_ids": [
+        "chunk_004"
+      ],
+      "reason": "While less critical than the core retrieval mechanics, the update process is a functional detail assumed to work without explanation.",
+      "chapter_topic": "Index updating for revised materials",
+      "topic_id": "subtopic_3bce8349fac9f9195e08",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What is the specific procedure for updating the document index to make revised course material available?",
+          "assumed_knowledge": "The source states that 'Updating this document index can make revised course material available' but does not describe the update process (e.g., re-indexing, version control, incremental updates).",
+          "why_useful": "Understanding the update mechanism is necessary to assess the maintenance overhead and latency of keeping the RAG system current.",
+          "source_chunk_ids": [
+            "chunk_004"
+          ],
+          "id": "question_0019",
+          "concept": "document index update"
+        }
+      ],
+      "background_question": "What is the specific procedure for updating the document index to make revised course material available?"
+    },
+    {
+      "id": "seed_016",
+      "concept": "support from the supplied documents",
+      "definition": "Backing provided by the available text references.",
+      "kind": "property",
+      "chunk_id": "chunk_005",
+      "paragraph_id": "paragraph_005",
+      "chunk_ids": [
+        "chunk_005"
+      ],
+      "reason": "The source defines the metrics and the binary outcome (supported vs. not supported) but assumes the underlying logic for determining 'support' is known or self-evident. Explaining the criteria for support clarifies the evaluation framework.",
+      "chapter_topic": "Support from supplied documents",
+      "topic_id": "subtopic_f77bac0f817c03efde81",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly defines retrieval recall and precision, states that neither metric alone indicates correct evidence usage, distinguishes between citing a real passage and making unsupported claims, lists specific evaluation criteria (factual correctness, support from documents, uncertainty handling), mandates identifying disagreements rather than combining conflicting passages, and clarifies that missing evidence does not prove a claim is false.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What specific criteria or methods are used to determine if an answer is 'supported' by a retrieved passage versus merely citing it?",
+          "assumed_knowledge": "The source assumes there is a distinct mechanism for verifying that a claim is actually supported by the text of a passage, beyond just the presence of keywords or citation. It implies a verification step exists but does not explain how the system distinguishes between a relevant citation and an unsupported inference.",
+          "why_useful": "Understanding this distinction is crucial to evaluating the 'support from supplied documents' metric mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0020",
+          "concept": "support from the supplied documents"
+        },
+        {
+          "question": "How does the system differentiate between a passage that is irrelevant, outdated, or incorrect versus one that simply fails to support a specific claim?",
+          "assumed_knowledge": "The text mentions limitations like 'irrelevant, outdated info, incorrect data' in the allowed topics and states that missing evidence doesn't prove falsity. It assumes the system can categorize retrieval failures into these types but does not explain the logic or thresholds used to make this classification.",
+          "why_useful": "This helps understand how the 'failure to retrieve supporting evidence' is processed and why it leads to a specific evaluation outcome rather than a default 'false' verdict.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0021",
+          "concept": "support from the supplied documents"
+        }
+      ],
+      "background_question": "What specific criteria or methods are used to determine if an answer is 'supported' by a retrieved passage versus merely citing it?\nHow does the system differentiate between a passage that is irrelevant, outdated, or incorrect versus one that simply fails to support a specific claim?"
+    },
+    {
+      "id": "seed_017",
+      "concept": "appropriate handling of uncertainty",
+      "definition": "The proper management of ambiguous or unknown information.",
+      "kind": "property",
+      "chunk_id": "chunk_005",
+      "paragraph_id": "paragraph_005",
+      "chunk_ids": [
+        "chunk_005"
+      ],
+      "reason": "The source treats 'handling uncertainty' as a distinct evaluation dimension alongside factual correctness and support. It assumes the definition of 'appropriate handling' is established elsewhere, creating a gap in understanding how this specific quality is measured or achieved.",
+      "chapter_topic": "Handling of uncertainty",
+      "topic_id": "subtopic_63b4bce0e6ccc3c15e9f",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly defines retrieval recall and precision, states that neither metric alone indicates correct evidence usage, distinguishes between citing a real passage and making unsupported claims, lists specific evaluation criteria (factual correctness, support from documents, uncertainty handling), mandates identifying disagreements rather than combining conflicting passages, and clarifies that missing evidence does not prove a claim is false.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What specific behaviors or output patterns constitute 'appropriate handling of uncertainty' when the retrieved evidence is insufficient or conflicting?",
+          "assumed_knowledge": "The text lists 'appropriate handling of uncertainty' as a required evaluation criterion. It assumes there are standard ways an AI tutor should express uncertainty (e.g., hedging language, stating limitations) but does not define what those behaviors look like in practice.",
+          "why_useful": "Without knowing the specific manifestations of 'handling uncertainty', one cannot fully assess whether the tutor meets this criterion when it fails to cite evidence or faces disagreement.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0022",
+          "concept": "appropriate handling of uncertainty"
+        }
+      ],
+      "background_question": "What specific behaviors or output patterns constitute 'appropriate handling of uncertainty' when the retrieved evidence is insufficient or conflicting?"
+    },
+    {
+      "id": "seed_018",
+      "concept": "disagreement between two course passages",
+      "definition": "A state where two course passages contradict each other.",
+      "kind": "event",
+      "chunk_id": "chunk_005",
+      "paragraph_id": "paragraph_005",
+      "chunk_ids": [
+        "chunk_005"
+      ],
+      "reason": "The source mandates a specific action ('identify disagreement') but assumes the mechanism for identification is known. Explaining this gap clarifies the operational mechanics of handling conflicting sources.",
+      "chapter_topic": "Disagreement identification between passages",
+      "topic_id": "subtopic_6c2425d86983c98eb983",
+      "topic_level": "subtopic",
+      "document_coverage": "The source text explicitly defines retrieval recall and precision, states that neither metric alone indicates correct evidence usage, distinguishes between citing a real passage and making unsupported claims, lists specific evaluation criteria (factual correctness, support from documents, uncertainty handling), mandates identifying disagreements rather than combining conflicting passages, and clarifies that missing evidence does not prove a claim is false.",
+      "case_specific_unknowns": [],
+      "gaps": [
+        {
+          "question": "What is the specific procedure or logic the tutor follows to 'identify' a disagreement between passages before deciding not to combine them?",
+          "assumed_knowledge": "The text instructs the tutor to 'identify the disagreement'. It assumes there is a detection mechanism (e.g., semantic conflict detection, contradiction checking) that triggers this behavior but does not explain how such conflicts are detected or defined.",
+          "why_useful": "Understanding the detection mechanism explains *how* the system avoids combining conflicting information, which is central to the 'evaluation' of the tutor's reasoning capabilities described in the text.",
+          "source_chunk_ids": [
+            "chunk_005"
+          ],
+          "id": "question_0023",
+          "concept": "disagreement between two course passages"
+        }
+      ],
+      "background_question": "What is the specific procedure or logic the tutor follows to 'identify' a disagreement between passages before deciding not to combine them?"
+    }
+  ],
+  "excluded": [],
+  "omitted_by_limit": 0,
+  "plans": [
+    {
+      "chunk_id": "chunk_001",
+      "document_coverage": "The source text explicitly states that an AI tutor uses a language model to generate explanations, noting that fluent wording does not guarantee factual accuracy. It details the training process where parameters are adjusted using examples from a training dataset. It specifies the roles of separate validation datasets for model selection and training settings, and held-out test datasets for measuring performance. Crucially, it warns against data leakage (passages from the same source in both training and testing) causing overstatement of ability to handle unfamiliar material, and states that dataset size alone does not establish quality.",
+      "seeds": [
+        {
+          "concept": "language model",
+          "topic_id": "chapter_7e9c731256176746a509",
+          "gaps": [
+            {
+              "question": "How does the language model internally adjust its parameters using examples from a training dataset?",
+              "assumed_knowledge": "The mechanism of parameter adjustment (e.g., via gradient descent/backpropagation) is assumed but not explained in the source text.",
+              "why_useful": "Understanding *how* parameters are adjusted clarifies why specific training settings matter and connects to the chapter's implied level on training mechanics.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            },
+            {
+              "question": "What is the relationship between 'fluent wording' and 'factual accuracy' in the context of this language model?",
+              "assumed_knowledge": "The source asserts a disconnect but does not explain the underlying mechanism (e.g., hallucination, lack of grounding) causing fluent text to be factually incorrect.",
+              "why_useful": "This explains the specific limitation mentioned ('fluent wording does not guarantee factual accuracy') without inventing new facts.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            },
+            {
+              "question": "How does the presence of passages from the same source in both training and testing datasets lead to an overstatement of performance?",
+              "assumed_knowledge": "The concept of 'data leakage' or 'overfitting' is implied by the warning, but the specific mechanism (model memorizing test answers rather than learning general patterns) is not detailed.",
+              "why_useful": "This explains *why* the separation of datasets is critical for measuring ability to handle unfamiliar material.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            },
+            {
+              "question": "In what ways does 'dataset size' fail to establish 'dataset quality'?",
+              "assumed_knowledge": "The source states the distinction but does not explain the mechanisms (e.g., noise, bias, redundancy) that allow a large dataset to be of low quality.",
+              "why_useful": "This clarifies the specific claim about dataset metrics versus intrinsic quality.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source text lists components (datasets, parameters, model) and their interactions but assumes the reader understands the internal mechanics (how parameters adjust, how leakage occurs, why size != quality). These are substantive gaps at the chapter's implied level regarding training mechanisms and limitations."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text provides a high-level overview of the AI tutor's training and evaluation pipeline. It assumes knowledge of *how* parameters are adjusted (gradient-based learning), *why* data leakage causes overfitting (memorization vs. generalization), and *what* constitutes low-quality data despite size. These mechanisms are not explained in the text but are necessary to fully understand the claims made about performance measurement and accuracy limitations."
+    },
+    {
+      "chunk_id": "chunk_002",
+      "document_coverage": "The source text describes the internal mechanics of a decoder-only transformer language model used as a tutor. It details the flow from tokenization and embedding to positional encoding, self-attention mechanisms, and causal masking during both training and generation. It explicitly states that attention weights do not equate to factual truth and notes the limitation imposed by finite context windows.",
+      "seeds": [
+        {
+          "concept": "causal attention mask",
+          "topic_id": "subtopic_ccd4994dc0ab260af191",
+          "gaps": [
+            {
+              "question": "How does the causal attention mask technically enforce the restriction that a position cannot attend to later positions?",
+              "assumed_knowledge": "The mechanism of masking (e.g., setting weights to negative infinity or zero) within the softmax operation to physically prevent information flow from future tokens.",
+              "why_useful": "Understanding the implementation ensures one grasps why the model is strictly autoregressive and cannot 'see' the answer it is predicting.",
+              "source_chunk_ids": [
+                "chunk_002"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source states the restriction exists but does not explain the technical enforcement mechanism (masking values in attention scores), which is a standard architectural detail assumed by the description."
+        },
+        {
+          "concept": "attention weight",
+          "topic_id": "subtopic_707a12ad512e78320139",
+          "gaps": [
+            {
+              "question": "What is the specific logical distinction between an attention weight indicating 'relevance' and a claim being 'factually true'?",
+              "assumed_knowledge": "That high attention weights reflect statistical correlation or semantic similarity in the training data, not verification of truth values.",
+              "why_useful": "This clarifies why the model might attend heavily to hallucinated information that is statistically probable but factually incorrect.",
+              "source_chunk_ids": [
+                "chunk_002"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source asserts 'Attention can connect information... but an attention weight does not establish that the associated claim is true.' It assumes the reader understands *why* statistical association (attention) differs from factual verification, which requires explanation regarding the nature of probabilistic prediction vs. ground truth."
+        },
+        {
+          "concept": "models finite context window",
+          "topic_id": "subtopic_d808e2892ef1dc83693b",
+          "gaps": [
+            {
+              "question": "How does the finite context window specifically limit the 'amount of text available' in a single request?",
+              "assumed_knowledge": "That the model processes a fixed number of tokens (e.g., 4k, 8k, 128k) and any input exceeding this is truncated or ignored.",
+              "why_useful": "This explains the practical constraint on document length for retrieval-augmented tasks mentioned in the overview.",
+              "source_chunk_ids": [
+                "chunk_002"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source mentions the limitation exists but does not explain the mechanism of truncation or the specific capacity constraint that defines 'finite'. This is a standard architectural assumption."
+        },
+        {
+          "concept": "embedding layer",
+          "topic_id": "subtopic_068bbf072b8ed6dbd3f5",
+          "gaps": [
+            {
+              "question": "How does the embedding layer map discrete tokens to numerical vectors in a way that preserves semantic relationships?",
+              "assumed_knowledge": "That the mapping is learned via optimization such that semantically similar tokens have vectors with high cosine similarity.",
+              "why_useful": "This explains how the model 'understands' text before attention mechanisms operate, bridging the gap between discrete symbols and continuous vector space.",
+              "source_chunk_ids": [
+                "chunk_002"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source states tokens are mapped to vectors but assumes the reader understands that this mapping encodes semantic meaning, which is a non-trivial concept requiring explanation of learned similarity."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The analysis identified four distinct gaps where the source text states a function or limitation (masking enforcement, attention vs. truth, context limits, semantic mapping) without explaining the underlying mechanism or logical distinction. These explanations are necessary to fully understand the 'actual source' mechanics described, rather than just paraphrasing the existence of these features."
+    },
+    {
+      "chunk_id": "chunk_003",
+      "document_coverage": "The source text explicitly describes the training loop mechanics: comparing predicted token probabilities with actual next tokens, using a loss function to measure error, backpropagation to compute gradients, and an optimizer to update parameters. It details the role of the learning rate in controlling update size and its impact on stability versus speed. It defines overfitting as the failure of training performance to generalize to unseen examples. It explains dropout as a regularization technique involving random activation disabling during training (contrasted with standard inference) and early stopping as using validation performance to determine when to halt training, distinguishing this from using held-out test results.",
+      "seeds": [
+        {
+          "concept": "backpropagation",
+          "topic_id": "subtopic_4bf9917ba76cad097a86",
+          "gaps": [
+            {
+              "question": "How does backpropagation specifically propagate error signals backward through the network layers to compute gradients for all parameters?",
+              "assumed_knowledge": "The mechanism of chain rule application and gradient flow from output to input layers.",
+              "why_useful": "Understanding the propagation process clarifies how errors in predictions affect parameter updates throughout the entire model architecture.",
+              "source_chunk_ids": [
+                "chunk_003"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source states backpropagation computes gradients but does not explain the backward pass mechanism itself. This is a fundamental gap in understanding 'how' the optimizer receives information to update parameters."
+        },
+        {
+          "concept": "optimizer",
+          "topic_id": "subtopic_c532379c4d23d167e948",
+          "gaps": [
+            {
+              "question": "What specific algorithmic rules or mathematical operations does the optimizer apply to the gradients and learning rate to determine the magnitude and direction of parameter updates?",
+              "assumed_knowledge": "The existence of specific update rules (e.g., stochastic gradient descent variants) that map gradients to weight changes.",
+              "why_useful": "Knowing the update rule explains how the 'size of updates' is concretely calculated from the abstract concept of a gradient.",
+              "source_chunk_ids": [
+                "chunk_003"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source mentions an optimizer uses gradients to update parameters but omits the specific mechanism (the update rule) that performs this action."
+        },
+        {
+          "concept": "dropout",
+          "topic_id": "subtopic_c37385cf2d81f052a969",
+          "gaps": [
+            {
+              "question": "Why does randomly disabling activations during training improve generalization to unseen examples compared to a network without dropout?",
+              "assumed_knowledge": "The theoretical justification for regularization via preventing co-adaptation of neurons.",
+              "why_useful": "The source defines dropout as a technique but does not explain the causal link between random disabling and improved performance on unseen data.",
+              "source_chunk_ids": [
+                "chunk_003"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source contrasts training with dropout against ordinary inference but does not explain the underlying reason why this specific mechanism mitigates overfitting."
+        },
+        {
+          "concept": "early stopping",
+          "topic_id": "subtopic_cb967ff6f19573389f05",
+          "gaps": [
+            {
+              "question": "How does monitoring validation performance prevent the model from entering a state where it begins to overfit, necessitating an early stop?",
+              "assumed_knowledge": "The relationship between validation error trends and the onset of overfitting.",
+              "why_useful": "The source says early stopping uses validation performance to decide when to end training but does not explain how that metric signals the transition from learning to overfitting.",
+              "source_chunk_ids": [
+                "chunk_003"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source distinguishes early stopping from using test results but does not explain the dynamic of validation performance that triggers the stop."
+        },
+        {
+          "concept": "overfitting",
+          "topic_id": "subtopic_30875538a9406b04ef9f",
+          "gaps": [
+            {
+              "question": "What specific internal changes in the model's learned representations or decision boundaries characterize the state of overfitting?",
+              "assumed_knowledge": "The nature of memorization versus generalization in terms of model complexity and data fit.",
+              "why_useful": "The source defines overfitting by performance discrepancy but does not describe the internal mechanism causing this discrepancy.",
+              "source_chunk_ids": [
+                "chunk_003"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source defines overfitting via input/output performance metrics but assumes knowledge of what happens internally to cause this failure."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The analysis identified gaps in the 'how' and 'why' for mechanisms explicitly named (backpropagation, optimizer rules, dropout rationale, early stopping dynamics) while respecting the constraint not to invent facts. The source provides high-level descriptions of these components but assumes the reader understands the specific algorithms or theoretical justifications behind them."
+    },
+    {
+      "chunk_id": "chunk_004",
+      "document_coverage": "The source text explicitly describes the post-training workflow involving weight quantization (storing parameters with fewer bits to reduce memory, noting risks of quality degradation) and Retrieval-Augmented Generation (RAG). It details the RAG mechanism: a retrieval encoder maps questions and passages to embeddings, similarity search selects candidates from an index, and selected passages are added to the context. It notes that updating the document index allows new material without retraining. Crucially, it states that retrieval does not change model parameters and warns that highly ranked passages can be irrelevant, outdated, or incorrect.",
+      "seeds": [
+        {
+          "concept": "retrieval encoder",
+          "topic_id": "subtopic_198e5fb3cc84f9f5baca",
+          "gaps": [
+            {
+              "question": "How does the retrieval encoder specifically map questions and document passages into embeddings?",
+              "assumed_knowledge": "The source assumes the reader understands that an 'encoder' performs a mapping to 'embeddings' but does not explain the internal mechanism (e.g., neural network layers, specific embedding space construction) used by this encoder.",
+              "why_useful": "Understanding the mapping mechanism is necessary to grasp how semantic similarity is computed before the similarity search step mentioned in the text.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            },
+            {
+              "question": "What specific properties of questions and passages does the retrieval encoder capture when creating embeddings?",
+              "assumed_knowledge": "The text mentions mapping to embeddings but does not specify whether these embeddings capture syntactic structure, semantic meaning, or both.",
+              "why_useful": "This distinction affects how 'relevant' passages are identified versus irrelevant ones, which is central to the RAG process described.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source treats 'retrieval encoder' as a black box that produces embeddings. Without explaining the mapping process or captured properties, the mechanism of selecting 'relevant course passages' remains opaque."
+        },
+        {
+          "concept": "similarity search",
+          "topic_id": "subtopic_e87610ff15d4a4c69cf5",
+          "gaps": [
+            {
+              "question": "What metric or distance function does the similarity search use to select candidate passages?",
+              "assumed_knowledge": "The source states that 'similarity search selects candidate passages' but does not specify the metric (e.g., cosine similarity, Euclidean distance).",
+              "why_useful": "The choice of metric directly influences which passages are deemed 'relevant' and thus added to the context, impacting answer quality.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The text mentions 'similarity search' as a step but omits the specific algorithmic implementation, which is a standard explanatory gap in technical descriptions of RAG."
+        },
+        {
+          "concept": "selected passages",
+          "topic_id": "subtopic_948917a099a4b5071102",
+          "gaps": [
+            {
+              "question": "How are the 'selected passages' integrated into the language model's context window?",
+              "assumed_knowledge": "The source says passages are 'added to the language model's context' but does not explain the integration method (e.g., concatenation, special tokens, truncation strategies).",
+              "why_useful": "Understanding the integration method is essential to know how the model processes the augmented information versus its original training distribution.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The mechanism of adding context is a critical operational detail that the source assumes but does not explain."
+        },
+        {
+          "concept": "highly ranked passage",
+          "topic_id": "subtopic_6cb339269594382ae3ed",
+          "gaps": [
+            {
+              "question": "What criteria determine if a passage is 'irrelevant', 'outdated', or 'incorrect' in the context of retrieval?",
+              "assumed_knowledge": "The source lists these states as possibilities for highly ranked passages but does not define the specific indicators or evaluation metrics used to detect them.",
+              "why_useful": "To understand how the system handles limitations, one must know what features signal irrelevance or incorrectness beyond just the retrieval score.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source asserts that retrieval can fail (irrelevant/outdated/incorrect) without explaining the underlying causes or detection mechanisms for these specific failure modes."
+        },
+        {
+          "concept": "document index update",
+          "topic_id": "subtopic_3bce8349fac9f9195e08",
+          "gaps": [
+            {
+              "question": "What is the specific procedure for updating the document index to make revised course material available?",
+              "assumed_knowledge": "The source states that 'Updating this document index can make revised course material available' but does not describe the update process (e.g., re-indexing, version control, incremental updates).",
+              "why_useful": "Understanding the update mechanism is necessary to assess the maintenance overhead and latency of keeping the RAG system current.",
+              "source_chunk_ids": [
+                "chunk_004"
+              ]
+            }
+          ],
+          "priority": "low",
+          "reason": "While less critical than the core retrieval mechanics, the update process is a functional detail assumed to work without explanation."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text describes the components and flow of a RAG system (quantization, encoder, search, index) but treats several internal mechanisms (embedding mapping specifics, similarity metric, context integration method, failure mode indicators, index update procedure) as implicit knowledge. These gaps prevent a full understanding of *how* the described functions operate, not just *that* they exist."
+    },
+    {
+      "chunk_id": "chunk_005",
+      "document_coverage": "The source text explicitly defines retrieval recall and precision, states that neither metric alone indicates correct evidence usage, distinguishes between citing a real passage and making unsupported claims, lists specific evaluation criteria (factual correctness, support from documents, uncertainty handling), mandates identifying disagreements rather than combining conflicting passages, and clarifies that missing evidence does not prove a claim is false.",
+      "seeds": [
+        {
+          "concept": "support from the supplied documents",
+          "topic_id": "subtopic_f77bac0f817c03efde81",
+          "gaps": [
+            {
+              "question": "What specific criteria or methods are used to determine if an answer is 'supported' by a retrieved passage versus merely citing it?",
+              "assumed_knowledge": "The source assumes there is a distinct mechanism for verifying that a claim is actually supported by the text of a passage, beyond just the presence of keywords or citation. It implies a verification step exists but does not explain how the system distinguishes between a relevant citation and an unsupported inference.",
+              "why_useful": "Understanding this distinction is crucial to evaluating the 'support from supplied documents' metric mentioned in the text.",
+              "source_chunk_ids": [
+                "chunk_005"
+              ]
+            },
+            {
+              "question": "How does the system differentiate between a passage that is irrelevant, outdated, or incorrect versus one that simply fails to support a specific claim?",
+              "assumed_knowledge": "The text mentions limitations like 'irrelevant, outdated info, incorrect data' in the allowed topics and states that missing evidence doesn't prove falsity. It assumes the system can categorize retrieval failures into these types but does not explain the logic or thresholds used to make this classification.",
+              "why_useful": "This helps understand how the 'failure to retrieve supporting evidence' is processed and why it leads to a specific evaluation outcome rather than a default 'false' verdict.",
+              "source_chunk_ids": [
+                "chunk_005"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source defines the metrics and the binary outcome (supported vs. not supported) but assumes the underlying logic for determining 'support' is known or self-evident. Explaining the criteria for support clarifies the evaluation framework."
+        },
+        {
+          "concept": "appropriate handling of uncertainty",
+          "topic_id": "subtopic_63b4bce0e6ccc3c15e9f",
+          "gaps": [
+            {
+              "question": "What specific behaviors or output patterns constitute 'appropriate handling of uncertainty' when the retrieved evidence is insufficient or conflicting?",
+              "assumed_knowledge": "The text lists 'appropriate handling of uncertainty' as a required evaluation criterion. It assumes there are standard ways an AI tutor should express uncertainty (e.g., hedging language, stating limitations) but does not define what those behaviors look like in practice.",
+              "why_useful": "Without knowing the specific manifestations of 'handling uncertainty', one cannot fully assess whether the tutor meets this criterion when it fails to cite evidence or faces disagreement.",
+              "source_chunk_ids": [
+                "chunk_005"
+              ]
+            }
+          ],
+          "priority": "high",
+          "reason": "The source treats 'handling uncertainty' as a distinct evaluation dimension alongside factual correctness and support. It assumes the definition of 'appropriate handling' is established elsewhere, creating a gap in understanding how this specific quality is measured or achieved."
+        },
+        {
+          "concept": "disagreement between two course passages",
+          "topic_id": "subtopic_6c2425d86983c98eb983",
+          "gaps": [
+            {
+              "question": "What is the specific procedure or logic the tutor follows to 'identify' a disagreement between passages before deciding not to combine them?",
+              "assumed_knowledge": "The text instructs the tutor to 'identify the disagreement'. It assumes there is a detection mechanism (e.g., semantic conflict detection, contradiction checking) that triggers this behavior but does not explain how such conflicts are detected or defined.",
+              "why_useful": "Understanding the detection mechanism explains *how* the system avoids combining conflicting information, which is central to the 'evaluation' of the tutor's reasoning capabilities described in the text.",
+              "source_chunk_ids": [
+                "chunk_005"
+              ]
+            }
+          ],
+          "priority": "medium",
+          "reason": "The source mandates a specific action ('identify disagreement') but assumes the mechanism for identification is known. Explaining this gap clarifies the operational mechanics of handling conflicting sources."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "reason": "The source text provides high-level definitions and requirements (metrics, criteria, actions) but assumes the underlying mechanisms (how support is verified, how uncertainty is expressed, how conflicts are detected) are known. These gaps prevent a full understanding of *how* the evaluation criteria are actually met or measured in practice."
+    }
+  ],
+  "unresolved": {},
+  "unresolved_gaps": {}
+}

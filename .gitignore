@@ -17,6 +17,7 @@ dist/
 
 # Generated pipeline artifacts
 *.log
+!outputs/runs/*/*/run.log
 
 # Notebook checkpoints and local validation artifacts
 .ipynb_checkpoints/
@@ -27,6 +28,22 @@ outputs/professor/
 outputs/professor_checks/
 outputs/professor_test_temp/
 outputs/generic_pipeline_work/
+
+# Preserve local-only exclusions after consolidating historical output folders.
+archive/outputs/professor_checks/
+archive/outputs/professor_test_temp/
+archive/outputs/generic_pipeline_work/
+archive/outputs/submission_validation/
+archive/**/tmp*/
+archive/**/temp/
+archive/**/baseline_temp/
+*.sqlite3
+*.sqlite3-*
+
+# These untracked export bundles contain copies of the local student databases.
+archive/outputs/exports/epistemic-kg-engine-no-archive-2026-11-23.zip
+archive/outputs/exports/epistemic-kg-engine-no-archive-20261123_193123.zip
+archive/outputs/exports/epistemic-kg-engine_latest-ai-test_20261118_53240531.zip
 
 # Operating system files
 .DS_Store

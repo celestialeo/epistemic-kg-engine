@@ -1,0 +1,28 @@
+{
+  "key": "a369e1eef1c8e24b00d71c43f3fd75a0665805de891d336162d889aecbeae060",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T08:30:29.0971511Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8899384200,
+    "load_duration": 3035500,
+    "prompt_eval_count": 463,
+    "prompt_eval_duration": 236240000,
+    "eval_count": 508,
+    "eval_duration": 8619679000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"candidate_0028\": {\n    \"source\": {\"name\": \"retrieved_passage\", \"definition\": \"A text segment fetched from the knowledge base.\",\"kind\": \"entity\"},\n    \"target\": {\"name\": \"irrelevant_classification\", \"definition\": \"The state of being deemed unrelated to the query.\",\"kind\": \"property\"},\n    \"relation\": \"classified_as_irrelevant_when_similarity_below_threshold\",\n    \"relation_definition\": \"A passage receives an irrelevant classification if its semantic similarity score drops below a relevance threshold.\",\n    \"argument_qualifiers\": [\n      \"semantic_similarity_score_to_query_embedding\"\n    ],\n    \"conditions\": \"falls_below_relevance_threshold\",\n    \"modality\": \"conditional\"\n  },\n  \"candidate_0029\": {\n    \"source\": {\"name\": \"retrieved_passage\", \"definition\": \"A text segment fetched from the knowledge base.\",\"kind\": \"entity\"},\n    \"target\": {\"name\": \"outdated_classification\", \"definition\": \"The state of being considered obsolete due to age.\",\"kind\": \"property\"},\n    \"relation\": \"classified_as_outdated_when_timestamp_precedes_cutoff\",\n    \"relation_definition\": \"A passage receives an outdated classification if its publication timestamp precedes a system-defined knowledge cutoff date.\",\n    \"argument_qualifiers\": [\n      \"publication_timestamp\"\n    ],\n    \"conditions\": \"precedes_system_defined_knowledge_cutoff_date\",\n    \"modality\": \"conditional\"\n  },\n  \"candidate_0030\": {\n    \"source\": {\"name\": \"retrieved_passage\", \"definition\": \"A text segment fetched from the knowledge base.\",\"kind\": \"entity\"},\n    \"target\": {\"name\": \"incorrect_classification\", \"definition\": \"The state of being deemed factually wrong or unsafe.\",\"kind\": \"property\"},\n    \"relation\": \"classified_as_incorrect_when_confidence_below_safety_threshold\",\n    \"relation_definition\": \"A passage receives an incorrect classification if the model's confidence score for its generated answer based on that passage drops below a safety threshold.\",\n    \"argument_qualifiers\": [\n      \"model_confidence_score_for_generated_answer_based_on_passage\"\n    ],\n    \"conditions\": \"drops_below_safety_threshold\",\n    \"modality\": \"conditional\"\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_010028",
+  "source_run": "run_20261120_030946_UTC-0500_dff62c9d",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

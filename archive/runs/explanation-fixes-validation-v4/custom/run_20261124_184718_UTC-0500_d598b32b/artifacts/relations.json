@@ -1,0 +1,1017 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds, retains, or performs storage of TARGET. TARGET is the stored content, not its destination. Explicit occurrence qualifiers specify storage format, medium or conditions.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "uses",
+      "definition": "employs a specific mechanism or method for a function.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "improves",
+      "definition": "increases the quality or accuracy of something over time.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "enhances_during_training",
+      "definition": "causes an increase in the quality or accuracy of a target property specifically during the training phase.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "helps",
+      "definition": "SOURCE provides assistance enabling TARGET to achieve a specific outcome or capability.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "employs",
+      "definition": "SOURCE utilizes TARGET as a mechanism.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_relationships_from",
+      "definition": "SOURCE computes relationships among TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "results_in_updated_state_of",
+      "definition": "SOURCE relationships result in updated TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific mechanism or method for a function.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to process text"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The label 'uses' in the source explicitly denotes an active relationship where the subject ('small transformer') employs a mechanism ('self attention'). The new contract correctly defines 'uses' as non-symmetric (false) and sets the inverse to null. This accurately reflects that if A uses B, it does not imply B uses A, nor is there a standard inverse relation defined for this predicate. The definition matches the source assertion without adding extra restrictions or negating the active nature of the verb. The directionality from 'small transformer' to 'self attention' is preserved as intended by the active verb 'uses'."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific mechanism or method for a function.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve its predictions"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive aspects: source ('small transformer'), target ('backpropagation'), relation ('uses'), definition, conditions, modality, and argument_qualifiers. No concrete claim exists in one that is absent in the other; wording differences are non-existent as the data provided shows exact string matches for all fields."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "improves",
+        "definition": "increases the quality or accuracy of something over time.",
+        "source": "small transformer",
+        "target": "predictions of the small transformer",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "during training"
+          ]
+        }
+      },
+      "canonical_key": "improves",
+      "reason": "The label 'improves' correctly reflects the active direction defined in the source ('increases quality...'). The new_contract definition matches the source assertion exactly without adding extra restrictions. The 'symmetric' flag is false, which is correct because 'A improves B' does not imply 'B improves A'. The 'inverse' is null, which is valid for an asymmetric relation where no specific inverse predicate was defined or required; this does not contradict the source meaning."
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "helps",
+        "definition": "Enables or facilitates a specific outcome for an entity.",
+        "source": "regularization",
+        "target": "small transformer",
+        "context": {
+          "evidence": "Regularization helps it generalize beyond its training examples.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "generalize beyond its training examples"
+          ]
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "The source 'regularization' and target 'small transformer' are identical in both assertions. The argument qualifiers ['generalize beyond its training examples'] are preserved exactly. The original relation 'helps' is defined as enabling or facilitating a specific outcome, while the proposed relation 'enables' is defined as providing conditions or capacity permitting the target without claiming production. Since the qualifier explicitly states the outcome is 'generalizing', which is an enabled capacity/condition rather than direct production, the semantic content of both assertions regarding the causal strength and modality is equivalent under the fixed endpoints and qualifiers."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "reduces",
+        "definition": "Decreases the magnitude or necessity of a specific resource requirement.",
+        "source": "quantization",
+        "target": "memory requirements of the small transformer",
+        "context": {
+          "evidence": "After training, quantization reduces its memory requirements",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "after training"
+          ]
+        }
+      },
+      "canonical_key": "inhibits",
+      "reason": "The source 'quantization' and target 'memory requirements of the small transformer' are identical in both assertions. The argument qualifier 'after training' is preserved exactly in both qualified_original and qualified_proposal. The relation 'reduces' (defined as decreasing magnitude/necessity) is semantically equivalent to 'inhibits' (defined as reducing or suppressing occurrence/activity) within the context of resource requirements, satisfying the requirement that different wording is not grounds for rejection if substantive distinctions are preserved. No concrete claim exists in one assertion that is absent in the other."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_0_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific mechanism or tool to perform an action.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to process text"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The source ('small transformer') and target ('self attention') are identical in both assertions. The argument qualifiers ('to process text'), conditions, and modality are preserved exactly as null or specified. The only difference lies in the 'definition' field of the relation: 'employs a specific mechanism or tool to perform an action' versus 'employs a specific mechanism or method for a function'. Since the instruction states that different wording or generality in relationship definitions is not sufficient grounds for rejection, and no concrete claim exists in one assertion that is absent in the other (both describe the same usage event with identical endpoints and qualifiers), the assertions are equivalent."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_0_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific mechanism or tool to perform an action.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve predictions of the small transformer"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The source 'small transformer' and target 'backpropagation' are identical in both assertions. The argument qualifiers 'to improve predictions of the small transformer' are preserved exactly. The only difference is the definition text ('tool to perform an action' vs 'method for a function'), which describes the same semantic relationship without altering the concrete claim made about the specific endpoints. Since no substantive distinction exists between the claims regarding these fixed entities, equivalence holds."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_0_relation_003",
+      "original": {
+        "label": "improves",
+        "definition": "causes an increase in the quality or accuracy of a target property.",
+        "source": "backpropagation",
+        "target": "predictions of the small transformer",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "during training"
+          ]
+        }
+      },
+      "canonical_key": "enhances_during_training",
+      "reason": "The new relation 'enhances_during_training' is coherent and specific. It preserves the source assertion's meaning by defining the predicate as causing an increase in quality/accuracy (matching 'improves') while correctly applying the condition 'specifically during the training phase' found in the source context without folding it into a second negation or altering the direction. The label agrees with the definition's active direction ('enhances' vs 'is enhanced by'). Symmetry is false as required for causal improvement, and the inverse is null, which is valid since the inverse of an asymmetric causal relation is not necessarily equivalent to the original without swapping endpoints in a way that maintains the specific 'during training' constraint naturally. No extra restrictions were added."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_1_relation_001",
+      "original": {
+        "label": "helps",
+        "definition": "SOURCE provides assistance enabling TARGET to achieve a specific outcome or capability.",
+        "source": "regularization",
+        "target": "generalization beyond training examples",
+        "context": {
+          "evidence": "Regularization helps it generalize beyond its training examples.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "of the small transformer"
+          ]
+        }
+      },
+      "canonical_key": "helps",
+      "reason": "The label 'helps' correctly reflects the active direction defined in the source ('Regularization helps it generalize...'). The new_contract definition matches the source assertion without adding extra restrictions. The 'symmetric' flag is false, which is correct because 'helps' is not symmetric (A helping B does not imply B helps A). The 'inverse' is null, which is valid for an asymmetric relation like 'helps' where no standard inverse predicate exists in this context. No negation or uncertainty was introduced incorrectly."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_2_relation_001",
+      "original": {
+        "label": "reduces",
+        "definition": "Decreases the magnitude or extent of a property.",
+        "source": "quantization",
+        "target": "memory requirements of the small transformer",
+        "context": {
+          "evidence": "After training, quantization reduces its memory requirements",
+          "conditions": "after training",
+          "modality": null,
+          "argument_qualifiers": [
+            "of the small transformer"
+          ]
+        }
+      },
+      "canonical_key": "inhibits",
+      "reason": "The qualified_original uses 'reduces' with qualifiers ['of the small transformer'] and condition 'after training'. The qualified_proposal uses 'inhibits' with identical qualifiers and condition. The definition of 'inhibits' explicitly includes 'reduces', making the relationship semantically equivalent under the fixed endpoints and preserved qualifiers. No substantive claim is added or removed; the wording change from 'reduces' to 'inhibits' is covered by the inclusive definition provided in the proposal."
+    },
+    {
+      "entity_id": "chunk_001_coverage_0_2_relation_002",
+      "original": {
+        "label": "enables",
+        "definition": "Makes an action or state possible for a subject.",
+        "source": "retrieval augmented generation",
+        "target": "use of external documents",
+        "context": {
+          "evidence": "while retrieval-augmented generation lets it use external documents when answering questions",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "when answering questions"
+          ]
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints (source: 'retrieval augmented generation', target: 'use of external documents'), identical argument qualifiers ('when answering questions'), and identical causal direction. The only difference lies in the definition text: the original uses a functional description ('Makes an action or state possible...') while the proposal uses a structural/permission-based description ('SOURCE provides conditions or capacity permitting TARGET...'). Since both definitions describe the same enabling relationship without adding new claims, omitting constraints, or altering modality/scope, they are bidirectionally equivalent under the fixed endpoints and qualifiers."
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "employs",
+        "definition": "SOURCE utilizes TARGET as a mechanism.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "The small transformer employs self-attention to compute relationships between input tokens.",
+          "explanation": "Directly addresses the seed's function and connects 'small transformer' to 'self attention' using general knowledge of the mechanism's operation.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0001",
+              "intended_fact": "The small transformer employs self-attention to compute relationships between input tokens.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0002",
+              "intended_fact": "Self-attention computes attention weights by evaluating relationships among token representations in the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0003",
+              "intended_fact": "The combination of these computed relationships results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "employs",
+      "reason": "The label 'employs' correctly reflects the active direction defined as 'SOURCE utilizes TARGET'. The definition is specific to mechanism utilization. Symmetry is false (consistent with the active nature of 'employs'), and the inverse is null (correctly rejecting an inverse for a non-equivalence relation). No extra restrictions or negations were added; the predicate meaning remains intact without folding uncertainty or conditions."
+    },
+    {
+      "entity_id": "candidate_0002",
+      "original": {
+        "label": "computes_relationships_from",
+        "definition": "SOURCE computes relationships among TARGET.",
+        "source": "self attention",
+        "target": "token representations",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "Self-attention computes attention weights by evaluating relationships among token representations in the input sequence.",
+          "explanation": "Bridges the gap by explaining the internal mechanics (computing weights from tokens) as requested, linking 'self attention' to its operational inputs.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0001",
+              "intended_fact": "The small transformer employs self-attention to compute relationships between input tokens.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0002",
+              "intended_fact": "Self-attention computes attention weights by evaluating relationships among token representations in the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0003",
+              "intended_fact": "The combination of these computed relationships results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "computes_relationships_from",
+      "reason": "The label 'computes_relationships_from' correctly reflects the active direction defined in the source ('SOURCE computes relationships among TARGET'). The definition is specific and matches the operational mechanics of self-attention described (evaluating relationships among token representations). No extra restrictions or negations were added. Symmetry is false as expected for a directional computation process, and the inverse is null, which is valid for non-equivalence relations."
+    },
+    {
+      "entity_id": "candidate_0003",
+      "original": {
+        "label": "results_in_updated_state_of",
+        "definition": "SOURCE relationships result in updated TARGET.",
+        "source": "token representations",
+        "target": "processed text sequence",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "The combination of these computed relationships results in updated token representations that constitute the processed text sequence.",
+          "explanation": "Completes the causal chain by linking 'token representations' to the output state ('processed text sequence'), fulfilling the 'how' of processing.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0001",
+              "intended_fact": "The small transformer employs self-attention to compute relationships between input tokens.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0002",
+              "intended_fact": "Self-attention computes attention weights by evaluating relationships among token representations in the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0003",
+              "intended_fact": "The combination of these computed relationships results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "results_in_updated_state_of",
+      "reason": "The new relation 'results_in_updated_state_of' is coherent and specific. It exactly preserves the source assertion's meaning: SOURCE (token representations) relationships result in updated TARGET (processed text sequence). The direction is active ('results in'), not passive. Symmetry is correctly set to false as causality is directional. The inverse is null, which is valid for a non-symmetric causal relationship. No extra restrictions or negations were added."
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "employs",
+        "definition": "SOURCE utilizes TARGET as a mechanism.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "The small transformer employs self-attention to process text sequences.",
+          "explanation": "Retains the core verified link from the source evidence (chunk_001_relation_001) without adding unverified qualifiers like 'compute relationships' which were flagged as novelty errors.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to process text sequences"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0004",
+              "intended_fact": "The small transformer employs self-attention to process text sequences.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0005",
+              "intended_fact": "Self-attention operates by computing relationships among token representations within the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0006",
+              "intended_fact": "The computation of relationships among token representations results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "employs",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive components: source ('small transformer'), target ('self attention'), relation ('employs'), and argument qualifiers ('to process text sequences'). Both retain the exact same saved qualifiers. There is no difference in wording that alters meaning, nor is there any added or missing claim regarding causal strength, modality, or scope. The assertions make the precise same concrete claim."
+    },
+    {
+      "entity_id": "candidate_0005",
+      "original": {
+        "label": "computes relationships among",
+        "definition": "SOURCE operates by computing relationships within TARGET.",
+        "source": "self attention",
+        "target": "token representations",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "Self-attention operates by computing relationships among token representations within the input sequence.",
+          "explanation": "Introduces 'token representations' as the standard input concept for self-attention mechanisms (general knowledge) to bridge the gap between the abstract mechanism and its operation on text. This avoids the 'weights' mismatch of candidate_0002 by focusing on the fundamental operation of relating tokens.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "within the input sequence"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0004",
+              "intended_fact": "The small transformer employs self-attention to process text sequences.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0005",
+              "intended_fact": "Self-attention operates by computing relationships among token representations within the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0006",
+              "intended_fact": "The computation of relationships among token representations results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "computes_relationships_from",
+      "reason": "The qualified_original and qualified_proposal assertions are bidirectionally equivalent. Both share identical endpoints ('self attention' and 'token representations'), identical argument qualifiers ('within the input sequence'), and identical modality/conditions (null). The only difference is the relation label: 'computes relationships among' versus 'computes_relationships_from'. The proposed contract definition explicitly states 'SOURCE computes relationships among TARGET', which matches the semantic content of the original qualifier exactly. Since the endpoints, qualifiers, and core meaning are preserved without adding or removing substantive claims, the different wording (label vs. definition) does not constitute a rejection ground."
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "results in updated versions of",
+        "definition": "SOURCE computation yields TARGET as the processed output.",
+        "source": "token representations",
+        "target": "processed text sequence",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the stated function to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "The computation of relationships among token representations results in updated token representations that constitute the processed text sequence.",
+          "explanation": "Completes the causal chain by linking the input ('token representations') to the output state ('processed text sequence'). This addresses the 'how' of processing by describing the transformation from input tokens to updated representations, fulfilling the gap without inventing specific weight values or external document usage.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "that constitute the processed text sequence"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0004",
+              "intended_fact": "The small transformer employs self-attention to process text sequences.",
+              "source_concept": "small transformer",
+              "target_concept": "self attention",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0005",
+              "intended_fact": "Self-attention operates by computing relationships among token representations within the input sequence.",
+              "source_concept": "self attention",
+              "target_concept": "token representations",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0006",
+              "intended_fact": "The computation of relationships among token representations results in updated token representations that constitute the processed text sequence.",
+              "source_concept": "token representations",
+              "target_concept": "processed text sequence",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "novelty",
+                "reason": "The candidate assertion that the small transformer 'employs self-attention' is directly entailed by chunk_001_relation_001, which states the relationship with the qualifier 'to process text'. The candidate's specific phrasing about 'computing relationships between input tokens' is a standard linguistic elaboration of the function 'process text' in the context of self-attention mechanisms and does not add new informational content beyond what is already stated in the reference. Therefore, it is a duplicate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (small transformer --[employs]--> self attention)",
+                  "reason": "The link reading exactly matches the literal_candidate_reading. The intended fact adds specific details ('to compute relationships between input tokens') not present in the independent reading or link, but this does not constitute a representation error as the core assertion (subject employs object) remains faithful. No properties were added to the endpoints, and no actions were silently inserted. The direction and meaning of the core assertion are preserved.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "results_in_updated_state_of",
+      "reason": "The qualified_original and qualified_proposal assertions share identical endpoints ('token representations' and 'processed text sequence'), identical argument qualifiers ('that constitute the processed text sequence'), and identical modality/conditions (null). The only difference is the relation label: 'results in updated versions of' versus 'results_in_updated_state_of'. Both labels map to the same underlying definition provided in the data ('SOURCE computation yields TARGET as the processed output' vs 'SOURCE relationships result in updated TARGET'). Since the endpoints and explicit qualifiers are preserved, and no substantive claim exists in one that is absent in the other, the assertions are bidirectionally equivalent."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

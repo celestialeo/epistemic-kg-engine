@@ -1,0 +1,28 @@
+{
+  "key": "9609905f97afc2ac1b419f463eda8e75aef2f41d905d8a9149f805d134e130aa",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T06:09:32.3842704Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 10298936700,
+    "load_duration": 3057600,
+    "prompt_eval_count": 810,
+    "prompt_eval_duration": 266887000,
+    "eval_count": 570,
+    "eval_duration": 9992202000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"causal attention mask\",\n      \"definition\": \"A mechanism that restricts attention flow based on token order.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"position\",\n      \"definition\": \"A specific location in the sequence of tokens within a model's input.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"attending to later positions\",\n      \"definition\": \"The action of incorporating information from tokens that appear after the current one in the sequence.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"model predicts the next token\",\n      \"definition\": \"The operation where a language model generates an output based on previous context.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"A causal attention mask prevents a position from attending to later positions when the model predicts the next token.\",\n      \"evidence\": \"A causal attention mask prevents a position from attending to later positions when the model predicts the next token.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"causal attention mask\",\n        \"definition\": \"A mechanism that restricts attention flow based on token order.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"prevents\",\n      \"relation_definition\": \"To stop an entity from performing a specific action or process.\",\n      \"target\": {\n        \"name\": \"position\",\n        \"definition\": \"A specific location in the sequence of tokens within a model's input.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"from attending to later positions\"\n      ],\n      \"conditions\": \"when the model predicts the next token\",\n      \"modality\": null,\n      \"evidence\": \"A causal attention mask prevents a position from attending to later positions when the model predicts the next token.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly states that the causal attention mask stops a position from accessing future tokens during prediction. The previous sentence provides context about self-attention layers but does not alter the specific causal claim in the current sentence. No ambiguity exists regarding the antecedents as they are directly named or clearly implied by the context of 'position' and 'model'.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000745",
+  "source_run": "run_20261120_010527_UTC-0500_24b405e6",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

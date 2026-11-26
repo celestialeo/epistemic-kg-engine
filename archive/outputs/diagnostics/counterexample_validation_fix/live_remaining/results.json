@@ -1,0 +1,713 @@
+[
+  {
+    "id": "candidate_0064",
+    "passed": false,
+    "candidate": {
+      "source_concept": "specific application",
+      "target_concept": "narrow input distribution and output requirements",
+      "intended_fact": "A specific application is defined by having a narrow input distribution and output requirements.",
+      "confidence": 0.95,
+      "reason": "This defines the scope of the concept to explain why broad parameters are unnecessary.",
+      "gap_ids": [
+        "question_0013"
+      ],
+      "added_knowledge": "Explicit definition of 'specific application' in terms of input/output constraints derived from general ML knowledge.",
+      "id": "candidate_0064",
+      "seed_id": "seed_010",
+      "source": "specific application",
+      "target": "narrow input distribution and output requirements",
+      "relation": "is_defined_by_having",
+      "relation_definition": "SOURCE is characterized by the presence of TARGET",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "gaps": [
+        {
+          "question": "How does the definition of a 'specific application' determine which parameters are deemed 'irrelevant'?",
+          "assumed_knowledge": "The concept that specific applications have narrow input distributions and output requirements that do not utilize the broad general knowledge encoded in foundation models is assumed.",
+          "why_useful": "This explains the motivation for distillation: if an application only needs a subset of capabilities, the rest of the parameters are wasted resources, justifying the creation of smaller models.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0013",
+          "concept": "specific application"
+        }
+      ],
+      "gap_analysis": "The seed concept 'specific application' is linked to 'parameters' being irrelevant. The gap asks how the definition of a specific application determines this irrelevance. The explanation must bridge the general definition (narrow scope) to the mechanism of parameter irrelevance (broad general knowledge vs. narrow task requirements).",
+      "source_context": [
+        {
+          "id": "chunk_003",
+          "text": "Fine-tuned LLMs usually have a very large number of parameters. As a result, generating predictions with a fine-tuned LLM requires large computational and environmental resources. Many of those parameters are typically irrelevant to a specific application. Distillation creates a smaller LLM from a larger LLM. The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM. However, the predictions of the distilled LLM are generally somewhat worse than the predictions of the larger LLM. LLMs with more parameters almost always make better predictions than LLMs with fewer parameters."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_003_relation_003",
+          "source": "parameters",
+          "relation": "are_irrelevant_to",
+          "target": "specific application",
+          "relation_definition": "have no bearing on the success or function of",
+          "origin": "document",
+          "conditions": null,
+          "modality": "typically"
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "unresolved",
+      "representation_valid": true,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: background_counterexample_applicability failed for candidate_0064_counterexample_applicability after 3 attempts: Resolve disagreement between your fields and final reasoning: case_is_supported=True disagrees with: The counterexample relies on the unsupported premise that handling contracts with varying lengths, styles, and jurisdictions constitutes a 'broad' input distribution.",
+      "original_proposal": {
+        "source": {
+          "name": "specific application",
+          "definition": "a particular use case for an AI system",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "narrow input distribution and output requirements",
+          "definition": "narrow input distribution and output requirements",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "is defined by having",
+        "relation_definition": "SOURCE is characterized by the presence of TARGET",
+        "argument_qualifiers": [
+          "narrow input distribution and output requirements"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "A specific application is defined by having a narrow input distribution and output requirements.",
+        "confidence": 0.95,
+        "reason": "This defines the scope of the concept to explain why broad parameters are unnecessary.",
+        "gap_ids": [
+          "question_0013"
+        ],
+        "added_knowledge": "Explicit definition of 'specific application' in terms of input/output constraints derived from general ML knowledge."
+      },
+      "source_mention": {
+        "name": "specific application",
+        "definition": "a particular use case for an AI system",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "narrow input distribution and output requirements",
+        "definition": "narrow input distribution and output requirements",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "narrow input distribution and output requirements"
+      ],
+      "surface_relation": "is defined by having",
+      "surface_target": "narrow input distribution and output requirements",
+      "independent_link_reading": {
+        "subject": "specific application",
+        "object": "narrow input distribution and output requirements",
+        "assertion": "A specific application is defined by having a narrow input distribution and output requirements."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (specific application --[is defined by having]--> narrow input distribution and output requirements); additional arguments: narrow input distribution and output requirements",
+        "reason": "The link_reading is an exact copy of the literal_candidate_reading. The endpoints ('specific application' and 'narrow input distribution and output requirements') match the intended_fact without substitution or added qualifiers. The direction (is defined by having) and meaning are preserved. No silent actions, repairs, or reinterpretations were applied.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (specific application --[is defined by having]--> narrow input distribution and output requirements); additional arguments: narrow input distribution and output requirements",
+      "explanation_context": [
+        {
+          "id": "candidate_0065",
+          "intended_fact": "The narrow input distribution and output requirements of a specific application do not utilize the broad general knowledge encoded in foundation models.",
+          "source": "narrow input distribution and output requirements",
+          "relation": "does_not_utilize",
+          "relation_definition": "SOURCE lacks the use of TARGET",
+          "target": "broad general knowledge encoded in foundation models",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "narrow input distribution and output requirements"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_002",
+          "chunk_003",
+          "chunk_004",
+          "chunk_005",
+          "chunk_006",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005",
+          "chunk_001_relation_006",
+          "chunk_001_relation_007",
+          "chunk_001_relation_009",
+          "chunk_001_relation_010",
+          "chunk_001_relation_011",
+          "chunk_001_relation_012",
+          "chunk_001_relation_013",
+          "chunk_001_relation_014",
+          "chunk_002_relation_001",
+          "chunk_002_relation_002",
+          "chunk_002_relation_004",
+          "chunk_002_relation_005",
+          "chunk_002_relation_006",
+          "chunk_002_relation_007",
+          "chunk_002_relation_008",
+          "chunk_002_relation_009",
+          "chunk_002_relation_010",
+          "chunk_002_relation_011",
+          "chunk_002_relation_012",
+          "chunk_003_relation_001",
+          "chunk_003_relation_002",
+          "chunk_003_relation_003",
+          "chunk_003_relation_004",
+          "chunk_003_relation_005",
+          "chunk_003_relation_007",
+          "chunk_003_relation_008",
+          "chunk_004_relation_001",
+          "chunk_004_relation_002",
+          "chunk_004_relation_003",
+          "chunk_004_relation_004",
+          "chunk_004_relation_006",
+          "chunk_004_relation_007",
+          "chunk_004_relation_009",
+          "chunk_004_relation_011",
+          "chunk_004_relation_012",
+          "chunk_004_relation_016",
+          "chunk_005_relation_001",
+          "chunk_005_relation_003",
+          "chunk_005_relation_004",
+          "chunk_005_relation_005",
+          "chunk_005_relation_006",
+          "chunk_005_relation_007",
+          "chunk_005_relation_008",
+          "chunk_005_relation_009",
+          "chunk_005_relation_010",
+          "chunk_005_relation_011",
+          "chunk_005_relation_012",
+          "chunk_005_relation_013",
+          "chunk_005_relation_015",
+          "chunk_005_relation_016",
+          "chunk_005_relation_017",
+          "chunk_005_relation_018",
+          "chunk_005_relation_019",
+          "chunk_005_relation_020",
+          "chunk_006_relation_002",
+          "chunk_006_relation_003",
+          "chunk_006_relation_004",
+          "chunk_006_relation_007",
+          "chunk_006_relation_008",
+          "chunk_006_relation_010",
+          "chunk_006_relation_011",
+          "chunk_006_relation_013",
+          "chunk_006_relation_015",
+          "chunk_006_relation_016",
+          "chunk_006_relation_017",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_1_relation_002",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_004_coverage_0_3_relation_002",
+          "chunk_004_coverage_1_0_relation_002",
+          "chunk_004_coverage_1_1_relation_001",
+          "chunk_005_coverage_1_0_relation_001",
+          "chunk_005_coverage_1_1_relation_002",
+          "chunk_006_coverage_0_0_relation_001",
+          "chunk_006_coverage_0_1_relation_001",
+          "chunk_006_coverage_0_1_relation_002",
+          "chunk_006_coverage_0_2_relation_002",
+          "candidate_0018",
+          "candidate_0031",
+          "candidate_0032",
+          "candidate_0042",
+          "candidate_0043",
+          "candidate_0061"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "process",
+        "target": "property"
+      },
+      "critic": {
+        "reason": "The assertion defines 'specific application' by its narrow input/output constraints. This is a standard, well-established concept in machine learning (domain adaptation/specialization). The relation 'is_defined_by_having' correctly links the concept to its defining characteristic. The definition aligns with general knowledge regarding why foundation models are over-parameterized for specific tasks.",
+        "candidate_id": "candidate_0064",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Limitations of foundation models for specific ML tasks",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The assertion defines 'specific application' by its inherent constraints (narrow input/output). This is a general explanatory definition derived from the chapter's context regarding why large parameters are irrelevant. The relation 'is_defined_by_having' precisely captures that these narrow requirements constitute the essence of the concept in this domain, distinguishing it from general-purpose foundation models.",
+        "candidate_id": "candidate_0064",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion defines 'specific application' by its inherent constraints (narrow input/output). This is a general explanatory definition derived from the chapter's context regarding why large parameters are irrelevant. The relation 'is_defined_by_having' precisely captures that these narrow requirements constitute the essence of the concept in this domain, distinguishing it from general-purpose foundation models.",
+        "candidate_id": "candidate_0064",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Limitations of foundation models for specific ML tasks",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0070",
+      "repair_result": {
+        "reason": "The original candidate group failed due to unsupported counterexamples (text_5, text_6) and a lack of explicit causal links between the definition of 'specific application' and the irrelevance of parameters. The repair introduces an intermediate concept 'narrow task scope' to clarify that the 'narrow input distribution' defines this scope. It then explicitly links this scope to the 'irrelevance of broad general knowledge' via a 'does_not_utilize' relation, which in turn justifies why 'parameters encoding broad knowledge' are irrelevant. This chain connects the seed concept to the verified attachment 'specific application' and its known property 'are_irrelevant_to'.",
+        "corrected_facts": [
+          {
+            "source_concept": "specific application",
+            "target_concept": "narrow task scope",
+            "intended_fact": "A specific application is characterized by a narrow task scope.",
+            "confidence": 0.95,
+            "reason": "The 'narrow input distribution and output requirements' mentioned in the original definition are operationalized as defining a 'narrow task scope'. This intermediate concept bridges the abstract definition to the functional limitation that causes parameter irrelevance.",
+            "gap_ids": [
+              "question_0013"
+            ],
+            "added_knowledge": "Operationalizing 'narrow input/output' as a 'narrow task scope' clarifies the mechanism of parameter irrelevance."
+          },
+          {
+            "source_concept": "narrow task scope",
+            "target_concept": "broad general knowledge encoded in foundation models",
+            "intended_fact": "A narrow task scope does not utilize broad general knowledge encoded in foundation models.",
+            "confidence": 0.95,
+            "reason": "This relation explicitly states the mismatch: a 'narrow task scope' (e.g., sentiment analysis) lacks the need for 'broad general knowledge' (e.g., encyclopedic facts). This validates the mechanism without relying on unsupported counterexamples.",
+            "gap_ids": [
+              "question_0013"
+            ],
+            "added_knowledge": "Establishes the causal link between task scope and knowledge utilization."
+          },
+          {
+            "source_concept": "broad general knowledge encoded in foundation models",
+            "target_concept": "parameters encoding broad general knowledge",
+            "intended_fact": "Broad general knowledge encoded in foundation models is represented by parameters encoding broad general knowledge.",
+            "confidence": 0.95,
+            "reason": "This defines the physical instantiation of the abstract concept 'broad general knowledge' as 'parameters', allowing the irrelevance claim to apply to the model's architecture rather than just an abstract property.",
+            "gap_ids": [
+              "question_0013"
+            ],
+            "added_knowledge": "Connects the abstract knowledge type to the concrete model components (parameters)."
+          },
+          {
+            "source_concept": "broad general knowledge encoded in foundation models",
+            "target_concept": "specific application",
+            "intended_fact": "Broad general knowledge encoded in foundation models is irrelevant to a specific application.",
+            "confidence": 0.95,
+            "reason": "Since the 'narrow task scope' does not utilize 'broad general knowledge', and 'parameters encoding broad general knowledge' represent that knowledge, those parameters are irrelevant to the 'specific application'. This completes the causal chain from definition to irrelevance.",
+            "gap_ids": [
+              "question_0013"
+            ],
+            "added_knowledge": "Synthesizes the previous links to conclude parameter irrelevance."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0067",
+        "candidate_0068",
+        "candidate_0069",
+        "candidate_0070"
+      ]
+    }
+  },
+  {
+    "id": "candidate_0068",
+    "passed": true,
+    "candidate": {
+      "source_concept": "narrow task scope",
+      "target_concept": "broad general knowledge encoded in foundation models",
+      "intended_fact": "A narrow task scope does not utilize broad general knowledge encoded in foundation models.",
+      "confidence": 0.95,
+      "reason": "This relation explicitly states the mismatch: a 'narrow task scope' (e.g., sentiment analysis) lacks the need for 'broad general knowledge' (e.g., encyclopedic facts). This validates the mechanism without relying on unsupported counterexamples.",
+      "gap_ids": [
+        "question_0013"
+      ],
+      "added_knowledge": "Establishes the causal link between task scope and knowledge utilization.",
+      "id": "candidate_0068",
+      "seed_id": "seed_010",
+      "source": "narrow task scope",
+      "target": "broad general knowledge encoded in foundation models",
+      "relation": "does_not_utilize",
+      "relation_definition": "SOURCE lacks the use of TARGET",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_003",
+      "paragraph_id": "paragraph_003",
+      "gaps": [
+        {
+          "question": "How does the definition of a 'specific application' determine which parameters are deemed 'irrelevant'?",
+          "assumed_knowledge": "The concept that specific applications have narrow input distributions and output requirements that do not utilize the broad general knowledge encoded in foundation models is assumed.",
+          "why_useful": "This explains the motivation for distillation: if an application only needs a subset of capabilities, the rest of the parameters are wasted resources, justifying the creation of smaller models.",
+          "source_chunk_ids": [
+            "chunk_003"
+          ],
+          "id": "question_0013",
+          "concept": "specific application"
+        }
+      ],
+      "gap_analysis": "The seed concept 'specific application' is linked to 'parameters' being irrelevant. The gap asks how the definition of a specific application determines this irrelevance. The explanation must bridge the general definition (narrow scope) to the mechanism of parameter irrelevance (broad general knowledge vs. narrow task requirements).",
+      "source_context": [
+        {
+          "id": "chunk_003",
+          "text": "Fine-tuned LLMs usually have a very large number of parameters. As a result, generating predictions with a fine-tuned LLM requires large computational and environmental resources. Many of those parameters are typically irrelevant to a specific application. Distillation creates a smaller LLM from a larger LLM. The distilled LLM generates predictions faster and requires fewer computational and environmental resources than the larger LLM. However, the predictions of the distilled LLM are generally somewhat worse than the predictions of the larger LLM. LLMs with more parameters almost always make better predictions than LLMs with fewer parameters."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_003_relation_003",
+          "source": "parameters",
+          "relation": "are_irrelevant_to",
+          "relation_definition": "have no bearing on the success or function of",
+          "target": "specific application",
+          "conditions": null,
+          "modality": "typically",
+          "argument_qualifiers": [
+            "of many"
+          ]
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": true,
+      "repair_of": "candidate_0064",
+      "repair_attempt": 1,
+      "decision_reason": "The assertion claims a narrow task scope does not utilize broad general knowledge encoded in foundation models. This is factually uncertain because 'utilization' depends on the specific inference mechanism (e.g., attention heads activating broad concepts vs. retrieving specific facts). While retrieval-augmented generation or fine-tuning can limit reliance on broad knowledge, it is not guaranteed for all narrow tasks; some simple tasks may still implicitly trigger broad encodings. Without explicit constraints in the prompt, we cannot guarantee non-utilization.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0064",
+        "rejection_stage": null,
+        "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion defines a 'specific application' by the condition of having narrow input distribution and output requirements. The counterexample presents an LLM configured for creative writing (a specific application) that accepts broad prompts and generates unconstrained outputs. This directly contradicts the defining condition provided in the assertion. Therefore, the case successfully re Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed.",
+        "representation_check": {
+          "link_reading": "ASSERTED (specific application --[is defined by having]--> narrow input distribution and output requirements); additional arguments: narrow input distribution and output requirements",
+          "reason": "The link_reading is an exact copy of the literal_candidate_reading. The endpoints ('specific application' and 'narrow input distribution and output requirements') match the intended_fact without substitution or added qualifiers. The direction (is defined by having) and meaning are preserved. No silent actions, repairs, or reinterpretations were applied.",
+          "meaning_matches": true,
+          "direction_valid": true,
+          "explanation_matches": true,
+          "scope_preserved": true,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0064",
+        "candidate_0065",
+        "candidate_0066"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "narrow task scope",
+          "definition": "a limited range of tasks or functions",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "broad general knowledge encoded in foundation models",
+          "definition": "general knowledge stored within the weights of a foundational model",
+          "kind": "property",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "does not utilize",
+        "relation_definition": "SOURCE does not make use of TARGET",
+        "argument_qualifiers": [
+          "broad general knowledge encoded in foundation models"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "A narrow task scope does not utilize broad general knowledge encoded in foundation models.",
+        "confidence": 0.95,
+        "reason": "This relation explicitly states the mismatch: a 'narrow task scope' (e.g., sentiment analysis) lacks the need for 'broad general knowledge' (e.g., encyclopedic facts). This validates the mechanism without relying on unsupported counterexamples.",
+        "gap_ids": [
+          "question_0013"
+        ],
+        "added_knowledge": "Establishes the causal link between task scope and knowledge utilization."
+      },
+      "source_mention": {
+        "name": "narrow task scope",
+        "definition": "a limited range of tasks or functions",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "broad general knowledge encoded in foundation models",
+        "definition": "general knowledge stored within the weights of a foundational model",
+        "kind": "property",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "broad general knowledge encoded in foundation models"
+      ],
+      "surface_relation": "does not utilize",
+      "surface_target": "broad general knowledge encoded in foundation models",
+      "independent_link_reading": {
+        "subject": "narrow task scope",
+        "object": "broad general knowledge encoded in foundation models",
+        "assertion": "A narrow task scope does not utilize broad general knowledge encoded in foundation models."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (narrow task scope --[does not utilize]--> broad general knowledge encoded in foundation models); additional arguments: broad general knowledge encoded in foundation models",
+        "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies 'narrow task scope' as the subject and 'broad general knowledge encoded in foundation models' as the object, with the assertion that the former does not utilize the latter. The intended fact matches this assertion exactly. The explanation supports the link by defining the mismatch between a limited task scope and broad knowledge. No properties are added, no actions are inserted into endpoints, and no conditions alter the identity of the subjects or objects. The representation is faithful to the intended fact in direction, meaning, and scope.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (narrow task scope --[does not utilize]--> broad general knowledge encoded in foundation models); additional arguments: broad general knowledge encoded in foundation models",
+      "explanation_context": [
+        {
+          "id": "candidate_0067",
+          "intended_fact": "A specific application is characterized by a narrow task scope.",
+          "source": "specific application",
+          "relation": "is_defined_by_having",
+          "relation_definition": "SOURCE is characterized by the presence of TARGET",
+          "target": "narrow task scope",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "narrow task scope"
+          ],
+          "status": "unverified_companion"
+        },
+        {
+          "id": "candidate_0069",
+          "intended_fact": "Broad general knowledge encoded in foundation models is represented by parameters encoding broad general knowledge.",
+          "source": "broad general knowledge encoded in foundation models",
+          "relation": "is_represented_by",
+          "relation_definition": "SOURCE is depicted or manifested through TARGET",
+          "target": "parameters encoding broad general knowledge",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "parameters encoding broad general knowledge"
+          ],
+          "status": "unverified_companion"
+        },
+        {
+          "id": "candidate_0070",
+          "intended_fact": "Broad general knowledge encoded in foundation models is irrelevant to a specific application.",
+          "source": "broad general knowledge encoded in foundation models",
+          "relation": "is_irrelevant_to",
+          "relation_definition": "SOURCE has no bearing on or connection to TARGET",
+          "target": "specific application",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "specific application"
+          ],
+          "status": "unverified_companion"
+        }
+      ],
+      "novelty_references": [],
+      "novelty": {
+        "status": "new",
+        "evidence_ids": [],
+        "checked_references": [
+          "chunk_001",
+          "chunk_002",
+          "chunk_003",
+          "chunk_004",
+          "chunk_005",
+          "chunk_006",
+          "chunk_001_relation_004",
+          "chunk_001_relation_005",
+          "chunk_001_relation_006",
+          "chunk_001_relation_007",
+          "chunk_001_relation_009",
+          "chunk_001_relation_010",
+          "chunk_001_relation_011",
+          "chunk_001_relation_012",
+          "chunk_001_relation_013",
+          "chunk_001_relation_014",
+          "chunk_002_relation_001",
+          "chunk_002_relation_002",
+          "chunk_002_relation_004",
+          "chunk_002_relation_005",
+          "chunk_002_relation_006",
+          "chunk_002_relation_007",
+          "chunk_002_relation_008",
+          "chunk_002_relation_009",
+          "chunk_002_relation_010",
+          "chunk_002_relation_011",
+          "chunk_002_relation_012",
+          "chunk_003_relation_001",
+          "chunk_003_relation_002",
+          "chunk_003_relation_003",
+          "chunk_003_relation_004",
+          "chunk_003_relation_005",
+          "chunk_003_relation_007",
+          "chunk_003_relation_008",
+          "chunk_004_relation_001",
+          "chunk_004_relation_002",
+          "chunk_004_relation_003",
+          "chunk_004_relation_004",
+          "chunk_004_relation_006",
+          "chunk_004_relation_007",
+          "chunk_004_relation_009",
+          "chunk_004_relation_011",
+          "chunk_004_relation_012",
+          "chunk_004_relation_016",
+          "chunk_005_relation_001",
+          "chunk_005_relation_003",
+          "chunk_005_relation_004",
+          "chunk_005_relation_005",
+          "chunk_005_relation_006",
+          "chunk_005_relation_007",
+          "chunk_005_relation_008",
+          "chunk_005_relation_009",
+          "chunk_005_relation_010",
+          "chunk_005_relation_011",
+          "chunk_005_relation_012",
+          "chunk_005_relation_013",
+          "chunk_005_relation_015",
+          "chunk_005_relation_016",
+          "chunk_005_relation_017",
+          "chunk_005_relation_018",
+          "chunk_005_relation_019",
+          "chunk_005_relation_020",
+          "chunk_006_relation_002",
+          "chunk_006_relation_003",
+          "chunk_006_relation_004",
+          "chunk_006_relation_007",
+          "chunk_006_relation_008",
+          "chunk_006_relation_010",
+          "chunk_006_relation_011",
+          "chunk_006_relation_013",
+          "chunk_006_relation_015",
+          "chunk_006_relation_016",
+          "chunk_006_relation_017",
+          "chunk_001_coverage_0_1_relation_001",
+          "chunk_001_coverage_0_1_relation_002",
+          "chunk_001_coverage_0_2_relation_001",
+          "chunk_004_coverage_0_3_relation_002",
+          "chunk_004_coverage_1_0_relation_002",
+          "chunk_004_coverage_1_1_relation_001",
+          "chunk_005_coverage_1_0_relation_001",
+          "chunk_005_coverage_1_1_relation_002",
+          "chunk_006_coverage_0_0_relation_001",
+          "chunk_006_coverage_0_1_relation_001",
+          "chunk_006_coverage_0_1_relation_002",
+          "chunk_006_coverage_0_2_relation_002",
+          "candidate_0018",
+          "candidate_0031",
+          "candidate_0032",
+          "candidate_0042",
+          "candidate_0043",
+          "candidate_0061"
+        ],
+        "related_reference_ids": [],
+        "reason": "The references do not already supply the candidate's asserted information"
+      },
+      "endpoint_kinds": {
+        "source": "property",
+        "target": "property"
+      },
+      "critic": {
+        "reason": "The relation 'does_not_utilize' accurately reflects the text's claim that narrow task scopes do not leverage broad general knowledge. This validates the mechanism of resource waste in large models for specific tasks without relying on unsupported counterexamples.",
+        "candidate_id": "candidate_0068",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Limitations of foundation models for specific ML tasks",
+        "objections": []
+      },
+      "rebuttal": {
+        "reason": "The claim that a 'narrow task scope' does not utilize 'broad general knowledge encoded in foundation models' is validated by text_6, which states that tasks like sentiment analysis lack the need for encyclopedic facts. This establishes the causal mechanism for why certain parameters become irrelevant.",
+        "candidate_id": "candidate_0068",
+        "position": "defend"
+      },
+      "judge": {
+        "reason": "The assertion 'narrow task scope --[does_not_utilize]--> broad general knowledge encoded in foundation models' is valid. General knowledge confirms that specific tasks (e.g., sentiment analysis) rely on localized patterns rather than encyclopedic breadth. Text_2 supports this by assuming applications have narrow distributions not utilizing broad general knowledge. The relation accurately reflects the mismatch between limited task requirements and the vast general knowledge stored in foundation models.",
+        "candidate_id": "candidate_0068",
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "evidence_status": "not_applicable",
+        "domain_relevance": 1.0,
+        "chapter_related": true,
+        "related_topic": "Limitations of foundation models for specific ML tasks",
+        "accept": true,
+        "objections_resolved": true,
+        "gap_addressed": true
+      },
+      "gates": {
+        "semantics_valid": true,
+        "direction_valid": true,
+        "types_valid": true,
+        "no_contradiction": true,
+        "certain": true,
+        "objections_resolved": true,
+        "evidence": true,
+        "relevance": true,
+        "gap_addressed": true,
+        "event_contract": true,
+        "counterexample_check": false
+      },
+      "threshold": null,
+      "verification_basis": "model_knowledge",
+      "counterexample_check": {
+        "reason": "The assertion claims a narrow task scope does not utilize broad general knowledge encoded in foundation models. This is factually uncertain because 'utilization' depends on the specific inference mechanism (e.g., attention heads activating broad concepts vs. retrieving specific facts). While retrieval-augmented generation or fine-tuning can limit reliance on broad knowledge, it is not guaranteed for all narrow tasks; some simple tasks may still implicitly trigger broad encodings. Without explicit constraints in the prompt, we cannot guarantee non-utilization.",
+        "sound_as_stated": false,
+        "counterexample": null
+      },
+      "rejection_stage": "counterexample"
+    }
+  }
+]

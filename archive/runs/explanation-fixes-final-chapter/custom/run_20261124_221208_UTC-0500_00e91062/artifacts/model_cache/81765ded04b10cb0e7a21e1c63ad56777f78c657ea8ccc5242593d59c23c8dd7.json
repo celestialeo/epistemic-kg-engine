@@ -1,0 +1,28 @@
+{
+  "key": "81765ded04b10cb0e7a21e1c63ad56777f78c657ea8ccc5242593d59c23c8dd7",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T03:20:45.2703665Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 23173180600,
+    "load_duration": 3102900,
+    "prompt_eval_count": 895,
+    "prompt_eval_duration": 322286000,
+    "eval_count": 683,
+    "eval_duration": 22807680000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"restriction\",\n      \"definition\": \"The specific constraint mentioned in the current sentence.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"training\",\n      \"definition\": \"A phase of model operation where parameters are updated.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"generation\",\n      \"definition\": \"A phase of model operation where tokens are predicted.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"This restriction applies during both training and generation.\",\n      \"evidence\": \"This restriction applies during both training and generation.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"restriction\",\n        \"definition\": \"The specific constraint mentioned in the current sentence.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"applies_to\",\n      \"relation_definition\": \"A restriction is active or valid for a specified period or set of activities.\",\n      \"target\": {\n        \"name\": \"training\",\n        \"definition\": \"A phase of model operation where parameters are updated.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"both training and generation\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"This restriction applies during both training and generation.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"restriction\",\n        \"definition\": \"The specific constraint mentioned in the current sentence.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"applies_to\",\n      \"relation_definition\": \"A restriction is active or valid for a specified period or set of activities.\",\n      \"target\": {\n        \"name\": \"generation\",\n        \"definition\": \"A phase of model operation where tokens are predicted.\",\n        \"kind\": \"process\"\n      },\n      \"argument_qualifiers\": [\n        \"both training and generation\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"This restriction applies during both training and generation.\"\n    }\n  ],\n  \"confidence\": 1.0,\n  \"reason\": \"The current sentence explicitly states that the 'restriction' is active during 'training' and 'generation'. The previous sentence defines a specific type of restriction (causal attention mask), but the current sentence makes a general claim about the temporal scope ('applies during') of 'this restriction'. Therefore, two relations are extracted: one linking the restriction to training and another linking it to generation, sharing the qualifier 'both training and generation' to capture the conjunction accurately without splitting the shared condition into separate assertions that might lose the 'both' nuance. The predicate 'applies_to' is used as an open vocabulary term to describe the validity scope.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000769",
+  "source_run": "run_20261124_221208_UTC-0500_00e91062",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

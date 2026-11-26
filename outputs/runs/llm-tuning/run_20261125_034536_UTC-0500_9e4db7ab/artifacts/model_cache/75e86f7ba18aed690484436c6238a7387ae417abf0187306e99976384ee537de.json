@@ -1,0 +1,28 @@
+{
+  "key": "75e86f7ba18aed690484436c6238a7387ae417abf0187306e99976384ee537de",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T10:49:50.656049Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 28914146400,
+    "load_duration": 3541800,
+    "prompt_eval_count": 1750,
+    "prompt_eval_duration": 925292000,
+    "eval_count": 777,
+    "eval_duration": 27918840000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"teacher model\",\n      \"definition\": \"A model that provides labels or scores to a student model.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"student model\",\n      \"definition\": \"A model receiving labels or scores from a teacher model.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"numerical score\",\n      \"definition\": \"A continuous value used as a label, distinct from a binary classification.\",\n      \"kind\": \"property\"\n    },\n    {\n      \"name\": \"binary label\",\n      \"definition\": \"A discrete classification (e.g., positive/negative) used as a label.\",\n      \"kind\": \"property\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"A teacher model can also give the student model a numerical score instead of a binary label.\",\n      \"evidence\": \"A teacher model can also give the student model a numerical score instead of a binary label.\"\n    },\n    {\n      \"text\": \"The output given is a numerical score instead of a binary label.\",\n      \"evidence\": \"A teacher model can also give the student model a numerical score instead of a binary label.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"teacher model\",\n        \"definition\": \"A model that provides labels or scores to a student model.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"gives\",\n      \"relation_definition\": \"The source provides the target as an output.\",\n      \"target\": {\n        \"name\": \"numerical score\",\n        \"definition\": \"A continuous value used as a label, distinct from a binary classification.\",\n        \"kind\": \"property\"\n      },\n      \"argument_qualifiers\": [\n        \"to student model\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"can\",\n      \"evidence\": \"A teacher model can also give the student model a numerical score instead of a binary label.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"teacher model\",\n        \"definition\": \"A model that provides labels or scores to a student model.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"gives\",\n      \"relation_definition\": \"The source provides the target as an output.\",\n      \"target\": {\n        \"name\": \"binary label\",\n        \"definition\": \"A discrete classification (e.g., positive/negative) used as a label.\",\n        \"kind\": \"property\"\n      },\n      \"argument_qualifiers\": [\n        \"to student model\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"does not\",\n      \"evidence\": \"A teacher model can also give the student model a numerical score instead of a binary label.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly states that the teacher model provides a numerical score rather than a binary label to the student model. The relations capture this substitution with appropriate modality ('can' for the positive action, 'does not' for the excluded alternative). No external context is needed as the reference to 'student model' is clear within the sentence structure.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_009522",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

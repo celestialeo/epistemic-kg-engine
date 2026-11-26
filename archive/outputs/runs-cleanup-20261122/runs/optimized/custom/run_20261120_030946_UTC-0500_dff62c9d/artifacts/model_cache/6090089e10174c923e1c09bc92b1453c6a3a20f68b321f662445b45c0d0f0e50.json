@@ -1,0 +1,28 @@
+{
+  "key": "6090089e10174c923e1c09bc92b1453c6a3a20f68b321f662445b45c0d0f0e50",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T08:43:24.1078708Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7221022600,
+    "load_duration": 3543500,
+    "prompt_eval_count": 461,
+    "prompt_eval_duration": 152623000,
+    "eval_count": 400,
+    "eval_duration": 7032163000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"candidate_0055\": {\n    \"source\": {\"name\": \"system\", \"definition\": \"the processing entity performing the identification action.\",\"kind\": \"process\"},\n    \"target\": {\"name\": \"claim\", \"definition\": \"the specific assertion being evaluated for support.\",\"kind\": \"entity\"},\n    \"relation\": \"identifies_lacking_support\",\n    \"relation_definition\": \"The system marks a claim as unsupported when retrieval of evidence fails.\",\n    \"argument_qualifiers\": [\"due_to_missing_evidence\"],\n    \"conditions\": \"when_retrieval_fails\",\"modality\": \"assertive\"},\n  \"candidate_0056\": {\n    \"source\": {\"name\": \"system\", \"definition\": \"the processing entity performing the handling action.\",\"kind\": \"process\"},\n    \"target\": {\"name\": \"claim\", \"definition\": \"the assertion being classified as unsupported or false.\",\"kind\": \"entity\"},\n    \"relation\": \"distinguishes_missing_from_false\",\n    \"relation_definition\": \"The system separates a lack of evidence from an actual falsehood.\",\n    \"argument_qualifiers\": [\"upon_identification\"],\n    \"conditions\": null,\"modality\": \"assertive\"},\n  \"candidate_0057\": {\n    \"source\": {\"name\": \"system\", \"definition\": \"the processing entity performing the generation action.\",\"kind\": \"process\"},\n    \"target\": {\"name\": \"unsupported_conclusion\", \"definition\": \"a derived statement not backed by evidence.\",\"kind\": \"entity\"},\n    \"relation\": \"refrains_generating\",\n    \"relation_definition\": \"The system avoids creating a conclusion when support is absent.\",\n    \"argument_qualifiers\": [\"even_if_passages_absent\"],\n    \"conditions\": \"when_support_not_found\",\"modality\": \"possibility\"}\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_012055",
+  "source_run": "run_20261120_030946_UTC-0500_dff62c9d",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

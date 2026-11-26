@@ -1,0 +1,28 @@
+{
+  "key": "6c9655c43efd0c57a9f179638533c72eca6189dae5fce7c509dc782d3502a29e",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T16:54:20.9312973Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 26289830800,
+    "load_duration": 3558200,
+    "prompt_eval_count": 2478,
+    "prompt_eval_duration": 1136854000,
+    "eval_count": 702,
+    "eval_duration": 25102048000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"gap_analysis\": \"The source text defines offline inference as generating predictions in advance and caching them, citing a specific example of Google Search caching vaccine synonyms. However, it does not explicitly state the criteria (e.g., frequency, coverage) used to select which predictions are cached versus generated live. The gap is the missing link between the general concept of 'cache' in offline inference and the specific selection logic implied by the trade-off between resource saving and query coverage.\",\n  \"facts\": [\n    {\n      \"source_concept\": \"offline inference\",\n      \"target_concept\": \"cache\",\n      \"intended_fact\": \"Offline inference involves generating predictions in advance to populate a cache for later retrieval.\",\n      \"confidence\": 0.95,\n      \"reason\": \"Directly derived from the definition of offline inference in chunk_006.\",\"gap_ids\": [\"question_0022\"],\"added_knowledge\": \"None; this is a restatement of the provided text to establish the base relationship.\"\n    },\n    {\n      \"source_concept\": \"cache\",\n      \"target_concept\": \"computing resources\",\n      \"intended_fact\": \"Using a cache in offline inference saves computing resources compared to generating predictions at serving time.\",\n      \"confidence\": 0.95,\n      \"reason\": \"Derived from the statement that offline inference 'saves computing resources' in chunk_006.\",\n      \"gap_ids\": [\"question_0022\"],\n      \"added_knowledge\": \"None; this is a restatement of the provided text to establish the benefit relationship.\"\n    },\n    {\n      \"source_concept\": \"cache\",\n      \"target_concept\": \"low-frequency tasks\",\n      \"intended_fact\": \"A cache is suitable for tasks that run only weekly or monthly, where slow prediction is acceptable.\",\n      \"confidence\": 0.95,\n      \"reason\": \"Derived from the condition in chunk_006 linking cache usage to low-frequency task suitability.\",\n      \"gap_ids\": [\"question_0022\"],\n      \"added_knowledge\": \"None; this is a restatement of the provided text to establish the scope relationship.\"\n    },\n    {\n      \"source_concept\": \"cache\",\n      \"target_concept\": \"selection criteria\",\n      \"intended_fact\": \"The specific criteria for selecting which predictions are stored in a cache (e.g., frequency, coverage) are not explicitly defined in the provided text.\",\n      \"confidence\": 0.9,\n      \"reason\": \"Addresses the identified gap by acknowledging the missing information regarding selection logic while maintaining factual accuracy about the text's content.\",\n      \"gap_ids\": [\"question_0022\"],\n      \"added_knowledge\": \"Explicitly stating the absence of specific criteria in the source text to clarify the boundary of current knowledge.\"\n    }\n  ],\n  \"reason\": \"The explanation connects 'offline inference' to 'cache', then links 'cache' to its benefits ('computing resources') and scope ('low-frequency tasks'). The final fact addresses the gap by noting the missing selection criteria, ensuring the graph reflects exactly what is known versus what is unknown based on the provided text.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_004663",
+  "source_run": "recovery_20261125_153513_1d4712cf",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

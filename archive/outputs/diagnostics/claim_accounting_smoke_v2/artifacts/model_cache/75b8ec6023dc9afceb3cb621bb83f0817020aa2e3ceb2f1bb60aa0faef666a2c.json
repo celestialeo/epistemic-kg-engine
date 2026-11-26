@@ -1,0 +1,28 @@
+{
+  "key": "75b8ec6023dc9afceb3cb621bb83f0817020aa2e3ceb2f1bb60aa0faef666a2c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:08:04.6037951Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 28177220000,
+    "load_duration": 4065100,
+    "prompt_eval_count": 1797,
+    "prompt_eval_duration": 750744000,
+    "eval_count": 674,
+    "eval_duration": 11263236000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_004_s004\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"A retrieval encoder maps the question and document passages into embeddings\",\n        \"graph_edge_ids\": [\"chunk_004_relation_007\"],\n        \"graph_reading\": \"ASSERTED (retrieval encoder --[maps]--> embeddings) with condition: of the question and document passages\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"a similarity search selects candidate passages from an index\",\n        \"graph_edge_ids\": [\"chunk_004_relation_008\"],\n        \"graph_reading\": \"ASSERTED (similarity search --[selects]--> candidate passages) with condition: from an index\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"Both substantive claims in the focus sentence are directly supported by graph edges chunk_004_relation_007 and chunk_004_relation_008, which capture the mapping action and the selection action with their respective conditions.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_004_s005\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"The selected passages are added to the language model's context\",\n        \"graph_edge_ids\": [\"chunk_004_relation_009\"],\n        \"graph_reading\": \"ASSERTED (selected passages --[added to]--> language models context)\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence asserts that selected passages are added to the language model's context, which is exactly expressed by graph edge chunk_004_relation_009.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_004_s006\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Updating this document index can make revised course material available without retraining the language model\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The focus sentence claims that updating the document index enables availability of revised material without retraining. No graph edge asserts this specific causal relationship or the 'without retraining' condition. Existing edges (chunk_004_relation_011) only state that retrieval does not change parameters, but do not cover the update mechanism or the benefit of avoiding retraining.\",\n    \"missing\": [\n      {\n        \"reason\": \"The graph lacks an edge asserting that updating the document index makes revised material available without retraining the language model.\",\n        \"missing_claim\": \"Updating this document index can make revised course material available without retraining the language model\",\n        \"source_sentence_ids\": [\"chunk_004_s006\"]\n      }\n    ],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000084",
+  "source_run": "claim_accounting_smoke",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

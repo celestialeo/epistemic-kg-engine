@@ -1,0 +1,28 @@
+{
+  "key": "37cbfd98c8f31888052fc17b362f1bd34b8032b4ad6d07491e3d93a140aa4552",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:05:06.3566024Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 9547203400,
+    "load_duration": 3036900,
+    "prompt_eval_count": 483,
+    "prompt_eval_duration": 231262000,
+    "eval_count": 551,
+    "eval_duration": 9271102000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"quantization\",\n      \"definition\": \"A technique applied after training to reduce memory requirements.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_quantization\"\n    },\n    {\n      \"name\": \"numerical_precision_of_model_parameters_and_activations\",\n      \"definition\": \"The level of detail represented by the bit-widths of model parameters and activations.\",\n      \"kind\": \"property\",\n      \"node_id\": \"n_numerical_precision\"\n    },\n    {\n      \"name\": \"higher_bit_widths\",\n      \"definition\": \"Representations using more bits per value (e.g., float32).\",\n      \"kind\": \"property\",\n      \"node_id\": \"n_higher_bit_widths\"\n    },\n    {\n      \"name\": \"lower_bit_widths\",\n      \"definition\": \"Representations using fewer bits per value (e.g., int8).\",\n      \"kind\": \"property\",\n      \"node_id\": \"n_lower_bit_widths\"\n    },\n    {\n      \"name\": \"total_storage_size_required_for_the_model\",\n      \"definition\": \"The amount of memory needed to store the model.\",\n      \"kind\": \"property\",\n      \"node_id\": \"n_total_storage_size\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0010\": {\n      \"source_id\": \"n_quantization\",\n      \"target_id\": \"n_numerical_precision\",\n      \"relation\": \"reduces_from_higher_to_lower_bit_widths\",\n      \"relation_definition\": \"The process of quantization decreases the numerical precision from higher bit-widths to lower bit-widths.\",\n      \"argument_qualifiers\": [\n        \"from_higher_bit_widths\",\n        \"to_lower_bit_widths\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"assertive\"\n    },\n    \"candidate_0011\": {\n      \"source_id\": \"n_numerical_precision\",\n      \"target_id\": \"n_total_storage_size\",\n      \"relation\": \"lowering_decreases\",\n      \"relation_definition\": \"Lowering the numerical precision directly results in a decrease of the total storage size.\",\n      \"argument_qualifiers\": [\n        \"directly\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"assertive\"\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_002028",
+  "source_run": "run_20261124_175717_UTC-0500_58a3f705",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

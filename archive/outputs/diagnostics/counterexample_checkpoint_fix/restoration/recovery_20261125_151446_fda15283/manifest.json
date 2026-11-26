@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "run_id": "recovery_20261125_151446_fda15283",
+  "status": "checkpoint_verified",
+  "source_run": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\runs\\llm-tuning\\custom\\run_20261125_034536_UTC-0500_9e4db7ab",
+  "config": {
+    "input": "data\\llm_tuning.txt",
+    "chapter": "custom",
+    "output_root": "C:\\Users\\miche\\Desktop\\epistemic-kg-engine\\outputs\\diagnostics\\counterexample_checkpoint_fix\\restoration",
+    "chunk_words": null,
+    "seed_limit": 0,
+    "background_proposal_limit": 0,
+    "seed_similarity_threshold": null,
+    "seed_threshold": null,
+    "seed_max_words": null,
+    "model": "qwen3.5:9b",
+    "registry_model": null,
+    "batch_size": null,
+    "identity_candidates": null,
+    "health_window": 10,
+    "health_min_samples": 5,
+    "health_max_failure_rate": 0.5,
+    "think": false,
+    "context_tokens": 24576,
+    "max_output_tokens": 4096,
+    "document_context_tokens": 24576,
+    "document_output_tokens": 4096,
+    "model_timeout": 600,
+    "no_model_cache": true,
+    "resume": null,
+    "embedding_model": "nomic-embed-text",
+    "neo4j": false,
+    "start_neo4j": false,
+    "no_open": true,
+    "interact": false,
+    "no_explorer": true,
+    "explorer_port": 0,
+    "new": false,
+    "resolved_settings": {
+      "model": {
+        "context_tokens": 8192,
+        "max_output_tokens": 4096,
+        "repair_output_tokens": 1536,
+        "timeout_seconds": 600,
+        "validation_retries": 2,
+        "temperature": 0,
+        "seed": 7,
+        "estimated_bytes_per_token": 3,
+        "prompt_reserve_tokens": 1024,
+        "registry_output_tokens": 768,
+        "service_retries": 2,
+        "service_retry_seconds": 3
+      },
+      "workload": {
+        "chunk_words": null,
+        "batch_size": null,
+        "identity_candidates": null,
+        "seed_limit": null,
+        "background_proposal_limit": null,
+        "retrieval_candidates": 16
+      },
+      "review": {
+        "repair_attempts": 2,
+        "reasoning": false,
+        "reasoning_fallback": true,
+        "alias_similarity": 0.7,
+        "explanation_repair_max_attempts": 3
+      },
+      "health": {
+        "window": 10,
+        "minimum": 5,
+        "max_failure_rate": 0.5
+      },
+      "text": {
+        "name_chars": 400,
+        "definition_chars": 400,
+        "detail_chars": 120,
+        "explanation_chars": 800,
+        "short_explanation_chars": 500,
+        "question_chars": 600,
+        "long_explanation_chars": 1200,
+        "summary_chars": 1800,
+        "display_definition_chars": 240,
+        "graph_label_chars": 90,
+        "graph_definition_chars": 160,
+        "modality_chars": 80,
+        "raw_predicate_chars": 80,
+        "identifier_chars": 300,
+        "feedback_chars": 3000
+      },
+      "labels": {
+        "predicate_words": 6,
+        "predicate_chars": 80
+      },
+      "evaluation_weights": {
+        "claim_fidelity_f1": 0.55,
+        "idea_order_agreement": 0.25,
+        "rouge_l_f1": 0.1,
+        "length_similarity": 0.1
+      },
+      "assessment_weights": {
+        "match": 1.0,
+        "related": 0.5,
+        "conflict": 0.0,
+        "not_demonstrated": 0.0
+      },
+      "ui": {
+        "input_chars": 1500,
+        "professor_summary_items": 5,
+        "quiz_recent_questions": 5,
+        "quiz_neighbor_facts": null,
+        "quiz_round_questions": null,
+        "quiz_duplicate_similarity": 0.85,
+        "quiz_generation_attempts": 3,
+        "graph_simulation_ticks": 240,
+        "graph_edge_length": 230,
+        "graph_label_offset": 224,
+        "graph_node_wrap_chars": 27,
+        "graph_fit_zoom": 1.6,
+        "graph_min_zoom": 0.06,
+        "graph_max_zoom": 5,
+        "graph_zoom_sensitivity": 0.001,
+        "graph_velocity_limit": 12,
+        "graph_damping": 0.7,
+        "graph_repulsion": 1400,
+        "graph_centering": 0.0004,
+        "graph_min_cooling": 0.08,
+        "graph_spring_strength": 0.006,
+        "graph_participant_distance": 190,
+        "graph_participant_strength": 0.003,
+        "graph_collision_strength": 0.12,
+        "graph_collision_speed": 8,
+        "student_name_chars": 120,
+        "timestamp_chars": 64,
+        "run_id_chars": 10,
+        "student_id_chars": 6,
+        "thumbnail_nodes": null,
+        "thumbnail_edges": null,
+        "interaction_batch_events": 50,
+        "interaction_batch_bytes": 48000,
+        "interaction_details_bytes": 32000,
+        "interaction_flush_ms": 500,
+        "quiz_focus_questions": 2
+      },
+      "operations": {
+        "server_start_seconds": 10,
+        "server_stop_seconds": 10,
+        "server_poll_seconds": 0.05,
+        "database_start_seconds": 120,
+        "database_poll_seconds": 3,
+        "database_timeout_seconds": 30,
+        "database_connect_seconds": 5,
+        "definition_cache_entries": 32768,
+        "community_passes": 30,
+        "server_backlog": 128,
+        "browser_open_delay_seconds": 0.3
+      },
+      "metrics": {
+        "shared_knowledge_fraction": 0.8
+      }
+    },
+    "effective_chunk_words": 911
+  },
+  "scope": "complete_debate_checkpoint_continuation",
+  "pipeline_stages": [
+    "checkpoint_restore",
+    "debate",
+    "graph",
+    "evaluation"
+  ],
+  "started_at": "2026-11-25T15:14:46.365728+00:00",
+  "no_earlier_stage_replay": true,
+  "checkpoint_migration": {
+    "mode": "pinned_validator_migration",
+    "policy": "counterexample-explanations-v1",
+    "policy_sha256": "9ca6d169b167f5823e00d9a26ff07d454c22c505e5dcf2fc93a8b40ce3cdbcd1",
+    "changed_modules": [
+      "pipeline/debate.py",
+      "pipeline/settings.py"
+    ],
+    "original_signature": "4004ef3607cf2a47beaf5e44484f511ab793e3b3f67d310027b80c4669ff6c4c",
+    "original_checkpoint_sha256": "c5efc54b8c2e08d9a3deab0f62a023a0434f297ca7e3904e8d3ef624a619c0de",
+    "completed_seeds": [
+      "seed_001",
+      "seed_002",
+      "seed_003",
+      "seed_004",
+      "seed_005",
+      "seed_006",
+      "seed_007",
+      "seed_008",
+      "seed_009"
+    ],
+    "preserved_state_sha256": "0a355182291c122f8fd831a1ff655a8eb4a6ba3c87634cf64ef030e7f1998bf0",
+    "preserved_decisions_sha256": "6d56e3b5943940a72713f4bdb6c16db0a86b1aa75983683d590412cf13b66656"
+  },
+  "finished_at": "2026-11-25T15:14:48.233803+00:00",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_008",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_003_concept_2",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_003_relation_006",
+      "status": "unresolved",
+      "reason": "Relation normalization unresolved: relation_definition failed for chunk_003_relation_006 after 3 attempts: Inverse must name an existing contract or be null"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_008_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'A teacher model can also give the student model a numerical score instead of a binary label' is expressed entirely in PREVIOUS_SENTENCE. The CURRENT_SENTENCE only compares the quality of signals ('richer training signal') provided by these two inputs; it does not assert that the teacher model gives the score. Therefore, no relationship supported by CURRENT_SENTENCE exists for this claim."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_011_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim describes a specific example of ambiguous reference resolution found in PREVIOUS_SENTENCE. The CURRENT_SENTENCE explicitly states that prompt engineering does not change LLM parameters and contains no text supporting the 'apple' vs 'Apple' ambiguity or the resulting behavior. Per instructions, claims expressed only in a previous sentence must be rejected even if a quote extends into the current one; overlap alone does not support the claim."
+    },
+    {
+      "step": "concept_identity",
+      "id": "llm",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "concept_identity",
+      "id": "offline inference",
+      "status": "unresolved",
+      "reason": "concept_alias_resolver failed for reconcile_offline inference after 3 attempts: A concept alias must select a supplied canonical name"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_coverage_0_2_claims_2",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; Rejected: The claim 'A binary label provides a less rich training signal' is not explicitly stated in CURRENT_SENTENCE. The sentence only states that the score gives a *richer* signal than a binary label does; inferring the negative property ('less rich') for the binary label relies on external logic rather than a direct assertion in the current text, violating the rule to reject claims expressed only in previous sentences or inferred without explicit support."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_coverage_0_2_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; Rejected: The relationship relies on a truncated quote ('...than a binary label does.') which violates the requirement for continuous verbatim evidence. Furthermore, the predicate 'provides' with qualifier 'less rich' attempts to assert a negative property not explicitly stated as such in the current sentence (which uses comparative 'richer'). A faithful extraction requires explicit support."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The claim text 'The purpose was to cache...' is not supported by the current sentence. The current sentence states 'Google Search used an LLM... to cache...', indicating the agent (Google Search) performed the action, not that the action's sole purpose was defined as such. Furthermore, no continuous verbatim quote in the source supports the specific phrasing of this claim."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_claims_2",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The claim text 'The list covered more than 50 languages' is not supported by a continuous verbatim quote. The source says 'in more than 50 languages', but the claim adds 'The list covered'. While semantically similar, strict adherence to verbatim quotes for evidence requires the exact string. More critically, without an explicit predicate linking these concepts in the source text, this stands as an unsupported assertion relative to the strict extraction rules."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_relation_003",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relationship 'LLM -> performs -> cache' is not directly stated in the source. The source says 'Google Search used an LLM... to cache'. The agent performing the caching is 'Google Search', not the 'LLM'. The LLM was a tool used *by* Google Search. Therefore, the source does not support the claim that the LLM itself performs the caching action; it supports that Google Search used the LLM for this purpose."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_relation_004",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relationship 'cache -> targets -> list...' is not supported by a continuous verbatim quote matching the claim. The source text is '...to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.' The proposed evidence cuts off 'a' and changes structure. Additionally, the semantic link is that Google Search used the LLM *to* cache, making 'cache' part of the purpose clause rather than an independent process targeting a list in this specific syntactic construction."
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_003",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_004",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_005",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0017",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion claims that foundation LLMs 'lacks task-specific optimization for specific applications.' The counterexample cites Llama 2 being successfully fine-tuned (via QLoRA) for medical question answering. This directly contradicts the assertion by demonstrating a concrete instance where a foundation LLM underwent successful task-specific optimization. Therefore, the case refutes the Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0021",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0021 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0026",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0026 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0027",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion claims that foundation LLMs do not function as a complete solution specifically because they lack task-specific optimization. The counterexample presents a scenario where a foundation model (Llama-2-70b) is deployed directly without fine-tuning (lacking task-specific optimization) yet achieves high utility and is considered a complete solution for general domains like summar化 Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0034",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0034 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0044",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The counterexample describes a specific instance where a foundation LLM fails to recognize world knowledge (asserting London is the capital of Italy). The literal assertion claims that foundation LLMs 'recognize' world knowledge, with the additional argument that this recognition is derived from broad training data. The counterexample directly contradicts the guarantee implied by the term 'recogn' Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0046",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0046 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0063",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion states that higher model capacity results in better predictions. The counterexample presents a specific scenario where high capacity (deep neural network) leads to worse predictions (higher error) compared to low capacity (linear regression) due to overfitting on small data. This directly refutes the universal implication of the assertion by showing a case where increased容量 ( Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    }
+  ],
+  "performance": {
+    "model_calls": 0,
+    "cache_hits": 0
+  },
+  "artifacts": {
+    "input.txt": {
+      "sha256": "0a320f418b2b14349930413b98a745d30ac1beef775c14860aabcac582ef9b5a",
+      "bytes": 5687
+    },
+    "artifacts/environment.json": {
+      "sha256": "6b3b38990552139714e0d7ee7880518330ff9727c3f7d2e9d2184e946277812d",
+      "bytes": 32256
+    },
+    "recovery_source/artifacts/checkpoints/debate.json": {
+      "sha256": "a6fdba787c4fd767ed5768999fc553816c237dffef5d33d3c9dfc4809744b37b",
+      "bytes": 7034617
+    },
+    "recovery_source/original_checkpoint.json": {
+      "sha256": "c5efc54b8c2e08d9a3deab0f62a023a0434f297ca7e3904e8d3ef624a619c0de",
+      "bytes": 7033739
+    },
+    "artifacts/paragraphs.json": {
+      "sha256": "a47d22ef40ffe76d4d50f7980891ceb52dacac9f8cf18e54970c1618c031ccfd",
+      "bytes": 6292
+    },
+    "artifacts/chunks.json": {
+      "sha256": "9fe5594c47438b8bc59e4374065cfba20b9be68f49400e635de4e33ab471b776",
+      "bytes": 6812
+    },
+    "artifacts/unresolved_items.json": {
+      "sha256": "bde17e6002ff34e7af9fbc125ad4dd2f6d673930f66cf15d1b34e74bfd5334c2",
+      "bytes": 11440
+    },
+    "artifacts/relations.json": {
+      "sha256": "e46ff99086786d5eb1a71c68271c942cdfecc2156e8524c38417e8923729ceb1",
+      "bytes": 561291
+    },
+    "artifacts/concepts.json": {
+      "sha256": "1541fcc76d8580c63e1ef039ea39a370350d6cfdf58d9ad98e5e9665beeb9ae9",
+      "bytes": 208369
+    },
+    "artifacts/extraction_proposals.json": {
+      "sha256": "d32ae6e83b1f7aad4e8f42749f309d5c8de5af2e633f1ebe6cdb192b566301aa",
+      "bytes": 972707
+    },
+    "artifacts/extraction_issues.json": {
+      "sha256": "7e542345a54f36d6f131990c5e3a912f3ccc7038682bc218f0917128ec2c6ae5",
+      "bytes": 4670
+    },
+    "artifacts/outline_progress.json": {
+      "sha256": "d72cb990a57e1708c3fdcb84d172b89ea1e6314876060f6d94625a2086eeabd1",
+      "bytes": 5377
+    },
+    "artifacts/chapter_outline.json": {
+      "sha256": "57d98485c9895e97311fb9a5bbc3977a615a08e9b7b4422aa451067eb18d2d7c",
+      "bytes": 7159
+    },
+    "artifacts/concept_reconciliation.json": {
+      "sha256": "35290f65afe9977911abe3ee933e2f2ecab65907503e0d88d31174fd26239447",
+      "bytes": 6577
+    },
+    "artifacts/extraction_review.json": {
+      "sha256": "0106d86dde40b74be7846a96849e93102d8a5032f74622a9f370f8a149d44ace",
+      "bytes": 509748
+    },
+    "artifacts/extractions.json": {
+      "sha256": "d32ae6e83b1f7aad4e8f42749f309d5c8de5af2e633f1ebe6cdb192b566301aa",
+      "bytes": 972707
+    },
+    "artifacts/extraction_quality.json": {
+      "sha256": "b9ec552d0e5189dd8a6beacda5e9a58c32207798122fedfb7ac0a027580bd4fc",
+      "bytes": 704
+    },
+    "artifacts/extraction_rejections.json": {
+      "sha256": "976dbbdb0dc1aefb7dfad5fe06844a79248f270bac1c576c39c55d3f26d1b361",
+      "bytes": 102
+    },
+    "artifacts/source_coverage.json": {
+      "sha256": "83ce37487469c723b55d35caeda0809080ae132f025d1e270cfbd78850446e6b",
+      "bytes": 38144
+    },
+    "artifacts/seeds.json": {
+      "sha256": "ad8cebd0515bb6acc06bf5a8f37b0d32d961b9fddc8650c6288a98b36a441554",
+      "bytes": 105873
+    },
+    "artifacts/seed_progress.json": {
+      "sha256": "c26bc94fbaa0b18670d19ac8b22bb66193a039cc0ec99475d1fc0b3a7fffca3b",
+      "bytes": 29846
+    },
+    "artifacts/debate_progress.json": {
+      "sha256": "1ec9e53974c60ab1dd8bd0db0107445f77bb4115f9cd749cdd82ae25b42cb7ed",
+      "bytes": 945705
+    },
+    "artifacts/repair_budgets/seed_001_explanation_repair.json": {
+      "sha256": "0eeb728062ce4c0fc03b510b49383d054b17aebd494bfa245733c8399891ee2c",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_002_explanation_repair.json": {
+      "sha256": "f69a7f29b641456e2ebc72255ada0176a08636de3b01176e052554acb6f95757",
+      "bytes": 748
+    },
+    "artifacts/repair_budgets/seed_003_explanation_repair.json": {
+      "sha256": "541c0582980526e2e215bac7a2a894fa933c96a0c7c2491d44e7b97d5226c3f7",
+      "bytes": 748
+    },
+    "artifacts/repair_budgets/seed_003_explanation_repair_2.json": {
+      "sha256": "e2e51c21277f887372d37eb643d23f5a4ec68ef2e23f98e40e49cff23b55a0f3",
+      "bytes": 750
+    },
+    "artifacts/repair_budgets/seed_004_explanation_repair.json": {
+      "sha256": "b23596f40e6f2757caaba9409c2c67ad2768833d43a207dcc4a1f4c79b5fa3f1",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_005_explanation_repair.json": {
+      "sha256": "e00addf1e1b724b45d5de4ce14878edf8303e35ad371e076703de7881fed0850",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_006_explanation_repair.json": {
+      "sha256": "cc6924722d5411f67e89345b07daeccff346c01db43089c5ca277376a3d29ded",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_007_explanation_repair.json": {
+      "sha256": "96f5b81ecc1ca6fafce66638f43764a1103d62baf8b0599293dd6e29c1cd26a9",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_007_explanation_repair_2.json": {
+      "sha256": "f74894eaaa216e6beeb0a9fc1f5e81bc2502ad7fde83042a1f65a702c5b15b57",
+      "bytes": 749
+    },
+    "artifacts/repair_budgets/seed_008_explanation_repair.json": {
+      "sha256": "2019f2c66e59c1e091928328bb167dff0b962723d865d0ff0504593fc7e95058",
+      "bytes": 747
+    },
+    "artifacts/repair_budgets/seed_009_explanation_repair.json": {
+      "sha256": "26dd996da6d623057fa939af4ff0709228adbf93802f2936a9e3cdc9a0398a83",
+      "bytes": 747
+    },
+    "artifacts/checkpoints/debate.json": {
+      "sha256": "a6fdba787c4fd767ed5768999fc553816c237dffef5d33d3c9dfc4809744b37b",
+      "bytes": 7034617
+    }
+  }
+}

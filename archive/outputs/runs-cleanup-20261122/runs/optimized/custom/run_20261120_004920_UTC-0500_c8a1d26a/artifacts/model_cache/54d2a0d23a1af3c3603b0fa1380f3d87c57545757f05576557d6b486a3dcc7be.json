@@ -1,0 +1,28 @@
+{
+  "key": "54d2a0d23a1af3c3603b0fa1380f3d87c57545757f05576557d6b486a3dcc7be",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:55:10.9723146Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13494950600,
+    "load_duration": 3713300,
+    "prompt_eval_count": 1796,
+    "prompt_eval_duration": 761941000,
+    "eval_count": 731,
+    "eval_duration": 12678470000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_002_coverage_0_1_relation_001\": {\n    \"qualified_reading\": \"ASSERTED (restriction --[applies during]--> training); conditions: participant/scope: generation\",\n    \"reason\": \"The quote 'This restriction applies during both training and generation' explicitly states the restriction is active during training. The candidate's condition 'participant/scope: generation' is a qualification of the *context* or *scope* in which this specific relation instance is being asserted or reviewed, not a requirement for the relation to hold (since the quote says it applies during training regardless). However, strictly following the instruction 'If making the assertion true would require adding a negation, condition or participant, reject it', we must check if the candidate's condition contradicts the literal reading. The literal reading is 'restriction applies during training'. The candidate adds 'conditions: participant/scope: generation'. This implies the relation 'restriction applies during training' is only valid/true when the scope is 'generation'. This is a contradiction because the quote says it applies during training *and* generation, implying it applies during training even if the current scope isn't generation. Therefore, adding this condition restricts the truth of the statement found in the quote. The candidate asserts a conditional truth that contradicts (\",\"candidate_id\": \"chunk_002_coverage_0_1_relation_001\",\n    \"semantics_valid\": false,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": false,\n    \"certain\": false,\n    \"evidence_status\": \"unsupported\",\n    \"domain_relevance\": 0.95,\n    \"accept\": false,\n    \"objections_resolved\": false,\n    \"rejection_categories\": [\n      \"meaning_changed\"\n    ]\n  },\n  \"chunk_002_coverage_0_1_relation_002\": {\n    \"qualified_reading\": \"ASSERTED (restriction --[applies during]--> generation); conditions: participant/scope: training\",\n    \"reason\": \"The quote 'This restriction applies during both training and generation' explicitly states the restriction is active during generation. The candidate's condition 'participant/scope: training' implies the relation 'restriction applies during generation' is only valid when the scope is 'training'. This contradicts the literal reading which asserts the relation holds during generation unconditionally (or at least within the context of the model's operation). Adding a condition that limits the validity of the assertion to a different process ('training') changes the meaning from 'applies during generation' to 'applies during generation IF training is the scope', which is not supported by the quote. The quote supports the relation without this specific conditional restriction.\",\n    \"candidate_id\": \"chunk_002_coverage_0_1_relation_002\",\n    \"semantics_valid\": false,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": false,\n    \"certain\": false,\n    \"evidence_status\": \"unsupported\",\n    \"domain_relevance\": 0.95,\n    \"accept\": false,\n    \"objections_resolved\": false,\n    \"rejection_categories\": [\n      \"meaning_changed\"\n    ]\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006091",
+  "source_run": "run_20261120_004920_UTC-0500_c8a1d26a",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

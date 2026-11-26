@@ -1,0 +1,149 @@
+--- pipeline.extraction.before
++++ pipeline.extraction
+@@ -6,7 +6,8 @@
+ from .qualifiers import correct_polarity
+ from .records import Record, normalize, normalize_name, name_occurs
+ from .registry import Concept, ConceptKind
+-from .models import ModelResponseError, OutputLimitError
++from .models import ModelResponseError, OutputLimitError, request_budget
++from .retrieval import shortlist
+ from .health import finish_item
+ from .events import EVENT_POLICY, kind_error
+ 
+@@ -178,13 +179,24 @@
+         r"\b(?:this|that|these|those|it|its|itself|they|them|their|theirs|themselves)\b", normalized))
+ 
+ 
++def reference_sentences(unit, context):
++    """Earlier verbatim sentences with source offsets; no look-ahead or inferred text."""
++    sentences = []
++    for passage in context.get('reference_paragraphs', [context]):
++        before = passage['text'][:max(0, unit['start'] - passage['start'])].rstrip()
++        boundaries = [0, *[m.end() for m in re.finditer(r'(?<=[.!?])\s+(?=\S)', before)], len(before)]
++        for left, right in zip(boundaries, boundaries[1:]):
++            raw = before[left:right]
++            text = raw.strip()
++            if text and re.search(r'[.!?]$', text):
++                start = passage['start'] + left + len(raw) - len(raw.lstrip())
++                sentences.append(dict(text=text, start=start, end=start + len(text)))
++    return sentences
++
++
+ def reference_context(unit, context):
+-    """Bounded verbatim antecedent context; never a source of separate claims."""
+-    before = context["text"][:max(0, unit["start"] - context["start"])].rstrip()
+-    sentences = re.split(r"(?<=[.!?])\s+(?=\S)", before)
+-    if sentences and not re.search(r"[.!?]$", sentences[-1]):
+-        sentences.pop()
+-    return " ".join(sentences[-3:]) or context.get("preceding_sentence", "")
++    """Start with three preceding sentences; resolve_endpoint can widen on ambiguity."""
++    return ' '.join(row['text'] for row in reference_sentences(unit, context)[-3:]) or context.get('preceding_sentence', '')
+ 
+ 
+ def strip_definite_article(name):
+@@ -299,18 +311,26 @@
+     if key in cache:
+         return cache[key]
+     before = previous_sentence(context, unit["start"])
+-    earlier = reference_context(unit, context)
+-    available = [entry for entry in concepts.entries.values()
+-                 if any(name_occurs(name, earlier + " " + unit["text"])
+-                        for name in [entry["name"], *entry.get("aliases", [])])]
++    sentences = reference_sentences(unit, context)
++    selected = sentences[-3:]
++    older = shortlist(reference + ' ' + endpoint.definition + ' ' + unit['text'],
++                      sentences[:-3], None, name_field='text')
++
++    def payload_for(spans):
++        earlier = ' '.join(row['text'] for row in sorted(spans, key=lambda row: row['start'])) or context.get('preceding_sentence', '')
++        available = [entry for entry in concepts.entries.values()
++                     if any(name_occurs(name, earlier + ' ' + unit['text'])
++                            for name in [entry['name'], *entry.get('aliases', [])])]
++        return dict(reference_phrase=reference, proposed_concept=endpoint.model_dump(exclude={'reference_phrase'}),
++                    PREVIOUS_SENTENCE=before, REFERENCE_CONTEXT=earlier,
++                    CURRENT_SENTENCE=unit['text'], available_concepts=available)
+ 
+     def validate(result):
+         if result.concept is not None and reference_name(result.concept.name):
+             raise ValueError("Return a standalone concept name: replace remaining pronouns or demonstratives "
+                              "with their text-supported antecedents, preserving the concept and its scope")
+ 
+-    try:
+-        result = models.ask("concept_reference_resolver",
++    instruction = (
+             "Resolve this reference phrase using CURRENT_SENTENCE and the verbatim REFERENCE_CONTEXT. "
+             "Return the standalone concept it denotes, using an available canonical name when it is the same "
+             "concept. You may return an existing concept or a standalone reformulation grounded in the "
+@@ -322,11 +342,40 @@
+             "not the process itself. Do not turn a statement into a concept or invent a referent. "
+             "Return concept=null (ambiguous) only when the text genuinely leaves the referent unclear. "
+             "The reference joins its referent "
+-            "and must never become a separate candidate.",
+-            dict(reference_phrase=reference, proposed_concept=endpoint.model_dump(exclude={"reference_phrase"}),
+-                 PREVIOUS_SENTENCE=before, REFERENCE_CONTEXT=earlier,
+-                 CURRENT_SENTENCE=unit["text"], available_concepts=available),
+-            EndpointRepair, identifier, validator=validate)
++            "and must never become a separate candidate.")
++    options = dict(num_ctx=setting('model', 'context_tokens'), num_predict=setting('model', 'max_output_tokens'))
++    options.update(getattr(models, 'options', {}))
++    def fits(payload):
++        return request_budget(instruction, payload, EndpointRepair, options)['fits']
++
++    try:
++        payload = payload_for(selected)
++        if not fits(payload):
++            raise OutputLimitError('Reference context cannot fit the existing model budget')
++        growth = 3
++        while True:
++            result = models.ask('concept_reference_resolver', instruction, payload,
++                                EndpointRepair, identifier, validator=validate)
++            if result.concept is not None:
++                # Preserve antecedent evidence for the unchanged downstream source checks.
++                saved = context.setdefault('resolved_reference_spans', [])
++                for span in selected:
++                    if span['text'] not in context['text'] and span not in saved:
++                        saved.append(span)
++                break
++            added = []
++            while older and len(added) < growth:
++                candidate = older.pop(0)
++                if fits(payload_for([*selected, *added, candidate])):
++                    added.append(candidate)
++            if not added:
++                break
++            selected.extend(added)
++            payload = payload_for(selected)
++            trace.emit('extraction.reference_context_expanded', entity_id=identifier,
++                       reference=reference, added_spans=added, sentence_count=len(selected),
++                       budget=request_budget(instruction, payload, EndpointRepair, options))
++            growth *= 2
+     except ModelResponseError as exc:
+         trace.emit("extraction.reference_unresolved", entity_id=identifier, reference=reference, error=str(exc))
+         cache[key] = None
+@@ -431,6 +480,7 @@
+                  for previous, current in zip(paragraphs, paragraphs[1:])}
+     for chunk in chunks:
+         context = evidence_context(chunk, by_paragraph[chunk["paragraph_id"]])
++        context['reference_paragraphs'] = [p for p in paragraphs if p['start'] <= chunk['start']]
+         if context["start"] == by_paragraph[chunk["paragraph_id"]]["start"]:
+             context["preceding_sentence"] = preceding.get(chunk["paragraph_id"], "")
+         print(f"  Extracting {chunk['id']}", flush=True)
+@@ -447,6 +497,7 @@
+             outcomes[identifier] = reason
+ 
+         for unit, result, error in extraction_units(chunk, models, trace, relations, context):
++            context['resolved_reference_spans'] = []
+             reference_cache = {}
+             issue_count = len(data["issues"])
+             if error:
+@@ -535,7 +586,9 @@
+                     "source": source, "target": target, "relation": key,
+                     "relation_definition": relations.entries[key]["definition"], "id": identifier,
+                     "chunk_id": chunk["id"], "paragraph_id": chunk["paragraph_id"], "origin": "document",
+-                    "evidence_context": context["text"],
++                    "evidence_context": "\n\n".join([*(span['text'] for span in sorted(
++                        context.get('resolved_reference_spans', []), key=lambda span: span['start'])), context["text"]]),
++                    "reference_context_spans": list(context.get('resolved_reference_spans', [])),
+                     "extraction_unit_id": unit["id"], "reason": "Quoted extraction proposed for semantic review"})
+             data["units"].append(dict(unit, status="incomplete" if len(data["issues"]) > issue_count else "complete"))
+         data["confidence"] = data["confidence"] / weight if weight else 0.

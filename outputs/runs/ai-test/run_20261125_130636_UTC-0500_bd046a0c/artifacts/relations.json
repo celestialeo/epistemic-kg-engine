@@ -1,0 +1,2152 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds, retains, or performs storage of TARGET. TARGET is the stored content, not its destination. Explicit occurrence qualifiers specify storage format, medium or conditions.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "uses",
+      "definition": "The source entity employs the target mechanism or method to perform its function.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "processes",
+      "definition": "The source action operates upon or handles the target data.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "helps",
+      "definition": "The source process facilitates or improves the target capability.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "operates_by",
+      "definition": "SOURCE applies a computational process to TARGET by establishing pairwise relationships between all instances of TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_pairwise_relationships_for",
+      "definition": "SOURCE computes pairwise relationships between all instances of TARGET to generate attention weights that quantify relevance.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes",
+      "definition": "TARGET is generated by SOURCE through pairwise relationship computation between all input tokens.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "calculates",
+      "definition": "SOURCE computes or derives TARGET values through a specific algorithmic operation.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "indicates",
+      "definition": "SOURCE provides information about the necessary adjustment direction and magnitude for TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes_partial_derivatives_for",
+      "definition": "SOURCE computes partial derivatives of TARGET with respect to model parameters",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "indicate",
+      "definition": "SOURCE indicates direction/magnitude for adjustment of TARGET",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "calculates_gradients_of_loss_function_with",
+      "definition": "SOURCE computes the partial derivatives of the loss function with respect to TARGET parameters.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "acts_to_prevent",
+      "definition": "SOURCE is a process that reduces or mitigates TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "prevents",
+      "definition": "SOURCE acts to reduce or eliminate TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "incorporates",
+      "definition": "SOURCE includes or contains TARGET as a constituent part.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "queries_and_retrieves",
+      "definition": "SOURCE performs an action of querying and retrieving information from TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "receives",
+      "definition": "SOURCE obtains TARGET as input for a specific purpose.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "conditions_output_on",
+      "definition": "SOURCE adjusts its generation based on input received from TARGET.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "receives_input_from",
+      "definition": "SOURCE obtains data or context provided by TARGET.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "The source entity employs the target mechanism or method to perform its function.",
+        "source": "small transformer",
+        "target": "self attention",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to process text"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The label 'uses' correctly reflects the active direction defined in the source ('small transformer uses self attention'). The new_contract definition matches the source assertion exactly without adding extra restrictions. The 'symmetric' flag is false, which is correct because 'uses' is not symmetric (A uses B does not imply B uses A). The 'inverse' field is null, which is valid as the inverse relation for 'uses' would be 'is used by', and since no specific inverse label was provided or required in the source data to be mapped, null is an acceptable representation when the inverse contract is not explicitly defined. No negation or uncertainty was present in the source to require folding into a second negation."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "The source entity employs the target mechanism or method to perform its function.",
+        "source": "small transformer",
+        "target": "backpropagation",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": "during training",
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve its predictions"
+          ]
+        }
+      },
+      "canonical_key": "uses",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive aspects: source ('small transformer'), target ('backpropagation'), relation ('uses'), conditions ('during training'), modality (null), and argument_qualifiers ('to improve its predictions'). Both retain the exact same saved qualifiers. No concrete claim exists in one that is absent in the other; wording differences are non-existent as the text strings match perfectly. Therefore, bidirectional equivalence holds."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "processes",
+        "definition": "The source action operates upon or handles the target data.",
+        "source": "self attention",
+        "target": "text",
+        "context": {
+          "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": []
+        }
+      },
+      "canonical_key": "processes",
+      "reason": "The label 'processes' correctly reflects the active direction defined in the source ('self attention operates upon text'). The definition matches the evidence provided. The new_contract accurately captures this with 'symmetric: false' and 'inverse: null', rejecting any implied symmetry or inverse relation not present in the source. No extra restrictions were added, and the negation/uncertainty handling is consistent with the explicit active assertion."
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "helps",
+        "definition": "The source process facilitates or improves the target capability.",
+        "source": "regularization",
+        "target": "small transformer",
+        "context": {
+          "evidence": "Regularization helps it generalize beyond its training examples.",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "generalize beyond its training examples"
+          ]
+        }
+      },
+      "canonical_key": "helps",
+      "reason": "The label 'helps' is an active verb indicating a directional relationship from source to target. The definition 'facilitates or improves' aligns with this direction. The new_contract correctly sets 'symmetric' to false and 'inverse' to null, which is valid for non-symmetric relations where the inverse does not exist or is undefined. No extra restrictions were added; the predicate meaning remains consistent with the source assertion without folding negation or uncertainty."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "reduces",
+        "definition": "Source decreases the magnitude or necessity of Target.",
+        "source": "quantization",
+        "target": "memory requirements of the small transformer",
+        "context": {
+          "evidence": "quantization reduces its memory requirements",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "after training"
+          ]
+        }
+      },
+      "canonical_key": "inhibits",
+      "reason": "The source 'quantization' and target 'memory requirements of the small transformer' are identical in both assertions. The argument qualifiers ['after training'] are preserved exactly. The only difference is the relation label ('reduces' vs 'inhibits') and their definitions. Since 'reduces' (decreases magnitude/necessity) and 'inhibits' (reduces or suppresses occurrence/activity) describe the same causal outcome in this context where memory requirements are a magnitude being decreased, no concrete claim is made by one that is absent in the other."
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "enables",
+        "definition": "Source provides the capability or permission for Target to perform an action involving a specific entity.",
+        "source": "retrieval augmented generation",
+        "target": "use external documents when answering questions",
+        "context": {
+          "evidence": "retrieval-augmented generation lets it use external documents when answering questions",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "when answering questions"
+          ]
+        }
+      },
+      "canonical_key": "enables",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints (source: 'retrieval augmented generation', target: 'use external documents when answering questions'), identical argument qualifiers ('when answering questions'), and null values for conditions and modality. The only difference lies in the definition text: the original defines 'enables' as providing 'capability or permission', while the proposal defines it as providing 'conditions or capacity'. Since both definitions describe the same functional relationship (providing the means for an action) without adding new constraints, omitting capabilities, or altering scope, and given that the explicit qualifiers in the occurrence data are identical, the assertions are bidirectionally equivalent. The variation in wording ('per/"
+    },
+    {
+      "entity_id": "candidate_0001",
+      "original": {
+        "label": "operates_by",
+        "definition": "SOURCE applies a computational process to TARGET by establishing pairwise relationships between all instances of TARGET.",
+        "source": "self attention",
+        "target": "input tokens",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the functional label to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "Self-attention operates by computing pairwise relationships between all input tokens in the text sequence.",
+          "explanation": "To explain 'how' self-attention processes text, we must introduce the concept of 'input tokens' as the specific data units being processed. The mechanism involves comparing every token to every other token (pairwise relationships) to determine relevance.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0001",
+              "intended_fact": "Self-attention operates by computing pairwise relationships between all input tokens in the text sequence.",
+              "source_concept": "self attention",
+              "target_concept": "input tokens",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "operates_by",
+      "reason": "The new relation 'operates_by' is coherent and specific. It exactly preserves the source assertion's meaning: 'self attention' (SOURCE) applies a computational process to 'input tokens' (TARGET) by establishing pairwise relationships between all instances of TARGET. The direction is preserved as an active verb ('operates') applied from SOURCE to TARGET, not inverted. No extra restrictions are added; symmetry is correctly marked false (as the definition implies a directional application), and the inverse is null, which is valid for asymmetric relations. Predicate meanings are clear and compatible with entity/process uses."
+    },
+    {
+      "entity_id": "candidate_0004",
+      "original": {
+        "label": "operates by",
+        "definition": "SOURCE applies a computational process to TARGET by establishing pairwise relationships between all input tokens to generate attention weights that quantify the relevance of one token to another.",
+        "source": "self attention",
+        "target": "attention weights",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the functional label to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "Self-attention computes pairwise relationships between all input tokens to generate attention weights that quantify the relevance of one token to another.",
+          "explanation": "The mechanism of computing relationships yields a specific output: attention weights. These weights are necessary intermediate concepts to explain how the processing leads to useful representations.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0004",
+              "intended_fact": "Self-attention computes pairwise relationships between all input tokens to generate attention weights that quantify the relevance of one token to another.",
+              "source_concept": "self attention",
+              "target_concept": "attention weights",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0001",
+                "rejection_stage": "representation",
+                "reason": "The literal reading 'self attention operates_by input tokens' is a reduction of the intended fact. The intended fact specifies that self-attention operates by 'computing pairwise relationships between all input tokens'. The link's relation definition ('SOURCE applies a computational process to TARGET by establishing pairwise relationships...') attempts to supply this missing detail, but per instructions, I cannot replace an endpoint or insert missing premises/actions into the literal reading. The literal reading lacks the specific mechanism (pairwise relationships) and scope (all instances) present in the intended fact. Therefore, the link does not express the intended fact with the same meaning and scope; it fails to capture the necessary constraints of the intended assertion without adding them via the relation definition or conditions, which is prohibited when checking representation against the literal candidate.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (self attention --[operates by]--> input tokens)",
+                  "reason": "The literal reading 'self attention operates_by input tokens' is a reduction of the intended fact. The intended fact specifies that self-attention operates by 'computing pairwise relationships between all input tokens'. The link's relation definition ('SOURCE applies a computational process to TARGET by establishing pairwise relationships...') attempts to supply this missing detail, but per instructions, I cannot replace an endpoint or insert missing premises/actions into the literal reading. The literal reading lacks the specific mechanism (pairwise relationships) and scope (all instances) present in the intended fact. Therefore, the link does not express the intended fact with the same meaning and scope; it fails to capture the necessary constraints of the intended assertion without adding them via the relation definition or conditions, which is prohibited when checking representation against the literal candidate.",
+                  "meaning_matches": false,
+                  "direction_valid": true,
+                  "explanation_matches": false,
+                  "scope_preserved": false,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "computes_pairwise_relationships_for",
+      "reason": "The new relation 'computes_pairwise_relationships_for' is coherent and specific, directly derived from the intended fact's mechanism. It exactly preserves the source assertion's meaning by explicitly including 'pairwise relationships between all instances,' which the rejected literal reading lacked. The direction is valid: 'self attention' (SOURCE) actively computes relationships for 'attention weights' (TARGET), matching the active verb in the definition without inversion. No extra restrictions are added; the relation simply formalizes the missing mechanism described in text_1 as a necessary constraint rather than an invention. Symmetry is correctly handled as false (computing is not symmetric), and the inverse is null, which is valid for this asymmetric process."
+    },
+    {
+      "entity_id": "candidate_0006",
+      "original": {
+        "label": "computes",
+        "definition": "TARGET is generated by SOURCE through pairwise relationship computation between all input tokens.",
+        "source": "self attention",
+        "target": "attention weights",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+              "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+              "why_useful": "Understanding the 'how' clarifies the claim that it 'processes text', moving beyond the functional label to the operational mechanism.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0001",
+              "concept": "self attention"
+            }
+          ],
+          "intended_fact": "Self-attention computes pairwise relationships between all input tokens to generate attention weights that quantify the relevance of one token to another.",
+          "explanation": "This assertion is accepted as it defines the operational mechanism of self-attention and produces the intermediate concept 'attention weights' necessary for the causal chain.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0006",
+              "intended_fact": "Self-attention computes pairwise relationships between all input tokens to generate attention weights that quantify the relevance of one token to another.",
+              "source_concept": "self attention",
+              "target_concept": "attention weights",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0005",
+                "rejection_stage": "planning",
+                "reason": "The intended fact must explicitly name its planned target concept verbatim: representations. Keep the actual identities consistent; a related process, result or implicit participant is not an interchangeable endpoint. Revise the sentence or endpoint and all connected uses together.",
+                "representation_check": null
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "computes",
+      "reason": "The new relation 'computes' is coherent and specific, matching the source definition exactly. The direction (self attention -> attention weights) is preserved without inversion. No extra restrictions or negations were added. Symmetry is correctly marked as false, and the inverse is null, which is valid for an asymmetric process like computation."
+    },
+    {
+      "entity_id": "candidate_0011",
+      "original": {
+        "label": "calculates",
+        "definition": "SOURCE computes or derives TARGET values through a specific algorithmic operation.",
+        "source": "backpropagation",
+        "target": "gradients of loss function",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved prediction accuracy.",
+              "why_useful": "The source claims it 'improves predictions' but assumes the reader knows the causal link between backpropagation mechanics and prediction improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0002",
+              "concept": "backpropagation"
+            }
+          ],
+          "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+          "explanation": "This establishes the primary mechanism: backpropagation is the process that generates the mathematical gradients required for optimization.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0011",
+              "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+              "source_concept": "backpropagation",
+              "target_concept": "gradients of loss function",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0008",
+                "rejection_stage": "planning",
+                "reason": "The intended fact must explicitly name its planned target concept verbatim: gradients of loss function. Keep the actual identities consistent; a related process, result or implicit participant is not an interchangeable endpoint. Revise the sentence or endpoint and all connected uses together.",
+                "representation_check": null
+              }
+            },
+            {
+              "id": "candidate_0012",
+              "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+              "source_concept": "gradients of loss function",
+              "target_concept": "model parameters",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0008",
+                "rejection_stage": "planning",
+                "reason": "The intended fact must explicitly name its planned target concept verbatim: gradients of loss function. Keep the actual identities consistent; a related process, result or implicit participant is not an interchangeable endpoint. Revise the sentence or endpoint and all connected uses together.",
+                "representation_check": null
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "calculates",
+      "reason": "The new relation 'calculates' is coherent and specific, matching the source definition where backpropagation computes gradients. The direction is preserved: backpropagation (source) actively calculates gradients (target), not the reverse. No extra restrictions are added; negation or uncertainty from the source context is handled separately as per instructions. Symmetry is correctly set to false because 'calculates' is directional, and the inverse is null, which is valid for asymmetric predicates."
+    },
+    {
+      "entity_id": "candidate_0012",
+      "original": {
+        "label": "indicates",
+        "definition": "SOURCE provides information about the necessary adjustment direction and magnitude for TARGET.",
+        "source": "gradients of loss function",
+        "target": "model parameters",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved prediction accuracy.",
+              "why_useful": "The source claims it 'improves predictions' but assumes the reader knows the causal link between backpropagation mechanics and prediction improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0002",
+              "concept": "backpropagation"
+            }
+          ],
+          "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+          "explanation": "This links the calculated gradients to their specific application: guiding the update step for each parameter in the transformer.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0011",
+              "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+              "source_concept": "backpropagation",
+              "target_concept": "gradients of loss function",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0008",
+                "rejection_stage": "planning",
+                "reason": "The intended fact must explicitly name its planned target concept verbatim: gradients of loss function. Keep the actual identities consistent; a related process, result or implicit participant is not an interchangeable endpoint. Revise the sentence or endpoint and all connected uses together.",
+                "representation_check": null
+              }
+            },
+            {
+              "id": "candidate_0012",
+              "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+              "source_concept": "gradients of loss function",
+              "target_concept": "model parameters",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0008",
+                "rejection_stage": "planning",
+                "reason": "The intended fact must explicitly name its planned target concept verbatim: gradients of loss function. Keep the actual identities consistent; a related process, result or implicit participant is not an interchangeable endpoint. Revise the sentence or endpoint and all connected uses together.",
+                "representation_check": null
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "indicates",
+      "reason": "The new relation 'indicates' is coherent and specific, preserving the source assertion that gradients provide direction/magnitude for parameter adjustment. The definition matches the source context exactly without extra restrictions. Direction is preserved (active verb 'indicates' flows from SOURCE to TARGET). Symmetry is correctly set to false as per the non-equivalent nature of indication in this causal context. The inverse is null, which is valid since the relation is not symmetric and no inverse definition was provided or implied."
+    },
+    {
+      "entity_id": "candidate_0014",
+      "original": {
+        "label": "calculates",
+        "definition": "SOURCE calculates TARGET",
+        "source": "backpropagation",
+        "target": "gradients of loss function",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved prediction accuracy.",
+              "why_useful": "The source claims it 'improves predictions' but assumes the reader knows the causal link between backpropagation mechanics and prediction improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0002",
+              "concept": "backpropagation"
+            }
+          ],
+          "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+          "explanation": "This establishes the primary mechanism: backpropagation is the algorithmic process that computes partial derivatives (gradients) specifically relative to the current state of model parameters.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0014",
+              "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+              "source_concept": "backpropagation",
+              "target_concept": "gradients of loss function",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0011",
+                "rejection_stage": "representation",
+                "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of loss function)",
+                  "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                  "meaning_matches": false,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": false,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0015",
+              "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+              "source_concept": "gradients of loss function",
+              "target_concept": "model parameters",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0011",
+                "rejection_stage": "representation",
+                "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of loss function)",
+                  "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                  "meaning_matches": false,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": false,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "computes_partial_derivatives_for",
+      "reason": "The new relation 'computes_partial_derivatives_for' is coherent and specific. It correctly interprets the source assertion 'backpropagation calculates gradients of loss function with respect to model parameters'. The direction (SOURCE -> TARGET) aligns with the active verb 'calculates/computes', avoiding passive inversion. The definition explicitly includes 'with respect to model parameters', which matches the intended_fact but is absent from the literal reading; however, the instruction forbids silently inserting conditions into the link_reading if they are not in the source. Since the new contract's definition *includes* this qualifier as part of its semantic scope (matching the intended_fact), it does not violate the 'no silent insertion' rule regarding the *link_reading* itself, but re"
+    },
+    {
+      "entity_id": "candidate_0015",
+      "original": {
+        "label": "indicate",
+        "definition": "SOURCE indicates direction/magnitude for adjustment of TARGET",
+        "source": "gradients of loss function",
+        "target": "model parameters",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved prediction accuracy.",
+              "why_useful": "The source claims it 'improves predictions' but assumes the reader knows the causal link between backpropagation mechanics and prediction improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0002",
+              "concept": "backpropagation"
+            }
+          ],
+          "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+          "explanation": "This links the calculated gradients to their specific application: defining the vector field that guides the update step for each parameter in the transformer.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "with respect to model parameters"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0014",
+              "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+              "source_concept": "backpropagation",
+              "target_concept": "gradients of loss function",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0011",
+                "rejection_stage": "representation",
+                "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of loss function)",
+                  "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                  "meaning_matches": false,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": false,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0015",
+              "intended_fact": "Gradients of loss function indicate the direction and magnitude by which model parameters should be adjusted.",
+              "source_concept": "gradients of loss function",
+              "target_concept": "model parameters",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0011",
+                "rejection_stage": "representation",
+                "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (backpropagation --[calculates]--> gradients of loss function)",
+                  "reason": "The link_reading is set to the literal_candidate_reading exactly as required. The independent reading confirms the core assertion matches, but the intended_fact adds 'with respect to model parameters'. The endpoint_descriptions define the target as a 'property' (gradients), which aligns with the literal text. However, the intended_fact introduces a specific qualifier ('model parameters') that is absent in the literal_candidate_reading and independent_reading. According to the constraints, we must not replace an endpoint or silently insert conditions/actions. The literal reading does not contain the condition 'with respect to model parameters'. Therefore, while the core mechanism (calculates gradients) is represented faithfully, the intended_fact contains additional scope/qualifiers not present in the literal data. The link_reading preserves the literal text without adding the missing qualifier found in the intended_fact, meaning the entailment from literal to intended_fact is not bidirectional (literal does not entail the specific parameter constraint). No silent insertion occurred; the discrepancy lies in the missing qualifier in the literal source.",
+                  "meaning_matches": false,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": false,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "indicate",
+      "reason": "The new relation 'indicate' is coherent and specific. It correctly preserves the source assertion's meaning: gradients (SOURCE) indicate direction/magnitude for adjustment of model parameters (TARGET). The direction is active (gradients drive the update), not passive. No extra restrictions or conditions were added; the qualifier 'with respect to model parameters' in the intended_fact is a scope definition, not an inserted condition altering the predicate's core meaning. Symmetry is correctly handled as false (indication is directional), and the inverse is null, which is valid for asymmetric relations. The rejection of candidate_0011 in text_1 was due to scope preservation issues in that specific representation check, but the new contract itself aligns with the literal data's core mechanism"
+    },
+    {
+      "entity_id": "candidate_0017",
+      "original": {
+        "label": "indicate",
+        "definition": "SOURCE indicates TARGET",
+        "source": "backpropagation",
+        "target": "gradients of loss function",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+              "assumed_knowledge": "The process of calculating gradients and updating weights to minimize loss, leading to improved prediction accuracy.",
+              "why_useful": "The source claims it 'improves predictions' but assumes the reader knows the causal link between backpropagation mechanics and prediction improvement.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0002",
+              "concept": "backpropagation"
+            }
+          ],
+          "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+          "explanation": "This assertion is a fundamental definition in machine learning and is explicitly supported by general knowledge regarding the mechanism of backpropagation. It connects the seed concept 'backpropagation' to its immediate computational output, satisfying the requirement for verified attachment concepts.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "with respect to model parameters"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0017",
+              "intended_fact": "Backpropagation calculates gradients of loss function with respect to model parameters.",
+              "source_concept": "backpropagation",
+              "target_concept": "gradients of loss function",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0015",
+                "rejection_stage": "representation",
+                "reason": "The literal_candidate_reading was copied exactly into link_reading as required. The previous validation error stemmed from a field mismatch where 'meaning_matches' was incorrectly set to False despite the instruction to copy the text exactly. The current response corrects this by ensuring the JSON fields align: the link_reading contains the exact string from literal_candidate_reading, and the reasoning explicitly confirms this adherence to the 'copy exactly' constraint without introducing external interpretations or corrections.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (gradients of loss function --[indicate]--> model parameters); additional arguments: with respect to model parameters",
+                  "reason": "The literal_candidate_reading was copied exactly into link_reading as required. The previous validation error stemmed from a field mismatch where 'meaning_matches' was incorrectly set to False despite the instruction to copy the text exactly. The current response corrects this by ensuring the JSON fields align: the link_reading contains the exact string from literal_candidate_reading, and the reasoning explicitly confirms this adherence to the 'copy exactly' constraint without introducing external interpretations or corrections.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": false,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "calculates_gradients_of_loss_function_with",
+      "reason": "The new relation 'calculates_gradients_of_loss_function_with' is coherent and specific. It correctly interprets the source assertion 'backpropagation indicates gradients of loss function' by defining the active process (computing partial derivatives) rather than a passive state. The direction is preserved: backpropagation (SOURCE) performs the calculation on the gradients (TARGET). No extra restrictions are added; the definition aligns with standard machine learning mechanics where backpropagation computes gradients with respect to parameters. The inverse is null, which is valid as the relationship is not symmetric (one does not 'calculate parameters' via gradients in this context). The meaning matches the source's intended fact that backpropagation calculates these specific derivatives."
+    },
+    {
+      "entity_id": "candidate_0018",
+      "original": {
+        "label": "acts_to_prevent",
+        "definition": "SOURCE is a process that reduces or mitigates TARGET.",
+        "source": "regularization",
+        "target": "overfitting",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does regularization enable the small transformer to generalize beyond its training examples?",
+              "assumed_knowledge": "Techniques like dropout or weight decay that prevent overfitting, thereby enhancing generalization performance.",
+              "why_useful": "The source links regularization to generalization but assumes the mechanism connecting the two is known.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0003",
+              "concept": "regularization"
+            }
+          ],
+          "intended_fact": "Regularization acts to prevent overfitting in machine learning models.",
+          "explanation": "General knowledge defines regularization's primary function as mitigating overfitting, which is the specific failure mode preventing generalization beyond training data.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0018",
+              "intended_fact": "Regularization acts to prevent overfitting in machine learning models.",
+              "source_concept": "regularization",
+              "target_concept": "overfitting",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "acts_to_prevent",
+      "reason": "The label 'acts_to_prevent' correctly reflects the active direction defined in the source ('SOURCE is a process that reduces or mitigates TARGET'). The definition explicitly states reduction/mitigation of the target, which aligns with preventing overfitting. The new contract sets 'symmetric' to false and 'inverse' to null, which is valid because prevention is not symmetric (preventing X does not imply being prevented by X), and no inverse relation exists in this context. No extra restrictions or negations were added; the predicate meaning remains precise and compatible with the source assertion."
+    },
+    {
+      "entity_id": "candidate_0020",
+      "original": {
+        "label": "prevents",
+        "definition": "SOURCE acts to reduce or eliminate TARGET.",
+        "source": "regularization",
+        "target": "overfitting",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does regularization enable the small transformer to generalize beyond its training examples?",
+              "assumed_knowledge": "Techniques like dropout or weight decay that prevent overfitting, thereby enhancing generalization performance.",
+              "why_useful": "The source links regularization to generalization but assumes the mechanism connecting the two is known.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0003",
+              "concept": "regularization"
+            }
+          ],
+          "intended_fact": "Regularization acts to prevent overfitting in machine learning models.",
+          "explanation": "General explanatory knowledge defines regularization's primary function as mitigating the specific failure mode known as overfitting.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [],
+          "explanation_facts": [
+            {
+              "id": "candidate_0020",
+              "intended_fact": "Regularization acts to prevent overfitting in machine learning models.",
+              "source_concept": "regularization",
+              "target_concept": "overfitting",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0019",
+                "rejection_stage": "planning",
+                "reason": "Begin intended_fact with its exact source_concept: overfitting. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+                "representation_check": null
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "prevents",
+      "reason": "The label 'prevents' correctly reflects the active direction defined in the source ('SOURCE acts to reduce or eliminate TARGET'). The definition is specific and matches the source assertion that regularization reduces overfitting. No extra restrictions were added; negation and conditions remain separate as per instructions. Symmetry is false (consistent with 'prevents'), and the inverse is null, which is valid for asymmetric relations like prevention."
+    },
+    {
+      "entity_id": "candidate_0026",
+      "original": {
+        "label": "incorporates",
+        "definition": "SOURCE includes or contains TARGET as a constituent part.",
+        "source": "retrieval augmented generation",
+        "target": "retriever component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+          "explanation": "To explain how RAG uses external documents, the mechanism must include an active fetching step performed by a dedicated retriever component.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "fetches relevant context from external documents"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0026",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0027",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0028",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0029",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "incorporates",
+      "reason": "The new relation 'incorporates' is coherent and specific, matching the source definition where SOURCE includes TARGET. The direction is preserved: 'retrieval augmented generation' (SOURCE) includes 'retriever component' (TARGET). The label agrees with the active verb 'includes'. Symmetry is correctly set to false as incorporation is not symmetric. The inverse is null, which is valid since there is no natural inverse relation defined for this predicate in the source context. No extra restrictions or negations were added."
+    },
+    {
+      "entity_id": "candidate_0027",
+      "original": {
+        "label": "incorporates",
+        "definition": "SOURCE includes or contains TARGET as a constituent part.",
+        "source": "retrieval augmented generation",
+        "target": "generator component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+          "explanation": "The capability to answer questions using external documents requires a second component (the generator) that utilizes the retrieved context to formulate the response.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "conditions its output on the context fetched by the retriever"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0026",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0027",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0028",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0029",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "incorporates",
+      "reason": "The qualified_original and qualified_proposal assertions are identical in all substantive aspects: they share the exact same source ('retrieval augmented generation'), target ('generator component'), relation ('incorporates'), and argument_qualifiers ('conditions its output on the context fetched by the retriever'). Since both retain the identical saved qualifiers as instructed, there is no difference in claim, modality, scope, or endpoint types. The definitions match perfectly, and no concrete claim exists in one that is absent in the other."
+    },
+    {
+      "entity_id": "candidate_0028",
+      "original": {
+        "label": "queries and retrieves",
+        "definition": "SOURCE performs an action of querying and retrieving information from TARGET.",
+        "source": "retriever component",
+        "target": "external documents",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+          "explanation": "This sentence explicitly links the newly introduced 'retriever component' to the source's mention of 'external documents', defining the direction of data flow.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "relevant information"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0026",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0027",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0028",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0029",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "queries_and_retrieves",
+      "reason": "The new relation 'queries_and_retrieves' is coherent and specific. It exactly preserves the source assertion's meaning: the retriever component (SOURCE) actively queries and retrieves information from external documents (TARGET). The direction is preserved as an active verb ('performs an action') matching the source's data flow. Symmetry is correctly set to false because querying/retrieving is not a symmetric relationship (A queries B does not imply B queries A). The inverse is null, which is valid since there is no defined inverse process in the source context. No extra restrictions or negations were added."
+    },
+    {
+      "entity_id": "candidate_0029",
+      "original": {
+        "label": "receives",
+        "definition": "SOURCE obtains TARGET as input for a specific purpose.",
+        "source": "generator component",
+        "target": "retriever component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+          "explanation": "This sentence connects the two new components to form the complete mechanism described in the gap analysis, showing how they interact sequentially.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "context retrieved by the retriever component",
+            "for generating answers"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0026",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0027",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0028",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": null
+            },
+            {
+              "id": "candidate_0029",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": null
+            }
+          ]
+        }
+      },
+      "canonical_key": "receives",
+      "reason": "The new relation 'receives' is coherent and specific, matching the source definition where the generator component obtains context from the retriever. The direction is preserved: SOURCE (generator) receives TARGET (retriever's output/context). No extra restrictions are added; symmetry is correctly set to false as receiving is directional, and the inverse is null which is valid for asymmetric relations. All entity/process uses align with the source text without invention or vagueness."
+    },
+    {
+      "entity_id": "candidate_0030",
+      "original": {
+        "label": "incorporates",
+        "definition": "SOURCE includes TARGET as a constituent part of its operation.",
+        "source": "retrieval augmented generation",
+        "target": "retriever component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+          "explanation": "This assertion establishes the architectural inclusion of the retriever within RAG, linking the seed to the fetching mechanism described in general knowledge and source text.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "fetches relevant context from external documents"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0030",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0031",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0032",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0033",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "incorporates",
+      "reason": "The qualified_original and qualified_proposal share identical endpoints (retrieval augmented generation, retriever component), identical direction (SOURCE includes TARGET), and identical argument qualifiers ('fetches relevant context from external documents'). The only difference lies in the definition of the relation: 'includes TARGET as a constituent part of its operation' versus 'includes or contains TARGET as a constituent part'. Since the qualifier 'of its operation' is a specific instance of the general 'includes or contains', and no substantive claim is added or removed by this generalization, the assertions are bidirectionally equivalent under the fixed endpoints and qualifiers."
+    },
+    {
+      "entity_id": "candidate_0031",
+      "original": {
+        "label": "conditions output on",
+        "definition": "SOURCE adjusts its generation based on input received from TARGET.",
+        "source": "retrieval augmented generation",
+        "target": "generator component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+          "explanation": "This assertion establishes the architectural inclusion of the generator within RAG, linking the seed to the generation mechanism described in general knowledge and source text.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "context fetched by the retriever"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0030",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0031",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0032",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0033",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "conditions_output_on",
+      "reason": "The new relation 'conditions_output_on' is coherent and specific. It correctly defines the directional dependency where a SOURCE (generator) adjusts generation based on input from a TARGET (retriever). The definition exactly preserves the source assertion's meaning without adding extra restrictions. The direction (SOURCE -> TARGET) aligns with the active verb 'adjusts...based on input received from', avoiding passive inversion errors. Symmetry is correctly marked as false because the dependency is unidirectional (generation conditions on input, not vice versa). The inverse is null, which is valid for asymmetric relations where no reciprocal definition exists in the source context."
+    },
+    {
+      "entity_id": "candidate_0032",
+      "original": {
+        "label": "queries and retrieves",
+        "definition": "SOURCE accesses and obtains information from TARGET.",
+        "source": "retriever component",
+        "target": "external documents",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+          "explanation": "This assertion defines the specific action of the retriever component using general explanatory knowledge to explain how RAG utilizes external documents, addressing the gap regarding the mechanism of use.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "relevant information"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0030",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0031",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0032",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0033",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "queries_and_retrieves",
+      "reason": "The qualified_original and qualified_proposal assertions are bidirectionally equivalent. Both share identical endpoints ('retriever component' and 'external documents'), the same direction (component to documents), and identical explicit qualifiers ('relevant information'). The only difference lies in the definition of the relation: 'accesses and obtains' versus 'performs an action of querying and retrieving'. Since the proposed contract explicitly defines 'queries_and_retrieves' as performing an action of querying and retrieving, and the original occurrence uses this specific label, the definitions are semantically aligned within the fixed context. No substantive claim is added or removed; the wording difference in the definition field does not alter the concrete meaning of the assertion."
+    },
+    {
+      "entity_id": "candidate_0033",
+      "original": {
+        "label": "receives input from",
+        "definition": "SOURCE obtains data or context provided by TARGET.",
+        "source": "generator component",
+        "target": "retriever component",
+        "context": {
+          "chapter": {
+            "overview": "The chapter segment details a small transformer architecture employing self-attention for text processing and backpropagation for training optimization. It further examines regularization for generalization, quantization for memory reduction post-training, and retrieval-augmented generation for utilizing external documents.",
+            "topics": [
+              "self-attention mechanism",
+              "backpropagation",
+              "regularization",
+              "quantization",
+              "retrieval-augmented generation"
+            ],
+            "concepts": [
+              "backpropagation",
+              "external documents",
+              "memory requirements of the small transformer",
+              "predictions of the small transformer",
+              "quantization",
+              "regularization",
+              "retrieval augmented generation",
+              "self attention",
+              "small transformer",
+              "text",
+              "training",
+              "training examples of the small transformer"
+            ]
+          },
+          "source_context": [
+            {
+              "id": "chunk_001",
+              "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+            }
+          ],
+          "gaps": [
+            {
+              "question": "How does retrieval-augmented generation allow the small transformer to use external documents when answering questions?",
+              "assumed_knowledge": "The architecture involving a retriever component fetching relevant context and a generator component conditioning on that context.",
+              "why_useful": "The source claims the capability ('lets it use external documents') but assumes the architectural integration is understood.",
+              "source_chunk_ids": [
+                "chunk_001"
+              ],
+              "id": "question_0005",
+              "concept": "retrieval augmented generation"
+            }
+          ],
+          "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+          "explanation": "This assertion corrects the invalid 'receives' relation to accurately reflect that the generator obtains the output (context) of the retriever, not the retriever component itself, completing the sequential data flow explanation.",
+          "case_specific_unknowns": [],
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "context retrieved by the retriever component"
+          ],
+          "explanation_facts": [
+            {
+              "id": "candidate_0030",
+              "intended_fact": "A retrieval augmented generation process incorporates a retriever component that fetches relevant context from external documents.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0031",
+              "intended_fact": "A retrieval augmented generation process incorporates a generator component that conditions its output on the context fetched by the retriever.",
+              "source_concept": "retrieval augmented generation",
+              "target_concept": "generator component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0032",
+              "intended_fact": "The retriever component in a retrieval augmented generation process queries and retrieves relevant information from external documents.",
+              "source_concept": "retriever component",
+              "target_concept": "external documents",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            },
+            {
+              "id": "candidate_0033",
+              "intended_fact": "The generator component in a retrieval augmented generation process receives the context retrieved by the retriever component as input for generating answers.",
+              "source_concept": "generator component",
+              "target_concept": "retriever component",
+              "repair_feedback": {
+                "rejected_candidate_id": "candidate_0028",
+                "rejection_stage": "novelty",
+                "reason": "The candidate asserts that the retriever component 'queries and retrieves relevant information from external documents'. Reference candidate_0026 states that the retrieval augmented generation (which includes the retriever) 'fetches relevant context from external documents' as part of its argument qualifiers. The action of 'fetching relevant context' entails 'retrieving relevant information', and since the retriever is a constituent part of the system described in candidate_0026, the specific action performed by that component regarding external documents is implied by the description of the system's operation in candidate_0026. No new subject-matter premise is required; the entailment holds based on the definition of 'fetches' and the inclusion relationship.",
+                "representation_check": {
+                  "link_reading": "ASSERTED (retriever component --[queries and retrieves]--> external documents); additional arguments: relevant information",
+                  "reason": "The link_reading is an exact copy of the literal_candidate_reading. The independent reading correctly identifies the actors ('retriever component', 'external documents') and the action ('queries and retrieves'). The intended fact describes the same action between the same actors, with 'relevant information' acting as a qualifier for the retrieved content rather than a separate object. No properties were added, reduced, or swapped. The direction (component to documents) and meaning are preserved without silent insertion of actions or reinterpretation.",
+                  "meaning_matches": true,
+                  "direction_valid": true,
+                  "explanation_matches": true,
+                  "scope_preserved": true,
+                  "suggested_correction": null
+                }
+              }
+            }
+          ]
+        }
+      },
+      "canonical_key": "receives_input_from",
+      "reason": "The new relation 'receives_input_from' is coherent and specific, defined as 'SOURCE obtains data or context provided by TARGET'. This aligns with the source assertion where the generator component obtains context from the retriever. The direction (generator receives from retriever) matches the active flow of data described in the text. No extra restrictions were added; negation or uncertainty was not folded incorrectly. Symmetry is correctly handled as false (data flow is directional), and the inverse is null, which is valid for asymmetric relations where swapping endpoints does not yield an equivalent semantic statement."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

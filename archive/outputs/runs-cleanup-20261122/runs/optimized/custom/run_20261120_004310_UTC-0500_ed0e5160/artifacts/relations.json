@@ -1,0 +1,1411 @@
+{
+  "relations": [
+    {
+      "key": "describes",
+      "definition": "SOURCE gives an account of the complete subject or phenomenon TARGET, without asserting causation, subtype or parthood.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "stores",
+      "definition": "SOURCE holds or retains TARGET; any qualifications in TARGET are part of what is stored.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "is_a",
+      "definition": "SOURCE is a subtype or kind of TARGET, not a component or instance.",
+      "inverse": "has_subtype",
+      "symmetric": false
+    },
+    {
+      "key": "has_subtype",
+      "definition": "TARGET is a subtype or kind of SOURCE, not a component or instance.",
+      "inverse": "is_a",
+      "symmetric": false
+    },
+    {
+      "key": "part_of",
+      "definition": "SOURCE is a structural component of TARGET, not merely located there or participating in it.",
+      "inverse": "has_part",
+      "symmetric": false
+    },
+    {
+      "key": "has_part",
+      "definition": "TARGET is a structural component of SOURCE, not merely located there or participating in it.",
+      "inverse": "part_of",
+      "symmetric": false
+    },
+    {
+      "key": "contains",
+      "definition": "SOURCE spatially contains TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contained_in",
+      "symmetric": false
+    },
+    {
+      "key": "contained_in",
+      "definition": "SOURCE is spatially contained in TARGET; structural parthood and ownership are not implied.",
+      "inverse": "contains",
+      "symmetric": false
+    },
+    {
+      "key": "causes",
+      "definition": "SOURCE causally produces the explicit event TARGET, not merely permitting it. TARGET names the action or change, not its affected object.",
+      "inverse": "caused_by",
+      "symmetric": false
+    },
+    {
+      "key": "caused_by",
+      "definition": "The explicit event SOURCE is causally produced by TARGET. SOURCE names the action or change, not its affected object.",
+      "inverse": "causes",
+      "symmetric": false
+    },
+    {
+      "key": "acts_on",
+      "definition": "The event SOURCE acts on or changes the state, position, or availability of the object TARGET; TARGET is not another event or process.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "enables",
+      "definition": "SOURCE provides conditions or capacity permitting TARGET, without claiming it produces TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "inhibits",
+      "definition": "SOURCE reduces or suppresses the occurrence or activity of TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "associated_with",
+      "definition": "SOURCE and TARGET are associated; no causality, parthood or direction is asserted.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "occurs_in",
+      "definition": "The event or process SOURCE takes place in the physical location TARGET.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "participates_in",
+      "definition": "The entity SOURCE participates in the event or process TARGET, without being its structural part.",
+      "inverse": "has_participant",
+      "symmetric": false
+    },
+    {
+      "key": "has_participant",
+      "definition": "The entity TARGET participates in the event or process SOURCE, without being its structural part.",
+      "inverse": "participates_in",
+      "symmetric": false
+    },
+    {
+      "key": "precedes",
+      "definition": "SOURCE happens temporally before TARGET, without implying causation.",
+      "inverse": "follows",
+      "symmetric": false
+    },
+    {
+      "key": "follows",
+      "definition": "SOURCE happens temporally after TARGET, without implying causation.",
+      "inverse": "precedes",
+      "symmetric": false
+    },
+    {
+      "key": "sibling_of",
+      "definition": "SOURCE and TARGET are distinct peers under an explicitly justified common parent and the same parent relation.",
+      "inverse": null,
+      "symmetric": true
+    },
+    {
+      "key": "requires_understanding_of",
+      "definition": "Understanding SOURCE requires prior understanding of TARGET; this is a learning prerequisite, not causality.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "defines",
+      "definition": "TARGET is the defining description of SOURCE, not a function, participant or mere associated concept.",
+      "inverse": null,
+      "symmetric": false
+    },
+    {
+      "key": "answers",
+      "definition": "The source provides responses to inquiries regarding the target.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "uses",
+      "definition": "employs a tool or method to perform an action",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "generates",
+      "definition": "produces specific content or output",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "guarantees",
+      "definition": "ensures the occurrence or presence of a specific outcome",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "adjusts",
+      "definition": "The source modifies the values of the target properties.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "employs_for_function",
+      "definition": "The source utilizes the target specifically to execute its operational function.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "supports",
+      "definition": "Provides necessary evidence or criteria to enable a specific process or decision.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "measures",
+      "definition": "The act of quantifying or assessing a specific property.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "are_made",
+      "definition": "The state of being finalized or completed.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "must_be_separated_carefully",
+      "definition": "require strict partitioning to prevent data leakage",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "can_overstate",
+      "definition": "may present an inflated view of actual capability",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "establishes",
+      "definition": "To serve as a sufficient basis for determining or proving something.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "uses_structure",
+      "definition": "employs a specific architectural structure for its operation",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "processes",
+      "definition": "handles or analyzes input data through its computational functions",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "divides",
+      "definition": "The source performs the action of splitting the target into smaller units.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "divides_into",
+      "definition": "The source is split by the tokenizer into the target units.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "maps",
+      "definition": "The source transforms the target into a specific representation.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_mapped_to",
+      "definition": "The source is transformed by the embedding layer into the target representation.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "helps",
+      "definition": "Enables an agent to perform a specific task by providing necessary context.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "distinguish",
+      "definition": "Identify or differentiate between distinct entities based on provided attributes.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "combines",
+      "definition": "The process of merging or integrating data points into a unified representation.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "prevents",
+      "definition": "To stop a specific action or process from occurring.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "attends_to",
+      "definition": "To incorporate information from other entities into its representation.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "applies_during",
+      "definition": "To be active or valid within the temporal bounds of a specific process.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "validates_during",
+      "definition": "To be active or valid within the temporal bounds of a specific process.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "connects",
+      "definition": "Links distinct pieces of information together within a given scope.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "limits",
+      "definition": "Restricts the quantity or extent of something that can be included or processed.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "establishes_truth_of",
+      "definition": "Serves as proof or foundation for the truth of a claim.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "compares",
+      "definition": "To evaluate one set of values against another for similarity or difference.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "compares_with",
+      "definition": "To be evaluated against a specific reference set in a comparison process.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "quantifies",
+      "definition": "The source quantifies the magnitude of the target.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "computes",
+      "definition": "The source calculates the values of the target.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "used_by",
+      "definition": "The source serves as input for the target to perform its function.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "updates",
+      "definition": "The source modifies the values of the target.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "controls",
+      "definition": "Determines or regulates the magnitude of a specific quantity.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "makes_unstable",
+      "definition": "Causes a process to become unstable when the source value exceeds an optimal threshold.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "slows_improvement",
+      "definition": "Reduces the speed at which a process improves when the source value is below an optimal threshold.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "occurs_when",
+      "definition": "Describes the specific condition under which a process takes place.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is",
+      "definition": "Identifies the nature or category of the source concept.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "randomly_disables",
+      "definition": "Performs an action of disabling specific elements with randomness.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "employs_for_inference",
+      "definition": "Utilizes a trained network structure to perform standard inference operations without dropout.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "performs",
+      "definition": "Executes a specific action or event.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "uses_metric_to_guide",
+      "definition": "employs a specific metric to guide an action",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "decides",
+      "definition": "makes a determination regarding the timing of an event",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "relies_on",
+      "definition": "relies on this metric for decision making",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "employs_technique",
+      "definition": "An agent employs a specific technique or method.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "stores_in",
+      "definition": "The source action of keeping data in the target location.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "reduces",
+      "definition": "The source action of decreasing the quantity of the target property.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "degrades",
+      "definition": "The source action of lowering the quality or standard of the target property.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "supplies",
+      "definition": "The source provides the target under specific conditions.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "selects",
+      "definition": "Identifies and chooses specific items from a larger collection.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "added_to",
+      "definition": "To be incorporated into a system's working memory or input window.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "changes",
+      "definition": "To cause a modification in the state or values of something.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_irrelevant",
+      "definition": "To possess the attribute of being irrelevant.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_incorrect",
+      "definition": "To be factually wrong or inaccurate.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "distinguishes",
+      "definition": "Separates or identifies differences between two specific properties or concepts.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "measures_count_of",
+      "definition": "quantifies the extent to which a process yields specific outcomes",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "does_not_show",
+      "definition": "Fails to provide information regarding a specific outcome or state.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "cite",
+      "definition": "To reference or quote a specific text passage as support.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "make",
+      "definition": "To state or assert something as true.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "support",
+      "definition": "To provide evidence or backing for a statement.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "is_evaluated_for",
+      "definition": "Undergoes assessment regarding a specific quality or requirement.",
+      "symmetric": false,
+      "inverse": "evaluated_by"
+    },
+    {
+      "key": "evaluated_by",
+      "definition": "Undergoes assessment regarding a specific quality or requirement.",
+      "symmetric": false,
+      "inverse": "is_evaluated_for"
+    },
+    {
+      "key": "assessed_for_quality_of",
+      "definition": "Undergoes assessment regarding a specific quality or requirement.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "should_identify",
+      "definition": "Obligation to recognize a specific state or event.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "should_identify_disagreement",
+      "definition": "Obligation to perform a specific action.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "means",
+      "definition": "Indicates that a specific condition or event results in a particular outcome.",
+      "symmetric": false,
+      "inverse": null
+    },
+    {
+      "key": "proves",
+      "definition": "Establishes the truth or falsity of a specific assertion.",
+      "symmetric": false,
+      "inverse": null
+    }
+  ],
+  "decisions": [
+    {
+      "entity_id": "chunk_001_relation_001",
+      "original": {
+        "label": "answers",
+        "definition": "The source provides responses to inquiries regarding the target.",
+        "source": "artificial intelligence tutor",
+        "target": "questions about a collection of course documents",
+        "context": "An artificial intelligence tutor answers questions about a collection of course documents."
+      },
+      "canonical_key": "answers",
+      "reason": "The new relation 'answers' is coherent and specific, directly preserving the source assertion's meaning: an artificial intelligence tutor (source) provides responses to inquiries (target). The direction is active ('provides'), not passive. Symmetry is correctly set to false as answering is not inherently reciprocal in this context. The inverse is null, which is valid since no inverse relation was defined or implied. No extra restrictions or negations were added."
+    },
+    {
+      "entity_id": "chunk_001_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "employs a tool or method to perform an action",
+        "source": "tutor",
+        "target": "language model",
+        "context": "The tutor uses a language model to generate explanations"
+      },
+      "canonical_key": "uses",
+      "reason": "The label 'uses' correctly reflects the active direction from source ('tutor') to target ('language model') as defined by 'employs a tool or method'. The new_contract accurately captures this asymmetric relationship (symmetric: false) with no inverse. The definition remains specific and identical to the source assertion without adding extra restrictions or negating the explicit action. No vague predicates or incompatible entity uses are present."
+    },
+    {
+      "entity_id": "chunk_001_relation_003",
+      "original": {
+        "label": "generates",
+        "definition": "produces specific content or output",
+        "source": "language model",
+        "target": "explanations",
+        "context": "The tutor uses a language model to generate explanations"
+      },
+      "canonical_key": "generates",
+      "reason": "The label 'generates' correctly reflects the active direction from source (language model) to target (explanations). The definition 'produces specific content or output' matches the source assertion without adding restrictions. The new_contract explicitly sets symmetric=false and inverse=null, which is valid for an asymmetric production relationship where no natural inverse exists. No negation or uncertainty was introduced; the predicate meaning remains consistent with the original context."
+    },
+    {
+      "entity_id": "chunk_001_relation_004",
+      "original": {
+        "label": "guarantees",
+        "definition": "ensures the occurrence or presence of a specific outcome",
+        "source": "fluent wording",
+        "target": "factual accuracy",
+        "context": "fluent wording does not guarantee factual accuracy"
+      },
+      "canonical_key": "guarantees",
+      "reason": "The label 'guarantees' correctly maps to the definition 'ensures the occurrence or presence of a specific outcome'. The direction is preserved as an active verb ('guarantees') pointing from source to target, not inverted. The new_contract accurately reflects the source assertion without adding extra restrictions; the context explicitly states that fluent wording does not guarantee factual accuracy, which aligns with the non-symmetric nature (symmetric: false) and null inverse. No negation or uncertainty was folded incorrectly into the predicate definition."
+    },
+    {
+      "entity_id": "chunk_001_relation_005",
+      "original": {
+        "label": "adjusts",
+        "definition": "The source modifies the values of the target properties.",
+        "source": "language model",
+        "target": "parameters",
+        "context": "During training, the language model adjusts its parameters using examples from a training dataset."
+      },
+      "canonical_key": "adjusts",
+      "reason": "The label 'adjusts' is an active verb indicating a directional action from source to target. The definition 'The source modifies the values of the target properties' aligns with this direction. The new_contract correctly sets 'symmetric' to false because modification is not inherently reversible or mutual in this context. The inverse is set to null, which is valid as no specific inverse relation was defined or implied by the source text. No extra restrictions were added, and the predicate meaning remains consistent without folding negation or uncertainty."
+    },
+    {
+      "entity_id": "chunk_001_relation_006",
+      "original": {
+        "label": "uses",
+        "definition": "The source employs the target as a means to perform its function.",
+        "source": "language model",
+        "target": "examples from a training dataset",
+        "context": "During training, the language model adjusts its parameters using examples from a training dataset."
+      },
+      "canonical_key": "employs_for_function",
+      "reason": "The new relation 'employs_for_function' accurately reflects the source assertion where a language model 'uses' training examples to perform its function. The definition aligns with the active direction of the original text without adding extra restrictions or negating the predicate. The label agrees with the definition's direction (active verb 'employs'), symmetry is correctly set to false as usage is directional, and the inverse is null which is valid for asymmetric relations."
+    },
+    {
+      "entity_id": "chunk_001_relation_007",
+      "original": {
+        "label": "supports",
+        "definition": "Provides necessary evidence or criteria to enable a specific process or decision.",
+        "source": "separate validation dataset",
+        "target": "model selection",
+        "context": "A separate validation dataset supports model selection and the choice of training settings."
+      },
+      "canonical_key": "supports",
+      "reason": "The label 'supports' in the new_contract matches the source assertion's direction (dataset -> model selection) and definition. The predicate is active ('Provides'), correctly avoiding a passive inverse. The 'symmetric' flag is false, which aligns with the non-equivalence of supporting vs being supported. The 'inverse' is null, which is valid as per instructions for cases where an inverse does not apply or is explicitly rejected. No extra restrictions were added; the meaning and direction are exactly preserved from the source text."
+    },
+    {
+      "entity_id": "chunk_001_relation_008",
+      "original": {
+        "label": "supports",
+        "definition": "Provides necessary evidence or criteria to enable a specific process or decision.",
+        "source": "separate validation dataset",
+        "target": "choice of training settings",
+        "context": "A separate validation dataset supports model selection and the choice of training settings."
+      },
+      "canonical_key": "supports",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_001_relation_009",
+      "original": {
+        "label": "measures",
+        "definition": "The act of quantifying or assessing a specific property.",
+        "source": "held out test dataset",
+        "target": "performance",
+        "context": "A held-out test dataset measures performance after those choices have been made."
+      },
+      "canonical_key": "measures",
+      "reason": "The new relation 'measures' correctly preserves the source assertion's meaning (quantifying/assessing) and direction (held-out test dataset -> performance). The definition is specific and matches the source. The 'symmetric: false' setting aligns with the active verb nature of 'measures' (A measures B does not imply B measures A), rejecting symmetry as required by the source context. The 'inverse: null' is valid per instructions, acknowledging that an inverse relation may not exist or be defined separately without contradicting the primary assertion. No extra restrictions were added; negation and uncertainty from the source text were handled by maintaining the positive predicate where appropriate and setting symmetry/inverse flags rather than folding them into a second negation."
+    },
+    {
+      "entity_id": "chunk_001_relation_010",
+      "original": {
+        "label": "are made",
+        "definition": "The state of being finalized or completed.",
+        "source": "model selection and the choice of training settings",
+        "target": "held out test dataset",
+        "context": "after those choices have been made"
+      },
+      "canonical_key": "are_made",
+      "reason": "The label 'are made' correctly reflects the passive definition provided ('The state of being finalized or completed'). The source describes a process where training settings are finalized before a test dataset is held out; the target 'held out test dataset' is the entity receiving this state. The new_contract key 'are_made' matches the label exactly, preserving direction (passive) and meaning without adding extra restrictions. The symmetric flag is false, which is correct because 'X are made Y' does not imply 'Y are made X'. The inverse is null, which is valid as there is no natural inverse relation for this specific predicate in this context."
+    },
+    {
+      "entity_id": "chunk_001_relation_011",
+      "original": {
+        "label": "must be separated carefully",
+        "definition": "require strict partitioning to prevent data leakage",
+        "source": "datasets",
+        "target": "passages from the same source",
+        "context": "These datasets must be separated carefully: if passages from the same source appear in both training and testing"
+      },
+      "canonical_key": "must_be_separated_carefully",
+      "reason": "The label 'must be separated carefully' correctly maps to the definition of requiring strict partitioning. The direction is preserved: datasets (source) must be separated from passages of the same source (target). The new_contract accurately reflects this with symmetric=false and inverse=null, as the relationship is not inherently symmetric (separating A from B does not imply separating B from A in the same structural sense without context, but here the definition implies a specific directional constraint based on the source-target pair). The inverse_contract is null, which is valid since no inverse relation was defined or implied. No extra restrictions were added, and the negation/uncertainty logic remains intact as per the source text."
+    },
+    {
+      "entity_id": "chunk_001_relation_012",
+      "original": {
+        "label": "can overstate",
+        "definition": "may present an inflated view of actual capability",
+        "source": "measured performance",
+        "target": "models ability to handle unfamiliar material",
+        "context": "the measured performance can overstate the model's ability to handle unfamiliar material"
+      },
+      "canonical_key": "can_overstate",
+      "reason": "The label 'can overstate' correctly reflects the active direction of the source assertion ('measured performance can overstate...'). The definition matches exactly. The new_contract key 'can_overstate' aligns with the active verb in the label. Symmetry is explicitly set to false, which is correct because 'overstating' is not a symmetric relationship (if A overstates B, B does not necessarily overstate A). The inverse is null, which is valid as there is no natural inverse relation defined for this specific predicate in the source context. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_001_relation_013",
+      "original": {
+        "label": "establishes",
+        "definition": "To serve as a sufficient basis for determining or proving something.",
+        "source": "dataset size",
+        "target": "dataset quality",
+        "context": "Dataset size alone does not establish dataset quality."
+      },
+      "canonical_key": "establishes",
+      "reason": "The label 'establishes' correctly reflects the active direction of the source assertion ('dataset size establishes dataset quality'). The definition matches the source. The new_contract explicitly sets 'symmetric': false and 'inverse': null, which accurately represents that establishing a property is not reversible (quality does not establish size) and has no defined inverse relation in this context. No extra restrictions or negations were added; the semantic meaning of sufficiency for proof is preserved exactly."
+    },
+    {
+      "entity_id": "chunk_002_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific architectural structure for its operation",
+        "source": "tutors language model",
+        "target": "decoder only transformer",
+        "context": "The tutor's language model uses a decoder-only transformer to process text."
+      },
+      "canonical_key": "uses_structure",
+      "reason": "The label 'uses_structure' correctly reflects the active direction of the source assertion ('employs...'). The definition matches the source exactly without adding restrictions. The 'symmetric: false' setting is appropriate because 'uses' implies a specific agent acting on an object, which is not symmetric (A uses B does not imply B uses A). The 'inverse: null' is valid as no inverse relation was requested or implied by the data."
+    },
+    {
+      "entity_id": "chunk_002_relation_002",
+      "original": {
+        "label": "processes",
+        "definition": "handles or analyzes input data through its computational functions",
+        "source": "decoder only transformer",
+        "target": "text",
+        "context": "The tutor's language model uses a decoder-only transformer to process text."
+      },
+      "canonical_key": "processes",
+      "reason": "The label 'processes' in the new_contract matches the source assertion's active direction ('decoder only transformer processes text'). The definition is identical to the source. The 'symmetric' flag is correctly set to false because 'processes' implies a directional flow from source to target, not equivalence. The 'inverse' is correctly null as there is no inverse relation defined for this specific process in the context. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_003",
+      "original": {
+        "label": "divides",
+        "definition": "The source performs the action of splitting the target into smaller units.",
+        "source": "tokenizer",
+        "target": "input passage",
+        "context": "A tokenizer divides an input passage into tokens"
+      },
+      "canonical_key": "divides",
+      "reason": "The label 'divides' correctly reflects the active definition where the source splits the target. The direction is preserved (source -> target), avoiding passive inversion. Symmetry is explicitly set to false, which aligns with the non-reciprocal nature of division. The inverse is null, which is valid for asymmetric relations like this. No extra restrictions or negations were introduced; the predicate meaning remains specific and consistent with the source assertion."
+    },
+    {
+      "entity_id": "chunk_002_relation_004",
+      "original": {
+        "label": "divides_into",
+        "definition": "The source is split by the tokenizer into the target units.",
+        "source": "input passage",
+        "target": "token",
+        "context": "A tokenizer divides an input passage into tokens"
+      },
+      "canonical_key": "divides_into",
+      "reason": "The label 'divides_into' correctly reflects the active direction defined in the source (source split into target). The new_contract definition matches the source assertion exactly without adding restrictions. The symmetric flag is false, which is correct because division is not a symmetric relationship. The inverse is null, which is valid as there is no natural inverse relation for 'divides_into' that maintains equivalence after swapping endpoints."
+    },
+    {
+      "entity_id": "chunk_002_relation_005",
+      "original": {
+        "label": "maps",
+        "definition": "The source transforms the target into a specific representation.",
+        "source": "embedding layer",
+        "target": "token",
+        "context": "an embedding layer maps those tokens"
+      },
+      "canonical_key": "maps",
+      "reason": "The label 'maps' in the new_contract aligns with the source definition where an embedding layer (source) transforms tokens (target). The direction is preserved as active transformation from source to target. The symmetric flag is correctly set to false because mapping is not inherently bidirectional without explicit inverse definition. The inverse is null, which is valid per instructions when no specific inverse relation is defined or implied. No extra restrictions or negations were introduced; the predicate meaning remains consistent with the source assertion."
+    },
+    {
+      "entity_id": "chunk_002_relation_006",
+      "original": {
+        "label": "is_mapped_to",
+        "definition": "The source is transformed by the embedding layer into the target representation.",
+        "source": "token",
+        "target": "numerical vector",
+        "context": "maps those tokens to numerical vectors"
+      },
+      "canonical_key": "is_mapped_to",
+      "reason": "The label 'is_mapped_to' correctly reflects the active transformation direction defined in the source (token -> numerical vector). The new_contract explicitly sets 'symmetric': false and 'inverse': null, which accurately represents that the relationship is not reversible (a vector does not map back to a specific token via the same embedding layer logic) and has no defined inverse relation. No extra restrictions were added; the definition text remains identical to the source assertion, preserving exact meaning."
+    },
+    {
+      "entity_id": "chunk_002_relation_007",
+      "original": {
+        "label": "helps",
+        "definition": "Enables an agent to perform a specific task by providing necessary context.",
+        "source": "positional information",
+        "target": "transformer",
+        "context": "Positional information helps the transformer distinguish sequences containing the same tokens in different orders."
+      },
+      "canonical_key": "helps",
+      "reason": "The label 'helps' in the new_contract matches the source assertion's direction (positional information -> transformer) and definition. The predicate 'helps' is active; its inverse is correctly set to null as per the source data where no inverse relationship was defined or implied. No extra restrictions were added, and the meaning remains exactly preserved without folding negation or uncertainty."
+    },
+    {
+      "entity_id": "chunk_002_relation_008",
+      "original": {
+        "label": "distinguish",
+        "definition": "Identify or differentiate between distinct entities based on provided attributes.",
+        "source": "transformer",
+        "target": "sequences containing the same tokens in different orders",
+        "context": "Positional information helps the transformer distinguish sequences containing the same tokens in different orders."
+      },
+      "canonical_key": "distinguish",
+      "reason": "The label 'distinguish' matches the active verb in the source definition. The direction flows from 'transformer' (source) to 'sequences...' (target), which is preserved in the new_contract key-value pair. The predicate 'distinguish' implies a non-symmetric action (one entity distinguishes another or a system distinguishes inputs), so 'symmetric: false' is correct. The inverse is null, which is valid for asymmetric relations where no natural inverse relation exists within the defined scope. No extra restrictions were added; the definition text was copied exactly without negation folding."
+    },
+    {
+      "entity_id": "chunk_002_relation_009",
+      "original": {
+        "label": "combines",
+        "definition": "The process of merging or integrating data points into a unified representation.",
+        "source": "self attention",
+        "target": "information",
+        "context": "self-attention combines information from token representations"
+      },
+      "canonical_key": "combines",
+      "reason": "The label 'combines' aligns with the definition of merging data points. The source direction (self attention -> information) is preserved as an active process. The new_contract correctly sets 'symmetric' to false and 'inverse' to null, which is valid for a non-symmetric relation where no inverse exists. No extra restrictions or negations were introduced; the predicate meaning remains consistent with the source assertion."
+    },
+    {
+      "entity_id": "chunk_002_relation_010",
+      "original": {
+        "label": "prevents",
+        "definition": "To stop a specific action or process from occurring.",
+        "source": "causal attention mask",
+        "target": "position",
+        "context": "A causal attention mask prevents a position from attending to later positions when the model predicts the next token."
+      },
+      "canonical_key": "prevents",
+      "reason": "The label 'prevents' matches the definition 'To stop a specific action or process from occurring.' The source context describes a causal direction (mask -> position), and the new contract correctly sets 'symmetric' to false and 'inverse' to null, reflecting that prevention is not symmetric and has no standard inverse in this context. No extra restrictions were added, and the active verb 'prevents' was not confused with its passive inverse."
+    },
+    {
+      "entity_id": "chunk_002_relation_011",
+      "original": {
+        "label": "attends to",
+        "definition": "To incorporate information from other entities into its representation.",
+        "source": "position",
+        "target": "later positions",
+        "context": "A causal attention mask prevents a position from attending to later positions when the model predicts the next token."
+      },
+      "canonical_key": "attends_to",
+      "reason": "The label 'attends_to' correctly reflects the active direction of the source definition ('incorporate information... into its representation'). The new contract explicitly sets 'symmetric': false and 'inverse': null, which accurately represents that attending is not a reciprocal relationship (A attends B does not imply B attends A) and has no defined inverse. No extra restrictions were added; the predicate meaning remains specific to incorporating information without folding in negation or uncertainty from the context."
+    },
+    {
+      "entity_id": "chunk_002_relation_012",
+      "original": {
+        "label": "applies during",
+        "definition": "To be active or valid within the temporal bounds of a specific process.",
+        "source": "restriction",
+        "target": "training",
+        "context": "This restriction applies during both training and generation."
+      },
+      "canonical_key": "applies_during",
+      "reason": "The label 'applies_during' correctly reflects the active direction of the source assertion ('restriction applies during training'). The definition matches exactly. The 'symmetric: false' setting is appropriate because 'A applies during B' does not imply 'B applies during A'. The 'inverse: null' is valid as there is no standard inverse relation for temporal applicability in this context. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_002_relation_013",
+      "original": {
+        "label": "applies during",
+        "definition": "To be active or valid within the temporal bounds of a specific process.",
+        "source": "restriction",
+        "target": "generation",
+        "context": "This restriction applies during both training and generation."
+      },
+      "canonical_key": "validates_during",
+      "reason": "The new relation 'validates_during' is coherent and specific. It exactly preserves the source assertion's meaning ('To be active or valid within the temporal bounds of a specific process') and direction (from restriction to generation). The label agrees with the definition's direction; no extra restrictions are added. Symmetry is correctly set to false as per the definition implying a directional validity check, and the inverse is correctly null since there is no defined inverse relation for this predicate."
+    },
+    {
+      "entity_id": "chunk_002_relation_014",
+      "original": {
+        "label": "connects",
+        "definition": "Links distinct pieces of information together within a given scope.",
+        "source": "attention",
+        "target": "information",
+        "context": "Attention can connect information across a passage"
+      },
+      "canonical_key": "connects",
+      "reason": "The label 'connects' in the new_contract matches the source assertion's direction (attention connects information). The definition is identical to the source. The 'symmetric: false' flag correctly reflects that 'connects' is not inherently symmetric (A connects B does not imply B connects A without explicit reciprocity), and 'inverse: null' is valid as no inverse relation was defined or required. No extra restrictions were added, and the predicate meaning remains specific and reusable."
+    },
+    {
+      "entity_id": "chunk_002_relation_015",
+      "original": {
+        "label": "limits",
+        "definition": "Restricts the quantity or extent of something that can be included or processed.",
+        "source": "models finite context window",
+        "target": "amount of text available",
+        "context": "the model's finite context window limits the amount of text available in a single request"
+      },
+      "canonical_key": "limits",
+      "reason": "The label 'limits' correctly matches the active definition of restricting quantity/extent. The source ('models finite context window') acts as the restrictor, and the target ('amount of text available') is what is restricted; this direction (A limits B) is preserved without inversion. The new_contract explicitly sets 'symmetric': false, which is correct because if A limits B, B does not necessarily limit A in the same way. The inverse is set to null, which is valid per instructions when no specific inverse relation exists or is intended. No extra restrictions were added, and vague predicates were avoided."
+    },
+    {
+      "entity_id": "chunk_002_relation_016",
+      "original": {
+        "label": "establishes",
+        "definition": "To serve as proof or foundation for the truth of something.",
+        "source": "attention weight",
+        "target": "associated claim is true",
+        "context": "An attention weight does not establish that the associated claim is true."
+      },
+      "canonical_key": "establishes_truth_of",
+      "reason": "The new relation 'establishes_truth_of' accurately reflects the source assertion's direction: an attention weight serves as proof for a claim being true. The definition aligns with the source context while rejecting the negation present in the example ('does not establish') by focusing on the predicate's core meaning rather than its absence. The label agrees with the active direction (subject establishes object), avoiding passive inversion. Symmetry is correctly set to false, and the inverse is null as appropriate for a non-symmetric foundational relationship."
+    },
+    {
+      "entity_id": "chunk_003_relation_001",
+      "original": {
+        "label": "compares",
+        "definition": "To evaluate one set of values against another for similarity or difference.",
+        "source": "training",
+        "target": "models predicted token probabilities",
+        "context": "Training compares the model's predicted token probabilities with the next tokens in the training examples."
+      },
+      "canonical_key": "compares",
+      "reason": "The new relation 'compares' is coherent and specific, matching the source definition exactly. The direction is preserved as an active evaluation (source -> target). Symmetry is correctly set to false because comparing A to B for difference implies a directional check distinct from B to A in this context, though similarity might be symmetric; however, the definition includes 'difference' which often breaks symmetry in strict logical modeling unless specified otherwise. The inverse is null, which is valid as per instructions when no specific inverse relation is defined or required. No extra restrictions were added, and vague meanings were avoided."
+    },
+    {
+      "entity_id": "chunk_003_relation_002",
+      "original": {
+        "label": "compares_with",
+        "definition": "To be evaluated against a specific reference set in a comparison process.",
+        "source": "models predicted token probabilities",
+        "target": "next tokens in the training examples",
+        "context": "Training compares the model's predicted token probabilities with the next tokens in the training examples."
+      },
+      "canonical_key": "compares_with",
+      "reason": "The label 'compares_with' in the new_contract correctly reflects the active direction of the source assertion ('models predicted token probabilities' compared against 'next tokens'). The definition is identical to the source. The 'symmetric: false' setting accurately represents that comparing A with B does not imply comparing B with A (asymmetric relation). The 'inverse: null' is valid because the inverse contract was not supplied, and the label itself does not require an explicit inverse definition when the relationship is inherently asymmetric or when no inverse mapping is requested. No extra restrictions were added; the predicate meaning remains specific to the comparison process described."
+    },
+    {
+      "entity_id": "chunk_003_relation_003",
+      "original": {
+        "label": "measures",
+        "definition": "The source quantifies the magnitude of the target.",
+        "source": "loss function",
+        "target": "prediction error",
+        "context": "A loss function measures prediction error"
+      },
+      "canonical_key": "quantifies",
+      "reason": "The label 'quantifies' in the new_contract correctly reflects the active direction of the source assertion ('loss function quantifies prediction error'). The definition matches the source exactly without adding extra restrictions. Since the source definition implies a one-way magnitude assessment (source measures target), setting 'symmetric' to false is correct, and 'inverse' being null is valid as there is no defined inverse relation in the source data. No negation or uncertainty was present in the source to require folding into the predicate."
+    },
+    {
+      "entity_id": "chunk_003_relation_004",
+      "original": {
+        "label": "computes",
+        "definition": "The source calculates the values of the target.",
+        "source": "backpropagation",
+        "target": "gradients",
+        "context": "backpropagation computes gradients"
+      },
+      "canonical_key": "computes",
+      "reason": "The label 'computes' in the new_contract matches the source assertion's direction (source calculates target). The definition is identical to the source. The 'symmetric' flag is correctly set to false because calculating gradients from backpropagation is not a symmetric relationship with respect to swapping endpoints (backpropagation does not calculate backpropagation). The 'inverse' is correctly set to null as there is no valid inverse relation defined for this specific process in the context provided. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_005",
+      "original": {
+        "label": "used by",
+        "definition": "The source serves as input for the target to perform its function.",
+        "source": "gradients",
+        "target": "optimizer",
+        "context": "gradients used by an optimizer"
+      },
+      "canonical_key": "used_by",
+      "reason": "The label 'used by' correctly reflects the definition where the source (gradients) serves as input for the target (optimizer). The direction is preserved: gradients are used *by* an optimizer, not vice versa. The new_contract's 'symmetric': false aligns with the active nature of 'used by' (source -> target), rejecting symmetry. The inverse is null, which is valid since 'used by' does not imply a reciprocal relationship where the optimizer is 'used by' gradients. No extra restrictions or negations were introduced; the predicate meaning remains specific and coherent."
+    },
+    {
+      "entity_id": "chunk_003_relation_006",
+      "original": {
+        "label": "updates",
+        "definition": "The source modifies the values of the target.",
+        "source": "optimizer",
+        "target": "model parameters",
+        "context": "optimizer to update model parameters"
+      },
+      "canonical_key": "updates",
+      "reason": "The new relation 'updates' is coherent and specific. It exactly preserves the source assertion's meaning ('The source modifies the values of the target') and direction (active verb 'modifies' implies source acts on target). No extra restrictions were added; the symmetric flag is correctly set to false as modification is not inherently symmetric, and the inverse is correctly null since there is no standard inverse relation for this specific directional action defined in the contract."
+    },
+    {
+      "entity_id": "chunk_003_relation_007",
+      "original": {
+        "label": "controls",
+        "definition": "Determines or regulates the magnitude of a specific quantity.",
+        "source": "learning rate",
+        "target": "size of updates",
+        "context": "The learning rate controls the size of those updates."
+      },
+      "canonical_key": "controls",
+      "reason": "The label 'controls' in the new_contract matches the source assertion's direction (learning rate -> size of updates) and definition. The predicate is active ('controls'), not passive. The 'symmetric' flag is correctly set to false because controlling magnitude is directional, not reciprocal. The 'inverse' is correctly null as there is no defined inverse relationship in the source data. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_008",
+      "original": {
+        "label": "makes unstable",
+        "definition": "Causes a process to become unstable when the source value exceeds an optimal threshold.",
+        "source": "learning rate",
+        "target": "training stability",
+        "context": "A learning rate that is too large can make training unstable"
+      },
+      "canonical_key": "makes_unstable",
+      "reason": "The label 'makes_unstable' correctly reflects the active direction of the source ('learning rate') acting on the target ('training stability'). The definition explicitly describes a causal mechanism where an excess value causes instability, which aligns with the active verb 'makes'. The new_contract accurately captures this by setting 'symmetric' to false (as causing instability is not equivalent to being caused by instability in this context) and 'inverse' to null. No extra restrictions were added, and the negation/uncertainty conditions from the source context ('too large') are handled within the definition's threshold logic rather than folded into a second negation. The inverse_contract is correctly null because the relation is not symmetric."
+    },
+    {
+      "entity_id": "chunk_003_relation_009",
+      "original": {
+        "label": "slows improvement",
+        "definition": "Reduces the speed at which a process improves when the source value is below an optimal threshold.",
+        "source": "learning rate",
+        "target": "improvement speed",
+        "context": "a very small learning rate can slow improvement"
+      },
+      "canonical_key": "slows_improvement",
+      "reason": "The new relation 'slows_improvement' accurately reflects the source assertion: a small learning rate reduces improvement speed. The definition is specific and matches the source context without adding extra restrictions. The direction is preserved (active verb 'slows' applied to 'improvement speed'), symmetry is correctly set to false as reduction of speed is not symmetric, and the inverse is null which is valid since there is no natural inverse process described."
+    },
+    {
+      "entity_id": "chunk_003_relation_010",
+      "original": {
+        "label": "occurs when",
+        "definition": "Describes the specific condition under which a process takes place.",
+        "source": "overfitting",
+        "target": "improved training performance fails to translate into performance on unseen examples",
+        "context": "Overfitting occurs when improved training performance fails to translate into performance on unseen examples."
+      },
+      "canonical_key": "occurs_when",
+      "reason": "The label 'occurs when' correctly maps to the key 'occurs_when', preserving the active-to-passive directionality defined in the source (process -> condition). The definition matches exactly. Symmetry is false as required by the nature of occurrence conditions. The inverse is null, which is valid since an occurrence condition does not imply a reciprocal relationship when endpoints are swapped. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_011",
+      "original": {
+        "label": "is",
+        "definition": "Identifies the nature or category of the source concept.",
+        "source": "dropout",
+        "target": "regularization technique",
+        "context": "Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling."
+      },
+      "canonical_key": "is",
+      "reason": "The label 'is' correctly identifies the nature/category of 'dropout' as a 'regularization technique', matching the source definition. The direction is preserved (source -> target) without inversion. The new_contract accurately reflects the source's non-symmetric relationship (a specific instance belongs to a category, not vice versa in this context). The inverse is null, which is valid for an asymmetric 'is' relation where swapping endpoints does not yield an equivalent statement. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_012",
+      "original": {
+        "label": "randomly disables",
+        "definition": "Performs an action of disabling specific elements with randomness.",
+        "source": "dropout",
+        "target": "some activations",
+        "context": "Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling."
+      },
+      "canonical_key": "randomly_disables",
+      "reason": "The label 'randomly disables' correctly reflects the active direction of the source assertion ('dropout randomly disables some activations'). The definition matches exactly without adding extra restrictions. The 'new_contract' key 'randomly_disables' agrees with the active verb in the label. Symmetry is false as disabling is not inherently symmetric. The inverse is null, which is valid since there is no natural inverse process described that equates to swapping endpoints."
+    },
+    {
+      "entity_id": "chunk_003_relation_013",
+      "original": {
+        "label": "uses",
+        "definition": "Employs a specific entity for its operation.",
+        "source": "ordinary inference",
+        "target": "trained network",
+        "context": "Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling."
+      },
+      "canonical_key": "employs_for_inference",
+      "reason": "The new relation 'employs_for_inference' accurately reflects the source assertion where 'ordinary inference' uses the 'trained network'. The definition explicitly states 'Utilizes a trained network structure to perform standard inference operations without dropout', which aligns with the source context of using the network without random disabling. The direction is preserved (inference employs the network), symmetry is correctly set to false as the relationship is not reciprocal in this context, and the inverse is null as appropriate for an asymmetric usage relation. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_014",
+      "original": {
+        "label": "performs",
+        "definition": "Executes a specific action or event.",
+        "source": "ordinary inference",
+        "target": "random disabling",
+        "context": "Dropout is a regularization technique that randomly disables some activations during training; ordinary inference uses the trained network without that random disabling."
+      },
+      "canonical_key": "performs",
+      "reason": "The label 'performs' correctly maps to the active definition 'Executes a specific action or event'. The source context distinguishes between ordinary inference and dropout (random disabling), but the new contract isolates the predicate 'performs' without importing the 'random disabling' condition as a restriction on the predicate itself. The direction is preserved (active verb for active action). Symmetry is false, which is correct for an asymmetric action like performing. The inverse is null, which is valid for non-equivalent actions. No extra restrictions or negations were added."
+    },
+    {
+      "entity_id": "chunk_003_relation_015",
+      "original": {
+        "label": "uses",
+        "definition": "employs a specific metric to guide an action",
+        "source": "early stopping",
+        "target": "validation performance",
+        "context": "Early stopping uses validation performance to decide when to end training"
+      },
+      "canonical_key": "uses_metric_to_guide",
+      "reason": "The new relation 'uses_metric_to_guide' is coherent and specific, directly derived from the source definition. It preserves the exact meaning of 'employs a specific metric to guide an action'. The direction is maintained: 'early stopping' (subject) actively employs 'validation performance' (object), matching the active verb 'uses' in the source context without inversion. The 'symmetric' flag is correctly set to false, as the relationship is directional (A uses B, not B uses A). The 'inverse' is correctly null because the inverse contract was not provided; per instructions, a null inverse is valid when no inverse relation is asserted or defined in the source data."
+    },
+    {
+      "entity_id": "chunk_003_relation_016",
+      "original": {
+        "label": "decides",
+        "definition": "makes a determination regarding the timing of an event",
+        "source": "early stopping",
+        "target": "training end time",
+        "context": "Early stopping uses validation performance to decide when to end training"
+      },
+      "canonical_key": "decides",
+      "reason": "The label 'decides' in the new_contract matches the source occurrence's label and definition exactly. The direction is preserved: the subject (early stopping) makes a determination regarding the timing of an event (training end time). The predicate 'decides' is active; its inverse would imply the object determines the subject, which contradicts the source meaning, so 'symmetric': false is correct. The inverse_contract is null, which is valid since the definition does not support equivalence after swapping endpoints. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_003_relation_017",
+      "original": {
+        "label": "uses",
+        "definition": "relies on this metric for decision making",
+        "source": "early stopping",
+        "target": "held out test results",
+        "context": "rather than selecting a stopping point using the held-out test results"
+      },
+      "canonical_key": "relies_on",
+      "reason": "The source text 'early stopping relies on this metric for decision making rather than selecting a stopping point using the held-out test results' establishes a directional dependency where 'early stopping' is the subject relying on 'this metric'. The new relation key 'relies_on' correctly captures this active direction (Subject -> Metric). The definition matches the source assertion exactly without adding extra restrictions. The label 'uses' in the occurrence context aligns with the predicate meaning when interpreted as 'relying on'. Since the relation is not symmetric, the inverse_contract being null is correct; an inverse would require a different semantic relationship (e.g., 'determines'), which does not exist here. No negation or uncertainty was present to cause a mismatch."
+    },
+    {
+      "entity_id": "chunk_004_relation_001",
+      "original": {
+        "label": "uses",
+        "definition": "An agent employs a specific technique or method.",
+        "source": "tutor",
+        "target": "quantization",
+        "context": "After training, the tutor uses quantization and retrieval-augmented generation for different purposes."
+      },
+      "canonical_key": "employs_technique",
+      "reason": "The new relation 'employs_technique' is coherent and specific, directly mapping the source assertion where an agent ('tutor') employs a technique ('quantization'). The definition matches exactly. Direction is preserved: the active verb 'employs' in the label aligns with the active voice of the source sentence ('uses'), avoiding any passive inversion. No extra restrictions are added; the symmetric flag is false (consistent with non-symmetric employment), and the inverse is null as expected for a directional action. The predicate meaning is reused without invention or incompatibility."
+    },
+    {
+      "entity_id": "chunk_004_relation_002",
+      "original": {
+        "label": "uses",
+        "definition": "An agent employs a specific technique or method.",
+        "source": "tutor",
+        "target": "retrieval augmented generation",
+        "context": "After training, the tutor uses quantization and retrieval-augmented generation for different purposes."
+      },
+      "canonical_key": "employs_technique",
+      "reason": "The source 'tutor' and target 'retrieval augmented generation' map directly to the agent-technique structure of 'employs_technique'. The definition text is identical. Directionality is preserved (agent -> technique). Modality is factual usage in both. No reinterpretation of location or participation occurred."
+    },
+    {
+      "entity_id": "chunk_004_relation_003",
+      "original": {
+        "label": "stores",
+        "definition": "The source action of keeping data in the target location.",
+        "source": "weight quantization",
+        "target": "model parameters",
+        "context": "Weight quantization stores model parameters with fewer bits"
+      },
+      "canonical_key": "stores_in",
+      "reason": "The label 'stores_in' accurately reflects the active direction of the source action ('weight quantization') acting on the target ('model parameters'), matching the definition's semantics. The predicate 'stores' is reused correctly without folding negation or uncertainty. The 'symmetric' flag is false, which is correct because storing data in a location is not inherently symmetric (A stores B does not imply B stores A). The 'inverse' is null, which is valid as there is no natural inverse relation for this specific action defined in the source. No extra restrictions or vague meanings were introduced."
+    },
+    {
+      "entity_id": "chunk_004_relation_004",
+      "original": {
+        "label": "reduces",
+        "definition": "The source action of decreasing the quantity of the target property.",
+        "source": "weight quantization",
+        "target": "memory required to store model parameters",
+        "context": "reducing the memory required to store those parameters"
+      },
+      "canonical_key": "reduces",
+      "reason": "The label 'reduces' in the new_contract matches the source assertion's direction (decreasing quantity). The definition is identical to the source. The 'symmetric' flag is correctly set to false because reduction is not a symmetric relationship (A reduces B does not imply B reduces A). The 'inverse' is correctly set to null as per the data provided, acknowledging that an explicit inverse contract was not supplied or defined in this context. No extra restrictions were added, and the predicate meaning remains specific and reusable without folding negation or uncertainty."
+    },
+    {
+      "entity_id": "chunk_004_relation_005",
+      "original": {
+        "label": "degrades",
+        "definition": "The source action of lowering the quality or standard of the target property.",
+        "source": "aggressive reduction in precision",
+        "target": "answer quality",
+        "context": "an aggressive reduction in precision can degrade answer quality"
+      },
+      "canonical_key": "degrades",
+      "reason": "The label 'degrades' correctly reflects the active direction of lowering quality from source to target. The definition matches the source assertion without adding extra restrictions. Symmetry is false as degradation is not reversible by itself. The inverse is null, which is valid since no explicit inverse relation was defined or implied in the source text."
+    },
+    {
+      "entity_id": "chunk_004_relation_006",
+      "original": {
+        "label": "supplies",
+        "definition": "The source provides the target under specific conditions.",
+        "source": "retrieval augmented generation",
+        "target": "relevant course passages",
+        "context": "Retrieval-augmented generation supplies relevant course passages when the tutor answers a question."
+      },
+      "canonical_key": "supplies",
+      "reason": "The label 'supplies' aligns with the active definition where the source provides the target. The new_contract correctly sets 'symmetric' to false and 'inverse' to null, matching the source assertion that provision is directional (source -> target) without implying a reciprocal relationship or an inverse process. No extra restrictions were added; the predicate meaning remains consistent with the provided context."
+    },
+    {
+      "entity_id": "chunk_004_relation_007",
+      "original": {
+        "label": "maps",
+        "definition": "Transforms input entities into a specific representation format.",
+        "source": "retrieval encoder",
+        "target": "embeddings",
+        "context": "A retrieval encoder maps the question and document passages into embeddings"
+      },
+      "canonical_key": "maps",
+      "reason": "The occurrence definition 'Transforms input entities into a specific representation format' with source 'retrieval encoder' and target 'embeddings' is semantically equivalent to the proposed contract 'The source transforms the target into a specific representation.' The direction (source -> target) is preserved. The causal strength (transformation) and modality are identical. The endpoint types (encoder -> embeddings) match exactly. No reinterpretation of participation or location was required."
+    },
+    {
+      "entity_id": "chunk_004_relation_008",
+      "original": {
+        "label": "selects",
+        "definition": "Identifies and chooses specific items from a larger collection.",
+        "source": "similarity search",
+        "target": "candidate passages",
+        "context": "a similarity search selects candidate passages from an index"
+      },
+      "canonical_key": "selects",
+      "reason": "The label 'selects' in the new_contract matches the source assertion's active direction ('a similarity search selects candidate passages'). The definition is identical to the source. The 'symmetric' flag is correctly set to false because selection is inherently directional (source -> target). The 'inverse' is correctly null, as there is no standard inverse relation defined for this specific asymmetric process in the provided data. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_004_relation_009",
+      "original": {
+        "label": "added to",
+        "definition": "To be incorporated into a system's working memory or input window.",
+        "source": "selected passages",
+        "target": "language models context",
+        "context": "The selected passages are added to the language model's context."
+      },
+      "canonical_key": "added_to",
+      "reason": "The new relation 'added_to' correctly reflects the source assertion where 'selected passages' are incorporated into 'language models context'. The definition matches exactly. The direction is preserved (passive sense of incorporation), symmetry is explicitly set to false as required by the directional nature of adding something to a system, and the inverse is null which is valid for asymmetric relations. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_004_relation_011",
+      "original": {
+        "label": "changes",
+        "definition": "To cause a modification in the state or values of something.",
+        "source": "retrieval",
+        "target": "models parameters",
+        "context": "Retrieval does not itself change the model's parameters"
+      },
+      "canonical_key": "changes",
+      "reason": "The new relation 'changes' is coherent and specific, matching the source definition exactly. The direction is preserved as an active verb ('To cause a modification') applied to 'models parameters', consistent with the source context where retrieval does not perform this action. The 'symmetric: false' setting correctly reflects that causing a change is not inherently reversible by the same relation without an explicit inverse process. The 'inverse: null' is valid per instructions, acknowledging no inherent inverse exists for this specific predicate in this context. No extra restrictions or negations were added; the meaning and direction align perfectly with the source assertion."
+    },
+    {
+      "entity_id": "chunk_004_relation_012",
+      "original": {
+        "label": "is",
+        "definition": "To possess a specific attribute or state.",
+        "source": "highly ranked passage",
+        "target": "irrelevant",
+        "context": "a highly ranked passage can still be irrelevant"
+      },
+      "canonical_key": "is_irrelevant",
+      "reason": "The label 'is_irrelevant' correctly combines the active verb 'is' (from source) with the attribute 'irrelevant' (from target), preserving the direction of possession defined in the source ('highly ranked passage' possesses the state of being 'irrelevant'). The definition 'To possess the attribute of being irrelevant' accurately reflects this without adding extra restrictions. Since the source explicitly states the context is that a passage 'can still be irrelevant', the relation is not symmetric (a relevant passage is not irrelevant), so 'symmetric: false' is correct. The inverse is null, which is valid as per instructions for cases where no specific inverse relation exists or is needed."
+    },
+    {
+      "entity_id": "chunk_004_relation_014",
+      "original": {
+        "label": "is",
+        "definition": "To possess a specific attribute or state.",
+        "source": "highly ranked passage",
+        "target": "incorrect",
+        "context": "a highly ranked passage can still be irrelevant, outdated, or incorrect"
+      },
+      "canonical_key": "is_incorrect",
+      "reason": "The label 'is_incorrect' correctly maps the source assertion ('highly ranked passage') to the target state ('incorrect'). The definition 'To be factually wrong or inaccurate' aligns with the context that a highly ranked passage can still be incorrect. The direction is preserved (active 'is' leading to the state of being incorrect), symmetry is appropriately marked as false (being incorrect is not symmetric in this context), and the inverse is correctly set to null as per the data."
+    },
+    {
+      "entity_id": "chunk_005_relation_001",
+      "original": {
+        "label": "distinguishes",
+        "definition": "Separates or identifies differences between two specific properties or concepts.",
+        "source": "evaluation",
+        "target": "quality of retrieval",
+        "context": "Evaluation must distinguish the quality of retrieval from the quality of the generated answer."
+      },
+      "canonical_key": "distinguishes",
+      "reason": "The label 'distinguishes' correctly reflects the active verb in the source definition ('Separates or identifies...'). The direction from 'evaluation' to 'quality of retrieval' is maintained without inversion. The new_contract accurately captures the asymmetric nature of distinguishing (symmetric: false) and sets inverse to null, which is valid for non-symmetric relations. No extra restrictions were added, and the predicate meaning remains specific and reusable."
+    },
+    {
+      "entity_id": "chunk_005_relation_002",
+      "original": {
+        "label": "distinguishes",
+        "definition": "Separates or identifies differences between two specific properties or concepts.",
+        "source": "evaluation",
+        "target": "quality of the generated answer",
+        "context": "Evaluation must distinguish the quality of retrieval from the quality of the generated answer."
+      },
+      "canonical_key": "distinguishes",
+      "reason": "Existing exact relation contract; usage requires review"
+    },
+    {
+      "entity_id": "chunk_005_relation_003",
+      "original": {
+        "label": "measures",
+        "definition": "quantifies the extent to which a process yields specific outcomes",
+        "source": "retrieval recall",
+        "target": "count of relevant passages returned by search",
+        "context": "Retrieval recall measures how many relevant passages the search returns"
+      },
+      "canonical_key": "measures_count_of",
+      "reason": "The new relation 'measures_count_of' correctly maps the source label 'measures' to the target 'count of relevant passages returned by search'. The definition is preserved exactly without added restrictions. The direction is active ('measures') matching the source assertion, not inverted. Symmetry is false as expected for a measurement relation. The inverse is null, which is valid since there is no natural inverse process described."
+    },
+    {
+      "entity_id": "chunk_005_relation_007",
+      "original": {
+        "label": "does not show",
+        "definition": "Fails to provide information regarding a specific outcome or state.",
+        "source": "neither measure alone",
+        "target": "tutor use of retrieved evidence correctly",
+        "context": "Neither measure alone shows whether the tutor uses the retrieved evidence correctly"
+      },
+      "canonical_key": "does_not_show",
+      "reason": "The label 'does not show' correctly maps to the key 'does_not_show'. The definition is preserved exactly. The direction is maintained: the source ('neither measure alone') fails to provide information about the target ('tutor use of retrieved evidence correctly'). The predicate 'does not show' is active in meaning (failure to provide), so its inverse must be null as per the schema, which matches the provided 'inverse_contract': null. No extra restrictions or negations were added; the explicit negation in the source label is respected without folding it into a second negation."
+    },
+    {
+      "entity_id": "chunk_005_relation_008",
+      "original": {
+        "label": "cite",
+        "definition": "To reference or quote a specific text passage as support.",
+        "source": "answer",
+        "target": "real passage",
+        "context": "An answer can cite a real passage while making a claim that the passage does not support."
+      },
+      "canonical_key": "cite",
+      "reason": "The new relation 'cite' is coherent and specific. The definition 'To reference or quote a specific text passage as support' exactly matches the source assertion's meaning without adding extra restrictions. The direction is preserved: the active verb 'cite' (answer -> real passage) correctly reflects the source's directional flow from answer to passage, avoiding any passive inverse confusion. Symmetry is explicitly set to false, which aligns with the inherent asymmetry of citing (an answer cites a passage, not vice versa). The inverse is null, which is valid and correct since there is no natural inverse process for 'cite' that maintains equivalence after swapping endpoints. No vague or invented meanings are introduced."
+    },
+    {
+      "entity_id": "chunk_005_relation_009",
+      "original": {
+        "label": "make",
+        "definition": "To state or assert something as true.",
+        "source": "answer",
+        "target": "claim",
+        "context": "An answer can cite a real passage while making a claim that the passage does not support."
+      },
+      "canonical_key": "make",
+      "reason": "The new relation 'make' (answer -> claim) is defined as 'To state or assert something as true.' The source assertion describes an answer making a claim. The direction is preserved: the active verb 'make' flows from 'answer' to 'claim'. The definition matches exactly without adding extra restrictions. Symmetry is correctly set to false because asserting something true does not imply the reverse relationship holds in this context. The inverse is null, which is valid as there is no defined inverse relation for this predicate."
+    },
+    {
+      "entity_id": "chunk_005_relation_010",
+      "original": {
+        "label": "support",
+        "definition": "To provide evidence or backing for a statement.",
+        "source": "claim",
+        "target": "passage",
+        "context": "An answer can cite a real passage while making a claim that the passage does not support."
+      },
+      "canonical_key": "support",
+      "reason": "The new relation 'support' is coherent and specific. It exactly preserves the source assertion's meaning ('To provide evidence or backing for a statement') and direction (claim -> passage). The label agrees with the definition's active direction. No extra restrictions are added; occurrence-level context from the source is not folded into the predicate definition. Symmetry is correctly set to false as support is directional. The inverse is null, which is valid since the relation is not symmetric."
+    },
+    {
+      "entity_id": "chunk_005_relation_011",
+      "original": {
+        "label": "is evaluated for",
+        "definition": "Undergoes assessment regarding a specific quality or requirement.",
+        "source": "tutor",
+        "target": "factual correctness",
+        "context": "The tutor is therefore evaluated for factual correctness"
+      },
+      "canonical_key": "is_evaluated_for",
+      "reason": "The new relation 'is_evaluated_for' correctly maps the source assertion where a tutor undergoes assessment regarding factual correctness. The definition is preserved exactly without added restrictions. The direction is maintained (active subject 'tutor' to object 'factual correctness'), avoiding passive inversion errors. Symmetry is false as expected for an evaluation relationship, and the inverse is null, which is valid per instructions."
+    },
+    {
+      "entity_id": "chunk_005_relation_012",
+      "original": {
+        "label": "is evaluated for",
+        "definition": "Undergoes assessment regarding a specific quality or requirement.",
+        "source": "tutor",
+        "target": "support from the supplied documents",
+        "context": "The tutor is therefore evaluated for factual correctness, support from the supplied documents, and appropriate handling of uncertainty."
+      },
+      "canonical_key": "evaluated_by",
+      "reason": "The new relation 'evaluated_by' correctly maps the source 'tutor' to the target 'support from the supplied documents' as an active assessment event. The definition 'Undergoes assessment...' aligns with the direction: the tutor (subject) undergoes evaluation by the support/documents (agent/source of criteria). The inverse 'is_evaluated_for' is valid because swapping endpoints yields 'support from the supplied documents is evaluated for [quality]', which matches the source assertion's structure where the tutor is evaluated for qualities supported by documents. No extra restrictions or negations were introduced; the predicate meaning remains specific and reusable without folding conditions."
+    },
+    {
+      "entity_id": "chunk_005_relation_013",
+      "original": {
+        "label": "is evaluated for",
+        "definition": "Undergoes assessment regarding a specific quality or requirement.",
+        "source": "tutor",
+        "target": "appropriate handling of uncertainty",
+        "context": "The tutor is therefore evaluated for factual correctness, support from the supplied documents, and appropriate handling of uncertainty."
+      },
+      "canonical_key": "assessed_for_quality_of",
+      "reason": "The new relation 'assessed_for_quality_of' is coherent and specific. It preserves the source assertion's meaning: the tutor (source) undergoes assessment regarding appropriate handling of uncertainty (target). The direction is correct as an active verb ('assessed') applied to the subject for a quality, matching the passive sense in the source without inversion. No extra restrictions are added; symmetry is false as defined, and the inverse is null, which is valid per instructions."
+    },
+    {
+      "entity_id": "chunk_005_relation_014",
+      "original": {
+        "label": "should identify",
+        "definition": "Obligation to recognize a specific state or event.",
+        "source": "tutor",
+        "target": "disagreement between two course passages",
+        "context": "When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion."
+      },
+      "canonical_key": "should_identify",
+      "reason": "The label 'should_identify' correctly reflects the active obligation ('should identify') from the source text. The definition matches exactly without added restrictions. The 'symmetric' flag is false, which aligns with the fact that identifying a disagreement between A and B does not imply identifying a disagreement between B and A in the same structural sense (though logically equivalent, the relation direction matters for process modeling). The 'inverse' is null, which is valid as per instructions since no inverse was defined or required. No extra restrictions were added; negation and uncertainty from the source context ('rather than combine') are handled by the specific definition scope rather than folded into a second negation."
+    },
+    {
+      "entity_id": "chunk_005_relation_015",
+      "original": {
+        "label": "should identify",
+        "definition": "Obligation to perform a specific action.",
+        "source": "tutor",
+        "target": "combination into an unsupported conclusion",
+        "context": "When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion."
+      },
+      "canonical_key": "should_identify_disagreement",
+      "reason": "The new relation 'should_identify_disagreement' correctly maps the source label 'should identify' to the target context of resolving disagreements. The direction is preserved (active obligation from tutor to action), symmetry is explicitly set to false as required by the asymmetric nature of the obligation, and the inverse is null which is valid for non-symmetric relations. No extra restrictions or negations were introduced."
+    },
+    {
+      "entity_id": "chunk_005_relation_016",
+      "original": {
+        "label": "means",
+        "definition": "Indicates that a specific condition or event results in a particular outcome.",
+        "source": "failure to retrieve supporting evidence",
+        "target": "support was not found",
+        "context": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false."
+      },
+      "canonical_key": "means",
+      "reason": "The label 'means' in the new_contract matches the source definition exactly. The direction is preserved: 'failure to retrieve supporting evidence' (source) results in 'support was not found' (target). The predicate 'means' implies a non-symmetric causal relationship (condition -> outcome), so setting 'symmetric' to false is correct. The inverse is correctly set to null because the inverse of 'A means B' is not 'B means A', but rather the logical converse which is not equivalent; since no specific inverse relation was defined or implied as equivalent, null is the valid representation per the instruction that 'Null inverse is valid'. No extra restrictions were added, and the negation/uncertainty in the source text ('does not prove') was handled by keeping the predicate positive while relying"
+    },
+    {
+      "entity_id": "chunk_005_relation_017",
+      "original": {
+        "label": "proves",
+        "definition": "Establishes the truth or falsity of a specific assertion.",
+        "source": "failure to retrieve supporting evidence",
+        "target": "proposed claim is false",
+        "context": "A failure to retrieve supporting evidence means that support was not found; it does not prove that the proposed claim is false."
+      },
+      "canonical_key": "proves",
+      "reason": "The label 'proves' in the new_contract correctly reflects the active direction of the source assertion ('failure to retrieve... means... does not prove that the proposed claim is false'). The definition 'Establishes the truth or falsity...' accurately captures the predicate's reusable meaning without folding in the specific negation found in the source context. Since the source explicitly states a failure 'does not prove' falsity, the new_contract must not assert equivalence between 'failure to retrieve' and 'proves false'. The new_contract correctly sets 'symmetric': false because proving is directional (A proves B does not imply B proves A). The inverse is set to null, which is valid as the relation is not symmetric. No extra restrictions or vague meanings were introduced."
+    }
+  ],
+  "alias_policy": "Each occurrence is checked; a surface label is never a global alias."
+}

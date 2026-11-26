@@ -1,0 +1,28 @@
+{
+  "key": "488532168bd2925db1dc18d285ec1c688f76d0e44ee29ff377307e6582740389",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T22:48:25.4429598Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 16942601900,
+    "load_duration": 3754500,
+    "prompt_eval_count": 1193,
+    "prompt_eval_duration": 481577000,
+    "eval_count": 982,
+    "eval_duration": 16424287000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_001_s001\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"A small transformer uses self-attention to process text\",\n        \"graph_edge_ids\": [\"chunk_001_relation_001\"],\n        \"graph_reading\": \"ASSERTED (small transformer --[uses]--> self attention); additional arguments: to process text\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"A small transformer uses backpropagation to improve its predictions\",\n        \"graph_edge_ids\": [\"chunk_001_relation_002\"],\n        \"graph_reading\": \"ASSERTED (small transformer --[uses]--> backpropagation); additional arguments: to improve predictions\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"These processes occur during training\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The first two claims are fully supported by graph edges chunk_001_relation_001 and chunk_001_relation_002, which include the specific qualifiers 'to process text' and 'to improve predictions'. The third claim regarding the temporal condition 'during training' is not expressed in any graph edge; while the source sentence asserts this timing, the graph lacks an edge capturing this specific temporal/\",\"missing\": [\n      {\n        \"reason\": \"The graph edges assert the usage of mechanisms and their specific functional qualifiers but do not contain an edge explicitly stating that these processes occur 'during training'. The source sentence includes this temporal condition which is absent from the provided graph assertions.\",\"missing_claim\": \"A small transformer uses self-attention/backpropagation during training\",\"source_sentence_ids\": [\"chunk_001_s001\"]\n      }\n    ],\"unsupported\": []},\"chunk_001_s002\": {\n      \"claims\": [\n        {\n          \"source_assertion\": \"Regularization helps it generalize beyond its training examples\",\n          \"graph_edge_ids\": [],\n          \"graph_reading\": \"\",\n          \"preserves_meaning\": false\n        }\n      ],\n      \"reason\": \"The source sentence asserts that regularization helps with generalization. There are no graph edges in the provided data (chunk_001_relation_001, 002, 005, 006) that mention 'regularization' or the concept of 'generalization'. Therefore, the assertion is unsupported by the graph.\",\n      \"missing\": [],\n      \"unsupported\": [\n        {\n          \"reason\": \"The source sentence claims regularization helps generalize. No graph edge exists for 'regularization' or 'generalize'. The graph only covers self-attention, backpropagation, quantization, and retrieval-augmented generation.\",\"missing_claim\": \"Regularization helps it generalize beyond its training examples\",\"source_sentence_ids\": [\"chunk_001_s002\"],\"id\": \"chunk_001_relation_missing_reg\"\n        }\n      ]\n    },\n    \"chunk_001_s003\": {\n      \"claims\": [\n        {\n          \"source_assertion\": \"After training, quantization reduces its memory requirements\",\n          \"graph_edge_ids\": [\"chunk_001_relation_005\"],\n          \"graph_reading\": \"ASSERTED (quantization --[reduces]--> memory requirements of the small transformer); additional arguments: after training\",\n          \"preserves_meaning\": true\n        },\n        {\n          \"source_assertion\": \"Retrieval-augmented generation lets it use external documents when answering questions\",\n          \"graph_edge_ids\": [\"chunk_001_relation_006\"],\n          \"graph_reading\": \"ASSERTED (retrieval augmented generation --[enables]--> small transformer); additional arguments: use external documents when answering questions\",\n          \"preserves_meaning\": true\n        }\n      ],\n      \"reason\": \"The first claim is fully supported by chunk_001_relation_005, which includes the qualifier 'after training'. The second claim is fully supported by chunk_001_relation_006, which includes the qualifier 'use external documents when answering questions'. Both graph edges preserve the meaning of their respective source assertions.\",\n      \"missing\": [],\n      \"unsupported\": []\n    }\n  }",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000565",
+  "source_run": "run_20261124_174502_UTC-0500_3bb667bd",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

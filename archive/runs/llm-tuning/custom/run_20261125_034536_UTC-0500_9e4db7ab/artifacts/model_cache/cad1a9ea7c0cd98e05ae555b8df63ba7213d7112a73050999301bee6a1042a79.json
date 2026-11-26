@@ -1,0 +1,28 @@
+{
+  "key": "cad1a9ea7c0cd98e05ae555b8df63ba7213d7112a73050999301bee6a1042a79",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T11:32:58.67354Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 22668633700,
+    "load_duration": 3689100,
+    "prompt_eval_count": 2664,
+    "prompt_eval_duration": 1247048000,
+    "eval_count": 579,
+    "eval_duration": 21354704000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"document_coverage\": \"The source text defines prompt engineering as a method for end users to customize LLM output by stating response instructions in the prompt, without altering model parameters. It distinguishes three techniques: one-shot (one example), few-shot (multiple examples acting like training data), and zero-shot (no examples). It notes that zero-shot is susceptible to ambiguity (e.g., 'Apple' referring to the tech company vs. fruit) and relies on the LLM's existing pattern-recognition ability.\",\n  \"seeds\": [\n    {\n      \"concept\": \"examples in the prompt\",\n      \"topic_id\": \"subtopic_530d73b7d252527b859a\",\n      \"gaps\": [\n        {\n          \"question\": \"How do multiple examples in a few-shot prompt function as 'training examples' to guide the LLM's response pattern without updating parameters?\",\n          \"assumed_knowledge\": \"The mechanism by which context provided via examples influences the model's internal state or attention weights to align with the desired output format, distinct from actual parameter updates.\",\n          \"why_useful\": \"Understanding that few-shot prompting leverages the model's pre-trained knowledge activated by context is essential to grasp why it works without fine-tuning.\",\n          \"source_chunk_ids\": [\"chunk_005\"]\n        },\n        {\n          \"question\": \"Why does a zero-shot prompt mentioning only 'apple' return information about the technology company instead of the fruit?\",\n          \"assumed_knowledge\": \"The relative frequency or salience of concepts in the model's training data (tech company vs. fruit) and how ambiguity is resolved based on prior exposure.\",\n          \"why_useful\": \"This explains the specific limitation of zero-shot prompting mentioned in the text regarding ambiguity and context dependency.\",\n          \"source_chunk_ids\": [\"chunk_005\"]\n        }\n      ],\n      \"priority\": \"high\",\n      \"reason\": \"The text states that few-shot examples 'act like training examples' and that zero-shot fails due to lack of context. These are functional descriptions requiring explanation of the underlying mechanism (context activation vs. parameter update) and the cause of ambiguity (training data distribution).\"\n    }\n  ],\n  \"case_specific_unknowns\": [],\n  \"reason\": \"The source text describes the behavior of different prompting strategies but assumes the reader understands *how* examples function as context to activate specific knowledge patterns without changing weights, and *why* zero-shot fails on ambiguous terms due to training data distribution. These are substantive gaps in explanatory knowledge required to understand the 'actual source' beyond simple paraphrasing.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_012080",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

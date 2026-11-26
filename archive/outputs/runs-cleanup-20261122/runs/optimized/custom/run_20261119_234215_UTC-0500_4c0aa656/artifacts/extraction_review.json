@@ -1,0 +1,83 @@
+[
+  {
+    "source": "claim",
+    "relation": "supported_by",
+    "relation_definition": "To be substantiated or validated by a specific piece of evidence.",
+    "target": "real passage",
+    "conditions": null,
+    "modality": "does not",
+    "evidence": "An answer can cite a real passage while making a claim that the passage does not support.",
+    "evidence_start": 3548,
+    "evidence_end": 3637,
+    "source_mention": {
+      "name": "claim",
+      "definition": "A statement or assertion made within the answer.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "target_mention": {
+      "name": "real passage",
+      "definition": "An actual excerpt from the source text cited as evidence.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "surface_source": "claim",
+    "surface_target": "real passage",
+    "surface_relation": "supported_by",
+    "id": "chunk_005_coverage_0_0_relation_003",
+    "chunk_id": "chunk_005_coverage_0_0",
+    "paragraph_id": "paragraph_005",
+    "origin": "document",
+    "evidence_context": "Neither measure alone shows whether the tutor uses the retrieved evidence correctly. An answer can cite a real passage while making a claim that the passage does not support. The tutor is therefore evaluated for factual correctness, support from the supplied documents, and appropriate handling of uncertainty.",
+    "extraction_unit_id": "chunk_005_coverage_0_0",
+    "reason": "Quoted extraction proposed for semantic review",
+    "source_role_reading": {
+      "reason": "The predicate 'supported by' is passive in form, implying an agent (the source of support) and a patient (the thing supported). In the source text, 'a real passage' is the entity providing the support (subject), while 'a claim' is the entity receiving the support (object). The phrase 'that the passage does not support' is a relative clause modifying 'claim', but the main predicate arguments are in",
+      "predicate_subject": "a real passage",
+      "predicate_object": "a claim",
+      "exact_reversed_bindings": true
+    },
+    "endpoint_kinds": {
+      "source": "entity",
+      "target": "entity"
+    },
+    "gates": {
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "objections_resolved": true,
+      "evidence": true,
+      "relevance": true,
+      "event_contract": true,
+      "source_role_direction": false
+    },
+    "score": 1.0,
+    "threshold": 0,
+    "accepted": false,
+    "decision_reason": "The source quote explicitly states: 'An answer can cite a real passage while making a claim that the passage does not support.' This directly entails that the 'claim' is NOT supported by the 'real passage'. The candidate relation uses the predicate 'supported_by' with modality 'does not', which accurately reflects the negation in the text. The direction (claim -> real passage) and the specific negation are preserved without adding external conditions or changing meaning.; source-only predicate reading identifies reversed endpoint bindings",
+    "verification_basis": "quote_entailment_model_review",
+    "rejection_categories": [
+      "wrong_direction"
+    ],
+    "reviewer": {
+      "qualified_reading": "does not (claim --[supported by]--> real passage)",
+      "reason": "The source quote explicitly states: 'An answer can cite a real passage while making a claim that the passage does not support.' This directly entails that the 'claim' is NOT supported by the 'real passage'. The candidate relation uses the predicate 'supported_by' with modality 'does not', which accurately reflects the negation in the text. The direction (claim -> real passage) and the specific negation are preserved without adding external conditions or changing meaning.",
+      "candidate_id": "chunk_005_coverage_0_0_relation_003",
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "evidence_status": "supported",
+      "domain_relevance": 1.0,
+      "accept": true,
+      "objections_resolved": true,
+      "rejection_categories": []
+    },
+    "review_status": "completed"
+  }
+]

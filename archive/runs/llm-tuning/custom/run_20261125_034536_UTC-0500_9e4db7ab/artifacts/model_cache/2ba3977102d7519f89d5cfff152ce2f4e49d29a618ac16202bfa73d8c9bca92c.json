@@ -1,0 +1,28 @@
+{
+  "key": "2ba3977102d7519f89d5cfff152ce2f4e49d29a618ac16202bfa73d8c9bca92c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T11:01:27.0952738Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 31084329700,
+    "load_duration": 3554100,
+    "prompt_eval_count": 2566,
+    "prompt_eval_duration": 1298831000,
+    "eval_count": 818,
+    "eval_duration": 29706091000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"numerical score\",\n      \"definition\": \"A numerical value provided by a teacher model.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"student model\",\n      \"definition\": \"The model receiving the training signal.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"binary label\",\n      \"definition\": \"A classification output (e.g., positive/negative) used for training.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"richer training signal\",\n      \"definition\": \"A training input containing more information than a binary label.\",\n      \"kind\": \"property\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"A numerical score gives the student model a richer training signal than a binary label does.\",\n      \"evidence\": \"A numerical score gives the student model a richer training signal than a binary label does.\"\n    },\n    {\n      \"text\": \"A numerical score provides a richer training signal to the student model.\",\n      \"evidence\": \"A numerical score gives the student model a richer training signal\"\n    },\n    {\n      \"text\": \"A binary label provides a less rich training signal to the student model compared to a numerical score.\",\n      \"evidence\": \"...than a binary label does.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"numerical score\",\n        \"definition\": \"A numerical value provided by a teacher model.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"provides_richer_training_signal_to\",\n      \"relation_definition\": \"Supplies a training signal that is richer than an alternative (binary label) to a specific recipient.\",\n      \"target\": {\n        \"name\": \"student model\",\n        \"definition\": \"The model receiving the training signal.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"richer training signal\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"A numerical score gives the student model a richer training signal than a binary label does.\"\n    },\n    {\n      \"source\": {\n        \"name\": \"binary label\",\n        \"definition\": \"A classification output (e.g., positive/negative) used for training.\",\n        \"kind\": \"entity\"\n      },\n      \"relation\": \"provides_less_richer_training_signal_to\",\n      \"relation_definition\": \"Supplies a training signal that is less rich than a numerical score to a specific recipient.\",\n      \"target\": {\n        \"name\": \"student model\",\n        \"definition\": \"The model receiving the training signal.\",\n        \"kind\": \"entity\"\n      },\n      \"argument_qualifiers\": [\n        \"less rich training signal\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"does not\",\n      \"evidence\": \"...than a binary label does.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly compares the quality of the training signal provided by a numerical score versus a binary label to the student model. The extraction captures this comparative relationship using open-vocabulary predicates that reflect the 'richer' vs 'less rich' distinction found in the text, while ensuring the recipient ('student model') is included as the target to maintain faithfulness to the triadic structure of the claim.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_010335",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

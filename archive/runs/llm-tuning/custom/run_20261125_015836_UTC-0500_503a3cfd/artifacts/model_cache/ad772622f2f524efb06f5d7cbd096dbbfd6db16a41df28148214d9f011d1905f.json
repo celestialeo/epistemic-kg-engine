@@ -1,0 +1,28 @@
+{
+  "key": "ad772622f2f524efb06f5d7cbd096dbbfd6db16a41df28148214d9f011d1905f",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T07:52:42.2929404Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 38527704500,
+    "load_duration": 3149800,
+    "prompt_eval_count": 862,
+    "prompt_eval_duration": 324057000,
+    "eval_count": 1084,
+    "eval_duration": 38155515000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"Google Search\",\n      \"definition\": \"The search engine entity performing the actions.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"cached list\",\n      \"definition\": \"A stored collection of vaccine synonym queries generated via offline inference.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"queries about vaccines\",\n      \"definition\": \"User search requests specifically concerning vaccine topics.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"live traffic\",\n      \"definition\": \"Real-time user search request streams.\",\n      \"kind\": \"process\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"Google Search then used the cached list to identify queries about vaccines in live traffic.\",\n      \"evidence\": \"Google Search then used the cached list to identify queries about vaccines in live traffic.\"\n    },\n    {\n      \"text\": \"For example, Google Search used an LLM in offline inference to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.\",\n      \"evidence\": \"For example, Google Search used an LLM in offline inference to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\"name\": \"Google Search\", \"definition\": \"The search engine entity performing the actions.\", \"kind\": \"entity\"},\n      \"relation\": \"used\",\n      \"relation_definition\": \"Employed a specific resource or tool to achieve a goal.\",\n      \"target\": {\"name\": \"cached list\", \"definition\": \"A stored collection of vaccine synonym queries generated via offline inference.\", \"kind\": \"process\"},\n      \"argument_qualifiers\": [\n        \"to identify queries about vaccines in live traffic\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"Google Search then used the cached list to identify queries about vaccines in live traffic.\"\n    },\n    {\n      \"source\": {\"name\": \"cached list\", \"definition\": \"A stored collection of vaccine synonym queries generated via offline inference.\", \"kind\": \"process\"},\n      \"relation\": \"identifies\",\n      \"relation_definition\": \"Serves to recognize or select specific items from a larger set.\",\n      \"target\": {\"name\": \"queries about vaccines\", \"definition\": \"User search requests specifically concerning vaccine topics.\", \"kind\": \"entity\"},\n      \"argument_qualifiers\": [\n        \"in live traffic\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"Google Search then used the cached list to identify queries about vaccines in live traffic.\"\n    },\n    {\n      \"source\": {\"name\": \"Google Search\", \"definition\": \"The search engine entity performing the actions.\", \"kind\": \"entity\"},\n      \"relation\": \"used\",\n      \"relation_definition\": \"Employed a specific resource or tool to achieve a goal.\",\n      \"target\": {\"name\": \"LLM\", \"definition\": \"A large language model used for processing text.\", \"kind\": \"entity\"},\n      \"argument_qualifiers\": [\n        \"in offline inference\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"For example, Google Search used an LLM in offline inference to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.\"\n    },\n    {\n      \"source\": {\"name\": \"Google Search\", \"definition\": \"The search engine entity performing the actions.\", \"kind\": \"entity\"},\n      \"relation\": \"cached\",\n      \"relation_definition\": \"Stored a collection of data for later retrieval or use.\",\n      \"target\": {\"name\": \"list of more than 800 synonyms for Covid vaccines in more than 50 languages\", \"definition\": \"A multilingual collection of vaccine synonym variations.\", \"kind\": \"process\"},\n      \"argument_qualifiers\": [\n        \"using an LLM in offline inference\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"For example, Google Search used an LLM in offline inference to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.\"\n    }\n  ],\n  \"confidence\": 1.0,\n  \"reason\": \"Extracted four distinct relationships from the provided sentences: Google Search using the cached list to identify queries, the cached list identifying queries within live traffic, Google Search using an LLM for offline inference, and Google Search caching a specific multilingual synonym list via that LLM.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_004580",
+  "source_run": "run_20261125_015836_UTC-0500_503a3cfd",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

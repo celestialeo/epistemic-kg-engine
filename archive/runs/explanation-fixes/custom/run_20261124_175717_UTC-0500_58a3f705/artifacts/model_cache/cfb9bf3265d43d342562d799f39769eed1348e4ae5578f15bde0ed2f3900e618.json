@@ -1,0 +1,28 @@
+{
+  "key": "cfb9bf3265d43d342562d799f39769eed1348e4ae5578f15bde0ed2f3900e618",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:07:19.1960381Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 10532960700,
+    "load_duration": 3350800,
+    "prompt_eval_count": 515,
+    "prompt_eval_duration": 281579000,
+    "eval_count": 609,
+    "eval_duration": 10204059000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"retrieval augmented generation\",\n      \"definition\": \"A method that enables the use of external documents for answering questions.\",\n      \"kind\": \"process\",\n      \"node_id\": \"concept_01\"\n    },\n    {\n      \"name\": \"retrieval step\",\n      \"definition\": \"A process that fetches relevant context from an external corpus.\",\n      \"kind\": \"process\",\n      \"node_id\": \"concept_02\"\n    },\n    {\n      \"name\": \"injection step\",\n      \"definition\": \"A process that provides the retrieved context to the model's input.\",\n      \"kind\": \"process\",\n      \"node_id\": \"concept_03\"\n    },\n    {\n      \"name\": \"external corpus\",\n      \"definition\": \"The source of relevant context documents.\",\n      \"kind\": \"entity\",\n      \"node_id\": \"concept_04\"\n    },\n    {\n      \"name\": \"model's input\",\n      \"definition\": \"The data fed into the generative model.\",\n      \"kind\": \"entity\",\n      \"node_id\": \"concept_05\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0012\": {\n      \"source_id\": \"concept_01\",\n      \"target_id\": \"concept_02\",\n      \"relation\": \"involves\",\n      \"relation_definition\": \"A process that includes or contains a specific subprocess.\",\n      \"argument_qualifiers\": [\n        \"fetches relevant context from an external corpus\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"actual\"\n    },\n    \"candidate_0013\": {\n      \"source_id\": \"concept_01\",\n      \"target_id\": \"concept_03\",\n      \"relation\": \"involves\",\n      \"relation_definition\": \"A process that includes or contains a specific subprocess.\",\n      \"argument_qualifiers\": [\n        \"provides the retrieved context to the model's input\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"actual\"\n    },\n    \"candidate_0014\": {\n      \"source_id\": \"concept_02\",\n      \"target_id\": \"concept_03\",\n      \"relation\": \"constitutes_mechanism_with\",\n      \"relation_definition\": \"Two processes together form the complete mechanism for a specific function.\",\n      \"argument_qualifiers\": [\n        \"enable external document usage\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"actual\"\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_002285",
+  "source_run": "run_20261124_175717_UTC-0500_58a3f705",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

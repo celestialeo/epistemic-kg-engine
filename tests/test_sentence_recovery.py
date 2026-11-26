@@ -9,6 +9,7 @@ from pipeline.extraction import INSTRUCTION, Extraction, Endpoint, reference_nam
 from pipeline.health import HealthFailure
 from pipeline.models import ModelResponseError, OutputLimitError
 from pipeline.registry import ConceptRegistry, RelationRegistry
+from pipeline.identity import concept_key
 from pipeline.trace import Trace
 import test_extraction_recovery as fixtures
 
@@ -46,6 +47,37 @@ class SentenceRecoveryTests(unittest.TestCase):
         self.assertNotIn("NEXT_SENTENCE", requests[1])
         self.assertEqual(requests[1]["PREVIOUS_SENTENCE"], first)
         self.assertEqual(requests[2]["PREVIOUS_SENTENCE"], naming)
+
+    def test_reference_chain_preserves_owner_across_sentences_and_chunk_boundaries(self):
+        first = "A controller processes signals."
+        second = "Calibration helps it adapt."
+        third = "Compression reduces its memory requirement."
+        for max_words in (10000, 5):
+            with self.subTest(max_words=max_words):
+                def respond(role, payload):
+                    if role == 'concept_reference_resolver':
+                        self.assertIn(first, payload['REFERENCE_CONTEXT'])
+                        owned = payload['reference_phrase'] == 'its memory requirement'
+                        return dict(concept=fixtures.concept(
+                            'memory requirement of controller' if owned else 'controller'),
+                            reason='The earlier explicit controller is the antecedent; preserve the property')
+                    current = payload['CURRENT_SENTENCE'].strip()
+                    if current == first:
+                        return fixtures.extraction(first, concepts=[fixtures.concept('controller')])
+                    if current == third:
+                        self.assertIn(first, payload['REFERENCE_CONTEXT'])
+                        self.assertEqual(payload['PREVIOUS_SENTENCE'], second)
+                    # The extractor drops the possessive marker; resolve it from the exact source mention.
+                    source, target = ('calibration', 'it') if current == second else ('compression', 'memory requirement')
+                    return fixtures.extraction(current, [self.relation(
+                        fixtures.concept(source), fixtures.concept(target), current)])
+                rows, model, _ = self.run_extraction(' '.join((first, second, third)), respond, max_words)
+                proposals = [p for row in rows for p in row['relation_proposals']]
+                self.assertEqual([p['target'] for p in proposals], ['controller', 'memory requirement of controller'])
+                self.assertEqual([p['evidence'] for p in proposals], [second, third])
+                self.assertTrue(all(row['status'] == 'complete' for row in rows))
+                self.assertEqual(sum(r['role'] == 'extractor' for r in model.requests), 3)
+                self.assertEqual(sum(r['role'] == 'concept_reference_resolver' for r in model.requests), 2)
 
     def test_extraction_examples_are_abstract_including_schema_descriptions(self):
         prompt = INSTRUCTION + json.dumps(Extraction.model_json_schema())
@@ -287,7 +319,7 @@ class SentenceRecoveryTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "complete")
         proposals = rows[0]["relation_proposals"]
         self.assertEqual(len(proposals), 4)
-        self.assertEqual({p["target"] for p in proposals}, {n.removeprefix("the ") for n in names.values()})
+        self.assertEqual({p["target"] for p in proposals}, {concept_key(n.removeprefix("the ")) for n in names.values()})
         self.assertTrue(all(p["evidence"] == current for p in proposals))
         self.assertEqual({p["surface_target"] for p in proposals}, set(names))
         self.assertEqual(sum(r["role"] == "concept_reference_resolver" for r in model.requests), 4)

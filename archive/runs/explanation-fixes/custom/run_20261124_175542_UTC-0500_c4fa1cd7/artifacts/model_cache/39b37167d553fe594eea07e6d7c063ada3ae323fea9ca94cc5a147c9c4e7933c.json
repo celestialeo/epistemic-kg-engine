@@ -1,0 +1,28 @@
+{
+  "key": "39b37167d553fe594eea07e6d7c063ada3ae323fea9ca94cc5a147c9c4e7933c",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T22:56:21.6160508Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8304293300,
+    "load_duration": 3549600,
+    "prompt_eval_count": 582,
+    "prompt_eval_duration": 268544000,
+    "eval_count": 469,
+    "eval_duration": 8006638000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"self attention\",\n      \"definition\": \"A mechanism for processing text sequences by attending to relevant parts.\",\n      \"kind\": \"process\",\n      \"node_id\": \"node_self_attention\"\n    },\n    {\n      \"name\": \"text sequences\",\n      \"definition\": \"Ordered collections of tokens representing input data.\",\n      \"kind\": \"entity\",\n      \"node_id\": \"node_text_sequences\"\n    },\n    {\n      \"name\": \"relationships between tokens\",\n      \"definition\": \"Computed associations quantifying the relevance of one token to another.\",\n      \"kind\": \"property\",\n      \"node_id\": \"node_relationships_between_tokens\"\n    },\n    {\n      \"name\": \"contextual representations\",\n      \"definition\": \"Output vectors encoding the meaning of tokens within their sequence context.\",\n      \"kind\": \"entity\",\n      \"node_id\": \"node_contextual_representations\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0003\": {\n      \"source_id\": \"node_self_attention\",\n      \"target_id\": \"node_text_sequences\",\n      \"relation\": \"processes\",\n      \"relation_definition\": \"A process that transforms input sequences into processed outputs via internal computation.\",\n      \"argument_qualifiers\": [\n        \"by computing relationships between tokens\",\n        \"to generate contextual representations\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"actual\"\n    },\n    \"candidate_0004\": {\n      \"source_id\": \"node_relationships_between_tokens\",\n      \"target_id\": \"node_contextual_representations\",\n      \"relation\": \"determine_contribution\",\n      \"relation_definition\": \"A property that dictates the weight or influence of an input element on another's output value.\",\n      \"argument_qualifiers\": [\n        \"how much each input token contributes to the representation of every other token in the sequence\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"actual\"\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_001028",
+  "source_run": "run_20261124_175542_UTC-0500_c4fa1cd7",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

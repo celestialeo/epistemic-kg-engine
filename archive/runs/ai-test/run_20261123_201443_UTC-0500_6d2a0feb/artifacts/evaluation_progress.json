@@ -1,0 +1,167 @@
+[
+  {
+    "chunk_id": "chunk_001",
+    "original": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions.",
+    "reconstruction": "A small transformer uses self attention to process text and employs backpropagation during the training period to improve predictions of the small transformer. Regularization enables generalization capability of the small transformer beyond its training examples, while quantization reduces memory requirements of the small transformer after training. Retrieval augmented generation lets the small transformer use external documents when answering questions.",
+    "reason": "The text was constructed by sequentially combining the supplied relations in their source occurrence order. Each sentence aggregates related predicates (e.g., 'uses', 'employs_backpropagation_for_training') associated with the 'small transformer' subject, preserving specific conditions like 'during training period' and 'after training'. The final sentence incorporates the distinct capability enabled by 'retrieval augmented generation'. All argument qualifiers were integrated as descriptive clauses to maintain fidelity to the source data without inferring additional facts.",
+    "status": "completed",
+    "claim_fidelity_f1": 0.7272727272727273,
+    "idea_order_agreement": 1.0,
+    "rouge_l_f1": 0.6407766990291263,
+    "length_similarity": 0.711864406779661,
+    "final_score": 78.52641105808787,
+    "claim_precision": 0.6666666666666666,
+    "claim_recall": 0.8,
+    "original_claim_count": 5,
+    "reconstructed_claim_count": 6,
+    "matched_claim_count": 4,
+    "ordered_pair_count": 6,
+    "concordant_pair_count": 6,
+    "original_word_count": 42,
+    "reconstructed_word_count": 59,
+    "original_claims": [
+      {
+        "text": "A small transformer uses self-attention to process text",
+        "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      {
+        "text": "A small transformer uses backpropagation to improve its predictions during training",
+        "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training."
+      },
+      {
+        "text": "Regularization helps a small transformer generalize beyond its training examples",
+        "evidence": "Regularization helps it generalize beyond its training examples."
+      },
+      {
+        "text": "After training, quantization reduces a small transformer's memory requirements",
+        "evidence": "After training, quantization reduces its memory requirements"
+      },
+      {
+        "text": "Retrieval-augmented generation lets a small transformer use external documents when answering questions",
+        "evidence": "while retrieval-augmented generation lets it use external documents when answering questions."
+      }
+    ],
+    "reconstructed_claims": [
+      {
+        "text": "A small transformer uses self attention to process text",
+        "evidence": "A small transformer uses self attention to process text and employs backpropagation during the training period to improve predictions of the small transformer."
+      },
+      {
+        "text": "A small transformer employs backpropagation during the training period",
+        "evidence": "A small transformer uses self attention to process text and employs backpropagation during the training period to improve predictions of the small transformer."
+      },
+      {
+        "text": "Employing backpropagation during the training period improves predictions of a small transformer",
+        "evidence": "A small transformer uses self attention to process text and employs backpropagation during the training period to improve predictions of the small transformer."
+      },
+      {
+        "text": "Regularization enables generalization capability of a small transformer beyond its training examples",
+        "evidence": "Regularization enables generalization capability of the small transformer beyond its training examples, while quantization reduces memory requirements of the small transformer after training."
+      },
+      {
+        "text": "Quantization reduces memory requirements of a small transformer after training",
+        "evidence": "Regularization enables generalization capability of the small transformer beyond its training examples, while quantization reduces memory requirements of the small transformer after training."
+      },
+      {
+        "text": "Retrieval augmented generation lets a small transformer use external documents when answering questions",
+        "evidence": "Retrieval augmented generation lets the small transformer use external documents when answering questions."
+      }
+    ],
+    "claim_matches": [
+      {
+        "original_index": 0,
+        "reconstructed_index": 0,
+        "reason": "Exact semantic equivalence; 'self-attention' and 'self attention' are identical concepts with no change in meaning or participants."
+      },
+      {
+        "original_index": 2,
+        "reconstructed_index": 3,
+        "reason": "Equivalent fact: both assert that regularization enables/improves generalization beyond training examples for a small transformer. 'Helps' and 'enables' are treated as equivalent modality here."
+      },
+      {
+        "original_index": 3,
+        "reconstructed_index": 4,
+        "reason": "Equivalent fact: both state that quantization reduces memory requirements after training. Word order changes ('reduces a small transformer's memory' vs 'reduces memory requirements of a small transformer') do not alter the semantic meaning."
+      },
+      {
+        "original_index": 4,
+        "reconstructed_index": 5,
+        "reason": "Equivalent fact: both state that Retrieval-augmented generation (RAG) allows using external documents. Minor spacing differences ('Retrieval-augmented' vs 'Retrieval augmented') are ignored as they do not change the semantic content."
+      }
+    ],
+    "context_reviews": [
+      {
+        "original_index": 0,
+        "reconstructed_index": 0,
+        "reason": "The claims are semantically equivalent as the only differences are stylistic variations in hyphenation ('self-attention' vs 'self attention') and article usage, which do not alter the referent or meaning.",
+        "participants_preserved": true,
+        "ownership_preserved": true,
+        "purpose_preserved": true,
+        "timing_preserved": true,
+        "qualifications_preserved": true,
+        "direction_preserved": true,
+        "accepted": true,
+        "alignment_reason": "Exact semantic equivalence; 'self-attention' and 'self attention' are identical concepts with no change in meaning or participants.",
+        "selected_for_alignment": true
+      },
+      {
+        "original_index": 1,
+        "reconstructed_index": 2,
+        "reason": "The original claim attributes the action of using backpropagation to the 'small transformer' as an active agent, whereas the reconstructed claim presents the improvement of predictions as a direct result of employing backpropagation without explicitly assigning that employment to the transformer. While the core meaning regarding the relationship between backpropagation and prediction improvement (",
+        "participants_preserved": false,
+        "ownership_preserved": false,
+        "purpose_preserved": true,
+        "timing_preserved": true,
+        "qualifications_preserved": true,
+        "direction_preserved": false,
+        "accepted": false,
+        "alignment_reason": "Equivalent fact: both state that backpropagation improves predictions during training. The original uses active voice ('uses... to improve'), while the reconstructed uses passive/gerund structure ('Employing... improves'), but the core relationship and conditions are preserved.",
+        "selected_for_alignment": false
+      },
+      {
+        "original_index": 2,
+        "reconstructed_index": 3,
+        "reason": "Both claims attribute the function of regularization to enabling generalization beyond training examples for a small transformer, with no meaningful difference in meaning or scope.",
+        "participants_preserved": true,
+        "ownership_preserved": true,
+        "purpose_preserved": true,
+        "timing_preserved": true,
+        "qualifications_preserved": true,
+        "direction_preserved": true,
+        "accepted": true,
+        "alignment_reason": "Equivalent fact: both assert that regularization enables/improves generalization beyond training examples for a small transformer. 'Helps' and 'enables' are treated as equivalent modality here.",
+        "selected_for_alignment": true
+      },
+      {
+        "original_index": 3,
+        "reconstructed_index": 4,
+        "reason": "Both claims accurately reflect the original passage's statement that quantization reduces memory requirements for a small transformer specifically after the training phase. The reconstructed claim uses slightly different phrasing but preserves the exact timing, subject, and outcome without introducing errors or omissions.",
+        "participants_preserved": true,
+        "ownership_preserved": true,
+        "purpose_preserved": true,
+        "timing_preserved": true,
+        "qualifications_preserved": true,
+        "direction_preserved": true,
+        "accepted": true,
+        "alignment_reason": "Equivalent fact: both state that quantization reduces memory requirements after training. Word order changes ('reduces a small transformer's memory' vs 'reduces memory requirements of a small transformer') do not alter the semantic meaning.",
+        "selected_for_alignment": true
+      },
+      {
+        "original_index": 4,
+        "reconstructed_index": 5,
+        "reason": "The claims are semantically equivalent as they both assert that retrieval-augmented generation enables a small transformer to utilize external documents for question answering. Minor differences in hyphenation and the inclusion of 'the' versus 'a' do not alter the core meaning or factual content.",
+        "participants_preserved": true,
+        "ownership_preserved": true,
+        "purpose_preserved": true,
+        "timing_preserved": true,
+        "qualifications_preserved": true,
+        "direction_preserved": true,
+        "accepted": true,
+        "alignment_reason": "Equivalent fact: both state that Retrieval-augmented generation (RAG) allows using external documents. Minor spacing differences ('Retrieval-augmented' vs 'Retrieval augmented') are ignored as they do not change the semantic content.",
+        "selected_for_alignment": true
+      }
+    ],
+    "verified_competing_pairs": 0,
+    "rejected_context_matches": 1
+  }
+]

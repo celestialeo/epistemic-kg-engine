@@ -1,0 +1,206 @@
+[
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_008",
+    "status": "unresolved",
+    "reason": "Relation endpoint metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_003_concept_2",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_005_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'A foundation LLM is not a complete solution...' appears in PREVIOUS_SENTENCE but lacks direct textual support in CURRENT_SENTENCE. The instruction requires every claim to have an exact continuous source quote overlapping CURRENT_SENTENCE. While CURRENT_SENTENCE contains the same semantic idea ('...rather than a complete solution'), it does not contain the full phrase 'not a complete solution for machine learning tasks such as classification or regression' required by the failed record's evidence text."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_012",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation uses an evidence quote from PREVIOUS_SENTENCE ('However, a foundation LLM is not...') which does not overlap with CURRENT_SENTENCE. The instruction mandates that every relationship must have an exact continuous source quote overlapping CURRENT_SENTENCE. Although CURRENT_SENTENCE supports the concept ('serves as a platform rather than a complete solution'), it does not contain the specific qualifier 'for machine learning tasks such as classification or regression' found in the failed record's evidence, making the specific relation unsupported by the current sentence's text."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_006_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim in the failed record originates from PREVIOUS_SENTENCE and does not overlap with CURRENT_SENTENCE. Per instructions, only claims supported by text overlapping CURRENT_SENTENCE are extracted."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_014",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'serves as' is derived from PREVIOUS_SENTENCE. No substantive assertion regarding this specific relationship exists in CURRENT_SENTENCE; therefore, no record can be generated for this index based on the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_relation_015",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The negative relation 'does not serve as' is derived from PREVIOUS_SENTENCE. No substantive assertion regarding this specific relationship exists in CURRENT_SENTENCE; therefore, no record can be generated for this index based on the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_sentence_006_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_002_relation_010",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_sentence_001_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The previous record's evidence quote was identical to the source text but marked as invalid. However, the instruction requires repairing failed records for the CURRENT_SENTENCE context or correcting the specific failure reason provided in the input data. The input data shows a failure on PREVIOUS_SENTENCE text ('For example...'). Per instructions: 'Repair only failed_records for this sentence'. Since the current sentence does not contain the text of the failed record, and the failed record explicitly cites PREVIOUS_SENTENCE as its source, there is no valid continuous substring in CURRENT_SENTENCE to support this specific claim. Therefore, the record cannot be repaired with a new quote from the current context and must remain null/unsupported relative to the current extraction task."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_relation_002",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The failed relation cites evidence from PREVIOUS_SENTENCE ('For example...'). The instruction states: 'Repair only failed_records for this sentence'. Since the text supporting the claim exists in PREVIOUS_SENTENCE and not CURRENT_SENTENCE, no valid continuous source substring exists within CURRENT_SENTENCE to support this specific relation. Consequently, it cannot be repaired with a quote from the current context."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_sentence_007_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim text refers to 'distilled LLM' and 'larger LLM', which are concepts from PREVIOUS_SENTENCE. The CURRENT_SENTENCE discusses 'LLMs with more parameters' vs 'fewer parameters'. While semantically similar, the specific entities ('distilled' vs 'more parameters') do not match exactly within the CURRENT_SENTENCE text required for a faithful overlap without external inference. Per instructions: 'Do not infer unstated background facts' and 'Every claim... needs an exact continuous source quote overlapping CURRENT_SENTENCE'. The current sentence does not explicitly mention 'distilled LLM', so a claim about it cannot be extracted from this specific sentence alone."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_003_relation_011",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation endpoints ('predictions of the distilled LLM', 'predictions of the larger LLM') are not explicitly named in CURRENT_SENTENCE. CURRENT_SENTENCE uses 'LLMs with more parameters' and 'LLMs with fewer parameters'. Mapping 'distilled' to 'fewer parameters' and 'larger' to 'more parameters' requires inference not present in the text. Per instructions: 'Do not infer unstated background facts' and 'Resolve references... using the supplied sentences'. Since CURRENT_SENTENCE does not contain the antecedents for 'distilled' or explicitly link them to parameter counts in a way that allows direct extraction of this specific relation without assumption, the record is unsupported by the CURRENT_SENTENCE text alone."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_sentence_004_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'The teacher model labels a dataset...' is from PREVIOUS_SENTENCE and REFERENCE_CONTEXT, not CURRENT_SENTENCE. No valid claim can be extracted for this index from the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_009",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'teacher model -> labels -> dataset' is derived from PREVIOUS_SENTENCE. CURRENT_SENTENCE does not contain this action; it describes a different action ('passes its knowledge'). No valid record for this index exists in the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_010",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'labeled dataset -> is used to train -> student model' is derived from PREVIOUS_SENTENCE. CURRENT_SENTENCE does not contain this action; it describes knowledge transfer via labels. No valid record for this index exists in the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_sentence_006_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'The teacher model labels a dataset...' is derived from REFERENCE_CONTEXT (text_1) but does not overlap with CURRENT_SENTENCE. Per instructions, claims must have an exact continuous source quote overlapping CURRENT_SENTENCE. No such quote exists in CURRENT_SENTENCE for this specific claim."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_sentence_006_claims_2",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'Through the labels, the teacher model passes its knowledge...' is derived from REFERENCE_CONTEXT (text_1) but does not overlap with CURRENT_SENTENCE. Per instructions, claims must have an exact continuous source quote overlapping CURRENT_SENTENCE. No such quote exists in CURRENT_SENTENCE for this specific claim."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_017",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'labeled data -> used to train -> student model' describes a process detailed in REFERENCE_CONTEXT (text_1). CURRENT_SENTENCE states the teacher produces more labeled data than it was trained on, but does not explicitly state that this specific labeled data is used to train the student model within the sentence boundaries. The evidence quote from text_1 does not overlap CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_018",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'teacher model -> passes knowledge to -> student model' describes a mechanism detailed in REFERENCE_CONTEXT (text_1). CURRENT_SENTENCE asserts the teacher produces more labeled data than its own training set size, but does not explicitly state the act of passing knowledge via labels within the sentence boundaries. The evidence quote from text_1 does not overlap CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_sentence_008_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence 'A teacher model can also give the student model a numerical score instead of a binary label.' is from PREVIOUS_SENTENCE and does not overlap with CURRENT_SENTENCE. Per instructions, claims must be supported by an exact continuous source quote overlapping CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_023",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation describes a claim from PREVIOUS_SENTENCE ('A teacher model can also give...'). The evidence does not overlap CURRENT_SENTENCE. Per instructions, relations must be supported by an exact continuous source quote overlapping CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_004_relation_024",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation describes a claim from PREVIOUS_SENTENCE ('...instead of a binary label'). The evidence does not overlap CURRENT_SENTENCE. Per instructions, relations must be supported by an exact continuous source quote overlapping CURRENT_SENTENCE."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_005_sentence_008_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'In few-shot prompting, the examples in the prompt act like training examples.' is found only in PREVIOUS_SENTENCE. It does not appear in CURRENT_SENTENCE ('Zero-shot prompting supplies no examples in the prompt.') and cannot be extracted from the current sentence as required."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_005_relation_014",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'few-shot prompting -> acts like -> training examples' is derived entirely from PREVIOUS_SENTENCE. There is no evidence in CURRENT_SENTENCE to support this relationship for extraction."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_005_sentence_011_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim in the failed record ('A zero-shot prompt...') is derived entirely from PREVIOUS_SENTENCE and contains no substantive assertion supported by CURRENT_SENTENCE. Per instructions, claims must be extracted only from CURRENT_SENTENCE or use adjacent text solely to resolve references within a CURRENT_SENTENCE claim. Since this record attempts to extract a claim about 'zero-shot prompts' which is not asserted in the current sentence (which asserts what prompt engineering does *not* do), and the evidence provided does not overlap with CURRENT_SENTENCE, no valid relationship can be formed for this specific index based on the current sentence's content."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_005_sentence_012_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'Prompt engineering does not add, remove or change the parameters of an LLM' is found in PREVIOUS_SENTENCE. It does not appear in CURRENT_SENTENCE ('Instead, prompt engineering relies on the existing pattern-recognition ability of the LLM.') and cannot be extracted from the current sentence as required."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_005_relation_022",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The relation 'prompt engineering -> does not modify -> parameters' is derived from PREVIOUS_SENTENCE. CURRENT_SENTENCE asserts a different relationship ('relies on') and does not contain the negation regarding parameters. Therefore, no valid record can be generated for this specific relation from the current sentence."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_sentence_004_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The claim 'Bulk inference is another name for offline inference' cannot be formed from an exact continuous source substring. The source text contains the phrase 'Offline inference, also called bulk inference...', which defines offline inference as having that name, but does not contain the specific string 'Bulk inference is another name for offline inference'. Per instructions, unsupported claims must return record=null."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_sentence_004_claims_2",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; The claim 'Static inference is another name for offline inference' cannot be formed from an exact continuous source substring. The source text contains the phrase 'Offline inference, also called bulk inference or static inference...', which defines offline inference as having that name, but does not contain the specific string 'Static inference is another name for offline inference'. Per instructions, unsupported claims must return record=null."
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_004",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_005",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_relation_006",
+    "status": "unresolved",
+    "reason": "Quote is not an exact continuous source substring; still invalid after one quote retry"
+  },
+  {
+    "step": "extraction_record",
+    "id": "chunk_006_sentence_005_claims_1",
+    "status": "unresolved",
+    "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The provided evidence (text_1) defines 'Offline inference' but does not overlap with the CURRENT_SENTENCE which makes claims about saving resources and enabling larger LLMs. Per instructions, a claim without an overlapping quote is unsupported."
+  }
+]

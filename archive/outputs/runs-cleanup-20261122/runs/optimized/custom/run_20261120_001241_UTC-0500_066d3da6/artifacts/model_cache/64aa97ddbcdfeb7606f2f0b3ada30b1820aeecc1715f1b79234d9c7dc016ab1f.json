@@ -1,0 +1,28 @@
+{
+  "key": "64aa97ddbcdfeb7606f2f0b3ada30b1820aeecc1715f1b79234d9c7dc016ab1f",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:24:33.4302034Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13043789900,
+    "load_duration": 3542400,
+    "prompt_eval_count": 1943,
+    "prompt_eval_duration": 818126000,
+    "eval_count": 722,
+    "eval_duration": 12165073000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_004_s004\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"A retrieval encoder maps the question and document passages into embeddings\",\n        \"graph_edge_ids\": [\"chunk_004_relation_007\"],\n        \"graph_reading\": \"ASSERTED (retrieval encoder --[maps]--> embeddings) with conditions: of the question and document passages\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"a similarity search selects candidate passages from an index\",\n        \"graph_edge_ids\": [\"chunk_004_relation_008\"],\n        \"graph_reading\": \"ASSERTED (similarity search --[selects]--> candidate passages) with conditions: from an index\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"Both substantive claims in the focus sentence are directly supported by distinct graph edges. The first claim maps to chunk_004_relation_007, and the second claim maps to chunk_004_relation_008. No meaning is missing or unsupported.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_004_s005\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"The selected passages are added to the language model's context\",\n        \"graph_edge_ids\": [\"chunk_004_relation_009\"],\n        \"graph_reading\": \"ASSERTED (selected passages --[added to]--> language models context)\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The focus sentence asserts that selected passages are added to the language model's context. This is fully supported by graph edge chunk_004_relation_009, which explicitly states 'selected passages --[added to]--> language models context'. The meaning is preserved.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_004_s006\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Updating this document index can make revised course material available without retraining the language model\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The focus sentence claims that updating a document index makes revised material available without retraining. The provided graph edges cover quantization, retrieval mechanics, and the fact that retrieval does not change model parameters (chunk_004_relation_011). However, there is no edge asserting the specific action of 'updating an index' leading to 'availability of revised material' or the negat\",\n    \"missing\": [\n      {\n        \"reason\": \"The graph lacks an assertion that updating the document index makes revised course material available without retraining. Existing edges describe retrieval mechanics and parameter stability but do not cover the update-to-availability workflow.\",\n        \"missing_claim\": \"Updating this document index can make revised course material available without retraining the language model\",\n        \"source_sentence_ids\": [\"chunk_004_s006\"]\n      }\n    ],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_005879",
+  "source_run": "run_20261120_001241_UTC-0500_066d3da6",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

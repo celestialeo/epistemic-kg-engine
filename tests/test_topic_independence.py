@@ -177,7 +177,7 @@ class TopicIndependenceTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         original_words = len((root/'data/ai_test.txt').read_text().split())
         for name in ('ai_three_paragraphs', 'neuron_three_paragraphs'):
-            text = (root/'data/validation'/f'{name}.txt').read_text(encoding='utf-8')
+            text = (root/'archive/inputs/validation'/f'{name}.txt').read_text(encoding='utf-8')
             paragraphs, chunks = split_document(text, 85, self.trace)
             self.assertEqual(len(paragraphs), 3)
             self.assertTrue(2.5*original_words <= len(text.split()) <= 4*original_words)
@@ -198,7 +198,8 @@ class TopicIndependenceTests(unittest.TestCase):
             def ask(inner, role, instruction, payload, schema, identifier, validator=None):
                 inner.calls += 1
                 self.assertEqual(role, 'concept_alias_resolver')
-                result = schema.model_validate(dict(canonical_name=None, reason='Distinct referents'))
+                result = schema.model_validate(dict(canonical_name=None, reason='Distinct referents',
+                                                    search_uncertain=False))
                 if validator:
                     validator(result)
                 return result

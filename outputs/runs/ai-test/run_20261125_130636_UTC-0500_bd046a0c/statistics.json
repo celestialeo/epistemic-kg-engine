@@ -1,0 +1,137 @@
+{
+  "run_id": "run_20261125_130636_UTC-0500_bd046a0c",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_concept_4",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0031",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: refutes_exact_assertion=false: The counterexample fails to refute the assertion because it relies on an explicit condition (empty retrieval results) that is distinct from the normal operation described in the assertion. The assertion states the generator outputs on 'context fetched by the retriever'; it does not claim this is the *only* possible output or that it occurs regardless of retrieval success. Since the counterexample's behavior (using internal parameters) only occurs when the condition of having fetched context is absent, it does not constitute a valid logical refutation of the conditional relationship asserted. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0032",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: case_is_supported=false: The counterexample describes a RAG system using only an internal vector store. The literal assertion claims that the retriever component queries and retrieves external documents with additional arguments regarding relevant information. The case's premise is that the system is 'configured exclusively with an internal vector store' and retrieves 'solely from this internal data source'. This directly contradicts the assertion's claim of retrieving from 'external documents'. Since the case explicitly states the action (retrieving) is performed on a different object (internal store vs external documents), it provides a valid counterexample to the universal or necessary implication that such a component must retrieve from external documents. The case does not invent facts but posits a specific configuration where the asserted action is impossible by definition of the configuration. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+    }
+  ],
+  "input": {
+    "paragraphs": 1,
+    "chunks": 1,
+    "words": 42,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 4,
+    "incomplete_chunks": [
+      "chunk_001"
+    ],
+    "unresolved_records": 1,
+    "relations": 5,
+    "reviewed": 6,
+    "review_attempted": 6,
+    "semantic_rejections": 1,
+    "rejection_categories": {
+      "meaning_changed": 1,
+      "wrong_kind": 1
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 0
+  },
+  "debate": {
+    "seeds": 5,
+    "proposed": 33,
+    "accepted": 5,
+    "rejected": 26,
+    "unresolved": 2,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 17,
+    "edges": 10,
+    "domain_nodes": 17,
+    "domain_edges": 10,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 4,
+    "node_kinds": {
+      "concept": 17
+    },
+    "edge_origins": {
+      "document": 5,
+      "background": 5
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 378,
+    "retries": 28,
+    "cache_hits": 0,
+    "embedding_calls": 0,
+    "prompt_tokens": 352020,
+    "output_tokens": 85718
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 1,
+      "mean": 0.6666666666666666,
+      "median": 0.6666666666666666,
+      "min": 0.6666666666666666,
+      "max": 0.6666666666666666,
+      "sample_stddev": null
+    },
+    "idea_order_agreement": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "rouge_l_f1": {
+      "n": 1,
+      "mean": 0.5714285714285714,
+      "median": 0.5714285714285714,
+      "min": 0.5714285714285714,
+      "max": 0.5714285714285714,
+      "sample_stddev": null
+    },
+    "length_similarity": {
+      "n": 1,
+      "mean": 0.9523809523809523,
+      "median": 0.9523809523809523,
+      "min": 0.9523809523809523,
+      "max": 0.9523809523809523,
+      "sample_stddev": null
+    },
+    "final_score": {
+      "n": 1,
+      "mean": 76.90476190476191,
+      "median": 76.90476190476191,
+      "min": 76.90476190476191,
+      "max": 76.90476190476191,
+      "sample_stddev": null
+    }
+  },
+  "reconstruction_score": 76.90476190476191,
+  "evaluation_status": "completed",
+  "evaluation_metric_version": "reconstruction_fidelity_v3_verified_matching",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

@@ -1,0 +1,148 @@
+{
+  "run_id": "run_20261124_195604_UTC-0500_edbf6af4",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_concept_3",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_006",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0011",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_representation_checker failed for candidate_0011 after 3 attempts: Resolve disagreement between your fields and final reasoning: explanation_matches=False disagrees with: The literal reading must be preserved exactly as provided, even if it contains this logical inconsistency relative to the intended fact."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0015",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0015 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0024",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0024 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_repair",
+      "id": "seed_005_explanation_repair",
+      "status": "unresolved",
+      "reason": "background_proposal_repair: minimum required content for seed_005_explanation_repair cannot fit: 16577 estimated tokens including 4096 reserved output tokens exceed context 16384. Essential evidence was not truncated; repair remains unresolved. See artifacts/repair_budgets."
+    }
+  ],
+  "input": {
+    "paragraphs": 1,
+    "chunks": 1,
+    "words": 42,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 4,
+    "incomplete_chunks": [
+      "chunk_001"
+    ],
+    "unresolved_records": 2,
+    "relations": 8,
+    "reviewed": 11,
+    "review_attempted": 11,
+    "semantic_rejections": 2,
+    "rejection_categories": {
+      "meaning_changed": 2
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 0
+  },
+  "debate": {
+    "seeds": 5,
+    "proposed": 34,
+    "accepted": 1,
+    "rejected": 30,
+    "unresolved": 3,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 16,
+    "edges": 9,
+    "domain_nodes": 16,
+    "domain_edges": 9,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 5,
+    "node_kinds": {
+      "concept": 16
+    },
+    "edge_origins": {
+      "document": 8,
+      "background": 1
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 270,
+    "retries": 16,
+    "cache_hits": 185,
+    "embedding_calls": 0,
+    "prompt_tokens": 342146,
+    "output_tokens": 56652
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 1,
+      "mean": 0.36363636363636365,
+      "median": 0.36363636363636365,
+      "min": 0.36363636363636365,
+      "max": 0.36363636363636365,
+      "sample_stddev": null
+    },
+    "idea_order_agreement": {
+      "n": 1,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "sample_stddev": null
+    },
+    "rouge_l_f1": {
+      "n": 1,
+      "mean": 0.660377358490566,
+      "median": 0.660377358490566,
+      "min": 0.660377358490566,
+      "max": 0.660377358490566,
+      "sample_stddev": null
+    },
+    "length_similarity": {
+      "n": 1,
+      "mean": 0.6774193548387096,
+      "median": 0.6774193548387096,
+      "min": 0.6774193548387096,
+      "max": 0.6774193548387096,
+      "sample_stddev": null
+    },
+    "final_score": {
+      "n": 1,
+      "mean": 58.37796713329275,
+      "median": 58.37796713329275,
+      "min": 58.37796713329275,
+      "max": 58.37796713329275,
+      "sample_stddev": null
+    }
+  },
+  "reconstruction_score": 58.37796713329275,
+  "evaluation_status": "completed",
+  "evaluation_metric_version": "reconstruction_fidelity_v3_verified_matching",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification."
+}

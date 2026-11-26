@@ -1,0 +1,28 @@
+{
+  "key": "39067d7f3437d77ea6a5b3c75261e14a16c231c588195dbdb1140f75d471d175",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T04:15:42.574084Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 32520739000,
+    "load_duration": 3550200,
+    "prompt_eval_count": 1717,
+    "prompt_eval_duration": 863003000,
+    "eval_count": 954,
+    "eval_duration": 31591204000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"early stopping\",\n      \"definition\": \"A technique that uses validation performance to determine the termination of training.\",\n      \"kind\": \"process\"\n    },\n    {\n      \"name\": \"validation performance\",\n      \"definition\": \"The metric used to evaluate model progress during training for early stopping decisions.\",\n      \"kind\": \"property\"\n    },\n    {\n      \"name\": \"training end point\",\n      \"definition\": \"The specific moment in the training process where training is terminated.\",\n      \"kind\": \"event\"\n    },\n    {\n      \"name\": \"held-out test results\",\n      \"definition\": \"Performance metrics obtained from a dataset reserved for final evaluation, not used for stopping decisions.\",\n      \"kind\": \"property\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.\",\n      \"evidence\": \"Early stopping uses validation performance to decide when to end training, rather than selecting a stopping point using the held-out test results.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\n        \"name\": \"early stopping\",\n        \"definition\": \"A technique that uses validation performance to determine the termination of training.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"uses_metric_for\",\n      \"relation_definition\": \"Employs a specific metric as the basis for a decision or action.\",\n      \"target\": {\n        \"name\": \"validation performance\",\n        \"definition\": \"The metric used to evaluate model progress during training for early stopping decisions.\",\n        \"kind\": \"property\"\n      },\n      \"argument_qualifiers\": [\n        \"to decide when to end training\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"Early stopping uses validation performance to decide when to end training\"\n    },\n    {\n      \"source\": {\n        \"name\": \"early stopping\",\n        \"definition\": \"A technique that uses validation performance to determine the termination of training.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"selects_point_for\",\n      \"relation_definition\": \"Determines a specific endpoint based on a given criterion.\",\n      \"target\": {\n        \"name\": \"training end point\",\n        \"definition\": \"The specific moment in the training process where training is terminated.\",\n        \"kind\": \"event\"\n      },\n      \"argument_qualifiers\": [\n        \"using validation performance\"\n      ],\n      \"conditions\": null,\n      \"modality\": null,\n      \"evidence\": \"Early stopping uses validation performance to decide when to end training\"\n    },\n    {\n      \"source\": {\n        \"name\": \"early stopping\",\n        \"definition\": \"A technique that uses validation performance to determine the termination of training.\",\n        \"kind\": \"process\"\n      },\n      \"relation\": \"does_not_use_metric_for\",\n      \"relation_definition\": \"Explicitly refrains from employing a specific metric for a particular purpose, indicating exclusion.\",\n      \"target\": {\n        \"name\": \"held-out test results\",\n        \"definition\": \"Performance metrics obtained from a dataset reserved for final evaluation, not used for stopping decisions.\",\n        \"kind\": \"property\"\n      },\n      \"argument_qualifiers\": [\n        \"for selecting a stopping point\"\n      ],\n      \"conditions\": null,\n      \"modality\": \"does not\",\n      \"evidence\": \"rather than selecting a stopping point using the held-out test results\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The source sentence explicitly contrasts two methods: using validation performance versus using held-out test results. The first relation captures the positive assertion of using validation performance. The second relation captures the selection of the training end point based on that same metric. The third relation captures the negative assertion ('rather than') regarding the use of held-out test results, ensuring the exclusionary nature of the relationship is preserved as required by the missing_source_meanings.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_005449",
+  "source_run": "run_20261124_221208_UTC-0500_00e91062",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

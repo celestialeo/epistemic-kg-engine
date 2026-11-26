@@ -1,0 +1,28 @@
+{
+  "key": "cfaef3ca939c4dd189f4db0c061ba1376951f81b36e89cbdc56c66ebac7225c0",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T11:04:05.79343Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 27361189800,
+    "load_duration": 3546000,
+    "prompt_eval_count": 2033,
+    "prompt_eval_duration": 959126000,
+    "eval_count": 730,
+    "eval_duration": 26350449000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_004_coverage_1_3_relation_001\": {\n    \"qualified_reading\": \"could (team --[could run]--> run a large toxicity scoring model offline); additional arguments: to label training data\",\n    \"reason\": \"The source text in text_2 explicitly states 'a team could run a large toxicity-scoring model offline'. The candidate relation 'could_run' with modality 'could' matches this capability. The target 'run a large toxicity scoring model offline' is an exact match to the quoted action. The argument qualifier 'to label training data' is present in the quote ('...to label training data'). No negation, condition change, or direction reversal exists. The assertion is fully entailed by the quote.\",\n    \"candidate_id\": \"chunk_004_coverage_1_3_relation_001\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_004_coverage_1_3_relation_002\": {\n    \"qualified_reading\": \"could (team --[could run]--> distill a student model small enough to score live comments); additional arguments: to distill a student model small enough to score live comments\",\n    \"reason\": \"The source text in text_2 states '...and then use the labeled data to distill a student model small enough to score live comments.' The candidate claims the team 'could run' this process. While the quote says 'use the labeled data to distill', it implies the team performs this action as part of the workflow described ('a team could run... and then use...'). However, strict entailment requires the subject of the verb in the quote to match the candidate's source/target structure exactly if the relation is 'run'. The quote says 'use... to distill', not explicitly 'team... distills'. More critically, the candidate's target definition calls it a 'property' while the action is clearly a process. Furthermore, the argument qualifier in the candidate repeats the target text itself ('to distill...'), which is redundant and suggests a parsing error where the qualifier was meant to be the purpose of the first action but got merged with the second. The literal reading shows the team runs the model AND uses data to distill. The candidate relation 'could_run' applied to 'distill...' is supported by the context of the team's actions, but the specific phrasing 'use... to distill' vs 'team... distil\",\"candidate_id\": \"chunk_004_coverage_1_3_relation_002\",\n    \"semantics_valid\": false,\n    \"direction_valid\": true,\n    \"types_valid\": false,\n    \"no_contradiction\": true,\n    \"certain\": false,\n    \"evidence_status\": \"unsupported\",\n    \"domain_relevance\": 0.8,\n    \"accept\": false,\n    \"objections_resolved\": false,\n    \"rejection_categories\": [\n      \"meaning_changed\"\n    ]\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_010550",
+  "source_run": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

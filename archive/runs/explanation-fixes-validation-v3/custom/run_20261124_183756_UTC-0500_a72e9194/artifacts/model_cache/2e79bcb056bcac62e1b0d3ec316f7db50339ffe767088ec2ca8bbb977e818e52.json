@@ -1,0 +1,28 @@
+{
+  "key": "2e79bcb056bcac62e1b0d3ec316f7db50339ffe767088ec2ca8bbb977e818e52",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:38:40.349923Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 9896296100,
+    "load_duration": 3544000,
+    "prompt_eval_count": 548,
+    "prompt_eval_duration": 300102000,
+    "eval_count": 369,
+    "eval_duration": 9558817000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"self attention\",\n      \"definition\": \"A mechanism for processing text sequences by attending to relevant parts.\",\n      \"kind\": \"process\",\n      \"node_id\": \"n_self_attention\"\n    },\n    {\n      \"name\": \"attention weights\",\n      \"definition\": \"Computed values representing the importance of tokens.\",\n      \"kind\": \"property\",\n      \"node_id\": \"n_attention_weights\"\n    },\n    {\n      \"name\": \"relevant input parts\",\n      \"definition\": \"Specific segments of the input text sequence selected for processing.\",\n      \"kind\": \"entity\",\n      \"node_id\": \"n_relevant_input_parts\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0001\": {\n      \"source_id\": \"n_self_attention\",\n      \"target_id\": \"n_attention_weights\",\n      \"relation\": \"computes\",\n      \"relation_definition\": \"SOURCE generates or calculates TARGET.\",\n      \"argument_qualifiers\": [],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0002\": {\n      \"source_id\": \"n_attention_weights\",\n      \"target_id\": \"n_relevant_input_parts\",\n      \"relation\": \"determines_contribution_of\",\n      \"relation_definition\": \"SOURCE dictates the extent to which TARGET influences the representation.\",\n      \"argument_qualifiers\": [\n        \"to_representation_of_each_token\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_001028",
+  "source_run": "run_20261124_183756_UTC-0500_a72e9194",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

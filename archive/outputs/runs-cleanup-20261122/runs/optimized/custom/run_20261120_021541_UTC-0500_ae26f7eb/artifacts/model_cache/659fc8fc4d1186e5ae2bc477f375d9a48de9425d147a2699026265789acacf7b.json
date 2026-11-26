@@ -1,0 +1,28 @@
+{
+  "key": "659fc8fc4d1186e5ae2bc477f375d9a48de9425d147a2699026265789acacf7b",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T07:24:05.8448241Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12536750700,
+    "load_duration": 3625900,
+    "prompt_eval_count": 1562,
+    "prompt_eval_duration": 659652000,
+    "eval_count": 678,
+    "eval_duration": 11820497000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"unit_kind\": \"example\",\n  \"concepts\": [\n    {\n      \"name\": \"tutor\",\n      \"definition\": \"An entity evaluated for factual correctness and handling of uncertainty.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"disagreement\",\n      \"definition\": \"A conflict between two course passages.\",\n      \"kind\": \"event\"\n    },\n    {\n      \"name\": \"two course passages\",\n      \"definition\": \"Two distinct pieces of text within a course.\",\n      \"kind\": \"entity\"\n    },\n    {\n      \"name\": \"combine them into an unsupported conclusion\",\n      \"definition\": \"The action of merging conflicting passages to form a conclusion lacking support.\",\n      \"kind\": \"event\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"text\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    }\n  ],\n  \"relations\": [\n    {\n      \"source\": {\"name\": \"tutor\", \"definition\": \"An entity evaluated for factual correctness and handling of uncertainty.\", \"kind\": \"entity\"},\n      \"relation\": \"identifies\",\n      \"relation_definition\": \"To recognize or point out a specific state or event.\",\n      \"target\": {\"name\": \"disagreement\", \"definition\": \"A conflict between two course passages.\", \"kind\": \"event\"},\n      \"argument_qualifiers\": [\n        \"between two course passages\"\n      ],\n      \"conditions\": \"when two course passages disagree\",\n      \"modality\": \"should\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    },\n    {\n      \"source\": {\"name\": \"tutor\", \"definition\": \"An entity evaluated for factual correctness and handling of uncertainty.\", \"kind\": \"entity\"},\n      \"relation\": \"combines\",\n      \"relation_definition\": \"To merge or join elements together into a single unit.\",\n      \"target\": {\"name\": \"unsupported conclusion\", \"definition\": \"A conclusion that lacks support from the passages.\", \"kind\": \"event\"},\n      \"argument_qualifiers\": [\n        \"from two course passages\"\n      ],\n      \"conditions\": \"when two course passages disagree\",\n      \"modality\": \"does not\",\n      \"evidence\": \"When two course passages disagree, the tutor should identify the disagreement rather than combine them into an unsupported conclusion.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"reason\": \"The current sentence explicitly states a recommendation ('should') for the tutor to perform one action ('identify') instead of another ('combine'). This is modeled as two relations: one positive obligation and one negative prohibition (using 'does not' modality), sharing the same condition.\"\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006935",
+  "source_run": "run_20261120_021541_UTC-0500_ae26f7eb",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

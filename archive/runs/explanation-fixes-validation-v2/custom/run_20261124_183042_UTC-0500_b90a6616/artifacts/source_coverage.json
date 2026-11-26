@@ -1,0 +1,49 @@
+{
+  "policy": "bounded_model_audit_and_independent_source_review",
+  "independent_accuracy": false,
+  "chunks": [
+    {
+      "chunk_id": "chunk_001",
+      "attempts": [
+        {
+          "missing": [
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "...during training",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 0
+            },
+            {
+              "evidence": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training.",
+              "missing_claim": "during training",
+              "reason": "The graph edges lack the temporal condition 'during training' found in the source sentence.",
+              "evidence_start": 0
+            },
+            {
+              "evidence": "Regularization helps it generalize beyond its training examples.",
+              "missing_claim": "Regularization helps it generalize beyond its training examples",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 120
+            },
+            {
+              "evidence": "After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions.",
+              "missing_claim": "retrieval-augmented generation lets it use external documents when answering questions",
+              "reason": "Source assertion is not preserved by graph reading:",
+              "evidence_start": 185
+            }
+          ],
+          "unsupported": [],
+          "reason": "Audited 3 of 3 source sentences; judgments are model estimates",
+          "errors": {}
+        },
+        {
+          "missing": [],
+          "unsupported": [],
+          "reason": "Audited 3 of 3 source sentences; judgments are model estimates",
+          "errors": {}
+        }
+      ],
+      "status": "covered_by_model_review"
+    }
+  ]
+}

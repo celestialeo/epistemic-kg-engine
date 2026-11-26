@@ -1,0 +1,28 @@
+{
+  "key": "d837be5b444c80f01df45595fc502baf5f037e92b9ac34ee87c8c2fe671ada41",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T05:34:08.0685224Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12048838900,
+    "load_duration": 3804600,
+    "prompt_eval_count": 1931,
+    "prompt_eval_duration": 289938000,
+    "eval_count": 704,
+    "eval_duration": 11739906000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_005_s005\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"The tutor is evaluated for factual correctness.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_011\"],\n        \"graph_reading\": \"ASSERTED (tutor --[is evaluated for]--> factual accuracy)\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"The tutor is evaluated for support from the supplied documents.\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      },\n      {\n        \"source_assertion\": \"The tutor is evaluated for appropriate handling of uncertainty.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_013\"],\n        \"graph_reading\": \"ASSERTED (tutor --[is evaluated for]--> appropriate handling of uncertainty)\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The graph supports 'factual correctness' (mapped to factual accuracy) and 'appropriate handling of uncertainty'. It lacks an edge for 'support from the supplied documents', which is a substantive claim in the source sentence not found in the graph.\",\n    \"missing\": [\n      {\n        \"reason\": \"No graph edge asserts that the tutor is evaluated for 'support from the supplied documents'.\",\n        \"missing_claim\": \"The tutor is evaluated for support from the supplied documents.\",\n        \"source_sentence_ids\": [\"chunk_005_s005\"]\n      }\n    ],\n    \"unsupported\": [\n      {\n        \"reason\": \"The source sentence claims evaluation for 'support from the supplied documents', but no graph edge exists for this specific claim. The existing edges cover factual accuracy and uncertainty handling only.\",\n        \"missing_claim\": \"The tutor is evaluated for support from the supplied documents.\",\n        \"source_sentence_ids\": [\"chunk_005_s005\"],\n        \"id\": \"chunk_005_relation_011\"\n      }\n    ]\n  },\n  \"chunk_005_s006\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"When two course passages disagree, the tutor should identify the disagreement.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_014\"],\n        \"graph_reading\": \"should (tutor --[should identify]--> disagreement between two course passages)\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"The tutor should not combine them into an unsupported conclusion.\",\n        \"graph_edge_ids\": [\"chunk_005_relation_015\"],\n        \"graph_reading\": \"should (tutor --[should identify disagreement]--> combination into an unsupported conclusion)\",\n        \"preserves_meaning\": true\n      }\n    ],\n    \"reason\": \"The graph contains edges asserting the tutor's obligation to identify disagreements and their obligation regarding combining passages into unsupported conclusions when passages disagree. Both substantive claims in the source sentence are covered by these edges.\",\n    \"missing\": [],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_006527",
+  "source_run": "run_20261120_001241_UTC-0500_066d3da6",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

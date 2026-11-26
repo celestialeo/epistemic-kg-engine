@@ -1,0 +1,21 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "meaning_changed": 1,
+    "wrong_kind": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_001_relation_006",
+      "chunk_id": "chunk_001",
+      "source": "retrieval augmented generation",
+      "relation": "enables",
+      "target": "retrieval augmented generation",
+      "decision_reason": "The source text states 'retrieval-augmented generation lets it use external documents'. The candidate defines the target as 'retrieval augmented generation' itself. This creates a logical error: the process (RAG) enables an action (using external docs), not another instance of the process itself. The relation 'enables' requires two distinct participants where the source provides capacity for the target to act. Here, Source = Target, which violates the definition of 'enables' (providing conditions for TARGET). The candidate incorrectly maps the enabling action back onto the process as its own target. Failed gates: semantics_valid, types_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    }
+  ]
+}

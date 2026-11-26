@@ -1,0 +1,26 @@
+[
+  {
+    "step": "extraction_record",
+    "id": "chunk_001_sentence_002_concept_4",
+    "status": "unresolved",
+    "reason": "Standalone concept metadata could not be resolved"
+  },
+  {
+    "step": "source_coverage",
+    "id": "chunk_001",
+    "status": "unresolved",
+    "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+  },
+  {
+    "step": "background_candidate",
+    "id": "candidate_0031",
+    "status": "unresolved",
+    "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: refutes_exact_assertion=false: The counterexample fails to refute the assertion because it relies on an explicit condition (empty retrieval results) that is distinct from the normal operation described in the assertion. The assertion states the generator outputs on 'context fetched by the retriever'; it does not claim this is the *only* possible output or that it occurs regardless of retrieval success. Since the counterexample's behavior (using internal parameters) only occurs when the condition of having fetched context is absent, it does not constitute a valid logical refutation of the conditional relationship asserted. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+  },
+  {
+    "step": "background_candidate",
+    "id": "candidate_0032",
+    "status": "unresolved",
+    "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: case_is_supported=false: The counterexample describes a RAG system using only an internal vector store. The literal assertion claims that the retriever component queries and retrieves external documents with additional arguments regarding relevant information. The case's premise is that the system is 'configured exclusively with an internal vector store' and retrieves 'solely from this internal data source'. This directly contradicts the assertion's claim of retrieving from 'external documents'. Since the case explicitly states the action (retrieving) is performed on a different object (internal store vs external documents), it provides a valid counterexample to the universal or necessary implication that such a component must retrieve from external documents. The case does not invent facts but posits a specific configuration where the asserted action is impossible by definition of the configuration. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+  }
+]

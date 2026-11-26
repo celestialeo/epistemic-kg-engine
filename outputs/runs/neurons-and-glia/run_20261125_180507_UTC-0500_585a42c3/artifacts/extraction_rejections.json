@@ -1,0 +1,31 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "wrong_direction": 1,
+    "meaning_changed": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_002_relation_008",
+      "chunk_id": "chunk_002",
+      "source": "axon lengths",
+      "relation": "ranges_from",
+      "target": "over a meter",
+      "decision_reason": "The quote 'Axon lengths range from under a centimeter to over a meter' establishes the upper bound of the property. The relation 'ranges_from' is used here to denote the span ending at 'over a meter'. While semantically 'ranges_to' might be more precise for the upper bound, in many ontologies 'ranges_from' implies the full interval [min, max]. However, strictly evaluating the direction: the quote says lengths range FROM X TO Y. The candidate claims axon lengths ranges from Y? No, the candidate claims the relation is between 'axon lengths' and 'over a meter'. If the relation is 'ranges_from', it usually implies the start of the range. But here the target is the MAX. Let's re-read the instruction: 'Indicates the span between a minimum and maximum value'. The quote supports that 'over a meter' is part of the range. However, standard usage for 'ranges_from' expects the MINIMUM as the second argument (or first depending on schema). Here source='axon lengths', target='over a meter'. If the relation means 'the property ranges from [target]', then 'over a meter' is not the start. The quote says 'from under a centimeter TO over a meter'. Therefore, relating 'axon lengths' to 'over a meter'? Failed gates: semantics_valid, direction_valid, evidence",
+      "categories": [
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_011",
+      "chunk_id": "chunk_002",
+      "source": "neurotransmitters",
+      "relation": "carries",
+      "target": "signals",
+      "decision_reason": "The source text says 'conveying signals across synapses' in the context of defining neurotransmitters. However, the relation definition for 'carries' implies a transport process ('The source transports or conveys the target entity'). While neurotransmitters convey signals, they are substances that *are* messengers, not active agents performing a 'carry' action in the sense of a process transporting an object over distance (like an axon does). The text describes them as 'chemical messengers conveying signals', which supports 'are' (relation 010) better than 'carries'. Using 'carries' changes the semantic role from identity/function to an active transport process not explicitly described as such for the substance itself in this specific sentence structure. This constitutes a meaning_changed objection. Failed gates: semantics_valid, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    }
+  ]
+}

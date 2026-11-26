@@ -1,0 +1,28 @@
+{
+  "key": "62c66ea43b9d2695ec7b15fb5c5ffecf422bddeafd3942f32a2964857be8f3cd",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T07:57:43.1613559Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5973331400,
+    "load_duration": 3663000,
+    "prompt_eval_count": 3150,
+    "prompt_eval_duration": 1237386000,
+    "eval_count": 282,
+    "eval_duration": 4665914000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"reason\": \"The candidate defines a general mechanism for 'supported_by' (logical entailment) which is valid general knowledge. However, the rejection reason states 'No path connects this proposed explanation to the seed through proposed or known links'. The graph currently contains negative evidence ('retrieval recall/precision ... does not show tutor evidence usage correctness') and positive evidence of specific failures ('answer can cite... while making a claim that the passage does not support'). The candidate's intended fact is a general definition that explains *how* support is established, but it fails to connect to the seed 'tutor evidence usage correctness' because the existing graph edges define what metrics *do not* show correctness or describe specific failure modes, rather than establishing the positive condition of logical entailment as a direct property of the tutor's evaluation. To be accepted, this general definition must be linked to the seed via an edge that asserts 'tutor evidence usage correctness' is determined by checking for 'logical entailment'. Since no such positive defining edge exists in the provided `related_facts` (which only list negative correlations or specific failure cases), and the instruction requires preserving source conditions without inventing claims, this candidate cannot be connected to the seed with the current graph topology. It represents a missing definition rather than a connectable fact given the existing constraints.\",\n  \"corrected_fact\": null\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_011258",
+  "source_run": "run_20261120_021541_UTC-0500_ae26f7eb",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

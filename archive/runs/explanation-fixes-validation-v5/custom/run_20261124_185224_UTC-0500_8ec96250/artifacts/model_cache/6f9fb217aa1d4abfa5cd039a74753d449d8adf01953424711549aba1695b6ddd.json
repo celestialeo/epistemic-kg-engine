@@ -1,0 +1,28 @@
+{
+  "key": "6f9fb217aa1d4abfa5cd039a74753d449d8adf01953424711549aba1695b6ddd",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T00:23:03.4547458Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 19189903700,
+    "load_duration": 3700200,
+    "prompt_eval_count": 1217,
+    "prompt_eval_duration": 479893000,
+    "eval_count": 737,
+    "eval_duration": 18618904000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"nodes\": [\n    {\n      \"name\": \"retrieval augmented generation\",\n      \"definition\": \"A method allowing the use of external documents during question answering.\",\n      \"kind\": \"process\",\n      \"node_id\": \"concept_01\"\n    },\n    {\n      \"name\": \"retriever component\",\n      \"definition\": \"A module that searches an external document store for information relevant to a query.\",\n      \"kind\": \"substance\",\n      \"node_id\": \"concept_02\"\n    },\n    {\n      \"name\": \"context set\",\n      \"definition\": \"The collection of specific documents selected from the external store for the current query.\",\n      \"kind\": \"substance\",\n      \"node_id\": \"concept_03\"\n    },\n    {\n      \"name\": \"transformer input\",\n      \"definition\": \"The sequence formed by injecting selected documents alongside the original query text.\",\n      \"kind\": \"substance\",\n      \"node_id\": \"concept_04\"\n    },\n    {\n      \"name\": \"generated response\",\n      \"definition\": \"The output synthesized from the augmented input sequence.\",\n      \"kind\": \"substance\",\n      \"node_id\": \"concept_05\"\n    }\n  ],\n  \"links\": {\n    \"candidate_0030\": {\n      \"source_id\": \"concept_01\",\n      \"target_id\": \"concept_02\",\n      \"relation\": \"involves\",\n      \"relation_definition\": \"SOURCE involves TARGET in its operation.\",\n      \"argument_qualifiers\": [\n        \"searches an external document store for information relevant to a query\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0031\": {\n      \"source_id\": \"concept_02\",\n      \"target_id\": \"concept_03\",\n      \"relation\": \"selects\",\n      \"relation_definition\": \"SOURCE selects TARGET from a source.\",\n      \"argument_qualifiers\": [\n        \"from the external document store\",\n        \"to form a context set for the current query\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0032\": {\n      \"source_id\": \"concept_03\",\n      \"target_id\": \"concept_04\",\n      \"relation\": \"injected into\",\n      \"relation_definition\": \"SOURCE is injected into TARGET.\",\n      \"argument_qualifiers\": [\n        \"alongside the original query text\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    },\n    \"candidate_0033\": {\n      \"source_id\": \"concept_04\",\n      \"target_id\": \"concept_05\",\n      \"relation\": \"generates\",\n      \"relation_definition\": \"SOURCE processes input to generate TARGET.\",\n      \"argument_qualifiers\": [\n        \"using self-attention\",\n        \"synthesizes information from both the query and the retrieved documents\"\n      ],\n      \"conditions\": null,\n      \"modality\": null\n    }\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_003698",
+  "source_run": "run_20261124_185224_UTC-0500_8ec96250",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

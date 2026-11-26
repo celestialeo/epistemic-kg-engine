@@ -1,0 +1,28 @@
+{
+  "key": "25a8fcd9b59ce207a033810c46806dcda8c3cb02aee65098b1c022076b44c0c1",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T04:48:56.7065964Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 28060097100,
+    "load_duration": 3454600,
+    "prompt_eval_count": 4458,
+    "prompt_eval_duration": 2023640000,
+    "eval_count": 692,
+    "eval_duration": 25989655000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"reason\": \"The original candidate assertions failed to fully decompose the 'dual-evaluation framework' described in the text. The held-out test dataset measures 'performance', which is explicitly defined by the chapter as comprising two distinct components: retrieval quality and answer generation accuracy. The previous attempts either conflated these or failed to link them correctly to the seed concept. The repair replaces the monolithic 'measures performance' claim with specific, validated links to its constituent parts ('retrieval quality' and 'answer generation accuracy'), ensuring the graph accurately reflects the separation of concerns mandated by the dual-evaluation framework.\",\n  \"corrected_facts\": [\n    {\n      \"source_concept\": \"held out test dataset\",\n      \"target_concept\": \"performance\",\n      \"intended_fact\": \"The held out test dataset measures performance after model selection and training setting choices are finalized.\",\n      \"confidence\": 1.0,\n      \"reason\": \"Direct extraction from chunk_001: 'A held-out test dataset measures performance after those choices have been made.'\",\n      \"gap_ids\": [\"question_0003\"],\n      \"added_knowledge\": \"Establishes the primary measurement target defined in the text.\"\n    },\n    {\n      \"source_concept\": \"performance\",\n      \"target_concept\": \"retrieval quality\",\n      \"intended_fact\": \"Performance includes retrieval quality as a distinct component.\",\n      \"confidence\": 1.0,\n      \"reason\": \"Derived from chunk_005: 'Evaluation must distinguish the quality of retrieval from the quality of the generated answer.' and chunk_001's mention of retrieval metrics (recall/precision).\",\n      \"gap_ids\": [\"question_0003\"],\n      \"added_knowledge\": \"Decomposes 'performance' into its first component based on the dual-evaluation framework.\"\n    },\n    {\n      \"source_concept\": \"performance\",\n      \"target_concept\": \"answer generation accuracy\",\n      \"intended_fact\": \"Performance includes answer generation accuracy as a distinct component.\",\n      \"confidence\": 1.0,\n      \"reason\": \"Derived from chunk_005: 'Evaluation must distinguish the quality of retrieval from the quality of the generated answer.' and chunk_001's mention that fluent wording does not guarantee factual accuracy.\",\n      \"gap_ids\": [\"question_0003\"],\n      \"added_knowledge\": \"Decomposes 'performance' into its second component based on the dual-evaluation framework.\"\n    },\n    {\n      \"source_concept\": \"retrieval quality\",\n      \"target_concept\": \"answer generation accuracy\",\n      \"intended_fact\": \"Retrieval quality and answer generation accuracy are distinct components evaluated separately within the dual-evaluation framework.\",\n      \"confidence\": 1.0,\n      \"reason\": \"Directly supported by chunk_005: 'Evaluation must distinguish the quality of retrieval from the quality of the generated answer.'\",\n      \"gap_ids\": [\"question_0003\"],\n      \"added_knowledge\": \"Explicitly states the separation principle of the dual-evaluation framework.\"\n    }\n  ]\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_007379",
+  "source_run": "run_20261124_221208_UTC-0500_00e91062",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

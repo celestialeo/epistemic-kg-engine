@@ -1,0 +1,28 @@
+{
+  "key": "7b2030fb5aaa4331ccda29251ba81e39221ba20921712fad0bebedd05c36f3f3",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-20T04:23:07.3610459Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13919166600,
+    "load_duration": 3776900,
+    "prompt_eval_count": 2109,
+    "prompt_eval_duration": 874126000,
+    "eval_count": 755,
+    "eval_duration": 12975586000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_002_relation_015\": {\n    \"candidate_id\": \"chunk_002_relation_015\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"reason\": \"The quote 'the model's finite context window limits the amount of text available in a single request' explicitly entails the relation where 'models finite context window' (source) 'limits' (relation) 'amount of text available' (target). The direction is preserved, and no extra conditions or negations are present that would alter the meaning.\",\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_003_relation_001\": {\n    \"candidate_id\": \"chunk_003_relation_001\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"reason\": \"The quote 'Training compares the model's predicted token probabilities with the next tokens in the training examples' directly supports the relation where 'training' (source) 'compares' (relation) 'models predicted token probabilities' (target). The semantic roles align perfectly with the text.\",\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_003_relation_002\": {\n    \"candidate_id\": \"chunk_003_relation_002\",\n    \"semantics_valid\": false,\n    \"direction_valid\": false,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"unsupported\",\n    \"domain_relevance\": 0.0,\n    \"reason\": \"The relation definition for 'compares_with' implies a symmetric or specific reference relationship where the source is evaluated against the target. However, in the quote 'Training compares the model's predicted token probabilities with the next tokens...', 'models predicted token probabilities' is the object being compared (the subject of the comparison action relative to the training process), while 'next tokens' are the reference. The relation 'compares_with' suggests the source actively performs the comparison against the target, but here the 'training' process performs the comparison involving both. More critically, the candidate defines the relation as 'models predicted token probabilities' -> 'compares_with' -> 'next tokens'. While semantically plausible in a loose sense, strict entailment requires checking if the text says A compares with B. The text says 'Training compares A with B'. The relation key is between A and B. If the relation is defined as A compares_with B, it implies A does the comparing to B. The text supports that A is compared with B during training. However, the specific constraint 'Use causal predicates only for genuinely distinct causes and effects' and '\",\"accept\": false, \"objections_resolved\": true, \"rejection_categories\": [\"meaning_changed\"]\n    }\n  }",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_004531",
+  "source_run": "run_20261119_231446_UTC-0500_86bcac30",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

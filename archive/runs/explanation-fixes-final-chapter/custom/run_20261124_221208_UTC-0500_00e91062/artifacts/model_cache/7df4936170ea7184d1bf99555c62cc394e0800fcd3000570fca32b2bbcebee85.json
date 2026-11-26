@@ -1,0 +1,28 @@
+{
+  "key": "7df4936170ea7184d1bf99555c62cc394e0800fcd3000570fca32b2bbcebee85",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-25T04:17:25.0306753Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 34975871700,
+    "load_duration": 3541300,
+    "prompt_eval_count": 2839,
+    "prompt_eval_duration": 1343148000,
+    "eval_count": 978,
+    "eval_duration": 33569441000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_003_coverage_0_1_relation_001\": {\n    \"qualified_reading\": \"ASSERTED (early stopping --[uses metric for]--> validation performance); additional arguments: to decide when to end training\",\n    \"reason\": \"The quote 'Early stopping uses validation performance to decide when to end training' explicitly states that early stopping employs validation performance. The relation definition 'Employs a specific metric or signal to guide an action' matches perfectly with 'uses'. The qualifier 'to decide when to end training' is directly supported by the text. No negation, condition change, or direction reversal is needed.\",\n    \"candidate_id\": \"chunk_003_coverage_0_1_relation_001\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_003_coverage_0_1_relation_002\": {\n    \"qualified_reading\": \"ASSERTED (early stopping --[selects point for]--> training end point); additional arguments: using validation performance\",\n    \"reason\": \"The quote states early stopping 'decide[s] when to end training'. The target concept is 'training end point' (the moment training ends). The relation 'selects_point_for' implies determining a specific endpoint. While the text says 'decide when', this entails selecting the point in time for the end of training. However, strict entailment requires checking if 'decide when' fully maps to 'selects point for'. The text says it decides *when* (time) using validation performance. The relation definition is 'Determines a specific endpoint based on a given criterion.' This seems valid. BUT, looking closer at the instruction: 'If making the assertion true would require adding a negation, condition or participant, reject it.' Here, 'decide when' entails selecting the point. However, let's look at relation_003 which is clearly negative. Let's re-evaluate 002. The text says 'uses validation performance to decide when'. The candidate claims 'selects point for... using validation performance'. This seems supported. Wait, is there a subtle issue? The text says 'decide when', the relation is 'selects point for'. These are semantically equivalent in this context. However, often in these tasks, if a \",\"candidate_id\": \"chunk_003_coverage_0_1_relation_002\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  },\n  \"chunk_003_coverage_0_1_relation_003\": {\n    \"qualified_reading\": \"does not (early stopping --[employs metric for stopping]--> held out test results); additional arguments: for selecting a stopping point\",\n    \"reason\": \"The quote states early stopping is used 'rather than selecting a stopping point using the held-out test results'. This explicitly negates the use of held-out test results. The candidate relation has modality='does not', which correctly captures this negation. The source text supports that held-out test results are NOT used for stopping decisions (unlike validation performance). The direction is correct: early stopping does not employ held-out test results. The qualifier 'for selecting a stopping point' matches the context of the quote.\",\n    \"candidate_id\": \"chunk_003_coverage_0_1_relation_003\",\n    \"semantics_valid\": true,\n    \"direction_valid\": true,\n    \"types_valid\": true,\n    \"no_contradiction\": true,\n    \"certain\": true,\n    \"evidence_status\": \"supported\",\n    \"domain_relevance\": 1.0,\n    \"accept\": true,\n    \"objections_resolved\": true,\n    \"rejection_categories\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_005608",
+  "source_run": "run_20261124_221208_UTC-0500_00e91062",
+  "model": "qwen3.5:9b",
+  "validated": true
+}

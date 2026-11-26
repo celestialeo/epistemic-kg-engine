@@ -1,0 +1,19 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "meaning_changed": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_004_coverage_1_0_relation_002",
+      "chunk_id": "chunk_004_coverage_1_0",
+      "source": "labeled dataset",
+      "relation": "used_to_train",
+      "target": "distilled llm",
+      "decision_reason": "The quote states 'the labeled dataset is used to train the student model.' The candidate defines the target as 'distilled llm' and the relation as 'used_to_train'. While the quote explicitly mentions 'student model', in the context of distillation described in text_1 and text_2, the 'student model' IS the 'distilled llm'. However, strict entailment requires the exact term or a direct synonym. The candidate uses 'distilled llm' while the quote says 'student model'. Given the definition in the candidate concepts ('A smaller large language model created via distillation...'), these are semantically equivalent in this context. BUT, looking closer at the instruction: 'The exact quote must entail THIS relation... co-occurrence is insufficient.' The quote does not contain the string 'distilled llm'. It contains 'student model'. Is 'student model' sufficient to entail 'distilled llm'? In text_1, it says distillation optimizes them into smaller versions. Text_2 says teacher labels dataset used to train student model. The resulting entity is the distilled model. If we are strict about literal entailment of the specific concept name 'distilled llm' appearing in the quote, it fails. However, ' Failed gates: semantics_valid, certain, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    }
+  ]
+}

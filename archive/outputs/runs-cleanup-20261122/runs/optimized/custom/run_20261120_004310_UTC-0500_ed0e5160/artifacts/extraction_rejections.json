@@ -1,0 +1,105 @@
+{
+  "scope": "Completed semantic reviews; categories can overlap",
+  "counts": {
+    "meaning_changed": 7,
+    "wrong_direction": 4,
+    "wrong_kind": 2,
+    "unsupported_claim": 1
+  },
+  "rejected": [
+    {
+      "id": "chunk_001_relation_010",
+      "chunk_id": "chunk_001",
+      "source": "model selection and the choice of training settings",
+      "relation": "are_made",
+      "target": "held out test dataset",
+      "decision_reason": "The source text states 'A held-out test dataset measures performance after those choices have been made.' The candidate relation claims that 'model selection...' are_made to the 'held out test dataset'. This implies a causal or temporal completion where the event of making selections results in the existence/state of the test dataset. However, the text describes the test dataset as an entity that *measures* performance *after* choices are made, not something that is *made* by the choices. The relation 'are_made' incorrectly assigns agency to the selection process for the creation of the dataset itself, whereas the text treats the dataset as a pre-existing held-out resource used for measurement. The directionality and semantic role (agent vs. beneficiary/time-marker) are mismatched. Failed gates: semantics_valid, direction_valid, types_valid, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_002",
+      "chunk_id": "chunk_002",
+      "source": "decoder only transformer",
+      "relation": "processes",
+      "target": "text",
+      "decision_reason": "The candidate asserts that the 'decoder only transformer' processes 'text'. However, the quote states 'The tutor's language model uses a decoder-only transformer to process text.' In this sentence, the subject performing the action of processing is explicitly 'The tutor's language model', not the 'decoder only transformer' itself. The transformer is the tool/structure being used by the model. Attributing the action 'processes' directly to the structure ('decoder only transformer') rather than the agent ('tutor's language model') changes the meaning of the quote. The quote entails that the Model uses the Transformer to process text, not that the Transformer processes text (which implies the Transformer is the active agent). This constitutes a 'meaning_changed' objection because the candidate assigns agency to the structure instead of the system using it. Failed gates: semantics_valid, no_contradiction, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_004",
+      "chunk_id": "chunk_002",
+      "source": "input passage",
+      "relation": "divides_into",
+      "target": "token",
+      "decision_reason": "The quote 'A tokenizer divides an input passage into tokens' describes the tokenizer as the agent performing the division. The candidate asserts that the 'input passage' is the agent dividing into a 'token'. This reverses the causal direction and assigns agency to the wrong entity (the passive object becomes the active subject). Therefore, the literal reading contradicts the candidate's assertion of who does what. Failed gates: semantics_valid, direction_valid, no_contradiction, evidence",
+      "categories": [
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_011",
+      "chunk_id": "chunk_002",
+      "source": "position",
+      "relation": "attends_to",
+      "target": "later positions",
+      "decision_reason": "The candidate asserts a positive relation 'attends_to' between position and later positions. However, the quote explicitly states that the mask 'prevents' this action. While the quote implies the capability exists in the absence of the mask or describes the restriction itself, asserting the positive relation 'attends_to' as an active happening contradicts the specific context of the quote which defines a prevention mechanism. The quote entails 'prevents attending', not 'attends'. Asserting the positive relation without qualifying it as 'would attend if not prevented' changes the meaning from a description of restriction to a description of active connection, which is not supported by the specific sentence provided. Failed gates: semantics_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    },
+    {
+      "id": "chunk_002_relation_013",
+      "chunk_id": "chunk_002",
+      "source": "restriction",
+      "relation": "validates_during",
+      "target": "generation",
+      "decision_reason": "The literal candidate reading asserts a 'validates_during' relation. However, the source text states the restriction 'applies during', not that it 'validates' the process. The predicate 'validates' implies a verification or confirmation role, whereas the text describes temporal applicability ('applies'). This constitutes a change in meaning (stronger/different claim) because 'applying' is not semantically equivalent to 'validating'. Therefore, the relation type is wrong. Failed gates: semantics_valid, types_valid, no_contradiction, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_kind"
+      ]
+    },
+    {
+      "id": "chunk_003_relation_002",
+      "chunk_id": "chunk_003",
+      "source": "models predicted token probabilities",
+      "relation": "compares_with",
+      "target": "next tokens in the training examples",
+      "decision_reason": "The source text states 'Training compares A with B'. While 'A compares with B' is a passive or reflexive interpretation of the same event, the active agent is 'Training'. The candidate relation 'compares_with' implies that 'models predicted token probabilities' is the agent performing the comparison on 'next tokens'. This changes the semantic role: in the text, 'Training' is the process doing the comparing; 'models predicted token probabilities' are the object being compared. Therefore, asserting that 'models predicted token probabilities' compares with 'next tokens' misattributes the agency defined in the quote. Failed gates: semantics_valid, direction_valid, no_contradiction, evidence",
+      "categories": [
+        "meaning_changed",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_010",
+      "chunk_id": "chunk_005",
+      "source": "claim",
+      "relation": "support",
+      "target": "a passage",
+      "decision_reason": "The candidate asserts that a claim 'does not support' a passage under specific conditions. However, the quote states: 'An answer can cite a real passage while making a claim that the passage does not support.' In this sentence, the subject is 'answer', not 'claim'. The action described is the answer citing a passage and making a claim. The relationship between 'claim' and 'a passage' in the quote is that the claim is unsupported by the passage (the passage does not support the claim), but the candidate defines the relation as 'claim supports passage' with modality 'does not'. While the text implies the claim lacks support, the candidate's specific phrasing attempts to define a negative support relation. The critical failure is in the direction and agency: the quote describes an answer making a claim that is unsupported. It does not describe a claim actively failing to support a passage as a primary event; rather, it describes the lack of support for the claim by the passage. More importantly, the candidate's condition 'activity: cite a real passage' attributes the citing action to the claim in the qualified reading structure, whereas the quote attributes 'cite' to the 'answer'. The Failed gates: semantics_valid, direction_valid, no_contradiction, certain, objections_resolved, evidence; source-only predicate reading identifies reversed endpoint bindings",
+      "categories": [
+        "meaning_changed",
+        "unsupported_claim",
+        "wrong_direction"
+      ]
+    },
+    {
+      "id": "chunk_005_relation_015",
+      "chunk_id": "chunk_005",
+      "source": "tutor",
+      "relation": "should_identify_disagreement",
+      "target": "combination into an unsupported conclusion",
+      "decision_reason": "The literal candidate reading proposes a relation where the 'tutor' should 'identify' the 'combination into an unsupported conclusion'. However, the source quote states: '...the tutor should identify the disagreement rather than combine them into an unsupported conclusion.' The text explicitly forbids the combination; it does not obligate the tutor to 'identify' or 'recognize' the act of combining. The phrase 'combination into an unsupported conclusion' is presented as a negative alternative ('rather than'), not as a valid target for the positive obligation relation defined by 'should identify'. Asserting that the tutor 'should identify' this combination implies an obligation to engage with or recognize this specific invalid action, which contradicts the text's intent to prevent it. The direction and meaning are altered: the source says 'do X rather than Y', while the candidate asserts 'should identify Y'. This constitutes a 'meaning_changed' objection because the candidate treats the negated alternative as the target of the positive modality. Failed gates: semantics_valid, no_contradiction, objections_resolved, evidence",
+      "categories": [
+        "meaning_changed"
+      ]
+    }
+  ]
+}

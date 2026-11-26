@@ -1,0 +1,18 @@
+--- pipeline.retrieval.before
++++ pipeline.retrieval
+@@ -7,6 +7,15 @@
+ 
+ def tokens(text):
+     return re.findall(r'[^\W_]+', str(text).casefold())
++
++
++def expanding_shortlists(query, entries, initial_limit, **kwargs):
++    """Yield unseen candidates as the search window doubles; callers stop when certain."""
++    ranked = shortlist(query, entries, None, **kwargs)
++    start, end = 0, max(1, initial_limit)
++    while start < len(ranked):
++        yield ranked[start:end]
++        start, end = end, end * 2
+ 
+ 
+ def shortlist(query, entries, limit, *, name_field='name', preferred=None):

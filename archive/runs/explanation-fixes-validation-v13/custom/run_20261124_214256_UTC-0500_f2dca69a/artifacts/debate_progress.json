@@ -1,0 +1,1425 @@
+{
+  "candidates": [
+    {
+      "source_concept": "self attention",
+      "target_concept": "token embeddings",
+      "intended_fact": "The self-attention mechanism processes text by computing attention weights between token embeddings to determine relevance.",
+      "confidence": 0.95,
+      "reason": "To explain 'how' the mechanism processes text, we must introduce the input representation (token embeddings) and the core operation (computing attention weights based on relevance). This bridges the gap between the abstract 'processes text' claim and the specific mathematical/mechanistic action.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "token embeddings, attention weights, computing relevance",
+      "id": "candidate_0001",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the specific processing method clarifies 'how' the model handles text beyond just knowing it uses the mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact establishes that the small transformer uses self-attention to process text. The primary gap is explaining the specific internal mechanics of this processing: how the mechanism computes relationships between tokens (queries, keys, values) to generate contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Begin intended_fact with its exact source_concept: self attention. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "rejection_stage": "planning",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0003",
+      "repair_result": {
+        "reason": "The candidate 'candidate_0001' was rejected because it conflates the mechanism's action with its inputs without explicitly stating the transformation of properties. The seed gap asks 'how' text is processed. Text_2 provides the correct mechanistic description: aggregating information from other tokens weighted by attention scores to generate contextual representations. This directly answers the 'how' by linking the input state (tokens) to the output state (contextual representations) via the specific action (aggregating/attending). The rejection of candidate_0001 is justified because it describes a static relationship between concepts rather than the dynamic process of generating representations, which is what 'processing text' entails in this context.",
+        "corrected_facts": [
+          {
+            "source_concept": "self attention",
+            "target_concept": "contextual representations",
+            "intended_fact": "The self-attention mechanism processes text by aggregating information from tokens weighted by computed attention scores to generate contextual representations.",
+            "confidence": 0.98,
+            "reason": "This assertion correctly identifies the action (aggregating information) and the result (contextual representations), directly answering the gap 'how does it process text'. It aligns with text_2 which defines the mechanism's function as generating contextual representations via aggregation.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "aggregating information, weighted attention scores, transformation of token states"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003"
+      ]
+    },
+    {
+      "source_concept": "self attention",
+      "target_concept": "contextual representations",
+      "intended_fact": "The self-attention mechanism generates contextual representations for each token by aggregating information from other tokens weighted by their computed attention scores.",
+      "confidence": 0.95,
+      "reason": "This sentence completes the explanation of the processing pipeline: inputs (embeddings) are transformed via attention weights into outputs (contextual representations), directly answering how the text is processed internally.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "contextual representations, aggregating information",
+      "id": "candidate_0002",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the specific processing method clarifies 'how' the model handles text beyond just knowing it uses the mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact establishes that the small transformer uses self-attention to process text. The primary gap is explaining the specific internal mechanics of this processing: how the mechanism computes relationships between tokens (queries, keys, values) to generate contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "self attention",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Begin intended_fact with its exact source_concept: self attention. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "rejection_stage": "planning",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The candidate 'candidate_0001' was rejected because it conflates the mechanism's action with its inputs without explicitly stating the transformation of properties. The seed gap asks 'how' text is processed. Text_2 provides the correct mechanistic description: aggregating information from other tokens weighted by attention scores to generate contextual representations. This directly answers the 'how' by linking the input state (tokens) to the output state (contextual representations) via the specific action (aggregating/attending). The rejection of candidate_0001 is justified because it describes a static relationship between concepts rather than the dynamic process of generating representations, which is what 'processing text' entails in this context.",
+        "corrected_facts": [
+          {
+            "source_concept": "self attention",
+            "target_concept": "contextual representations",
+            "intended_fact": "The self-attention mechanism processes text by aggregating information from tokens weighted by computed attention scores to generate contextual representations.",
+            "confidence": 0.98,
+            "reason": "This assertion correctly identifies the action (aggregating information) and the result (contextual representations), directly answering the gap 'how does it process text'. It aligns with text_2 which defines the mechanism's function as generating contextual representations via aggregation.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "aggregating information, weighted attention scores, transformation of token states"
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0003"
+      ]
+    },
+    {
+      "source_concept": "self attention",
+      "target_concept": "contextual representations",
+      "intended_fact": "The self-attention mechanism processes text by aggregating information from tokens weighted by computed attention scores to generate contextual representations.",
+      "confidence": 0.98,
+      "reason": "This assertion correctly identifies the action (aggregating information) and the result (contextual representations), directly answering the gap 'how does it process text'. It aligns with text_2 which defines the mechanism's function as generating contextual representations via aggregation.",
+      "gap_ids": [
+        "question_0001"
+      ],
+      "added_knowledge": "aggregating information, weighted attention scores, transformation of token states",
+      "id": "candidate_0003",
+      "seed_id": "seed_001",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+          "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+          "why_useful": "Understanding the specific processing method clarifies 'how' the model handles text beyond just knowing it uses the mechanism.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0001",
+          "concept": "self attention"
+        }
+      ],
+      "gap_analysis": "The seed fact establishes that the small transformer uses self-attention to process text. The primary gap is explaining the specific internal mechanics of this processing: how the mechanism computes relationships between tokens (queries, keys, values) to generate contextual representations.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_001",
+          "source": "small transformer",
+          "relation": "uses",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "target": "self attention",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to process text"
+          ]
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": "candidate_0001",
+      "repair_attempt": 1,
+      "decision_reason": "Begin intended_fact with its exact source_concept: self attention. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0001",
+        "rejection_stage": "planning",
+        "reason": "Begin intended_fact with its exact source_concept: self attention. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+        "representation_check": null
+      },
+      "repair_of_ids": [
+        "candidate_0001",
+        "candidate_0002"
+      ],
+      "rejection_stage": "planning"
+    },
+    {
+      "source_concept": "backpropagation",
+      "target_concept": "prediction errors",
+      "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+      "confidence": 0.95,
+      "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors.",
+      "id": "candidate_0004",
+      "seed_id": "seed_002",
+      "source": "backpropagation",
+      "target": "prediction errors",
+      "relation": "calculates",
+      "relation_definition": "TARGET is computed by SOURCE using specific parameters.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "target": "backpropagation",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+      "original_proposal": {
+        "source": {
+          "name": "backpropagation",
+          "definition": "An algorithm for updating model weights based on prediction errors.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "prediction errors",
+          "definition": "Discrepancies between predicted and actual values used to guide learning.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "calculates",
+        "relation_definition": "TARGET is computed by SOURCE using specific parameters.",
+        "argument_qualifiers": [
+          "based on prediction errors"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+        "confidence": 0.95,
+        "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+        "gap_ids": [
+          "question_0002"
+        ],
+        "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+      },
+      "source_mention": {
+        "name": "backpropagation",
+        "definition": "An algorithm for updating model weights based on prediction errors.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "prediction errors",
+        "definition": "Discrepancies between predicted and actual values used to guide learning.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "based on prediction errors"
+      ],
+      "surface_relation": "calculates",
+      "surface_target": "prediction errors",
+      "independent_link_reading": {
+        "subject": "backpropagation",
+        "object": "prediction errors",
+        "assertion": "backpropagation calculates prediction errors based on prediction errors"
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (backpropagation --[calculates]--> prediction errors); additional arguments: based on prediction errors",
+        "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+        "meaning_matches": false,
+        "direction_valid": false,
+        "explanation_matches": false,
+        "scope_preserved": false,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (backpropagation --[calculates]--> prediction errors); additional arguments: based on prediction errors",
+      "rejection_stage": "representation",
+      "repair_attempted": true,
+      "repair_candidate_id": "candidate_0009",
+      "repair_result": {
+        "reason": "The original candidate assertion 'Backpropagation calculates prediction errors' is rejected because it conflates the input signal (errors) with the computed output (gradients). Backpropagation uses errors to compute gradients, which then drive weight updates. The corrected explanation must explicitly introduce 'gradients' as the intermediate concept that backpropagation computes from errors, and link these gradients to the subsequent action of updating weights.",
+        "corrected_facts": [
+          {
+            "source_concept": "backpropagation",
+            "target_concept": "gradients",
+            "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+          },
+          {
+            "source_concept": "gradients",
+            "target_concept": "model weights",
+            "intended_fact": "Calculated gradients are used to update model weights.",
+            "confidence": 0.95,
+            "reason": "This is the core mechanism of backpropagation: using error-derived signals (gradients) to adjust parameters.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The causal link between gradients and weight modification."
+          },
+          {
+            "source_concept": "model weights",
+            "target_concept": "predictions of the small transformer",
+            "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+            "confidence": 0.95,
+            "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The functional dependency of predictions on weight values."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0007",
+        "candidate_0008",
+        "candidate_0009"
+      ]
+    },
+    {
+      "source_concept": "prediction errors",
+      "target_concept": "model weights",
+      "intended_fact": "Calculated gradients from prediction errors are used to update model weights.",
+      "confidence": 0.95,
+      "reason": "This is the core mechanism of backpropagation: using error signals to adjust parameters.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The causal link between errors and weight modification.",
+      "id": "candidate_0005",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "target": "backpropagation",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Begin intended_fact with its exact source_concept: prediction errors. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "rejection_stage": "planning",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The original candidate assertion 'Backpropagation calculates prediction errors' is rejected because it conflates the input signal (errors) with the computed output (gradients). Backpropagation uses errors to compute gradients, which then drive weight updates. The corrected explanation must explicitly introduce 'gradients' as the intermediate concept that backpropagation computes from errors, and link these gradients to the subsequent action of updating weights.",
+        "corrected_facts": [
+          {
+            "source_concept": "backpropagation",
+            "target_concept": "gradients",
+            "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+          },
+          {
+            "source_concept": "gradients",
+            "target_concept": "model weights",
+            "intended_fact": "Calculated gradients are used to update model weights.",
+            "confidence": 0.95,
+            "reason": "This is the core mechanism of backpropagation: using error-derived signals (gradients) to adjust parameters.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The causal link between gradients and weight modification."
+          },
+          {
+            "source_concept": "model weights",
+            "target_concept": "predictions of the small transformer",
+            "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+            "confidence": 0.95,
+            "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The functional dependency of predictions on weight values."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0007",
+        "candidate_0008",
+        "candidate_0009"
+      ]
+    },
+    {
+      "source_concept": "model weights",
+      "target_concept": "predictions of the small transformer",
+      "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+      "confidence": 0.95,
+      "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The functional dependency of predictions on weight values.",
+      "id": "candidate_0006",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "target": "backpropagation",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "target": "backpropagation",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "target": "predictions of the small transformer",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "origin": "document",
+          "conditions": null,
+          "modality": null
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": null,
+      "repair_attempt": 0,
+      "decision_reason": "Begin intended_fact with its exact source_concept: model weights. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "rejection_stage": "planning",
+      "repair_attempted": true,
+      "repair_result": {
+        "reason": "The original candidate assertion 'Backpropagation calculates prediction errors' is rejected because it conflates the input signal (errors) with the computed output (gradients). Backpropagation uses errors to compute gradients, which then drive weight updates. The corrected explanation must explicitly introduce 'gradients' as the intermediate concept that backpropagation computes from errors, and link these gradients to the subsequent action of updating weights.",
+        "corrected_facts": [
+          {
+            "source_concept": "backpropagation",
+            "target_concept": "gradients",
+            "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+          },
+          {
+            "source_concept": "gradients",
+            "target_concept": "model weights",
+            "intended_fact": "Calculated gradients are used to update model weights.",
+            "confidence": 0.95,
+            "reason": "This is the core mechanism of backpropagation: using error-derived signals (gradients) to adjust parameters.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The causal link between gradients and weight modification."
+          },
+          {
+            "source_concept": "model weights",
+            "target_concept": "predictions of the small transformer",
+            "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+            "confidence": 0.95,
+            "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The functional dependency of predictions on weight values."
+          }
+        ]
+      },
+      "repair_candidate_ids": [
+        "candidate_0007",
+        "candidate_0008",
+        "candidate_0009"
+      ]
+    },
+    {
+      "source_concept": "backpropagation",
+      "target_concept": "gradients",
+      "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+      "confidence": 0.95,
+      "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors.",
+      "id": "candidate_0007",
+      "seed_id": "seed_002",
+      "source": "backpropagation",
+      "target": "gradients",
+      "relation": "computes_gradients_from_errors",
+      "relation_definition": "TARGET is derived from SOURCE through a computational process using prediction errors to guide weight updates.",
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve its predictions"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve predictions of the small transformer"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "target": "predictions of the small transformer",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "during training"
+          ]
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "pending",
+      "representation_valid": true,
+      "repair_of": "candidate_0004",
+      "repair_attempt": 1,
+      "decision_reason": "Intended fact recorded; graph link not yet constructed",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0004",
+        "rejection_stage": "representation",
+        "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+        "representation_check": {
+          "link_reading": "ASSERTED (backpropagation --[calculates]--> prediction errors); additional arguments: based on prediction errors",
+          "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+          "meaning_matches": false,
+          "direction_valid": false,
+          "explanation_matches": false,
+          "scope_preserved": false,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006"
+      ],
+      "original_proposal": {
+        "source": {
+          "name": "backpropagation",
+          "definition": "An algorithm for updating model weights based on prediction errors.",
+          "kind": "process",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "target": {
+          "name": "gradients",
+          "definition": "Values representing the partial derivatives of the loss function with respect to model parameters.",
+          "kind": "entity",
+          "form": "concept",
+          "kind_detail": null
+        },
+        "relation": "calculates",
+        "relation_definition": "TARGET is derived from SOURCE through a computational process.",
+        "argument_qualifiers": [
+          "based on prediction errors"
+        ],
+        "conditions": null,
+        "modality": null,
+        "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+        "confidence": 0.95,
+        "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+        "gap_ids": [
+          "question_0002"
+        ],
+        "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+      },
+      "source_mention": {
+        "name": "backpropagation",
+        "definition": "An algorithm for updating model weights based on prediction errors.",
+        "kind": "process",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "target_mention": {
+        "name": "gradients",
+        "definition": "Values representing the partial derivatives of the loss function with respect to model parameters.",
+        "kind": "entity",
+        "form": "concept",
+        "kind_detail": null
+      },
+      "argument_qualifiers": [
+        "based on prediction errors"
+      ],
+      "surface_relation": "calculates",
+      "surface_target": "gradients",
+      "independent_link_reading": {
+        "subject": "backpropagation",
+        "object": "gradients",
+        "assertion": "backpropagation computes gradients from errors based on prediction errors."
+      },
+      "representation_check": {
+        "link_reading": "ASSERTED (backpropagation --[computes gradients from errors]--> gradients); additional arguments: based on prediction errors",
+        "reason": "The link_reading is copied exactly as required. The independent reading correctly identifies 'backpropagation' and 'gradients' as the subject and object. The intended fact states that backpropagation calculates gradients to guide weight updates, while the explanation defines it generally as using prediction errors to compute gradients for optimization. The link's relation 'computes_gradients_from_errors' with qualifier 'based on prediction errors' aligns with the core mechanism described in both the intended fact and the explanation. No silent actions or missing participants were inserted; the direction (backpropagation -> gradients) and meaning are preserved without adding unverified premises like 'guide weight updates' as a necessary condition of the relation itself, though they appear in the broader context. The representation is faithful to the data provided.",
+        "meaning_matches": true,
+        "direction_valid": true,
+        "explanation_matches": true,
+        "scope_preserved": true,
+        "suggested_correction": null
+      },
+      "link_reading": "ASSERTED (backpropagation --[computes gradients from errors]--> gradients); additional arguments: based on prediction errors"
+    },
+    {
+      "source_concept": "gradients",
+      "target_concept": "model weights",
+      "intended_fact": "Calculated gradients are used to update model weights.",
+      "confidence": 0.95,
+      "reason": "This is the core mechanism of backpropagation: using error-derived signals (gradients) to adjust parameters.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The causal link between gradients and weight modification.",
+      "id": "candidate_0008",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve its predictions"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve predictions of the small transformer"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "target": "predictions of the small transformer",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "during training"
+          ]
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": "candidate_0004",
+      "repair_attempt": 1,
+      "decision_reason": "Begin intended_fact with its exact source_concept: gradients. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0004",
+        "rejection_stage": "representation",
+        "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+        "representation_check": {
+          "link_reading": "ASSERTED (backpropagation --[calculates]--> prediction errors); additional arguments: based on prediction errors",
+          "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+          "meaning_matches": false,
+          "direction_valid": false,
+          "explanation_matches": false,
+          "scope_preserved": false,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006"
+      ],
+      "rejection_stage": "planning"
+    },
+    {
+      "source_concept": "model weights",
+      "target_concept": "predictions of the small transformer",
+      "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+      "confidence": 0.95,
+      "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+      "gap_ids": [
+        "question_0002"
+      ],
+      "added_knowledge": "The functional dependency of predictions on weight values.",
+      "id": "candidate_0009",
+      "seed_id": "seed_002",
+      "source": null,
+      "target": null,
+      "relation": null,
+      "relation_definition": null,
+      "conditions": null,
+      "modality": null,
+      "origin": "background",
+      "chunk_id": "chunk_001",
+      "paragraph_id": "paragraph_001",
+      "gaps": [
+        {
+          "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+          "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+          "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+          "source_chunk_ids": [
+            "chunk_001"
+          ],
+          "id": "question_0002",
+          "concept": "backpropagation"
+        }
+      ],
+      "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+      "source_context": [
+        {
+          "id": "chunk_001",
+          "text": "A small transformer uses self-attention to process text and backpropagation to improve its predictions during training. Regularization helps it generalize beyond its training examples. After training, quantization reduces its memory requirements, while retrieval-augmented generation lets it use external documents when answering questions."
+        }
+      ],
+      "case_specific_unknowns": [],
+      "known_seed_facts": [
+        {
+          "id": "chunk_001_relation_002",
+          "source": "small transformer",
+          "relation": "uses",
+          "relation_definition": "employs a specific mechanism or method for operation.",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve its predictions"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_003",
+          "source": "small transformer",
+          "relation": "employs_mechanism_for_training",
+          "relation_definition": "utilizes a specific mechanism or tool to perform an action aimed at improving predictions",
+          "target": "backpropagation",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "to improve predictions of the small transformer"
+          ]
+        },
+        {
+          "id": "chunk_001_coverage_0_0_relation_004",
+          "source": "backpropagation",
+          "relation": "enhances_prediction_accuracy_via_backpropagation",
+          "relation_definition": "causes an increase in the accuracy or quality of predictions through backpropagation during training",
+          "target": "predictions of the small transformer",
+          "conditions": null,
+          "modality": null,
+          "argument_qualifiers": [
+            "during training"
+          ]
+        }
+      ],
+      "accepted": false,
+      "score": null,
+      "tier": "related",
+      "review_status": "rejected",
+      "representation_valid": false,
+      "repair_of": "candidate_0004",
+      "repair_attempt": 1,
+      "decision_reason": "Begin intended_fact with its exact source_concept: model weights. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property.",
+      "repair_feedback": {
+        "rejected_candidate_id": "candidate_0004",
+        "rejection_stage": "representation",
+        "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+        "representation_check": {
+          "link_reading": "ASSERTED (backpropagation --[calculates]--> prediction errors); additional arguments: based on prediction errors",
+          "reason": "The literal_candidate_reading explicitly states that backpropagation calculates 'prediction errors'. The intended_fact states that backpropagation calculates 'gradients' to guide weight updates. These are distinct entities (errors vs. gradients). According to the constraints, a property is not its reduction or constraint, and an assertion about one mechanism (calculating errors) is not interchangeable with an assertion about another (calculating gradients). The link reading fails to express the intended fact because it substitutes the object 'gradients' with 'prediction errors', violating the requirement to check actual named actors and objects. The direction of calculation in the literal reading contradicts the specific output defined in the intended fact.",
+          "meaning_matches": false,
+          "direction_valid": false,
+          "explanation_matches": false,
+          "scope_preserved": false,
+          "suggested_correction": null
+        }
+      },
+      "repair_of_ids": [
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006"
+      ],
+      "rejection_stage": "planning"
+    }
+  ],
+  "transcripts": [
+    {
+      "seed": {
+        "id": "seed_001",
+        "concept": "self attention",
+        "definition": "A mechanism for processing text sequences by attending to relevant parts.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source states the function (processing text) but omits the explanatory mechanism of self-attention itself.",
+        "chapter_topic": "self-attention mechanism",
+        "topic_id": "chapter_6e40558057d192365ef2",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation to utilize external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "How does the self-attention mechanism specifically process text within this small transformer architecture?",
+            "assumed_knowledge": "The internal mechanics of how self-attention computes relationships between tokens in the input text to generate representations.",
+            "why_useful": "Understanding the specific processing method clarifies 'how' the model handles text beyond just knowing it uses the mechanism.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0001",
+            "concept": "self attention"
+          }
+        ],
+        "background_question": "How does the self-attention mechanism specifically process text within this small transformer architecture?"
+      },
+      "proposal": {
+        "gap_analysis": "The seed fact establishes that the small transformer uses self-attention to process text. The primary gap is explaining the specific internal mechanics of this processing: how the mechanism computes relationships between tokens (queries, keys, values) to generate contextual representations.",
+        "proposals": [],
+        "reason": "The explanation connects the 'small transformer' to 'self attention', then expands on 'self attention' by introducing 'token embeddings' as inputs and 'contextual representations' as outputs, linked by the mechanism of computing 'attention weights'. This forms a minimal connected graph explaining the specific processing method without inventing unsupported details about the specific small transformer instance."
+      },
+      "fact_plan": {
+        "gap_analysis": "The seed fact establishes that the small transformer uses self-attention to process text. The primary gap is explaining the specific internal mechanics of this processing: how the mechanism computes relationships between tokens (queries, keys, values) to generate contextual representations.",
+        "facts": [
+          {
+            "source_concept": "self attention",
+            "target_concept": "token embeddings",
+            "intended_fact": "The self-attention mechanism processes text by computing attention weights between token embeddings to determine relevance.",
+            "confidence": 0.95,
+            "reason": "To explain 'how' the mechanism processes text, we must introduce the input representation (token embeddings) and the core operation (computing attention weights based on relevance). This bridges the gap between the abstract 'processes text' claim and the specific mathematical/mechanistic action.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "token embeddings, attention weights, computing relevance"
+          },
+          {
+            "source_concept": "self attention",
+            "target_concept": "contextual representations",
+            "intended_fact": "The self-attention mechanism generates contextual representations for each token by aggregating information from other tokens weighted by their computed attention scores.",
+            "confidence": 0.95,
+            "reason": "This sentence completes the explanation of the processing pipeline: inputs (embeddings) are transformed via attention weights into outputs (contextual representations), directly answering how the text is processed internally.",
+            "gap_ids": [
+              "question_0001"
+            ],
+            "added_knowledge": "contextual representations, aggregating information"
+          }
+        ],
+        "reason": "The explanation connects the 'small transformer' to 'self attention', then expands on 'self attention' by introducing 'token embeddings' as inputs and 'contextual representations' as outputs, linked by the mechanism of computing 'attention weights'. This forms a minimal connected graph explaining the specific processing method without inventing unsupported details about the specific small transformer instance."
+      },
+      "candidate_ids": [
+        "candidate_0001",
+        "candidate_0002",
+        "candidate_0003"
+      ],
+      "repairs": [
+        {
+          "original_candidate_ids": [
+            "candidate_0001",
+            "candidate_0002"
+          ],
+          "response": {
+            "reason": "The candidate 'candidate_0001' was rejected because it conflates the mechanism's action with its inputs without explicitly stating the transformation of properties. The seed gap asks 'how' text is processed. Text_2 provides the correct mechanistic description: aggregating information from other tokens weighted by attention scores to generate contextual representations. This directly answers the 'how' by linking the input state (tokens) to the output state (contextual representations) via the specific action (aggregating/attending). The rejection of candidate_0001 is justified because it describes a static relationship between concepts rather than the dynamic process of generating representations, which is what 'processing text' entails in this context.",
+            "corrected_facts": [
+              {
+                "source_concept": "self attention",
+                "target_concept": "contextual representations",
+                "intended_fact": "The self-attention mechanism processes text by aggregating information from tokens weighted by computed attention scores to generate contextual representations.",
+                "confidence": 0.98,
+                "reason": "This assertion correctly identifies the action (aggregating information) and the result (contextual representations), directly answering the gap 'how does it process text'. It aligns with text_2 which defines the mechanism's function as generating contextual representations via aggregation.",
+                "gap_ids": [
+                  "question_0001"
+                ],
+                "added_knowledge": "aggregating information, weighted attention scores, transformation of token states"
+              }
+            ]
+          },
+          "corrected_candidate_ids": [
+            "candidate_0003"
+          ]
+        }
+      ],
+      "reused_gap_answers": {},
+      "plan_validation": {
+        "status": "needs_repair",
+        "reason": "Begin intended_fact with its exact source_concept: self attention. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property."
+      }
+    },
+    {
+      "seed": {
+        "id": "seed_002",
+        "concept": "backpropagation",
+        "definition": "An algorithm for updating model weights based on prediction errors.",
+        "kind": "process",
+        "chunk_id": "chunk_001",
+        "paragraph_id": "paragraph_001",
+        "chunk_ids": [
+          "chunk_001"
+        ],
+        "reason": "The source mentions improving predictions via backpropagation but does not explain the mechanism of that improvement.",
+        "chapter_topic": "backpropagation",
+        "topic_id": "chapter_a66ae8f0ce58f8f29e89",
+        "topic_level": "chapter",
+        "document_coverage": "The source text explicitly states that a small transformer uses self-attention for text processing, backpropagation for improving predictions during training, regularization for generalization beyond training examples, quantization to reduce memory requirements after training, and retrieval-augmented generation to utilize external documents when answering questions.",
+        "case_specific_unknowns": [],
+        "gaps": [
+          {
+            "question": "In what specific way does backpropagation improve the predictions of the small transformer during training?",
+            "assumed_knowledge": "The algorithmic process by which gradients are calculated and weights updated to minimize prediction error.",
+            "why_useful": "Knowing the 'how' explains the link between the training process and improved predictions mentioned in the text.",
+            "source_chunk_ids": [
+              "chunk_001"
+            ],
+            "id": "question_0002",
+            "concept": "backpropagation"
+          }
+        ],
+        "background_question": "In what specific way does backpropagation improve the predictions of the small transformer during training?"
+      },
+      "proposal": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+        "proposals": [
+          {
+            "source": {
+              "name": "backpropagation",
+              "definition": "An algorithm for updating model weights based on prediction errors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "target": {
+              "name": "prediction errors",
+              "definition": "Discrepancies between predicted and actual values used to guide learning.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null
+            },
+            "relation": "calculates",
+            "relation_definition": "TARGET is computed by SOURCE using specific parameters.",
+            "argument_qualifiers": [
+              "based on prediction errors"
+            ],
+            "conditions": null,
+            "modality": null,
+            "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+          }
+        ],
+        "reason": "The explanation bridges the gap by introducing the intermediate concepts of 'prediction errors' and 'model weights' to explain the mechanism. The chain is: Backpropagation uses errors -> Errors update weights -> Updated weights change predictions. This answers 'in what specific way' without contradicting the source text."
+      },
+      "fact_plan": {
+        "gap_analysis": "The source text states that backpropagation improves predictions but does not specify the mechanism (gradient calculation and weight updates). The gap is the missing explanation of *how* the algorithm achieves this improvement.",
+        "facts": [
+          {
+            "source_concept": "backpropagation",
+            "target_concept": "prediction errors",
+            "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+            "confidence": 0.95,
+            "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+          },
+          {
+            "source_concept": "prediction errors",
+            "target_concept": "model weights",
+            "intended_fact": "Calculated gradients from prediction errors are used to update model weights.",
+            "confidence": 0.95,
+            "reason": "This is the core mechanism of backpropagation: using error signals to adjust parameters.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The causal link between errors and weight modification."
+          },
+          {
+            "source_concept": "model weights",
+            "target_concept": "predictions of the small transformer",
+            "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+            "confidence": 0.95,
+            "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+            "gap_ids": [
+              "question_0002"
+            ],
+            "added_knowledge": "The functional dependency of predictions on weight values."
+          }
+        ],
+        "reason": "The explanation bridges the gap by introducing the intermediate concepts of 'prediction errors' and 'model weights' to explain the mechanism. The chain is: Backpropagation uses errors -> Errors update weights -> Updated weights change predictions. This answers 'in what specific way' without contradicting the source text."
+      },
+      "candidate_ids": [
+        "candidate_0004",
+        "candidate_0005",
+        "candidate_0006",
+        "candidate_0007",
+        "candidate_0008",
+        "candidate_0009"
+      ],
+      "repairs": [
+        {
+          "original_candidate_ids": [
+            "candidate_0004",
+            "candidate_0005",
+            "candidate_0006"
+          ],
+          "response": {
+            "reason": "The original candidate assertion 'Backpropagation calculates prediction errors' is rejected because it conflates the input signal (errors) with the computed output (gradients). Backpropagation uses errors to compute gradients, which then drive weight updates. The corrected explanation must explicitly introduce 'gradients' as the intermediate concept that backpropagation computes from errors, and link these gradients to the subsequent action of updating weights.",
+            "corrected_facts": [
+              {
+                "source_concept": "backpropagation",
+                "target_concept": "gradients",
+                "intended_fact": "Backpropagation calculates gradients based on prediction errors to guide weight updates.",
+                "confidence": 0.95,
+                "reason": "General knowledge defines backpropagation as an algorithm that uses prediction errors to compute gradients for optimization.",
+                "gap_ids": [
+                  "question_0002"
+                ],
+                "added_knowledge": "The specific mechanism of gradient calculation and weight update derived from errors."
+              },
+              {
+                "source_concept": "gradients",
+                "target_concept": "model weights",
+                "intended_fact": "Calculated gradients are used to update model weights.",
+                "confidence": 0.95,
+                "reason": "This is the core mechanism of backpropagation: using error-derived signals (gradients) to adjust parameters.",
+                "gap_ids": [
+                  "question_0002"
+                ],
+                "added_knowledge": "The causal link between gradients and weight modification."
+              },
+              {
+                "source_concept": "model weights",
+                "target_concept": "predictions of the small transformer",
+                "intended_fact": "Updated model weights directly alter the predictions generated by the small transformer.",
+                "confidence": 0.95,
+                "reason": "In neural networks, changing weights changes the function computed, thereby altering outputs/predictions.",
+                "gap_ids": [
+                  "question_0002"
+                ],
+                "added_knowledge": "The functional dependency of predictions on weight values."
+              }
+            ]
+          },
+          "corrected_candidate_ids": [
+            "candidate_0007",
+            "candidate_0008",
+            "candidate_0009"
+          ]
+        }
+      ],
+      "reused_gap_answers": {},
+      "plan_validation": {
+        "status": "needs_repair",
+        "reason": "Begin intended_fact with its exact source_concept: prediction errors. Put conditions after the main assertion. If the actual subject is an action changing a property, name that action as the source rather than the property."
+      },
+      "explanation_graphs": [
+        {
+          "nodes": [
+            {
+              "name": "backpropagation",
+              "definition": "An algorithm for updating model weights based on prediction errors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_0001"
+            },
+            {
+              "name": "prediction errors",
+              "definition": "Discrepancies between predicted and actual values used to guide learning.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_0002"
+            }
+          ],
+          "links": [
+            {
+              "source_id": "node_0001",
+              "target_id": "node_0002",
+              "relation": "calculates",
+              "relation_definition": "TARGET is computed by SOURCE using specific parameters.",
+              "argument_qualifiers": [
+                "based on prediction errors"
+              ],
+              "conditions": null,
+              "modality": null,
+              "fact_id": "candidate_0004"
+            }
+          ]
+        },
+        {
+          "nodes": [
+            {
+              "name": "backpropagation",
+              "definition": "An algorithm for updating model weights based on prediction errors.",
+              "kind": "process",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_0001"
+            },
+            {
+              "name": "gradients",
+              "definition": "Values representing the partial derivatives of the loss function with respect to model parameters.",
+              "kind": "entity",
+              "form": "concept",
+              "kind_detail": null,
+              "node_id": "node_0002"
+            }
+          ],
+          "links": [
+            {
+              "source_id": "node_0001",
+              "target_id": "node_0002",
+              "relation": "calculates",
+              "relation_definition": "TARGET is derived from SOURCE through a computational process.",
+              "argument_qualifiers": [
+                "based on prediction errors"
+              ],
+              "conditions": null,
+              "modality": null,
+              "fact_id": "candidate_0007"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

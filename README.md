@@ -1,5 +1,12 @@
 ﻿# ECSE 679 — Epistemic Knowledge Graph Engine
 
+The active inputs are `data/ai_test.txt`, `data/llm_tuning.txt`, and
+`data/neurons_and_glia.txt`. The [saved-run catalog](outputs/runs/README.md) lists
+one retained November 25 graph per input. LLM tuning combines its original
+execution and checkpoint recovery, retaining the interruption and unresolved issues.
+All older inputs, runs, database snapshots, and generated diagnostics are in the
+single root [archive](archive/README.md).
+
 For a screenshot walkthrough of the interactive interface, open the
 [simple user guide (PDF)](docs/Interactive_Graph_Guide.pdf) or the
 [browser guide with expandable screenshots](docs/Interactive_Graph_Guide.html).
@@ -38,17 +45,49 @@ review and repair process is no longer part of either pipeline. Runs record
 Reconstruction evaluation remains a measurement stage, and background quiz approval
 remains a separate professor control. Custom texts use the same logic via `--input`.
 
-Background proposal repair sends one rejected candidate with its original gaps,
-anchored source passages, qualifications, uncertainty, rejection feedback, and
-relevant comparison facts. Before every attempt, including validation retries,
-the request budget counts instructions, serialized context, schema, retry feedback,
-the safety margin, and `model.repair_output_tokens` (default 1536, capped by
-`--max-output-tokens`). Exact repeated text can use JSON-pointer references;
-supplemental context is removed progressively without clipping required evidence.
-If the essential request cannot fit, the repair remains unresolved and counts
-toward the unchanged health threshold. Per-attempt estimates and reductions are
-saved in `artifacts/repair_budgets/<candidate_id>.json`. Corrections still pass
-the existing representation, novelty, connectivity, and debate admission checks.
+Background explanations are planned as factual sentences and constructed together
+with explicit planned endpoint pairs and a shared concept table. Each assertion must
+begin with its named source and explicitly name its target. Invalid members are rejected
+individually; they and missing bridges remain available as feedback for whole-group repair.
+They cannot supply paths for admission. Semantic review still checks roles and meaning.
+Construction receives fixed node identities and endpoint pairs, and
+generates only their semantic details. Every link references explicit nodes;
+intermediate concepts cannot supply a connection merely through their definitions. Canonical
+concept resolution is shared within each explanation, while external aliases still
+require semantic verification. Predicate reuse, including an identical stored
+label and definition, checks the qualified occurrence before accepting its meaning.
+
+Explanation repair can rebuild the entire explanation and add necessary bridge
+relationships. It retains all member decisions, original gaps, anchored evidence,
+qualifications and known connections. Each proposed replacement or bridge passes
+the existing representation, novelty, debate and counterexample checks. Connectivity
+is checked again using only admitted links, so a rejected bridge cannot leave an
+accepted but disconnected explanation. Previously accepted members can be superseded
+only by a complete validated replacement; a failed replacement retains the prior accepted group. Original
+decisions remain in the audit. Duplicate proposals stay rejected; existing verified
+relationships can supply their graph connections without publishing another copy.
+When there are no accepted originals to supersede, a repair may retain its validated,
+connected subset even if an optional extension fails. Rejected bridges still cannot
+support admission of disconnected links.
+The configurable `review.explanation_repair_max_attempts` defaults to three total
+attempts. A further attempt requires improved validation stages for the original
+questions or more distinct, fully validated connected links, without regressing
+question-level progress. Repeated failure patterns stop early. Later failed attempts
+retain the best validated repair, subject to the same complete-replacement rules.
+Proposed counterexamples receive an independent check of their premises and whether
+they refute the exact qualified link. An invalid objection triggers a bounded review
+retry; it does not establish the truth of the original assertion.
+The final factual check sees the literal qualified link without the intended sentence
+or predicate definition, so those descriptions cannot silently repair a wrong assertion.
+
+Repair requests retain essential evidence and topology at every budget reduction;
+supplemental context may be removed and repeated prose referenced losslessly. If
+the minimum request cannot fit, repair remains unresolved under the unchanged
+health policy. Per-attempt estimates are saved in `artifacts/repair_budgets/`.
+Whole-explanation repairs use the configured general output allowance, while legacy
+single-link repairs retain their smaller dedicated allowance. Group repairs can
+need more context than single-link repairs; use
+`--context-tokens` to provide sufficient capacity rather than dropping evidence.
 
 The existing graph-refinement command is an explicitly invoked diagnostic tool.
 The review and repair behavior described below applies only when that command (or
@@ -149,12 +188,29 @@ before scoring. Scores from the previous metric version are not directly compara
 without inference or changing graph facts; it records the renderer revision and new
 HTML hash in the manifest.
 
+If relation generation proposes an existing relationship name, the registry checks
+the stored definition against the current assertion, keeping its endpoints and
+qualifiers. Reuse requires verified meaning, direction, and compatible endpoint
+types; it never overwrites the stored definition, symmetry, or inverse. A rejected
+check is retained for that occurrence, and a later occurrence is checked separately.
+The verifier compares complete assertions in source context; differences in
+definition wording or generality alone are insufficient to reject equivalence.
+A rejection must identify a concrete claim added, lost, or changed.
+
 Concept names retain their spelling and number; automatic singularization is not
 used to decide identity. Singular/plural variants and synonyms can merge only
-after contextual checks. `--identity-candidates` bounds model comparisons per
-concept when explicitly configured; otherwise the configured retrieval shortlist
-is used, including for background concepts. Retrieval can miss an alias;
-unmatched concepts remain separate instead of being silently discarded or merged.
+after contextual checks. Identity and predicate matching start with 16 retrieved
+candidates, or the configured `--identity-candidates` initial window. Uncertain
+searches and rejected independent matches expand the window, visiting only unseen
+candidates in budgeted pages. A verified match or conclusive distinction stops the
+search; expanding retrieval never authorizes a merge without verification.
+
+Reference resolution starts with three preceding sentences. If the referent remains
+ambiguous, it adds relevant earlier sentences, including earlier paragraphs, only
+when the complete request still fits the existing context and output budget. Source
+offsets and added antecedent evidence are retained for downstream review; the
+current assertion and its original quotation stay unchanged. Ambiguity remains
+unresolved when no additional context fits or the source still does not identify a referent.
 
 Runtime policy is centralized in [`pipeline_settings.json`](pipeline_settings.json),
 with the same defaults embedded in the portable notebook. Set `EKG_SETTINGS` to a
@@ -162,7 +218,7 @@ partial JSON override file before starting a process; unknown keys and invalid
 budgets fail early. Existing CLI options override their corresponding settings.
 
 - `workload`: null defaults derive chunk/page sizes from input density and model
-  budgets. Identity retrieval defaults to 16 candidates; source facts, seeds and
+  budgets. Identity retrieval starts with 16 candidates; source facts, seeds and
   background proposals have no default content quota. Explicit limits remain
   available as deliberate operating choices.
 - `model`, `review`, `health`, `operations`: token, time, retry and service budgets.
@@ -182,12 +238,12 @@ Only the original AI test is being validated for this change. The larger fixture
 below are available for separate testing; they are not evidence of current live-model
 accuracy across topics.
 
-Two three-paragraph validation inputs are under `data/validation`. When testing
+Two three-paragraph validation inputs are under `archive/inputs/validation`. When testing
 these separately, use the same configured resource policy:
 
 ```powershell
-python run_pipeline.py --input data/validation/ai_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
-python run_pipeline.py --input data/validation/neuron_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python run_pipeline.py --input archive/inputs/validation/ai_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python run_pipeline.py --input archive/inputs/validation/neuron_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
 python -m unittest tests.test_topic_independence tests.test_graph_quality -q
 ```
 
@@ -278,7 +334,10 @@ works if it remains the sole `.ipynb` in the root, beside `run_pipeline.py`.
 # Full pipeline, then exit without starting a server
 python run_pipeline.py --chapter ai-test --no-open --no-explorer
 python run_pipeline.py --input path/to/chapter.txt --no-open --no-explorer
-python run_pipeline.py --chapter both --no-open --no-explorer
+python run_pipeline.py --input "data/llm_tuning.txt" --context-tokens 24576 --no-open --no-explorer
+
+# Completely fresh inference, including repeated requests within the run
+python run_pipeline.py --input "data/neurons_and_glia.txt" --output-root outputs/runs/neurons-and-glia --context-tokens 24576 --no-model-cache --no-open --no-explorer
 
 # Exact-response cache reuse: same chapter and unchanged input; new complete run
 python run_pipeline.py --chapter ai-test --resume RUN_DIRECTORY --no-open --no-explorer
@@ -328,6 +387,14 @@ model calls on misses. Checkpoints and validated response files are published at
 an incomplete final event after a crash is ignored, but malformed complete events fail.
 Graph-view HTML changes are rendered after checkpoint restoration and do not discard
 saved inference; logic, prompts, settings, input and model changes still invalidate it.
+For the pinned counterexample-validator update, `tools/resume_debate_checkpoint.py
+RUN_DIRECTORY --output-root RECOVERY_ROOT` restores a complete debate checkpoint
+without invoking earlier stages or completed seeds. It verifies the original artifact
+hash and signature, unchanged input/settings/models, and the exact two code transitions
+in `tools/counterexample_checkpoint_migration.json`; all other changes fail closed.
+Use `--verify-only` to check restoration without generation. Recovery outputs are
+separate, all subsequent model responses are fresh, and prior decisions and health
+history are preserved. There is no fallback to earlier-stage replay.
 `--no-open` alone does not disable the server. The normal full terminal command still
 launches the combined dashboard unless `--no-explorer` is specified.
 
@@ -339,8 +406,9 @@ manifest, graph, chunks, paragraphs, debate, input, statistics and prior report 
 It updates evaluation/report outputs while preserving the graph and original event log.
 Existing evaluation trace/provenance behavior is retained.
 
-Registry retrieval ranks names and definitions and checks a configurable shortlist
-(`workload.retrieval_candidates`, default 16). Retrieval never authorizes a merge:
+Registry retrieval ranks names and definitions and starts with a configurable shortlist
+(`workload.retrieval_candidates`, default 16), expanding when matching remains uncertain.
+Retrieval never authorizes a merge:
 identity/scope and relation equivalence checks still apply. Relation verification
 checks an exact named built-in contract before searching for alternatives. It
 compares complete qualified assertions; a context-specific draft definition need

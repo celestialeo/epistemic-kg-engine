@@ -22,7 +22,20 @@ class FixtureModel:
         self.respond = respond
 
     def ask(self, role, instruction, payload, schema, entity_id, validator=None):
-        result = schema.model_validate(self.respond(role, payload))
+        if role == 'background_link_reader':
+            if 'relation_definition' in payload or 'intended_fact' in payload:
+                raise AssertionError('Blind reading must not be repaired by the contract or intended fact')
+            value = dict(subject=payload['source'], object=payload['target'],
+                         assertion=f"{payload['source']} {payload['relation']} {payload['target']}")
+        elif role == 'background_counterexample_consistency':
+            value = {name: dict(conclusion_quote=reason, justification_quote=reason,
+                                conclusion=(('unsupported' if reason.startswith('No:') else 'supported')
+                                            if name == 'case_is_supported' else
+                                            ('does_not_refute' if reason.startswith('No:') else 'refutes')))
+                     for name, reason in payload['explanations'].items()}
+        else:
+            value = self.respond(role, payload)
+        result = schema.model_validate(value)
         if validator:
             validator(result)
         return result
@@ -58,6 +71,12 @@ class BackgroundExpansionTests(unittest.TestCase):
         row = self.background_row()
         rejected = dict(row, id='rejected', accepted=False)
         def answer(role, payload):
+            if role == 'background_counterexample_applicability':
+                self.assertNotIn('intended_fact', payload)
+                self.assertNotIn('relation_definition', payload)
+                return dict(case_reason='Yes: a thermometer measures temperature.',
+                            refutation_reason='Yes: the instrument measures a different quantity.',
+                            case_is_supported=True, refutes_exact_assertion=True)
             self.assertEqual([item['id'] for item in payload['items']], ['fixture'])
             return {'fixture': dict(reason='Wrong measured quantity.',
                                     counterexample='A thermometer measures temperature.', sound_as_stated=False)}
@@ -66,13 +85,78 @@ class BackgroundExpansionTests(unittest.TestCase):
         self.assertEqual(row['rejection_stage'], 'counterexample')
         self.assertNotIn('counterexample_check', rejected)
 
+    def test_invalid_counterexample_is_retried_without_forcing_acceptance(self):
+        from pipeline.debate import CounterexampleCheck, validate_counterexample
+        row = self.background_row()
+        original = CounterexampleCheck(reason='Another method exists.',
+            counterexample='A different instrument uses another method.', sound_as_stated=False)
+        model = FixtureModel(lambda role, payload: dict(case_reason='Yes: the alternative instrument exists.',
+            refutation_reason='No: an alternative does not refute this claim.',
+            case_is_supported=True, refutes_exact_assertion=False))
+        with self.assertRaisesRegex(ValueError, 'not a validated refutation'):
+            validate_counterexample(row, original, model, self.trace)
+        self.assertFalse(original.sound_as_stated)
+        self.assertNotIn('counterexample_check', row)
+
+    def test_false_counterexample_premise_is_retried(self):
+        from pipeline.debate import CounterexampleCheck, validate_counterexample
+        row = self.background_row()
+        original = CounterexampleCheck(reason='Invalid arithmetic.', counterexample='Two is less than one.',
+                                       sound_as_stated=False)
+        model = FixtureModel(lambda role, payload: dict(case_reason='No: two exceeds one, so the premise is false.',
+            refutation_reason='Yes: if true, this would contradict the asserted ordering.',
+            case_is_supported=False, refutes_exact_assertion=True))
+        with self.assertRaisesRegex(ValueError, 'not a validated refutation'):
+            validate_counterexample(row, original, model, self.trace)
+
+    def test_unresolved_counterexample_applicability_cannot_publish_candidate(self):
+        row = self.background_row()
+        def ask(role, instruction, payload, schema, entity_id, validator=None):
+            if role == 'background_counterexample_consistency':
+                value = {name: dict(conclusion_quote=reason, justification_quote=reason,
+                                    conclusion=(('unsupported' if reason.startswith('No:') else 'supported')
+                                                if name == 'case_is_supported' else
+                                                ('does_not_refute' if reason.startswith('No:') else 'refutes')))
+                         for name, reason in payload['explanations'].items()}
+            else:
+                value = (dict(case_reason='Yes: the alternative instrument exists.',
+                          refutation_reason='No: another method does not refute use of this method.', case_is_supported=True,
+                          refutes_exact_assertion=False) if role == 'background_counterexample_applicability'
+                     else {'fixture': dict(reason='Another method exists.',
+                          counterexample='A different instrument uses another method.', sound_as_stated=False)})
+            result = schema.model_validate(value)
+            if validator:
+                try: validator(result)
+                except ValueError as exc: raise ModelResponseError('Review retries exhausted: ' + str(exc)) from exc
+            return result
+        model = Mock(options={}, batch_size=4)
+        model.ask.side_effect = ask
+        check_background_counterexamples([row], model, self.trace)
+        self.assertFalse(row['accepted'])
+        self.assertEqual(row['review_status'], 'unresolved')
+
     def test_counterexample_check_preserves_sound_candidate(self):
         row = self.background_row()
-        model = FixtureModel(lambda role, payload: {'fixture': dict(reason='No refuting case.',
-                                                counterexample=None, sound_as_stated=True)})
+        def answer(role, payload):
+            assertion = payload['items'][0]
+            self.assertNotIn('intended_fact', assertion)
+            self.assertNotIn('relation_definition', assertion)
+            self.assertEqual(assertion['literal_assertion'], literal_assertion(row))
+            return {'fixture': dict(reason='No refuting case.', counterexample=None, sound_as_stated=True)}
+        model = FixtureModel(answer)
         check_background_counterexamples([row], model, self.trace)
         self.assertTrue(row['accepted'])
         self.assertTrue(row['gates']['counterexample_check'])
+
+    def test_sound_counterexample_verdict_requires_null_in_data_and_generation_schema(self):
+        from pipeline.debate import CounterexampleCheck
+        CounterexampleCheck(reason='Known fact.', sound_as_stated=True, counterexample=None)
+        CounterexampleCheck(reason='Uncertain.', sound_as_stated=False, counterexample=None)
+        with self.assertRaises(ValueError):
+            CounterexampleCheck(reason='Known fact.', sound_as_stated=True, counterexample='None applicable')
+        branches = CounterexampleCheck.model_json_schema()['anyOf']
+        positive = next(b for b in branches if b['properties']['sound_as_stated']['const'] is True)
+        self.assertEqual(positive['properties']['counterexample']['type'], 'null')
 
     def test_failed_counterexample_check_cannot_leave_candidate_accepted(self):
         row = self.background_row()
@@ -160,12 +244,19 @@ class BackgroundExpansionTests(unittest.TestCase):
         self.assertEqual(result["status"], "duplicate")
 
     def test_named_background_predicate_cannot_be_redefined_by_its_draft(self):
-        model = FixtureModel(lambda *args: self.fail("Known contract needs usage review, not a new definition"))
+        calls = []
+        def respond(role, payload):
+            calls.append(role)
+            self.assertEqual(role, 'relation_match_verifier')
+            return dict(exact_meaning=True, same_direction=True, compatible_types=True,
+                        reason='Same structural relationship in this occurrence.')
+        model = FixtureModel(respond)
         relations = RelationRegistry(model, self.trace)
         contract = dict(relations.entries["has_part"])
-        key = relations.resolve_background("has_part", "TARGET contains SOURCE", "tree", "root", {}, "one")
+        key = relations.resolve_background("has_part", "SOURCE contains TARGET as a component", "tree", "root", {}, "one")
         self.assertEqual(key, "has_part")
         self.assertEqual(relations.entries[key], contract)
+        self.assertEqual(calls, ['relation_match_verifier'])
 
     def test_judge_cannot_accept_with_a_failed_truth_gate(self):
         row = dict(id="one", origin="background", relation="causes")

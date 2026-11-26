@@ -53,7 +53,7 @@ class PipelineTests(unittest.TestCase):
                 split_document(text, limit, self.trace)
 
     def test_sample_is_three_paragraphs_about_one_page(self):
-        text = (Path(__file__).resolve().parents[1] / "data/sample.txt").read_text(encoding="utf-8")
+        text = (Path(__file__).resolve().parents[1] / "archive/inputs/sample.txt").read_text(encoding="utf-8")
         paragraphs, chunks = split_document(text, 85, self.trace)
         self.assertEqual(len(paragraphs), 3)
         self.assertTrue(450 <= len(text.split()) <= 650)

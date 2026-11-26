@@ -1,0 +1,136 @@
+{
+  "directory": "outputs\\runs\\ai-test-fix\\custom\\run_20261121_210645_UTC-0500_e44e4e0a",
+  "status": "completed_with_issues",
+  "error": null,
+  "input": "data\\ai_test.txt",
+  "resume": null,
+  "accepted": 4,
+  "total": 22,
+  "original_proposals": 15,
+  "repair_proposals": 7,
+  "rejections_by_stage": {
+    "connectivity": 14,
+    "counterexample": 3,
+    "representation": 1
+  },
+  "output_limit_events": 0,
+  "output_limit_details": [],
+  "resource_unresolved_items": [],
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The provided 'failed_records' entry contains a placeholder description ('it refers to...') rather than an exact continuous source substring from the DATA. Per instructions, I cannot invent antecedents or use descriptions as quotes; I must return record=null with a reason if the specific quote requirement is not met by the supplied text."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_002_concept_3",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_coverage_0_0_relation_001",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_coverage_0_1_relation_002",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_coverage_0_1_concept_5",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    }
+  ],
+  "planned_gaps": 5,
+  "gaps_with_accepted_fact": 4,
+  "answered_gap_ids": [
+    "question_0001",
+    "question_0002",
+    "question_0003",
+    "question_0004"
+  ],
+  "gap_measure": "Distinct selected gap IDs linked to an accepted fact or verified reuse; not a completeness judgment.",
+  "accepted_facts": [
+    {
+      "id": "candidate_0001",
+      "intended_fact": "Self-attention computes a weight for each token in a sequence based on its similarity to every other token's representation.",
+      "source": "self attention",
+      "relation": "computes",
+      "target": "weight",
+      "relation_definition": "calculates a specific value for an entity.",
+      "conditions": null,
+      "modality": null,
+      "argument_qualifiers": [
+        "for each token in a sequence based on its similarity to every other token's representation"
+      ],
+      "gap_ids": [
+        "question_0001"
+      ],
+      "decision_reason": "The assertion that 'self attention' computes a 'weight' is supported by general knowledge of transformer architectures. The relation 'computes' accurately describes the mechanism where attention scores (weights) are derived from query and key interactions to determine token relevance. The qualifier 'for each token in a sequence based on its similarity to every other token's representation' correctly captures the functional definition without over-specifying implementation details like dot products, which are compatible but not strictly required by the general concept. This addresses the gap regarding internal mechanics of text processing."
+    },
+    {
+      "id": "candidate_0003",
+      "intended_fact": "Backpropagation calculates gradients of the loss function with respect to model parameters.",
+      "source": "backpropagation",
+      "relation": "calculates",
+      "target": "gradients of loss function",
+      "relation_definition": "Computes values for.",
+      "conditions": null,
+      "modality": null,
+      "argument_qualifiers": [
+        "with respect to model parameters"
+      ],
+      "gap_ids": [
+        "question_0002"
+      ],
+      "decision_reason": "The assertion that backpropagation calculates gradients of the loss function is a fundamental, well-established definition in machine learning. The source text links 'backpropagation' to 'improving predictions', which mechanistically requires computing gradients to drive weight updates. This relation correctly fills the identified gap by explaining the causal mechanism (gradient calculation) behind the stated effect (improving predictions). No substantive objections exist; the claim is sound, useful, and compatible with general knowledge."
+    },
+    {
+      "id": "candidate_0011",
+      "intended_fact": "Regularization mitigates the risk of overfitting by reducing the model's reliance on specific training patterns.",
+      "source": "regularization",
+      "relation": "reduces_risk_of",
+      "target": "overfitting",
+      "relation_definition": "Lowers the probability or severity of an adverse outcome.",
+      "conditions": null,
+      "modality": "assertive",
+      "argument_qualifiers": [
+        "by reducing reliance on specific training patterns"
+      ],
+      "gap_ids": [
+        "question_0003"
+      ],
+      "decision_reason": "The assertion 'regularization reduces_risk_of overfitting' is valid based on general machine learning knowledge. Regularization techniques (e.g., L1/L2 penalties, dropout) explicitly constrain model complexity to prevent reliance on specific training noise, thereby reducing the probability or severity of overfitting. The predicate 'reduces_risk_of' correctly captures that this is a probabilistic mitigation rather than an absolute guarantee, especially under conditions like high noise or poor hyperparameter tuning. The qualifier 'by reducing reliance on specific training patterns' accurately describes the mechanism without inventing unstated details. No substantive objections exist; the claim resolves the gap regarding how generalization is achieved."
+    },
+    {
+      "id": "candidate_0014",
+      "intended_fact": "Quantization reduces the numerical precision of model weights and activations from high-precision formats (e.g., float32) to lower-precision formats (e.g., int8).",
+      "source": "quantization",
+      "relation": "reduces",
+      "target": "numerical precision",
+      "relation_definition": "The source process lowers the magnitude of the target property.",
+      "conditions": null,
+      "modality": null,
+      "argument_qualifiers": [
+        "from high-precision formats (e.g., float32) to lower-precision formats (e.g., int8)"
+      ],
+      "gap_ids": [
+        "question_0004"
+      ],
+      "decision_reason": "The assertion 'quantization reduces numerical precision' is a fundamental definition in machine learning, supported by the provided text which explicitly states quantization moves weights from high-precision (float32) to lower-precision (int8). This directly addresses the gap regarding the technical mechanism of memory reduction. No objections exist; the claim is robust general knowledge."
+    }
+  ]
+}

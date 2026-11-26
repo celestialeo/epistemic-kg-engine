@@ -1,0 +1,160 @@
+[
+  {
+    "source": "teacher model",
+    "relation": "labels_dataset",
+    "relation_definition": "Source performs the action of labeling on Target.",
+    "target": "labeled dataset",
+    "argument_qualifiers": [
+      "a dataset"
+    ],
+    "conditions": null,
+    "modality": null,
+    "evidence": "The teacher model labels a dataset, and the labeled dataset is used to train the student model.",
+    "evidence_start": 2691,
+    "evidence_end": 2786,
+    "source_mention": {
+      "name": "teacher model",
+      "definition": "The larger LLM acting as the teacher in distillation.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "target_mention": {
+      "name": "labeled dataset",
+      "definition": "A dataset that has been labeled by the teacher model.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "surface_source": "teacher model",
+    "surface_target": "labeled dataset",
+    "surface_relation": "labels",
+    "id": "chunk_004_coverage_1_0_relation_001",
+    "chunk_id": "chunk_004_coverage_1_0",
+    "paragraph_id": "paragraph_004",
+    "origin": "document",
+    "evidence_context": "The most common form of distillation uses bulk inference to label data. In this form of distillation, the larger LLM acts as a teacher model and the smaller LLM acts as a student model. The teacher model labels a dataset, and the labeled dataset is used to train the student model. Through the labels, the teacher model passes its knowledge to the student model.",
+    "reference_context_spans": [],
+    "extraction_unit_id": "chunk_004_coverage_1_0",
+    "reason": "Quoted extraction proposed for semantic review",
+    "source_role_reading": null,
+    "endpoint_kinds": {
+      "source": "process",
+      "target": "entity"
+    },
+    "gates": {
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "objections_resolved": true,
+      "evidence": true,
+      "relevance": true,
+      "event_contract": true
+    },
+    "score": 1.0,
+    "threshold": 0,
+    "accepted": true,
+    "decision_reason": "The quote 'The teacher model labels a dataset...' explicitly states the action of labeling performed by the teacher model on a dataset. The source text supports this directly without needing external inference. No negation, condition, or participant is missing that would invalidate the assertion.",
+    "verification_basis": "quote_entailment_model_review",
+    "rejection_categories": [],
+    "reviewer": {
+      "qualified_reading": "ASSERTED (teacher model --[labels dataset]--> labeled dataset); additional arguments: a dataset",
+      "reason": "The quote 'The teacher model labels a dataset...' explicitly states the action of labeling performed by the teacher model on a dataset. The source text supports this directly without needing external inference. No negation, condition, or participant is missing that would invalidate the assertion.",
+      "candidate_id": "chunk_004_coverage_1_0_relation_001",
+      "semantics_valid": true,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": true,
+      "evidence_status": "supported",
+      "domain_relevance": 1.0,
+      "accept": true,
+      "objections_resolved": true,
+      "rejection_categories": []
+    },
+    "review_status": "completed"
+  },
+  {
+    "source": "labeled dataset",
+    "relation": "used_to_train",
+    "relation_definition": "Source is utilized as the medium to train Target.",
+    "target": "distilled llm",
+    "argument_qualifiers": [
+      "to train"
+    ],
+    "conditions": null,
+    "modality": null,
+    "evidence": "The teacher model labels a dataset, and the labeled dataset is used to train the student model.",
+    "evidence_start": 2691,
+    "evidence_end": 2786,
+    "source_mention": {
+      "name": "labeled dataset",
+      "definition": "A dataset that has been labeled by the teacher model.",
+      "kind": "entity",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "target_mention": {
+      "name": "student model",
+      "definition": "The smaller LLM acting as the student in distillation.",
+      "kind": "process",
+      "form": "concept",
+      "kind_detail": null
+    },
+    "surface_source": "labeled dataset",
+    "surface_target": "student model",
+    "surface_relation": "used_to_train",
+    "id": "chunk_004_coverage_1_0_relation_002",
+    "chunk_id": "chunk_004_coverage_1_0",
+    "paragraph_id": "paragraph_004",
+    "origin": "document",
+    "evidence_context": "The most common form of distillation uses bulk inference to label data. In this form of distillation, the larger LLM acts as a teacher model and the smaller LLM acts as a student model. The teacher model labels a dataset, and the labeled dataset is used to train the student model. Through the labels, the teacher model passes its knowledge to the student model.",
+    "reference_context_spans": [],
+    "extraction_unit_id": "chunk_004_coverage_1_0",
+    "reason": "Quoted extraction proposed for semantic review",
+    "source_role_reading": null,
+    "endpoint_kinds": {
+      "source": "entity",
+      "target": "process"
+    },
+    "gates": {
+      "semantics_valid": false,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": false,
+      "objections_resolved": false,
+      "evidence": false,
+      "relevance": true,
+      "event_contract": true
+    },
+    "score": 0.8,
+    "threshold": 0,
+    "accepted": false,
+    "decision_reason": "The quote states 'the labeled dataset is used to train the student model.' The candidate defines the target as 'distilled llm' and the relation as 'used_to_train'. While the quote explicitly mentions 'student model', in the context of distillation described in text_1 and text_2, the 'student model' IS the 'distilled llm'. However, strict entailment requires the exact term or a direct synonym. The candidate uses 'distilled llm' while the quote says 'student model'. Given the definition in the candidate concepts ('A smaller large language model created via distillation...'), these are semantically equivalent in this context. BUT, looking closer at the instruction: 'The exact quote must entail THIS relation... co-occurrence is insufficient.' The quote does not contain the string 'distilled llm'. It contains 'student model'. Is 'student model' sufficient to entail 'distilled llm'? In text_1, it says distillation optimizes them into smaller versions. Text_2 says teacher labels dataset used to train student model. The resulting entity is the distilled model. If we are strict about literal entailment of the specific concept name 'distilled llm' appearing in the quote, it fails. However, ' Failed gates: semantics_valid, certain, objections_resolved, evidence",
+    "verification_basis": "quote_entailment_model_review",
+    "rejection_categories": [
+      "meaning_changed"
+    ],
+    "reviewer": {
+      "qualified_reading": "ASSERTED (labeled dataset --[used to train]--> distilled llm); additional arguments: to train",
+      "reason": "The quote states 'the labeled dataset is used to train the student model.' The candidate defines the target as 'distilled llm' and the relation as 'used_to_train'. While the quote explicitly mentions 'student model', in the context of distillation described in text_1 and text_2, the 'student model' IS the 'distilled llm'. However, strict entailment requires the exact term or a direct synonym. The candidate uses 'distilled llm' while the quote says 'student model'. Given the definition in the candidate concepts ('A smaller large language model created via distillation...'), these are semantically equivalent in this context. BUT, looking closer at the instruction: 'The exact quote must entail THIS relation... co-occurrence is insufficient.' The quote does not contain the string 'distilled llm'. It contains 'student model'. Is 'student model' sufficient to entail 'distilled llm'? In text_1, it says distillation optimizes them into smaller versions. Text_2 says teacher labels dataset used to train student model. The resulting entity is the distilled model. If we are strict about literal entailment of the specific concept name 'distilled llm' appearing in the quote, it fails. However, '",
+      "candidate_id": "chunk_004_coverage_1_0_relation_002",
+      "semantics_valid": false,
+      "direction_valid": true,
+      "types_valid": true,
+      "no_contradiction": true,
+      "certain": false,
+      "evidence_status": "unsupported",
+      "domain_relevance": 0.8,
+      "accept": false,
+      "objections_resolved": false,
+      "rejection_categories": [
+        "meaning_changed"
+      ]
+    },
+    "review_status": "completed"
+  }
+]

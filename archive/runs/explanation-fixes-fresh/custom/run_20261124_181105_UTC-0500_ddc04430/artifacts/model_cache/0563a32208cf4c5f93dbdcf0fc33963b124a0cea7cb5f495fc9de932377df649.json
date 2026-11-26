@@ -1,0 +1,28 @@
+{
+  "key": "0563a32208cf4c5f93dbdcf0fc33963b124a0cea7cb5f495fc9de932377df649",
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T23:15:07.2414637Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 19166768100,
+    "load_duration": 3562200,
+    "prompt_eval_count": 1067,
+    "prompt_eval_duration": 579128000,
+    "eval_count": 754,
+    "eval_duration": 18557501000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"chunk_001_s001\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"A small transformer uses self-attention to process text\",\n        \"graph_edge_ids\": [\"chunk_001_relation_001\"],\n        \"graph_reading\": \"ASSERTED (small transformer --[uses]--> self attention); additional arguments: to process text\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"A small transformer uses backpropagation to improve its predictions\",\n        \"graph_edge_ids\": [\"chunk_001_relation_002\"],\n        \"graph_reading\": \"ASSERTED (small transformer --[uses]--> backpropagation); additional arguments: to improve its predictions\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"...during training\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The first two claims are fully supported by graph edges chunk_001_relation_001 and chunk_001_relation_002, which include the specific qualifiers 'to process text' and 'to improve its predictions'. The temporal qualifier 'during training' is not expressed in any graph edge; since conditions cannot supply an absent action or argument unless saved in fields, this part is unsupported.\",\n    \"missing\": [\n      {\n        \"reason\": \"The graph edges lack the temporal condition 'during training' found in the source sentence.\",\n        \"missing_claim\": \"during training\",\n        \"source_sentence_ids\": [\"chunk_001_s001\"]\n      }\n    ],\n    \"unsupported\": []\n  },\n  \"chunk_001_s002\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"Regularization helps it generalize beyond its training examples\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"No graph edge exists for 'Regularization' or the action of helping to generalize. The source sentence introduces a new subject and predicate not present in the provided graph assertions.\",\n    \"missing\": [],\n    \"unsupported\": []\n  },\n  \"chunk_001_s003\": {\n    \"claims\": [\n      {\n        \"source_assertion\": \"After training, quantization reduces its memory requirements\",\n        \"graph_edge_ids\": [\"chunk_001_relation_005\"],\n        \"graph_reading\": \"ASSERTED (quantization --[inhibits]--> memory requirements of the small transformer); additional arguments: after training\",\n        \"preserves_meaning\": true\n      },\n      {\n        \"source_assertion\": \"retrieval-augmented generation lets it use external documents when answering questions\",\n        \"graph_edge_ids\": [],\n        \"graph_reading\": \"\",\n        \"preserves_meaning\": false\n      }\n    ],\n    \"reason\": \"The first claim is fully supported by chunk_001_relation_005, which captures the 'after training' condition and the inhibition of memory requirements. The second claim regarding retrieval-augmented generation has no corresponding graph edge.\",\n    \"missing\": [],\n    \"unsupported\": []\n  }\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "source_event": "event_000481",
+  "source_run": "run_20261124_181105_UTC-0500_ddc04430",
+  "model": "qwen3.5:9b",
+  "validated": true
+}
