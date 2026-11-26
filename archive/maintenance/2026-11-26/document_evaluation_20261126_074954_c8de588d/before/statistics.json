@@ -1,0 +1,350 @@
+{
+  "run_id": "run_20261125_034536_UTC-0500_9e4db7ab",
+  "unresolved_items": [
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_relation_008",
+      "status": "unresolved",
+      "reason": "Relation endpoint metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_001_sentence_003_concept_2",
+      "status": "unresolved",
+      "reason": "Standalone concept metadata could not be resolved"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_003_relation_006",
+      "status": "unresolved",
+      "reason": "Relation normalization unresolved: relation_definition failed for chunk_003_relation_006 after 3 attempts: Inverse must name an existing contract or be null"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_sentence_008_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim 'A teacher model can also give the student model a numerical score instead of a binary label' is expressed entirely in PREVIOUS_SENTENCE. The CURRENT_SENTENCE only compares the quality of signals ('richer training signal') provided by these two inputs; it does not assert that the teacher model gives the score. Therefore, no relationship supported by CURRENT_SENTENCE exists for this claim."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_005_sentence_011_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is exact source text but does not overlap CURRENT_SENTENCE; The claim describes a specific example of ambiguous reference resolution found in PREVIOUS_SENTENCE. The CURRENT_SENTENCE explicitly states that prompt engineering does not change LLM parameters and contains no text supporting the 'apple' vs 'Apple' ambiguity or the resulting behavior. Per instructions, claims expressed only in a previous sentence must be rejected even if a quote extends into the current one; overlap alone does not support the claim."
+    },
+    {
+      "step": "concept_identity",
+      "id": "llm",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    },
+    {
+      "step": "concept_identity",
+      "id": "offline inference",
+      "status": "unresolved",
+      "reason": "concept_alias_resolver failed for reconcile_offline inference after 3 attempts: A concept alias must select a supplied canonical name"
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_coverage_0_2_claims_2",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; Rejected: The claim 'A binary label provides a less rich training signal' is not explicitly stated in CURRENT_SENTENCE. The sentence only states that the score gives a *richer* signal than a binary label does; inferring the negative property ('less rich') for the binary label relies on external logic rather than a direct assertion in the current text, violating the rule to reject claims expressed only in previous sentences or inferred without explicit support."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_004_coverage_0_2_relation_002",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; Rejected: The relationship relies on a truncated quote ('...than a binary label does.') which violates the requirement for continuous verbatim evidence. Furthermore, the predicate 'provides' with qualifier 'less rich' attempts to assert a negative property not explicitly stated as such in the current sentence (which uses comparative 'richer'). A faithful extraction requires explicit support."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_claims_1",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The claim text 'The purpose was to cache...' is not supported by the current sentence. The current sentence states 'Google Search used an LLM... to cache...', indicating the agent (Google Search) performed the action, not that the action's sole purpose was defined as such. Furthermore, no continuous verbatim quote in the source supports the specific phrasing of this claim."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_claims_2",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The claim text 'The list covered more than 50 languages' is not supported by a continuous verbatim quote. The source says 'in more than 50 languages', but the claim adds 'The list covered'. While semantically similar, strict adherence to verbatim quotes for evidence requires the exact string. More critically, without an explicit predicate linking these concepts in the source text, this stands as an unsupported assertion relative to the strict extraction rules."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_relation_003",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relationship 'LLM -> performs -> cache' is not directly stated in the source. The source says 'Google Search used an LLM... to cache'. The agent performing the caching is 'Google Search', not the 'LLM'. The LLM was a tool used *by* Google Search. Therefore, the source does not support the claim that the LLM itself performs the caching action; it supports that Google Search used the LLM for this purpose."
+    },
+    {
+      "step": "extraction_record",
+      "id": "chunk_006_coverage_0_2_relation_004",
+      "status": "unresolved",
+      "reason": "Quote is not an exact continuous source substring; The relationship 'cache -> targets -> list...' is not supported by a continuous verbatim quote matching the claim. The source text is '...to cache a list of more than 800 synonyms for Covid vaccines in more than 50 languages.' The proposed evidence cuts off 'a' and changes structure. Additionally, the semantic link is that Google Search used the LLM *to* cache, making 'cache' part of the purpose clause rather than an independent process targeting a list in this specific syntactic construction."
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_001",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_003",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_004",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "source_coverage",
+      "id": "chunk_005",
+      "status": "unresolved",
+      "reason": "Source coverage still has gaps; inspect artifacts/source_coverage.json"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0017",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion claims that foundation LLMs 'lacks task-specific optimization for specific applications.' The counterexample cites Llama 2 being successfully fine-tuned (via QLoRA) for medical question answering. This directly contradicts the assertion by demonstrating a concrete instance where a foundation LLM underwent successful task-specific optimization. Therefore, the case refutes the Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0021",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0021 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0026",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0026 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0027",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion claims that foundation LLMs do not function as a complete solution specifically because they lack task-specific optimization. The counterexample presents a scenario where a foundation model (Llama-2-70b) is deployed directly without fine-tuning (lacking task-specific optimization) yet achieves high utility and is considered a complete solution for general domains like summar化 Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0034",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0034 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0044",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The counterexample describes a specific instance where a foundation LLM fails to recognize world knowledge (asserting London is the capital of Italy). The literal assertion claims that foundation LLMs 'recognize' world knowledge, with the additional argument that this recognition is derived from broad training data. The counterexample directly contradicts the guarantee implied by the term 'recogn' Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0046",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0046 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0063",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The literal assertion states that higher model capacity results in better predictions. The counterexample presents a specific scenario where high capacity (deep neural network) leads to worse predictions (higher error) compared to low capacity (linear regression) due to overfitting on small data. This directly refutes the universal implication of the assertion by showing a case where increased容量 ( Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0082",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0082 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0085",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0085 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0087",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: refutes_exact_assertion=false: The case attempts to refute the assertion by redefining 'knowledge' to exclude hallucinations. However, the assertion's predicate focuses on the *process* of transferring an 'updated state' through distillation. The counterexample admits the student model 'outputs Berlin with high confidence' and its 'state was updated'. This confirms the transfer of the teacher's state occurred. The case's premise that this contradicts the claim is false because the assertion does not guarantee the semantic validity of the transferred content, only that the state (whether correct or erroneous) was transferred. Thus, the counterexample fails to refute the literal graph assertion as it misinterprets the definition of the transferred entity within the specific context of the claim. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0090",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: background_counterexample_applicability failed for candidate_0090_counterexample_applicability after 3 attempts: Correct the applicability review: case_is_supported=False contradicts your explanation: the assertion holds true for this specific implementation"
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0092",
+      "status": "unresolved",
+      "reason": "No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: refutes_exact_assertion=false: The literal assertion states the LLM is 'designed to support online inference' with the condition of meeting latency constraints. The counterexample presents a scenario where an instance of such an LLM fails to meet sub-100ms latency during peak traffic. This does not refute the assertion because the assertion describes a design intent or general capability, not an absolute guarantee under all possible environmental stressors (like network congestion). The counterexample's premise—that resource contention causes failure—is factually plausible and logically consistent with the scenario provided. Therefore, the case supports the objection that the claim is not universally true without qualification, but it does not invalidate the original assertion which likely pertains to standard operating conditions or design intent rather than worst-case network saturation. Reassess this exact assertion. To refute it, provide a sound applicable case. If it remains uncertain without one, return sound_as_stated=false with counterexample=null and explain the uncertainty. Do not infer acceptance merely because this objection failed."
+    },
+    {
+      "step": "background_candidate",
+      "id": "candidate_0109",
+      "status": "unresolved",
+      "reason": "No validated background decision: relation_definition failed for candidate_0109 after 3 attempts: This key already has a different unverified contract. Choose a distinct precise key; never overwrite it."
+    },
+    {
+      "step": "evaluation",
+      "id": "evaluation:document",
+      "status": "unresolved",
+      "reason": "Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think"
+    }
+  ],
+  "input": {
+    "paragraphs": 6,
+    "chunks": 6,
+    "words": 911,
+    "source_coverage": 1.0,
+    "coverage_meaning": "Input word coverage only; not fact coverage"
+  },
+  "extraction": {
+    "claims": 63,
+    "incomplete_chunks": [
+      "chunk_001",
+      "chunk_003",
+      "chunk_004",
+      "chunk_005"
+    ],
+    "unresolved_records": 5,
+    "relations": 79,
+    "reviewed": 114,
+    "review_attempted": 114,
+    "semantic_rejections": 24,
+    "rejection_categories": {
+      "meaning_changed": 11,
+      "unsupported_claim": 9,
+      "wrong_kind": 6,
+      "wrong_direction": 3
+    },
+    "unresolved_reviews": 0,
+    "evidence_rejections": 0
+  },
+  "debate": {
+    "seeds": 17,
+    "proposed": 128,
+    "accepted": 9,
+    "rejected": 105,
+    "unresolved": 14,
+    "unresolved_seeds": 0,
+    "weights": [],
+    "dimensions": [
+      "domain_relevance"
+    ]
+  },
+  "graph": {
+    "nodes": 134,
+    "edges": 88,
+    "domain_nodes": 134,
+    "domain_edges": 88,
+    "provenance_edges": 0,
+    "isolated_domain_nodes": 39,
+    "node_kinds": {
+      "concept": 134
+    },
+    "edge_origins": {
+      "document": 79,
+      "background": 9
+    }
+  },
+  "models": {
+    "generation": "qwen3.5:9b",
+    "embedding": "nomic-embed-text",
+    "registry": "qwen3.5:9b",
+    "calls": 2645,
+    "retries": 142,
+    "cache_hits": 0,
+    "embedding_calls": 0,
+    "prompt_tokens": 4279082,
+    "output_tokens": 574201
+  },
+  "fidelity": {
+    "claim_fidelity_f1": {
+      "n": 6,
+      "mean": 0.285103624234059,
+      "median": 0.2943722943722944,
+      "min": 0.08695652173913043,
+      "max": 0.4444444444444444,
+      "sample_stddev": 0.13200684703174254
+    },
+    "idea_order_agreement": {
+      "n": 6,
+      "mean": 0.9,
+      "median": 1.0,
+      "min": 0.4,
+      "max": 1.0,
+      "sample_stddev": 0.2449489742783178
+    },
+    "rouge_l_f1": {
+      "n": 6,
+      "mean": 0.6110508430453483,
+      "median": 0.6081447963800906,
+      "min": 0.43333333333333335,
+      "max": 0.8,
+      "sample_stddev": 0.12815922092050086
+    },
+    "length_similarity": {
+      "n": 6,
+      "mean": 0.846529619775972,
+      "median": 0.8548909023668638,
+      "min": 0.75,
+      "max": 0.9685534591194969,
+      "sample_stddev": 0.08482086426844651
+    },
+    "final_score": {
+      "n": 6,
+      "mean": 52.75650396108645,
+      "median": 52.76945335463648,
+      "min": 39.28125,
+      "max": 65.11635840373141,
+      "sample_stddev": 10.61859394169142
+    }
+  },
+  "reconstruction_score": null,
+  "evaluation_status": "incomplete",
+  "evaluation_metric_version": "reconstruction_fidelity_v3_verified_matching",
+  "interpretation": "Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity. Components range from 0 to 1; the weighted final score ranges from 0 to 100. Summary statistics describe chunks; final_score compares the complete texts and is null when evaluation is incomplete. A single matched idea has order agreement 1; no matches have order agreement 0 unless both claim lists are empty. Keep evaluator model, prompts and metric version fixed across runs. These scores are not external factual verification.",
+  "execution_segments": [
+    {
+      "number": 1,
+      "run_id": "run_20261125_034536_UTC-0500_9e4db7ab",
+      "status": "failed",
+      "started_at": "2026-11-25T03:45:36.412158-05:00",
+      "finished_at": "2026-11-25T08:12:34.344146-05:00",
+      "original_directory": "outputs\\runs\\llm-tuning\\custom\\run_20261125_034536_UTC-0500_9e4db7ab",
+      "archived_directory": "archive/runs/llm-tuning/custom/run_20261125_034536_UTC-0500_9e4db7ab",
+      "events_sha256": "9f51ade1139ab615630abef5d52cd7412ea11e0c36ca58299cbc2bacd70eea52",
+      "manifest_sha256": "57b138ffcbdf30ee041a7d138e29c35f94cc91d18b297834ab1e091611e30e77",
+      "environment_sha256": "b8d305798134468c3cbe7dc342f2fdf97f763376f43e493ed7f9c3bb729ffaac",
+      "event_count": 18821,
+      "performance": {
+        "model_calls": 1882,
+        "cache_hits": 0,
+        "service_retries": 0,
+        "checkpoints_restored": 0,
+        "resumed_from": null
+      },
+      "error": "Stopped early: background_candidate failed 6/10 recent items (limit 50%). Latest reason: No validated background decision: background_counterexample_check failed for background_counterexamples after 3 attempts: The proposed counterexample is not a validated refutation: The counterexample directly addresses the literal assertion by demonstrating that a specific application (customer service chatbot) fundamentally depends on the broad general knowledge encoded in foundation models. The case asserts that without this general knowledge, the specific application fails, which contradicts the implication in the assertion that such knowledge is irrelevant to specific. A Reassess this exact assertion and provide a sound applicable case if rejecting it; do not infer acceptance merely because this objection failed.. Inspect the health diagnostic and events.jsonl."
+    },
+    {
+      "number": 2,
+      "run_id": "recovery_20261125_153513_1d4712cf",
+      "status": "completed_with_issues",
+      "started_at": "2026-11-25T15:35:13.566992+00:00",
+      "finished_at": "2026-11-25T17:32:48.691624+00:00",
+      "original_directory": "outputs\\runs\\llm-tuning\\recoveries\\recovery_20261125_153513_1d4712cf",
+      "archived_directory": "archive/runs/llm-tuning/recoveries/recovery_20261125_153513_1d4712cf",
+      "events_sha256": "4f1eb1d8b5ed554148fadcc6e873c683f2db7cbfe660932f530640387f15922c",
+      "manifest_sha256": "203fb158f677508545301cd37826e73f774cb33123a7eefb709a66c092ebaa9e",
+      "environment_sha256": "6b3b38990552139714e0d7ee7880518330ff9727c3f7d2e9d2184e946277812d",
+      "event_count": 6822,
+      "performance": {
+        "model_calls": 763,
+        "cache_hits": 0
+      }
+    }
+  ]
+}

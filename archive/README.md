@@ -21,8 +21,10 @@ preserved in the database snapshot, not assigned to newer graph generations.
 LLM tuning's original and recovery runs remain unchanged under
 `runs/llm-tuning/custom/run_20261125_034536_UTC-0500_9e4db7ab/` and
 `runs/llm-tuning/recoveries/recovery_20261125_153513_1d4712cf/`.
-The active copy consolidates their timeline without hiding the interruption or
-changing the final graph's scientific content or incomplete evaluation status.
+The active copy consolidates their timeline while preserving the interruption
+and the final graph's scientific content. A separate document-only evaluation
+completed on November 26 with a score of 45.70/100; the original incomplete
+evaluation and the new evaluation's trace are preserved in this archive.
 
 Former `data/archive` files now live in `inputs/`. The former `outputs/archive`
 subfolders (`runs-cleanup-20261122`, `ai-test-reference-fix-20261122`, and

@@ -1,12 +1,12 @@
 # Debate pipeline results
 
-This run combines the original execution and its checkpoint recovery. The interruption and all unresolved issues are retained. See artifacts/execution_segments.json for the two original execution records.
+Graph generation includes the original execution and checkpoint recovery. The missing full-document evaluation was completed separately at 2026-11-26T03:05:48.755327-05:00; the saved graph, reconstruction, and six chunk scores were preserved.
 
 Run: `run_20261125_034536_UTC-0500_9e4db7ab`
 
 Incomplete extraction in 4 chunk(s): chunk_001, chunk_003, chunk_004, chunk_005. 5 unresolved records are retained for inspection. Valid records were preserved; these results do not represent complete extraction.
 
-Unresolved items: 32. See `artifacts/unresolved_items.json`.
+Unresolved items: 31. See `artifacts/unresolved_items.json`.
 
 ## Extraction rejection categories
 
@@ -24,7 +24,7 @@ Categories can overlap; unresolved reviews are separate.
 - Graph nodes: 134
 - Graph edges: 88
 - Accepted background proposals: 9 / 128
-- Reconstruction score (0–100): not evaluated
+- Reconstruction score (0–100): 45.702
 - Domain relationships: 88
 - Isolated domain nodes: 39
 
@@ -41,5 +41,3 @@ Model-estimated claim fidelity, idea order, ROUGE-L F1 and word-count similarity
 Open `index.html` for the input, relations and decisions. Use `events.jsonl` for simulation and `artifacts/graph.json` for the final graph.
 
 [Complete rebuilt text](reconstruction.txt) · [Detailed evaluation scores](artifacts/evaluation.json)
-
-Evaluation incomplete: Model reached its output limit; increase --max-output-tokens (and --context-tokens if needed), or disable --think. No complete-document score is available.

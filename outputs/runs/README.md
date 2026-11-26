@@ -14,9 +14,13 @@ all extraction, debate, or evaluation checks passed.
 LLM tuning is one logical run with two execution segments. Its combined
 `events.jsonl` preserves every original event payload and timestamp, with unique
 event IDs and a `source_event` mapping to the original records. Its manifest,
-statistics, and report identify the consolidation; the failure and incomplete
-evaluation have not been removed. Graph content is unchanged apart from the run
-identity. See [execution segments](llm-tuning/run_20261125_034536_UTC-0500_9e4db7ab/artifacts/execution_segments.json).
+statistics, and report identify the consolidation; the original failure and
+incomplete evaluation remain in the preserved history. A separate full-document
+evaluation completed on November 26, producing a document score of **45.70/100**.
+The six chunk results, their **52.76/100** average, and the graph content were
+preserved. Earlier extraction and debate issues still make the overall run
+`completed_with_issues`. See [evaluation results](llm-tuning/run_20261125_034536_UTC-0500_9e4db7ab/artifacts/evaluation.json)
+and [execution segments](llm-tuning/run_20261125_034536_UTC-0500_9e4db7ab/artifacts/execution_segments.json).
 
 The active professor database is `outputs/professor/students.sqlite3` and contains
 these same three graphs. Open it without rerunning inference:
