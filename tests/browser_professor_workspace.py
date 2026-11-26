@@ -145,7 +145,7 @@ def main():
             expect(page.locator('#topic')).to_have_value(rain['id'])
             expect(page.locator('#answer')).to_have_value('Water enters soil.')
             expect(page.locator('#retry')).to_be_enabled()
-            model.fail=False;page.locator('#retry').click();expect(page.locator('#status')).to_have_text('Assessment saved.')
+            model.fail=False;page.locator('#retry').click();expect(page.locator('#status')).to_contain_text('Grade saved.')
             assert len(store.answers(pending_session['id']))==1
             assert store.pending_answers(pending_session['id'])==[]
             replay=page.request.post(url+'/api/professor/quiz',data=pending['request']);assert replay.ok

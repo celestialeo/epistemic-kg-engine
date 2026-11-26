@@ -91,6 +91,24 @@ class ContributionTests(unittest.TestCase):
         self.assertEqual(len(self.graph()['edges']), 2)
         self.assertEqual(self.graph()['edges'][-1]['verification_basis'], 'professor_review')
 
+    def test_professor_rejection_preserves_grade_and_stays_out_of_graph(self):
+        self.submit()
+        self.models.verdict['correctness'] = 'uncertain'
+        row = self.check()['contributions'][0]
+        before = StudentStore(self.db).answers(self.session_id)[0]
+        response = self.post('contributions/'+row['id']+'/review', dict(
+            action='reject', professor='Teacher', reason='Insufficient support for this proposed addition.'))
+        rejected = next(r for r in response['contributions'] if r['id'] == row['id'])
+        self.assertEqual(rejected['status'], 'rejected')
+        self.assertFalse(rejected['published'])
+        self.assertEqual(len(self.graph()['edges']), 1)
+        restored = Contributions(StudentStore(self.db)).rows()[0]
+        self.assertEqual(restored['professor_reviews'][-1]['action'], 'reject')
+        after = StudentStore(self.db).answers(self.session_id)[0]
+        self.assertEqual(after['marks'], before['marks'])
+        self.assertEqual(after['score'], before['score'])
+        self.assertEqual(after['overrides'], before['overrides'])
+
     def test_contribution_failure_preserves_grade_and_can_retry(self):
         self.submit(); self.models.fail_contribution = True
         data = self.check()

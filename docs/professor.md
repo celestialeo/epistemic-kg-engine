@@ -1,6 +1,11 @@
 # Professor workspace
 
 The left navigation has three tabs: **Quiz**, **Run Insights**, and **Class Overview**.
+The workspace uses an egg-white background, white panels, sage accents and forest-green
+navigation. Evidence colors keep their existing meanings: bright green is independent
+mastery, amber is partial or assisted, red is incorrect/not demonstrated, gray is
+unassessed, purple is a professor edit and pink is a student contribution. Navigation
+green is an interface accent, not an assessment result.
 See the [illustrated PDF guide](Interactive_Graph_Guide.pdf) or
 [HTML guide](Interactive_Graph_Guide.html). Its screenshots use clearly labelled,
 isolated demonstration records, not actual student or experimental results.
@@ -100,8 +105,9 @@ source run. The starting concept can be recommended from progress or chosen.
 Each quiz belongs to exactly one student and one run. In All Topics, suggested sources
 prioritize remaining unique gaps; exact overlapping evidence avoids retesting known
 facts. Review mode includes independently known facts. Questions stay grounded in
-the chosen source, target requested facts, and normally stop after five questions
-or when eligible facts are exhausted. Hints and reveals mark subsequent answers to
+the chosen source and target requested facts. Round length follows `ui.quiz_round_questions`;
+when unset, it starts from the eligible relationship count and stops sooner if eligible
+facts are exhausted. Hints and reveals mark subsequent answers to
 that question as assisted. They do not themselves create assessed evidence.
 
 Normal quizzes never target green facts. Independent mastery persists across quizzes,
@@ -109,6 +115,27 @@ restarts and exact, unambiguous matches in other saved graphs. A later partial,
 incorrect or assisted answer keeps its own score without erasing earned green.
 Yellow facts remain eligible; answering them correctly in a later quiz without hints
 or a reveal turns them green. Optional review of green facts is explicit.
+
+The starting-concept recommendation sorts by the number of previously assessed gaps,
+then unassessed incident relationships, then total connections, with stable name/ID
+tie-breaking. The learner can select a starting concept. The quiz still filters
+eligible relationships and can move to another concept when necessary. This is
+deterministic progress-based selection, not random question ordering. Each student's
+saved answers and assistance history remain separate. Pending technical failures
+have no grade and cannot manufacture progress.
+Within the selected focus, question selection prefers document-supported and
+unassessed relationships. A partial or assisted fact remains eligible without being
+guaranteed as the next question; recommendation and eligibility are distinct.
+
+The three fictional profiles populated on November 26, 2026 appear under ordinary
+names in the normal student views. Their provenance, actual submitted answers,
+metric snapshots and request receipts are in `outputs/student_profiles/metadata.json`,
+with one readable record per student beside it. The pre-replacement database is under
+the root `archive/databases/student_profiles_*` directory. Generated graphs and
+unrelated professor edits are preserved. `tools/populate_student_profiles.py` runs
+the real local-model API workflow; it never creates grades or mastery directly.
+This bounded exercise uses two questions per round without changing production
+round sizing. `tools/export_student_profiles.py` renders the saved outcomes.
 
 Question generation prefers document-supported facts within the chosen focus, audits
 disputed answer-leak rejections, and rejects near-identical rewrites. If one fact's
