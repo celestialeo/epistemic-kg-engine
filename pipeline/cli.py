@@ -1,1 +1,0 @@
-Fix the quiz-answer grading issue described below. Inspect the code to confirm the root cause, then make only the necessary changes within quiz grading and answer persistence. Keep graph extraction and construction unchanged. Avoid unrelated refactoring and hardcoded phrases, concepts, or special cases.
