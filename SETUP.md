@@ -25,7 +25,7 @@ Opening saved graphs and reading stored results does not require loading a model
 
 ## 1 Prepare the Python environment
 
-Extract the project ZIP or clone the repository, then open PowerShell **inside the project root**. Keep `data/` and any supplied `outputs/runs/` folders with the project. The `archive/` folder is unnecessary for normal use.
+Extract the project ZIP or clone the repository, then open PowerShell **inside the project root**. Keep `data/` and any supplied `outputs/runs/` folders with the project.
 
 ```powershell
 py -3.12 -m venv .venv

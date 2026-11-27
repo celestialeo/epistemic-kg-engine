@@ -21,27 +21,16 @@ BrainFacts article, using plain paragraphs and omitting webpage clutter.
 These links document input provenance; they are not automatically retrieved
 evidence for generated background facts.
 
-## Archived inputs
+## Test inputs
 
-All other input documents are stored in the root [archive/inputs](../archive/inputs/):
+The sample document used by the ingestion tests is in
+[tests/fixtures/sample.txt](../tests/fixtures/sample.txt). The two three-paragraph
+validation documents and their expected-claims checklist are in
+[tests/fixtures/validation](../tests/fixtures/validation/).
 
-- `input.txt`
-- `sample.txt`
-- `water_cycle.txt`
-- `water_cycle_sample.txt`
-- `AI Chapter.txt`
-- `Neurology Chapter.txt`
-- `validation/` (test fixtures and expected claims)
-
-The previous input descriptions and background-reading links are preserved in
-[previous-input-catalog.md](../archive/inputs/previous-input-catalog.md). It is a historical
-catalog; paths in it describe the layout before archiving.
-
-To run an archived document, use its explicit archive path, for example
-`--input "archive/inputs/input.txt"`. The old neuroscience/water-cycle `--chapter`
-aliases (including `both`) remain legacy embedded notebook examples. Specify an
-active input explicitly when running the pipeline.
+Historical input archives are no longer bundled with the project. The old
+neuroscience/water-cycle `--chapter` aliases (including `both`) remain legacy
+embedded notebook examples. Specify an active input explicitly when running the pipeline.
 
 The latest November 25 graph for each active input is listed in
-[outputs/runs/README.md](../outputs/runs/README.md). All historical inputs, runs,
-database backups, and generated diagnostics share the root [archive](../archive/).
+[outputs/runs/README.md](../outputs/runs/README.md).

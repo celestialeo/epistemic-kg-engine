@@ -177,7 +177,7 @@ class TopicIndependenceTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         original_words = len((root/'data/ai_test.txt').read_text().split())
         for name in ('ai_three_paragraphs', 'neuron_three_paragraphs'):
-            text = (root/'archive/inputs/validation'/f'{name}.txt').read_text(encoding='utf-8')
+            text = (root/'tests/fixtures/validation'/f'{name}.txt').read_text(encoding='utf-8')
             paragraphs, chunks = split_document(text, 85, self.trace)
             self.assertEqual(len(paragraphs), 3)
             self.assertTrue(2.5*original_words <= len(text.split()) <= 4*original_words)

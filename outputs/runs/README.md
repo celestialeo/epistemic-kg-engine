@@ -29,5 +29,5 @@ these same three graphs. Open it without rerunning inference:
 & .\.venv\Scripts\python.exe -m pipeline.professor --runs-root outputs/runs --database outputs/professor/students.sqlite3
 ```
 
-Older runs, the unmodified LLM execution records, and the database snapshot are
-in the root [archive](../../archive/README.md).
+Historical archives are no longer bundled with the project. The active runs
+and current professor database remain in `outputs/`.

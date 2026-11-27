@@ -519,7 +519,7 @@ optional file-selection shortcuts. General schema limits and semantic relation
 contracts remain explicit; they are not a closed topic vocabulary.
 
 The two three-paragraph validation inputs and their independent source-claim checklist
-are in `archive/inputs/validation`. The checklist is evaluation data and is never read by the
+are in `tests/fixtures/validation`. The checklist is evaluation data and is never read by the
 pipeline. `tools/validate_topic_runs.py RUN_A RUN_B --output REPORT.json` checks that
 saved runs used identical code/model settings, passed review/evaluation, retain valid
 quotes and artifact hashes, and emits their assertions for a separate meaning audit.

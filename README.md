@@ -4,8 +4,8 @@ The active inputs are `data/ai_test.txt`, `data/llm_tuning.txt`, and
 `data/neurons_and_glia.txt`. The [saved-run catalog](outputs/runs/README.md) lists
 one retained November 25 graph per input. LLM tuning combines its original
 execution and checkpoint recovery, retaining the interruption and unresolved issues.
-All older inputs, runs, database snapshots, and generated diagnostics are in the
-single root [archive](archive/README.md).
+Historical archives are no longer bundled with the project. Test inputs are
+retained under `tests/fixtures`.
 
 For a screenshot walkthrough of the interactive interface, open the
 [simple user guide (PDF)](docs/Interactive_Graph_Guide.pdf) or the
@@ -238,12 +238,12 @@ Only the original AI test is being validated for this change. The larger fixture
 below are available for separate testing; they are not evidence of current live-model
 accuracy across topics.
 
-Two three-paragraph validation inputs are under `archive/inputs/validation`. When testing
+Two three-paragraph validation inputs are under `tests/fixtures/validation`. When testing
 these separately, use the same configured resource policy:
 
 ```powershell
-python run_pipeline.py --input archive/inputs/validation/ai_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
-python run_pipeline.py --input archive/inputs/validation/neuron_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python run_pipeline.py --input tests/fixtures/validation/ai_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
+python run_pipeline.py --input tests/fixtures/validation/neuron_three_paragraphs.txt --output-root outputs/runs/generalization-validation --no-open --no-explorer
 python -m unittest tests.test_topic_independence tests.test_graph_quality -q
 ```
 
